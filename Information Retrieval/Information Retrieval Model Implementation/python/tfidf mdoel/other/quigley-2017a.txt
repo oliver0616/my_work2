@@ -1,0 +1,265 @@
+
+Using Learning Analytics in Iterative Design of a Digital
+Modeling Tool
+
+David Quigley
+University of Colorado Boulder
+Institute for Cognitive Science
+
+Department of Computer
+Science
+
+1777 Exposition Drive
+Boulder, Colorado
+
+david.quigley@colorado.edu
+
+Conor McNamara
+University of Colorado Boulder
+
+Department of Computer
+Science
+
+1777 Exposition Drive
+Boulder, Colorado
+
+Conor.R.Mcnamara
+@colorado.edu
+
+Tamara Sumner
+University of Colorado Boulder
+Institute for Cognitive Science
+
+Department of Computer
+Science
+
+1777 Exposition Drive
+Boulder, Colorado
+
+tamara.sumner@colorado.edu
+
+ABSTRACT
+Iterative design is a powerful method for developing digi-
+tal classroom tools and curricula. We explore how infusing
+learning analytics into this process has influenced our devel-
+opment of EcoSurvey, a digital modeling tool for mapping
+the organisms and interactions in the local ecosystem. We
+have found that analytic techniques can help us discover
+areas in which students struggle to engage with scientific
+modeling, and we can iteratively use learning analytics to
+demonstrate the impact of design changes.
+
+CCS Concepts
+•Human-centered computing ? Interaction design
+theory, concepts and paradigms; •Applied comput-
+ing ? Collaborative learning;
+
+Keywords
+Scientific Modeling, Collaborative Modeling, Iterative De-
+sign
+
+1. INTRODUCTION
+Scientific modeling is a core component of modern K-12
+
+science education, allowing students “to represent their cur-
+rent understanding of a system (or parts of a system) under
+study, to aid in the development of questions and explana-
+tions, to generate data that can be used to make predictions,
+and to communicate ideas to others.” [4] Various learning
+sciences researchers (e.g. [6, 3]) have explored areas related
+to scientific modeling, and have highlighted model creation,
+review, revision, usage, and iteration as core components of
+scientific practice. To facilitate students learning scientific
+modeling, tools and curricula should scaffold the experience
+to help students build their own models for real-world usage.
+
+Permission to make digital or hard copies of part or all of this work for personal or
+classroom use is granted without fee provided that copies are not made or distributed
+for profit or commercial advantage and that copies bear this notice and the full citation
+on the first page. Copyrights for third-party components of this work must be honored.
+For all other uses, contact the owner/author(s).
+
+LAK ’17 March 13-17, 2017, Vancouver, BC, Canada
+c© 2017 Copyright held by the owner/author(s).
+
+ACM ISBN 978-1-4503-4870-6/17/03.
+
+DOI: http://dx.doi.org/10.1145/3027385.3029482
+
+Iteration has been demonstrated as a critical component of
+educational design [1]. This process requires recurring cycles
+of design and testing to help create a final product that best
+supports real-world needs. This poster explores how the
+iterative design process has influenced our digital modeling
+tool (EcoSurvey) and how we are using learning analytics
+techniques to measure improvements across iterations.
+
+2. RESEARCH CONTEXT
+Our research centers around student usage of EcoSurvey,
+
+a collaborative digital tool students use to model the organ-
+isms and interactions in their local ecosystem. This tool is
+part of the Inquiry Hub project, a design-based research ini-
+tiative focused on developing student-centered approaches to
+teaching and learning through partnership with a large ur-
+ban school district in the midwestern United States [7]. Our
+approach leverages iterative cycles of co-design and class-
+room testing to improve EcoSurvey and curriculum materi-
+als as well as drive our understanding of the collaborative
+modeling space.
+
+The ecosystems unit of our biology curriculum has stu-
+dents choose a tree to plant on their school grounds to im-
+prove the biodiversity and resilience of the area. The stu-
+dents use EcoSurvey to develop a class-level model of the
+existing ecosystem, using this as evidence for a tree choice
+that will suit local needs. The workflow of EcoSurvey follows
+existing modeling practices theory [6] to have students itera-
+tively create, review, revise, and use their models. To begin,
+students go outside and use their personal devices, such as
+smartphones, to photograph and catalogue organisms they
+encounter. They then use these photos and notes to create
+organism “cards” in EcoSurvey. In addition, students add
+“relations” such as “preys upon”, “supports”, or “competes
+with” between organisms to capture interactions. Once the
+class has built an initial model, the students participate in
+a review session, pairing off and providing feedback on each
+others’ cards and relations. These review sessions can high-
+light incomplete and incorrect information within cards as
+well as show areas in which new cards would help connect
+portions of the model together. Students then take this feed-
+back and revise their models. The model then becomes a
+piece of evidence students use in their argument for which
+tree to choose. The construction of this argument can once
+again demonstrate errors and gaps in the model, driving the
+students to conduct more revision to better support their
+
+
+
+claim. An example portion of an EcoSurvey model and an
+organism card can be seen in figure 1.
+
+Figure 1: EcoSurvey model and organism card detail
+view.
+
+We measure the variation across classroom models in terms
+of the number and nature of the organisms and interactions
+in students’ final logs. These features include raw numbers
+of each feature and the balance between types of organisms
+and interactions. For example, we determine if students in
+a class documented similar numbers of all types of interac-
+tions, or if they mostly incorporated a certain kind of rela-
+tion such as “preys upon”. We also measure the variance in
+distribution of interactions among organisms; an ecosystem
+model functions very differently if most of the relations con-
+nect to few keystone species or if there is an even distribution
+of relations among organisms.
+
+We also analyze usage logs. These logs include a user ID,
+the action taken, and the context of the action. This context
+information includes the user’s class, the card the student
+was working with, the date and time of the action, and the
+device the student used. We organize these logs into ac-
+tion sequences for each student in order to answer questions
+about individual, classroom, and teacher differences related
+to engagement with modeling practices. We leverage ex-
+isting ideas for mining sequential data [8] and extracting
+relevant sequences [2] to determine which patterns are pre-
+dictive of a student taking part in creating stronger models.
+
+3. ITERATIVE ANALYSIS
+Our analysis of the first version of EcoSurvey provided
+
+valuable insights into the nature of the models that students
+created and the ways in which they engaged with modeling
+practices [5]. Overall, we found significant variance across
+final models and significant differences in the how students
+under different teachers engaged with all five modeling prac-
+tices. Our sequential analysis of student actions discovered
+that patterns related to revision, evaluation, and iteration
+were the most predictive of a student’s teacher. These re-
+sults motivated changes for the second version of EcoSurvey
+in order to improve student access to these key modeling
+practices.
+
+Our design cycles give us the opportunity to examine the
+impact of design changes between iterations. By mapping
+student actions to existing modeling practice frameworks,
+we can perform direct comparisons across versions and eval-
+uate the impact of changes in newer versions. For example,
+we incorporated a dynamic graph view of the model into
+students’ workflow (as seen in figure 1). Rather than rely
+on intuition, however, we are currently using the same tech-
+niques to evaluate the results of our second deployment. We
+
+can use the exact same analyses of organism and interaction
+richness and variance to determine how models compare be-
+tween deployments. We can also leverage our sequence fea-
+ture extraction techniques to see if the same features are still
+predictive of teacher differences.
+
+These direct comparisons allow us to evaluate differences
+in both models student engagement with the modeling prac-
+tices. We expect students that use the dynamic graph fea-
+ture will demonstrate more thorough use of the modeling
+practices and that their subsequent group models will in-
+clude more thorough interaction data.
+
+4. CONCLUSION
+Overall, scientific modeling in the classroom is a complex
+
+problem space. That said, digital tools can provide a great
+amount of support for students, and the data streams of
+student usage can provide interesting insight into the stu-
+dent modeling process. In order to understand the impact
+of design choices on student behavior, we leverage learning
+analytic techniques over multiple cycles of our iterative de-
+sign process. The differences (and similarities) in analytic
+results provide a unique set of evidence for the impact of de-
+sign changes on student engagement with modeling practices
+and the strength of students’ final models.
+
+5. REFERENCES
+[1] T. D.-B. R. Collective. Design-based research: An
+
+emerging paradigm for educational inquiry. Educational
+Researcher, 32(1):5–8, 2003.
+
+[2] M. Hall, E. Frank, G. Holmes, B. Pfahringer,
+P. Reutemann, and I. H. Witten. The WEKA data
+mining software. ACM SIGKDD Explorations,
+11(1):10–18, 2009.
+
+[3] J. B. Homer. Why We Iterate: Scientific Modeling in
+Theory and Practice. System Dynamics Review,
+12(1):1–19, 1996.
+
+[4] National Research Council. A Framework for K-12
+Science Education: Practices, Crosscutting Concepts,
+and Core Ideas. The National Academies Press,
+Washington, DC, 2012.
+
+[5] D. Quigley, J. Ostwald, and T. Sumner. Scientific
+Modeling: Using learning analytics to examine student
+practices and classroom variation. in Proceedings of the
+Seventh International Conference on Learning
+Analytics & Knowledge, pages 1–10, in press.
+
+[6] C. V. Schwarz, B. J. Reiser, E. A. Davis, L. Kenyon,
+A. Ache?r, D. Fortus, Y. Shwartz, B. Hug, and
+J. Krajcik. Developing a learning progression for
+scientific modeling: Making scientific modeling
+accessible and meaningful for learners. Journal of
+Research in Science Teaching, 46(6):632–654, 2009.
+
+[7] S. Severance, W. R. Penuel, T. Sumner, and H. Leary.
+Organizing for Teacher Agency in Curricular
+Co-Design. Journal of the Learning Sciences,
+25(4):531–564, 2016.
+
+[8] Z. Xing, J. Pei, and E. Keogh. A brief survey on
+sequence classification. ACM SIGKDD Explorations
+Newsletter, 12(1):40, 2010.
+
+
+

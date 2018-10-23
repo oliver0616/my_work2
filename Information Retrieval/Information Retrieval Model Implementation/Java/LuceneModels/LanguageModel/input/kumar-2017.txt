@@ -1,0 +1,259 @@
+
+What Are Visitors Up To? Helping Museum Facilitators 
+Know What Visitors Are Doing 
+
+Vishesh Kumar 
+University of Wisconsin-Madison 
+
+Madison, Wisconsin 
+vishesh.kumar@wisc.edu 
+
+Mike Tissenbaum 
+Massachusetts Institute of Technology 
+
+Cambridge, Massachusetts  
+miketissenbaum@gmail.com 
+
+Matthew Berland 
+University of Wisconsin-Madison 
+
+Madison, Wisconsin 
+mberland@wisc.edu 
+
+ 
+ABSTRACT 
+In this paper, we describe a tablet application designed around an 
+interactive game-based science museum exhibit. It is aimed to 
+help provide museum docents useful information about the 
+visitors’ actions, in a way that is actionable, and enables docents 
+to provide assistance and prompts to visitors that are more 
+meaningful, compared to what they are typically able to do 
+without this interface augmentation.  
+
+CCS Concepts 
+• Education  Computer-assisted instruction • Information 
+systems applications  Decision support systems 
+
+Keywords 
+Tablet; Museum; Engineering; Tinkering; Scaffolding; Markov 
+Models; Real-time analysis. 
+
+1. INTRODUCTION 
+There is an increasing number of museum exhibits that are 
+employing digital augmentations as a means of supporting science 
+learning [1]. At the same time, exhibit designers are also 
+exploring how less-structured, open ended designs can foster 
+higher levels of engagement, towards supporting new l learning 
+opportunities. This open-ended exploration, often termed 
+“tinkering”, are characterized by exploratory, experimental, and 
+iterative processes of learning, are particularly well suited for 
+STEM-based (Science, Technology, Engineering and Math) 
+reasoning and collaboration [2, 3]. 
+
+In these kinds of open-ended designs, feedback and timely support 
+are especially important, as visitors often lack the necessary 
+expertise or prior knowledge needed to know how to effectively 
+tinker and explore. A critical component of learning from 
+tinkering involves exploration, failure, and re-exploration [5]. 
+This mirrors the notion of perseverance commonly advocated for 
+
+in engineering and STEM practices [6]. However, if a participant 
+faces sustained failure without eventual success, they are likely to 
+feel disillusioned with their efforts and the STEM practices more 
+generally, resulting in a reduced chance of persevering in the 
+future [4]. Thus, it is of high importance that we find ways to 
+identify participants’ ‘states’, so that appropriate assistance can be 
+provided when they are stuck in sustained states of ‘unproductive 
+tinkering’. 
+
+When museum exhibits supporting these kinds of open-ended 
+tinkering lack well defined start/end points and permit free 
+entry/exit of participants, it can become particularly difficult for 
+museum docents, and even involved underlying technologies, to 
+keep track of the actions, process, and ‘states’ of individual 
+participants. underlining. 
+
+Together, these factors make providing timely assessment and 
+feedback both valuable and hard. In response, we have designed a 
+tablet application that computationally processes data of 
+participants’ actions at the exhibit, and presents it to nearby 
+museum docents in ways that support real-time decisions based on 
+accurate models of participants’ states. 
+
+2. CONTEXT 
+2.1 The Oztoc Exhibit 
+This tablet app has been designed for use with an existing multi-
+touch tabletop exhibit in a large urban science museum, which 
+generally has at least one museum docent (called an “explainer”,) 
+to assist, guide, and engage visitors. The exhibit, named Oztoc, 
+situates visitors as electrical engineers called in to help fictional 
+scientists who have discovered an uncharted aquatic cave teeming 
+with never-before documented species of aquatic life [3]. The 
+participants are asked to lure these fish out for cataloging, by 
+building glowing “fishing lures”. Participants manipulate wooden 
+blocks labelled with symbols of electrical components, which are 
+tracked on the digital tabletop interface. Making a successful 
+circuit that has one or more appropriately powered LEDs, causes 
+elusive fish to appear, and get “captured” in the lures.  
+The tabletop is divided into four “play spaces”, which act as 
+boundaries for individuals to play within, allowing multiple 
+people to play simultaneously, as well as interact with each other. 
+This allows for a host of inter-player interactions wherein players 
+can see what others are doing, talk to others, and also notice and 
+learn from others’ attempts. These interactions can also be used to 
+inform computational identifications of participants’ states as 
+being productive or not. 
+
+Permission to make digital or hard copies of part or all of this work for 
+personal or classroom use is granted without fee provided that copies are 
+not made or distributed for profit or commercial advantage and that 
+copies bear this notice and the full citation on the first page. Copyrights 
+for third-party components of this work must be honored. For all other 
+uses, contact the Owner/Author.  
+Copyright is held by the owner/author(s). 
+LAK '17, March 13-17, 2017, Vancouver, BC, Canada 
+ACM 978-1-4503-4870-6/17/03. 
+DOI: http://dx.doi.org/10.1145/3027385.3029456 
+Please use a 9-point Times Roman font, or other Roman font 
+with serifs, as close as possible in appearance to Times Roman 
+in which these guidelines have been set. The goal is to have a 9-
+point text, as you see here. Please use sans-serif or non-
+proportional fonts only for special purposes, such as 
+distinguishing source code text. If Times Roman is not 
+available, try the font named Computer Modern Roman. On a 
+Macintosh, use the font named Times.  Right margins should be 
+justified, not ragged. 
+
+
+
+2.2 ADAGE – Using Play Data 
+Participants’ play actions from the tabletop, are posted to a data 
+aggregation server using the ADAGE (Assessment Data 
+Aggregator for Gaming Environments) system [7]. This data is 
+then available to use for analysis, even in real-time.  
+
+The kinds of data events posted by Oztoc to our ADAGE system 
+include which playspace blocks are being placed on the table, 
+moved, or connected; when a circuit is assembled: what blocks it 
+is made of, whether the circuit works or not, and what fish is 
+captured, if any. We can use this variety of event logs to obtain a 
+rich picture of each player’s actions, and extract meaning 
+regarding the participants’ states.  
+
+The current version of our tablet application uses real-time data to 
+provide information to explainers about participants’ actions and 
+progress the participants have made. We have also used post-hoc 
+data analysis to develop a trained Hidden Markov Model (HMM) 
+that successfully identifies participants’ states as engaging in 
+sustained unproductivity [8]. 
+
+3. EXPLAINER EVENT VIEWER (EEV) 
+The tablet application, herein called the EEV, is an interface 
+meant to be seen on a handheld device by explainers at the 
+museum exhibit, and gives at-a-glance highlights of events from 
+the different play spaces, and when needed, suggested prompts 
+that the explainer can make use of, if they deem appropriate 
+(Figure 2). 
+
+The choice to provide feedback via suggestions to explainers is 
+meant to bridge the difficulty either agent – the explainers or the 
+game table itself – has individually, in making informed decisions 
+about providing feedback. Allowing the explainer to see salient 
+details of the participants’ actions at a glance coupled with their 
+knowledge about the context of play – who is actually at the table 
+and who might benefit from assistance – gives them actionable 
+information so that they can be more effective helpers. 
+
+Currently, there are five alerts with suggested prompts for the 
+explainers to consider using with struggling participants. These 
+appear in cases such as one playspace, making three circuits to 
+capture the exact same fish, within a span of two minutes. This is 
+a coarse indicator that the participant has attained a certain 
+working state, but is not deviating to try different things at all. 
+Similarly, there is a prompt when a participant makes three 
+consecutive circuits all with the same “error” – repeatedly 
+overpowering LEDs (caused due to lack of resistors and/or excess 
+of batteries), or underpowering LEDs. 
+
+4. FUTURE WORK 
+We have recently developed a trained and tested Hidden Markov 
+Model [9] that can tag each assembled circuit, as “productive” or 
+“unproductive”. This identification uses pattern mining across 
+circuits made by over 1400 participants, and analyzing meta-
+information about the circuits, like complexity (number of 
+components used), functionality (working or not), repetition 
+relative to one’s own history (whether the circuit being made is 
+unique with respect to the circuits made earlier by a particular 
+participant), and relative to the history of circuits made in front of 
+them at the table (i.e. uniqueness of circuit compared to all the 
+circuits made by others at the table). This tagging system is able 
+to identify sustained bouts of unproductivity with a high success 
+rate (i.e. multiple consecutive circuits being tagged as 
+unproductive has been seen to co-occur with behavior we can 
+qualitatively call unproductive tinkering in the context of Oztoc). 
+
+We are excited to integrate this data analysis stream in the tablet 
+interface, to have more reliable and actionable advice for the 
+explainers using the EEV. We aim to have this portion of the 
+tablet completed and tested by the time of the conference and will 
+report on early findings on this work.  
+
+5. REFERENCES 
+[1] National Research Council. (2009). Learning science in 
+
+informal environments: People, places, and pursuits. 
+National Academies Press.  
+
+[2] Land, S. M. (2000). Cognitive requirements for learning with 
+open-ended learning environments. Educational Technology 
+Research and Development, 48(3), 61-78. 
+
+[3] Lyons, L., Tissenbaum, M., Berland, M., Eydt, R., Wielgus, 
+L., & Mechtley, A. (2015, June). Designing visible 
+engineering: supporting tinkering performances in museums. 
+In Proceedings of the 14th International Conference on 
+Interaction Design and Children (pp. 49-58). ACM. 
+
+[4] Petrich, M., Wilkinson, K., & Bevan, B. (2013). It looks like 
+fun, but are they learning. Design, make, play: Growing the 
+next generation of STEM innovators, 50-70. 
+
+[5] Resnick, M., & Rosenbaum, E. (2013). Designing for 
+tinkerability. Design, make, play: Growing the next 
+generation of STEM innovators, 163-181. 
+
+[6] Ryoo, J. J., Bulalacao, N., Kekelis, L., McLeod, E., & 
+Henriquez, B. (2015). Tinkering with “failure”: Equity, 
+learning, and the iterative design process. In FabLearn 2015 
+Conference at Stanford University, September 2015. 
+
+[7] Stenerson, M. E., Salmon, A., Berland, M., & Squire, K. 
+(2014, October). Adage: an open API for data collection in 
+educational games. In Proceedings of the first ACM SIGCHI 
+annual symposium on Computer-human interaction in 
+play (pp. 437-438). ACM. 
+
+[8] Tissenbaum, M., Kumar, V., & Berland, M. Modeling 
+Visitor Behavior in a Game-Based Engineering Museum 
+Exhibit with Hidden Markov Models. In  The Ninth 
+International Conference on Educational Data Mining. 
+
+[9] Tissenbaum, M., Kumar, V., Berland, M. (Accepted, 2017) 
+What are you doing over there? Understanding Transitions 
+from Unproductive to Productive States in Open-Ended 
+Inquiry. At the Meeting of the American Educational 
+Research Association, 2017.
+
+Figure 1. Screenshot of the EEV in action. Each 
+playspace has a timeline of dots (small grey circles), 
+
+with colored dots (blue square, large red circle, small 
+red circle), indicating the different kinds of fish 
+
+captured by the players. Playspaces have associated 
+prompts such as – “That’s a small light! How could you 
+
+make you light more noticeable?” 
+
+
+

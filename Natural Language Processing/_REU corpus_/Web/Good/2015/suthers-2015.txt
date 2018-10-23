@@ -1,0 +1,1289 @@
+
+From Contingencies to Network-level Phenomena: 
+Multilevel Analysis of Activity and Actors in 
+
+Heterogeneous Networked Learning Environments 
+Dan Suthers 
+
+Dept. of ICS, University of Hawaii 
+1680 East West Road, POST 317 
+
+Honolulu, HI 96822 
+1.808.956.3890 
+
+suthers@hawaii.edu 
+ 
+
+ABSTRACT 
+Learning in social settings is a complex phenomenon that involves 
+multiple processes at individual and collective levels of agency. 
+Thus, a richer understanding of learning in socio-technical 
+networks will be furthered by analytic methods that can move 
+between and coordinate analyses of individual, small group and 
+network level phenomena. This paper outlines Traces, an analytic 
+framework designed to address these and other needs, and gives 
+examples of the framework’s practical utility using data from the 
+Tapped In educator professional network. The Traces framework 
+identifies observable contingencies between events and uses these 
+to build more abstract models of interaction and ties represented 
+as graphs. Applications are illustrated to identification of sessions 
+and key participants in the sessions, relations between sessions as 
+mediated by participants, and longer-term participant roles.   
+
+Categories and Subject Descriptors 
+Collaborative and social computing systems and tools, Social 
+networks, Collaborative learning, Graph algorithms   
+
+Keywords 
+Interaction analysis, Social network analysis, Learning analytics, 
+Networked learning environments  
+
+1. Introduction 
+As formal and informal education increasingly takes place in 
+online interaction spaces, tools are needed to help those who 
+manage such spaces identify and understand activity and key 
+actors. This paper outlines one possible approach for building 
+such tools, based on a framework for analysis of learning 
+interactions that has broader ambitions. The purpose of the paper 
+is twofold: to summarize the current version of this framework, 
+called Traces, and to illustrate its relevance to practitioners via an 
+envisioned “activity reporter”.  
+
+The framework is motivated by a view of learning as a complex 
+and multilevel phenomenon. Theories of how learning takes place 
+
+in social settings vary in the agent of learning (e.g., individual, 
+small group, network or community), and in the process of 
+learning [34] (e.g., information transfer or knowledge 
+communication [6], intersubjective meaning-making such as 
+argumentation and co-construction [2, 33], shifts in participation 
+and identity [17, 27], and accretion of cultural capital [30]). We1 
+claim that learning takes place simultaneously at all of these levels 
+of agency and with all of these processes, potentially at multiple 
+time scales [18]. Thus, understanding learning in its full richness 
+requires data that reveal the relationships between individual and 
+collective levels of agency and potentially coordinating multiple 
+theories and methods of analysis [8, 21, 39]. A multi-level 
+approach is also motivated by our theoretical stance that social 
+regularities arise from how myriad individual acts are aggregated 
+and influence each other, possibly mediated by artifacts [16, 15], 
+and the methodological implication that to understand phenomena 
+such as actor relationships or community structures, we need to 
+also look at the stream of individual acts out of which these 
+phenomena are constructed.  
+
+The Traces analytic framework (described shortly) was designed 
+to meaningfully connect multiple levels of analysis. Matching 
+their complementary strengths and weaknesses, we combine 
+interaction analysis, which enables us to see what groups of 
+individuals are doing and how they are doing it (but at a level of 
+detail that obscures larger scale patterns), with social network 
+analysis, which provides summaries of ties and affiliations in a 
+form amenable to drawing conclusions about network or 
+community patterns (but loses the details of how people actually 
+interact). We also work with intermediate levels of analysis 
+between these extremes.  
+
+The practical relevance of our approach to learning analytics 
+derives from phenomena such as the emergence of Web 2.0 [23] 
+and its adoption by the educational communities, including more 
+recent interest in MOOCS (Massive Open Online Courses) [1]. In 
+these environments, learning is distributed across time and virtual 
+place (media), and learners may participate in multiple settings. 
+We focus on networked learning environments (NLE)2, which we 
+define to include any socio-technical network that involves 
+
+                                                                    
+1 Although this paper is single-author, it is based on an ongoing 
+
+line of work reaching back over many years: see 
+acknowledgments for colleagues. Because it is a collective 
+accomplishment, this paper will use “we” throughout, although 
+I am responsible for its content. 
+
+2 Also called NLC, but whether or not they are “communities” is 
+an empirical and indeed theoretical question.  
+
+Permission to make digital or hard copies of all or part of this work for personal 
+or classroom use is granted without fee provided that copies are not made or 
+distributed for profit or commercial advantage and that copies bear this notice 
+and the full citation on the first page. Copyrights for components of this work 
+owned by others than ACM must be honored. Abstracting with credit is 
+permitted. To copy otherwise, or republish, to post on servers or to redistribute 
+to lists, requires prior specific permission and/or a fee. Request permissions 
+from Permissions@acm.org.  
+ 
+LAK '15, March 16 - 20, 2015, Poughkeepsie, NY, USA 
+Copyright is held by the owner/author(s). Publication rights licensed to ACM. 
+ACM 978-1-4503-3417-4/15/03…$15.00  
+http://dx.doi.org/10.1145/2723576.2723626 
+
+368
+
+
+
+mediated interaction between participants (hence “networked”) in 
+which learning might take place, including for example online 
+communities [3, 26] and cMOOCs (connectionist MOOCs, [32]). 
+Our work will not be as applicable to isolated activity by 
+individuals, no matter how many, such as “xMOOCS” in which 
+large numbers of individuals interact primarily with courseware. 
+We are developing our framework using a data corpus from 
+Tapped In®, an online network of education professionals, 
+including but not limited to preservice and inservice teachers. This 
+NLE displayed many of the characteristics of current 
+heterogeneous distributed environments. It offered asynchronous 
+threaded discussions, quasi-synchronous chat, file sharing, and 
+other media for interaction. Participants included members of 
+organizations and others in scheduled events and persons who 
+came to Tapped In of their own accord; and all participants were 
+free to wander between specific settings and events. 
+Consequently, the activity of a given participant resulted in 
+different kinds of traces in the log files associated with these 
+media, at different times and different virtual spaces. The trace of 
+what for a given participant was a unitary experience is 
+fragmented across these logs. The need to reassemble fragmented 
+traces into a single analytic artifact was another motivation for 
+developing Traces.  
+
+To preview the Traces approach, logs of events are abstracted and 
+merged into a single abstract transcript of events, and this is used 
+to derive a series of representations that support levels of analysis 
+of interaction and of ties. Three kinds of graphs model interaction: 
+Contingency graphs record how events such as chatting or posting 
+a message are observably related to prior events by temporal and 
+spatial proximity and by content.  Uptake graphs aggregate the 
+multiple contingencies between each pair of events to model how 
+each given act may be “taking up” prior acts.  Session graphs are 
+abstractions of uptake graphs: they cluster events into spatio-
+temporal sessions with uptake relationships between sessions. 
+Relationships between actors and artifacts are abstracted from 
+interaction graphs to obtain associograms [38, 40], which can be 
+folded into traditional sociograms.  
+Other publications have detailed some of the theory [15, 34] and 
+analytic representations [37, 40] behind this work. This paper 
+reports on how these ideas have been implemented to transform 
+events into interaction and session graphs and sociograms, and in 
+particular will focus on the utility of the derived sociograms and 
+how they retain information from the interaction analysis. 
+
+2. Tapped In 
+In developing and testing our framework, we use a data corpus 
+from SRI International’s Tapped In® (tappedin.org), an 
+international online network of educators engaged in diverse 
+forms of informal and formal professional development and peer 
+support [10, 31]. Tapped In was motivated by the desire to 
+understand how to initiate and manage large heterogeneous 
+communities of educators, how such communities evolve, and the 
+benefits that participants derive from their involvement (Mark 
+Schlager, personal communication). This network included 
+activities that were sponsored by formal organizations (e.g., 
+universities, school districts, and nonprofits) mixed with volunteer 
+driven and other unsponsored activities, in both synchronous and 
+asynchronous media, with participants from across all career 
+stages and diverse occupations related to education. Thus, Tapped 
+In provides an opportunity to develop and test hypotheses, tools, 
+and techniques for understanding heterogeneous networks. 
+Cumulatively, Tapped In hosted the content and activities of more 
+
+than 150,000 education professionals (over 20,000 per year in our 
+study period) in thousands of user-created spaces that contain 
+threaded discussions, shared files and URLs, text chats, an event 
+calendar, and other tools to support collaborative work. Over its 
+16-year history, more than 50 organizations, including education 
+agencies and institutions of higher education became “tenants” in 
+the system with online courses, workshops, seminars, mentoring 
+programs, and other collaborative activities. There were also 
+approximately 40-60 public activities per month designed by 
+Tapped In members and open to anyone in the community. 
+Volunteers drove the majority of Tapped In community-wide 
+activity [10]. Extensive data collection capabilities captured the 
+activity of all members and groups, including chat data, 
+discussion board interactions, and file sharing. The trend in 
+current social media is for such data to be treated as a proprietary 
+asset, and some are even discouraging big data research outside of 
+industry (as reported by [5]), a dangerous trend. The Tapped In 
+data corpus offers a valuable opportunity for study of how large 
+heterogeneous socio-technical networks evolve.  
+
+We selected a period from September 2005 through May 2007 for 
+our research, and used smaller samples within this period to 
+develop and test our methods. This period was chosen because 
+graphs of activity showed peak usage during this time, and we 
+wanted to study a successful network.3 (Usage tapered off after 
+2010, and Tapped In was shut down in 2013.) In the remainder of 
+this paper, we illustrate the analytic capabilities of the Traces 
+framework with several granularities of analysis centered around 
+one day of data in April 2006. This day includes a “Teaching 
+Teachers” session on mentoring that we had previously selected 
+for micro-analysis due to its engaged and thoughtful discussion, 
+and other related sessions. (A sample of this session that will be 
+used for examples is shown later in Table 1.) By analyzing data 
+from the days and weeks surrounding this session, we can assess 
+how the methods described in this paper identify this session and 
+its actors, and how it was embedded in its surrounding context.  
+
+3. Traces Analytic Framework 
+This section briefly summarizes the framework, updating previous 
+descriptions [36, 40] to reflect the current state of design and 
+implementation. The representations used at various levels of 
+analysis are shown schematically in Figure 1 (next page):  micro-
+relations between situated acts by participants are identified and 
+then aggregated into interactional relations, and further aggregated 
+into network level phenomena. 
+
+At the bottom, we exemplify various traces of activity (such as log 
+files of events) that provide the source data. (Our actual data 
+includes database logs and textual transcripts of chats.) These are 
+parsed using methods that are necessarily system-specific into an 
+event stream, shown in the second level (boxes in Figure 1b). The 
+event representation includes their time, location, event type, 
+actor, and content or media object where relevant.  
+
+3.1 Contingency Graph 
+At this level of abstraction (Figure 1b), we compute contingencies 
+between events, to produce a model of how acts are mutually 
+contextualized (shown as arrows). Human action is contingent 
+upon its setting in diverse ways: our computational methods 
+
+                                                                    
+3 After years of study of this corpus I am impressed with how 
+
+successful it was. The interaction was rich and diverse, a credit 
+to Mark Schlager’s design vision and what he, Judi Fusco and 
+Patti Schank accomplished in carrying out this vision.  
+
+369
+
+
+
+capture some of these contingencies that are amenable to 
+automated detection. A contingency called proximal event (PE) 
+reflects the likelihood that events occurring close together in time 
+and space are related. In analyzing quasi-synchronous chat, 
+contingencies are installed to prior contributions in the same room 
+that occur within an adjustable time window but not too recently. 
+A Keystroke Level Model [25] of how long a typist would have 
+taken to type the contribution is used to ensure that the prior 
+contribution was already visible when typing began by closing the 
+window this amount of time before the contribution (see [36] for 
+details). For example, referring to Table 1 (next page), AP’s 
+contribution at 23:42 is PE contingent on MT’s question at 23:35, 
+but AP’s contribution at 23:38 is not, having occurred too soon 
+after. Address (ADR) and reply (RPL) contingencies are installed 
+between an utterance mentioning a user by name and the last 
+contribution (ADR) and next contribution (RPL) by that 
+participant within a time window, using a parser/matcher of user 
+IDs to first names. For example, an Address Contingency is 
+placed between DA’s 24:27 “That is an interesting question M” 
+and MT’s prior question at 23:35; while a Reply Contingency is 
+placed between MT’s “… thought about often D” at 24:42 and 
+D’s 24:27. Same actor contingencies (SA) are installed to prior 
+acts of a participant over a larger time window to reflect the 
+continuity of an agent’s purpose. All of MT’s later contributions 
+are contingent on the earlier ones by Same Actor in this short 
+excerpt. Overlap in content as represented by sets of lexical stems 
+is used to produce a lexical contingency (LEX) weighted by the 
+number of overlapping stems. For example, the lexical stems for 
+
+AP’s contribution at 23:38 and for AS’s contribution at 24:09 
+overlap on “peopl”, using the NLTK Lancaster Stemmer, [24]. 
+We do not claim that this specific set of contingencies is sufficient 
+for analysis, and others are under development, though we are 
+finding them to be a good starting point to explore the potential of 
+our framework. Our research and development strategy is to see 
+how far we can get with these simpler contingencies before 
+adding computational complexity.  
+
+The resulting contingency graph (e.g., Figure 1b) is represented 
+as the first layer of abstraction in what we call an Entity-Event-
+Contingency graph or EEC [37]. In the EEC graph, vertices are 
+Events. These can be of various types (e.g., enter chat, exit chat, 
+chat contribution), and are annotated with time stamps, actors, 
+content (e.g., chat content), and locations (e.g., chat rooms) 
+involved in the event. Contingencies are typed edges between 
+vertices (the types were described in the previous paragraph), and 
+there may be multiple edges between any two vertices (e.g., two 
+proximal events by the same actor with lexical overlap will have 
+at least three contingencies between them). 
+
+3.2 Uptake Graph 
+It is necessary to collapse the multiple edges between vertices into 
+single edges for two reasons. First, most graph algorithms assume 
+that there is at most only one edge between two vertices. Second, 
+we are interested in uptake, the relationship between events in 
+which a human action takes up some aspects of prior events as 
+being significant in some manner [37]. Replying to prior 
+contributions in chats and discussions are examples of uptake, but 
+
+ 
+Figure 1. Levels of Analysis and their Representations 
+
+ 
+
+370
+
+
+
+uptake is not limited to replies: one can appropriate a prior actor’s 
+contribution in other ways. Uptake is not specific to a medium: it 
+can occur in different media, and cross media [37]. Contingencies 
+are of interest only as collective evidence for uptake, so we 
+abstract the contingency graph to an uptake graph.  
+
+As shown in Figure 1c, uptake graphs are similar to contingency 
+graphs in that they also relate events, but they collect together 
+bundles of the various types of contingencies between a given pair 
+of vertices into a single graph edge, weighted by a combination of 
+the strength of evidence in the contingencies and optionally 
+filtering out low-weighted bundles. Different weights can be used 
+for different purposes (e.g., finding sessions; analyzing the 
+interactional structure of sessions, constructing sociograms). 
+Importantly, we do not throw away the contingency weights: these 
+are retained in a vector to summarize the nature of the uptake 
+relation (and, once aggregated into sociograms, of the tie between 
+actors, to be discussed shortly).  
+An example weighting that has been used for uptake graphs is SA 
+2, LEX 1, ADR 3, RPL 3, PE 3. The lexical weight (LEX) is 
+multiplied by the number of lexical stems in common between the 
+two contributions, and proximal event (PE) decays according to 
+temporal distance between events within a time window of 120 
+seconds (e.g., it could be 3, 2 or 1). A permissive threshold of 1 
+allows creation of an arc in the uptake graph if there is just one 
+lexical overlap or to any event in the prior 120 seconds; a 
+threshold of 2 would require at least one other contingency for 
+older contributions before the possibility of uptake is asserted.  
+
+For example, consider DA’s contribution at 24:27 and MT’s 
+contribution at 24:42 (Table 1). The second event is contingent on 
+the first by lexical overlap (“I”), address, reply, and proximal 
+event (in the same room and 15 seconds apart). Applying the 
+uptake graph weighting, we get an uptake relation of weight 10, 
+annotated with a vector of weighted constituent contingencies that 
+we can write as: <SA 0, LEX 1, ADR 3, RPL 3, PE 3>.  
+
+3.3 Sessions 
+Clusters of events in spatio-temporal proximity are computed to 
+identify  “sessions” (indicated by rounded containers in Figure 
+1c). We can do several interesting things with uptake graphs.  
+
+For inter-session analysis, we collapse each session into a single 
+vertex representing the session, but retain the inter-session uptake 
+links. (For example, there are four sessions in Figure 1c and two 
+inter-session uptakes.) These inter-session links indicate potential 
+influences across time and space from one session to another. An 
+example will be given shortly in conjunction with Figure 2.  
+
+For intra-session analysis, the uptake graph for a session is 
+isolated. Several paths are possible from here. For example, the 
+sequential structure of the interaction can be micro-analyzed to 
+understand the development of group accomplishments: this part 
+is not automated. Methods for graph structure analysis can be 
+applied, such as cluster detection, analysis of graph motifs [20] 
+that represent uptake patterns of interest, or tracing out thematic 
+threads [41]. 
+
+3.4 Sociograms 
+Either within or across sessions, we can fold uptake graphs into 
+actor-actor sociograms (directed weighted graphs, Figure 1d).  
+The tie strength between actors is the sum of the strength of 
+uptake between their contributions. These sociograms can be 
+analyzed using conventional social network analysis methods 
+such as degree or eigenvector centrality to identify key actors, etc. 
+[22, 42]. With sociograms we want to be stricter about the 
+
+evidence for relations between the two actors, so we use a 
+different weighting that downplays proximity and emphasizes 
+direct evidence of orientation to the prior actor. In the examples of 
+this paper we use SA 0 (no self-loops), LEX 3, ADR 5, RPL 5, PE 
+1. The threshold is set at 4, meaning the sum of weights must be at 
+least 4 to count towards a tie between actors in the sociogram. 
+(We are not claiming that these weights are optimal.)  
+
+Continuing our example, the weighing of uptake of DA’s 
+contribution at 24:27 by MT’s contribution at 24:42 becomes <SA 
+0, LEX 3, ADR 5, RPL 5, PE 1>. To illustrate how weights from 
+multiple uptakes are aggregated into a tie we need one more 
+uptake relation. MT’s contribution at 25:18 is contingent on the 
+same contribution by DA (24:27) by <SA 0, LEX 0, ADR 0, RPL 
+5, PE 1>. If we folded only these two uptake relations by actor, 
+we’d get a directed actor-actor tie from MT to DA weighted by a 
+vector of <SA 0, LEX 3, ADR 5, RPL 10, PE 2>, for a total of 20. 
+Of course, there are many other pairs of events that evidence 
+uptake of DA by MT, so the sums in any nontrival sociogram will 
+be larger.  
+
+3.5 Summary and Implementation 
+In summary, our framework provides multiple pathways for 
+analysis. Contingencies are applied to events in the EEC abstract 
+transcript to produce a contingency graph. Contingencies are then 
+aggregated into uptake between the same events. A single 
+aggregation can be used, or optionally different weightings can be 
+used for identifying sessions, doing detailed interaction analysis, 
+or constructing sociograms. In either case, uptake that crosses 
+partitions can be used to identify influences across space and time, 
+and uptake within partitions can be analyzed to study the 
+interactional structure of a session. Uptake graphs can be folded 
+
+                                                                    
+4 By the Tapped In user agreement, transcripts of sessions such as 
+
+this one were public, and many were posted on a public web site 
+with full user login names. However, to conform to my own 
+institution’s requirement, initials are used in this paper. The 
+exception will be two participants whose volunteer activities 
+(among that of other participants) were extremely important to 
+Tapped In, and who want to be identified: BjB and JeffC.  
+
+Table 1. Sample chat from Tapped In 
+Full names have been abbreviated to initials.4 
+
+23:35 MT: are all good teachers good mentors? 
+23:38 AP: some people will take a while to get to that point 
+23:42 AP: No..not all 
+23:51 EB: definitely not 
+23:55 LH: Training can help, but I think some is personality 
+24:09 AS: some people are excellent teachers but are horrible 
+
+mentors 
+24:09 EB: some great teachers can not hold a decent 
+
+conversation with an adult 
+24:11 AP: i had to co-ops who would be awful mentors 
+24:24 LH: Nods 
+24:27 DA: That is an interesting question M,  ... I would 
+
+probably say ‘yes’ first off, and then wonder some more 
+24:42 MT: it is something I have thought about often D 
+24:47 AP: I think its alot of personality 
+25:17 DA: one thing a mentor has to know is how to operate 
+
+with a peer, and ow to be intentional about handing over, 
+or encouraging greater independence 
+
+25:18 MT: observation has made me think that it takes an extra 
+“special ingredient” to tip the scales 
+
+ 
+
+371
+
+
+
+into networks where nodes are actors rather than events, to which 
+sociometrics are applied. The present paper will illustrate 
+applications of session identification and analysis of sociograms. 
+
+Another line of analysis not discussed in this paper is to fold 
+events into actor-artifact networks, or bipartite weighted directed 
+graphs that we call “associograms” for short, because they capture 
+how actors are associated with each other via mutual read and 
+write of media objects. In that line of work, we have undertaken 
+community analysis of associograms to detect not only human 
+participants in communities, but also the artifacts that reflect their 
+mediated nature (e.g., synchronous or asynchronous) [38].  
+
+The framework is presently implemented in Java, using the 
+Hibernate object/relational model and persistence engine 
+(hibernate.org/orm), with callouts to the NLTK library (nltk.org) 
+and iGraph (igraph.sourceforge.net). Visualizations and 
+sociometrics for this paper were computed in Gephi (gephi.org). 
+See [36] for further discussion of the implementation.   
+
+4. Examples: Periodic Activity/Actor Reports 
+Facilitators (e.g., educators and learning network managers) may 
+find it useful, for varying reasons, to know where activity has 
+taken place in their NLE and the roles of participating actors. 
+There may be multiple virtual settings for participation (e.g., chat 
+rooms and discussion forums), and many potential participants. 
+As in our Tapped In environment, interaction events may be 
+scheduled formally or informally or occur spontaneously. A 
+facilitator might like to know: When and in what settings did 
+substantive interaction take place? Who were the central actors 
+(including educators and students), and who appears disengaged? 
+How were sessions related to each other, e.g., by central actors? It 
+would be useful to have answers to these questions on a regular 
+recurring basis for timely intervention, e.g., daily or weekly, and 
+also over longer spans for research purposes.  
+
+This section provides examples of how our framework can 
+provide information relevant to these questions. We first briefly 
+show how “sessions” are detected, and then show analyses at 
+various granularities of analysis to illustrate the utility of the 
+Traces framework. At the granularity of a single session, we 
+identify main actors, those who may be disengaged, and  
+coherence of uptake. At granularity of one day, we visualize the 
+relations between sessions, and identify persons who are social 
+bridges mediating these relationships. At the granularity of one 
+week (where we can begin to discern enduring behaviors), we 
+characterize mediated relationships between actors. At the 
+granularity of multiple weeks, we plot the role development of 
+actors according to centrality metrics. These analyses are 
+presented in a different order than just listed, to follow a plausible 
+scenario of investigation. We begin with example reports for one 
+day’s activity (April 6, 2006), chosen because it includes some 
+interesting sessions we have studied, enabling us to validate the 
+results.  
+
+4.1 What happened today?  
+Different options exist for detection of sessions in interaction 
+graphs. If interaction is not clearly demarcated by periods of non-
+interaction and one wishes to discover clusters of high activity, we 
+have found that cohesive subgraph detection or “community 
+detection” algorithms [11] such as modularity partitioning [4] 
+applied to uptake graphs are useful [36]. However, in the present 
+corpus, although there is ongoing activity everywhere, activity is 
+
+distributed across rooms, and the activity within a room almost 
+always has periods of non-activity between sessions. For present 
+purposes of analysis, identifying weakly connected components 
+on the proximal event contingency is sufficient to identify 
+sessions. This can be done efficiently without needing to construct 
+a contingency graph (it will be constructed later for other 
+purposes). Activity is tracked in each room, and a new session ID 
+is assigned to the room every time there is a gap of S seconds of 
+no activity. S is a tunable parameter: here we use 240 seconds.   
+
+4.1.1 What sessions of activity took place?  
+Table 2 shows sessions comprising at least 100 events, including 
+chat entry/exit, chat messages, and emotes. (There were many 
+more small sessions. One could just as easily select by number of 
+participants.) We see that there is some activity in the morning 
+before school, and it resumes after school through the evening.  
+Several sessions run in parallel, and some rooms are reused. 
+
+4.1.2 How are the sessions related? 
+Beyond size, we might be interested in how sessions relate to each 
+other. Figure 2 visualizes a portion of the inter-session uptake 
+graph for the day, including several of the largest sessions from 
+Table 1. Uptake relations between events in different sessions 
+have been aggregated into weighted uptake relations between 
+sessions. We see that some sessions have more heavily weighted 
+links between them. Reading the edges in reverse order (uptake 
+points backwards in time), we see that session 737 in 
+TI_Reception influenced 755 in Teachteach_Grp, which in turn 
+influenced 848 NTraining_Group. These are the three largest 
+sessions in Table 1. Sessions 908 (also in TI_Reception) and 828 
+(not in Table 1, but having the second highest number of 
+participants) were also related to 848. A facilitator of Tapped In 
+would know that TI_Reception often shows up in this manner, as 
+it the entry point for persons who just logged in. Clearly many 
+participants then went to 755 Teachteach_Grp, as indicated by the 
+thick 755?737 link. But why is 755 so influential on 848, which 
+took place immediately after in NTraining_Grp? A closer look at 
+these sessions will answer this and other questions.  
+
+Table 2. Sessions on April 6 containing at least 100 events 
+#E = event count, #P = participant count. Personal office names are 
+anonymized using initials. Participants are in multiple time zones.  
+
+ID #E #P Room Start End 
+
+81 193 7 SharedSpace  05:35:38  06:29:24 
+
+98 229 3 DS_Ofc  06:05:23  07:00:26 
+
+176 104 11 EdTech_Grp  07:44:38  08:26:54 
+
+737 224 34 TI_Reception  16:26:18  17:31:20 
+
+749 235 5 KC_Ofc  16:35:34  17:26:20 
+
+755 412 20 Teachteach_Grp  16:45:14  18:04:44 
+
+767 361 14 KS_Ofc  16:53:50  18:01:57 
+
+768 140 5 MH_Ofc  16:54:44  18:15:55 
+
+845 335 8 ArtsSites_Grp  17:51:24  19:07:40 
+
+848 512 19 NTraining_Grp  17:54:07  19:10:45 
+
+854 244 5 Mriker_Grp  17:56:43  18:41:54 
+
+908 438 18 TI_Reception  18:36:37  20:18:39 
+
+928 283 7 DS_Ofc  18:56:24  19:49:16 
+
+934 384 4 CommunityRoom  19:00:20  19:51:41 
+ 
+
+372
+
+
+
+4.2 Who was important?   
+It would be of interest to educators or NLE facilitators to know 
+who the key participants are in their online learning communities, 
+whether for assessment in formal educational settings, to 
+encourage volunteers in participant driven settings, or for research 
+purposes such as to study what drives key participants. It is also 
+important to know who is disengaged.  
+
+Some of these needs can be met through social network analysis. 
+As summarized in section 3, we can generate sociograms for any 
+granularity of the uptake graph (e.g., within a session, or across 
+sessions over a time period) by folding uptake relations between 
+events into ties between their actors. For example, a facilitator 
+might want to see a sociogram summarizing actor activity in 
+session 755, the Teachteach_Grp. The sociogram is shown in 
+Figure 3. Node size is weighted in-degree, discussed below.    
+
+4.2.1 Sociometrics 
+Sociograms add information over mere counts of number of 
+contributions (Contr in Table 3), because some sociometrics are 
+sensitive to the network context of nodes representing actors. For 
+example, weighted in-degree (WInDeg) indicates the extent to 
+which other acts have contingencies to and hence potentially took 
+up a given act: aggregating these for an actor is an estimate of 
+how much an actor’s contributions are taken up by others. This 
+metric is sensitive to both the level of activity of the actor and that 
+activity’s relation to others’ activity. Weighted out-degree 
+(WOutDeg) is an estimate of how much an actor takes up others’ 
+contributions. Eigenvector centrality (Eigen) is a nonlocal metric 
+that takes into account the centrality of one’s neighbors [22, p. 
+169], indicating the extent to which an actor is connected to others 
+who are themselves central. Betweeness centrality is an indicator 
+of actors who potentially play brokerage roles in the network: 
+high betweeness centrality means that that node representing an 
+actor is on relatively more shortest paths between other actors [22, 
+p. 185], so potentially controls information flow or mediates 
+contact between these actors. Betweeness will be of particular 
+interest when examining activity across sessions: different 
+sessions generally have different actors, so an actor attending 
+multiple sessions will have high betweeness.  
+
+4.2.2 Central actors in sessions 
+To continue our example, metrics for session 755 
+(Teachteach_Grp) are shown in Table 3. Our interest here is not 
+the specific actors of this historical Tapped In session, but rather 
+in what the analysis shows about this familiar data that it could 
+also show about novel data from current online interactions. We 
+
+can see that MT is the most central actor in this session by all 
+metrics. She has the most contributions (Contr); they are taken up 
+the most by others (WinDeg); and she takes up other’s 
+contributions the most (WOutDeg). As the leader, she mediates 
+between other actors in the session (Between). Eigenvector 
+centrality (Eigen) shows that other actors who are not as highly 
+ranked by Contr are central via their association with MT and 
+each other (see edge thickness in Figure 3). The sociometrics rank 
+actors distinctly from counts of contributions, for example, AP 
+has as many contributions as MT but is not as central on other 
+metrics. Actors WS, BJB, BJB2, and KLC have notably low 
+activity, and there are 6 actors not connected to any others (shown 
+only in Figure 3) because they did not make any contributions. 
+These are potentially disengaged participants, but one should 
+check their activity in other sessions before drawing this 
+conclusion. Actors BjB and BjB2 are the same person: she was 
+one of the most active volunteers, and often helped other 
+facilitators run their sessions, so she was given two accounts. 
+BjB’s 3 contributions are all broadcast announcements of events 
+starting in various rooms.  
+
+A similar table for session 848 NTraining_Grp (omitted for space) 
+shows that MT is again the most central actor by all four metrics 
+shown. Examination of the transcripts for the two sessions show 
+
+ 
+
+Figure 2. Closeup of session graph with inter-session 
+uptake. Node and edge size is weighted degree.  
+
+ 
+
+ 
+Figure 3. Sociogram for session 755, 
+
+Teachteach_Grp  
+ 
+
+Table 3. Sociometrics for actors in 755 (Teachteach_Grp) 
+Sorted by WInDeg. Six actors with all values of “0.0” are omitted. 
+
+Actor Contr WInDeg WOutDeg Eigen Between 
+
+MT 74 1086.0 983.0 1.000 0.034 
+
+LH 38 663.0 535.0 0.915 0.006 
+
+EB 47 581.0 535.0 0.915 0.006 
+
+AS 41 571.0 628.0 0.915 0.009 
+
+DA 39 553.0 606.0 1.000 0.023 
+
+AP 72 462.0 661.0 0.847 0.012 
+
+EK 14 237.0 235.0 0.847 0.006 
+
+KA 8 174.0 171.0 0.780 0.001 
+
+BE 7 131.0 194.0 0.679 0.034 
+
+SR 7 128.0 124.0 0.686 0.001 
+
+WS 2 65.0 48.0 0.696 0.000 
+
+BJB2 3 65.0 16.0 0.865 0.007 
+
+BjB 3 16.0 0.0 0.296 0.000 
+
+KLC 1 4.0 0.0 0.074 0.000 
+ 
+
+373
+
+
+
+that 755 ends with MT saying “...I have another discussion 
+scheduled in the Teachers in Training room” and saying farewell; 
+she then shows up in the NTraining_Grp room and leads session 
+848, an online class. The sociometric table (and the sociogram) 
+for 848 shows that LH and AP are also present there: the chat 
+transcript shows that they followed MT to her next session and 
+asked permission to observe the class. This overlap in actors is the 
+primary basis for the weight on the combined 848?755 uptake 
+relation, shown as line thickness in Figure 2. One apparent lurker 
+from 755, BJB2, is also in 848 with low levels of activity: we find 
+out more about her below.  
+
+4.2.3 Central actors across sessions 
+Some actor roles may not be apparent from a single session or 
+even day. Facilitators may be interested in those who are active 
+consistently over time. Betweeness is of particular interest here, 
+because sessions usually have little overlap in participants, but 
+some persons play key roles in Tapped In by participating in 
+multiple sessions, thereby potentially facilitating flow of 
+information and contacts across sessions. Aggregating into one 
+sociogram for the week from Sunday to Saturday that contains 
+April 6, 2006, we obtain the metrics in Table 4. We were familiar 
+with JeffC as the volunteer greeting participants in TI_Reception 
+(session 737) and MT as the facilitator of 755 and 848, but this 
+table draws attention to other actors. DW merits investigation as 
+the most active person this week. Although BjB was “lurking” in 
+the two sessions we examined, it turns out she facilitated sessions 
+of her own this week (including 845 ArtSites_Grp in Table 1, at 
+the same time as she observed 848 as BJB2). Three of the actors 
+are notable for their high betweeness: DW, BjB and JeffC, 
+meaning that they are potential brokers between the groups found 
+in various sessions.  Traces has detected an important role: these 
+three actors were volunteer facilitators who staffed TI_Reception 
+and helped others in their sessions (as well as their own).  
+
+Superficially, these analyses appear methodologically similar to 
+the many sociometric analyses found in the literature, so we 
+should highlight what the Traces framework has added. The 
+Traces framework derived these latent ties from automated 
+interaction analysis of streams of events, by identifying and then 
+aggregating multiple contingencies between events, and then 
+folding the resulting uptake relations between events into an 
+actor-actor graph. This has significant advantages over (for 
+example) manual content analysis or the use of surveys to derive 
+tie data, which are labor intensive, or reliance on explicit 
+“friending” relations: both surveys and friend links may not 
+reflect the ties that are latent in actual interaction between the 
+persons in question. Another advantage is described below.  
+
+4.3 How are actors related to each other?  
+To recapitulate, the above analysis derived ties between actors by 
+aggregating multiple contingencies between their contributions. 
+The contingencies indicate the qualitative nature of the 
+relationship between these contributions, e.g., being close in time 
+and space, using the same words, and addressing another actor by 
+name. When contingencies are aggregated into uptake relations, 
+we keep track of what each type of contingency contributed to the 
+uptake relation. This record keeping is continued when folding 
+uptakes into ties, so that for any given pair of actors we have a 
+vector of weights that provides information about the nature of the 
+relationship in terms of the underlying contingencies. 
+For example, consider actors MT and DA, whom we saw 
+conversing in Table 1. The vectors underlying their tie for the full 
+week of April 2-8, 2006 are shown below. Contingency weights 
+
+have been divided by weights so that the following may be read as 
+counts of actual events. PE can be read as the denominator for 
+ADR and RPL. WS is the weighted sum based on the unadjusted 
+weighting scheme:  
+
+From To SA LEX ADR RPL PE WS 
+DA MT 0 29 16 4 34 350 
+MT DA 0 24 9 8 28 305 
+
+We can see that they frequently call each other by name. Sorting 
+all ties by weighted tie strength (WS), we find that the two closest 
+actors for this week were SLC and HB:  
+
+From To SA LEX ADR RPL PE WS 
+SLC HB 0.0 389 58 52 444 2161 
+HB SLC 0.0 359 40 69 414 2036 
+
+Relational information might be of interest to educators or 
+researchers who are managing collaborative learning activities 
+amongst students, or even to examine one’s own relations to 
+students. Traces makes this possible by retaining information 
+about the interactional origins of ties.  
+
+4.4 How coherent are the sessions?   
+Automating sequential analysis of uptake graphs requires further 
+work to bring the strength of uptake relations into closer 
+agreement with human interpretation. Ongoing work is addressing 
+this problem with further contingencies and experimenting with 
+weighting. However, we have found that folding our uptake 
+graphs to sociograms smooths out the “noise” and provides 
+sensible results [35]. Also, the uptake graphs we are presently 
+producing can expose some the structure of sessions through 
+graph clustering analysis. Specifically (and as discussed further in 
+[36]), applying a modularity partitioning or “community 
+detection” algorithm to the uptake graph for an entire day, we can 
+see whether modularity partitioning treats each session as a single 
+coherent graph cluster. Modularity partitioning tries to maximize 
+the links within a cluster as compared to what is expected at 
+random [22, p. 224]. Thus, if a session corresponds to a 
+modularity partition it has high internal linkage by our estimated 
+uptake relations, and lower linkage to other sessions. On the other 
+hand, if a session as defined by spatio-temporal proximity of 
+events was not coherent interactionally, then there would be more 
+than one modularity partition of the uptake graph for the session. 
+Here, “coherence” simply means continuity of uptake: it is not a 
+value judgment on the quality of interaction, as there may have 
+been several distinct yet high quality conversations in a space-
+time region.  
+
+Table 4. Top 10 actors by eigenvector centrality, April 2-8  
+
+Actor WInDeg WOutDeg Eigen Between 
+
+DW 11878.0 11514.0 1.000 0.037 
+
+BjB 5196.0 4781.0 0.912 0.033 
+
+JeffC 8851.0 9168.0 0.645 0.024 
+
+SR 1579.0 2057.0 0.566 0.002 
+
+M 2577.0 2462.0 0.515 0.008 
+
+MT 3746.0 3241.0 0.485 0.002 
+
+MD 837.0 1036.0 0.424 0.001 
+
+BJB2 642.0 647.0 0.401 0.006 
+
+EW 734.0 864.0 0.378 0.001 
+
+PJ 3900.0 3650.0 0.373 0.002 
+ 
+
+374
+
+
+
+To make these ideas more concrete, we ran modularity 
+partitioning using Blondel’s algorithm [4] on the uptake graph of 
+April 6th, which includes all of the sessions of Table 2.  Figure 4 
+shows (a) the full uptake graph colored by modularity class, 
+followed by excerpts for three sessions: (b) 755 Teachteach, (c) 
+848 Ntraining, and (d) 908 TI_Reception. As can be seen, the 
+topic-oriented sessions 755 and 848 are classified as mostly in one 
+modularity class. The second modularity class visible in both 
+cases is when participants were saying goodbye. On the other 
+hand, session 908 in TI_Reception has two large modularity 
+classes visible. This room is where most Tapped In users (those 
+who have not set their entry point to be their offices) will first 
+appear when they log in. Volunteers here direct newcomers to the 
+room holding the session they may be interested in. Various 
+spontaneous conversations also arise. Thus it is not surprising that 
+a session in TI_Reception has multiple modularity partitions. In 
+this session, there was an initial conversation, and then the 
+participants present changed around the time another session 
+ended at the breakpoint shown by the modularity partitioning.  
+All of the other sessions in Table 2 except two consisted primarily 
+of one modularity partition. The two exceptions were both where 
+chat was interrupted by other activity: in one case, an instructor 
+asks the students to do some work; in the other, the participants 
+briefly go into a Skype session. It should be noted that modularity 
+partitioning is sensitive to the graph over which it works. If one 
+gives any one of these sessions only the uptake graph for that 
+session, the algorithm will find more partitions. Ongoing work is 
+examining community detection on interaction graphs as a way of 
+analyzing sessions.  
+
+4.5 How does participation change over time? 
+Analyses on longer time scales may be of interest to researchers 
+as well as practicing educators. Here we exemplify tracing the 
+development of actor’s roles over time in terms of changes in their 
+sociometrics. Using the same process as described above, 
+sociograms were automatically generated from over 700,000 chat 
+events for actors at one-week intervals over a 14-week period. 
+Weighted in-degree, betweeness and eigenvector centralities were 
+charted; due to space constraints we only show the latter in Figure 
+5. To illustrate different actor trajectories, we show two top actors 
+from Table 4 and three other actors of varying levels of 
+participation previously discussed.  
+
+ 
+Here, eigenvector centrality indicates the extent to which one’s 
+contributions are taken up, weighted by the centrality of those 
+doing the uptaking. DW and JC are consistently highly central, 
+reflecting their high level of activity. MT, the facilitator of the 
+April 6 sessions, has varying levels of participation, sometimes as 
+high as the top facilitators. Her primary sessions run once a 
+month, as indicated by spikes every 4th week. A typical participant 
+is DA, who periodically comes in for moderate levels of activity, 
+but her eigenvector centrality is elevated in comparison to her 
+activity due to interacting with central actors such as MT (notice 
+that she has two spikes on the same weeks as MT). Finally, AP 
+only appeared on one day in this range of data, but achieved 
+noticeable centrality due to her high interaction with MT (Figure 
+3). The point is to illustrate that the Traces framework can 
+automatically generate sociometric and other data on participation 
+from large event logs to trace participant roles over time.  
+
+5. Contributions and Related Work  
+This paper introduced the Traces analytic framework, which 
+integrates traces of activity that are distributed across media, 
+places and time into an abstract transcript, and then provides a 
+linked abstraction hierarchy that uses observable contingencies 
+between events to build models of interaction and ties. It 
+addresses the need to understand aggregate phenomenon (e.g., 
+“ties”, “roles”, and “communities”) as both produced by and 
+providing the setting of specific interactional events. The 
+framework has been implemented in software that enables us to 
+automatically analyze sequences of hundreds to millions of user 
+acts to derive models of interaction and social ties. This software 
+was developed using as a test case a rich historical data corpus 
+where diverse participants interacted in an environment that 
+exhibits many features of today’s distributed interaction. The 
+paper illustrated the potential functionality of Traces through 
+examples of analyses that a facilitator of a networked learning 
+environment may want to undertake, including identification of 
+sessions and key participants in the sessions, relations between 
+sessions as mediated by participants, and participant roles as they 
+developed over time.  
+
+ 
+(a) Modularity partitioning of full uptake graph for 4/6/06 
+
+             
+(b) 755 Teachteach   (c) 848 NTraining 
+
+ 
+(d) 908 TI_Reception 
+
+Figure 4. Modularity partitioning of uptake graph  
+Nodes are chat contributions. Layout is by OpenOrd in Gephi. Colors are 
+modularity partitions by Blondel’s algorithm.  
+ 
+
+375
+
+
+
+Other authors have noted the need to combine multiple forms of 
+analysis, including specifically social network analysis in 
+networked learning environments. For example, de Laat and 
+colleagues [9] and Martínez and colleagues [19] showed the 
+utility of combining social network analysis with various 
+qualitative and quantitative methods in the study of participation 
+networks. Others have constructed and folded interaction graphs 
+into sociograms of ties between actors. For example, Rosen & 
+Corbit [29] constructed graphs based on temporal proximity, and 
+Haythornthwaite and Gruzd [13] describe preliminary work in 
+extracting interaction relations from references and names. The 
+Traces project is in the same spirit, but is arguably more mature. 
+We consider multiple kinds of relations between events to provide 
+a richer basis for session identification and subsequent analysis of 
+activity and actors within sessions, and have automated these 
+analyses. Work by Trausan-Matu on “polyphonic analysis” [41] 
+has affinities to our use of multiple contingencies, but has only 
+recently been abstracted to higher levels of analysis. A thesis by 
+Charles [7] has provided an alternative implementation of our 
+approach and extended the set of contingencies. This and other 
+work by Ulrich Hoppe and colleagues is closest to ours in 
+computational aspirations, e.g., their work on detecting 
+collaboration patterns [12]. Our approach dovetails with work that 
+applies natural language processing methods for analysis of 
+interactional structure [28], and indeed rules for generating 
+additional contingencies could be derived from such research.  
+
+6. Future Work  
+The present implementation is research software, written to 
+explore the range of analytic functionality enabled by the Traces 
+framework. Hence it is flexible and reconfigurable, but the level 
+of power and flexibility is overkill for some applications, and 
+reconfiguration is accomplished through a technical interface of 
+XML scripts and exported graph files rather than an end user GUI. 
+Practical implementations for specific analytic applications could 
+be optimized (made faster and simpler), at the cost of flexibility, 
+and interfaces more suitable for educators and NLE managers 
+would of course be needed.  
+
+The framework could be re-implemented to use current 
+technologies and APIs. For example, the data import layer could 
+utilize the TinCan API (tincanapi.com), which would make our 
+framework applicable to a variety of platforms adhering to this 
+standard and make it easier to write importers for other platforms 
+in a less ad-hoc manner. We might replace our custom Hibernate 
+graph persistence engine with Neo4j (neo4j.com), which has 
+matured since we started this project. An analytic workbench such 
+as [14] would increase usability for researchers.  
+Our ongoing research includes implementation and testing other 
+promising contingencies (e.g., n-gram echoing), and tuning 
+weights on contingencies for capturing the interactional structure 
+of sessions. Once these are well grounded, we can study how 
+patterns of uptake and metrics on the derived sociograms relate to 
+session quality, and use these to automatically identify sessions of 
+interest. Two other objectives include using inter-session 
+relationships to trace the spread of ideas, and incorporating 
+analysis of asynchronous discussions for analysis of cross-media 
+influences. Automating the generation of interaction and social 
+network graphs opens up further approaches for relating fine-
+grained interaction to more aggregated levels of analysis. For 
+example, multiple sociograms can be generated over time to track 
+significant changes to the group structure or individual role 
+emergence, or over larger time scales to identify critical points in 
+the formation of healthy or unhealthy communities. These 
+
+analytic options are enabled by our framework’s abstraction away 
+from media-specific concepts and representations, and the 
+automation of mapping between levels of analysis that this 
+abstraction enables. 
+
+7. ACKNOWLEDGMENTS 
+Many thanks to Nathan Dwyer for co-developing the ideas behind 
+this work and writing the core software implementation; Mark 
+Schlager, Patti Schank and Judi Fusco of SRI for sharing their 
+data and expertise; and Kar-Hai Chu and Devan Rosen for their 
+collaboration on this project. We are indebted to the multitude of 
+Tapped In participants, particularly highly committed volunteers 
+such as BJ Berquist (BjB) and Jeff Cooper (JeffC). This work was 
+partially supported by NSF Award 0943147. The views expressed 
+herein do not necessarily represent the views of NSF. 
+
+8. REFERENCES 
+[1] I. E. Allen and J. Seaman, Changing Course: Ten Years of 
+
+Tracking Online Education in the United States, 2013. 
+[2] J. Andriessen, M. Baker and D. D. Suthers, eds., Arguing to 
+
+Learn: Confronting Cognitions in Computer-Supported 
+Collaborative Learning Environments., Kluwer, Dordrecht, 
+2003. 
+
+[3] S. A. Barab, R. Kling and J. H. Gray, Designing for Virtual 
+Communities in the Service of Learning, Cambridge 
+University Press, New York, 2004. 
+
+[4] V. D. Blondel, J.-L. Guillaume, R. Lambiotte and E. 
+Lefebvre, Fast unfolding of communities in large networks, 
+Journal of Statistical Mechanics: Theory and Experiment, 
+http://dx.doi.org/10.1088/1742-5468/2008/10/P10008 
+(2008). 
+
+[5] D. Boyd and K. Crawford, Critical questions for big data: 
+Provocations for a cultural, technological, and scholarly 
+phenomenon, nformation, Communication, & Society, 15 
+(2012), pp. 662-679. 
+
+[6] R. Bromme, F. W. Hesse and H. Spada, eds., Barriers and 
+Biases in Computer-Mediated Knowledge Communication 
+And How They May Be Overcome, Springer, New York, 
+2005. 
+
+[7] C. Charles, Analysis of Communication Flow in Online 
+Chats, Department of Computer Science and Applied 
+Cognitive Science, Unpublished Master's Thesis, University 
+of Duisburg-Essen, Duisburg, Germany, 2013, pp. 90. 
+
+[8] M. De Laat, Networked Learning, Politie Academie, 
+Apeldoorn, 2006. 
+
+[9] M. De Laat, V. Lally, L. Lipponen and R.-J. Simons, 
+Investigating patterns of interaction in networked learning 
+and computer-supported collaborative learning: A role for 
+Social Network Analysis, International Journal of Computer 
+Supported Collaborative Learning, 2 (2007), pp. 87-103. 
+
+[10] U. Farooq, P. Schank, A. Harris, J. Fusco and M. Schlager, 
+Sustaining a community computing infrastructure for online 
+teacher professional development: A Case Study of 
+Designing Tapped In, Computer Supported Cooperative 
+Work, 16 (2007), pp. 397-429. 
+
+[11] S. Fortunato, Community detection in graphs, Physics 
+Reports, 486 (2010), pp. 75-174. 
+
+[12] I. Halatchliyski, T. Hecking, T. Göhnert and H. U. Hoppe, 
+Analyzing the path of ideas and activity of contributors in an 
+open learning community, Journal of Learning Analytics, 1 
+(2014), pp. 72-93. 
+
+[13] C. Haythornthwaite and A. Gruzd, Analyzing networked 
+learning texts, in V. Hodgson, C. Jones, T. Kargidis, D. 
+
+376
+
+
+
+McConnell, S. Retalis, D. Stamatis and M. Zenios, eds., 
+Proc. 6th International Conference on Networked Learning, 
+Lancaster University, Halkidiki, Greece, 2008. 
+
+[14] T. Hecking, S. Manske, L. Bollen, S. Govaerts, A. Vozniuk 
+and H. U. Hoppe, A Flexible and Extendable Learning 
+Analytics Infrastructure, in E. Popescu, R. H. Lau, K. Pata, 
+H. Leung and M. Laanpere, eds., Advances in Web-Based 
+Learning – ICWL 2014, Springer International Publishing, 
+2014, pp. 123-132. 
+
+[15] S. Joseph, V. Lid and D. D. Suthers, Transcendent 
+Communities, in C. Chinn, G. Erkens and S. Puntambekar, 
+eds., The Computer Supported Collaborative Learning 
+(CSCL) Conference 2007, International Society of the 
+Learning Sciences, New Brunswick, 2007, pp. 317-319. 
+
+[16] B. Latour, Reassembing the Social: An Introduction to Actor-
+Network-Theory, Oxford University Press, New York, 2005. 
+
+[17] J. Lave and E. Wenger, Situated Learning: Legitimate 
+Peripheral Participation, Cambridge University Press, 
+Cambridge, 1991. 
+
+[18] J. L. Lemke, Across the scales of time: Artifacts, activities, 
+and meanings in ecosocial systems, Mind, Culture & 
+Activity, 7 (2000), pp. 273-290. 
+
+[19] A. Martínez, Y. Dimitriadis, E. Gómez-Sánchez, B. Rubia-
+Avi, I. Jorrín-Abellán and J. A. Marcos, Studying 
+participation networks in collaboration using mixed 
+methods, International Journal of Computer-Supported 
+Collaborative Learning, 1 (2006), pp. 383-408. 
+
+[20] R. Milo, S. S. Shen-Orr, S. Itzkovitz, N. Kashtan, D. 
+Chklovskii and U. Alon, Network Motifs: Simple building 
+blocks of complex networks, Science, 298 (2002), pp. 824-
+827. 
+
+[21] P. R. Monge and N. S. Contractor, Theories of 
+Communication Networks, Oxford University Press, Oxford, 
+2003. 
+
+[22] M. Newman, Networks: An Introduction, Oxford University 
+Press, 2010. 
+
+[23] T. O'reilly, What is Web 2.0 - Design patterns and business 
+models for the next generation of software, 
+http://www.oreillynet.com/pub/a/oreilly/tim/news/2005/09/3
+0/what-is-web-20.html, 2005. 
+
+[24] J. Perkins, Python Text Processing with NLTK 2.0 Cookbook, 
+Packt Publishing, Birmingham, UK, 2010. 
+
+[25] J. Raskin, The Humane Interface: New Directions for 
+Designing Interactive Systems, Addison Wesley, Reading, 
+Mass., 2000. 
+
+[26] K. A. Renninger and W. Shumar, Building Virtual 
+Communities: Learning and Change in Cyberspace, 
+Cambridge University Press, Cambridge, 2002. 
+
+[27] B. Rogoff, Observing sociocultural activity on three planes: 
+Participatory appropriation, guided participation, and 
+apprenticeship., in J. V. Wertsch, P. D. Rio and A. Alvarez, 
+eds., Sociocultural Studies of Mind, Cambridge University 
+Press, New York, 1995, pp. 139-164. 
+
+[28] C. P. Rosé, Y.-C. Wang, Y. Cui, J. Arguello, K. Stegmann, 
+A. Weinberger and F. Fischer, Analyzing collaborative 
+learning processes automatically: Exploiting the advances of 
+computational linguistics in computer-supported 
+collaborative learning, International Journal of Computer-
+Supported Collaborative Learning, 3 (2008), pp. 237-271. 
+
+[29] D. Rosen and M. Corbit, Social network analysis in virtual 
+environments, Proc. 20th ACM conference on Hypertext and 
+hypermedia (HT '09), ACM, New York, NY, 2009, pp. 317-
+322. 
+
+[30] M. Scardamalia and C. Bereiter, Higher Levels of Agency for 
+Children in Knowledge Building: A Challenge for the Design 
+of New Knowledge Media, The Journal of the Learning 
+Sciences, 1 (1991), pp. 37-68. 
+
+[31] M. Schlager, J. Fusco and P. Schank, Evolution of an Online 
+Education Community of Practice, in K. Renninger and W. 
+Shumar, eds., Building Virtual Communities, Cambridge 
+University Press, Cambridge, 2002, pp. 129-158. 
+
+[32] G. Siemens, Massive Open Online Courses: Innovation in 
+Education?, in R. McGreal, W. Kinuthia, S. Marshall and T. 
+McNamara, eds., Open Educational Resources: Innovation, 
+Research and Practice, Commonwealth of Learning and 
+Athabasca University, Vancouver, 2013, pp. 5-15. 
+
+[33] G. Stahl, Group Cognition: Computer Support for 
+Collaborative Knowledge Building, MIT Press, Cambridge, 
+MA, 2006. 
+
+[34] D. D. Suthers, Technology affordances for intersubjective 
+meaning-making: A research agenda for CSCL, International 
+Journal of Computer Supported Collaborative Learning, 1 
+(2006), pp. 315-337. 
+
+[35] D. D. Suthers and C. Desiato, Exposing chat features 
+through analysis of uptake between contributions, Proc. 
+Hawaii International Conference on the System Sciences 
+(HICSS-45), January 4-7, 2012, Grand Wailea, Maui, 
+Hawai‘i (CD-ROM), Institute of Electrical and Electronics 
+Engineers, Inc. (IEEE), New Brunswick, 2012. 
+
+[36] D. D. Suthers and N. Dwyer, Identifying uptake, sessions, 
+and key actors in a socio-technical network, Proc. Hawaii 
+International Conference on the System Sciences (HICSS-
+44), January 5-8, 2011, Kauai, Hawai‘i (CD-ROM), Institute 
+of Electrical and Electronics Engineers, Inc. (IEEE), New 
+Brunswick, 2015, pp. CD-Rom. 
+
+[37] D. D. Suthers, N. Dwyer, R. Medina and R. Vatrapu, A 
+framework for conceptualizing, representing, and analyzing 
+distributed interaction, International Journal of Computer 
+Supported Collaborative Learning, 5 (2010), pp. 5-42. 
+
+[38] D. D. Suthers, J. Fusco, P. Schank, K.-H. Chu and M. 
+Schlager, Discovery of community structures in a 
+heterogeneous professional online network, Proc. Hawaii 
+International Conference on the System Sciences (HICSS-
+46), January 7-10, 2013, Grand Wailea, Maui, Hawai‘i (CD-
+ROM), Institute of Electrical and Electronics Engineers, Inc. 
+(IEEE), New Brunswick, 2013. 
+
+[39] D. D. Suthers, K. Lund, C. P. Rosé, C. Teplovs and N. Law, 
+Productive Multivocality in the Analysis of Group 
+Interactions, Springer, New York, 2013. 
+
+[40] D. D. Suthers and D. Rosen, A unified framework for multi-
+level analysis of distributed learning in G. Conole, D. 
+Gaševi?, P. Long and G. Siemens, eds., Proc. First 
+International Conference on Learning Analytics & 
+Knowledge, Banff, Alberta, February 27-March 1, 2011, 
+ACM, New York, NY, 2011, pp. 64-74. 
+
+[41] S. Trausan-Matu and T. Rebedea, A polyphonic model and 
+system for inter-animation analysis in chat conversations 
+with multiple participants, in A. Gelbukh, ed., 
+Computational Linguistics and Intelligent Text Processing, 
+Springer, Berlin, 2010, pp. 354-363. 
+
+[42] S. Wasserman and K. Faust, Social Network Analysis: 
+Methods and Applications, Cambridge University Press, New 
+York, 1994. 
+
+ 
+
+377
+
+
+
+
+

@@ -1,0 +1,570 @@
+
+Improving efficacy attribution in a self-directed learning 
+environment using prior knowledge individualization
+
+Zachary A. Pardos 
+          University of California, Berkeley 
+
+           zp@berkeley.edu
+
+         Yanbo Xu 
+Johns Hopkins University 
+asnoppy@gmail.com 
+
+ 
+ABSTRACT 
+Models of learning in EDM and LAK are pushing the boundaries 
+of what can be measured from large quantities of historical data. 
+When controlled randomization is present in the learning platform, 
+such as randomized ordering of problems within a problem set, 
+natural quasi-randomized controlled studies can be conducted, 
+post-hoc. Difficulty and learning gain attribution are among factors 
+of interest that can be studied with secondary analyses under these 
+conditions. However, much of the content that we might like to 
+evaluate for learning value is not administered as a random stimulus 
+to students but instead is being self-selected, such as a student 
+choosing to seek help in the discussion forums, wiki pages, or other 
+pedagogically relevant material in online courseware. Help seekers, 
+by virtue of their motivation to seek help, tend to be the ones who 
+have the least knowledge. When presented with a cohort of students 
+with a bi-modal or uniform knowledge distribution, this can present 
+problems with model interpretability when a single point estimation 
+is used to represent cohort prior knowledge. Since resource access 
+is indicative of a low knowledge student, a model can tend towards 
+attributing the resources with low or negative learning gain in order 
+to better explain performance given the higher average prior point 
+estimate. In this paper we present several individualized prior 
+strategies and demonstrate how learning efficacy attribution 
+validity and prediction accuracy improve as a result. Level of 
+education attained, relative past assessment performance, and the 
+prior per student cold start heuristic were employed and compared 
+as prior knowledge individualization strategies. 
+
+Categories and Subject Descriptors 
+K.3.1 [Computer Uses in Education]: Distance learning 
+
+Keywords 
+Massive Open Online Courses (MOOCs), Self-directed learning, 
+Self-selection bias, Bayesian Knowledge Tracing, Efficacy 
+attribution, Prior knowledge, Individualization, Education 
+
+1. INTRODUCTION 
+A principle value proposition of Educational Data Mining (EDM), 
+and to an extent Learning Analytics, has been that the advent of 
+ever increasing volumes of education data will bring with it a 
+commensurate opportunity for significant discovery about learning 
+and human or computer-aided instruction. However, much of what 
+
+we would like to discover about learners pertain to causal 
+relationships that are notoriously difficult to derive from analysis 
+of historical data that was collected absent of necessary controls. 
+
+When elements of randomization do exist in a dataset, or the ability 
+to de-conflate a confounding variable, windows of opportunity for 
+discovery with statistical methods and tools from EDM open. Just 
+as Item Response Theory (IRT) has become the tool of choice for 
+measuring stationary constructs of ability in testing scenarios, so 
+too has Knowledge Tracing (KT) become a de facto tool for 
+measuring dynamics of knowledge in learning scenarios. Using 
+extensions of KT as a model for discovery [6], investigators have 
+exploited the randomization of 8th grade mathematics problem 
+orderings to attribute learning efficacy to ordered pairs of problems 
+[11] as well as different within-subject administered scaffolding 
+strategies [12]. KT has also been used to measure transfer between 
+skills in the domain of scientific inquiry [13]. While the hypotheses 
+of causality in those works were built into the design of the model, 
+recent work has sought to infer the appropriate causal structure 
+from data [8]. 
+
+In this paper we introduce a method for improving learning value 
+attribution with models by de-conflating the confound of individual 
+prior knowledge. The data we use to validate the method come from 
+two popular post-secondary online courses, which constitute 
+partially self-directed learning environments [1]. Self-directed 
+learning environments give the learner a high degree of freedom in 
+selecting how she wishes to acquire information. The benefit of this 
+type of interaction is that there is now variation in the pathways 
+learners take to acquire knowledge. This variation means that there 
+is the potential to find signal that would not be present in a system 
+that delivers instruction in a fixed, linear sequence. The challenge 
+in analyzing such data is that it is wrought with self-selection bias.  
+
+The objective of our analysis is to accurately attribute learning to 
+the different pedagogical components of online courseware. The 
+selection bias may dictate, however, that the lower the prior 
+knowledge of a student, the more components she accesses. This 
+can easily lead to a model that attributes a component with zero or 
+even negative learning if a single point estimate is used to 
+characterize the cohort’s prior knowledge. The results reported in 
+this paper show how different strategies for seeding individual prior 
+knowledge parameters facilitate improvements in learning 
+attribution as evidenced by improved predictive accuracy. The 
+strategies employed for prior knowledge individualization were: 
+level of education obtained from survey data, split based on global 
+assessment performance, and bootstrapping the prior using the 
+student’s first response to a question of a particular skill to 
+determine which prior class she belongs to [7]. 
+
+1.1 Related Work 
+The following describes four examples of where investigators 
+measured the learning value of an activity in a self-directed or 
+partially self-directed learning environment and encountered 
+
+ 
+Permission to make digital or hard copies of all or part of this work for 
+personal or classroom use is granted without fee provided that copies are 
+not made or distributed for profit or commercial advantage and that copies 
+bear this notice and the full citation on the first page. Copyrights for 
+components of this work owned by others than ACM must be honored. 
+Abstracting with credit is permitted. To copy otherwise, or republish, to 
+post on servers or to redistribute to lists, requires prior specific permission 
+and/or a fee. Request permissions from permissions@acm.org. 
+LAK '16, April 25-29, 2016, Edinburgh, United Kingdom 
+© 2016 ACM. ISBN 978-1-4503-4190-5/16/04…$15.00 
+DOI: http://dx.doi.org/10.1145/2883851.2883949 
+ 
+
+
+
+results that appeared to suffer from the selection bias native to self-
+directed environments.  
+Colleagues [9] working with a reading tutor, Project LISTEN, 
+measured the learning value of the system’s help button, which 
+pronounces the word in question when pressed, using three 
+different analysis methods: an experimental design with pre and 
+post test, a regression based analysis named learning 
+decomposition, and a Bayesian assessment approach. In two of the 
+three approaches, the help button was deemed harmful to learning, 
+with only the Bayesian approach providing positive parameter 
+values associated with the voluntary help intervention.  
+Other investigators [3] looked at the learning value of nine different 
+activities found within a social learning platform for Algebra and 
+8th grade English Language Arts, Grockit. They found that five of 
+the activities lead to positive gains, while three did not contribute 
+to any gains, and one contributed to a loss.  
+
+Lastly, colleagues [2] evaluated two Massive Open Online courses 
+(MOOC) using Item Response Theory and correlated the quantity 
+of resources accessed by learners in the course with their 
+corresponding ability level as calculated by IRT. They found a 
+strong negative correlation between access of the resources and 
+ability. An approach based on Knowledge Tracing applied to 
+MOOC data from the same course found resource access to be 
+harmful to the accuracy of student response prediction [4]. 
+
+In all of the cases described, the objective was to evaluate student 
+self-selected activities, interventions, or resources for their learning 
+value but in all cases the methodologies produced null or negative 
+correlations between some of the self-selected stimuli and learning. 
+We hypothesize that the stimuli did not likely result in negative 
+learning (forgetting or interference) but instead was the result of not 
+controlling for the confounding variable of prior knowledge.  
+
+2. DATASETS 
+The two datasets used in our study come from BerkeleyX, the brand 
+for Massive Open Online Courses (MOOCS) offered by the 
+University of California at Berkeley via the edX platform. The first 
+course dataset, Stat2.1x Introduction to Statistics: Descriptive 
+Statistics, contained 53 thousand enrolled participants (with 8,182 
+certificate earners) producing 17 million logged actions. The 
+actions include events such as:  
+
+• Forum endorse 
+
+• Forum view 
+
+• Problem view 
+
+• Problem answer 
+
+• Video play 
+
+• Video pause 
+
+These events are associated with a timestamp, username, and object 
+of the action taken. For example, a learner with username 
+‘marti411’ playing video, ‘S1L3.2’, at 11:06am on April 1st, 2013. 
+The dataset also included the level of education reported by the 
+student upon signing up for an account on edX. The level of 
+education distribution consisted of 33% Bachelor’s, 32% Master’s, 
+13% High School, with 6% non responding and the remainder 
+spread across a variety of additional levels.  
+
+The second course dataset, College Writing 2.1x: Principles of 
+Written English, contained around 60 thousand participants (with 
+4,614 certificate earners) and produced 9.8 million logged actions 
+with similar event types as the Stats course. The level of education 
+distribution for this course was nearly identical to the stats course. 
+These two courses represent the two most popular courses offered 
+by BerkeleyX and these data both come from the Spring 2013 
+offering of these courses. The 27 problems in the College writing 
+
+course were mostly multiple choice while the 131 Stats class 
+problems were mostly numeric answer. All problems were included 
+in the analysis, including non-exam questions where students were 
+allowed to answer until correct. 
+
+3. MODELS & METHODOLOGY 
+The objective of our study was to estimate the learning value that 
+should be attributed to the various components of the course: 
+treating the resources such as videos and forum posts as learner self 
+selected stimulus. We hypothesized that modeling individual 
+student knowledge would improve the accuracy of the learning 
+attribution estimate and that such an improvement would be 
+reflected by an improvement in prediction accuracy.  
+
+ 
+Figure 1. Learning efficacy attribution model based on KT 
+
+Take, for example, the event sequence shown at the top of Figure 
+1. A student answers a problem incorrectly, then proceeds to watch 
+a video, S1V2-5, then another video, S1V2-6, before returning to 
+the question and answering it correctly. The goal of our learning 
+efficacy model was to estimate the influence of each component 
+(the videos in this example) in getting the student to a state in which 
+she could answer the problem correctly. We utilized an extension 
+of the Bayesian Knowledge Tracing (KT) model to estimate this 
+learning efficacy associated with the various pedagogical 
+components. The model assumes that knowledge is binary, either 
+acquired or not, and that there exists some probability that a student 
+will transition from the unacquired state to the acquired state 
+between events. In a traditional Intelligent Tutor context, the 
+probability of transition is constant across events of the same skill 
+(or knowledge component). This transition parameter, referred to 
+as P(T), primarily captures the probability that a student will learn 
+due to receiving feedback on the correctness of their answer and 
+receiving any hints that may have been available after answering 
+incorrectly. In a MOOC context, there is significantly more variety 
+of pedagogical material. Consequently, the extension of the model, 
+instead of using just one transition probability, models a transition 
+probability for each pedagogical component + the original 
+transition probability associated with answering a question and 
+receiving feedback. The formula for calculating the updated 
+probability of knowledge given a transition is as followed: 
+		"#$%& ' "#$%()|+,-./01/& 2 "#3$%()|+,-./01/& ? "#5& 
+Where the probability of knowledge at event n is equal to the 
+probability of knowledge after observing the previous event 
+(posterior probability at n-1) plus the compliment of that value 
+multiplied by the transition probability associated with the event 
+that just occurred (eg. P(T) given a problem answer event, video 
+playing event, etc). A preliminary version of this model, without 
+prior knowledge individualization, was piloted on a dataset of 
+2,000 students in [4] and used to detect video relevance in [5]. The 
+relationship between the value of the latent and the predicted 
+
+
+
+probability of a correct answer to a problem is expressed with the 
+guess, P(G), and slip, P(S), parameters. These are equivalent to the 
+emission probabilities in a Hidden Markov Model (HMM) and 
+represent the noise that exists between knowledge and 
+performance. The last of the parameters is the prior knowledge 
+parameter, P(L0). This represents the probability of an arbitrary 
+student being in the acquired knowledge state before interacting 
+with the skill or learning objective at hand. In the standard KT 
+model, this is a single point estimate. In the work presented in this 
+paper, we will evaluate three different strategies for individualizing 
+the prior parameter. Individualization of the prior means assigning 
+students to one of two or more priors based on past performance or 
+external survey information. In order to train these parameters, 
+Expectation Maximization (Baum-Welch) is used to search for the 
+set of parameter values that maximizes the likelihood fit to the data. 
+The trained model is then used to predict every student response in 
+test set. We use student level 5-fold cross validation and use the 
+extended Bayesian Knowledge Tracing software package, xBKT1 
+(Xu, Johnson & Pardos, 2015) to conduct fast training and 
+prediction. One hundred random EM restarts were used and the best 
+log-likelihood model was chosen within each cross-validated 
+training phase. 
+
+3.1 Prior Individualization Strategies 
+Our hypothesis was that model’s learning attribution and prediction 
+accuracy would improve with prior knowledge individualization. 
+For each of the two datasets we evaluated the model using four 
+different prior knowledge strategies.  
+
+1. Single Prior: Only use a single EM learned prior point 
+estimate. This is the standard BKT modeling approach 
+(baseline). 
+
+2. Prior Per Student (PPS) Cold Start Heuristic: Assign 
+each learner to one of two prior groups based on the 
+correctness of their first response, then use EM to learn 
+the point estimates of those two groups. 
+
+3. Average Performance Split: Assign each learner to one 
+of two prior groups based on if their total percent correct 
+across all problems, besides the one being predicted, was 
+above or below the median, then use EM to learn the 
+point estimates of those two groups. 
+
+4. Level of Education: Assign each learner to one of 11 prior 
+groups depending on their level of education stated in 
+their survey response and use EM to learn the priors. 
+
+We ran two different attribution models for each prior strategy: One 
+where each individual pedagogical component received its own 
+transition probability, such as a transition probability for video 
+S1V2-5, and another, coarser-grained model, where transition 
+probability was associated instead with the event action, such as: 
+Video play, Problem answer, and Forum view. This coarser-
+grained model would take care of potential sparsity issues in the 
+fine-grained model and would still provide substantive feedback to 
+instructors on which types of actions were leading to learning and 
+which were not. The fine-grained model, if successful, would allow 
+for instructor feedback on individual components and open up the 
+possibility of inserting pointers to particular high efficacy 
+components. The skill model used for all models treated the 
+problem as the skill (or KC). In edX, a problem consists of multiple 
+question sub-parts and often a shared figure. This can be seen as a 
+
+                                                                 
+1 https://github.com/CAHLR/xBKT 
+
+learning efficacy attribution model that estimates the probability of 
+various pedagogical components getting a learner to the state where 
+she can answer elements of the problem correctly. This was the best 
+KC model among those derived strictly from course structure 
+information [4]. 
+
+In the case of the prior per student cold start heuristic; the first 
+response dictates the prior category, an incorrect first response 
+assigns the students to the low prior, a correct response to the high 
+prior. In order not to peek at the data when predicting the first 
+response of the test folds, the marginal probability of prior 
+knowledge is used in place of the appropriate prior; low prior 
+multiplied by the prior frequency of the low prior + high prior 
+multiplied by the prior frequency of the high prior. Average 
+performance median split is determined by calculating the percent 
+correct on first attempts across KCs for each student, not counting 
+the KC being predicted. For students who only answered a single 
+KC, the marginal is again used. 
+
+4. RESULTS 
+For each of the two datasets we evaluated eight different attribution 
+models using four different prior knowledge individualization 
+strategies (single prior, prior per student, average performance 
+split, and level of education) and two different pedagogical 
+component granularity representations (parameter per component 
+and parameter per event action type). A model using the single prior 
+and ignoring all non-answer events was also included as baseline. 
+Root Mean Squared Error (RMSE) was used as the error metric to 
+score prediction. If the attribution models outperformed the model 
+using only answers, then this suggests that the event or component 
+transition probabilities are generalizing from the training set to 
+unseen students. We investigate if prior knowledge 
+individualization further improves parameter generalization and 
+prediction. Results of model evaluation are shown in Table 1 (Stats 
+2.1) and Table 2 (College Writing 2.1).  
+
+Table 1. Stats2.1 dataset: model prediction results for four 
+prior knowledge strategies and two transition granularities 
+
+Individual prior 
+knowledge 
+strategy 
+
+Transition 
+granularity RMSE 
+
+Avg. perf. split Event Action 0.404675 
+Avg. perf. split Component 0.405385 
+Level of education Event Action 0.416106 
+Single prior Event Action 0.416371 
+PPS cold start Event Action 0.416618 
+Level of education Component 0.416932 
+Single prior Component 0.417262 
+PPS cold start Component 0.417266 
+Single prior Only answers 0.417308 
+
+ 
+The standard KT model that used only answer correctness to train 
+produced the lowest RMSE (0.4173). Adding information about 
+when a student visits a particular components reduced the error but 
+not as much as taking into account resource visits at the event action 
+level. Neither resource abstractions reduced error statistically 
+significantly using a paired t-test. The prior knowledge 
+
+
+
+individualization strategy of assigning priors based on average 
+performance median split amplified the prediction performance 
+gain of both the efficacy attribution models over the single prior 
+event action efficacy model (p << 0.01). Level of education as a 
+prior individualization was the third best in performance but was 
+not statistically separable from the single prior event action model. 
+The prior per student models did not add any performance, with 
+results nearly identical to the respective single prior models. 
+Table 2. ColWri2.1 dataset: model prediction results for four 
+prior knowledge strategies and two transition granularities 
+
+Individual prior 
+knowledge 
+strategy 
+
+Transition 
+granularity RMSE 
+
+Avg. perf. split Event Action 0.413567 
+Avg. perf. split Component 0.413683 
+Level of education Event Action 0.425777 
+Level of education Component 0.425807 
+Single prior Event Action 0.426266 
+Single prior Component 0.426307 
+Single prior Only answers 0.426421 
+
+PPS cold start Event Action 0.426840 
+PPS cold start Component 0.426844 
+
+ 
+The results in College Writing 2.1 mostly echoed  those in the Stats 
+class. Event action and Component efficacy attribution models with 
+a single prior lower error (insignificantly) from the answer only 
+model. The average performance median split individualization 
+amplified the efficacy attribution models over their single prior 
+counter parts (p < 0.05) with level of education, much like with 
+Stats, being the third best performing model, but not statistically 
+separable from the single prior attribution model. In the case of 
+College Writing, the prior per student individualizations performed 
+the worse (not stat sig. from single prior). 
+
+Table 3.  Prior group values for Stats and College Writing 
+
+Prior Stats 2.1 College Writing 
+2.1 
+
+PPS (comp.) high 0.9537 0.8950 
+PPS (comp.) low 0.0452 0.1037 
+Avg. perf. high 0.5498 0.5669 
+Avg. perf. low 0.3322 0.4201 
+
+ 
+Table 3 shows the group prior parameter values for the two 
+datasets. In Stats, top two prior groups for level of education (event) 
+were Doctorate’s and Master’s degrees, with 0.55 and   0.54 priors. 
+College Writing’s top two levels of education were Doctorate, with 
+0.51, followed by High school, with 0.50.  
+
+5. CONTRIBUTIONS 
+In this paper we address the challenging endeavor of using 
+historical data analysis to try to evaluate the learning efficacy of 
+various learner activities. We used a novel dataset, consisting of 
+two online courses (BerkeleyX Intro Statistics 2.1 and College 
+Writing 2.1), each with tens of thousands of learners, to investigate 
+whether or not controlling for individual prior knowledge could 
+mitigate the self-selection biases found in data from self-directed 
+
+learning environments. Our results, which were consistent across 
+the two datasets, support our hypothesis that individualizing 
+student knowledge in the BKT model can improve learning 
+efficacy attribution and subsequently improve performance 
+prediction. Particularly salient was the average performance split 
+strategy using coarse-grained transition parameters in the both 
+courses. The prior per student model performed no differently from 
+the single prior model in the Stats class and below the single prior 
+in the College Writing. The underperformance in ColWri may be 
+due to the multiple-choice nature of the assessments in that class 
+which are easier to guess and therefore the first question, used to 
+seed the individual prior, is less indicative of what the student 
+knows about the more general topic. All models, including prior per 
+student, would be expected to improve in accuracy with KC models 
+based on subject matter expert tagging. More precise efficacy 
+attribution would be expected in this case, as well.  
+
+This work serves to demonstrate that accounting for different priors 
+among students can improve the accuracy of models which 
+attribute learning value of individual resources and event types. 
+Accurate efficacy is important for potential recommender systems 
+which use modeling techniques. Such systems could suggest 
+components or actions to struggling students that are associated 
+with high learning rates, P(T).Additionally, instructors can receive 
+more accurate feedback regarding the resources that lead to higher 
+rates of learning, and which lead to the lowest and for which groups 
+of students. Lastly, where prior individualization works, it suggests 
+ways in which future course offerings may be adapted based on 
+either background education or performance demonstrated in class. 
+
+Acknowledgements 
+A Google Faculty Research Award (#2014_R1_446) provided 
+support for this collaboration. 
+
+REFERENCES 
+[1] Gureckis, T. M., & Markant, D. . (2012). Self-directed 
+
+learning a cognitive and computational 
+perspective. Perspectives on Psychological Science, 7(5), 
+464-481. 
+
+[2] Champaign, J., Colvin, K. F., Liu, A., Fredericks, C., Seaton, 
+D., & Pritchard, D. E. (2014). Correlating skill and 
+improvement in 2 moocs with a student's time on tasks. 
+In Proceedings of the first ACM conference on Learning@ 
+scale conference (pp. 11-20). ACM. 
+
+[3] Bader-Natal, A., Lotze, T., & Furr, D. (2011). A comparison 
+of the effects of nine activities within a self-directed learning 
+environment on skill-grained learning. In Artificial 
+Intelligence in Education (pp. 15-22). Springer Berlin 
+Heidelberg. 
+
+[4] Pardos, Z.A., Bergner, Y., Seaton, D., Pritchard, D.E. (2013) 
+Adapting Bayesian Knowledge Tracing to a Massive Open 
+Online College Course in edX. D’Mello, S. K., Calvo, R. A., 
+and Olney, A. (eds.) Proceedings of the 6th International 
+Conference on Educational Data Mining (EDM). Memphis, 
+TN. Pages 137-144. 
+
+[5] MacHardy, Z.M, Pardos, Z.A. (Accepted) Evaluating The 
+Relevance of Educational Videos using BKT and Big Data. 
+To Appear in the Proceedings of the 8th International 
+Conference on Educational Data Mining (EDM). Spain.  
+
+[6] Baker, R. S., & Yacef, K. (2009) The state of educational 
+data mining in 2009: A review and future visions. JEDM-
+Journal of Educational Data Mining, 1(1), 3-17. 
+
+
+
+[7] Pardos, Z. A., Heffernan, N. T. (2010) Modeling 
+Individualization in a Bayesian Networks Implementation of 
+Knowledge Tracing. In P. De Bra, A. Kobsa, D. Chin (eds.) 
+Proceedings of the 18th International Conference on User 
+Modeling, Adaptation and Personalization (UMAP). Big 
+Island of Hawaii. Springer. pp 255-266. 
+
+[8] Fancsali, E.S. (2014) Causal Discovery with Models: 
+Behavior, Affect, and Learning in Cognitive Tutor Algebra. 
+In Stamper, J., Pardos, Z., Mavrikis, M., McLaren, B.M. 
+(eds.) Proceedings of the 7th International Conference on 
+Educational Data Mining (EDM). London, UK. Pages 28-35. 
+
+[9] Beck, J. E., Chang, K. M., Mostow, J., & Corbett, A. (2008). 
+Does help help? Introducing the Bayesian Evaluation and 
+Assessment methodology. In Intelligent Tutoring Systems 
+(pp. 383-394). Springer Berlin Heidelberg. Chicago 
+
+[10] Koedinger, K. R., Booth, J. L., & Klahr, D. (2013). 
+Instructional complexity and the science to constrain 
+it. Science, 342(6161), 935-937. 
+
+[11] Pardos, Z. A., Heffernan, N. T. (2009) Determining the 
+Significance of Item Order in Randomized Problem Sets. In 
+Barnes, Desmarais, Romero & Ventura (eds.) Proceedings of 
+the 2nd International Conference on Educational Data 
+Mining (EDM). Cordoba, Spain. Pages 111-120. 
+
+[12] Pardos, Z.A., Dailey, M. & Heffernan, N. (2011) Learning 
+what works in ITS from non-traditional randomized 
+controlled trial data. The International Journal of Artificial 
+Intelligence in Education, 21(1-2):45-63. 
+
+[13] Sao Pedro, M., Baker, R., & Gobert, J. (2013). Incorporating 
+Scaffolding and Tutor context into Bayesian Knowledge 
+Tracing to predict inquiry skill acquisition. In Proc. of the 
+6th International Conference on Educational Data Mining, 
+Memphis, TN (pp. 185-192)
+
+ 
+
+
+

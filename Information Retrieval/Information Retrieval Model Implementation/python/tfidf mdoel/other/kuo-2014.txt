@@ -1,0 +1,269 @@
+
+HanZi Handwriting Acquisition with Automatic Feedback 
+ Chin-Hwa Kuo  
+
+ Tamkang University  
+No.151, Yingzhuan Rd., Tamsui Dist., 
+
+New Taipei City 25137, Taiwan  
+?886-2-2621-5656 
+
+chkuo@mail.tku.edu.tw 
+
+Jian-Wen Peng 
+Chihlee Institute of Technology 
+
+313, Sec. 1, Wunhua Rd., Banciao Dist, 
+New Taipei City, 22050 Taiwan 
+
+?886-2-2257-6167 
+pchw8598@mail.chihlee.edu.tw 
+
+Wen-Chen Chang 
+Tamkang University 
+
+No.151, Yingzhuan Rd., Tamsui Dist., 
+New Taipei City 25137, Taiwan 
+
+?886-2-2621-5656 
+chyokaoru@gmail.com 
+
+ 
+ 
+
+ABSTRACT 
+One of the most crucial distinctions between Chinese and Western 
+languages is that the former is based on ideograms, whereas the 
+latter is based on phonograms. Due to this distinction, Western 
+learners of Chinese often experience more difficulties in grasping 
+correct character stroke sequence and / or stroke direction relative 
+to native Chinese speakers. In this paper, we designed a HanZi 
+writing environment with automatic feedback to address the above 
+issue. Before the collection of HanZi characters on a massive 
+scale, we conducted a pilot study to collect handwritten Chinese 
+samples from 160 college students in the U.S. The findings from 
+this study enabled us to further refine the learning environment 
+and design optimal learning and teaching strategies for learners 
+and teachers. 
+
+Categories and Subject Descriptors 
+H.1.2 [User/Machine Systems]: Human information processing 
+H 3.1 [ Content Analysis and Indexing]: Linguistic processing 
+
+General Terms 
+Design, experimentation 
+
+Keywords 
+Chinese character handwriting, personalization, learning analytics 
+
+1. INTRODUCTION 
+One of the most crucial distinctions between Chinese and Western 
+languages is that the former is based on ideograms, whereas the 
+latter is based on phonograms. Intermediate to advanced learners 
+of an ideographic language (i.e., Chinese) are often able to deduce 
+that the character ???is a type of fish, and that the character is 
+pronounced as fang, even if he or she never learned this specific 
+character before. He or she is also aware that the radical part ???
+can only be located on the left hand side of the ideogram, and the 
+phonetic part???can only be located on the right hand side. In 
+other words, he or she has developed an intuition as to where 
+radicals and phonetics should be located. For many learners, 
+identifying and utilizing such patterns can be powerful in learning 
+Chinese more effectively. 
+
+Permission to make digital or hard copies of part or all of this 
+work for personal  or classroom use is granted without fee 
+provided that copies are not made or distributed for profit or 
+commercial advantage and that copies bear this notice and the full 
+citation on the first page. Copyrights for third-party components 
+of this work must be honored. For all other uses, contact the 
+Owner/Author. Copyright is held by the owner/author(s). 
+LAK '14, Mar 24-28 2014, Indianapolis, IN, USA  
+ACM978-1-4503-2664-3/14/03 
+http://dx.doi.org/10.1145/2567574.2567575  
+
+ 
+In learning an ideographic language, repeated character writing is 
+beneficial to character recognition and memory. For many 
+learners who are not Chinese native speakers, writing Chinese is 
+often even more challenging than recognition. To address this 
+issue, we developed a Chinese character (HanZi) writing learning 
+platform with automatic feedback. This system, called Xue-Wen 
+Easy Go!, intends to take advantage of the current advances in 
+mobile devices and learning analytics to collect learner’s 
+handwritten Chinese characters. This collection would inform the 
+design of learning and teaching strategies to improve learning 
+effectiveness. 
+
+2. OVERVIEW OF THE HANZI 
+LEARNING PLATFORM 
+In the digital era, learners are able to learn a language anytime and 
+anywhere. To effectively learn Chinese, computer assisted 
+learning systems with interactive and real time automatic 
+feedback features can be especially beneficial. The following 
+Chinese learning platform, Xue-Wen Easy Go!, takes two issues 
+into consideration, namely (1) a multimedia learning environment, 
+and (2) an automatic feedback mechanism with data collection. 
+The system records the learner’s inputs (i.e., handwritten Chinese 
+characters) for further analysis, effectively eliminating the need 
+for a camera recording process which requires more manpower 
+and time.  The system consists of three main mechanisms: (1) 
+data collection, which includes learner login, handwriting display, 
+handwriting practice, and automatic feedback; (2) data filtering 
+and analysis; and (3) the design of learning and teaching strategies 
+based on the results of (2). 
+
+3. HANZI HANDWRITING ACQUISITION 
+The designed Xue-Wen Easy Go! client runs on MS Windows XP 
+and Windows 7 operating systems.  It consists of 5,000 popular 
+Chinese characters, both in traditional and simplified forms.    
+
+3.1 Characters and Strokes Display 
+The system supports the four most common types of Chinese 
+query inputs: pinyin, bo-po-mo (???), radical, and stroke count. 
+Characters that have the same radical or homophone appear in the 
+auxiliary area so that learners can choose the character they would 
+like practice. The display function supports stroke display in 
+sequence mode and radical display mode as shown in Figure 1. 
+Pause and replay functions are included in the system. The 
+combination of these functions enables learners to effectively 
+build on their knowledge of character radicals.  
+(https://youtu.be/La-scFai6qE) 
+
+261
+
+
+
+ 
+
+3.2 Chinese Handwriting Practice and 
+Automatic Feedback 
+In learning an ideographic language, repeated character writing is 
+beneficial to character recognition and memory. As a result, 
+Xue-Wen Easy Go! is designed with a handwriting practice area, 
+as shown in Figure 2. After the system is installed, learners 
+practice writing characters using an electronic pen on a tablet, just 
+as they would traditionally practice using a ballpoint pen on paper. 
+Our system supports three modes of handwriting practice: (1) 
+basic mode, which guides the learner stroke-by-stroke through the 
+character; (2) intermediate mode, which guides the learner 
+radical-by-radical through the character; and (3) advanced mode, 
+which does not present any guides. Hence, both teachers and 
+learners have the flexibility to select the most appropriate mode at 
+any point in the learning / teaching process.  
+
+The automatic feedback is a special design which consists of the 
+following features: 
+
+(1) Error feedback: Common errors that can be automatically 
+detected include errors in stroke sequence, stroke direction, 
+stroke junction, missing strokes, and extra strokes; automatic 
+feedback is available to learners 
+
+(2) Character neatness evaluation and feedback:  The “neatness” 
+of a handwritten character, computed using the distance 
+between the character centroid and the radical centroids, can 
+be evaluated; automatic feedback is available to learners 
+
+(3) Overall evaluation:  The overall score is broken down into 5 
+levels (1~5). The final score takes stroke correctness and 
+character neatness into consideration 
+
+(4) Time tags: Records the total time of the handwriting process 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+4. The EXPERIMENTAL DESIGN 
+Before the collection of HanZi characters on a massive scale, we 
+conducted a pilot study to refine the designed system. Participants 
+included 160 U.S. college students in their first year as Chinese 
+learners. The students were assigned HanZi handwriting and 
+recognition homework. The handwritten samples (i.e., characters) 
+were collected once a week. Traditionally, it would have been 
+difficult and time-consuming to analyze each character 
+one-by-one, but by using Xue-Wen Easy Go!, we were able to 
+collect handwritten characters quickly, and with dynamic 
+playback of each individual character, as shown in Figure 3.Each 
+handwritten sample is accompanied with data including time tags, 
+character scores, error patterns, and learner IDs (Figure 4). Using 
+this information, we can effectively analyze error patterns and 
+design improved learning and teaching strategies for each learner, 
+as well as teachers. Learners are also able to proactively retrieve 
+their handwritten characters from the system to review and make 
+corrections. A detailed view of the above processes is shown in 
+the following video clip, http://youtu.be/MlJbF2T1rkA. 
+
+ 
+
+Figure 3  Dynamic playback for the character???  
+
+ 
+
+5. CONCLUSIONS 
+A Chinese handwriting environment called Xue-Wen Easy Go! 
+was designed and described in this paper. The system includes 
+several technologically enhanced features which allow us to 
+automatically acquire handwritten samples and provide interactive 
+feedback for learners. We also performed a pilot study which 
+enabled us to improve the developed HanZi handwriting tools. At 
+present, we are in the position to design a web-based HanZi 
+learning environment to collect handwriting samples on a more 
+massive scale for further learning analysis. 
+
+6. ACKNOWLEDGMENTS 
+We would like to thank National Science Council, Taiwan, for 
+partly supporting the present research under NSC 101-2511-S-032 
+-003 and NSC 101MG08-1 
+
+7.REFERENCES 
+[1] Chin-Hwa Kuo, Yi-Wen Huang, Wen-Bing Horng, 
+
+Chun-Wen Chen ,Chen-Hsiang Chen.2009.Design of a 
+Chinese Character Learning System. In TWELF 2009(Tainan, 
+Taiwan Sep.2009) 
+
+[2] Jin, H. G. 2003. Empirical evidence on character recognition 
+in multimedia Chinese tasks. Concentric: Studies in English 
+Literature and Linguistics, 29(2), 36–58. 
+
+[3] S. L. Yeh, J. L. Li, T. Takeuchi, V. C. Sun, and W. R. Liu, 
+2003 “The role of learning experience on the perceptual 
+organization of Chinese characters”, Visual Cognition, vol. 
+10, pp. 729-764
+
+ 
+
+Figure 1 ?Xue-Wen Easy Go!?Query user interface 
+
+ 
+
+Figure 4 Error patterns are recorded and further analyzed 
+
+Figure 2 Interface of handwriting and automatic feedback 
+
+262
+
+
+
+
+

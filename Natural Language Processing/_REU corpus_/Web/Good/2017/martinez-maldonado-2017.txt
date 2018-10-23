@@ -1,0 +1,609 @@
+
+Analytics Meet Patient Manikins: Challenges in an Authentic 
+Small-Group Healthcare Simulation Classroom 
+
+Roberto Martinez-Maldonado1 
+Roberto@MartinezMaldonado.net 
+
+Tamara Power2 
+Tamara.Power@uts.edu.au 
+
+Carolyn Hayes2 
+
+Carolyn.Hayes@uts.edu.au 
+
+Adrian Abdiprano2 
+Adrian.Abdiprano@uts.edu.au 
+
+Tony Vo2 
+
+Huu.Vo@uts.edu.au 
+
+Carmen Axisa2 
+Carmen.Axisa@uts.edu.au 
+
+Simon Buckingham Shum1 
+Simon.BuckinghamShum@uts.edu.au 
+
+1Connected Intelligence Centre, 2Faculty of Health, University of Technology Sydney, Australia 
+
+ABSTRACT 
+Healthcare simulations are hands-on learning experiences aimed at 
+allowing students to practice essential skills that they may need 
+when working with real patients in clinical workplaces. Some 
+clinical classrooms are equipped with patient manikins that can 
+respond to actions or that can be programmed to deteriorate over 
+time. Students can perform assessments and interventions, and 
+enhance their critical thinking and communication skills. There is 
+an opportunity to exploit the students’ digital traces that these 
+manikins can pervasively capture to make key aspects of the 
+learning process visible. The setting can be augmented with sensors 
+to capture traces of group interaction. These multimodal data can 
+be used to generate visualisations or feedback for students or 
+teachers. This paper reports on an authentic classroom study using 
+analytics to integrate multimodal data of students’ interactions with 
+the manikins and their peers in simulation scenarios. We report on 
+the challenges encountered in deploying such analytics ‘in the 
+wild’, using an analysis framework that considers the social, 
+epistemic and physical dimensions of collocated group activity.  
+
+CCS Concepts 
+•  Information systems ???? Information systems applications ???? 
+
+Collaborative and social computing systems and tools  
+
+Keywords 
+Classroom, groupwork, multimodal, awareness, face-to-face 
+
+1. INTRODUCTION  
+Healthcare clinical simulations are practical learning experiences 
+designed to expose students to a comprehensive range of complex 
+
+or typical scenarios that they may encounter in their future 
+workplaces or professional situations [6]. Some didactic methods, 
+such as Problem-Based Learning [1], have been effectively applied 
+in healthcare education in the form of tasks where students engage 
+in complex medical scenarios, as well as simulations using 
+manikins or actors as patients. Simulation technology is often used 
+to assist healthcare training, ranging from very simple (e.g. using 
+an orange to practice giving injections) to more sophisticated 
+computer-based systems (e.g. fully simulated high fidelity 
+manikins or even completely digital patients [16]). Cooper and 
+Taqueti [5] have outlined different types of healthcare simulation 
+technologies. For example, high fidelity patient manikins are often 
+used to simulate medical scenarios in an environment which is safe 
+for both learners and patients.  
+
+Simulations in health care are not associated with specific 
+technologies. Rather they are learning techniques that substitute or 
+magnify real experiences with guided experiences that mimic or 
+reproduce key aspects of real world situations [8]. For example, 
+students can practice in order to improve: their communication with 
+the patient and the healthcare team; their expertise in using specific 
+medical equipment; or their procedural knowledge and technique, 
+or protocols to be followed under certain circumstances, etc. In this 
+way, simulations can equip students with essential practical skills 
+that may be called upon during clinical placements in healthcare 
+workplaces. Moreover, simulation through scenarios can be an 
+effective alternative for the achievement of learning outcomes that 
+are typically met using a traditional lecture format [10].  
+
+From the beginning of their degree, healthcare simulations are 
+integrated into each semester of the Bachelors of Nursing and 
+Midwifery at the University of Technology Sydney (UTS). During 
+class, students commonly work in small teams undertaking specific 
+roles and responding to hypothetical scenarios. Manikins ranging 
+from newborn to adult (e.g. see Figure 1) give students the 
+opportunity to practise skills before implementing them in real life 
+situations. One of the main challenges that teachers and students 
+face in these scenarios is the very limited awareness of the multiple 
+co-occurring learning processes in each small group, and the 
+limited feedback that the teacher can give to the (20 to 30) students 
+in the classroom. These are common problems that emerge in 
+several classroom scenarios [15]. As a result, the learning 
+experience depends on the quality of reflection in which students 
+
+ 
+
+Permission to make digital or hard copies of all or part of this work for 
+personal or classroom use is granted without fee provided that copies are not 
+made or distributed for profit or commercial advantage and that copies bear 
+this notice and the full citation on the first page. Copyrights for components 
+of this work owned by others than the author(s) must be honored. 
+Abstracting with credit is permitted. To copy otherwise, or republish, to post 
+on servers or to redistribute to lists, requires prior specific permission and/or 
+a fee. Request permissions from Permissions@acm.org. 
+LAK '17, March 13 - 17, 2017, Vancouver, BC, Canada 
+Copyright is held by the owner/author(s). Publication rights licensed to 
+ACM. 
+ACM 978-1-4503-4870-6/17/03…$15.00  
+DOI: http://dx.doi.org/10.1145/3027385.3027401 
+
+ 
+
+             
+Figure 1. The healthcare simulation classroom. Left: small group of learners performing a role-based simulation task.  
+
+Center: the classroom setting. Right: a depth sensor tracking learners’ position around a patient manikin in the classroom.  
+ 
+
+
+
+can engage about their own actions and those of others in their 
+teams. Typically, however, little evidence is gathered that could 
+support in-class debriefing and reflection, besides video recordings 
+of the simulation sessions or annotations.  
+
+Our research sits in this space, where clinical simulations and 
+learning analytics can be operationalised together to provide better 
+feedback to students, and new insights for teachers. There is a 
+significant opportunity to use multimodal sensors and analytics to 
+make the normally ephemeral embodied activity in simulations 
+visible, replayable and referenceable in reflections and analyses by 
+students and teachers seeking to improve their practice, and (as in 
+this paper) by researchers. Ultimately, the goal is of course 
+intensely practical: to make such practices more readily 
+improvable. This could be accomplished by enriching simulations 
+with multimodal sensors in order to capture traces of the face-to-
+face interactions [3]. Possible ways to exploit these multimodal 
+data can include the provision of visualisations, notifications or 
+feedback to students or the teachers, during or after the simulation 
+activity (e.g. [14]). The analysis of students’ data can also involve 
+modelling and analytics techniques including the analysis of 
+behavioural patterns (e.g. interaction of students with the patient); 
+task performance; students’ sequential processes (e.g. [12]); 
+communication among students and roles (e.g. [13]); conversation 
+patterns (e.g. [2]); space usage (e.g. [16]) and gestures. 
+
+This paper presents a synthesis of conclusions drawn from an 
+authentic classroom study aimed at exploring the mechanisms to 
+collect and integrate multimodal data about students’ interactions 
+with their peers and the manikins to complete simulation scenarios. 
+The contributions of the paper are firstly, a discussion of the 
+challenges encountered in this initial attempt to bring learning 
+analytics into a real health simulation classroom (in contrast to an 
+experimental laboratory). Secondly, we present illustrative, 
+preliminary examples of the analytics that such sensors make 
+possible. We offer these findings to guide other researchers and 
+developers seeking to provide support for enhanced awareness, 
+provision of feedback or evidence-based reflection in face-to-face 
+(f2f) classroom scenarios.  
+
+The rest of the paper is structured as follows. The next section 
+presents an overview of related work in the area of learning 
+analytics applied to classroom and face-to-face settings. Section 3 
+provides details about our healthcare simulation classroom study.  
+Section 4 presents a synthesis of conclusions drawn from the study 
+and illustrative analytics examples.  The paper concludes in Section 
+5 with a discussion of lessons learnt and future work.  
+
+2. RELATED WORK 
+The study presented in this paper is relevant for both learning 
+analytics efforts on tackling multimodal interaction (e.g. 
+employing video, audio and touch sensors to examine learning in a 
+realistic, mixed-media learning environment) and those focused on 
+understanding collocated learning environments (where learning 
+occurs in a physical environment, such as the classroom, where 
+students not only interact through learning systems but also face-
+to-face). Recent reviews of the state of the art of multimodal 
+analytics and learning analytics in collocated environments can be 
+found in [3] and [14]  respectively. Both have mostly reported work 
+conducted in controlled, experimental conditions, thus much work 
+is still needed to bring learning analytics into authentic classrooms. 
+Our work addresses this gap by reporting on the challenges 
+encountered and the potential of utilising mobility, audio and log 
+data towards providing support in a clinical simulation classroom, 
+a domain that has not yet been explored by learning analytics 
+
+initiatives. Our work is inspired by similar LA works conducted 
+using interactive tabletops and sensors in the classroom to generate 
+dashboards for the teacher [14] and produce teaching analytics [15].  
+
+In the domain of clinical simulation, tools based on video playback 
+have been developed to aid in debriefing (e.g. [9]) or self-reflection 
+(e.g. [4]) after the simulation. Although this can be an effective 
+means of feedback and reflection [7], lengthy or unrelated video 
+segments can diminish the discussion of key aspects of the 
+simulation. As a result, video playback is often not suitable for 
+being used in a classroom where time is commonly limited. To our 
+knowledge, this work is the first attempt to integrate data from 
+simulation experiences, with a number of team activity data 
+streams. Bringing learning analytics into this design space may 
+provide alternative ways to support debriefing, generate the means 
+for providing automated feedback during or after the simulation, or 
+to find patterns indicative of collaboration profiles or student 
+strategies. 
+
+3. THE STUDY 
+
+3.1 The Learning Situation 
+This study was run in authentic laboratory classes taught in 
+semester 2, 2016 as part of the undergraduate unit: “Integrated 
+Nursing Practice”. This is a final-year subject in the Bachelor of 
+Nursing at the University of Technology Sydney. The main 
+objective of this unit is to support students to develop clinical 
+practice skills and prepare them for entry to the nursing workforce. 
+There is a strong f2f component for the unit, including 3-hour 
+weekly laboratory classes where students commonly face simulated 
+scenarios involving chronic and complex conditions. In total, 580 
+students attended these classes. Each had from 20 to 27 students. 
+The study focused on the classes conducted in Week 3 of the 
+semester. The learning design included a series of tasks to be 
+completed by small teams of students using the patient manikins. 
+Students had to collaborate and put into practice their theoretical 
+knowledge and nursing skills to care for a patient in a clinical 
+scenario. The tasks included: assessment of chest pain symptoms, 
+administration of medication, management of adverse drug reaction 
+and conducting an electrocardiogram (ECG) analysis. Additionally, 
+each student was asked to play one of 4 possible roles: a Team 
+leader, the Patient, Nurses, and an Observer. The teacher assumed 
+the Doctor role. 
+
+3.2 Apparatus and Multimodal Data Sources 
+In this study, we focused on 5 randomly selected laboratory classes. 
+Only the activity occurring in two of the available five simulated 
+hospital beds was recorded in each session to allow students to opt 
+out from the data recording. A total of 56 students and 4 different 
+teachers were in the observed sessions. The laboratory classrooms 
+are equipped with 5 medium fidelity manikins in bed spaces (see 
+Figure 1-centre). These manikins generate physiological data and 
+can be programmed to improve or deteriorate over time in response 
+to nursing actions.  
+
+See Figure 2 for an overview of the bed spaces enhanced with 
+sensors, which captured the following data. Some of the physical 
+actions performed on the manikin were automatically logged (e.g. 
+checking pulse, blood pressure, etc). The SimPad tablet allowed 
+students to log the completion of required tasks pre-defined by the 
+teacher to form a checklist. Students’ location data was captured 
+automatically using a Kinect depth sensor (e.g. see the depth image 
+recording overlapped with a snapshot of students’ activity in Figure 
+1-right). Directional audio was captured using the microphone 
+array (Dev-Audio-Microcone). This captured 6 channels of audio 
+
+
+
+input around it. Video of the sessions was also captured using 
+cameras and microphones built into the ceiling. Thus, the types of 
+data involved in this case were mobility, interaction, self-reported 
+activity and communication data.  
+
+4. THEMATIC ANALYSIS 
+In order to scaffold the analysis of the data and explore the potential 
+and challenges in terms of learning analytics, we used the Activity-
+Centred Analysis & Design (ACAD) framework [13]. This 
+framework provides a structure for applying different analytical 
+tools according to four closely related dimensions of user activity: 
+the social, the setting, the epistemic and the runtime dimensions. In 
+the following subsections, we present examples of the potential for 
+learning analytics and the classroom challenges encountered in this 
+initial attempt. We additionally discuss emerging issues in terms of 
+data management, ethics and privacy.  
+
+4.1 The social dimension  
+Social formations and mobility. The potential: a feasible source of 
+student’s behavioural data is the tracked position of the students 
+around the manikin, which can provide information about how 
+group members approach the tasks, the processes they follow 
+before performing actions on the manikin and behaviour according 
+to learners’ roles. For example, Figure 3 shows the mobility 
+information of two groups in the same session represented as 
+heatmaps of location data captured by the depth sensor. These show 
+two very distinct approaches to the task. Group A stayed mostly 
+away from the patient during the first half of the 
+task (see red ovals in quarters Q1 and Q2) to then 
+work near the patient only during the third quarter 
+of the activity (see blue ovals in Q3). Then, they 
+finished earlier than other groups (no data in Q4). 
+By contrast, Group B followed a very different 
+approach by engaging with the patient from the 
+beginning of the task and maintaining proximity 
+throughout (see blue ovals in Q1-4). This is a 
+preliminary example of how proximity and 
+mobility data, when visualised in intuitive ways, 
+could provoke productive reflection on the 
+different strategies followed by students. It is a 
+pedagogical decision exactly how and for what 
+purposes one would deploy such visualisations 
+with students. 
+
+Challenges: a number of challenges emerged in 
+the classroom. For example, solutions to 
+identifying people around the bed (see Figure 4-
+
+left, where the teacher is interacting with the manikin but for the 
+depth sensor is just another student), or their roles, are still required 
+to provide continued tracking even though students’ move away 
+from the depth sensor range. Also, since the depth sensor uses a 
+computer vision algorithm, problems related with occlusion (e.g. 
+students occluding each other or being too close to the sensor) and 
+changes in the setting (e.g. students closing the curtains around the 
+manikin to perform procedures that required privacy, see Figure 4-
+right, tracked in blue) may arise. The potential value of these 
+heatmaps of mobility for assessing student’s engagement with the 
+manikin and patient centred care is a current key area of work in 
+the host university. Still, more work needs to be done to create 
+robust and unobtrusive solutions to improve the automated 
+generation of this kind of data.   
+
+Audio tracking. The potential: conversation patterns within a group 
+can be crucial indicators of effective groups’ strategies, processes 
+or performance [2]. By using the mic array, we aimed to track when 
+each group member spoke to detect levels of conversation which 
+could provide insights at a group level or reveal some of the 
+collaboration story. For example, Figure 5 illustrates the potential 
+for learning analytics by integrating audio and mobility data for the 
+overall activity of Groups A and B. The figure shows the total 
+effective time of conversation as detected by the 6-channels of the 
+mic array. It can be observed, for example, that most of the talking 
+for Group A occurred while students were away from the manikin 
+(see left and central sectors of the microphone indicating 12, ~13 
+and ~6 minutes of talking corresponding to the clusters of heatmap 
+activity further from the patient). By contrast, the talking by Group 
+B mostly occurred on both sides of the manikin (see how the high 
+heatmap mobility data corresponds to the sectors of the mic array 
+that detected more talking: ~17 and ~14 minutes).  
+
+Challenges: even though these visualisations can be generated 
+completely automatically, the data used to generate them may have 
+included some general classroom noise and voices coming from 
+other beds. Isolating students’ voices in the classroom is 
+challenging, since it is a very unpredictable and dynamic 
+environment. Students move and talk at varied voice levels and 
+there are also unexpected noises such as those generated by the 
+manikins or medical equipment. Although analytics of student 
+formations, mobility and conversation patterns can effectively 
+inform collocated collaboration processes, there are still a number 
+of challenges to be addressed to get clean data from a laboratory 
+classroom environment. 
+
+ 
+Figure 3. Heatmaps of mobility data during student’s activity (1 hour) divided in 
+
+quarters for two groups of the same classroom session: A and B. Coloured ovals 
+
+mark clusters of activity near (blue) and further (red) from the patient 
+
+ 
+
+Figure 2. Simulation manikin enhanced with sensors  
+
+
+
+ 
+
+     
+   Figure 5. Tracking directional audio (blue areas) and 
+
+mobility data (heatmap) for groups A and B 
+
+4.2 The setting dimension 
+The potential: although blended learning models are widespread, 
+learning analytics have until now focused on the online settings in 
+which interaction is mediated by computers, since the data is so 
+easily logged. The f2f setting providing the focus for this paper 
+seeks to ensure that the co-located elements are no longer invisible, 
+but could provide automated feedback in the classroom to improve 
+awareness and reflection in blended-learning settings.  
+
+Challenges: unforeseen events can occur in co-located settings. 
+Commonly, the teacher adapts the task, social aspects and the 
+setting on-the-fly or in design time to accommodate for these 
+events. However, these decisions, if not considered in the design, 
+may affect the quality of the learning analytics outputs or even limit 
+the types of analytics that can be delivered. In the school hosting 
+our study, for example, although some manikins are designed for 
+students to be able to administer injections and intravenous (IV) 
+fluids (which can generate logged events), other mid-fidelity 
+manikins do not provide such functionality (thus not generating 
+logs). External instruments (such as external IV or ECG devices) 
+are also sometimes used by the teaching team to enhance student’s 
+experience or augment some manikins lacking of certain 
+functionalities. However, they are generally not connected to the 
+manikin system and/or do not record activity logs. Thus, there can 
+
+be a trade-off between the setting needs for classroom orchestration 
+and learning; and what is feasible to be achieved through learning 
+analytics innovations.  
+
+4.3 Epistemic dimension (the task)  
+The potential: the possibility of generating visual analytics that 
+describe the different steps and key milestones of the collaborative 
+learning process within a group of students can provide an effective 
+area for discussion, reflection or the provision of more informed 
+feedback. For example, Figure 6 (see coloured pins on the blue 
+timeline) shows the logs obtained from two groups in two different 
+sessions. These correspond to three key actions which are important 
+for this specific simulation case: 1) when the first set of vital signs 
+of the patient was obtained (red pins), 2) when a prescription 
+medication was administered (blue pins) and 3) when an ECG test 
+was performed after the patient deteriorated (yellow pins). Whilst 
+other actions can also be visualised, these examples indicate how 
+the achieved milestones can be helpful for the teacher or the 
+students to reflect on the process followed by each group or groups 
+in the same classroom.  
+
+Challenges: capturing traces of the task and also making sense of 
+this information in order to render it actionable can be very 
+challenging. Another epistemic challenge to overcome is the 
+impact of the task instructions on the data capture. In our example, 
+the teacher encouraged students to self-report their actions on a pre-
+formatted checklist on the tablet, (which although a common 
+practice for practicing nurses is usually performed on paper). But 
+only 3 groups completed the checklist, and one of them did it as 
+explicitly requested by the teacher after the session. 
+
+4.4 The runtime enactment of the task 
+The potential: there is a growing interest in the learning analytics 
+community in connecting the learning design with evidence-based 
+data innovations [11] since activity data makes much more sense 
+when the activity context is known. However, not much has been 
+done to provide analytics for comparing the enactment of the tasks 
+in the classroom with the learning design intentions. Figure 6 also 
+illustrates the timelines that show how two classroom sessions 
+unfolded. In this case, the manikin logs and the mobility data can 
+provide evidence about the duration of the simulation session. In 
+
+ 
+Figure 6. Design analytics for two classroom sessions: showing three key milestones reached by at least 1 group during the 
+
+simulation (obtained from the manikin logs and student’s self-reported events) shown in a timeline that represents the enactment 
+
+of the learning design 
+
+ 
+Figure 4. Tracking challenges. Left: a small group (3 students and the teacher). Right: a very large group formed by latecomers 
+
+(tracking affected by occlusion and whenever students closed the medical curtains, e.g. see blue shaded area tagged as ‘1’) 
+
+
+
+the first class (T1) the teacher took ~45 minutes to provide 
+instructions and discuss the case and then ~1.5 hours for the 
+reflection after the simulation. By contrast, the second teacher (T2) 
+dedicated most of the class to the simulation (almost 2 hours) 
+allowing students to perform the actions at a different pace (note 
+the separation between the coloured pins in T1 and T2). This type 
+of visualisation could be offered to a unit coordinator to fine-tune 
+the session design, or to be aware of the variation in execution.  
+
+Challenges: in our study, each of the four teachers enacted the 
+learning design quite differently, making an impact on the task and 
+therefore on the analytics. However, learning analytics can provide 
+insights about how divergent teachers are in enacting the design. 
+Overall, unexpected classroom events, besides the ones mentioned 
+in previous subsections, strongly influenced or limited our first 
+attempt in collecting students’ data for analytics. For example, in 
+one of the classes, students arriving late to the class, one by one, 
+generated large groups that were quite dysfunctional and also hard 
+to track using the depth sensor (see Figure 4, right). 
+
+4.5 Data management and ethics 
+Challenges: privacy, consent and data management issues need to 
+be taken into consideration for deploying learning analytics in 
+authentic educational settings. This is particularly crucial for 
+situations where student data cannot be de-identified or which 
+involve video/audio recording (as in our case). For example, in our 
+study, all students were informed by the lecturer about the study a 
+week before the recording sessions. Blanket authorisation was 
+granted by the ethics committee of the institution. Then, during the 
+study, only two out of the 5 clinical beds were recorded (there were 
+always unmonitored beds in each class) allowing students to 
+voluntarily participate. Students in this Faculty are already used to 
+the occasional recording session being organised as it is a common 
+practice in this learning space. As this is more of an exception than 
+a commonality in other classrooms, work needs to be done to 
+explore sustainable strategies to request consent and clarify data 
+management issues without stretching the already very limited 
+classroom time. 
+
+5. CONCLUSION 
+Learning analytics innovations deployed in authentic physical 
+classrooms are still rare. We have presented our initial attempt in 
+bringing learning analytics into a healthcare simulation classroom 
+aiming to uncover small group learning, collaboration and 
+enactment processes. We faced several challenges that still need to 
+be addressed in order to start gaining insights about student’s processes. 
+Through our illustrative preliminary examples, we uncovered the 
+potential that these multimodal analytics can bring to reveal 
+different aspects of the collaborative process, classroom dynamics 
+and the enactment of the learning design which are commonly 
+invisible. Finally, we illustrated the complexity of implementing 
+learning analytics in the classroom, not only in terms of limitations 
+in the technology, but also because the classroom is a very complex 
+and dynamic environment where the epistemic, social and physical 
+dimensions play a crucial role in making each session unique and 
+filled with unforeseen events. Although the unpredictable nature of 
+the classroom may affect learning analytics, it certainly makes a 
+classroom a rich setting that offers great opportunities for learning.  
+
+We envisage that this paper can be useful for other researchers and 
+developers seeking to provide enhanced support in simulation 
+laboratories and also in more generic collocated settings. Our future 
+work is aimed at generating the technical and pedagogical means 
+for providing automated feedback, and/or supporting awareness 
+
+and reflection in f2f classroom scenarios, similarly to what is 
+currently available in computer-mediated (online) platforms. 
+
+6. REFERENCES  
+[1] Barrows, H. S. 1996. Problem?based learning in medicine and 
+
+beyond: A brief overview. New directions for teaching and 
+learning, 1996, 68, 3-12.  
+
+[2] Bergstrom, T., and Karahalios, K. 2007. Conversation Clock: 
+Visualizing audio patterns in co-located groups. In Proc. of 
+40th Annual Hawaii International Conference on System 
+
+Sciences (Big Island, Hawaii, USA, Jan 3-6). IEEE Computer 
+Society, 78-87.  
+
+[3] Blikstein, P., and Worsley, M. 2016. Multimodal Learning 
+Analytics and Education Data Mining: using computational 
+technologies to measure complex learning tasks. Journal of 
+Learning Analytics, 3, 2, 220-238.  
+
+[4] Bussard, M. E. 2016. Self-Reflection of Video-Recorded 
+High-Fidelity Simulations and Development of Clinical 
+Judgment. Journal of Nursing Education, 55, 9, 522-527.  
+
+[5] Cooper, J., and Taqueti, V. 2008. A brief history of the 
+development of mannequin simulators for clinical education 
+and training. Postgraduate medical journal, 84, 997, 563-570.  
+
+[6] Dieckmann, P. 2009. Using simulations for education, training 
+and research: Pabst Science Publishers. 
+
+[7] Fanning, R. M., and Gaba, D. M. 2007. The role of debriefing 
+in simulation-based learning. Simulation in healthcare, 2, 2, 
+115-125.  
+
+[8] Gaba, D. M. 2004. The future vision of simulation in health 
+care. Quality and safety in Health care, 13, suppl 1, i2-i10.  
+
+[9] Grant, J. S., Moss, J., Epps, C., and Watts, P. 2010. Using 
+video-facilitated feedback to improve student performance 
+following high-fidelity simulation. Clinical Simulation in 
+Nursing, 6, 5, e177-e184.  
+
+[10] LeFlore, J. L., Anderson, M., Zielke, M. A., Nelson, K. A., 
+Thomas, P. E., Hardee, G., and John, L. D. 2012. Can a virtual 
+patient trainer teach student nurses how to save lives—teaching 
+nursing students about pediatric respiratory diseases. 
+Simulation in Healthcare, 7, 1, 10-17.  
+
+[11] Lockyer, L., Heathcote, E., and Dawson, S. 2013. Informing 
+pedagogical action: Aligning learning analytics with learning 
+design. American Behavioral Scientist, 57, 10, 1439-1459.  
+
+[12] Martinez-Maldonado, R., Dimitriadis, Y., Martinez-Monés, 
+A., Kay, J., and Yacef, K. 2013. Capturing and analyzing verbal 
+and physical collaborative learning interactions at an enriched 
+interactive tabletop. International Journal of Computer-
+Supported Collaborative Learning, 8, 4 (Nov. 2013), 455-485.  
+
+[13] Martinez-Maldonado, R., Goodyear, P., Kay, J., Thompson, 
+K., and Carvalho, L. 2016. An Actionable Approach to 
+Understand Group Experience in Complex, Multi-surface 
+Spaces. In Proc. of CHI' 16 (San Jose, USA, May 7-12). NY: 
+ACM, 2062-2074. 
+
+[14] Martinez-Maldonado, R., Schneider, B., Charleer, S., Shum, 
+S. B., Klerkx, J., and Duval, E. 2016. Interactive Surfaces and 
+Learning Analytics: Data, Orchestration Aspects, Pedagogical 
+Uses and Challenges. In Proc. of LAK' 16 (Edinburgh, UK, 
+April 25-29). NY: ACM, 124-133  
+
+[15] Prieto, L. P., Sharma, K., Dillenbourg, P., and Jesús, M. 
+2016. Teaching analytics: towards automatic extraction of 
+orchestration graphs using wearable sensors. In Proc. of LAK' 
+16 (Edinburgh, UK, April 25-29). 148-157. 
+
+[16] von Zadow, U., Buron, S., Harms, T., Behringer, F., 
+Sostmann, K., and Dachselt, R. 2013. SimMed: combining 
+simulation and interactive tabletops for medical education. In 
+Proc. of CHI' 13. NY: ACM, 1469-1478. 
+
+
+

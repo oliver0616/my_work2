@@ -1,0 +1,397 @@
+
+Lucene implements the following IR models: 
+
+(1) Vector Space Model (VSM) and Boolean Model
+
+Lucene combines Boolean model with Vector Space Model. Documents selected by the Boolean model are scored by VSM.
+
+The Java class DefaultSimilarity implements VSM. DefaultSimilarity extends the abstract class TFIDFSimilarity. TFIDFSimilarity in turn extends another abstract class named Similarity
+
+(2) Probabilistic IR Model (aka BM25 Model)
+
+The Java class BM25Similarity implements BM25 model. BM25Similarity extends the Similarity abstract class
+
+(3) Language Models
+
+Implements through LMDirichletSimilarity and LMJelinekMercerSimilarity classes. The classes differ in the smoothing methods employed.
+
+LMDirichletSimilarity class employs Bayesian smoothing using Dirichlet priors, whereas LMJelinekMercerSimilarity class uses the Jelinek-Mercer smoothing method.
+
+
+(4) Divergence From Randomness (DFR) Model
+
+The DFRSimilarity class implements DFR. The DFR scoring formula is involves three separate components: the basic model, the aftereffect and an additional normalization component. These components are represented by the Java classes BasicModel, AfterEffect and Normalization, respectively.
+
+
+(5) Information-Based (IB) Model 
+
+IBSimilarity class implements this model. There are three components in the model: Distribution, Lambda, and Normalization.
+
+
+
+
+Lucene's default scoring model is TFIDFSimilarity
+
+Lucene also provides other implementations out of the box
+
+Lucene implements BM25 model as BM25Similarity
+
+Lucene implemented two language models, LMDirichletSimilarity and
+LMJelinekMercerSimilarity, based on different distribution smoothing methods.
+
+Divergence from randomness model is implemented as DFRSimilarity. made up of three components: BasicModel, AfterEffect, and Normalization
+
+The information-based model in Lucene consists of three components: Distribution, Lambda, and Normalization. Name of the Similarity class for this model is called IBSimilarity
+
+Steps: acquire raw content; build document; analyze document; index document; build query; execute query; display results
+
+Notion of acquiring content, building a document, analyzing its content, and indexing the document.
+
+The document typically consists of several separately named fields with values, such as title, body, abstract, author, and url.
+
+carefully design how to divide the raw content into documents and fields as well as how to compute the value for each of those fields
+
+you might run semantic analyzers to pull out (from the body text field) proper names, places, dates, times, locations, and so forth into separate fields in the document.
+
+ Boosting may be done statically (per document and field) at indexing time, or dynamically during searching.
+
+Lucene automatically statically boost fields that are shorter over fields that are longer.
+
+projects like DBSight, Hibernate Search, LuSQL, Compass, and Oracle/Lucene integration make indexing and searching your tables simple
+
+Textual fields' content must be analyzed first, indexing follows next.
+
+Tokens. word segmentation
+
+single and multiterm queries, phrase queries, wildcards, fuzzy queries, result ranking, and sorting
+
+QueryParser, to process the user's text into a query object
+
+Lucene's approach combines the vector space and pure Boolean models
+
+Lucene administration, analytics on user and system activities
+
+Lucene has a number of configuration options that an administration interface would expose. During indexing you may need to tune the size of the RAM buffer, how many segments to merge at once, how often to commit changes, or when to optimize and purge deletes from the index.
+
+Lucene-specific metrics that could feed the analytics interface include:
+
+How often which kinds of queries (single term, phrase, Boolean queries, etc.) are run
+
+Queries that hit low relevance
+
+Queries where the user didn't click on any results (if your application tracks click-throughs)
+
+How often users are sorting by specified fields instead of relevance
+
+The breakdown of Lucene's search time
+
+Lucene provides no facilities for scaling. However, both Solr and ES do.
+
+The Document class represents a collection of fields. Think of it as a virtual document -- a chunk of data, such as a web page, an email message, or a text file—that you want to make retrievable at a later time. Fields of a document represent the document or metadata associated with that document.
+
+A document is simply a container for multiple fields; Field is the class that holds the textual content to be indexed.
+
+IndexSearcher is to searching what IndexWriter is to indexing.
+
+You can think of IndexSearcher as a class that opens an index in a read-only mode. It requires a Directory instance, holding the previously created index, and then offers a number of search methods, some of which are implemented in its abstract parent class Searcher
+
+A Term is the basic unit for searching. Similar to the Field object, it consists of a pair of string elements: the name of the field and the word (text value) of that field.
+
+TermQuery object is derived from the abstract parent class Query
+
+The TopDocs class is a simple container of pointers to the top N ranked search results
+
+A field must be indexed if you intend to search on it
+
+field may also optionally store term vectors, which are collectively a miniature inverted index for that one field, allowing you to retrieve all of its tokens -- enables certain advanced use cases, like searching for documents similar to an existing one
+
+Separately, the field's value may be stored, meaning a verbatim copy of the unanalyzed value is written away in the index so that it can later be retrieved
+
+
+A StringField is not tokenized and it is a good tool for exact match and sorting. A TextField is tokenized and it is useful for storing any unstructured text for indexing
+
+Lucene provides four Field classes for storing numeric values -- IntField, FloatField, LongField, and DoubleField
+
+Lucene treats numeral as term internally and indexes them in a trie structure (also called ordered tree data structure)
+
+When you retrieve a document from the index, only the stored fields will be present. For example, fields that were indexed but not stored won't be in the document
+
+each document you add to the index is a blank slate and can be completely different from the document before it: it can have whatever fields you want, with any indexing and storing and term vector options
+
+Lucene's flexible schema also means a single index can hold documents that represent different entities
+
+LowerCaseFilter, StopFilter.
+
+Every Lucene index consists of one or more segments. Each segment is a standalone index, holding a subset of all indexed documents. There are separate files to hold the different parts of the index (term vectors, stored fields, inverted index, and so on).
+
+There is one special file, referred to as the segments file and named segments_<N>, that references all live segments. This file is important! Lucene first opens this file, and then opens each segment referenced by it. The value <N>, called the generation, is an integer that increases by one every time a change is committed to the index.
+
+addDocument(Document) -- Adds the document using the default analyzer, which you specified when creating the IndexWriter, for tokenization.
+
+addDocument(Document, Analyzer) -- Adds the document using the provided
+analyzer for tokenization.
+
+There are numerous IndexWriter constructors. Some explicitly take a create argument, allowing you to force a new index to be created over an existing one. More advanced constructors allow you to specify your own IndexDeletionPolicy or IndexCommit for expert use cases
+
+deleteDocuments(Term)
+deleteDocuments(Term[])
+deleteDocuments(Query)
+deleteDocuments(Query[])
+deleteAll()
+
+
+updateDocument(Term, Document) -- first deletes all documents containing the provided term and then adds the new document using the writer's default analyzer
+
+When Lucene builds the inverted index, by default it stores all necessary information to implement the Vector Space Model.
+
+Term vectors are a mix between an indexed field and a stored field. They’re similar to a stored field because you can quickly retrieve all term vector fields for a given document: term vectors are keyed first by document ID. But then, they’re keyed secondarily by term, meaning they store a miniature inverted index for that one document.
+
+term vectors store the actual separate terms that were produced by the analyzer, allowing you to retrieve all terms for each field, and the frequency of their occurrence within the document, sorted in lexicographic order.
+
+By changing a document's boost factor, you can instruct Lucene to consider it more or less important with respect to other documents in the index when computing relevance.
+
+Just as you can boost documents, you can also boost individual fields.
+
+Lucene implements the ACID transactional model, with the restriction that only one transaction (writer) may be open at once.
+
+Search API:
+
+IndexSearcher is the gateway to searching an index. All searches come through an IndexSearcher instance using any of the several overloaded search methods.
+
+Query (and subclasses) are concrete subclasses encapsulate logic for a particular query type. Instances of Query are passed to an IndexSearcher's search method.
+
+QueryParser processes a human-entered (and readable) expression into a concrete Query object.
+
+TopDocs holds the top scoring documents, returned by IndexSearcher.search. 
+
+ScoreDoc provides access to each search result in TopDocs.
+
+a TopDocs instance is an ordered array of ScoreDoc
+
+IndexSearcher is the central class used to search for documents in an index
+
+Lucene provides several built-in Query types, TermQuery being the most basic.
+
+How to transform a user-entered query expression into a Query object?
+
+Lucene's search methods require a Query object. Parsing a query expression is the act of turning a user-entered textual query such as ``mock OR junit'' into an appropriate Query object instance; in this case, the Query object would be an instance of BooleanQuery with two optional clauses, one for each term
+
+Lucene includes an interesting built-in feature that parses query expressions, available through the QueryParser class
+
+Query expressions:
+
+java -- match documents that contain the term java in the default field
+
+java junit (java OR junit) -- match documents that contain the term java or junit, or both, in the default field
+
++java +junit (java AND junit) -- match documents that contain both java and junit in the default field
+
+title:ant -- match documents that contain the term ant in the title field
+
+
+title:extreme –subject:sports (title:extreme AND NOT subject:sports) -- match documents that contain extreme in the title field and do not have sports in the subject field
+
+(agile OR extreme) AND methodology -- match documents that contain methodology and must also contain agile and/or extreme, all in the default field
+
+title:``junit in action" -- match documents that contain the exact phrase “junit in action” in the title field
+
+title:``junit action"~5 -- match documents that contain the terms junit and action within five positions of one another, in the title field
+
+java* -- match documents that contain terms that begin with java, like javaspaces, javaserver, java.net, and the exact term java itself
+
+java~ -- match documents that contain terms that are close to the word java, such as lava
+
+lastmodified: [1/1/09 TO 12/31/09] -- match documents that have lastmodified field values between the dates January 1, 2009 and December 31, 2009
+
+Opening an IndexReader is costly, so you should reuse a single instance for all of your searching when possible, and limit how often you open a new one
+
+IndexReader always searches a point-in-time snapshot of the index as it existed when the IndexReader was created
+
+IndexSearcher.search() is a polymorphic method
+
+TopDocs class exposes a small number of methods/attributes for retrieving the search results -- totalHits, scoreDocs, and getMaxScore()
+
+Paging through ScoreDocs is a common requirement
+
+Near-real-time search enables you to search segments that are newly created but not yet committed.
+
+Factors in Lucene scoring formula: how many times the term t occurs in the document (tf); idf (very rate terms have high idf); boost values of document/field; length normalization of a field -- based on the number of terms within the field - shorter fields (fewer tokens) get a bigger boost; coordination factor, based on the number of query terms the document contains. This factor gives an AND-like boost
+to documents that contain more of the search terms than other
+documents; normalization value for a query, given the sum of the squared weights of each of the query terms.
+
+Most of these scoring formula factors are controlled and implemented as a subclass of the abstract Similarity class. DefaultSimilarity is the implementation used unless otherwise specified
+
+IndexSearcher has an explain method, which requires a Query and a document ID and returns an Explanation object.
+
+Lucene's built-in Query types, TermQuery, TermRangeQuery, NumericRangeQuery, PrefixQuery, BooleanQuery, PhraseQuery, WildcardQuery, FuzzyQuery, and the unusual yet aptly named MatchAllDocsQuery
+
+A term is a field name and a text-value pair
+
+Terms are ordered lexicographically in the index
+
+TermRangeQuery -- searching for all books whose title begins with any letter from d to j
+
+NumericRangeQuery, which is numeric equivalent of TermRangeQuery
+
+PrefixQuery matches documents containing terms beginning with a specified string
+
+BooleanQuery -- combining other queries. MUST (and), SHOULD (optional/or), MUST\_NOT (not/negation)
+
+PhraseQuery, differs from the queries we’ve covered so far in that it pays attention to the positional details of multiple-term occurrences
+
+An index by default contains positional information of terms unless omitTermFreqAndPositions option was used when creating the index. PhraseQuery uses this information to locate documents where terms are within a certain distance of one another
+
+PhraseQuery supports multiple-term phrases. Regardless of how many terms are used for a phrase, the slop factor is the maximum total number of moves allowed to put the terms in order
+
+Phrase queries are scored based on the edit distance needed to match the phrase
+
+"quick fox"~3 is a PhraseQuery with the terms quick and fox and a slop factor of 3
+
+WildcardQuery: two standard wildcard characters are used: * for zero or more characters, and ? for zero or one character. Performance degradations can occur when you use WildcardQuery
+
+FuzzyQuery matches terms similar to a specified term. The Levenshtein distance algorithm determines how similar terms in the index are to a specified target term. FuzzyQuery enumerates all terms in an index to find terms within the allowable threshold. Use this type of query sparingly or at least with the knowledge of how it works and the effect it may have on performance
+
+A trailing tilde (~) creates a fuzzy query on the preceding term
+
+MatchAllDocsQuery simply matches every document in the index
+
+
+QueryParser: Whenever special characters are used in a query expression, you need to provide an escaping mechanism so that the special characters can be used in a normal fashion. QueryParser uses a backslash to escape special characters within terms. The characters that require escaping are as follows:
+\ + - ! ( ) : ^ ] { } ~ * ?
+
+
+The toString() methods (particularly the String-arg one) are handy for visual debugging of complex API queries as well as getting a handle on how QueryParser interprets query expressions.
+
+Lucene's BooleanQuery lets you construct complex nested clauses; likewise, QueryParser enables this same capability with textual query expressions via grouping
+
+the default field name is provided when you create the QueryParser instance. Parsed queries are not restricted, however, to searching only the default field. Using field selector notation, you can specify terms in nondefault fields.
+
+QueryParser is a quick and effortless way to give users powerful query construction, but it is not right for all scenarios. QueryParser cannot create every type of query that can be constructed using the API. In chapter 5, we detail a handful of API-only queries that have no QueryParser expression capability
+
+Analysis
+=======
+
+Analysis is the process of converting field text into its most fundamental indexed representation -- terms -- to enable indexing
+
+only the terms that are indexed that are searchable
+
+tokenization -- extracting words, discarding punctuation, removing accents from characters, lowercasing (also called normalizing), removing common words, reducing words to a root form (stemming), or changing words into the basic form (lemmatization).
+
+Tokens, combined with their associated field name, are terms. terms are the primitive building blocks for searching
+
+built-in analyzers vs. custom analyzers
+
+through custom analyzers, incorporate synonym injection, sounds-like searching, stemming, and stop-word filtering
+
+important difference between parsing a document and analyzing it
+
+Analyzers are used to analyze a specific field at a time and break things into tokens only within that field; creating new fields is not possible within an analyzer
+
+A stream of tokens is the fundamental output of the analysis process
+
+parsing of documents prior to analysis is required -- defining fields and extracting field values
+
+WhitespaceAnalyzer -- splits text into tokens on whitespace characters and makes no other effort to normalize the tokens, no lowercasing
+
+SimpleAnalyzer -- splits tokens at nonletter characters, then lowercases each token. discards numeric characters but keeps all other characters
+
+StopAnalyzer -- same as SimpleAnalyzer, except it removes common words
+
+StandardAnalyzer -- most sophisticated core analyzer. lowercases each token and removes stop words and punctuation. does NER
+
+When a field is not analyzed, causing its entire value to be indexed as a single token
+
+QueryParser uses an analyzer to break the text it encounters into terms for searching.
+
+A token carries with it a text value (the word itself) and some metadata: the start and end character offsets in the original text, a token type (e.g., string) and a position increment.
+
+offsets are useful for highlighting matched tokens in search results
+
+the position relative to the previous token is recorded as the position increment value. Most of the built-in tokenizers leave the position increment at the default value of 1, indicating that all tokens are in successive positions, one after the other.
+
+Position increments factor directly into performing phrase queries and span queries, which rely on knowing how far terms are from one another within a field. Position increments greater than 1 allow for gaps and can be used to indicate where words have been removed.
+
+An analyzer chain starts with a Tokenizer, to produce initial tokens from the characters read from a Reader, then modifies the tokens with any number of chained TokenFilters
+
+
+Lucene's built-in token attributes: TermAttribute, PositionIncrementAttribute, OffsetAttribute, TypeAttribute, FlagsAttribute, and PayloadAttribute
+
+SynonymAnalyzer's purpose is to first detect the occurrence of words that have synonyms, and second to insert the synonyms at the same position
+
+There is an interesting alternative, called shingles, which are compound tokens created from multiple adjacent tokens. stop words are combined with adjacent words to make new tokens, such as the-quick
+
+a document may have more than one Field instance with the same name
+
+Another frequently encountered analysis challenge is how to use a different analyzer for different fields
+
+During indexing, the granularity of analyzer choice is at the IndexWriter or per-document level. With QueryParser, there is only one analyzer applied to all encountered text
+
+
+part numbers, URLs, and Social Security numbers should all be indexed and searched as a single token
+
+ensuring that character-set encoding is done properly so that external data, such as files, are read into Java properly
+
+language detection issue for non-English languages
+
+
+Advanced search techniques (Chapter 5)
+======================================
+
+Using term vectors, you can find documents similar to an existing one, or automatically categorize documents
+
+Function queries allow you to use arbitrary logic when computing scores for each hit, enabling you to boost relevance scores according to recency
+
+field cache is gone from lucene core version 5; it is a useful internal API that you can use when implementing advanced search features in your application -- boost documents according to how recently they were published; have a unique identifier for every document that you’ll need to access when searching, to retrieve values stored in a separate database
+
+Use DocValues fields and APIs instead of field cache
+
+The field cache may consume quite a bit of memory; each entry allocates an array of the native type, whose length is equal to the number of documents in the provided reader. The field cache doesn’t clear its entries until you close your reader and remove all references to that reader from your application and garbage collection runs
+
+By default, Lucene sorts the matching documents in descending relevance score order
+
+If the order in which the documents were indexed is relevant, you can use Sort.INDEXORDER
+
+Natural order is descending for relevance but increasing for all other
+fields
+
+The natural order can be reversed per Sort object by specifying true for the second argument
+
+a whole family of queries based on SpanQuery. A span in this context is a starting and ending token position in a field. SpanQuerys are used to provide richer, more expressive position-aware functionality than PhraseQuery
+
+Contrasting with TermQuery, which simply matches documents, SpanTermQuery matches exactly the same documents but also keeps track of the positions of every term occurrence that matches
+
+SpanTermQuery must enumerate all the occurrences of a term within the document
+
+SpanTermQuery -- Used in conjunction with the other span query types. On its own, it is functionally equivalent to TermQuery
+
+SpanFirstQuery-- Matches spans that occur within the first part of a field
+
+SpanNearQuery -- Matches spans that occur near one another
+
+SpanNotQuery -- Matches spans that do not overlap one another
+
+FieldMaskingSpanQuery -- Wraps another SpanQuery but pretends a different field was matched. This is useful for doing span matches across fields, which is otherwise not possible
+
+SpanOrQuery -- Aggregates matches of span queries
+
+Some applications need to maintain separate Lucene indexes, yet want to allow a single search to return combined results from all the indexes. Lucene provides two classes -- MultiSearcher and ParallelMultiSearcher
+
+Term Vectors: finding similar documents, and automatically categorizing documents
+
+Lucene by itself is a library, as it is not intended to run as a stand-alone service
+
+ES and Solr -- open-source search engine projects
+
+Solr has a nicer admin user interface, while ES provides a simpler RESTful interface for its entire API
+
+Communicate with ES via HTTP protocol. use any HTTP clients. CURL is one such tool
+
+PUT is for inputting configuration and settings, GET is for retrieval, DELETE is for data removal, and POST is for data ingestion
+
+ES has more emphasis on sharding for distributed architecture, although Solr also provides SolrCloud. ES' simplicity to scale. sharding, replica, and clustering. a peer-to-peer based system in which the cluster as a whole is self-aware.
+
+ES is built with a pluggable architecture. ES community has built numerous plugins to extend its functions
+
+ES is becoming a big player in data analytics
+
+ES accepts data in JSON format

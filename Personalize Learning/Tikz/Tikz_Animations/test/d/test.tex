@@ -1,0 +1,73 @@
+\documentclass[hyperref={pdfpagelabels=false}]{beamer}
+\usepackage{lmodern}
+
+\usepackage[utf8]{inputenc} % this is needed for german umlauts
+\usepackage[ngerman]{babel} % this is needed for german umlauts
+\usepackage[T1]{fontenc}    % this is needed for correct output of umlauts in pdf
+
+\usepackage{verbatim}
+\usepackage{tikz}
+\usetikzlibrary{arrows,shapes}
+
+% Define some styles for graphs
+\tikzstyle{vertex}=[circle,fill=black!25,minimum size=20pt,inner sep=0pt]
+\tikzstyle{selected vertex} = [vertex, fill=red!24]
+\tikzstyle{blue vertex} = [vertex, fill=blue!24]
+\tikzstyle{edge} = [draw,thick,-]
+\tikzstyle{weight} = [font=\small]
+\tikzstyle{selected edge} = [draw,line width=5pt,-,red!50]
+\tikzstyle{ignored edge} = [draw,line width=5pt,-,black!20]
+
+% see http://deic.uab.es/~iblanes/beamer_gallery/index_by_theme.html
+\usetheme{Frankfurt}
+\usefonttheme{professionalfonts}
+
+% disables bottom navigation bar
+\beamertemplatenavigationsymbolsempty
+
+% http://tex.stackexchange.com/questions/23727/converting-beamer-slides-to-animated-images
+\setbeamertemplate{navigation symbols}{}%
+
+\begin{document}
+\pgfdeclarelayer{background}
+\pgfsetlayers{background,main}
+
+\begin{frame}
+    \begin{figure}
+        \begin{tikzpicture}[->,scale=1.8, auto,swap]
+            % Draw the vertices. First you define a list.
+            \foreach \pos/\name in {{(0,0)/a}, {(0,2)/b}, {(1,2)/c},
+                                    {(1,0)/d}, {(2,1)/e}, {(3,1)/f}, 
+                                    {(4,2)/g}, {(5,2)/h}, {(4,0)/i},
+                                    {(5,0)/j}}
+                \node[vertex] (\name) at \pos {$\name$};
+
+            % Connect vertices with edges and draw weights
+            \foreach \source/ \dest /\pos in {a/b/, b/c/, c/d/, d/a/,
+                                        c/e/bend left, d/e/, e/c/,
+                                        e/f/, f/g/, f/i/,
+                                        g/f/bend right, i/f/bend left,
+                                        g/h/, h/j/, j/i/, i/g/}
+                \path (\source) edge [\pos] node {} (\dest);
+
+            % Start animating the edge selection. 
+            % For convenience we use a background layer to 
+            % highlight edges. This way we don't have to worry about 
+            % the highlighting covering weight labels. 
+            \begin{pgfonlayer}{background}
+                \foreach \source / \dest / \fr / \pos in {d/a/1/,
+                        a/b/2/, b/c/3/, c/d/4/, d/e/5/, e/c/6/, 
+                        c/e/7/bend left, e/f/8/, f/g/9/,
+                        g/f/10/bend right, f/i/11/, i/g/12/, g/h/13/, 
+                        h/j/14/, j/i/15/, i/f/16/bend left}
+                    \path<\fr->[selected edge] (\source.center) edge 
+                                        [\pos] node {} (\dest.center);
+            \end{pgfonlayer}
+        \end{tikzpicture}
+    \end{figure}
+    %Lorem ipsum dolor sit amet, consetetur sadipscing elitr, 
+    %sed diam nonumy eirmod tempor invidunt ut labore et dolore
+    %magna aliquyam erat, sed diam voluptua. At vero eos et 
+    %accusam et.
+\end{frame}
+\end{document}

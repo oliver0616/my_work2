@@ -1,0 +1,432 @@
+
+Open Academic Early Alert System:  
+
+Technical Demonstration 
+Sandeep M. Jayaprakash 
+Learning Analytics Specialist  
+
+Marist College, Poughkeepsie, NY, USA. 
+
+sandeep.jayaprakash1@marist.edu 
+
+Eitel J.M. Lauría 
+School of Computer Science & Mathematics 
+
+Marist College, Poughkeepsie, NY, USA. 
+
+eitel.lauria@marist.edu     
+ 
+ 
+
+ABSTRACT 
+This paper synthesizes some of the technical decisions, design 
+
+strategies & concepts developed during the execution of Open 
+
+Academic Analytics Initiative (OAAI), a research program aimed 
+
+at improving student retention rates in colleges, by deploying an 
+
+open-source academic early alert system to identify the students at 
+
+academic risk. The paper explains the prototype demonstration of 
+
+the system, detailing several dimensions of data mining & analysis 
+
+such as:  data integration, predictive modelling and scoring with 
+
+reporting. The paper should be relevant to practitioners and 
+
+academicians who want to better understand the implementation of 
+
+an OAAI academic early-alert system. 
+
+Categories and Subject Descriptors 
+J.1 [Administrative Data Processing] Education; K.3.1 
+
+[Computer Uses in Education] Collaborative learning, 
+
+Computer-assisted instruction (CAI), Distance Learning 
+
+General Terms 
+Algorithms, Measurement, Design, Experimentation, Interventions   
+
+Keywords 
+Learning Analytics, Open Source, Data Mining, Course 
+
+Management Systems, Portability, Intervention, Retention 
+
+1. INTRODUCTION 
+       The Open Academic Analytics Initiative (OAAI) was a two-
+
+year project supported by the EDUCAUSE Next Generation 
+
+Learning Challenges (NGLC) program, funded primarily by the 
+
+Bill and Melinda Gates Foundation. The 2 major goals involved 
+
+during the project were: (a) develop and deploy an open-source 
+
+academic early-alert system and (b) research the portability of the 
+
+predictive analytics models across all of higher education. An 
+
+initial predictive model was developed by analyzing historical 
+
+student data collected from Marist College, a four-year private 
+
+liberal arts college. The model was released under a Creative 
+
+Commons License using open source XML-based standard called 
+
+Predictive Modelling Markup Language (PMML). The model was 
+
+then deployed at 4 partner institutions, 2 community colleges and 2 
+
+Historical Black Colleges and Universities, as means to predict, 
+
+early in the semester, which students were at academic risk to not 
+
+complete their course successfully.  The identified were provided 
+
+with intervention strategies developed in an effort to impact student 
+
+academic performance in the course. A detailed effectiveness study 
+
+was performed to deduce the intervention strategies used and also 
+
+the portability factors of the predictive model, when the models 
+
+were deployed at institutions with significantly different academic 
+
+context (e.g. student population, course size, institution type), as 
+
+compared to Marist, where the model was originally developed.  
+
+2. EARLY ALERT SYSTEM OVERVIEW 
+       Figure 1 depicts a brief overview of the OAAI academic alert 
+
+system. Four datasets were extracted from two major sources: (1) 
+
+Student Information System (SIS) consisting of: (a) student 
+
+demographic and aptitude data; (b) course grades and course related 
+
+data; (2) Sakai, an enterprise level open source Learning 
+
+Management System (LMS) consisting of: (c) student interaction 
+
+data generated in the course; (d) Student’s scores on specific 
+gradebook items in the grading rubric like assignments, exams etc.  
+
+Figure 1: OAAI Academic Alert System Overview 
+
+       The OAAI research uses an open source business analytics 
+
+platform called Pentaho Business Intelligence suite, as its core 
+
+technology, and leverages its advanced data integration and data 
+
+mining capabilities. Predictive models were developed, verified & 
+
+validated using WEKA, Pentaho’s data mining module and IBM 
+SPSS Modeler, and tested for compatibility with other data mining 
+
+tools. Pentaho Kettle (the data integration component) was used to 
+
+transform the extractions and load it into the predictive modelling 
+
+stages of the project. Finally Pentaho Report Designer (PRD) tool 
+
+was used to generate course specific, simple, pixel perfect 
+
+Academic Alert Reports (AAR), containing the details of potential 
+
+students at academic risk as classified by the predictive models. 
+
+       The paper will focus on a prototype demonstration of data 
+
+processing and predictive analysis aspects employed in the scope 
+
+of the research. The demonstration is divided into 2 categories: (1) 
+
+developing the open source academic alert model; (2) deploying the 
+
+academic alert system. The paper will conclude with a brief 
+
+overview of the future research plans.  
+
+ 
+
+3. BUILDING AN EARLY ALERT MODEL  
+     This stage involves training the predictive models by analyzing 
+the historical data collected at Marist College. The demonstration 
+
+involves two steps, Data integration & Predictive modelling.  
+
+ 
+
+Permission to make digital or hard copies of all or part of this work for 
+
+personal or classroom use is granted without fee provided that copies are 
+
+not made or distributed for profit or commercial advantage and that copies 
+
+bear this notice and the full citation on the first page. To copy otherwise, 
+
+or republish, to post on servers or to redistribute to lists, requires prior 
+
+specific permission and/or a fee. 
+
+LAK '14, Mar 24-28 2014, Indianapolis, IN, USA 
+
+ACM 978-1-4503-2664-3/14/03.  
+
+http://dx.doi.org/10.1145/2567574.2567578 
+
+267
+
+http://dx.doi.org/10.1145/2567574.2567578
+
+
+3.1 Data Integration  
+     The data mining processes is largely dependent on the quality 
+of the input data and the predictive models are only as good as its 
+
+training data [1]. The data integration process ensures data quality 
+
+enhancements that are crucial for a successful data mining process.  
+
+     The Marist student data of worth 3 semesters’ (Fall 2010, 2011 
+& Spring 2011) were extracted from Sakai LMS and Banner SIS. 
+
+The 4 sources of datasets defined earlier were extracted, for each of 
+
+the semester, into a local data repository (SQL Server 2008). 
+
+Pentaho Kettle, a flow based Extraction Transformation Load 
+
+(ETL) programming tool was used to perform the data integration.  
+
+Kettle provides a rich set of data manipulation plug-ins & filters to 
+
+perform various ETL operations. The data manipulation process 
+
+can be packaged into a series of reusable jobs and transformations, 
+
+scheduled to run at various intervals, thereby streamlining the data 
+
+integration process. Kettle also supports variety of standard 
+
+input/output formats to export the final ETL outcomes. 
+
+     The extraction process was followed by a data transformation 
+
+and clean-up process to enrich the data quality. The data variables 
+
+were recoded as necessary, re-scaled, transformed, and handled for 
+
+missing values and outliers. Various table join operations were 
+
+formed to create a single large integrated dataset consisting of 
+
+unique student-course record combination augmented with related 
+
+data from all the 4 source files. Variability issues arising due to 
+
+differences in Sakai tools usage and student grades assessment 
+
+criteria by the instructors across courses were handled using 
+
+statistical computing approaches [1]. The ACADEMIC_RISK 
+
+(target class variable) threshold criteria was defined in historical 
+
+Marist data by categorizing the students who secured grades C or 
+
+above as at good standing and those who secured below C grade as 
+
+at academic risk. The resulting data was later loaded into the 
+
+Predictive modelling stages to train and test the academic alert 
+
+models. Please refer [1] [2] for more details regarding the dataset 
+
+fields, recoding, transformation and derivation of predictors.   
+
+3.2 Predictive Modelling 
+       The demonstration of predictive modelling stages include 
+
+additional data pre-processing stages before feeding the data into 
+
+the supervised machine learning algorithms to train predictive 
+
+models. The stages involved are as follows:  
+
+       Partitioning Data: The consolidated datasets from the data 
+
+integration stages were partitioned to efficiently train, test and 
+
+validate the predictive models. The two partitions were: (a) training 
+
+data consisting of 2 semesters’ worth of data after data integration; 
+(b) one semester worth of data reserved for testing and validation.  
+
+       Balancing Training data: The training data is usually 
+
+unbalanced in nature, as the at-risk population at Marist is very 
+
+small when compared to those in good standing. This data 
+
+imbalance, if not handled, creates a bias while training predictive 
+
+models. Hence, the minority class is balanced using oversampling 
+
+(SMOTE) & sub-sampling (Resample) filters provided by WEKA. 
+
+However, the integrity of the testing data is kept intact in this phase. 
+
+       Training Predictive models & Evaluation: The balanced 
+
+training & testing datasets containing the pre-selected predictors 
+
+are fed into supervised machine learning processes like logistic 
+
+regression, support vector machines (SVM) and C4.5 decision tree 
+
+algorithms. These powerful discriminatory models learn patterns 
+
+for academic risk by analyzing the training data, and then identify 
+
+the students at risk in the testing data. The predicted outcomes from 
+
+the various trained models are compared against the actual 
+
+academic risk outcomes to determine the prediction performance of 
+
+the model. The WEKA output yields a confusion matrix which can 
+
+be used to calculate prediction potency metrics such as accuracy, 
+
+recall, false positive rates and precision. Suitable, validated, best fit 
+
+models demonstrating sufficient potency measures are saved and a 
+
+library of models are created and stored for scoring incoming 
+
+student data. These models are then exported in standard PMML or 
+
+WEKA specific formats. See [1] [2] for details regarding modelling 
+
+algorithms, evaluations and software platforms used by the OAAI. 
+
+4. EARLY ALERT SYSTEM DEPLOYMENT 
+       The deployment stages leverage the alert models built to score 
+
+the new incoming student-course datasets that need to be classified, 
+
+in order to identify the student population which is at academic risk. 
+
+There are 3 stages involved: data integration, scoring & reporting. 
+
+       The data integration stages reuse the ETL flows from the model 
+
+building stages to transform the data extracted, derive the required 
+
+predictors and prepare the scoring dataset. A suitable predictive 
+
+model is selected from the library of predictive models and is 
+
+embedded within the Kettle transformation flow using the WEKA 
+
+scoring plugin. The incoming dataset is fed to the trained predictive 
+
+model and correlations are found by analyzing the supplied 
+
+predictors to identify the students at academic risk. The model 
+
+classified outcomes contains a probability score of a student 
+
+passing and failing in a course, which can be attributed to the 
+
+models confidence in the prediction. The probabilities are used to 
+
+further categorize the students into academic risk confidence levels 
+
+(HIGH, MEDIUM & LOW).  
+
+       The predictions can be exported as JSON, XML, Excel, CSV, 
+
+database table formats using Kettle for more interactive reporting. 
+
+Pentaho Report Designer (PRD) framework is used to create 
+
+reporting templates that can be embedded within the Kettle flows. 
+
+OAAI currently uses simple excel output report templates 
+
+containing the list of students who are classified as at academic risk. 
+
+The report is then shared with the faculty to devise suitable 
+
+intervention strategies. Refer [1] [2] [3] for in-depth research 
+
+findings, detailing the model results and portability factors. 
+
+5. FUTURE RESEARCH INTERESTS 
+       The paper outlines the underlying research methodologies and  
+
+design strategies in building and deploying the early alert academic 
+
+predictive models, on an open source platform through OAAI, 
+
+using real world datasets from Marist college and its partner 
+
+institutions. The portability results have been promising and our 
+
+next focus is on large scale operationalization of the research, by 
+
+providing vendor agnostic packaging of the early alert models 
+
+ensuring easy integration with the existing LMSs’ in the market.   
+
+6. REFERENCES 
+[1] Jayaprakash S., Moody E., Lauría E., Regan J., Baron J., 
+
+"Early Alert of Academically At-Risk Students: An Open 
+
+Source Analytics Initiative",  Journal of Learning Analytics 
+
+(forthcoming) 
+
+[2] Lauría E., Baron J., Devireddy M., Sundararaju V., 
+Jayaprakash S. (2012), "Mining academic data to improve 
+
+college student retention: An open source perspective", 
+
+Proceedings of 2nd International Conference on Learning 
+
+Analytics and Knowledge. ACM New York, NY, USA, 139-
+
+142. doi:10.1145/2330601.2330637    
+ 
+
+ 
+
+[3] Lauría, E., Moody, E., Jayaprakash, S., Jonnalagadda, N., & 
+Baron, J. (2013). Open Academic Analytics Initiative: Initial 
+
+Research Findings. Proceedings of the 3rd International 
+
+Conference on Learning Analytics and Knowledge. ACM 
+
+New York, NY, USA, 150-154   
+
+doi:10.1145/2460296.2460325. 
+
+268
+
+
+
+
+

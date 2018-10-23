@@ -1,0 +1,525 @@
+
+Ubiquitous Learning Analytics in the Context of Real-
+world Language Learning
+
+Kousuke Mouri 
+Kyushu University 
+
+744 Motooka, Nishi-Ku 
+Fukuoka, 819-0395, Japan 
+
++81-92-802-5875 
+mourikousuke@gmail.com 
+
+Hiroaki Ogata 
+Kyushu University 
+
+744 Motooka, Nishi-Ku 
+Fukuoka, 819-0395, Japan 
+
++81-92-802-5875 
+hiroaki.ogata@gmail.com 
+
+Noriko Uosaki 
+Osaka University  
+1-1 Yamadaoka  
+
+Suita, 565-0871, Japan 
++81-6-6879-4013 
+
+n.uosaki@gmail.com 
+ 
+ 
+
+ABSTRACT 
+This paper describes a method of the visualization and analysis for 
+mining useful learning logs from numerous learning experiences 
+that learners have accumulated in the real world as the ubiquitous 
+learning logs. Ubiquitous Learning Log (ULL) is defined as a 
+digital record of what learners have learned in the daily life using 
+ubiquitous technologies. It allows learners to log their learning 
+experiences with photos, audios, videos, location, RFID tag and 
+sensor data, and to share and reuse ULL with others. By 
+constructing real-world corpora which comprise of accumulated 
+ULLs with information such as what, when, where, and how 
+learners have learned in the real world and by analyzing them, we 
+can support learners to learn more effectively. The proposed 
+system will predict their future learning opportunities including 
+their learning patterns and trends by analyzing their past ULLs. 
+The prediction is made possible both by network analysis based 
+on ULL information such as learners, knowledge, place and time 
+and by learners' self-analysis using time-map. By predicting what 
+they tend to learn next in their learning paths, it provides them 
+with more learning opportunities. Accumulated data are so big 
+and the relationships among the data are so complicated that it is 
+difficult to grasp how closely the ULLs are related each other. 
+Therefore, this paper proposes a system to help learners to grasp 
+relationships among learners, knowledge, place and time, using 
+network graphs and network analysis.  
+
+Categories and Subject Descriptors 
+K.3.1 [Computer Uses in Education]: Computer Supported 
+Ubiquitous Learning 
+
+General Terms 
+Measurement, Performance, Design 
+
+Keywords 
+Ubiquitous learning log, network analysis, time map, network 
+
+graph 
+
+1. INTRODUCTION 
+In recent years, many researchers in the educational engineering 
+area have been studying focusing on ubiquitous theme. For 
+example, CSUL (Computer Supported Ubiquitous Learning) or 
+context-aware ubiquitous learning (u-learning) is defined as a 
+technology-enhanced learning environment supported by 
+ubiquitous computing technologies such as mobile devices, QR-
+code, RFID tag and wireless sensor networks [1], [2]. These 
+learning take place not only in-class learning but also in a variety 
+of out-class learning space such as home, library and museum.  
+
+For example, Hwang et al. reported about their ubiquitous 
+learning system that targeted personal learners using PDA 
+(Personal Digital Assist) at an elementary school nature science 
+course in Taiwan [3]. In their developed system, the learners can 
+develop a concept map [4] based on what they have learned from 
+text book. Also, the learners can revise and review their concept 
+map using PDA in the field. Similarly, Ogata et al. reported about 
+their ubiquitous learning system called SCROLL [5]. The system 
+will allow them to share with others by recording what they have 
+learned on web browser and mobile device. 
+
+These learning dataset in the ubiquitous learning system include 
+spatiotemporal data. Spatiotemporal data usually contain the states 
+of an object, an event or a position in space over a period of time. 
+These datasets might be collected at different locations, various 
+time points in different formats. It poses many challenges in 
+representing, processing, analysis and mining of dataset due to 
+complex structure of spatiotemporal objects and the relationships 
+among them in both spatial and temporal dimensions [6], [7]. 
+Similarly, it poses many issues about relationship between the 
+learners and the ubiquitous learning logs due to complex structure 
+of the ubiquitous learning logs in SCROLL. In addition, it is 
+important for learners to recognize what and how they have 
+learned by analyzing and visualizing the past ULLs, so that they 
+can improve what and how to learn in future [2]. To tackle these 
+issues, it is necessary to reveal relationships between the learners 
+and the ubiquitous learning logs. 
+
+Therefore, this paper proposes a system to analyze and visualize 
+relationships between the learners and the ubiquitous learning logs 
+in SCROLL using Time-map and network graph. The objective of 
+this study will reveal what and how they have learned in their 
+daily lives, so that the system will recommend the prediction such 
+as knowledge, place and time in the next learning step to the 
+learners by analyzing them. By realizing these challenges, the 
+significances and contributions of this paper is to allow the 
+
+Permission to make digital or hard copies of all or part of this work for 
+personal or classroom use is granted without fee provided that copies are 
+not made or distributed for profit or commercial advantage and that 
+copies bear this notice and the full citation on the first page. Copyrights 
+for components of this work owned by others than ACM must be 
+honored. Abstracting with credit is permitted. To copy otherwise, or 
+republish, to post on servers or to redistribute to lists, requires prior 
+specific permission and/or a fee. Request permissions from 
+Permissions@acm.org. 
+LAK '15, March 16 - 20, 2015, Poughkeepsie, NY, USA 
+Copyright 2015 ACM 978-1-4503-3417-4/15/03…$15.00 
+
+http://dx.doi.org/10.1145/2723576.2723598 
+
+378
+
+
+
+learners to predict the method of learning new knowledge in the 
+next step at the real time in the real world. This research is a 
+necessary precursor in order to realize an innovative learning 
+method in the next-generation education which integrates 
+Augmented Reality (AR) and ubiquitous technologies. 
+
+2. Related Works  
+2.1 Time Map 
+Time-map is a library of javascript, which collaborated with 
+Google map and SIMILE (Semantic Interoperability of Metadata 
+and Information in unLike Environments) TimeLine (SIMILE 
+project) [8]. SIMILE focuses on developing robust, open source 
+tools that empower users to access, manage, visualize and reuse 
+digital assets. The time-map function means that the user can 
+scroll the timeline and then the Google map will display the 
+learning logs recorded during learners’ selected period. It is 
+designed to help learners to reflect what they have learned. For 
+example, if a learner clicks his learning logs on timeline, Google 
+map will display their positions as shown in Figure 1. After 
+visualizing log information, Time-map will facilitate learners to 
+reflect on their logs with spatio and temporal information. They 
+are able to grasp their learning context and time zone. Also, it is a 
+possibility that the geographic information is a clue of recalling 
+what they have learned. 
+ 
+
+ 
+Figure 1. Time Map 
+
+2.2 Network Analysis 
+Network analysis is a method of effective analysis to reveal 
+relevance of the data and educational improvement in the future. 
+For example, Shane et al. analyzed to reveal relationships between 
+the citation and all paper that were published in the first three 
+editions of the international conference on LAK (LAK 2011, 2012 
+and 2013) [9]. They have reported that for the further 
+development of this field it is important to reflect on the diversity 
+of disciplines and methodologies that have contributed to the 
+current state of learning analytics research.  
+
+This paper was analyzed using the following well-established 
+measures in social network analysis, in order to reveal 
+relationships between the learners and the ubiquitous learning logs 
+[10], [11]. 
+1. Degree: the number of edges a node has in a network 
+2. Closeness: the distance of a node to all other nodes in the 
+
+network 
+
+3. Betweenness: the number of shortest paths between any two 
+nodes that pass via a given node 
+
+This system was constructed to automatically visualize and 
+analyze relationships between the learners and the ubiquitous 
+learning logs in accordance with each learner. Also, all social 
+networking variables were computed using Gephi open source 
+software for social network analysis [12].  
+
+3. Design of the system 
+3.1 SCROLL 
+With the evolution of the mobile device, people prefer to record 
+learning contents using mobile devices instead of taking memos 
+on paper. SCROLL allows the learners to record learning logs 
+using mobile device and personal computer. One of the objectives 
+of SCROLL is to support international students in Japan to learn 
+Japanese language from what they have learned formal and 
+informal setting. It adopts an approach of sharing user created 
+contents among users and is constructed based on a LORE (Log-
+Organize-Recall-Evaluate) model which is shown in Figure 2 [5]. 
+ 
+
+ 
+Figure 2. LORE model 
+
+3.2 How to collect the ubiquitous learning log 
+As shown in Figure 3, the learners can record the ubiquitous 
+learning log with a photo using mobile device and SCROLL. The 
+learning log includes meta-data such as author, language, created 
+time, location (latitude and longitude) and tag, and the learners 
+can search target ubiquitous learning log object (ULLO) by them.  
+
+ 
+
+ 
+Figure 3. An example of adding a ULLO 
+
+3.3 Three-Layer structures in SCROLL 
+To visualize and analyze several relationships between the 
+learners and the ubiquitous learning logs, we have uniquely 
+defined them as three-layers structures as shown in Figure 4. 
+
+379
+
+
+
+The upper layer contains each author in order to confirm position 
+of own or other learners. For example, if a learner learned various 
+ubiquitous learning logs on SCROLL, there is a possibility that 
+other learners had already learned it. Therefore, when the learner 
+learned them, they can grasp other learners’ status with past 
+learning experiences. 
+
+The intermediate layer contains the knowledge that learners 
+learned. Also, some fields of learning tasks can be included in this 
+layer. For example, some task-based learning in ubiquitous 
+learning environment can be carried out using knowledge and 
+event [14]. The scalability of the layers can be enhanced and the 
+field of visualization can be widened by linking one’s own 
+learning logs to the knowledge learned by doing tasks. 
+
+The lowest layer contains data such as location and time. The 
+layer allows the learners to grasp when and where they have 
+learned by revealing place and time. 
+
+Analysis by categorizing three-layers has following advantages: 
+
+1. Places with a large number of links to the related knowledge 
+are the places where they can learn a lot of knowledge. For 
+example, if a certain supermarket or convenience is related 
+with a lot of knowledge such as natto (a traditional Japanese 
+food made from fermented soybeans), green soy beans, tofu, 
+miso soup, and cup noodle, by analyzing relationships 
+between the knowledge and the location. The System can 
+provide learners with a valuable learning information. 
+
+2. Knowledge which is related to many places is the 
+knowledge which we can learn in various places. For 
+example, if a learner experience tea ceremony of a 
+traditional Japanese culture at the university in Japan, a set 
+of tea ceremony related knowledge (e.g. tea, seize: to sit in 
+the correct manner on a Japanese tatami mat) can be learned 
+in other various places. The tea can be learned by 
+purchasing at the supermarket and the seiza can be learned 
+at the martial art gym. 
+
+ 
+Figure 4. Three-layer structure in SCROLL 
+
+4. Implementation 
+4.1 The layout types of the network graph 
+In this paper, we have implemented the network layout as shown 
+in Figure 5. The network layout consists of using three basic 
+layouts and an original layout we developed. 
+
+The first layout consists of using the random network as shown in 
+Figure 5 (1). It is simple algorism generating them randomly on 
+the graph after filtering some nodes, and then the system will link 
+related node and node. 
+
+The second layout consists of using force-directed layout as 
+shown in Figure 5 (2). It is a force vector algorithm proposed in 
+the Gephi software, appreciated for its simplicity and for the 
+
+Figure 5. The layouts of network graph 
+
+380
+
+
+
+readability of the network it helps to visualize [15]. 
+
+The third layout consists of using Yifan Hu multilevel layout as 
+shown in Figure 5 (3) [16]. It is a very fast algorithm to reduce the 
+complexity. The repulsive forces on one node from a cluster of 
+distant nodes are approximated by a Barnes-Hut calculation, 
+which treats them as one super-node [17]. 
+
+The final layout consists of using the original layout we have 
+developed as shown in Figure 5 (4a). The original layout will be 
+categorized four areas as shown in Figure 5 (4b). The word-
+centered on collocational network is shown in time-series order 
+what they have learned. Similarly, the place-centered on 
+collocational network is visualized the place linking each other, 
+and the time-centered on collocational network is visualized the 
+time linking each other. 
+
+4.2 Color of visualized nodes 
+The learners might get confused when they recognize past 
+learning logs because there might be too many of visualized nodes. 
+Therefore, it is definitely necessary to establish some criteria for 
+distinction of each node. To effectively distinguish kind of each 
+node, we defined as below using node color.  
+
+• Pink color node shows the learner’s own name on the upper 
+layer. If connecting the pink node to yellow node on the 
+intermediate layer, edge color will be decided as pink so that 
+they can be easily recognized as the learner’s own logs 
+
+• Blue color node shows the names of other learners on the 
+upper layer. If connecting the blue node to yellow color 
+node on the intermediate layer, edge color is decided blue 
+color. 
+
+• Green color node shows the names of veteran or famous 
+learner on the upper layer. Ig connecting the yellow node to 
+the green node on the intermediate layer, edge color will be 
+decided as green color. 
+
+• Yellow color node shows both the learner own knowledge 
+and the knowledge of other learners. For example, the 
+
+learner can recognize his own knowledge because edge 
+between the learner own name on the upper layer and the 
+knowledge on the intermediate layer is pink color. In 
+addition, the learner might discover knowledge of other 
+learners related to own knowledge. 
+
+• White color node shows the location of the learners on the 
+lowest layer. The node includes latitude, longitude, building 
+names and the attributes. 
+
+• Brown color node shows created time of the knowledge on 
+the lowest layer. The created time is categorized to attributes 
+such as "morning", "midday", "evening", "Spring", 
+"Summer", "fall" and "winter". 
+
+4.3 System interface for visualizing and 
+analyzing 
+The interface combining network graph and time-map for 
+visualizing relationships between the learners and ubiquitous 
+learning logs is shown Figure 8. It consists of the following 
+components:  
+
+1. Search form: This input form is used to search target word 
+(e.g. ‘natto’ and ‘tofu’) on the all networks of SCROLL. 
+
+2. Layout form: The learners will choose one layout in this 
+select form (e.g. Random layout, Force-directed layout, 
+Yifan multilevel layout and original layout). 
+
+3. Network graph: The network graph shows the layout 
+calculated by the system, and the layout in Figure 9 shows a 
+sample of the original layout. Also, the network graph and 
+time map function are linked each other. For example, if a 
+learner clicked a certain node on the network graph, the time 
+map will show the location and time corresponding to it. 
+Therefore, learners can obtain its location and time 
+information. 
+
+4. Time map: Time map function consists of the timeline and 
+Google map. It represents the shift of learning history in 
+
+Figure 6. Interface of this system 
+
+381
+
+
+
+accordance with lapse of time. Learners might forget their 
+learning logs when and where they have learned before. 
+Therefore, the system will remind them of their learning 
+logs recorded during the specified period of time by 
+showing them on the timeline (default: two month before 
+and after the setting time). Besides, the system will lead 
+them to be aware of knowledge recorded right before or 
+after the knowledge of their interest which was recorded by 
+other learners. Therefore, it will give them a clue on what to 
+learn in the next learning step. 
+
+5. Analysis results (Knowledge): The analysis by knowledge is 
+shown as a trend ranking in order to expand their learning 
+opportunity. By arranging ULLs in the in-degree centrality 
+order, they will know ULLs that they are likely to study in 
+the next step. That way they are able to have more learning 
+opportunity. 
+
+6. Analysis results (Place): Place analysis is based on locations 
+where they have learned. The place of high importance 
+means the location where there are a lot of opportunities to 
+learn if visiting them. It is analyzed in the same way as in-
+degree centrality analysis, and the system shows the results 
+to the learners. 
+
+5. Conclusion and Future Work 
+This paper describes the system for analyzing and visualizing 
+relationships between the learners and the ubiquitous learning logs. 
+International students can add their knowledge as the ubiquitous 
+learning log in SCROLL, and then SCROLL can provide learning 
+contents to recall what they learned based on their learning 
+contexts.  
+
+As future works, it is necessary to recommend and present past 
+learning logs on the system in accordance with each learner's 
+condition detected from some results such as social analysis, 
+association analysis and decision tree. In addition, it is also 
+necessary to evaluate whether detected analysis results are 
+appropriate or not. 
+
+6. ACKNOWLEDGMENTS 
+The part of this research work was supported by the Grant-in-Aid 
+for Scientific Research No.25282059, No.26560122, No. 
+25540091 and No.26350319 from the Ministry of Education, 
+Culture, Sports, Science and Technology (MEXT) in Japan. The 
+research results have been partly achieved by “Research and 
+Development on Fundamental and Utilization Technologies for 
+Social Big Data” (178A03), the Commissioned Research of 
+National Institute of Information and Communications 
+Technology (NICT), Japan. 
+
+7. REFERENCES 
+ 
+[1] Ogata, H., and Yano, Y. (2004). Context-aware support for 
+
+computer-supported ubiquitous learning. Proc. of IEEE 
+International Workshop on Wireless and Mobile 
+Technologies in Education, 27-34.  
+
+[2] Hwang, G. J., Tsai, C. C. and Yang, S. J. H. (2008). Criteria, 
+strategies and research issues of context-aware ubiquitous 
+learning. Educational Technology and Society, 11(2), 81-91. 
+
+[3] Hwang, G. J., Wu, P.H. and Ke, H.R. (2011). An interactive 
+concept map approach to supporting mobile learning 
+activities for natural science courses, Computers and 
+Education, vol.57, no.4, pp.2272-2280. 
+
+[4] Joseph, D.N. and Alberto, J.C. (2006). The Origins of the 
+concept mapping tool and the continuing evolution of the 
+tool, Information Visualization, no.5, pp.175-184. 
+
+[5] Ogata, H., Li, M., Bin, H., Uosaki, N., El-Bishoutly, M., & 
+Yano, Y. (2011). SCROLL: Supporting to share and reuse 
+ubiquitous learning logs in the context of language learning. 
+Research and Practice on Technology Enhanced Learning, 6 
+(3), pp.69-82. 
+
+[6] K.Venkateswara R, A.Govardhan and Dr.K.V.Chalapati R. 
+(2011). Discovering Spatiotemporal Topological 
+Relationships, The second international workshop on 
+Database Management Systems, DMS-2011,Springer 
+Proceedings LNCS-CCIS 198. 
+
+[7]  K.Venkateswara R & A.Govardhan. (2012). Spatiotemporal 
+data mining: Issues, Task and Applications, International 
+Journal of Computer Science and Engineering Survey, Vol.3, 
+No.1, Feb2012, pp.39-52. 
+
+[8] SIMILE project: http://www.simile-widgets.org/timeline/ 
+[9] Shane, D., Dragon, G., George, S. and Srecko, J. (2014). 
+
+Current State and Future Trends: A Citation Network 
+Analysis of the Learning Analytics Field, International 
+conference on Learning Analytics and Knowledge (LAK 
+2014) ACM, pp.231-240.  
+
+[10] Freeman, L.C. (1978). Centrality in social networks 
+conceptual clarification, Social Networks, vol.1, no.3, 
+pp.215-239. 
+
+[11] Watts, D.J and Strogatz, S.H. (1998). Collective dynamics of 
+small world networks, Nature 393, 6684, pp.440-442. 
+
+[12] Bastian, M., Heymans, S and Jacomy, M. (2009). Gephi: An 
+open source Software for Exploring and Manipulating 
+Networks, In Proceedings of the Third International AAAI 
+Press.  
+
+[13] Li, M., Ogata, H., Hou, B., Uosaki, N., & Yano, Y. (2012). 
+Personalization in Context-aware Ubiquitous Learning-Log 
+System,  Mobile and Ubiquitous Technology in Education, 
+pp.41-48. 
+
+[14] Mouri,K., Ogata, H., Li, M., Hou, B., Uosaki, N., & Liu, S. 
+(2013). Learning Log Navigator: Supporting Task-based 
+Learning Using Ubiquitous Learning Logs, Journal of 
+Research and Practice on Technology Enhanced Learning 
+(RPTEL), 8(1), pp.117-128. 
+
+[15] Mathieu, J., Tommaso, V., Sebastien, H and Mathieu, B. 
+(2014). ForeceAtlas2, a Continuous Graph Layout Algorithm 
+for Handy Network Visualization Designed for the Gephi 
+Software, in PLOS One 9(6):e98679. doi: 10.1371/ journal. 
+pone. 0098679, Jun 10. 
+
+[16] Y. F. Hu. (2005). Efficient and high quality force-directed 
+graph drawing, The Mathematica Journal, vol. 10, pp.37–71. 
+
+[17] J. Barnes and P. Hut. (1986). A Hierarchical O (n log n) 
+Force-Calculation Algorithm, Nature, 324(4), pp.446-449.
+
+ 
+
+382
+
+
+
+
+

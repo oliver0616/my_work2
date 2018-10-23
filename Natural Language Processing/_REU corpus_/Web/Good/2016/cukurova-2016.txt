@@ -1,0 +1,1068 @@
+
+An Analysis Framework for Collaborative Problem 
+Solving in Practice-based Learning Activities:  
+
+A Mixed-method Approach 
+ 
+
+Mutlu Cukurova1, Katerina Avramides1, Daniel Spikol2, Rose Luckin1, Manolis Mavrikis1 
+
+1London Knowledge Lab, UCL Institute of Education, University College London, London, United Kingdom 
+2 Faculty of Technology and Society, Dept. of  Media Technology, Malmö University, Malmö, Sweden 
+
+1{m.cukurova, k.avramides, r.luckin, m.mavrikis}@ioe.ac.uk, daniel.spikol@mah.se 
+
+ABSTRACT 
+Systematic investigation of the collaborative problem solving 
+process in open-ended, hands-on, physical computing design tasks 
+requires a framework that highlights the main process features, 
+stages and actions that then can be used to provide ‘meaningful’ 
+learning analytics data. This paper presents an analysis framework 
+that can be used to identify crucial aspects of the collaborative 
+problem solving process in practice-based learning activities. We 
+deployed a mixed-methods approach that allowed us to generate 
+an analysis framework that is theoretically robust, and 
+generalizable. Additionally, the framework is grounded in data 
+and hence applicable to real-life learning contexts. This paper 
+presents how our framework was developed and how it can be 
+used to analyse data. We argue for the value of effective analysis 
+frameworks in the generation and presentation of learning 
+analytics for practice-based learning activities. 
+
+Categories and Subject Descriptors 
+• Applied computing~Computer-assisted instruction    
+• Applied computing~Collaborative learning    
+• Applied computing~Computer-managed instruction 
+
+General Terms 
+Measurement, Design, Experimentation, Human Factors. 
+
+Keywords 
+Collaborative learning, problem solving, practice-based learning, 
+analysis framework 
+
+1. INTRODUCTION 
+Learning Analytics (LA) rely upon effective frameworks that 
+drive the analysis of data in a manner that answers the questions 
+posed by researchers and educators. These questions can be 
+diverse, as can the educational practices that are subject to 
+analysis. We are particularly interested in collaborative problem 
+solving processes in practice-based learning activities. Practice-
+based learning activities differ considerably in what they ask 
+students to do and what they are trying to teach. In the research 
+
+study reported here, we focus on open-ended, hands-on, physical 
+computing design tasks. This type of practice-based learning 
+activity is commonly used to improve collaborative problem 
+solving processes [13], which in turn improve learning in this type 
+of practice-based learning activities. 
+Practice-based learning activities have the potential to help 
+educators to achieve high tier institutional and policy goals such 
+as developing 21st century skills in STEM subjects at scale. They 
+are becoming increasingly popular in both secondary and post-
+secondary learning institutions, particularly after the introduction 
+of the ‘Makers Movement’ [3]. However, 21st century skills 
+including collaborative problem solving skills are complex and 
+non-linear in nature. Hence, although practice-based learning 
+activities are widely recognised as an essential aspect of teaching 
+these skills in STEM subjects, both by educators and by 
+researchers [11]; our understanding of practice-based learning still 
+remains scant and there is still little agreement on how it should 
+be used effectively and how it should be supported [1].  
+LA is introducing a number of new techniques and frameworks 
+for studying learning in general, nonetheless practice-based 
+learning activities are one of those educational areas to which 
+learning analytics have yet to contribute significantly [18]. 
+Systematic investigation of the collaborative problem solving 
+process in practice-based learning activities requires a framework 
+that highlights the main process features, stages and actions. 
+Those identified process actions and stages can then be used to 
+provide ‘meaningful’ LA data. The main purpose of this paper is 
+to provide such a framework.  
+
+2. ANALYSIS FRAMEWORKS IN LA 
+The development of appropriate frameworks for analysing 
+students’ engagement processes is a key aspect of research in LA 
+[2, 7, 8, 10, 15]. Designing and validating analysis frameworks for 
+LA is a challenging task and requires expertise in multiple 
+research domains including educational design, educational 
+psychology, human-computer interaction and computer sciences. 
+There appear to be two fundamental approaches to the 
+development of analysis frameworks in the literature. The first 
+approach starts with a theoretical model. Researchers derive a 
+theoretical model of the process they are investigating, either from 
+the previous literature or from expert opinions (Delphi Method), 
+and deploy it to data generated from real world contexts to 
+validate, reshape or refute it (see for instance [5]). This approach 
+has the drawback of overlooking the essential aspects of what 
+makes a learning process unique. The second approach is to use a 
+grounded-theory approach. In a grounded-theory approach, 
+researchers attempt to ignore all prior assumptions and categories 
+and to describe the process as it emerges from the data (see for 
+instance [6]).  However, this approach could lead to generation of 
+very data-specific frameworks, which cannot be used in other 
+
+ 
+Permission to make digital or hard copies of all or part of this work for 
+personal or classroom use is granted without fee provided that copies are 
+not made or distributed for profit or commercial advantage and that 
+copies bear this notice and the full citation on the first page. Copyrights 
+for components of this work owned by others than ACM must be 
+honored. Abstracting with credit is permitted. To copy otherwise, or 
+republish, to post on servers or to redistribute to lists, requires prior 
+specific permission and/or a fee. Request permissions from 
+permissions@acm.org 
+LAK '16, April 25-29, 2016, Edinburgh, United Kingdom ?  
+© 2016 ACM. ISBN 978-1-4503-4190-5/16/04…$15.00 ?  
+DOI: http://dx.doi.org/10.1145/2883851.2883900 
+
+
+
+contexts. We believe, a mixed methods approach (see for instance 
+[10]) could lead to more effective analysis frameworks that 
+highlight the main process features, stages and actions of a 
+learning process. They can be both theory-driven and therefore 
+broad enough to observe learning processes on the basis of 
+theoretical assumptions, and data-driven and therefore grounded 
+enough to be applicable to the real-life learning contexts. 
+ 
+
+2.1 Development Process of the Analysis 
+Framework 
+Here we present the methodology we adopted to develop a mixed-
+methods analysis framework for the collaborative problem solving 
+process in practice-based learning. There are three main stages: 
+identification of the theory-driven framework; adaptation of the 
+theoretical framework to fit the research purposes and merging the 
+fine-grained actions from the data to the adapted theoretical 
+framework (figure 1). 
+ 
+
+ 
+Figure 1: Three-stage development process 
+
+ 
+
+2.1.1 Identification of a theory-driven framework 
+from the literature 
+We started with a framework that was developed by the OECD to 
+assess collaborative problem solving competence [12]. This 
+framework met our requirements, because it is a rare attempt to 
+merge collaboration and problem solving skills in one framework. 
+The approach taken by the OECD also takes into account a very 
+broad educational context, because their focus is upon the 
+evaluation of knowledge and skills at an international comparison 
+level. 
+The OECD defines collaborative problem solving competency as 
+“the capacity of an individual to effectively engage in a process 
+whereby two or more agents attempt to solve a problem by 
+sharing the understanding and effort required to come to a 
+solution and pooling their knowledge, skills and efforts to reach 
+that solution” [12, p.6]. The definition identifies three core 
+competencies particularly related to collaboration and four 
+competencies particularly related to problem solving. 
+Competencies related to collaboration: 1. Establishing and 
+maintaining shared understanding; 2. Taking appropriate action to 
+solve the problem; 3. Establishing and maintaining team 
+organization. Competencies related to problem solving: 1. 
+Exploring and Understanding; 2. Representing and Formulating; 
+3. Planning and Executing; 4. Monitoring and Reflecting. These 
+competencies are then used as dimensions in the OECD’s 
+assessment framework for collaborative problem solving (see 
+Table 1). 
+ 
+ 
+
+Table 1: Matrix of Collaborative Problem Solving for PISA 
+ (1) Establishing 
+
+and maintaining 
+shared 
+understanding 
+
+(2) Taking 
+appropriate action 
+to solve the 
+problem 
+
+(3) Establishing and 
+maintaining team 
+organization 
+
+ 
+
+(A) Exploring and 
+Understanding 
+
+(A1) Discovering 
+perspectives and 
+abilities of team 
+members 
+
+(A2) Discovering 
+the type of 
+collaborative 
+interaction to solve 
+the problem, along 
+with goals 
+
+(A3) Understanding 
+roles to solve 
+problem 
+
+ 
+
+ 
+
+(B) Representing 
+and Formulating 
+
+(B1) Building a 
+shared 
+representation and 
+negotiating the 
+meaning of the 
+problem (common 
+ground) 
+
+ 
+
+B2) Identifying and 
+describing tasks to 
+be completed 
+
+(B3) Describe roles 
+and team 
+organization 
+(communication 
+protocol/rules of 
+engagement)  
+
+ 
+
+(C) Planning and 
+Executing 
+
+(C1) 
+Communicating 
+with team members 
+about the actions to 
+be/ being performed 
+
+ 
+
+(C2) Enacting plans 
+
+(C3) Following rules 
+of engagement, (e.g., 
+prompting other team 
+members to perform 
+their tasks.) 
+
+ 
+
+(D) Monitoring 
+and Reflecting 
+
+(D1) Monitoring 
+and repairing the 
+shared 
+understanding 
+
+(D2) Monitoring 
+results of actions 
+and evaluating 
+success in solving 
+the problem 
+
+(D3) Monitoring, 
+providing feedback 
+and adapting the 
+team organization 
+and roles 
+
+2.1.2 Adaptation of the OECD framework to fit our 
+research purposes 
+The framework was originally developed for assessment purposes. 
+However, it does not meet the requirements for analysing the 
+process of collaborative problem solving, because it does not 
+include the component of knowledge deficiency.  
+
+Table 2: Combined Matrix that merges PBL and CPS 
+concepts adapted from PISA 
+
+ (1) Establishing and 
+maintaining shared 
+
+understanding 
+
+(2) Taking 
+appropriate action 
+
+to solve the problem 
+
+(3) Establishing and 
+maintaining team 
+
+organization 
+
+(A) Identifying 
+facts 
+
+(A1) Discovering 
+perspectives and 
+abilities of team 
+
+members, making 
+knowledge explicit 
+
+(A2) Discovering the 
+type of collaborative 
+interaction to solve 
+the problem, along 
+
+with goals 
+
+(A3) Understanding 
+roles to solve problem 
+
+(B) 
+Representing 
+and 
+Formulating 
+
+(B1) Building a 
+shared representation 
+and negotiating the 
+
+meaning of the 
+problem (common 
+
+ground) 
+
+(B2) Identifying and 
+describing tasks to be 
+
+completed 
+
+(B3) Describe roles 
+and team organization 
+
+(communication 
+protocol/rules of 
+
+engagement) 
+
+(C) Generating 
+Hypotheses 
+
+(C1) Critically 
+analyzing the problem 
+
+representation 
+
+(C2) Generating and 
+Communicating 
+
+potential solution 
+paths 
+
+(C3) Present 
+Hypothesis, encourage 
+feedback from others 
+and offer feedback on 
+
+others’ hypotheses 
+
+(D) Planning 
+and Executing 
+
+(D1) Communicating 
+with team members 
+about the actions to 
+be/ being performed 
+
+(D2) Enacting plans (D3) Following rules 
+of engagement, (e.g., 
+prompting other team 
+members to perform 
+
+their tasks.) 
+
+(E) Identifying 
+Knowledge and 
+Skill 
+Deficiencies 
+
+(E1) Comparing the 
+team’s knowledge and 
+
+skills with the 
+proposed actions 
+
+(E2) Identifying and 
+specifying individual 
+
+deficiencies 
+
+(E3) Specification of 
+team deficiencies and 
+their relationship to 
+proposed problem 
+
+solution 
+
+(F) Monitoring, 
+Reflecting and 
+Applying 
+
+(F1) Monitoring and 
+repairing the shared 
+
+understanding 
+
+(F2) Monitoring 
+results of actions and 
+evaluating success in 
+solving the problem 
+
+(F3) Monitoring, 
+providing feedback 
+
+and adapting the team 
+organization and roles 
+
+ 
+
+IdentificationIdentification
+
+AdaptationAdaptation
+
+MergingMerging
+
+
+
+Knowledge deficiency is an important aspect of the problem 
+solving process [4]. To address both the assessment and the 
+tuition aspects of the collaborative problem solving process, we 
+adapted and integrated the knowledge deficiency element of 
+Hmelo-Silver (2004)’s tuition framework into the OECD’s 
+assessment framework (Please see table 2). A detailed discussion 
+of this adaptation process as well as its implications were 
+discussed in a recent research conference [8]. 
+
+2.1.3 Merging the data-driven fine-grained actions 
+of collaborative problem solving 
+A multi-step qualitative methodology was used, taking into 
+account the procedures and techniques developed in qualitative 
+content analysis methods [17]. Our dataset consisted of video 
+recordings from two different events, 
+a) A Hackathon event in which three groups of five secondary 
+school students (aged 14-15 years) were assigned to work on an 
+open-ended, hands-on project using physical computing (Arduino 
+modules1), 
+b) A workshop event in which two groups of adult pairs worked 
+on two different open-ended, hands-on physical computing 
+projects using an Arduino-like kit (SAM Labs2). 
+First, fine-grained actions from the data are identified. These were 
+observable actions that occurred during the collaborative problem 
+solving process. 31 fine-grained actions were identified. To 
+validate these actions, two coders, applied these 31 actions to a 
+different set of data collected from the same event. This procedure 
+was suggested as a way of testing the validity of actions generated 
+with a grounded theory approach by Mayring [9] as cited in Meier 
+et al. [10]. Where there was disagreement, the researchers 
+discussed the data and revised the categorisations accordingly. 
+Then, the emerging actions were assigned to the coordinates of 
+the theory-driven framework previously developed. First the fine-
+grained actions were assigned to three core competencies 
+particularly related to collaboration, and then they were assigned 
+to six competencies particularly related to problem solving. 
+Merging those two activities resulted with table 3. 
+We argue that the mixed methods approach to generating analysis 
+frameworks is a productive one. It helps to generate frameworks, 
+which are theoretically robust, and generalizable while being 
+grounded in data and applicable to real-life learning contexts. The 
+real value of this framework (table 3) is that it has observable 
+actions as its codes rather than broad definitions. Such broad 
+definitions are hard to identify, track and interpret in data analyses 
+both for human annotators and to a greater extent for machines, 
+which makes them hard to use in learning analytics research. 
+The analysis framework has been generated as part of a bigger 
+research project and our next step is to apply this framework at 
+scale using data collected from practice-based learning activities. 
+The goal is to observe if there are any fundamental differences in 
+different groups of students. Once we establish that machine 
+collected data correlates with the human analysis of the 
+collaborative problem solving process, we plan to use the 
+Learning Analytics System (LAS) we design to compare 
+successful students to novice ones, and STEM experts to STEM 
+students in order to map which actions and stages of the 
+collaborative problem solving process differ for those different 
+groups. We aim to use this information to generate visualisations 
+                                                                 
+1 https://www.arduino.cc/ 
+2 https://samlabs.me/ 
+
+to support the collaborative problem solving process in open-
+ended, hands-on physical computing design tasks. It is important 
+to make it clear here that we do not hope to provide a measure of 
+determination but a way of effectively supporting practice-based 
+learning activities in STEM teaching. In this sense we see learning 
+analytics as a means of seeking to “augment human intellect” [14] 
+rather than define it. 
+
+Table 3: Combined Matrix that merges fine-grained actions 
+and theoretically suggested stages 
+
+3. DATA COLLECTION AND ANALYSIS 
+WITH THE FRAMEWORK 
+As has been mentioned, the framework was created in the context 
+of a larger EU project X (http://blinded.review), which is 
+commissioned by the EC 7th Framework Programme. The overall 
+aim of the project is to develop learning analytics tools for hands-
+on, open-ended STEM learning activities using the Arduino 
+platform.  Within the project we have generated tools that can 
+detect some of the fine-grained actions in the analysis framework. 
+Given the complexity of the collaborative problem-solving 
+process even at the fine-grained level identified in our analysis 
+framework, we cannot automatically track each of those actions 
+with the current technology. However, we can automatically track 
+some of the fine-grained actions, which are presented in this 
+section.  
+ 
+
+ (1) Establishing and 
+maintaining shared 
+understanding 
+
+(2) Taking 
+appropriate 
+action to solve the 
+problem 
+
+(3) Establishing 
+and maintaining 
+team 
+organization 
+
+(A) 
+Identifying 
+
+facts 
+
+(A1) Vocalizing 
+knowledge; Confirming 
+shared understanding; 
+
+Communicating regarding 
+an answer to a question; 
+
+Asking questions to verify 
+a suggested solution; 
+
+presenting skills 
+
+(A2) Identifying a 
+problem (a 
+
+situation which 
+stops/hampers 
+
+students from the 
+natural progression 
+
+of the practice-
+based activity) 
+
+ 
+ 
+
+(A3) Confirming 
+the actions to be 
+taken, engaging 
+
+with rules 
+ 
+
+(B) 
+Representing 
+
+and 
+Formulating 
+
+(B1) Sharing the identified 
+problem with other 
+
+teammates; Explaining an 
+hypothesis/suggestion in 
+
+detail 
+
+(B2) 
+Communicating 
+about actions to 
+
+take 
+
+(B3) Assigning 
+roles to team 
+mates; Giving 
+
+responsibilities to 
+team mates 
+
+ 
+(C) 
+
+Generating 
+Hypotheses 
+
+ 
+(C1) Critically analyzing a 
+
+problem; Critically 
+analyzing a suggestion 
+
+(C2) Suggesting a 
+solution to a 
+
+problem; 
+Hypothesizing 
+regarding the 
+
+source of problem 
+
+(C3) Suggesting 
+an improved 
+version of an 
+hypothesis 
+
+suggested by 
+others 
+
+ 
+ 
+ 
+
+(D) Planning 
+and 
+
+Executing 
+
+ 
+ 
+ 
+
+(D1) Negotiating on 
+actions to take; Approving 
+
+a suggested solution 
+
+ 
+ 
+ 
+
+(D2) Taking 
+actions to progress 
+
+(D3) Prompting 
+other team 
+members to 
+
+perform their 
+tasks; Taking 
+
+actions related to 
+suggestions of 
+
+other teammates 
+
+(E) 
+Identifying 
+Knowledge 
+and Skill 
+
+Deficiencies 
+
+(E1) Identifying individual 
+deficiencies 
+
+(E2) Making 
+knowledge or skill 
+deficiency explicit 
+
+(E3) Identifying a 
+team mistake 
+
+ 
+(F) 
+
+Monitoring, 
+Reflecting 
+
+and Applying 
+
+(F1) Verifying what each 
+other knows; Asking 
+
+questions regarding the 
+actions being taken; 
+Observing an agreed 
+action being taken; 
+
+Observing the attempts of 
+another teammate to solve 
+
+a problem 
+
+(F2) Testing a 
+solution to check 
+
+its validity; 
+Reflecting on 
+
+previous actions; 
+Correcting simple 
+mistakes of others 
+
+(F3) Warning 
+teammates 
+regarding a 
+
+possible mistake 
+
+
+
+3.1 Learning Analytics System (LAS) 
+The LAS collects data from both ambient and live sources. The 
+ambient collection of data includes a computer vision system 
+integrated in specially designed furniture. The learning 
+environment is designed to foster collaboration and includes an 
+integrated screen and round shape to allow people to share and 
+work together.  A new Arduino electronics platform with plug-and 
+play electrical components, and visual programming tool has been 
+developed to allow learners to more easily and build and program 
+artifacts. The system collects what components are plugged in and 
+how the students manipulate the programming environment. A 
+lightweight mobile application has been developed to allow 
+learners to plan, document, and reflect on their projects with text 
+and multimedia. The mobile system also allows teachers to mark 
+critical incidents, and researchers to time stamp the different 
+stages of the learners project, based on the framework. This on the 
+fly first round of coding provides a foundation for the hand coding 
+of the video documentation post activity. A set of “sentiment” 
+buttons has been developed with thundercloud and sunshine icons 
+to allow the students to mark critical events in their activities. The 
+system is seen below in figure 2. The live data will provide the 
+self-declared data from students and teachers including the cycle 
+of planning, documenting, and reflecting through the mobile 
+system. The computer vision system and the log files of the 
+Arduino software collect the ambient data. This data set includes 
+the capture of objects, the positions of people, arm movement, 
+faces and audio levels from the vision system; and from the 
+Arduino the log files of components are collected as are the 
+manipulations in the visual programming platform. In table 4, the 
+detailed types of data collected, the instruments of collection, the 
+type of events, the description, the extraction methods as well as 
+fine-grained actions we aim to track are summarised. 
+
+ 
+Figure 2: LAS in action 
+
+The LAS is now up and running, and the first round of trials with 
+learners are being conducted. The framework presented in this 
+research paper is being used as a guide to design the algorithms 
+for processing and visualising the data. 
+
+4. DISCUSSION 
+The analysis framework we generated offers a flexible approach 
+to the analysis of data collected regarding the collaborative 
+problem solving process in practice-based learning activities. 
+Although this type of analysis usually needs to be completed by 
+humans, we see our framework as an initial step to generate useful 
+analysis frameworks for data collected and analysed by a 
+machine. At this point we make the distinction between 
+frameworks that can only be completed by humans as we strive to 
+understand how learning happens and those employed in data 
+analysis by a machine. However, this does not mean that they do 
+not contribute to our understanding of such learning processes.  
+
+Table 4: The detailed types of data collected, the instruments of collection, the type of events, description, the extraction methods, 
+and the codes 
+
+  
+
+Data Collector Computer Vision System Arduino IDE (Visual Electronics 
+Platform) 
+
+Mobile System Sentiment Buttons Video Capture 
+
+Types of Data 
+/Events 
+
+DATA: Shared Gaze, Body Closeness, 
+hand tracking, object manipulation, 
+motion around the special furniture 
+and audio levels 
+EVENTS: people and objects 
+
+DATA: Number of components and 
+inputs 
+EVENTS: Arduino modules and 
+codes 
+
+DATA: Number of posts, 
+transitions between activities 
+EVENTS: self-documentation 
+
+DATA and 
+EVENTS: Critical 
+Incidents 
+
+Occasion of Codes/ 
+Qualitative analysis 
+
+Brief Description More granular details of who around 
+the table and what their arms are 
+doing, how close are they to each 
+other, what are they are looking at, and 
+the motion around the table -location 
+of bodies, direction of gaze 
+
+How students designed and built the 
+tasks - types and number of 
+components and manipulation in the 
+IDE 
+
+How did the students plan, 
+document, and reflect on the task - 
+Teacher critical incident marks 
+Researcher coded activities 
+
+Marking of critical 
+incidents 
+
+Coding Annotating 
+moments on the 
+video/audio 
+
+Extraction 
+Methods 
+
+Frequency of hand movements  
+Time spent looking at screen  
+Time spent looking away 
+
+Frequency of components plugged in 
+Frequency of interactions with IDE 
+
+Number of Mobile submits 
+Number of words in text submitted 
+Duration of different activities          
+Content of text and multimedia 
+
+Frequency and 
+duration between 
+types of incidents 
+
+Rating of codes, Amount 
+of time 
+
+Types of Analysis Machine Machine Machine and human Machine and human Human 
+
+Fine-grained 
+actions aimed to 
+be tracked 
+
+(D2) Taking actions to progress, 
+(D3) Prompting other team members 
+to perform their tasks; Taking actions 
+related to suggestions of other 
+teammates, (F1) Observing an agreed 
+action being taken; Observing the 
+attempts of another teammate to solve 
+a problem 
+
+(A1) Presenting skills, (A2) 
+Identifying a problem (a situation 
+which stops/hampers students from 
+the natural progression of the 
+practice-based activity), (E2) Making 
+knowledge or skill deficiency 
+explicit, (E3) Identifying a team 
+mistake 
+
+(F1) Verifying what each other 
+knows; Asking questions regarding 
+the actions being taken; (F2) 
+Testing a solution to check its 
+validity; Reflecting on previous 
+actions; Correcting simple mistakes 
+of others, (F3) Warning teammates 
+regarding a possible mistake, (E1) 
+Identifying individual deficiencies, 
+(C1) Critically analyzing a 
+problem; Critically analyzing a 
+suggestion, (C2) Suggesting a 
+solution to a problem; 
+Hypothesizing regarding the source 
+of a problem, (C3) Suggesting an 
+improved hypothesis  
+
+(A2) Identifying a 
+problem (a situation 
+which stops/hampers 
+students from the 
+natural progression 
+of the practice-based 
+activity), (F3) 
+Warning teammates 
+regarding a possible 
+mistake 
+
+All identified fine-
+grained actions 
+
+ 
+
+
+
+In the same way that computers were not invented in order to 
+make word-processing or the Internet possible, but once the space 
+of possible computer applications was rendered accessible, design 
+processes went into overdrive creating all the software we now 
+rely on everyday, analysis frameworks for learning analytics and 
+associated tools have the potential to lead to the production and 
+use of effective technologies for teaching and learning. 
+One possible criticism of our mixed-methods approach could be 
+that there is a low possibility of researchers generating fine-
+grained actions from the data while bracketing out all a priori 
+assumptions and categories. This is obviously a much broader 
+question than the scope of this research study and it relates to all 
+research studies that use a grounded theory approach. It is clear to 
+us that somehow, every observation is theory-driven. We 
+recognize the difference between looking and identifying what 
+one looks at. Whilst the first one is a physical action, the latter 
+requires a theoretical framework and clearly the generation of 
+fine-grained actions from data requires the identification of 
+collaborative problem solving actions. However, our focus on the 
+data-driven, fine-grained actions is particular to the observable 
+actions of what we, as educators and researchers, think of as part 
+of the collaborative problem solving process. 
+
+5. CONCLUSIONS AND FUTURE WORK  
+In this paper we present the development of an analysis 
+framework for the collaborative problem solving process in 
+practice-based learning activities (Table 3). We then, briefly 
+present the learning analytics system we developed to collect data 
+regarding the fine-grained actions and dimensions of collaborative 
+learning processes from practice-based learning activities (Table 
+4). We argue that the three-stage development process we 
+describe in this paper is a useful one to generate analysis 
+frameworks that can be used to identify crucial aspects of the 
+learning process in practice-based learning activities. The stages, 
+dimensions and fine-grained actions of our analysis framework 
+can be used to provide ‘meaningful’ LA data. Although, the 
+framework is generated in the context of practice-based learning 
+environments, we believe the development process we generated 
+can be used in different educational contexts particularly in face-
+to-face learning environments where detecting and tracking 
+student interactions is extremely challenging. Our next research 
+aim is to apply this framework at scale and generate learning 
+analytics data for teachers and students, which will support their 
+teaching and learning process during practice-based activities.  
+
+6. ACKNOWLEDGMENTS  
+This work was funded by the PELARS project (GA No. 619738) 
+under the Seventh Framework Programme of the European 
+Commission.  
+
+REFERENCES 
+[1] Abrahams, I., & Millar, R. (2008). Does practical work really 
+
+work? A study of the effectiveness of practical work as a 
+teaching and learning method in school science. International 
+Journal of Science Education, 30(14), 1945-1969.  
+
+[2] Gibson, A., Kitto, K., & Wills, J. (2014). A cognitive 
+processing framework for learning analytics. Paper presented 
+at the LAK'14 Proceedings of the Fourth International 
+Conference on Learning Analytics and Knowledge, New 
+York. Doi: 10.1145/2567574.2567610 
+
+[3] Halverson, E. R., & Sheridan, K. M. (2014). The Maker 
+Movement in Education. Harvard Educational Review, 84(4), 
+495-506. 
+
+[4] Hmelo-Silver, C. E. (2004). Problem-based Learning: What 
+and How do Students Learn. Educational Psychology Review, 
+16(3). 
+
+[5] Jarvela, S., & Hakkinen, P. (2003). The levels of web-based 
+discussions: using perspective-taking theory as an analytical 
+tool. Cognition in a digital world, 77-95. 
+
+[6] Koschmann, T., Zemel, A., Conlee-Stevens, M., Young, N., 
+Robbs, J., & Barnhart, A. (2003). Problematizing the Problem. 
+Computer-Supported Collaborative Learning, 2, 37-46. 
+
+ [7] Lee, Y. C. E., Chan, C. K. K., & van Aalst, J. (2006). 
+Students assessing their own collaborative knowledge 
+building. Computer-Supported Collaborative Learning, 1, 57-
+87. 
+
+[8] Luckin, R., Mavrikis, M., Avramides, K., & Cukurova, M. 
+(2015). Analysing Project Based Learning Scenarios to inform 
+the design of Learning Analytics: Learning from related 
+concepts. Paper presented at the AIED2015 Artificial 
+Intelligence in Education, Madrid. 
+
+[9] Mayring, P. (2003). Qualitative content analysis. Foundations 
+and techniques. Weinheim: Beltz. 
+
+[10] Meier, A., Spada, H., & Rummel, N. (2007). A rating scheme 
+for assessing the quality of computer-supported collaboration 
+process. Computer-Supported Collaborative Learning, 2, 63-
+86. 
+
+[11]  Millar, R. (2004). The role of practical work in the teaching 
+and learning of science. High school science laboratories: 
+Role and vision. 
+
+[12] OECD. (2015). Draft Collaborative Problem Solving 
+Framework. Retrieved from 
+http://www.oecd.org/pisa/pisaproducts/Draft PISA 2015 
+Collaborative Problem Solving Framework .pdf 
+
+[13] Rummel, N., & Spada, H. (2005). Learning to Collaborate: 
+An instructional approach to promoting collaborative problem 
+solving in computer-mediated settings. Journal of the 
+Learning Sciences, 14(2), 201-241. 
+DOI:10.1207/s15327809jls1402_2 
+
+[14] Santos, J. L., Verbert, K., Govaerts, S., & Duval, E. (2011). 
+Visualising PLE usage. Paper presented at the EFEPLE11 1st 
+Workshop on Exploring the Fitness and Evolvability of 
+Personal Learning Environments. 
+
+[15] Scheffel, M., Drachsler, H., & Specht, M. (2015). Developing 
+an Evaluation Framework of Quality Indicators for Learning 
+Analytics. Paper presented at the LAK'15 Proceedings of the 
+Fifth International Conference on Learning Analytics and 
+Knowledge, New York. 
+
+[16] Segal, J. W., Chipman, S. F., & Glaser, R. (2014). Thinking 
+and Learning Skills (Vol. 1). London: Routledge. 
+
+[17] Spannagel, C., Glaser-Zikuda, M., & Schroeder, U. (2005). 
+Application of Qualitative Content Analysis in User-Program 
+Interaction Research. FQS Forum: Qualitative Social 
+Research, 6(2), 29. 
+
+[18] Worsley, M., & Blikstein, P. (2014). Analyzing Engineering 
+Design through the Lens of Computation. Journal of 
+Learning Analytics, 1(2), 151-186.
+
+
+

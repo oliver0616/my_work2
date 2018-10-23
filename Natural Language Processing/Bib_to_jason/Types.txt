@@ -1,0 +1,59 @@
+@online:
+author	String
+title	String
+url	String
+year	String
+urldate	String
+
+@article:
+author String
+journal	String
+number	Int
+pages	String
+title	String
+month	String
+volumn	Int
+year	Int
+url	String
+
+@inproceedings:
+author	String
+title	String
+booktitle	String
+month	String
+pages	String
+series	String
+publisher	String
+address	String
+keywords	String
+url	String
+year	Int
+abstract	String
+
+@techreport
+author	String
+title	String
+institution	String
+address	String
+month	String
+url	String
+year	Int
+
+@book
+author	String
+title	String
+publisher	String
+address	String
+year	Int
+month	String
+url
+
+@phdthesis
+author	String
+title	String
+month	String
+school	String
+address String
+url	String
+article String
+year	int

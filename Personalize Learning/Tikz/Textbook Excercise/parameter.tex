@@ -1,0 +1,15 @@
+\documentclass{article}
+\usepackage{tikz}
+\begin{document}
+%we are working on
+\begin{tikzpicture}
+	[parameter grid/.style ={help lines, color = #1!50},
+	 parameter grid/.default =blue]
+	\draw (-1.5,0) -- (1.5,0);
+	\draw (0,-1.5) -- (0,1.5);
+	\draw (0,0) circle (1cm);
+	\draw[parameter grid] (0,0) grid (1.5,2);
+	\draw[parameter grid=red] (2,0) grid (3.5,2);
+
+\end{tikzpicture}
+\end{document}

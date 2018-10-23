@@ -1,0 +1,1239 @@
+
+Supporting learning by considering emotions: 
+Tracking and Visualization. A case study 
+
+ 
+
+Samara Ruiz 
+Department of Languages and 
+
+Computer Systems 
+University of the Basque Country 
+
+San Sebastián, Spain 
+samara.ruiz@ehu.eus 
+
+ 
+Joris Klerkx 
+
+Department of Computer Science 
+KU Leuven 
+
+Leuven, Belgium 
+joris.klerkx@kuleuven.be 
+
+Sven Charleer 
+Department of Computer Science 
+
+KU Leuven 
+Leuven, Belgium 
+
+sven.charleer@kuleuven.be 
+ 
+
+Isabel Fernández-Castro 
+Department of Languages and 
+
+Computer Systems 
+University of the Basque Country 
+
+San Sebastián, Spain 
+isabel.fernandez@ehu.eus 
+
+ 
+
+Maite Urretavizcaya 
+Department of Languages and 
+
+Computer Systems 
+University of the Basque Country 
+
+San Sebastián, Spain 
+maite.urretavizcaya@ehu.eus 
+
+ 
+
+Erik Duval 
+Department of Computer Science 
+
+KU Leuven 
+Leuven, Belgium 
+
+erik.duval@kuleuven.be  
+
+ABSTRACT 
+The adequate emotional state of students has proved to be 
+essential for favoring learning. This paper explores the 
+possibility of obtaining students’ feedback about the emotions 
+they feel in class in order to discover potential emotion patterns 
+that might indicate learning fails. This paper presents a visual 
+dashboard that allows students to track their emotions and 
+follow up on their evolution during the course. We have 
+compiled the principal classroom related emotions and 
+developed a two-phase inquiry process to: verify the possibility 
+to measure students’ emotions in classroom; discover how 
+emotions can be displayed to promote self-reflection; and 
+confirm the impact of emotions on learning performance. Our 
+results suggest that students’ emotions in class are related to 
+evaluation marks. This shows that early information about 
+students’ emotions can be useful for teachers and students to 
+improve classroom results and learning outcomes.   
+
+Categories and Subject Descriptors 
+•Human-centered computing ? Visualization ? 
+Visualization systems and tolos; •Applied computing ? 
+Education ? Interactive learning environments;  
+
+General Terms 
+Measurement, Experimentation, Human Factors. 
+
+Keywords 
+Self-reflection, quantified-self, students’ emotions, face to face 
+
+interactions, visual dashboards, visualization. 
+
+1. INTRODUCTION 
+Current studies about the teaching learning flow in traditional 
+classes are immersed in student-centered theories that emphasize 
+the student role as the principal actor in her own learning 
+[Hannafin and Land 1997]. The student’s interactions with their 
+teacher in classroom, or online in distance-learning scenarios, 
+became the key for measuring learning progress. The 
+PresenceClick system [19] [20] records and processes the 
+interactions arising in traditional learning sessions between 
+teachers and students in order to provide timely feedback. 
+Teachers become aware of the knowledge status and other 
+characteristics of their students, which allows them to adapt their 
+teaching (e.g increase or decrease learning pace). Similarly, 
+students can monitor their own progress and that of the group, 
+which can trigger a reflection process that leads to learning 
+improvements. PresenceClick is composed of various modules 
+to capture the interactions that happen in class, including 
+attendance to class, students’ doubts and answers to teachers’ 
+questions, and many more. 
+
+Even though emotions are not interactions by themselves, they 
+can be one of the most influential factor in the way students 
+interact. A good atmosphere and a positive learning environment  
+in classrooms motivates students and leads them to more 
+effective learning, whereas negative emotions, such as fear and 
+stress, can potentially disrupt learning [7]. Besides influencing 
+learning, the ability to regulate emotions is a proven predictor of 
+academic outcomes. Students who can effectively regulate their 
+emotions are more resilient in overcoming failure [7]. 
+
+According to literature, learning analytics applications support a 
+process model that drives teachers and students through four 
+stages of tracking and visualizing learner activities: (self-
+)awareness, (self-)reflection, sense making and impact [21]. 
+Assuming that emotions and their regulations influence different 
+aspects of learning, we investigate if a system that is able to 
+capture and show the principal emotions that students feel in 
+class will help them during the various stages of this process 
+model. This paper presents our design process and evaluation of 
+
+Permission to make digital or hard copies of all or part of this work for 
+personal or classroom use is granted without fee provided that copies are 
+not made or distributed for profit or commercial advantage and that 
+copies bear this notice and the full citation on the first page. Copyrights 
+for components of this work owned by others than ACM must be 
+honored. Abstracting with credit is permitted. To copy otherwise, or 
+republish, to post on servers or to redistribute to lists, requires prior 
+specific permission and/or a fee. Request permissions from 
+Permissions@acm.org. 
+LAK '16, April 25-29, 2016, Edinburgh, United Kingdom 
+© 2016 ACM. ISBN 978-1-4503-4190-5/16/04…$15.00 
+DOI: http://dx.doi.org/10.1145/2883851.2883888 
+
+
+
+our visual dashboard that allows emotion tracking and creates an 
+actionable feedback loop for students and teachers in order to 
+improve the face to face learning environment. Through our 
+learning analytics dashboard, we aim to answer the following 
+research issues: 
+
+A) Is it possible to adequately measure emotions that 
+students feel in the classroom? 
+B) How can students’ emotions be visualized to promote 
+self-reflection? 
+C) What is the real impact of tracking and visualizing 
+emotions on teaching-learning contexts? 
+
+With these questions in mind, the goal of our dashboard is two-
+fold. First of all, involving students in a self-regulation process 
+will allow them to gain knowledge about the emotion patterns of 
+themselves and their peers. This could help them to regulate 
+their emotions and therefore improve their progress in class [7]. 
+Secondly, making the teacher aware of the emotional climate in 
+class will allow her to detect problems early on and potentially 
+adapt the class pace. 
+
+Our dashboard has been evaluated in two stages. First, we made 
+an exploratory analysis with 15 students during a six-week 
+course by self-report, that is the most common and potentially 
+the best way to measure a person’s emotional experiences [18]. 
+The results of the analysis lead us to extend the PresenceClick 
+environment by integrating the verified model into its new 
+EmotionModule. The second evaluation stage was carried out on 
+the extended system in two phases during two semesters in two 
+subjects (with 97 and 81 students respectively). 
+The remainder of this paper is structured as follows. Section 2 
+presents so-called quantified-self apps that aim to track emotions 
+for self-reflection, and our own evaluated emotion model (TEA) 
+that was used to conceptualize students’ emotions. Section 3 
+presents the design process and evaluation of our solution. 
+Finally, Section 4 discusses our findings and conclusions. 
+
+2. QUANTIFYING EMOTIONS 
+This section presents the work related to quantify emotions and 
+presents the model that we propound for tracking students’ 
+emotions. 
+
+2.1 Background 
+The so-called quantified-self apps are steadily gaining an 
+important space in our daily routine [15] [16]. These apps cover 
+different life aspects, such as health, sport, travelling or learning, 
+and help people collect personal data about their own behaviors, 
+habits and thoughts. Many of them are focused on tracking 
+emotions with the aim of involving the user in self-monitoring 
+and self-reflection processes to regulate different aspects of their 
+own life. 
+Several web-based systems track user emotions and mood 
+through different techniques, such as self-report [13], selection 
+of colors to express mood [10] or by analyzing the raw vocal 
+intonations in real-time [2]. Many other applications that 
+quantify emotions are designed to be used on the go and run on 
+mobile phones, such as, MoodPanda [12] or In Flow [8]. In the 
+same way, the LIM app measures the interest of the audience in 
+a lecture [17] and MoodMap enables users to note and review 
+his or her own mood over time, and to obtain an insight about 
+team mood [4]. The majority of these apps represent the user’s 
+mood through a numeric scale, with just one or two dimensions 
+of emotions (happiness, interest, positive-negative mood, 
+
+activity level, etc.). In addition they mainly focus on general 
+emotions that are not necessarily related to learning. In this field, 
+learners’ emotions have been widely studied, since the well-
+known Ekman model of facial expressions [3] used in multiple 
+tutoring systems, to the model provided by Pekrun and 
+colleagues through the Achievement Emotions Questionnaire 
+(AEQ) [14], broadly used in educational emotion research. 
+
+2.2 The TEA Model 
+We propose a Model of Emotions in an academic context that 
+combines and refines the models provided by Pekrun and 
+colleagues [14] and Arroyo and colleague [1], which is based in 
+turn in Ekman’s model [3]. The former’s findings meaningfully 
+relate detected emotions to student’s learning and performance. 
+They identify eight different emotions related to the classroom 
+environment (enjoyment, hope, pride, anger, anxiety, shame, 
+hopelessness and boredom). The authors also set out a new 
+research question: what can we do to foster positive academic 
+emotions and to help students avoid negative emotions, or to 
+cope with negative emotions in a flexible way once they emerge? 
+We will try to answer this question by tracking emotions 
+through self reflection. The work by Arroyo and colleagues 
+considers that emotions –interest, frustration, excitement and 
+confidence– have an educational component related to a real 
+classroom. 
+
+In this paper we present a possible answer to research question 
+A by using a questionnaire to promote individual introspection 
+based on the combination of both models. This blend gives rise 
+to the Model that we have defined as the Twelve Emotions in 
+Academia, the TEA Model, with six positive emotions 
+(enjoyment, hope, pride, confidence, excitement and interest) 
+and six negative ones (anxiety, anger, shame, hopelessness, 
+boredom and frustration). All together they define the 
+positive/negative emotion spectrum (see Figure 1).  
+ 
+
+ 
+
+3. EXPERIMENTS, METHODS & 
+DISCUSSION 
+This section presents the experiment carried out on the TEA 
+Model (TEAM) to answer the research questions presented in 
+section 1 (A, B, C). The experiment was divided in two phases: 
+(1) exploratory analysis to validate both the proposed TEAM 
+and the visualization provided to students; and (2) the extension 
+of the PresenceClick system with an Emotion Module to let 
+students visualize their emotions easily. The PresenceClick 
+system streamlines the capture of students’ attendance to class 
+and allows teachers and students to register their classroom 
+
+Figure 1: The Twelve Emotions in Academia Model 
+
+
+
+interactions expeditiously in order to improve their knowledge 
+about the teaching-learning process [19] [20]. 
+
+3.1 Phase 1: Exploratory analysis 
+The objective of this phase was to respond to research questions 
+A and B. Therefore, we studied two issues: whether the TEAM 
+emotions are understandable and quantifiable by students, and 
+whether the visualizations utilized are clear and useful to help 
+students to reflect on their emotions. Finally, we partially 
+tackled question C by using the student’s point of view to check 
+whether tracking emotions has an impact on his or her learning. 
+The evaluation of this phase produced some ideas for 
+improvement that were applied in Phase 2. 
+
+3.1.1 Context and participants 
+This analysis was held in the context of an optional subject 
+about Multimedia at the Computer Science Faculty of the 
+University of Leuven (Belgium). One teacher, one observer and 
+15 students were involved, and the process lasted two months. 
+
+3.1.2 Instruments 
+We adapted the AEQ schema to track students’ emotions for the 
+proposed TEA Model (see section 2.2). The questionnaire was 
+going to be used frequently during the course and, to avoid 
+students’ tedium, we extracted the most representative item from 
+the 5-6 AEQ items for each emotion (Emotion Items – EI); we 
+also adapted the selected items to the contexts before class/after 
+class. Equivalent items were included for the TEAM emotions 
+that were not included in AEQ. For example, the items for 
+enjoyment were: “I enjoy being in class” or “I enjoy working in 
+the subject activities during the week”. Two more groups of 
+items were also included to answer research question A and to 
+learn about students’ opinions about quantifying emotions. 
+Firstly, students were asked to what extent each emotion 
+influenced their learning (Influence Items – II; i.e.: The more 
+interest I have in class, the better is my learning). Secondly, 
+students were asked about their certainty when assessing their 
+own emotions in class (Confidence Items – CI; i.e.: I can 
+measure my anxiety grade in class with certainty). The result is 
+an adaptable TEAM Questionnaire (TEAMQuest) using 
+different group of items (EI, II or CI) depending on the purpose 
+of the experiment in each moment. The TEAMQuest was 
+designed with GoogleDocs technology in a 6-Likert scale, to 
+allow students to evaluate each sentence in a simple way –from 
+completely disagree to completely agree. 
+
+Some prototype visualizations were created to show students 
+their emotions in order to favor reflection and to respond to 
+research question B (Figure 2 and Figure 3). The intention of 
+these visualizations was to involve students into this process and 
+not to show real numbers (as we can see the figures). Each 
+emotion was represented consistently by one color during all the 
+experiment; the selected colors are represented in Figure 1. Two 
+visualization schemas were used: typical plain graphs 
+visualization (Vg)-bubbles, stacked bars and boxplots- and a 
+more innovative visualization based on squares (Vs). The bubble 
+chart in Figure 2 (a) shows the student’s timeline evolution for 
+each emotion: rows represent the answers to the TEAMQuest in 
+one session (before or after class) and columns represent 
+emotions. The bubble size corresponds to the student’s valuation 
+for the emotion in one session, so the bigger the bubble the more 
+intense the emotion. The stacked bars Figure 2 (b) represent the 
+average value of every student’s emotion for all sessions in 
+contrast to the average values of the group. This visualization 
+schema allows comparing the general positive/negative balance 
+
+of the student to the one of the group, and contrasting the 
+emotions of the student with each other. Finally, the boxplot 
+chart Figure 2 (c) shows the timeline evolution of the group and 
+the comparison to the student’s emotions. Boxplots display the 
+emotion/session group distribution and black lines represent the 
+evolution of the student’s emotion through the different sessions. 
+By means of this graph the student can easily identify if there is 
+any difference between his or her feelings and those of the 
+group. Regarding own emotions, for example, it is easy to see 
+that the anxiety varies a lot through the weeks while interest 
+remains the same. In addition, as [10] states, time-based 
+visualizations allow the instructor to analyze the changes of each 
+emotion during the term of the class.  
+
+ 
+
+Figure 2: Visualization of typical graphs for one specific 
+student (Vg) 
+
+Figure 3: Visualization of the squares schema for a specific 
+student (Vs) 
+
+ 
+ 
+
+
+
+The squares schema (Figure 3) shows the positive/negative 
+emotion balance individually and by group. Each row displays 
+the results for a questionnaire, and the elements inside represent 
+the set of results for all participant students, ordered from the 
+lowest positive balance to the highest. Each large square is 
+composed of smaller light/dark squares to indicate 
+positive/negative emotions. A completely light large square 
+means the student is very positive, and the more dark it is the 
+more negative he or she is. The first column of the schema 
+represents the group average balance for each session, and the 
+most intense square in each row represents the student who is 
+using the system. So, the student can recognize himself or 
+herself in the ordered set of emotions balance and easily analyze 
+his or her evolution during the course in relation to the group. 
+For example, for the student in Figure 3, we can see that as the 
+course advanced, his/her emotions dropped considerably for 
+some weeks in comparison to the group. 
+
+The evaluation of the experiment was carried out following the 
+guidelines of [9], which depend on the specific evaluation 
+context of a visualization system. In order to evaluate their 
+usability & utility, and to discover the students’ opinion and 
+willingness to track their emotions, we developed a three-step 
+evaluation process that included: Satisfaction Questionnaire 
+(SQ), review of the students’ accesses in the system (A) and 
+Interviews to participants (I). The Satisfaction Questionnaire 
+was also created in GoogleDocs with a 6-Likert scale questions 
+(e.g.: Being aware of my emotions influences my behaviour in 
+class; Visualization 1 is easy to understand). To obtain a more 
+exact measure of students’ preferences, a question was included 
+to ask them to distribute 20 points among all the proposed 
+visualizations. Three open questions allowed students to give 
+their opinion about visualizations, lack of information and 
+whatever issue related to emotion tracking. The study of the 
+accesses in the system was done by checking the logs stored in 
+GoogleAnalytics. Finally, interviews included 8 questions for 
+students to confirm the data provided in the Satisfaction 
+Questionnaire (e.g.: Did you have any problem understanding 
+the graphs? Do you think the chosen colors were suitable?). 
+Table 1 presents a summary of the instruments. 
+
+Table 1: Instruments summary 
+ Instruments 
+
+Adaptable TEAMQuest 
+Emotion Items (EI) 
+Influence Items (II) 
+Confidence Items (CI) 
+
+Visualizations 
+Bubbles, stacked bars and 
+boxplots (Vg) 
+Squares schema (Vs) 
+
+Evaluation 
+Satisfaction Questionnaire (SQ) 
+Accesses in the system (A) 
+Interviews (I) 
+
+ 
+3.1.3 Procedure  
+During five weeks (see Table 2) in which students attended just 
+one classroom per week, we asked students to fill out the 
+TEAMQuest twice: before the class to reflect the emotions they 
+felt when they were working on the activities of the subject 
+during the previous week to the class (TEAMb1 or TEAMb2) 
+and after the class to reflect on the emotions in that session 
+(TEAMa). Although the questionnaire was anonymous, we 
+asked students to use a unique fictitious ID during the evaluation 
+process in order to discover their data evolution during the 
+course. 
+
+All the instances of the questionnaire were composed by the 
+Emotions Items (EI) according to the context before/after class. 
+In addition, the first time we passed out the questionnaire 
+(TEAMb1), we also included the questions about the influence 
+of emotions in their learning (II) and their confidence in their 
+answers (CI). One week later (in Class2), we repeated the 
+experiment in order to verify the certainty of the answers. 
+
+In the 3rd and 4th class of the experiment, students could 
+visualize some partial results (Vg) to increase their motivation 
+and avoid withdrawals. From the 5th class on, each student 
+could use a simple web prototype to visualize the evolution of 
+her emotions (Vg and Vs). The visualizations were always 
+personal and each student could only accessed to his/her results 
+by means of the id indicated on the questionnaires. At the end of 
+the experiment (6th class), and after accessing the prototype, 
+they were asked to answer a satisfaction questionnaire (SQ) 
+about the process of tracking emotions and the usefulness and 
+usability of the visualizations. After the last class and during the 
+next week some interviews (I) took place, as well as the system 
+access study (A). 
+
+Table 2: Procedure summary 
+
+ TEMQuest Visualizations Evaluation 
+
+C
+la
+
+ss
+1 Before TEAMb1   
+
+After TEAMa   
+C
+
+la
+ss
+
+2 Before TEAMb1   
+
+After TEAMa   
+
+C
+la
+
+ss
+3 Before TEAMb2 Vg  
+
+After TEAMa   
+
+C
+la
+
+ss
+4 Before TEAMb2 Vg  
+
+After TEAMa   
+
+C
+la
+
+ss
+5 Before TEAMb2 Vg Vs  
+
+After TEAMa   
+
+C
+la
+
+ss
+6 Before  Vg Vs SQ 
+
+After   A,I 
+
+TEAMb – TEAMQuest with Emotion Items before class; TEAMa 
+– TEAMQuest with Emotion Items after class; Vg: typical 
+graphs Visualization; Vs: Squares schema Visualization; SQ: 
+Satisfaction Questionnaire; A: Access study; I: Interviews; 
+ 
+
+3.1.4 Results and discussion 
+During the first two weeks, two before-class questionnaires 
+recorded the students’ opinion about tracking emotions by 
+means of the items of Influence in Learning (II) and Confidence 
+(CI). 15 out of 15 students answered the first questionnaire and 
+13 the second. Regarding Influence in Learning, Figure 4  
+presents the answers to II-Class1 and II-Class2. Blue boxplots in 
+the left part represent the positive emotions while the brown 
+colors represent the negative ones. Light colors correspond to 
+the first class and dark ones are related to the second. Except for 
+shame in Class1 (SHA in Figure 4), students agreed (4 or larger) 
+that these emotions influenced their learning. It should be noted, 
+that the second time they answered this question (dark boxplots), 
+
+
+
+they thought more about almost all emotions influencing 
+learning. Therefore, we concluded that the more aware of these 
+emotions they were, the more they thought they influenced their 
+learning. 
+
+ 
+
+Regarding confidence they opined they could assess their 
+emotions in class for each emotion (e.g.: “I think I can reliably 
+measure my anxiety in class”). In the second class, the average 
+value for all emotions was 4 or bigger (Figure 5). In addition, we 
+found correlations between the responses in “how reliable do 
+you think you can quantify your emotions” and the influence 
+they thought each emotion had in their learning. So, the more 
+importance they gave to an emotion related to their learning, the 
+more they believed they could evaluate/quantify it. 
+
+ 
+
+ 
+The significantly good results obtained for the items II and CI in 
+Class1 and Class2 confirmed the influence of emotions on 
+learning and the student’s confidence on his or her ability to 
+assess emotions, we therefore consider the proposed TEA Model 
+as an adequate proposal to register students’ emotions. We also 
+concluded that students could measure their emotions by means 
+of the TEAM Questionnaire, which responds positively to the 
+research question A, i.e. “is it possible to measure the emotions 
+that students feel in classroom?” 
+
+The visualizations provided (research question B) allowed the 
+teacher to conclude that the emotional climate of the classroom 
+was positive because the distribution for positive emotions 
+obtained high values and those for negative ones were low for 
+all the questionnaires (see group emotions Figure 2 and Figure 
+3). Thus, he or she could deduce his or her students were 
+comfortable and engaged in the subject. The visualizations 
+allowed students to think about their emotions and compare 
+them to those of the rest of the group, so changes on students’ 
+behaviour could be expected from the conclusions individually 
+obtained. For example, the emotion results after the first class 
+
+(EIa in Class1) for the student represented in Figure 2 were 
+mainly negatives (see rectangle selections): level of frustration 
+high, highest level of shame and, in general, the positive 
+emotions had the lowest values during the course. After that 
+session her emotions improved, a possible cause might have 
+been an awkward assignment, such as a public presentation 
+carried out in that session. By watching her emotion 
+visualizations and comparing them to the group, she could also 
+deduce the public presentation positively impacted her learning 
+emotions. Being aware of this fact could help her to increase 
+control over her emotions and to improve her learning processes; 
+nonetheless, the impact and the scope of the introspection 
+processes will depend on the student’s individual characteristics. 
+
+Figure 6 shows the students’ opinion about the two provided 
+visualizations, as it was reflected on the Satisfaction 
+Questionnaire. Most of the students thought both visualizations 
+were easy to understand (first two boxplots), and the average 
+value was positive for both of them. They also considered both 
+visualizations helped them to be aware of their own emotions 
+and those of the group; just 1 student disagreed for Vg and 2 for 
+Vs in the individual perspective; 2 students disagreed for Vg and 
+4 for Vs in the group perspective. Regarding the students’ 
+reflection, several opinions appeared but the majority thought 
+the evolution of the own emotions and the comparison to the 
+group make her reflect; a maximum of 4 students rated these two 
+questions negatively for each visualization. Students were also 
+asked about understandability problems in the Interviews, and 
+almost all of them agreed with no major problems and were 
+satisfied with the applied color code. Therefore, as the proposed 
+visualizations were understood by the majority, the usability was 
+considered high. However, some interesting feedback was 
+received that shall be taken into account in order to improve the 
+next phase of the experiment, e.g. “the stacked bars were not a 
+good visualization schema because data were difficult to 
+compare”.  
+
+ 
+
+The usefulness was also considered high because students rated 
+positively the fact that visualizations involved them in learning 
+awareness and reflection. However, some different opinions 
+were also recorded, such as “I don’t think it is useful for me. I 
+cannot easily express my feelings on a piece of paper, or on a 
+numeric scale”, or “It is useful if you look at it a couple of 
+weeks later. It is visual and maybe you can do something about 
+it”. Based on these results, we conclude that showing this type of 
+emotion visualizations to students can be a good way to promote 
+their self-reflection process. In addition, the proposed 
+visualizations have proved to be good options to answer research 
+
+Figure 6: Students’ opinion about visualizations 
+ 
+
+Figure 5: Students’ opinion about confidence on the 
+own answers (answers to CI in Class1 and Class2) 
+
+ 
+
+Figure 4: Students’ opinion about the influence of 
+emotions in learning (answers to II in Class1 and Class2) 
+
+. 
+ 
+ 
+
+
+
+question B, i.e. “How can students’ emotions be displayed to 
+favor self-reflection?” 
+
+To answer research question C, Does tracking emotions really 
+impact on teaching-learning contexts?, the opinion of students 
+was explored in the Satisfaction Questionnaire in this phase, and 
+other evaluation methods were planned for future phases, such 
+as teachers’ opinion or the relation between the students’ grades 
+and the emotions during the course. The results showed that 10 
+out of 15 students agreed that being aware of their own emotions 
+could influence their learning and that being aware of group 
+emotions could make them reflect on their own emotions. The 
+majority of the students (13 out of 15) thought that a students’ 
+emotion tracking app could be really useful for teachers. 
+However, only a few of them would continue tracking (6 out of 
+15), and several students pointed out the wasted time due to the 
+lack of agility of the tool as the main cause. In addition, the 
+system Accesses revealed students only visualized their 
+emotions when they were in the classroom and were asked to do 
+it, even though they could check them whenever they wanted 
+during the last two weeks of the course. 
+
+In summary, although the visualization usability and usefulness 
+were considered high and a considerable number of students 
+believed tracking emotions could impact their learning, only 
+some of them would continue tracking their emotions. As a 
+result, we concluded that students’ motivation was not enough to 
+put an effort into tracking emotions, and pointed out as a 
+possible cause a stronger sensation of wasted time than the 
+possibility of improving learning. We must also remark that not 
+all the students felt comfortable evaluating their emotions, which 
+can be produced by an unfamiliar terminology, especially at the 
+beginning of the experiment, or even by the difficulty of 
+reflecting and expressing feelings about the teaching-learning 
+context. Although some answers to question C derive from 
+various students’ opinions, a much deeper analysis is needed. 
+However, the data tends towards more favorable evaluations of 
+the impact of visualizations in learning when students show 
+more positive emotions during the course. 
+In conclusion, the results obtained in the experiment to answer 
+the A, B, and C research issues by means of the Influence Items, 
+the Confidence Items and the Satisfaction Questionnaire indicate 
+that emotions can be measured by means of suitable questions 
+(TEAMQuest) and that students do not find big problems in 
+quantifying their emotions. The experiment proved that emotion 
+visualizations were clear and useful for students, and also 
+allowed us to record the students’ opinion to be taken into 
+account to improve the next phase. Finally, as the impact of 
+tracking emotions on learning was differently valued by 
+students, we planned a new experiment with a bigger set of 
+participants that would allow us to reach more solid conclusions. 
+Furthermore, we improved the tracking process in order to be 
+more dynamic and motivational for students. 
+
+3.2 Phase 2: Integration in PresenceClick 
+In this stage we adapted the presentation of the Emotions Items 
+(EI) of the TEAMQuest and the visualizations to be integrated in 
+the PresenceClick system. As a result of the integration, the new 
+component EmotionModule is aimed to motivate students to 
+track their emotions by means of more comprehensible 
+visualizations, and more interactive and direct ways of 
+answering the questionnaire.  
+
+In this phase, the students participating already knew 
+PresenceClick and had used it from their personal accounts. In 
+
+addition, the integration was not a waste of effort avoiding the 
+use of external links to GoogleDocs and it also solved the 
+problem of the students’ access with different codes. The system 
+also maintained the students’ anonymity in the teacher’s 
+visualizations. 
+
+Considering that research issue A was already answered in 
+Phase 1, the objectives of this stage were to check whether the 
+improved visualizations were clear enough and useful enough in 
+helping students to reflect on their emotions (research issue B) 
+and to discover whether students think that emotion tracking 
+may impact on their learning and whether they would keep 
+tracking (research issue C). We also studied whether tracking 
+emotions is an indicator of the students’ performance in the 
+subject, which would allow teachers to maintain awareness of 
+the possible evolution of their students, which in turn could 
+derive in new decisions and impacts on the course. 
+
+3.2.1 Context and Participants 
+The EmotionModule was tested during two semesters in the 
+compulsory subjects Object Oriented and Modular 
+Programming (MOOP) and Basic Programming (BP), both 
+belonging to the first year of the Computer Science Degree at 
+the University of the Basque Country (UPV/EHU), Spain. 97 
+students enrolled in MOOP during the second semester and 81 
+students enrolled BP in the first semester of the next academic 
+year. Both subjects had three sessions per week. Since 
+completing the questionnaires before and after each class (as in 
+Phase 1) could be too tiresome for students, the tool included 
+mechanisms to allow teachers quantifying students’ emotions 
+just when they thought it could be significant. 
+
+3.2.1.1 Instruments 
+The EmotionModule lets teachers create four types of emotional 
+events to capture the emotional state of the classroom 
+(Emotional Capture Event - ECE). Teachers can create ECEs 
+according to their own criteria or considering chronological 
+aspects. Chronological ECEs allow to define specific slot times: 
+class, week, and any teacher-determined time period; teacher’s 
+criteria allow to freely relate an ECE to whatever classroom 
+activity, e.g. exercise, report or group work. By means of a pre-
+established parameter, teachers delimit the moments in which 
+students can complete the questionnaire, and also decide 
+whether attendance is compulsory or not. PresenceClick allows 
+students to respond to the ECE according to the established 
+parameters.  
+The questionnaire integrated on PresenceClick was obtained by 
+refining the one used in Phase 1 to clearly separate positive and 
+negative emotions and also to improve the allure of the interface. 
+The agreement/disagreement scale in the interface was then 
+represented by emoticons (Figure 7), and several 
+information/help messages (derived from the AEQ) were linked 
+to the sensitive names of the emotions; e.g.  “I have felt 
+comfortable in class and enjoyed the developed activities. The 
+more I participate in class, the more I enjoy the work done” for 
+the Enjoyment emotion. 
+
+The visualization schemas were also transformed to make them 
+more understandable and useful. They were divided in two parts: 
+for one specific event (Figure 8) and for all events (Figure 9). 
+For one specific event, the bubble visualization (see Figure 2.a) 
+was adapted to include emoticons in order to gain the students’ 
+attention and increase motivation (see oval in Figure 8). Having 
+been poorly rated, stacked bars (see Figure 2.b) were substituted 
+
+
+
+by bar charts that show the individual global positive/negative 
+balance of emotions in contrast with the group, instead of 
+showing comparisons emotion by emotion (see rectangle in 
+Figure 8) where the number in each chart indicates the medium 
+of the positive/negative emotions from 1 to 6). As we can see, 
+this student was very negative in this event. 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+Boxplots and bar graphs were used for all events in general in 
+comparison to the group. Boxplots show relevant information 
+about the course evolution itself in comparison to the group and 
+were rated very positively (see oval and curved lines in Figure 
+9). Bar charts were also used to indicate the average value of 
+positive/negative emotions (see rectangle in Figure 9). Although 
+square visualization (Figure 3) had a good acceptation in Phase 
+
+1, it was dismissed because it was not intuitive enough and 
+produced difficulties for non-expert students (as they were in 
+Phase 1). In this phase, we also created visualizations for 
+teachers, who could anonymously watch the emotional state of 
+the class. As emotions are sensitive information, the teacher’s 
+view is practically the same as the students’ one, but he can only 
+access the general emotions of the group and not those of a 
+specific student. In this example, we can see that the emotions 
+for this student dropped considerably during the week that one 
+specific lesson was given. 
+
+ 
+
+The evaluation of the EmotionModule was carried out by means 
+of a Satisfaction Questionnaire (SQ) and by studying the 
+students’ accesses in the system (A) with Google Analytics. The 
+questionnaire was similar to the one used in Phase 1, and 
+included three groups of 6-likert scale questions. The first group 
+concerned the grade of agreement/disagreement about 
+registering emotions in class, e.g. “Tracking emotions helps me 
+be more positive in the subject and improving my learning”. The 
+second and the third groups were related to the utility and 
+usability of the two pages of visualizations, respectively 
+emoticons and boxplots, e.g.: “I think data in the boxplot page is 
+simple and easy to understand”. In addition, three open 
+questions allowed students to freely express their opinion. 
+
+3.2.2 Procedure 
+The experiment involved two stages during two academic years. 
+In the first stage, events from different nature were used to test 
+the system and obtain the first impressions of students about the 
+process of quantifying emotions. In contrast to the previous year, 
+in the second stage, the objective was to study the students’ 
+emotion trends, letting both, teachers and students, get an idea of 
+the evolution of their emotions regarding the outlined milestones 
+in the subject to be resolved in laboratory classes. In order not to 
+
+Figure 8: Student’s mood visualization for one specific 
+event 
+
+Figure 7: Emotions Items in PresenceClick 
+ 
+
+Figure 9: Student’s mood visualization for all three events 
+in MOOP. A- a class, B- a lesson, and C- final course work 
+
+(A-session ECE)     (B-week ECE)    (C-free ECE)                  (A-session ECE)  (B-week ECE)    (C-free ECE) 
+ 
+
+
+
+influence their answers, in both stages students could only 
+visualize the global results of each event once it was closed and 
+responses were no longer admitted, according to the parameters 
+chosen by the teacher. 
+
+In MOOP three Emotional Capture Events (ECE) were carried 
+out during a month: an ECE session, an ECE week and a free 
+ECE were created. Students were asked to fill in the first one 
+just after finalizing a laboratory session with compulsory 
+attendance, and 41 out of 48 attendants filled it in. The event 
+dealt with the tasks just developed, which involved several 
+programming skills. The second event was related to a specific 
+lesson that was imparted during six sessions (two weeks), three 
+of which with compulsory attendance. Students were asked by 
+Moodle to respond the event and 20 students took part. Finally, 
+the third event was related to the practical work they had to 
+complete during the whole course. The attendance was optional 
+and, as in the previous event, students were asked to fill in the 
+questionnaire by Moodle, and 41 out of 97 enrolled students 
+carried it out. 
+
+The second year, BP students were asked six times to respond 
+the questionnaire. The first event was created just after the first 
+days of class in order to let the teacher know the emotional state 
+of the group at the course beginning and 56 students answered. 
+The remaining events were created for every laboratory class 
+across the course, and 36, 57, 48, 29 and 13 students participated 
+(last event participation was low due to a server problem).  
+
+Once the experiment was concluded in each stage, we carried 
+out the Logs study and the Satisfaction Questionnaire in 
+GoogleDocs and spread by Moodle. The participation in the 
+questionnaire was considerably lower in percentage terms than 
+in Phase 1 with 36% of students in MOOP and 22% in BP. This 
+was attributed to the fact that groups were large and that 
+questionnaires were carried out in both cases when they had 
+already finished the classes. Even though it is not an enough 
+sample of students to obtain significant results, the conclusions 
+derived from students’ answers can give us insights about their 
+perceptions of visualizations and the entire process of tracking 
+emotions.  
+
+3.2.2.1 Results and discussions 
+Research issue B ?displaying emotions for self-reflection? was 
+addressed in the same way as Phase 1, and visualizations were 
+supposed to help students to be more aware of their own 
+emotions just by reflecting on them and comparing their own 
+mood to that of their peers. Knowing the general mood of the 
+classroom could help students to act more cohesively and tightly 
+interrelated. For example, Figure 9 shows the mood 
+visualization of a specific student in MOOP who is in general 
+slightly less positive than the group and slightly more negative 
+as the column charts indicate. In addition, the black lines in the 
+boxplots indicate possible difficulties in understanding the 
+concepts given during the week. The results for the last ECE 
+improved considerably and, in general, the values were between 
+the majority. It can be interpreted that visualizing her results and 
+comparing them to the group helped her to increase attention or 
+effort while studying, which improved her general mood. In this 
+subject, the average values for all the positive emotions were 
+always high while the negative ones were generally low (Figure 
+9) so the teacher could derive that the classroom was in a good 
+mood although not too much. In addition, frustration had an 
+increasing average value for each event, ending in 4 points. It 
+could be interpreted that students’ frustration was steadily rising 
+due to the increases in the difficulty level of the assignments. 
+
+Taking this into account, the teacher could re-consider the to be 
+less exigent, or maybe he confirmed the effects of a challenging 
+work-plan. In any case, having information about the mood class 
+makes the teacher aware and sensitive enough as to take steps to 
+improve the teaching-learning work-plan, if necessary. 
+
+Figure 10 shows the students’ opinion about visualizations as 
+reflected in the satisfaction questionnaire for each course. 
+Boxplots indicate students agreed that the emoticons and bar 
+charts visualizations were easy to understand for one event, but 
+they found some difficulties when interpreting boxplots. In both 
+courses one third of students thought they were not easy to 
+understand, although in BP we gave the students the possibility 
+to obtain some help in the system in order to get a clear 
+explanation about boxplots to avoid loss of motivation. Students 
+also agreed that visualizations gave them interesting 
+information, specially the emoticons page; however, 28% 
+students for MOOP and 22% for BP thought the boxplot page 
+was not interesting at all. Finally, in MOOP 61% of students 
+thought that both visualizations helped them reflect about their 
+emotions, while in BP the satisfaction in this point increased 
+notably and 75% agreed with it. Probably, this is due to the fact 
+that the experiment was carried out during the entire semester, 
+letting them compare their evolution to the group’s one for a 
+large period. In conclusion, we consider that EmotionModule 
+usability is high because students did not have major problems 
+in understanding the given information, although it can be 
+improved due to the boxplots visualization. Utility of 
+visualizations is also good because the majority of students 
+agreed that the provided information is interesting and it makes 
+them reflect on their emotions. It was detected that contextual 
+information could enrich the visualizations in order to help 
+teachers and students in their reflection process (for example, it 
+would be useful to know that negative emotions are related to 
+lessons, while positive emotions could be linked to discussion 
+sessions). 
+
+ 
+
+Regarding the impact of tracking emotions on students’ learning 
+(research issue C), in MOOP only a third of the participants in 
+the satisfaction questionnaire thought it helps them to be more 
+
+Figure 10: Students’ opinion about visualizations in Phase 2 
+ 
+
+
+
+positive in the subject or that it could have an impact in their 
+behavior. However, two thirds in BP agrees that the 
+EmotionsModule helps them to me more positive and the 73% 
+said that it could have an impact in their behavior. This means 
+that satisfaction increased the second course notably in these 
+aspects, probably due also to the continuity in tracking emotions. 
+In MOOP two thirds thought it would really help the teacher to 
+be more aware of the class situation, while in BP only one 
+student disagreed with it. While in MOOP 50% of the students 
+would continue registering, in PB 80% would, which implies a 
+significant increase in the beliefs of the impact of emotion 
+tracking. However, less than the 25% of students that normally 
+attend the course responded the satisfaction questionnaire, which 
+means that perhaps the remaining students could decrease the 
+satisfaction of the group.  
+As in Phase 1, the system accessed revealed accessing peaks for 
+the created events just when the teacher warned students to get 
+in, which could indicate low motivation amongst students’ since 
+few accesses were registered at other moments. This could be 
+due to the lack of habit to tracking emotions. In addition, 
+although the majority understood the emotions and what they 
+were evaluating, 61% of students did not feel comfortable with 
+tracking in MOOP and the 27% in BP. Therefore, the 
+disconformity descended notably in the second subject, probably 
+due to the fact that they tracked emotions during a larger period, 
+getting use to the process. We should also take into account that 
+the experiment was carried out in Computer Science, and maybe 
+students with other profiles, such as Psychology or Pedagogy, 
+would be even more open to this kind of practice. 
+
+In both subject the final exam was used to check the students’ 
+performance. In MOOP 45% of students enrolled in the subject 
+took it, while 73% in BP did. The emotions measures were took 
+by calculating the media to all the filled events for each student. 
+In MOOP we found a significant correlation between the grades 
+and the students’ emotions: the more positive the student is, the 
+higher the grade is (? = 0.46, p = 0.0057), while the more 
+negative, the lower (? = ?0.46, p = 0.0039) [5]. However, in BP 
+we did not find correlation between the mark and emotions. 
+Taking both dataset altogether correlations between the mark 
+and negative emotions appeared (? = ?0.33, p = 0.0011). Table 3 
+summaries the correlation information between the grades in the 
+exam and the emotions. 
+
+Table 3: Correlations between the mark and emotions 
+
+ Positive emotions Negative emotions 
+
+MOOP 0.45 (p = 0.0057) -0.46 (p = 0.0039) 
+
+BP 0.12 (p = 0.351) -0.28 (p=0.034) 
+
+MOOP+BP 0.24 (p = 0.02) -0.33 (p=0.0011) 
+
+ 
+Therefore, emotions registered during the course seem to be a 
+possible indicator of the students’ mark in the final exam, which 
+could provide teachers with early information useful for 
+adapting the course dynamically and so improving students’ 
+learning outcomes. Probably the correlations in MOOP are 
+higher that in BP because the emotions events in this subject 
+were done little time before the exam, so they had more or less 
+clear their possible performance on it and their feelings could be 
+influenced by this fact. However, in BP events were done during 
+
+the whole course, where their emotions can vary a lot according 
+to the different activities during classes. As positive and 
+negative emotions parameters were took as a whole measure 
+from all the events is possible that big information was lost in 
+the way, so studying correlations between mark and emotions 
+across time will be took into account in future research lines in 
+order to predict students’ performance. 
+
+In summary, this Phase has positively valued a set of 
+visualization schemas proposed to display students’ emotions, 
+and has confirmed these visualizations are a good mechanism to 
+involve students in self-reflection processes, which answers 
+research issue B “How can students’ emotions be displayed to 
+favor self-reflection?”. The research on issue C ?“Do tracking 
+emotions really impact on teaching-learning contexts?”? has not 
+produced concluding results. On one hand, tracking emotions 
+seems to make an impact on the learning of some students, but a 
+deeper study on a broader and richer sample is needed to achieve 
+general conclusions. On the other hand, results indicate that the 
+continuity in the use of the emotion dashboard drives to a major 
+satisfaction of students, which implies a willingness towards the 
+possibility of behavioral changes. Finally, the information 
+provided by tracking emotions seems to be a good indicator of 
+the success/failure of students in the subject, which could benefit 
+the teacher’s management of the teaching-learning strategies.  
+
+4. CONCLUSIONS 
+Several works have proved that the emotional state of students is 
+an important conditional factor to a successful learning 
+experience, but (A) How can students’ learning emotions be 
+quantified? If we are able to identify them, (B) How can they 
+successfully be shown to students and teachers? And, (C) How 
+can we –students and teachers? benefit from them? These 
+questions establish the context and goals of the work here 
+presented. We have proposed a method to track students’ 
+emotions during the course, and have provided students and 
+teachers with information about the resulting emotional state of 
+the class. Our aim is to use visualization techniques to drive the 
+students through the different phases of the learning analytics 
+process model (awareness, reflection, sense making and impact): 
+increasing student’s awareness of emotions within themselves as 
+well as the group, involving themselves in self-reflection 
+processes that positively impacts their learning results and 
+allows teachers to improve their teaching-learning strategies. 
+This paper presents some answers to the posed questions 
+through an incremental two-phase experiment, which involved 
+different subjects, number of students, and improvements in 
+visualization techniques and inquiry methods. 
+
+This paper has introduced the TEA Model (TEAM) that involves 
+the main emotions detected in educational contexts. It has 
+explored the possibility of measuring students’ emotions through 
+inquiry methods (questionnaire). In Phase 1, we registered the 
+students’ beliefs about the impact of their own emotions’ on 
+their learning and their trust in their own answer. The 
+significantly good results to these questions validated the TEA 
+Model and also allowed us to conclude that students could 
+measure their emotions (question A) adequately. However, we 
+discovered that a considerable number of students felt 
+uncomfortable doing it. We suppose that a habit of registering 
+emotions, and even selecting a more familiar terminology could 
+decrease this discomfort. As a result, the inquiry mechanisms 
+and visualizing techniques were improved in evaluation Phase 2. 
+The EmotionModule was developed to integrate the TEAM in 
+the PresenceClick environment by means of emoticons to make 
+
+
+
+the process of capturing emotions more dynamic and 
+motivational. The procedure of capturing and visualizing 
+emotions became more agile by means of this system due to its 
+simple interfaces and students’ prior knowledge of 
+PresenceClick. 
+
+According to the evaluation results of both phases, students’ 
+emotions can be displayed through several visualization 
+techniques –bubble charts, stacked bars, boxplot charts, 
+emoticons? that involve them in self-reflection processes 
+(question B). It should be noted that not all the students agree on 
+this point, nor were the visualization schemas equally 
+successful. Boxplots generated larger problems amongst 
+students, but due to the amount of information they can 
+communicate with a small learning curve, we consider them as a 
+good visualization that can go with suitable explanations to help 
+understanding and increase interest. 
+
+Finally, we evaluated the impact of tracking emotions on 
+students’ behaviour (question C) by taking both experiments as a 
+whole. The results indicate that approximately half of the 
+students (55%) considered that tracking emotions could have a 
+positive impact in their behavior. Only regarding results of the 
+second experiment where students used the EmotionModule 
+during a whole semester, increases this result considerably 
+(73%) although the satisfaction survey was only completed by 
+22% of the students who participated in the experiment. We 
+have also confirmed that emotions visualization could be a good 
+proxy for the students’ performance. This could help teachers to 
+make appropriate strategically decisions that are based on the 
+classroom mood during the course. Almost all students were 
+convinced that it would be really helpful for teachers to know 
+the emotional state of the classroom. 
+
+5. ACKNOWLEDGMENTS 
+This work has been supported by the Government of the Basque 
+Country (IT722-13), the University of the Basque Country 
+(PPV12/09, UFI11/45), Gipuzkoako Foru Aldundia (FA-
+208/2014-B), "Erasmus+ programme, Key Action 2 Strategic 
+Partnerships, of the European Union under grant agreement 
+2015-1-UK01-KA203-013767  – ABLE project." and "European 
+Community’s Seventh Framework Programme (FP7/2007- 
+2013) under grant agreement No 318499 - weSPOT project. 
+
+6. REFERENCES 
+[1] I. Arroyo, D. G. Cooper, W. Burleson, B. P. Woolf, K. 
+
+Muldner, and R. Christopherson. Emotion Sensors Go To 
+School. In Proceedings of the 2009 conference on Artificial 
+Intelligence in Education, 2009, pp. 17–24. 
+
+[2] Beyondverbal. [Online]. Available: 
+http://www.beyondverbal.com. 
+
+[3] P. Ekman,  W.V. Friesen and J.C. Hager, The facial action 
+coding system, 2en edn. London: Wei- denfeld & Nicolson, 
+2002. 
+
+[4] A. Fessl, V. Rivera-Pelayo, V. Pammer, and S. Braun. 
+Mood Tracking in Virtual Meetings. In 21st Century 
+Learning for 21st Century Skills, vol. 7563, A. Ravenscroft, 
+S. Lindstaedt, C. Kloos, and D. Hernández-Leo, Eds. 
+Springer Berlin Heidelberg, 2012, pp. 377–382. 
+
+[5] G. Gray, C. McGuinness, and P. Owende, An Investigation 
+of Psychometric Measures for Modelling Academic 
+
+Performance in Tertiary Education. In Sixth International 
+Conference on Educational Data Mining, 2013 
+
+[6] M. Hannafin and S. Land. The foundations and 
+assumptions of technology-enhanced student-centered 
+learning environments. Instr. Sci., vol. 25, no. 3, pp. 167–
+202, 1997. 
+
+[7] C. Hinton, K. Miyamoto, and B. Della-Chiesa Brain 
+Research, Learning and Emotions: implications for 
+education research, policy and practice1. Eur. J. Educ., vol. 
+43, no. 1, pp. 87–103, 2008. 
+
+[8] Inflow. [Online]. Available: http://www.inflow.mobi. 
+[9] H. Lam, E. Bertini, P. Isenberg, C. Plaisant, and S. 
+
+Carpendale. Empirical Studies in Information 
+Visualization: Seven Scenarios. Vis. Comput. Graph. IEEE 
+Trans. On, vol. 18, no. 9, pp. 1520–1536, Sep. 2012. 
+
+[10] D. Leony, P.J. Muñoz-Merino, A. Pardo, C.D. Kloos. 
+Provision of awareness of learners’ emotions through 
+visualizations in a computer interaction-based environment. 
+Expert Systems with Applications. 40, 5093 – 5100 (2013). 
+
+[11] Moodjam. [Online]. Available: http://moodjam.com. 
+[12] Moodpanda. [Online]. Available: 
+
+http://www.moodpanda.com. 
+
+[13] Moodscope. [Online]. Available: 
+https://www.moodscope.com. 
+
+[14] R. Pekrun, T. Goetz, A. C. Frenzel, P. Barchfeld, and R. P. 
+Perry. Measuring emotions in students’ learning and 
+performance: The Achievement Emotions Questionnaire 
+(AEQ). Stud. Emot. Acad. Engagem., vol. 36, no. 1, pp. 36–
+48, Jan. 2011. 
+
+[15] Personal informatics. [Online]. Available: 
+http://www.personalinformatics.org. 
+
+[16] Quantified self. [Online]. Available: 
+http://quantifiedself.com. 
+
+[17] V. Rivera-Pelayo, J. Munk, V. Zacharias, and S. Braun. 
+Live interest meter: learning from quantified feedback in 
+mass lectures. In Proceedings of the Third International 
+Conference on Learning Analytics and Knowledge, New 
+York, NY, USA, 2013, pp. 23–27. 
+
+[18] Robinson, M.D., Barrett, L.F.: Belief and Feeling in Self-
+reports of Emotion: Evidence for Semantic Infusion Based 
+on Self-esteem. Self and Identity. 9, 87–111 (2010). 
+
+[19] S. Ruiz, M. Urretavizcaya, and I. Fernandez-Castro, 
+Monitoring F2F interactions through attendance control. In 
+Frontiers in Education Conference, 2013 IEEE, 2013, pp. 
+226–232. 
+
+[20] S. Ruiz, M. Urretavizcaya, I. Fernández-Castro, and J.-M. 
+López-Gil. Visualizing Students’ Performance in the 
+Classroom: Towards Effective F2F Interaction Modelling. 
+In Design for Teaching and Learning in a Networked 
+World, vol. 9307, G. Conole, T. Klobu?ar, C. Rensing, J. 
+Konert, and É. Lavoué, Eds. Springer International 
+Publishing, 2015, pp. 630–633. 
+
+[21] K. Verbert, E. Duval, J. Klerkx, S. Govaerts, and J. L. 
+Santos. Learning Analytics Dashboard Applications. Am. 
+Behav. Sci., Feb. 2013. 
+
+ 
+
+
+

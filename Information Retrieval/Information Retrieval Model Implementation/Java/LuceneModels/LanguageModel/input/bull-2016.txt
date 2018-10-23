@@ -1,0 +1,1147 @@
+
+Introduction of Learning Visualisations and Metacognitive 
+Support in a Persuadable Open Learner Model 
+
+Susan Bull 
+Institute of Education 
+
+University College London, 
+UK 
+
+s.bull@ucl.ac.uk.
+
+Blandine Ginon 
+University of Birmingham, 
+
+UK 
+b.ginon.1@bham.ac.uk 
+
+Clelia Boscolo  
+University of Birmingham, 
+
+UK 
+c.boscolo@bham.ac.
+
+uk
+
+Matthew Johnson 
+University of Birmingham, 
+
+UK 
+m.d.johnson.1@bham
+
+.ac.uk 
+ 
+
+ABSTRACT 
+This paper describes open learner models as visualisations of 
+learning for learners, with a particular focus on how information 
+about their learning can be used to help them reflect on their 
+skills, identify gaps in their skills, and plan their future learning. 
+We offer an approach that, in addition to providing visualisations 
+of their learning, allows learners to propose changes to their 
+learner model. This aims to help improve the accuracy of the 
+learner model by taking into account student viewpoints on their 
+learning, while also promoting learner reflection on their learning 
+as part of a discussion of the content of their learner model. This 
+aligns well with recent calls for learning analytics for learners. 
+Building on previous research showing that learners will use open 
+learner models, we here investigate their initial reactions to open 
+learner model features to identify the likelihood of uptake in 
+contexts where an open learner model is offered on an optional 
+basis. We focus on university students’ perceptions of a range of 
+
+visualisations and their stated preferences for a facility to view 
+evidence for the learner model data and to propose changes to the 
+values.   
+
+CCS Concepts 
+• Human-centered computing Human computer interaction 
+(HCI); user model, user studies Visualization; Visual 
+analytics; Visualization systems and tools • Applied Computing
+
+ Education; Interactive learning environments. 
+
+Keywords 
+Visual Learning Analytics; Open Learner Models; Learning 
+Analytics for Learners; Persuading the Learner Model. 
+
+1. INTRODUCTION 
+Visual analytics combine the strengths of people and computers in 
+processing data [25]. With the growth of interest in learning 
+analytics, visualisations and dashboards have been developed for 
+education settings (e.g. [2; 10; 19; 43]). There is also growing 
+recognition that, because learning analytics are concerned with 
+learning, they should offer pedagogically useful information [22]. 
+
+This information also needs to be actionable, i.e. it has to be able 
+to support decision-making [2]. For example, learning analytics 
+can help teachers to compare activity and performance indicators 
+in large datasets, to allow them to take decisions about their use of 
+particular activities [20]; or social learning analytics dashboards 
+may help teachers better identify learner-learner interactions, 
+which may help them to intervene in cases such as where there are 
+disconnected students, or help them recognise those who have 
+influence over others as indicated by ratings or followers [21].  
+
+Learning analytics visualisations can also be helpful for the 
+learners themselves (e.g. [15;18;21;44]), and it is this area that is 
+of particular interest in this paper; specifically, open learner 
+models (OLM). The essence of a learner model is a representation 
+of an individual’s current state of knowledge, skills, 
+
+competencies, etc., which is inferred according to their interaction 
+with an educational system [46]. Thus, it is not so much a count of 
+performance or other data as is more common in learning 
+analytics, but it is, indeed, a representation of understanding or 
+learning. It is the learner model that allows an adaptive system to 
+appropriately personalise the interaction to suit the individual 
+learner’s needs at the time.  
+
+Open learner models are learner models that externalise the 
+inferred learner model contents to the learner (or other user), 
+usually with some kind of visualisation. Often this has the aim of 
+promoting metacognitive activities such as reflection, self-
+monitoring and planning (see [3]), and therefore has a similar goal 
+to some of the arguments for learning analytics visualisations to 
+facilitate such activities, e.g. self-directed learning [15] and 
+metacognition [18]. 
+
+Typically, in learning analytics, traditional visualisation methods 
+have been used in learning dashboards. These include bar charts 
+[20; 23; 36; 38]; pie charts [23; 41]; histograms [27; 41]; radar 
+plots [21]; scatterplots [36]; tables [38]; or timelines [20; 27; 38]. 
+Other examples include networks [21; 41] and tag clouds [41]. As 
+can be seen from the above, often several visualisations are 
+available on a learning dashboard (e.g. [38; 41]). 
+
+OLMs often use different visualisation forms than those most 
+commonly found in learning analytics dashboards. For example: 
+skill meters [6; 7; 12; 17; 28; 33; 45], concept maps [1; 17; 30; 37] 
+and hierarchical tree structures [11; 17; 24; 30] are particularly 
+common. Other visualisations as mentioned above for learning 
+analytics, can also be found in open learner models (e.g. tag/word 
+clouds [7; 31] and network visualisations [7]). The overlap 
+between learning analytics visualisations and OLM visualisations 
+is often in the newer visualisation types. As with learning 
+analytics dashboards, some open learner models have multiple 
+visualisations (e.g. [7; 17]). Figures 1 and 2 show examples from 
+the LEA’s Box open learner model. 
+
+ 
+
+Permission to make digital or hard copies of all or part of this work for 
+personal or classroom use is granted without fee provided that copies are 
+not made or distributed for profit or commercial advantage and that 
+copies bear this notice and the full citation on the first page. 
+Copyrights for components of this work owned by others than ACM 
+must be honored. Abstracting with credit is permitted. To copy 
+otherwise, or republish, to post on servers or to redistribute to lists, 
+requires prior specific permission and/or a fee. Request permissions 
+from Permissions@acm.org. 
+LAK '16, April 25-29, 2016, Edinburgh, United Kingdom 
+© 2016 ACM. ISBN 978-1-4503-4190-5/16/04…$15.00 
+DOI: http://dx.doi.org/10.1145/2883851.2883853 
+
+
+
+   
+Figure 1: The LEA’s Box OLM: word cloud and treemap visualisations. 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+Figure 2: The LEA’s Box OLM: stars, gauges, network, table, skill meters, smileys, histogram and radar plot visualisations. 
+
+
+
+In addition to allowing users to see the information in their learner 
+model, and in a way that is meaningful and facilitates action, 
+learner models can in some cases also be negotiated (e.g. [4; 16; 
+26]), where either the learner or the system can initiate discussion 
+to try to resolve any differences between their respective beliefs 
+about the learner’s knowledge, and each partner provides evidence 
+or justifications of their viewpoints. Separate learner model 
+representations (for the system’s and student’s beliefs about the 
+learner’s skills) are retained if there is no agreement. 
+Alternatively, some learner models allow attempts at persuasion: a 
+learner can try to persuade the system to change a value in their 
+learner model, providing evidence to convince the system (e.g. [9; 
+29; 40; 42]). Only if the system is convinced by this evidence, will 
+it update the learner model to reflect the learner’s requested 
+
+change. While there are similarities between negotiated and 
+persuadable learner models, the main difference is that in the 
+latter, control of the learner model data lies with the system, while 
+negotiated learner models allow parallel representations of student 
+and system beliefs if there is disagreement. 
+
+Approaches such as the above allow learners to suggest changes 
+to outdated or inaccurate representations in their learner model, 
+and often also aim to promote learner reflection on their learning, 
+as part of the discussion process [5]. This is possible in OLMs 
+because the visualised data is not simply a count of activity or 
+behavior – which will be an accurate count of instances (e.g. 
+clicks, materials accessed, exercises attempted, performance 
+scores) – but rather, comprises inferences about learning. As 
+stated above, this interaction about the content of the learner 
+model aims to provide a means to improve the accuracy of the 
+model: e.g. if a learner had obtained correct answers through 
+guessing, the learner may try to decrease a value; or if the learner 
+had done some additional reading, they may try to increase a 
+value in their learner model (or, indeed, they may try to decrease 
+it, if on reading they realise that their understanding is not as 
+strong as the representations in their model suggest). Importantly, 
+this discussion process also aims to prompt reflection on learning 
+as learners consider the evidence for the learner model values, and 
+must provide justifications if they attempt to change any value in 
+their model.  
+
+In the next section we introduce the LEA’s Box (Learning 
+Analytics Toolbox) OLM, which has multiple visualisations and 
+offers a persuasion mechanism. We then describe a study 
+investigating which features university students would expect to 
+use, to help identify useful features for OLM developers, and 
+ways to introduce OLMs in optional settings to encourage uptake. 
+While we already know that students will use an OLM similar to 
+this one [8], we know less about their intentions before they adopt 
+it. This information is also important.  
+
+2. THE LEA’s BOX OLM 
+Multiple visualisations have previously been suggested to be 
+beneficial in OLMs, to allow users to select the visualisation 
+according to their reason for viewing the learner model and their 
+individual preferences for viewing [7; 30; 39; 42]. The LEA’s Box 
+OLM has ten visualisations. It also has a discussion facility to 
+allow students to obtain evidence for their learner model data and, 
+if considered appropriate, to try to argue for changes to the values 
+in their model. In this version of the LEA’s Box OLM, we take 
+the approach of persuasion, where the student alone can initiate 
+discussion, and if there is no agreed outcome, the model remains 
+unchanged. Future work will develop this into a full negotiation 
+mechanism, hence the appearance of the term “negotiation” in the 
+interface. 
+
+In line with some other technology-enhanced learning contexts 
+where learning data from multiple sources is held in the learner 
+model (e.g. [8; 14; 32; 34]), the LEA’s Box OLM can take data 
+from a range of activities or sources. In our current example, the 
+activities are completed in the course Learning Management 
+System. While the OLM can be used in any subject, we here use 
+the example of language learning, and specifically, vocabulary 
+topics. 
+
+2.1 OLM Visualisations 
+Figures 1 and 2 give examples of how the learner model is 
+visualised to learners (based on [7]). Figure 1 shows the word 
+cloud visualisation for a “Test Student”, where the larger (blue) 
+text on the left indicates strong areas, with less strong topics in 
+smaller text; and the larger (black) text on the right shows weaker 
+areas, with less weak (but still low) areas in smaller text. The 
+treemap shows the strength of topics by the size of the 
+corresponding squares. These screens also show the quiz names, 
+again with the quizzes that contribute the highest level shown on 
+the left of the word cloud (in blue), and the quizzes with lower 
+levels of mastery on the right (in black text); and the size of the 
+square for a quiz in the treemap indicating that quiz’s influence in 
+
+the learner model. This allows students to see their levels across 
+all vocabulary topics, as well as the specific activities that 
+contributed the data. Figure 2 gives examples of the other 
+visualisations available: stars, gauges, network, table, skill meters, 
+smileys, histogram and radar plot. Skill meters, as indicated 
+above, are common OLM visualisations. Unlike progress bars, 
+commonly used in computer systems, these reflect the current 
+inferred learning state. In LEA’s Box we have two versions – the 
+stars which quantise the data into five levels, and the continuous 
+skill meters. The gauge and radar plot also show continuous 
+values. The table, smileys and histogram show discrete values. 
+The treemap and network visualisations use size (and brightness, 
+in the case of the network), to indicate the strength of topics. The 
+treemap allows the learner to click on a cell to view the next layer 
+in the hierarchical structure, while clicking on a node in the 
+network allows the nodes to be expanded or collapsed, to view 
+more or less information. Thus, the different visualisations may be 
+more or less useful depending on the number of areas displayed, 
+and may also be viewed according to individual preferences.  
+
+Table 1: LEA’s Box OLM visualisation categories. 
+
+ Quantised Continuous Structured Unstructured 
+
+Skillmeters  × ×  
+Table ×  ×  
+Smileys ×  ×  
+Stars ×  ×  
+Gauges  × ×  
+Word cloud  ×  × 
+Histogram ×   × 
+Radar plot  ×  × 
+Treemap  × ×  
+Network ×  ×  
+ 
+
+
+
+Table 1 gives an overview of some of the features of the 
+visualisations. As stated above, some visualisations are quantised 
+on a five point scale, while others use a continuous scale. Most 
+visualisations also indicate the structure of the domain. Thus, 
+using those visualisations, it is possible to see a topic parent or 
+child, if applicable. 
+
+2.2 OLM Persuasion  
+After viewing their OLM as in Figure 1 or 2, if a student is unsure 
+about the accuracy of a value, or if they disagree with it, they can 
+opt to try to change it through discussion (see bottom of the word 
+cloud screen in Figure 1). The persuasion workflow is shown in 
+Figure 3. When discussion of a given vocabulary topic is initiated 
+by the student, the student’s current level for this topic is 
+
+displayed as a statement. The student can then either request 
+evidence or give a self-assessment. This is shown in Figure 4. 
+
+ 
+Figure 3: Discussion workflow. 
+
+The move “request evidence” (right, middle) is available to the 
+learner during all persuasion steps. The evidence explains how the 
+current level is calculated for the area being discussed (Figure 5). 
+It takes into account all pieces of evidence that are directly 
+associated with this, as well as any sub-topics. A piece of 
+evidence can, for example, be a score in an exam or a quiz, a 
+teacher assessment, an activity in another system that may or may 
+not model the learner’s knowledge, or the result of a past resolved 
+discussion of the topic. Each piece of evidence has a weight 
+(based on [7]): the more recent a piece of evidence, the higher its 
+weight (unless the relative weights have been changed by the 
+teacher). In this example there are three pieces of evidence. 
+
+The student’s self-assessment is followed by a statement from the 
+system that reminds the learner of their current level and self-
+assessment. The system then requests justifications before it will 
+increase or decrease the student’s level for this topic in their 
+
+learner model, to match their self-assessment (Figure 5). 
+Depending on the student’s justification, current level and self-
+assessment, the system uses the discussion parameters defined by 
+the instructor (Figure 6) to accept or decline the student’s self-
+assessment, or to propose a compromise between the student’s 
+
+self-assessment and the current representation of their level in 
+their learner model. If a self-assessment or a compromise is 
+
+accepted, the discussion ends because the system has been 
+persuaded, and the model is updated with a level that both the 
+student and the system accept. This agreed level becomes a new 
+piece of evidence for this topic, with “negotiation” noted as the 
+
+source of evidence and the student as contributor. However, if a 
+self-assessment or a compromise is declined, the discussion ends, 
+but the model is not changed. 
+
+ 
+Figure 4: System statement and student self-assessment. 
+
+In the example in Figure 6, the teacher has defined all 
+justifications to have equal weight (5), with justifications for 
+upward changes having a positive value, and justifications for 
+downward changes having a negative value. In principle, the same 
+phrase could be used both positively and negatively. For example, 
+a learner could consider themselves to be stronger or weaker than 
+reflected in their learner model, for a particular area. They might 
+therefore give the reason ‘I have done an exercise’ as justification 
+for a change in either direction, if this option has been defined by 
+the instructor for both cases. This is easily done, since 
+justifications with positive associated values only show (as in 
+Figure 5) for selection when a learner tries to increase a value in 
+their learner model, and justifications with negative associated 
+values are only available if a learner tries to decrease a value. 
+
+The maximum threshold defined by the instructor (Figure 6) is the 
+maximum increase allowed to a learner model value during 
+persuasion, without the system requiring further information; and 
+the minimum threshold is the maximum decrease allowed without 
+requiring justification. Thus, in this example, a self-assessment of 
++10 or -10 will be accepted; a request to change a value by more 
+than this will not be automatically accepted. The minimum 
+number of pieces of evidence between negotiations can be defined 
+to ensure that students cannot simply change a learner model 
+value multiple times for a topic, without additional evidence being 
+collected from another source. In this example, two further pieces 
+of evidence for a topic are required before a new discussion of the 
+value can take place. The minimum time between negotiations has 
+a similar purpose. It can be set to no minimum; 15 minutes (as 
+here); 30 minutes; 1 hour; 1 day; or 1 week (future work will 
+allow instructors to define other values). This is another method to 
+ensure that a student cannot easily change values without 
+appropriate consideration. 
+When a student proposes a new value, the system may offer a 
+compromise if the proposed value is beyond the given threshold. 
+They will be required to provide one or more justifications, and 
+the values defined for these (here +5 or -5) will be used to 
+calculate the compromise value. This value must fall within the 
+instructor’s threshold (here 10, which can include two 
+
+justifications as all combinations of two justifications will total 
+10); but will be as close to the student’s proposed value as is 
+permitted. This implementation of persuasion differs from 
+previous work in that usually a student can demonstrate their 
+skills by answering questions selected to verify their claims (e.g. 
+[9; 29; 40; 42]). Because LEA’s Box has multiple data sources 
+and is domain- independent, all justifications are currently in the 
+form of statements predefined by the teacher. 
+
+
+
+ 
+Figure 5: Justifying a change to the learner model. 
+
+ 
+In future work students may also be directed back to specific 
+activities in specific data sources, allowing evidence of their skills 
+to be demonstrated, as in other approaches to persuading and 
+negotiating the learner model. The two approaches will then be 
+used together. 
+Table 2 describes the possible discussion moves for student and 
+system, with examples. (Except for self-assess, future work on 
+negotiation will implement the currently missing cells.) 
+ 
+
+ 
+Figure 6: Defining the justification options. 
+
+ 
+Table 2: Negotiation moves and examples. 
+
+ Student System 
+
+Initiate discussion Select a topic to discuss. × 
+
+Accept/agree 
+Accept a compromise. 
+Agree with the 
+evidence provided. 
+
+Accept a compromise. 
+Agree with the student’s 
+
+justifications. 
+
+Decline Decline a compromise proposed by the system. 
+
+“Your last negotiation for 
+
+this is too recent to allow a 
+new negotiation.” 
+
+Compromise × 
+Propose a compromise 
+between the current value 
+and the student’s self-
+assessment. 
+
+Request evidence 
+Request  
+
+justifications 
+
+Request evidence for 
+the current value. 
+
+Request justifications for a 
+self-assessment. 
+
+Provide evidence 
+Provide 
+
+justifications 
+
+“I have done some 
+homework.” 
+“I have had a class.” 
+“I have done some 
+
+reading.” 
+
+“Your level in vocabulary 
+
+is 72 and this is a sub-topic 
+of Italian.” 
+
+Self-assess “I think my level should be 80.” × 
+Challenge 
+evidence × × 
+
+Statement × 
+“Your level for vocabulary 
+is 75 and you think it 
+should be 80.”  
+
+ 
+
+
+
+3. STUDENT PERCEPTIONS  
+The LEA’s Box OLM was introduced in a final year module on 
+Italian language, in the Department of Modern Languages at the 
+University of Birmingham, UK. The Italian course uses a suite of 
+over 340 formative assessment quizzes in the institution’s chosen 
+Learning Management System. There are no summative marks 
+associated with these activities. The quizzes cover a variety of 
+skills: grammar, vocabulary, reading, listening, etc. In this study 
+we used the area of ‘vocabulary’. The vocabulary quizzes are 
+mapped onto the Common European Framework of Reference for 
+Languages (CEFR) [13]. For example, for vocabulary, 26 topics 
+are covered in 14 quizzes. The vocabulary topics and quizzes are 
+linked to three of the CEFR levels (B1, B2, C1) on the basis of 
+range and complexity of topic, as appropriate for the participants 
+(Figure 7).  
+
+Vocabulary range  
+     Vocabulary for everyday life (B1) 
+     Varied vocabulary for specialism and general topics (B2) 
+     Broad lexical repertoire, idioms and colloquialisms (C1) 
+Vocabulary control  
+     Control of elementary vocabulary (B1) 
+     Ability to communicate well (B2) 
+     Extensive vocabulary control (C1) 
+Example vocabulary topics and levels 
+     B1: people, the family, past people and things 
+     B2: traditions and celebrations, cities, out-of-town living 
+     C1: politics and political parties, Italian economy, social issues 
+
+Figure 7: CEFR levels and examples for vocabulary. 
+The LEA’s Box OLM was introduced to help overcome the 
+
+problem of use of the quizzes not peaking until the exam 
+preparation period, arguably not the best time to practise and learn 
+vocabulary. The LEA’s Box OLM offers an overarching 
+
+context/environment for students’ learning of Italian vocabulary, 
+and a more meaningful way of working with the quizzes, since it 
+allows students to visualise their progress throughout their study 
+and to contextualise this progress in the various aspects of their 
+lexical competence. The opportunity to discuss their levels is seen 
+as an excellent way for students to engage with their learning 
+process, take responsibility for it and also be empowered by it.  
+In this study we investigate the students’ intentions towards using 
+the LEA’s Box OLM, as initial perceptions are likely to influence 
+
+whether students who are completing activities on a formative 
+basis only, proceed to use an environment such as the LEA’s Box 
+OLM. 
+
+3.1 Participants, Materials and Methods 
+Participants were 25 volunteers in their final year of an 
+undergraduate degree in Modern Languages, who were taking a 
+course in Italian language (see above). They received a demo of 
+the LEA’s Box OLM using a “Test Student” account, and an 
+explanation of how the OLM could be used to further explore quiz 
+outcomes with reference to CEFR. They were advised that their 
+expected levels for the current stage of the course were already 
+entered into their OLM, but that their subsequent quiz results may 
+move their levels for the various topic areas and corresponding 
+competences.  
+Questionnaires were administered to identify participants’ 
+anticipated use of OLM features, with items requiring responses 
+on a five point scale: strongly agree (5), agree (4), neutral (3), 
+disagree (2), strongly disagree (1). “Strongly agree” and “agree” 
+are combined in the analysis, as these indicate positive responses. 
+However, the Figures show “strongly agree” and “agree” 
+
+separately, to provide further detail. There were 10 questionnaire 
+items addressing whether each of the visualisations were likely to 
+be used; 5 relating to how participants expected to use the 
+visualisations; and 6 items referring to their expectations about 
+their use of the persuasion mechanism (referred to in the 
+questionnaires as “negotiation” to be consistent with the terms in 
+the interface).  
+
+3.2 Results 
+Figure 8 shows participants’ stated intentions for using each of the 
+visualisations. The skill meters are anticipated to be the most 
+likely used, followed by the table and stars. The radar plot and 
+treemap are expected to be least used. Most students indicated that 
+they intend to use several visualisations: mean 3.84 visualisations; 
+median 4; range 0-10. Table 3 shows the breakdown for expected 
+use of structured/unstructured and quantised/continuous 
+visualisations, a split between students opting for structured only 
+and both, with none expecting to use only unstructured 
+visualisations; and 22 of the 25 participants expecting to use both 
+quantised and continuous visualisations, 1 anticipating using only 
+continuous, and 1, only quantised.  
+Figure 9 shows participants’ stated expected purposes for 
+accessing the OLM visualisations, and Table 4 shows the mean, 
+median and range values. All purposes (comparing topics, 
+planning, reflection, identifying relative strengths and gaps) are 
+expected to be highly relevant. Table 5 provides further 
+breakdown: 23 of the 25 students gave positive responses for all 
+four purposes of viewing their learner model; 1 gave positive 
+responses for 3 purposes (omitting the reflection option); and 1 
+indicated that they would use the OLM for only one of the given 
+purposes (planning). 
+Figure 10 shows participants’ expectations regarding their use of 
+
+the discussion component of the LEA’s Box OLM. 23 of the 25 
+students claim that they would want to view the evidence for 
+values when they disagree with them; and 24, when they agree 
+with the values. 19 expect to discuss values when they disagree 
+with them; and 14, when they agree. 16 stated that they wish to 
+explain their viewpoint (justify their self-assessments) when they 
+disagree with values; and 13, when they agree. Table 6 gives the 
+mean, median and range values. While some values are lower, the 
+medians show that most participants expect to engage in 
+discussion with the system, regardless of whether they agree or 
+disagree with the values shown in the OLM. 
+
+ 
+
+Figure 8: Students’ stated choice of visualisations. 
+Table 3: Expected use of visualisation types. 
+
+Structured Unstructured Structured and Unstructured 
+13 0 11 
+
+Quantised Continuous Quantised and Continuous 
+1 1 22 
+
+
+
+ 
+
+ 
+
+ 
+Figure 9: Students’ stated purposes for viewing the OLM. 
+
+ 
+
+Table 6 shows a high expectation for viewing evidence, but while 
+still positive, less high for discussing values and explaining one’s 
+
+point of view. Figure 11 considers the latter two, with reference to 
+the number of visualisations used. The 3 participants who expect 
+to use 7 or more visualisations also intend to engage more in 
+discussion. A proportionally higher number of students who 
+expect to use only two visualisations, also expect to engage less in 
+attempting to change values or explain their viewpoint. 
+
+Table 4: Students’ stated purposes for viewing the OLM. 
+Purposes Mean Median Range 
+Compare levels in topics 4.4 4 3-5 
+Plan 4.68 5 4-5 
+Think about competencies 4.52 5 2-5 
+Identify strengths / difficulties 4.6 5 3-5 
+ 
+
+Table 5: Number of purposes for viewing the OLM. 
+ Four 
+
+purposes 
+Three 
+
+purposes 
+Two 
+
+purposes 
+One 
+
+purpose 
+Students 23 1 0 1 
+
+ 
+Figure 10: Students’ expectations for using discussion feature. 
+
+ 
+
+ 
+x – number of visualisations; y – number of students 
+
+Figure 11: Discussing, explaining (upper); not discussing, not 
+explaining (lower).  
+
+ 
+Table 6: Students’ expectations for using discussion feature. 
+
+Discussion Components Mean Median Range 
+Discuss value (agree) 3.44 4 1-5 
+Discuss value (disagree) 3.88 4 2-5 
+Explain viewpoint (agree) 3.6 4 2-5 
+Explain viewpoint (disagree) 3.84 4 2-5 
+View evidence (agree) 4.4 5 2-5 
+View evidence (disagree) 4.48 5 2-5 
+ 
+
+3.3 Discussion 
+As shown in Figure 8, participants anticipated that they would use 
+the simpler skill meters, table and stars, rather than what may be 
+considered more complex visualisations such as radar plot, word 
+cloud and treemap. Most expected to use multiple visualisations. 
+While we have already seen that most of these visualisations will 
+be used by university students in practice [8], identifying that 
+students would consider some visualisations beneficial before they 
+use an OLM on a voluntary basis leads us to be more confident 
+that they might take the first steps also in contexts in which there 
+is no support for their use of the technology, and in a subject that 
+is not related to technology (in contrast, for example, to [8]). Even 
+if their predictions about their use of the technology do not match 
+how they subsequently use it (see [35]), their expectations of the 
+utility of certain visualisations might motivate them to initially 
+engage with the OLM. 
+ As previously stated, skill meters are amongst the most common 
+learner model visualisation, and it appears that this and similar 
+displays are also considered likely to be beneficial by a large 
+proportion of students before thy use an OLM. Therefore, while 
+there might be a strong case for using complex visualisations: for 
+example, where extensive relationships between different parts of 
+the domain need to be understood (as is perhaps easier with the 
+network view), or expertise across areas of a curriculum should be 
+easily identifiable (as facilitated by the radar plot), inclusion of a 
+simpler visualisation might help engage students initially. It could 
+be argued that our participants had limited experience of the 
+visualisations available, and that for this reason they preferred the 
+simpler visualisations. However, this is the same situation as they 
+faced before first using the OLM on an optional basis. Therefore, 
+our first recommendation to OLM developers is: 
+1. As well as any visualisations that are particularly relevant to 
+the specific context, include simpler visualisations such as skill 
+meters or similar displays to help students identify a visualisation 
+they can envisage using. 
+We also found that most students expected to use multiple 
+visualisations. This has also been observed in practice [6; 8; 30; 
+42], and because students anticipated this also before using the 
+OLM, we recommend: 
+2. Offer multiple learning visualisations in an OLM to allow 
+students to identify a range of options that they consider suitable. 
+In cases where specific visualisations are likely to be most 
+appropriate, their use can still be encouraged when students access 
+the OLM.  
+Table 3 showed that there were no participants who expected to 
+use only unstructured visualisations, with quite an equal split 
+between expected use of structured visualisations only, and both 
+
+
+
+structured and unstructured views. We do not know from this data 
+whether the fact that some visualisations were structured, 
+contributed to the preferences suggested for them. However, until 
+this has been investigated further, to facilitate awareness of 
+competency, topic or other structures, we suggest to: 
+3. Offer at least one structured visualisation in an OLM.  
+We also found that 23 of the 25 participants expected to use both 
+quantised and continuous visualisations. However, since this 
+distinction may be difficult to determine without actual use of the 
+OLM, and because half the visualisations are quantised, and half 
+continuous, we do not draw any conclusions at this stage. 
+However, we suggest this as a feature for further investigation. 
+Figure 9, Table 4 and Table 5 show participants’ stated intentions 
+regarding how they expect to use the visualisations. Nearly all 
+(24) want to use them to help identify their strengths and 
+difficulties; 23, to support reflection (here defined as “think about 
+competencies”); all 25 stated that they expected to use the 
+visualisations to plan what to work on next; and 24 stated that 
+they wish to compare their levels across the topics. This indicates 
+that the participants view the OLM as a potentially useful support 
+for metacognitive activities, which have long been amongst the 
+main purposes of OLMs (see [3]), and now increasingly noted as 
+important in learning analytics visualisations [15; 18]. We do not 
+know whether our participants recognised these benefits because 
+we asked about them specifically. We would hope that they would 
+identify this in any case, but to be sure we give the perhaps rather 
+obvious reminder: 
+4. Explain how an OLM can support metacognition and self-
+regulated learning to ensure that learners are aware of this 
+purpose. 
+In line with other research suggesting the utility of providing 
+evidence for learner model values (eg [24]), Figure 10 and Table 6 
+indicate that participants are keen to see the evidence for the data 
+in their OLM, regardless of whether they agree or disagree with 
+the values. This may be related to their keenness to reflect on their 
+learning, as discussed above – they may view the evidence as a 
+support for their self-directed learning. We therefore recommend 
+to: 
+5. Offer evidence for learner model values, as a means to 
+facilitate self-monitoring, reflection, planning, etc. 
+Most participants also stated that they wanted to explain their 
+point of view to the system: around two thirds of the participants 
+when they disagree with a value, and about half also if they agree 
+with it. This further supports our suggestion that students may 
+view the OLM as a useful tool to support metacognition. Based on 
+this, we suggest to: 
+6. Offer provision for learners to justify their own viewpoints on 
+their understanding, skills, etc., as a means to further prompt 
+metacognitive processes, even if an open learner model does not 
+have a persuade or negotiate facility.  
+This is further supported by participants’ interest in discussing the 
+learner model values: 19 stated that they would wish to discuss a 
+value if they disagreed with it, while 14 would like to do so also if 
+they agreed with it. It appears that some perceive they would 
+benefit from such discussion regardless of whether they aim to 
+change a value. We therefore propose: 
+7. Allow students to discuss the contents of their learner model 
+with the system if this is feasible in the context of use (i.e. if the 
+learner modelling is sufficient to be able to support this). 
+
+Given that we have presented results on both visualisations and 
+learner model discussion options, we also compared the number 
+of visualisations expected to be used, with whether participants 
+anticipated discussing and explaining their learner model. (We 
+omitted the options relating to viewing evidence, as these applied 
+to all participants.) The 3 students who anticipated using a very 
+high number of visualisations also intended to engage in the 
+metacognitive purposes for viewing the learner model. However, 
+this may simply reflect the fact that they wish to make full use of 
+the support available. Conversely, students who did not expect to 
+engage in any of the metacognitive activities associated with the 
+OLM, were proportionally more likely to use only two 
+visualisations. However, the numbers are quite low. We therefore 
+do not conclude anything specific in relation to this, but rather, 
+await additional results.  
+Our original purpose was to investigate the extent to which 
+students anticipate using different features of an OLM in a 
+formative assessment setting, where there are no scheduled 
+sessions for use of the OLM. The aim was to be able to 
+recommend what to consider when developing and first deploying 
+an OLM amongst a group such as this. One aspect of interest is 
+the persuade feature, that we aim to develop into full negotiation 
+(i.e. where student and system will have equal power, and the 
+same moves will be available to each). We found that most 
+students would want to discuss their OLM values, explain their 
+viewpoints and, especially, view evidence for the learner model 
+values. This often appears to be the case even if students agree 
+with the representations in their model. We therefore broaden our 
+initial goal, and suggest that features that aim primarily to support 
+persuasion or negotiation, may also facilitate metacognition more 
+generally. This is nicely in line with the aim of OLMs to facilitate 
+metacognitive activities [3], and with the call for learning 
+analytics visualisations to be pedagogically useful [22], actionable 
+[2], and to support metacognition [18] and self-directed learning 
+[15]. It also offers further support for long-standing 
+recommendations to provide evidence for learner model values 
+also in OLMs that are not persuadable or negotiable [24]. 
+A limitation of this study is that participants had not yet used the 
+OLM. However, it was also precisely this stage that we wished to 
+investigate. Even though they had not yet had the opportunity to 
+try out the OLM themselves, they appeared to be keen to engage 
+with it. It is important that students perceive benefit if they are to 
+take up a new tool that is not part of their summative assessment, 
+and for which there is little or no time available to support its use. 
+We have therefore made a few recommendations or suggestions 
+for what to include in an OLM or OLM introduction, that might 
+help students recognise the likely benefits, and lead them to 
+engage and then experience these, in contexts where there are no 
+structured sessions and use of the OLM is optional. While we here 
+focused in particular on OLMs, some of the points may also be 
+applicable in other types of learning analytics visualisations 
+designed for students. Our findings should also be followed up 
+with a larger group of participants. 
+
+4. SUMMARY AND CONCLUSIONS 
+This paper has presented the LEA’s Box OLM, which offers 10 
+visualisations, and the possibility for students to try to persuade 
+the system to change any learner model values that they disagree 
+with. Our aim was to step back from the use data as has been 
+reported previously, to consider learner perceptions at the time of 
+introduction of an OLM. We found that, in a university setting 
+with no scheduled sessions or support for using the OLM, and 
+where there was no summative assessment associated with the 
+
+
+
+activities that would provide the data, students were nevertheless 
+keen to use it to support their learning. Most stated that they 
+intended to use a combination of visualisations, and also that they 
+expected to engage in the metacognitive aspects of the OLM. In 
+particular, students reported that they wanted to be able to view 
+the evidence for OLM values, regardless of whether they would 
+want to try to change those values. We therefore extended our 
+scope to suggest not only that the processes of persuading a 
+system to change a value in an OLM might be beneficial to 
+learning, but also that inclusion of such features in OLMs that do 
+not allow students to try to change values, may also be able to 
+facilitate metacognitive activities. 
+Based on this initial study, we have made several 
+recommendations or suggestions regarding introduction of, and 
+features of an OLM, for those deploying OLMs and for OLM 
+developers. Future work will compare these initial perceptions to 
+actual usage based on questionnaires and log data, to determine 
+whether use remains in line with the initial expectations. If there is 
+a difference it will be important for future research to consider 
+both initial perceptions and subsequent use, to ensure that students 
+in contexts such as ours will anticipate sufficient benefit to 
+initially engage with the OLM. Subsequent use will then help 
+identify which features are most used and most useful as a 
+learning support. Taken together, this information will help us to 
+design and introduce OLMs that will be used and be useful in 
+practice. 
+
+ACKNOWLEDGEMENT 
+This project is supported by the European Commission under the 
+Information Society Technology priority FP7 for R&D, contract 
+619762 LEA’s Box. This document does not represent the opinion 
+
+of the European Commission and the European Commission is not 
+responsible for any use that might be made of its contents. 
+
+REFERENCES 
+[1] Ahmad, N., & Bull, S. (2009). Learner trust in learner model 
+
+externalisations. In V. Dimitrova, R. Mizoguchi, B. du 
+Boulay, A. Graesser (Ed.), Artificial intelligence in 
+education, Amsterdam: IOS Press, 617-619. 
+
+[2] Brown, M. (2012).  Learning analytics: Moving from concept 
+to practice, EDUCAUSE Learning Initiative, 1-5. 
+
+[3] Bull, S. & Kay, J. (2013). Open Learner Models as Drivers 
+for Metacognitive Processes, in R. Azevedo & V. Aleven 
+(eds), International Handbook of Metacognition and 
+Learning Technologies, Springer, New York, 349-365. DOI: 
+10.1007/978-1-4419-5546-3_23 
+
+[4] Bull, S. & Pain, H. (1995). 'Did I Say What I Think I Said, 
+And Do You Agree With Me?': Inspecting and Questioning 
+the Student Model, in J. Greer (ed), Proceedings of World 
+Conference on Artificial Intelligence and Education, AACE, 
+Charlottesvville VA, 501-508. 
+
+[5] Bull, S. (in press). Negotiated Learner Modelling to Maintain 
+Today’s Learner Models, Research and Practice in 
+
+Technology Enhanced Learning. 
+[6] Bull, S., Jackson, T. J., & Lancaster, M. J. (2010). Students' 
+
+interest in their misconceptions in first-year electrical circuits 
+and mathematics courses. International Journal of Electrical 
+Engineering Education, 47(3), 307-318. DOI: 
+10.7227/ijeee.47.3.6 
+
+[7] Bull, S., Johnson, M. D., Masci, D., & & Biel, C. (in press). 
+Integrating and visualising diagnostic information for the 
+
+benefit of learning. In P. Reimann, S. Bull, M. Kickmeier-
+Rust, R.K. Vatrapu & B. Wasson (Ed.), Measuring and 
+visualizing learning in the information-rich classroom, 
+Routledge/Taylor and Francis. 
+
+[8] Bull, S., Johnson, M.D., Alotaibi, M., Byrne, W. & Cierniak, 
+G. (2013). Visualising Multiple Data Sources in an 
+Independent Open Learner Model, in H.C. Lane, K. Yacef, J. 
+Mostow & P. Pavlik (eds), Artificial Intelligence in 
+Education, Springer-Verlag, Berlin Heidelberg, 199-208. 
+DOI: 10.1007/978-3-642-39112-5_21 
+
+[9] Bull, S., Mabbott, A. & Abu-Issa, A. (2007). UMPTEEN: 
+Named and Anonymous Learner Model Access for 
+Instructors and Peers, Int. Journal of Artificial Intelligence in 
+Education 17(3), 227-253. 
+
+[10] Charleer, S., Klerkx, J. & Duval, E. (2014). Learning 
+dashboards. Journal of Learning Analytics, 1(3), 199-202. 
+
+[11] Conejo, R., Trella, M., Cruces, I., & Garcia, R. (2011). 
+INGRID: A web service tool for hierarchical open learner 
+model visualization. UMAP 2011 Adjunct Poster 
+Proceedings, 406-409. DOI:10.1007/978-3-642-28509-7_38 
+
+[12] Corbett, A. T., & Bhatnagar, A. (1997). Student modeling in 
+the ACT programming tutor: adjusting a procedural learning 
+model with declarative knowledge. User Modeling, 243-254. 
+DOI: 10.1007/978-3-7091-2670-7_25 
+
+[13] Council of Europe (nd). The Common European Framework 
+of Reference for Languages: Learning, Teaching, 
+Assessment, http://www.coe.int/t/dg4/linguistic/Source/ 
+Framework_EN.pdf. Accessed 16 October 2015. 
+
+[14] Cruces, I., Trella, M., Conejo, R. & Galvez J. (2010). Student 
+Modeling Services for Hybrid Web Applications, 
+International Workshop on Architectures and Building 
+Blocks of Web-Based User-Adaptive Systems, http://ceur-
+ws.org/Vol-609/paper1.pdf. 
+
+[15] Dawson, S., Macfadyen, L., Risko, E. F., Foulsham, T., & 
+Kingstone, A. (2012). Using technology to encourage self-
+directed learning: The collaborative lecture annotation 
+system. Proceedings of Ascilite, Wellington, New Zealand.  
+
+[16] Dimitrova, V. (2003). StyLE-OLM: Interactive Open Learner 
+Modelling. International Journal of Artificial Intelligence in 
+Education 13(1), 35-78. 
+
+[17] Duan, D., Mitrovic, A., & Churcher, N. (2010). Evaluating 
+the effectiveness of multiple open student models in EER-
+tutor. In S. L. e. a. Wong (Ed.), International conference on 
+computers in education, Asia-Pacific Society for Computers 
+in Education, 86-88. 
+
+[18] Durall, E., & Gros, B. (2014). Learning analytics as a 
+metacognitive tool. Proceedings of 6th International 
+Conference on Computer Supported Education (CSEDU), 
+380-384.  
+
+[19] Duval, E. (2011). Attention please!: Learning analytics for 
+visualization and recommendation. Proceedings of the 1st 
+international conference on learning analytics and 
+knowledge, ACM, NY, USA, 9-17. DOI: 
+10.1145/2090116.2090118 
+
+[20] Dyckhoff, A. L., Zielke, D., Bültmann, M., Chatti, M. A., & 
+Schroeder, U. (2012). Design and implementation of a 
+learning analytics toolkit for teachers. Educational 
+Technology & Society, 15(3), 58-76. 
+
+
+
+[21] Ferguson, R., & Buckingham Shum, S. (2012). Social 
+learning analytics: Five approaches. Proceedings of the 2nd 
+International Conference on Learning Analytics and 
+Knowledge, 23-33. DOI: 10.1145/2330601.2330616 
+
+[22] Gaševi?, D., Dawson, S., & Siemens, G. (2015). Let’s not 
+forget: Learning analytics are about learning. Techtrends, 
+59(1), 64-71. DOI: 10.1007/s11528-014-0822-x 
+
+[23] Jacovina, M. E., Snow, E. L., Allen, L. K., Roscoe, R. D., 
+Weston, J. L., Dai, J., et al. (2015). How to visualize success: 
+Presenting complex data in a writing strategy tutor. In C. 
+Romero, & M. Pechenizkiy (eds.), Proceedings of 8th 
+international conference on educational data mining. 
+
+[24] Kay, J. (1997). Learner know thyself: Student models to give 
+learner control and responsibility. In Z. Halin, T. Ottomann 
+& Z. Razak (Eds.), Proceedings of international conference 
+on computers in education AACE, 17-24. 
+
+[25] Keim, D. A., Kohlhammer, J., Mansmann, F., May, T., & 
+Wanner, F. (2010). Introduction. In D. A. Keim, J. 
+Kohlhammer, G. Ellis & F. Mansmann (Eds.), Mastering the 
+information age: Solving problems with visual analytics, 
+Goslar, Germany: Eurographics Association, 1-6. 
+
+[26] Kerly, A. & Bull, S. (2008). Children's Interactions with 
+Inspectable and Negotiated Learner Models, in B.P. Woolf, 
+E. Aimeur, R. Nkambou & S. Lajoie (eds), Intelligent 
+Tutoring Systems: 9th International Conference, Springer-
+Verlag, Berlin Heidelberg, 132-141. DOI: 10.1007/978-3-
+540-69132-7_18 
+
+[27] Leony, D., Pardo, A., de la Fuente Valentín, Luis, de Castro, 
+D. S., & Kloos, C. D. (2012). GLASS: A learning analytics 
+visualization tool. Proceedings of the 2nd International 
+Conference on Learning Analytics and Knowledge, pp. 162-
+163. DOI: 10.1145/2330601.2330642 
+
+[28] Long, Y., & Aleven, V. (2013). Supporting students’ self-
+regulated learning with an open learner model in a linear 
+equation tutor. Artificial Intelligence in Education, pp. 219-
+228. DOI: 10.1007/978-3-642-39112-5_23 
+
+[29] Mabbott, A. & Bull, S. (2006). Student Preferences for 
+Editing, Persuading and Negotiating the Open Learner 
+Model, in M. Ikeda, K. Ashley & TW. Chan (eds), Intelligent 
+Tutoring Systems, Springer-Verlag, Berlin Heidelberg, 481-
+490. DOI: 10.1007/11774303_48  
+
+[30] Mabbott, A. and Bull, S. (2004). Alternative Views on 
+Knowledge: Presentation of Open Learner Models, in J.C. 
+Lester, R.M. Vicari & F. Paraguacu (eds), 7th International 
+Conference of Intelligent Tutoring Systems, Springer-Verlag, 
+Berlin Heidelberg, 689-698. DOI: 10.1007/978-3-540-30139-
+4_65  
+
+[31] Mathews, M., Mitrovic, A., Lin, B., Holland, J., & Churcher, 
+N. (2012). Do your eyes give it away? Using eye tracking 
+data to understand students’ attitudes towards open student 
+
+model representations. Intelligent Tutoring Systems, 422-
+427. DOI: 10.1007/978-3-642-30950-2_54  
+
+[32] Mazzola, L., Mazza, R. (2010). GVIS: A Facility for 
+Adaptively Mashing Up and Presenting Open Learner 
+Models, in M. Wolpers, P.A. Kirschner, M. Scheffel, S. 
+Lindstaedt & V. Dimitrova (eds), EC-TEL 2010, Springer-
+Verlag, Berlin Heidelberg, 554-559. DOI: 10.1007/978-3-
+642-16020-2_53  
+
+[33] Mitrovic, A. & Martin, B. (2007). Evaluating the Effect of 
+Open Student Models on Self-Assessment. Int. Journal of 
+Artificial Intelligence in Education 17(2), 121-144. 
+
+[34] Morales, R., Van Labeke, N., Brna, P. & Chan, M.E. (2009). 
+Open Learner Modelling as the Keystone of the Next 
+generation of Adaptive Learning Environments. In C. 
+Mourlas & P. Germanakos (eds), Intelligent User Interfaces, 
+Information Science Reference, ICI Global, London, 288-
+312. DOI: 10.4018/978-1-60566-032-5.ch014  
+
+[35] Nielsen, J. (2001). First Rule of Usability? Don’t Listen to 
+Users, Nielsen Norman Group, nngroup.com/articles/first-
+rule-of-usability-dont-listen-to-users (accessed 4/2/2016).  
+
+[36] Park, Y., & Jo, I. (2015). Development of the learning 
+analytics dashboard to support students' learning 
+performance. Journal of Universal Computer Science, 21(1), 
+110-133. 
+
+[37] Pérez-Marín, D., Alfonseca, E., Rodríguez, P., & Pascual-
+Nieto, I. (2007). A study on the possibility of automatically 
+estimating the confidence value of students’ knowledge in 
+generated conceptual models. Journal of Computers, 2(5), 
+17-26. DOI: 10.4304/jcp.2.5.17-26  
+
+[38] Santos, J. L., Govaerts, S., Verbert, K., & Duval, E. (2012). 
+Goal-oriented visualizations of activity tracking: A case 
+study with engineering students. Proceedings of the 2nd 
+International Conference on Learning Analytics and 
+Knowledge, 143-152. DOI: 10.1145/2330601.2330639  
+
+[39] Sek, Y. W., Deng, H., & McKay, E. (2014). Investigating 
+learner preferences in an open learner model (OLM) 
+program: A Malaysian case study. ACIS. 
+
+[40] Tchetagni, J., Nkambou, R. & Bourdeau, J. (2007). Explicit 
+Reflection in Prolog Tutor, Int. Journal of Artificial 
+Intelligence in Education 17(2), 169-215. 
+
+[41] Tervakari, A., Silius, K., Koro, J., Paukkeri, J., & Pirttila, O. 
+(2014). Usefulness of information visualizations based on 
+educational data. IEEE Global Engineering Education 
+Conference (EDUCON), 142-151. DOI: 
+10.1109/educon.2014.6826081  
+
+[42] Thomson, D. & Mitrovic, A. (2010). Preliminary Evaluation 
+of a Negotiable Student Model in a Constraint-Based ITS, 
+Research and Practice in Technology Enhanced Learning 
+5(1), 19-33. DOI: 10.1142/s1793206810000797  
+
+[43] Verbert, K., Govaerts, S., Duval, E., Santos, J.L., Van 
+Assche, F., Parra, G. & Klerkx, J. (2014). Learning 
+Dashboards: an Overview and Future Research 
+Opportunities, Personal and Ubiquitous Computing 18, 1499-
+1514. DOI: 10.1007/s00779-013-0751-2  
+
+[44] Vozniuk, A., Govaerts, S., & Gillet, D. (2013). Towards 
+portable learning analytics dashboards. 13th International 
+Conference on Advanced Learning Technologies (ICALT), 
+IEEE, 412-416. DOI: 10.1109/icalt.2013.126  
+
+[45] Weber, G., & Brusilovsky, P. (2001). ELM-ART: An 
+adaptive versatile system for web-based instruction. 
+International Journal of Artificial Intelligence in Education 
+12, 351-384. 
+
+[46] Woolf, B.P. (2010). Chapter 13: Student Modeling, in R. 
+Nkambou, J. Bourdeau & R. Mizoguchi (eds), Advances in 
+Intelligent Tutoring Systems, Springer-Verlag, Berlin 
+Heidelberg, 267-279. 
+
+
+

@@ -1,0 +1,654 @@
+
+Bayesian Modelling of Student Misconceptions in the
+
+one-digit Multiplication with Probabilistic Programming
+
+Behnam Taraghi
+
+Educational Technology
+
+Graz University of Technology
+
+Münzgrabenstrasse 35, 8010
+
+Graz, Austria
+
+b.taraghi@tugraz.at
+
+Anna Saranti
+
+Institute of Theoretical
+
+Computer Science
+
+Graz University of Technology
+
+Inffeldgasse 16b/I, 8010
+
+Graz, Austria
+
+s0473056@sbox.tugraz.at
+
+Robert Legenstein
+
+Institute of Theoretical
+
+Computer Science
+
+Graz University of Technology
+
+Inffeldgasse 16b/I, 8010
+
+Graz, Austria
+
+legi@igi.tugraz.at
+
+Martin Ebner
+
+Educational Technology
+
+Graz University of Technology
+
+Münzgrabenstrasse 35, 8010
+
+Graz, Austria
+
+martin.ebner@tugraz.at
+
+ABSTRACT
+One-digit multiplication errors are one of the most exten-
+sively analysed mathematical problems. Research work pri-
+marily emphasises the use of statistics whereas learning an-
+alytics can go one step further and use machine learning
+techniques to model simple learning misconceptions. Prob-
+abilistic programming techniques ease the development of
+probabilistic graphical models (bayesian networks) and their
+use for prediction of student behaviour that can ultimately
+influence learning decision processes.
+
+CCS Concepts
+•Mathematics of computing ! Bayesian networks;
+Probabilistic algorithms; Variable elimination; Expectation
+maximization; •Computing methodologies ! Bayesian
+network models; •Applied computing ! E-learning;
+
+Keywords
+Learning Analytics; Bayesian Modelling; Probabilistic Pro-
+gramming; One-Digit Multiplication
+
+1. INTRODUCTION
+After analysing the most prevalent error types that are
+
+observed in one-digit multiplication, we carried out a de-
+tailed analysis [23], [22], [19]. With the use of heat maps
+and diagrams we depicted those misconceptions that are of
+higher relevance, because they occur more often, and we
+provided hints at probable reasons. But the presentation
+
+Permission to make digital or hard copies of all or part of this work for personal or
+classroom use is granted without fee provided that copies are not made or distributed
+for profit or commercial advantage and that copies bear this notice and the full cita-
+tion on the first page. Copyrights for components of this work owned by others than
+ACM must be honored. Abstracting with credit is permitted. To copy otherwise, or re-
+publish, to post on servers or to redistribute to lists, requires prior specific permission
+and/or a fee. Request permissions from permissions@acm.org.
+LAK ’16, April 25-29, 2016, Edinburgh, United Kingdom
+
+c? 2016 ACM. ISBN 978-1-4503-4190-5/16/04. . . $15.00
+DOI: http://dx.doi.org/10.1145/2883851.2883895
+
+of these elementary statistics, also used in other extensive
+analysis research work such as in [24], is not build with the
+means to adapt. If we are to build a data-driven learning
+application that bases its further analysis and decision mak-
+ing on those outcomes, we need an adaptive mechanism that
+contains not only quantitative but also qualitative informa-
+tion about the interdependencies of the elements involved as
+well as a structure that can be updated straightforwardly.
+Even sophisticated statistics, providing only current repre-
+sentations (snapshot), are inflexible and not easy to extend
+in the face of new ideas and information. These require-
+ments are indeed met by Bayesian Networks, also known as
+Probabilistic Graphical Models [8].
+
+The answers of the students that were used in this analysis
+were provided by the 1x1 trainer application [17] 1. We were
+provided with answers of one-digit multiplication questions,
+over a period of two years. These data were used to train and
+test the performance of our model. Apart from answering
+data, the application does not store any demographic values
+about the users such as age or gender. This means that we
+have to make conclusions with very limited information.
+
+Section 2 of this paper presents related work in the area of
+learning applications that use Bayesian Networks. Section 3
+covers our current work and what has been implemented so
+far. Finally, the planned future research work is described
+in section 4.
+
+2. RELATED WORK
+The creation of probabilistic student models with the use
+
+of Bayesian Networks is a method that is used by several re-
+search groups; representative literature reviews can be found
+in [4] and [12]. More information about Bayesian networks
+can be found in [8], [1] and [13].The most common use of
+these networks is the representation of students’ behaviour
+[16], knowledge, cognitive [14] and mental state as well as
+incorrect knowledge and misconceptions [5], [6]. One benefit
+of Bayesian Network Modelling is the inference of informa-
+
+1http://schule.learninglab.tugraz.at/einmaleins/index/play
+last access 31 October 2015
+
+
+
+Learning 
+State
+
+Answer of 
+Question 9*9
+
+Answer of 
+Question 1*1
+
+Answer of 
+Question 8*5... ...
+
+8*5
+
+	 Probability	
+Operand	 0.11	
+Intrusion	 0.11	
+Consistency	 0.12	
+Off-By	 0.21	
+Add/Sub/Div	 0.11	
+Pattern	 0.11	
+Unclassified	 0.11	
+Correct	 0.11	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+	 ...	 30	 37	 38	 39	 40	 41	 42	 43	 ...	
+Operand	 ...	 0.083	 0.0	 0.0	 0.0	 0.0	 0.0	 0.083	 0.0	 ...	
+Intrusion	 ...	 0.0	 0.0	 0.0	 0.0	 0.0	 0.0	 0.0	 0.0	 ...	
+Consistency	 ...	 0.058	 0.0	 0.058	 0.058	 0.0	 0.063	 0.058	 0.058	 ...	
+Off-By	 ...	 0.0	 0.0	 0.20	 0.20	 0.0	 0.38	 0.20	 0.0	 ...	
+Add/Sub/Div	 ...	 0.0	 0.0	 0.0	 0.0	 0.0	 0.0	 0.0	 0.0	 ...	
+Pattern	 ...	 0.0	 0.0	 0.0	 0.0	 0.0	 0.0	 0.0	 0.0	 ...	
+Unclassified	 ...	 0.0	 0.02	 0.0	 0.0	 0.0	 0.0	 0.0	 0.0	 ...	
+Correct	 ...	 0.0	 0.0	 0.0	 0.0	 1.0	 0.0	 0.0	 0.0	 ...	
+
+	
+	
+	
+	
+	
+	
+
+Figure 1: The Bayesian student network repre-
+
+senting the one-digit multiplication misconceptions.
+
+The random variable “Learning State” and its corre-
+
+sponging conditional probability distribution (CPD)
+
+table is the parent node for the ninety “Answers of
+
+Questions” random variables, each one for the 1x1
+
+to 9x9 posed questions. Their CPD tables repre-
+
+sent the conditional probability distribution of these
+
+variables, where the conditioning is on all possible
+
+“Learning State” outcomes.
+
+tion that cannot be observed directly but can be inferred
+from the gathered student data and the model, such as the
+reasons of the learners’ answers, hidden cognitive states and
+meta-cognitive skills in a diagnostic manner [9], [10], [11].
+
+The design of the model requires domain knowledge about
+the topic that is represented by it. In many cases the struc-
+ture and the parameters to begin with are provided by the
+teachers. Prior information can also be acquired directly
+by the learners by a pre-test [5], the teachers [25], or a quiz
+that is done to initialize the model before its actual use. The
+models are usually integrated in learning applications that
+are updating the model frequently (if possible in real-time)
+to improve the accuracy of the representation. The evalua-
+tion typically consists of validation by measuring the success
+of the predictions of the model during the subsequent use of
+the application or by a post-test [5].
+
+Some of these applications go beyond the quantification
+of factors that play a role in learning and their dependen-
+cies; they use the models to manage personalisation in the
+learning application. The creation of feedback and targeted
+recommendations to the students [16] is driven by the infor-
+mation contained in and elicited from the model.
+
+3. PROBABILISTIC STUDENT MODEL
+
+3.1 Model Structure
+We have considered six specific error types of the one-
+
+digit multiplication: operand, intrusion, consistency, o?-by-
+
+±1 and o?-by-±2, pattern, as well as confusion with addi-
+tion, subtraction, and division operation errors, as described
+in [3] and [19]. The collection of these mistakes consist of
+our bug library [4] or taxonomy of misconceptions [5] which,
+at this point, is created by enumeration and is driven by
+domain knowledge. Any false answer that cannot be as-
+signed to one of these categories, is put in a new category
+called “unclassified errors”. Any result that was negative or
+greater than 100 was considered more or less careless “play-
+ing around” (because the mathematical principles of one-
+digit multiplication are known to the users) and was not
+taken into account. Correct answers assume the absence of
+any error type and are categorized as “correct”. The model
+belongs to the category of so-called perturbation models [4],
+that represent various kinds of mal-knowledge. Although
+the category “correct” seems like a misfit in a perturbation
+model, it is defined as the absence of any misconception or
+error type and is included to help the prediction process.
+
+The first step in quantifying the extend of each error type
+for each student is the creation of the probabilistic student
+model. The representation of misconceptions in this model is
+build based on minimal structural assumptions about the in-
+terdependencies of the di?erent error types; we do not begin
+by considering them dependent. This approach was chosen
+in other related research work too [18], [6]. There are how-
+ever answers to questions that could belong to many error
+types, for example a student may answer the question 8? 5
+with a 41, which could be both a consistency and o?-by-+1
+error. The more data we have, the more certain we will be
+which error type is more dominant.
+
+The model was conceived under specific requirements. It
+is not a rigid representation of the learner’s state of knowl-
+edge, since this aspect changes over time, even during the
+application is used. Furthermore, it is not considered to be a
+perfect and absolute measurement of the student’s miscon-
+ceptions; it is a representation of our estimation about them.
+Therefore, it can certainly change over time; the more data
+we observe the more reliable our conclusions (that we make
+based on it) are. Moreover, it must acknowledge that each
+learner should be handled di?erently , has its own problems
+and learning di?culties, but at the same time one expects
+similarities to occur. When facing a new user, the system
+is not completely agnostic; it has already observed the be-
+haviour of other users and merely needs some individualisa-
+tion information.
+
+The highest level of the model, as seen in figure 1, is a
+random variable“Learning State”that represents the current
+learning state of the student. The possible outcomes of this
+random variable are the specific error types as well as the
+correct category, which are acquired during learning (for ex-
+ample in our case in a math class). One can represent these
+outcomes in a table and make statements of the form: “A
+particular person, when dealing with one-digit multiplica-
+tion problems, makes 20% operand errors, 10% consistency
+errors and so on”. As we will see in section 4, these state-
+ments can be extended to the whole set of students.
+
+The children of this node are ninety random variables
+named “Answers of Questions 1x1” to “Answers of Ques-
+tions 9x9”. The answers given by a student depend on the
+kind of misconceptions (and lack thereof in some cases) that
+he or she acquired during math learning. The edges in the
+graph represent this causal relationship. So, these variables
+depend directly on the “Learning State”, their outcomes are
+
+
+
+Learning State
+
+Answers of 
+Question 9x9
+
+Answers of 
+Question 1x1 ...
+
+?Q1x1|LS ?Q9x9|LS
+
+?LS
+
+Answering Data
+
+Figure 2: Meta-network of the student model us-
+
+ing plate notation. The random variables and their
+
+dependencies (as in figure 1) are depicted together
+
+with their corresponding (Dirichlet) hyper parame-
+
+ters ?
+Q1x1|LS . . . ?Q9x9|LS. The nodes that are shaded
+
+are the ones that we can observe whereas the non-
+
+shaded ones are“hidden”or“latent”and their values
+
+must be inferred.
+
+conditioned on it and therefore the table is called a con-
+ditional probability table. For every value of the random
+variable “Learning State” , the probabilities of the answers
+in the random variable “Answers of Question” need to be
+defined.
+
+3.2 Learning the Model’s Parameters
+Although our assumption about the dependencies define
+
+the structure of the model (functional forms of these depen-
+dencies), it does not state how and to which extend each
+of them generates the answers we observe in the data. The
+quantification of this relationship is to be learned from the
+data itself.
+
+At first, the model is trained with assumptions about the
+misconceptions of the student. It is assumed that each error
+type and the unique correct option are equally likely. The
+same applies to the “Answers of Questions” random vari-
+ables; we do not assume that given a specific error type there
+is any preference or tendency towards a particular answer,
+which is greater than the others produced by this miscon-
+ception. As the answering data is gathered, the probability
+of the error type(s) and the correct category, associated with
+each particular answer, change. A straightforward choice is
+to parametrize the random variables as depicted in figure 1
+by ?
+
+LS
+
+and ?
+Q1x1|LS . . . ?Q9x9|LS using Dirichlet hyper pa-
+
+rameters both for “Learning State” and for each line of the
+“Answers of Questions” tables. More information about the
+
+Dirichlet distribution and its use for the definition of hyper
+parameters can be found in [8], [2] and [15].
+
+Unfortunately, we do not have data from pre-tests or lon-
+gitudinal studies. On the other hand, the model will either
+way adapt during data processing, so we decided to start
+with a non-informative uniform prior, where each miscon-
+ception (error type) or correct conception is equally likely;
+in our case, each of them has probability 0.125 to exist. We
+applied the same principle to the “Answers of Questions”
+variables; each answer that is a result of a specific miscon-
+ception, starts with the same probability. So our starting
+prior for every line in the Table CPDs of these variables is
+also uniformly defined. We trained the model with the data
+of all students and we set this result (the posterior parameter
+distribution) as the new, updated prior for further learning
+(which is of course di?erent from the starting uniform prior).
+This updated prior will be the new starting point for each
+student, which will be individualized in a much lesser degree
+and faster than the starting uninformed prior.
+
+To help the model learn the parameters that most accu-
+rately represent the student answering behaviour, we used
+the expectation-maximization (EM) - Algorithm. Since it
+is out of scope of this paper to describe the details of the
+algorithm we refer to [2], [8] and [15]. Basically the algo-
+rithm starts either with random or pre-defined parameters
+and continuously improves its estimation. Returning to our
+previous example, where the student confronted the ques-
+tion 8x5 and answered 41, the probabilities of consistency
+and o?-by errors therefore subsequently increase as seen in
+figure 1. The rest of the probabilities have the same value.
+The e?ect of this particular data point is that we infer which
+error types and how much have caused this result.
+
+As a result we see that this change in probability of ob-
+serving an error is not the same for all error types because
+they don’t have the same number of answers generated from
+them. For example, consistency error produces a total of
+17 whereas the o?-by error 4 incorrect answers. That means
+that this model needs more evidence to state that the preva-
+lent misconception of a person is a consistency rather than
+an o?-by error. Although it seems as if there is an imbal-
+ance, this phenomenon is perfectly explainable by the terms
+by which we defined the model; each misconception is gen-
+erally manifested by a di?erent number of faulty answers.
+It is questionable whether teachers follow the same logic, or
+rather consider each evidence as equally important. In any
+case, it is something that we are aware of and do not bypass
+in the future steps of our analysis.
+
+The implementation of the model was made with the func-
+tional and object-oriented Scala programming language 2,
+using the probabilistic programming library Figaro 3 [15].
+
+4. FUTURE WORK
+The common mistakes that students make in one-digit
+
+multiplication have been thoroughly analysed. They are the
+first starting point when creating the bug library. Our anal-
+ysis does not only show which of the error types are more
+serious, but also unveils patterns inside a specific error type.
+For example, one does not only know that a particular stu-
+dent makes more often the operand error mistake, but also
+
+2http://www.scala-lang.org/ last access 31 October 2015
+3https://www.cra.com/work/case-studies/figaro last access
+31 October 2015
+
+
+
+which faulty answer in this category is the most prevalent.
+So one could continue searching for patterns in the unclas-
+sified errors category as well as altering the structure of
+the model correspondingly to validate in case the change
+produces more accurate evaluation results. Of course, this
+would change the structure of the model and therefore it
+needs to be evaluated as well as compared with the previous
+version.
+
+It would be interesting to find out whether there are groups
+of learners (stereotypes [4])that have similar problems when
+given these questions, as described in [21] or not. We may
+expect that the distribution of the random variable “Learn-
+ing State” of learners of each group is similar, and the whole
+set created by all groups together is parametrised by a Mix-
+ture of Dirichlet distributions.This means that we will be
+able to state that, for example, the “Learning State” of 20%
+of our students has values near to a particular Dirichlet dis-
+tribution, 30% equals a completely di?erent Dirichlet dis-
+tribution and so on. This would add another level to our
+model, and the current “Learning State” will depend on it.
+
+The probabilistic model can be used to define a generative
+process, where all random variables will generate values ac-
+cording to their distribution. After the learning is done, the
+model can predict the answer that will be given to the next
+posed question. Several learning applications use this infor-
+mation to decide what the next learning topic will be [18].
+Probabilistic and maximum a posteriori (MAP) queries can
+be used to influence all kinds of factors in a learning applica-
+tion such as hints, helping notes, rearrangement of questions’
+sequence and so on.
+
+Furthermore, the model can become the central element
+of the application architecture because the e?ectiveness of
+any such change for a potential improvement of the learning
+process can be directly evaluated. So the ultimate goal of the
+modelling process is not to remain a flexible and adaptable
+analysis tool that provides information to its stakeholders
+(teachers, students), but to e?ect the learning process itself.
+Bayesian Networks can be extended to undertake decisions
+under uncertainty and to influence actions that fulfil some
+optimality criterion(for example posing the question that
+is di?culty appropriate next) [8], [7] in a more sound and
+straightforward way than in [20].
+
+5. REFERENCES
+[1] D. Barber. Bayesian Reasoning and Machine
+
+Learning. Cambridge University Press, The Edinburgh
+Building, Cambridge, United Kingdom, 2012.
+
+[2] C. Bishop. Pattern Recognition and Machine Learning.
+Springer, 2006.
+
+[3] J. I. Campbell. Mechanisms of simple addition and
+multiplication: A modified network-interference theory
+and simulation. Mathematical Cognition, 1(2):121–164,
+January 1995.
+
+[4] K. Chrysafiadi and M. Virvou. Student modeling
+approaches: A literature review for the last decade.
+Expert Systems with Applications, 40(11):4715–4729,
+September 2013.
+
+[5] G. Goguadze, S. A. Sosnovsky, S. Isotani, and B. M.
+McLaren. Evaluating a bayesian student model of
+decimal misconceptions. In Proceedings of the 4th
+International Conference on Educational Data Mining,
+pages 301–306, July 2011.
+
+[6] G. Goguadze, S. A. Sosnovsky, S. Isotani, and B. M.
+McLaren. Towards a bayesian student model for
+detecting decimal misconceptions. In Proceedings of
+the 19th International Conference on Computers in
+
+Education, pages 34–41. Asia-Pacific Society for
+Computers in Education, November 2011.
+
+[7] M. J. Kochenderfer. Decision Making Under
+Uncertainty : Theory and Application. The MIT Press,
+Cambridge, Massachusetts, London, England, 2015.
+
+[8] D. Koller and N. Friedman. Probabilistic Graphical
+Models : Principles and Techniques. The MIT Press,
+Cambridge, Massachusetts, London, England, 2009.
+
+[9] E. Mila?n, J. M. Agosta, and J.-L. P. de la Cruz.
+Bayesian student modeling and the problem of
+parameter specification. British Journal of
+Educational Technology, 32(2):171–181, March 2001.
+
+[10] E. Milla?n and J.-L. P. de la Cruz. A bayesian
+diagnostic algorithm for student modeling and its
+evaluation. User Modeling and User-Adapted
+Interaction, 12(2):281–330, June 2002.
+
+[11] E. Milla?n, T. Loboda, and J.-L. P. de la Cruz.
+Bayesian networks for student model engineering.
+Computers & Education, 55(4):1663–1683, December
+2010.
+
+[12] J. Nakic, A. Granic?, and V. Glavinic?. Anatomy of
+student models in adaptive learning systems: A
+systematic literature review of individual di?erences
+from 2001 to 2013. Journal of Educational Computing
+Research, 51(4):203–234, January 2015.
+
+[13] R. E. Neapolitan. Learning Bayesian Networks.
+Prentice Hall, Northeastern Illinois University
+Chicago, Illinois, 2003.
+
+[14] Y. Nouh, P. Karthikeyani, and R. Nadarajan.
+Intelligent tutoring system-bayesian student model. In
+Proceedings of the 1st International Conference on
+
+Digital Information Management, pages 257–262.
+IEEE, December 2006.
+
+[15] A. Pfe?er. Practical Probabilistic Programming.
+Manning Publications, New York, United States of
+America, 2016.
+
+[16] S. Schia?no, P. Garcia, and A. Amandi. eteacher:
+Providing personalized assistance to e-learning
+students. Computers & Education, 51(4):1744–1754,
+December 2008.
+
+[17] M. Scho?n, M. Ebner, and G. Kothmeier. It’s just
+about learning the multiplication table. In Proceedings
+of the 2nd International Conference on Learning
+
+Analytics and Knowledge, pages 73–81. LAK 2012,
+October 2012.
+
+[18] K. Stacey, E. Sonenberg, A. E. Nicholson, T. Boneh,
+and V. Steinle. A teaching model exploiting cognitive
+conflict driven by a bayesian network. In Proceedings
+of the 9th International Conference on User
+
+Modelling, pages 352–362. Springer, June 2003.
+[19] B. Taraghi, M. Frey, A. Saranti, M. Ebner, V. Mu?ller,
+
+and A. Großman. Determining the causing factors of
+errors for multiplication problems. In Immersive
+Education, Edition: Communications in Computer
+
+and Information Science 486, pages 27–38. Springer,
+August 2015.
+
+[20] B. Taraghi, A. Saranti, M. Ebner, V. Mu?ller, and
+A. Großman. Adaptive learner profiling provides the
+
+
+
+optimal sequence of posed basic mathematical
+problems. In Proceedings of the 9th European
+Conference on Technology Enhanced Learning,
+
+EC-TEL 2014, pages 592–593. Springer International
+Publishing, September 2014.
+
+[21] B. Taraghi, A. Saranti, M. Ebner, V. Mu?ller, and
+A. Großman. Towards a learning-aware application
+guided by hierarchical classification of learner profiles.
+Journal of Universal Computer Science, 21(1):93–109,
+January 2015.
+
+[22] B. Taraghi, A. Saranti, M. Ebner, and M. Scho?n.
+Markov chain and classification of di?culty levels
+enhances the learning path in one digit multiplication.
+In Learning and Collaboration Technologies. Designing
+and Developing Novel Learning Experiences, pages
+322–333. Springer International Publishing, June 2014.
+
+[23] B. Taraghi, A. Saranti, M. Ebner, and M. Scho?n. On
+using markov chain to evidence the learning structures
+and di?culty levels of one digit multiplication. In
+Proceedings of the Fourth International Conference on
+
+Learning Analytics And Knowledge, pages 68–72,
+March 2014.
+
+[24] S. H. van der Ven, M. Straatemeier, B. R. Jansen,
+S. Klinkenberg, and H. L. van der Maas. Learning
+multiplication: An integrated analysis of the
+multiplication ability of primary school children and
+the di?culty of single digit and multidigit
+multiplication problems. Learning and Individual
+Di?erences, 43:48–62, October 2015.
+
+[25] J.-D. Zapata-Rivera and J. E. Greer. Interacting with
+inspectable bayesian student models. International
+Journal of Artificial Intelligence in Education,
+14(2):127–163, January 2004.
+
+
+

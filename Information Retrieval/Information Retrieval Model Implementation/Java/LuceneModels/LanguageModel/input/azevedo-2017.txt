@@ -1,0 +1,654 @@
+
+Using Data Visualizations to Foster Emotion Regulation 
+during Self-Regulated Learning with Advanced Learning 
+
+Technologies: A Conceptual Framework 
+ 
+
+Roger Azevedo, Garrett C. Millar, Michelle Taub, Nicholas V. Mudrick,  
+Amanda E. Bradbury, & Megan J. Price 
+
+North Carolina State University 
+Department of Psychology 
+
+2310 Stinson Drive, 640 Poe Hall 
+Raleigh, NC 27695 
+
+{razeved, gcmillar; mtaub; nvmudric; aebradbu; mjprice3} @ncsu.edu 
+
+ABSTRACT 
+Emotions play a critical role during learning and problem solving 
+with advanced learning technologies (ALTs). Despite their im-
+portance, relatively few attempts have been made to understand 
+learners’ emotional monitoring and regulation by using data visu-
+alizations of their own (and others’) cognitive, affective, meta-
+cognitive, and motivational (CAMM) self-regulated learning 
+(SRL) processes to potentially foster their emotion regulation 
+(ER). We present a theoretically based and empirically driven 
+conceptual framework that addresses ER by proposing the use of 
+visualizations of one’s own and others’ CAMM SRL multichannel 
+data to facilitate learners’ monitoring and regulation of emotions 
+during learning with ALTs. We use an example with eye-tracking 
+data to illustrate the mapping between theoretical assumptions, 
+ER strategies, and the types of data visualizations that can en-
+hance learners’ ER, including key processes such as emotion flex-
+ibility, emotion adaptivity, and emotion efficacy. We conclude 
+with future directions leading to a systematic interdisciplinary 
+research agenda that addresses outstanding ER-related issues by 
+integrating models, theories, methods, and analytical techniques 
+for the cognitive, learning, and affective sciences; human–
+computer interaction (HCI); data visualization; big data; data min-
+ing; and SRL. 
+
+CCS Concepts 
+Human-centered computing   • Human-centered computing-
+Visualization   •  Human computer interaction (HCI)   •  Visuali-
+zation application domains   •  Visual analytics 
+
+Keywords 
+Emotions; Emotion regulation; Advanced learning technologies; 
+
+Data visualizations; Self-regulated learning; Process data  
+
+1. INTRODUCTION 
+Understanding and reasoning about cognitive, affective, metacog-
+nitive, and motivational (CAMM) self-regulated learning (SRL) 
+processes to foster emotion regulation (ER) with advanced learn-
+ing technologies (ALTs) by using data visualizations is key to 
+advancing conceptual, theoretical, methodological, analytical, and 
+educational issues currently plaguing the learning, cognitive, edu-
+cational, and computational sciences [1][2]. For example, data 
+visualizations (e.g., static histogram displaying the frequency of 
+learning strategies used over time, videos of eye-gaze behavior 
+during learning with a hypermedia system, etc.) allow researchers, 
+teachers, and learners to visualize, illustrate, conceptualize, mod-
+el, and understand complex mechanisms and processes, such as 
+metacognitive monitoring and control, accuracy of metacognitive 
+judgments, learning trajectories, the cyclical nature of SRL, emo-
+tion flexibility, emotion adaptivity, and emotion efficacy.  
+
+Data visualizations of CAMM SRL processes are important be-
+cause they can be used by researchers, learners, teachers, trainers, 
+designers, administrators, and policy-makers for various purposes. 
+These purposes include the following: (1) articulating complex 
+conceptual issues associated with ER (e.g., emotion flexibility); 
+(2) illustrating the dynamics of monitoring and control processes; 
+(3) reasoning about the importance of key cognitive and metacog-
+nitive processes and inferring subsequent behaviors; (4) generat-
+ing hypotheses about underlying SRL mechanisms and their im-
+pact on learning; (5) developing teaching and training tools to 
+enhance learners’ emotions, self-regulation, and ER and teachers’ 
+ability to monitor and regulate learners’ emotions and SRL; and 
+(6) developing sophisticated learner and teacher dashboards to 
+trigger and support instructional decision-making that include 
+interface elements (e.g., open learner models [OLMs] representing 
+metacognitive accuracy) to provide learner data that might foster 
+changes in SRL behaviors.  
+
+Despite these and other potential uses of data visualizations, many 
+conceptual, theoretical, methodological, and analytical questions 
+remain unanswered. For example, while the majority of research 
+has focused on data visualizations designed for learners to keep 
+track of their task- or domain-specific knowledge and skills by 
+using OLMs [3] and teacher dashboards focus on student assess-
+ments [4], relatively little attention has been paid to learners’ 
+
+Permission to make digital or hard copies of all or part of this work for 
+personal or classroom use is granted without fee provided that copies are 
+not made or distributed for profit or commercial advantage and that 
+copies bear this notice and the full citation on the first page. Copyrights 
+for components of this work owned by others than ACM must be hon-
+ored. Abstracting with credit is permitted. To copy otherwise, or repub-
+lish, to post on servers or to redistribute to lists, requires prior specific 
+permission and/or a fee. Request permissions 
+from Permissions@acm.org.  
+
+LAK '17, March 13-17, 2017, Vancouver, BC, Canada  
+© 2017 ACM. ISBN 978-1-4503-4870-6/17/03?$15.00  
+DOI: http://dx.doi.org/10.1145/3027385.3027440 
+
+
+
+emotions experienced during learning with ALTs (e.g., intelligent 
+tutoring systems, multimedia, hypermedia, simulations, serious 
+games, tangible computing, augmented reality). Emotions are 
+critical for learning, problem solving, and performing tasks across 
+domains, and if left unchecked can have a deleterious impact on 
+learning (e.g., frustration transitioning to boredom and disen-
+gagement [5]). As such, our paper focuses on the neglected area 
+of ER with the goal of presenting, discussing, and debating the 
+significance of visualizing CAMM SRL process data such as met-
+acognitive judgments, deployment of cognitive strategies, fluctua-
+tions in affective states, changes in self-efficacy, the nature of 
+temporality, the granularity of time scales, levels of abstraction, 
+static versus dynamic representations, and converging evidence 
+from multimodal multichannel data. This is accomplished by us-
+ing various methodological tools including eye-tracking data, 
+concurrent and retrospective think-alouds, classroom discourse, 
+facial expressions of emotions, log files, recordings from physio-
+logical sensors, screen recordings, verbal and nonverbal human–
+artificial agent interactions, and classroom videos to foster learn-
+ers’ ER with ALTs (see [6]). In sum, by addressing ER with these 
+visualizations we argue that they can advance the fields of emo-
+tion and ER, SRL, human–computer interaction, data visualiza-
+tions, big data, data mining, personalized instruction, and ALTs.   
+
+2. SRL, EMOTIONS, AND ALTS 
+Fundamentally, SRL involves the temporal deployment of 
+CAMM processes during complex learning with ALTs, such as 
+MetaTutor, Betty’s Brain, CRYSTAL ISLAND, nSTUDY, and 
+AutoTutor [7]–[12]. SRL plays a central role in learning, reason-
+ing, and problem solving in complex domains with 
+ALTs [13][14]. CAMM processes can be measured using trace 
+methods including log files, eye tracking, physiological sensors, 
+and facial expression data [1],[2][15][16]. Despite the emerging 
+evidence on the effectiveness of multichannel trace data to meas-
+ure emotions [6], no systematic program of research focuses on 
+ER using data visualizations of CAMM processes.  
+
+ER is vital to successful learning about complex topics across 
+domains with ALTs. Contrary to the wealth of empirical research 
+about the fundamental role of ER found in the affective, clinical, 
+social, and neurosciences, there is a paucity of research on ER in 
+the educational, learning, and cognitive sciences (see [17][19]). 
+Emotions play a critical role in learning, and without a systematic, 
+empirically driven program of research aimed at understanding 
+the monitoring and regulatory processes underlying ER, there is a 
+lack of fundamental understanding of the affective SRL processes 
+that impact learning, problem solving, and conceptual understand-
+ing, especially in STEM domains with ALTs 
+
+We argue that advances in ER are needed and researchers should 
+focus on two specific areas. First, they should collect rich traces 
+of temporally unfolding emotions along with other SRL processes 
+(e.g., metacognitive judgments, use of effective cognitive strate-
+gies) during learning with ALTs to understand the nature of these 
+processes and how their characteristics (e.g., antecedents, dura-
+tion, sequence, parallel/serial deployment) are related to changing 
+internal and external task demands, and are predictive of perfor-
+mance (e.g., on embedded science assessments), ER (e.g., emo-
+tion flexibility, emotion efficacy, and emotion adaptivity), and 
+learning and transfer (e.g., immediate and delayed posttests). Se-
+cond, researchers should focus on scaffolding ER strategies in real 
+time to provide students with optimal scaffolding that supports 
+
+emotions, ER, and other SRL processes (e.g., feedback from ped-
+agogical agent [PA] ? confusion ? prolonged fixation on PA ? 
+frustration ? agent deploys situational modification strategy by 
+suggesting learner select a new learning goal ? …). In terms of 
+our emerging conceptual framework, we begin with the presenta-
+tion of Table 1, which lists several multimodal multichannel affect 
+data sources, including both online trace and self-report data, 
+typically collected by researchers. We argue that collection of 
+these data sources is critical in ascribing data visualizations of 
+self- and other CAMM SRL processes to foster learners’ ER. 
+Table 1: Sample multimodal multichannel affect data used to 
+
+examine emotion regulation 
+
+ 
+
+Data Sources Affective Indicator/Component 
+
+Screen re-
+cordings 
+(video and 
+audio) 
+
+• Context (mouse movements, facial ex-
+pressions, interface elements, learner–
+agent dialogue, etc.)  
+
+• Emotion-eliciting event (PA scaffolding, 
+complexity of multimedia content, inter-
+face changes) 
+
+Concurrent 
+think-alouds 
+
+• Self-reports of emotions verbalized either 
+during or following learning, problem 
+solving, and performance  
+
+Eye tracking • Repeated number of fixations on areas of 
+interest (AOIs) 
+
+• Sequential patterns of fixations 
+• Revisits to AOIs 
+• Saccades, smooth pursuit eye movements 
+
+(e.g., overall gaze behavior) 
+Log files • Context  
+
+• Task performance  
+• Time spent on various aspects of the sys-
+
+tem (e.g., time spent on text, diagram, 
+planning) 
+
+• Sequence of events during interaction 
+with ALT (e.g., planning ? setting goals 
+? reading ? using strategies ? regulat-
+ing emotions? complying with PA …) 
+
+Facial ex-
+pressions of 
+emotions 
+
+• Automated evidence scores of learner-
+centered emotions (e.g., frustration, con-
+fusion, boredom) and basic emotions 
+(e.g., joy, fear, anger, sadness, surprise)  
+
+• Automated evidence scores of action 
+units (AUs; e.g., AUs 1, 4, 14, 28, 30)  
+
+• Manually coded scores of basic and 
+learner-centered emotions, and AUs 
+
+• Micro-expressions  
+
+Physiological 
+sensors  
+
+• Skin conductance responses  
+• Electrodermal activity over time (tonic 
+
+vs. phasic)  
+Self-report 
+question-
+naires (e.g., 
+AEQ, EV, 
+ERQ, 
+PAUSe) 
+
+• Perceptions of current emotions (EV)  
+• Perceptions of ability to cognitively reap-
+
+praise and suppress expressions (ERQ)  
+• Perceptions of the utility of affect and 
+
+emotions (PAUSe)  
+• Perceptions of academic achievement 
+
+emotions (AEQ)  
+
+
+
+Despite the potential benefits of using data visualizations of 
+CAMM SRL to foster learners’ ER, humans find themselves un-
+der the growing pressure of communicating or simply making 
+sense out of increasingly more abstract data. Moreover, humans 
+struggle with abstracting meaning from large amounts of complex 
+data, especially when the physiological sensors and instruments 
+used to collect the process data grow more advanced. Visualiza-
+tion techniques that are validated as effective for one particular 
+type of problem or context or learner might not be well suited for 
+another. As such, it is difficult to design a data visualization 
+framework that can both keep up with the technology used to 
+collect online trace data as well as apply design components 
+across multiple domains and different types of learners. For ex-
+ample, presenting physiological data (e.g., high levels of arousal 
+from electrodermal activity, overall gaze behavior; see Table 1) in 
+real time poses serious challenges for learners’ interpretation, 
+comprehension, and inference generation (critical for emotion 
+monitoring and regulation) by potentially imposing extraneous 
+cognitive load and inducing negative emotions (e.g., frustration 
+and anger). Cognitive load theory asserts people have limited 
+cognitive capacity, which can lead to decreased interpretation, 
+comprehension, and inferences made during visualization-
+centered learning and problem-solving tasks. In addition, repre-
+sentations depicting processes (e.g., facial expressions of confu-
+sion, high levels of arousal from electrodermal activity) in real 
+time call for accurate and rapid detection, discrimination, and 
+comprehension of relevant information. As such, it is necessary to 
+design an interface that minimizes extraneous cognitive load ex-
+perienced by learners when attempting to comprehend and reason 
+about CAMM SRL visualizations presented in real time during 
+the process of ER (e.g., attending to the CAMM SRL data visuali-
+zations, making inferences about the antecedents that are por-
+trayed in the data, selecting the relevant ER strategy necessary to 
+address the experienced emotions, using the ER strategy, as-
+sessing the adequacy of strategy use, etc.). In the next section, we 
+present an initial theoretical framework on ER with ALTs. 
+
+3. FRAMEWORK: SUPPORTING EMO-
+TION REGULATION AND SRL THROUGH 
+CAMM SRL DATA VISUALIZATIONS  
+Our conceptual framework incorporates Gross’ model of emotion 
+regulation [17] that posits an emotion can be regulated at five 
+points in the emotion generation process: (1) selection of the sit-
+uation, (2) modification of the situation, (3) deployment of atten-
+tion, (4) cognitive change, and (5) modulation of responses. Alt-
+hough regulation strategies can be—and often are—used in com-
+bination, the heuristic value of this framework arises from its 
+ability to simplify a complex problem space and direct attention to 
+each of the separate families of ER [17]. The model makes several 
+assumptions: (1) emotions involve loosely coupled changes in 
+subjective experience, behavior, and peripheral physiology; (2) 
+emotions unfold over time; (3) emotions can be either helpful or 
+harmful, depending on the context; and (4) emotions differ based 
+on duration, intensity, and quality. Next, we describe the four ER 
+strategies and corresponding scaffolding strategies that can be 
+enacted by ALTs to support ER. Situation selection is not includ-
+ed in our taxonomy since we assume that using an ALT to learn, 
+solve problems, and so forth precludes one from being able to 
+select a (new) situation. Our framework addresses the four main 
+ER strategies delineated in Gross’s model, and integrates elements 
+
+of Scherer’s component process model [19], D’Mello and 
+Graesser’s affect dynamics model, and extensive research on 
+emotions in ALTs including theoretical assumptions of SRL and 
+related empirical evidence on CAMM SRL and ALTs [6][7][13].  
+First, situation modification refers to taking actions that directly 
+alter a situation to change its emotional impact. Examples include 
+not complying with an PA’s feedback, selecting a new learning 
+goal, and electing to take an embedded assessment to control cog-
+nition following an accurate metacognitive judgment, decrease an 
+emerging negative emotion (e.g., frustration), and increase persis-
+tence and interest in the overall learning activity (motivational 
+processes not covered in our taxonomy). Second, attentional de-
+ployment refers to directing one’s attention with the goal of influ-
+encing one’s emotional response. A common strategy involves 
+redirecting attention within a given situation (e.g., from an emo-
+tion-eliciting interaction with complex representations of infor-
+mation) or shifting attention away from the present situation alto-
+gether (e.g., averting gaze behavior from a PA to search for new 
+informational sources). This strategy involves change in one’s 
+gaze and/or shifts in one’s internal focus (i.e., attention) on differ-
+ent interface elements in ALTs and can be elicited by the individ-
+ual learner, proposed by the PA, or scaffolded by visualizations. 
+The third ER strategy is cognitive change and refers to modifying 
+one’s appraisal of a situation to alter its emotional impact. Cogni-
+tive change can be applied to an external situation (e.g., “my per-
+formance in this study is not directly relevant to my academic 
+major but it is a chance for me to learn more about science”), to 
+an internal situation (e.g., “My racing heart is not a sign of anxie-
+ty; it means my body is preparing for understanding this complex 
+diagram”), or to alter how one thinks about one’s capacity to 
+manage situational demands using self-regulatory skills (e.g., 
+“Although learning about this content feels overwhelming, I know 
+I can handle it using my existing knowledge, skills and the sup-
+port provided by the system”). The last ER strategy discussed is 
+response modulation, which refers to directly influencing experi-
+ential, behavioral, or physiological components of the emotional 
+response after the emotion is well developed. For example, we 
+envision learners’ self-initiating prompts when frustration arises, 
+such as smiling when receiving negative feedback or a low score 
+on a quiz, or managing boredom by watching a video of a related 
+topic. In summary, we argue for a theoretical amalgamation of the 
+component process model, model of affect dynamics, and a model 
+of ER to provide a comprehensive foundation for a conceptual 
+framework that aims to foster ER using data visualization from 
+CAMM SRL process data. Our approach integrates these leading 
+models, theories, and frameworks along with contemporary re-
+search on dashboards and OLMs. 
+Supporting learners’ ER during SRL with ALTs by providing 
+their own and others’ CAMM SRL data visualizations is innova-
+tive and has the potential to significantly impact SRL and the 
+educational effectiveness of ALTs. In addition to the theoretical 
+and empirical literature briefly presented above, we make a few 
+additional assumptions in proposing our conceptual framework.  
+
+3.1 Core Assumptions 
+First, multimodal multichannel CAMM SRL data are relevant (for 
+ER) and therefore allow learners to accurately monitor and regu-
+late their emotions. We emphasize that the relevancy of CAMM 
+SRL data will vary based on individual differences, one’s ability 
+to accurately monitor and regulate CAMM processes, internal and 
+
+
+
+contextual conditions, and so forth. Second, the relevance of 
+CAMM SRL data visualizations must be synchronized accurately 
+and coordinated with other visualizations for maximum potential 
+of facilitating monitoring and regulation of one’s emotions. Third, 
+presentation of multichannel data should not exceed human cogni-
+tive architecture constraints (e.g., limited attention, not exceed 
+WM capacity, cognitive load), must adhere to SRL assumptions 
+(e.g., learners have the potential to monitor and regulate their 
+cognitive, affective, metacognitive, and motivational processes), 
+should not compete for learners’ attention, should be easy to pro-
+cess (i.e., not become a dual task), and should be actionable (i.e., 
+providing data with which learners can control their emotions). 
+Fourth, the coordination and timely presentation of various multi-
+channel data need to be carefully considered based on the learn-
+ers’ immediate “needs” (e.g., deal with negative affect that ex-
+ceeds a time threshold and is negatively impacting the learner’s 
+level of cognitive engagement) as well as their learning history 
+(typically modeled in a student or user model). This assumption is 
+based on several types of data collected from the learner (e.g., self 
+reports, online trace data; see Table 1 for a sample) at different 
+times (e.g., prior to learning, during learning, and following learn-
+ing) and across time spans (e.g., several minutes, one hour, one 
+day, one month, one semester, etc.). Fifth, CAMM processes are 
+represented in ways that include a number of representations for 
+each individual process and all CAMM SRL processes collective-
+ly (e.g., histogram displaying frequency of learning strategies 
+used vs. histogram of frequency of facial expressions of emotions 
+and corresponding histogram of the effectiveness of learners’ use 
+of specific ER strategies), representation type (e.g., static vs. dy-
+namic or both), ease of understanding and interpretability (e.g., 
+balance between simple to understand and abstract representation 
+that might require further cognitive processing and reflection on 
+one’s affective reactions), and configuration (e.g., if more than 
+one data visualization is shown then how will it be presented on 
+the interface to maximize selective attention, processing, interpre-
+tation, and understanding vis-à-vis SRL behaviors, learning, and 
+problem solving). Sixth, it is critical to account for the roles of 
+CAMM SRL processes both individually and together when con-
+sidering the above-mentioned assumptions; however, in this paper 
+we focus on the emotional aspects. Seventh, we assume that all 
+learners (of all ages, levels of expertise) have the potential to ac-
+curately monitor and effectively regulate their CAMM processes. 
+However, there might be individual-, task-, and context-specific 
+variables, factors, and processes that could impede the successful 
+monitoring and regulation of CAMM SRL processes. Eighth, our 
+framework emphasizes the strategic use and presentation of 
+CAMM SRL visualizations designed to facilitate learners’ accu-
+rate monitoring and regulation of their emotions. Lastly, data 
+visualizations of CAMM processes are important because emotion 
+monitoring and regulation can stem (i.e., the antecedents) from 
+cognitive, metacognitive, and affective processes. We 
+acknowledge the importance of motivational processes; however, 
+we do not discuss them here due to space limitations. 
+
+3.2 Data Visualizations to Foster ER from 
+CAMM SRL Data: An Example 
+Due to space limitations, we present a brief example from our 
+eye-tracking data to illustrate our conceptual framework that in-
+cludes the CAMM SRL processes, multimodal multichannel data 
+sources, sample data representations to be used as the data visual-
+izations to foster ER, and a preliminary description of some scaf-
+
+folding techniques that will allow learners to engage in accurate 
+monitoring and effective regulation of their emotions (based on 
+[2][6][7][9]).  
+
+Figure 1 illustrates the use of a heat map to show a learner that a 
+potential source of frustration is their lack of attention to the intel-
+ligent virtual human as the learner tended to allocate the most 
+attention to the last paragraph followed by the first and second 
+paragraphs and the diagram. This figure exemplifies how the rep-
+resentation of gaze behavior can be used by a PA (during scaf-
+folding or ER training) to explain (or verbally walkthrough) how a 
+learner’s attentional deployment might be indicative of an ineffec-
+tive strategy when trying to learn from multimedia materials be-
+cause it is not indicative of effective selection, organization, and 
+integration of text and diagram (see [20]). Additionally, the speed 
+of attentional deployment is indicative of the poor metacognitive 
+monitoring needed to accurately assess the relevancy of the mate-
+rials, and the relatively few fixations on the human’s face, which 
+failed to capitalize on the agent’s nonverbal facial cues related to 
+the relevancy of the materials vis-à-vis the science question (green 
+box at the top of the image). It is important to highlight that this 
+example relates to the attentional deployment ER strategy pro-
+posed by Gross [17].  
+
+ 
+Figure 1: A complex visualization of CAMM SRL data. 
+
+Lastly, Figure 1 also delineates the integration of several CAMM 
+SRL data (with the exception of EDA and emotion data) that can 
+be used to provide elaborate adaptive scaffolding. This adaptive 
+ER scaffolding technique explicitly illustrates critical variables 
+such as time spent on different (relevant and irrelevant) areas of 
+interest (AOIs), the time spent on and accuracy of use of specific 
+cognitive strategies (e.g., coordinating informational sources), and 
+the accuracy of specific metacognitive judgments (e.g., content 
+evaluation; CE) during learning. Implicit connections between 
+cognitive strategies and metacognitive judgments (e.g., coordinat-
+ing informational sources is associated with CE) are symbolically 
+represented on the same colored bar. CEs are metacognitive 
+judgments related to a representation’s relevancy given a learning 
+goal. The size of the CE bars is representative of the accuracy of 
+metacognitive judgments, whereas the size of the coordinating 
+informational sources bar represents the amount of time spent 
+using multiple sources of information (e.g., text, diagram, PA 
+expression). This approach allows for ease of interpretation as 
+well as integration of cognitive and metacognitive monitoring 
+
+
+
+processes, and can also be made explicit by having a human or 
+artificial agent do a verbal (cognitive) walkthrough of this entire 
+figure at some point during ER scaffolding. Lastly, we emphasize 
+that these CAMM SRL processes and ER scaffolding techniques 
+presented in our framework need to be experimentally tested prior 
+to adoption in ALTs to foster successful ER.  
+
+4. FUTURE DIRECTIONS 
+Emotions play a critical role during learning and problem solving 
+with ALTs. We argue that despite their importance, relatively few 
+attempts have been made to understand and foster learners’ emo-
+tional monitoring and regulation by using data visualizations of 
+their own (and others’) CAMM SRL processes, since they can 
+potentially foster ER during learning with ALTs. In this paper, we 
+presented a theoretically based and empirically driven conceptual 
+framework that addresses ER by proposing the use of one’s own 
+and others’ CAMM SRL data visualizations (e.g., eye-movement 
+behaviors, facial expressions of emotions, physiological arousal) 
+to facilitate learners’ monitoring and regulation of their emotions. 
+We proposed several examples of ER strategies based on the 
+presentation of multimodal multichannel data to illustrate the 
+mapping between theoretical assumptions, ER strategies, and the 
+types of data visualizations that can be used to enhance learners’ 
+ER. We expect this line of work to lead to interdisciplinary efforts 
+addressing the use of CAMM SRL data visualizations to foster ER 
+and lead to optimal and successful learning with ALTs. In doing 
+so, we expect advances in the educational, learning, cognitive, 
+affective, social, engineering, and computational sciences to con-
+tribute immensely to the myriad of issues presented in our paper. 
+The plethora of conceptual, theoretical, methodological, and ana-
+lytical challenges (e.g., identifying robust behavioral signatures of 
+emotion flexibility, emotion adaptivity, and emotion efficacy) 
+from multimodal multichannel data will impact contemporary 
+research in the cognitive, learning, and affective sciences; HCI; 
+data visualization; big data; data mining; OLMs; and SRL. 
+
+4.1.1.1.1 Acknowledgements 
+This paper was supported by funding from the National Science 
+Foundation (DRL#1431552) and the Social Sciences and Humani-
+ties Research Council of Canada (SSHRC 895-2011-1006).  
+
+REFERENCES 
+[1] Azevedo, R., Taub, M., & Mudrick, N. (2015). Technologies 
+
+supporting self-regulated learning. In M. Spector et al. 
+(Eds.), The SAGE encyclopedia of educational technolo-
+gy (pp. 731–734). Thousand Oaks, CA: SAGE. 
+
+[2] Azevedo, R., Taub, M., Mudrick, N., Farnsworth, J., & Mar-
+tin, S. A. (2016). Interdisciplinary research methods used to 
+investigate emotions with advanced learning technologies. In 
+M. Zembylas & P. Schutz (Eds.), Methodological advances 
+in research on emotion and education (pp. 231–243). Am-
+sterdam, The Netherlands: Springer. 
+
+[3] Bull, S., & Kay, J. (2016). SMILI: A framework for interfac-
+es to learning data in open learner models, learning analytics 
+and related fields. IJAIED, 26, 293–331. 
+
+[4] Verbert, K., Govaerts, S., Duval, E., Santos, J. L., Assche, F., 
+Parra, G., & Klerkx, J. (2013). Learning dashboards: An 
+overview and future research opportunities. Personal and 
+Ubiquitous Computing, 18, 1499–1514.  
+
+[5] D’Mello, S. K. (2013). A selective meta-analysis on the rela-
+tive incidence of discrete affective states during learning with 
+technology. J. Educ. Psychol., 105, 1082–1099. 
+
+[6] Azevedo, R. (2015). Defining and measuring engagement 
+and learning in science: Conceptual, theoretical, methodolog-
+ical, and analytical issues. Educ. Psychol., 50, 84–94.  
+
+[7] Azevedo, R., Taub, M., & Mudrick, N. V. (in press). Using 
+multi-channel trace data to infer and foster self-regulated 
+learning between humans and advanced learning technolo-
+gies. In D. Schunk & J. A. Greene (Eds.), Handbook of self-
+regulation of learning and performance (2nd ed.). New York, 
+NY: Routledge. 
+
+[8] Biswas, G., Segedy, J. R., & Bunchongchit, K. (2016). From 
+design to implementation to practice—A learning by teach-
+ing system: Betty’s Brain. IJAIED, 26, 350–364. 
+
+[9] Taub, M., Mudrick, N. V., Azevedo, R., Millar, G. C., Rowe, 
+J., & Lester, J. (in press). Using multi-channel data with mul-
+ti-level modeling to assess in-game performance during 
+gameplay with CRYSTAL ISLAND. Computers in Human 
+Behavior 
+
+[10] Graesser, A. C., & McNamara, D. S. (2010). Self-regulated 
+learning in learning environments with pedagogical agents 
+that interact in natural language. Educ. Psychol., 45, 234–
+244. 
+
+[11] Sabourin, J., & Lester, J. (2014). Affect and engagement in 
+game-based learning environments. IEEE Transactions on 
+Affective Computing, 5, 45–56.  
+
+[12] Winne, P. H., & Hadwin, A. F. (2013). nStudy: Tracing and 
+supporting self-regulated learning in the Internet. In R. 
+Azevedo & V. Aleven (Eds.), International handbook of 
+metacognition and learning technologies (pp. 293–310). 
+Amsterdam, The Netherlands: Springer. 
+
+[13] Azevedo, R., & Aleven, V. (Eds.). (2013). International 
+handbook of metacognition and learning technologies. Am-
+sterdam, The Netherlands: Springer.  
+
+[14] Winne, P. H., & Azevedo, R. (2014). Metacognition. In R. K. 
+Sawyer (Ed.), The Cambridge handbook of the learning sci-
+ences (2nd ed., pp. 63–87). Cambridge, England: Cambridge 
+University Press. 
+
+[15] D’Mello, S., & Graesser, A. (2012). AutoTutor and Affective 
+AutoTutor: Learning by talking with cognitively and emo-
+tionally intelligent computers that talk back. ACM Transac-
+tions on Interactive Intelligent Systems, 2, 1–39. 
+
+[16] Harley, J. M., Bouchet, F., Hussain, S., Azevedo, R., & Cal-
+vo, R. (2015). A multi-componential analysis of emotions 
+during complex learning with an intelligent multi-agent sys-
+tem. Computers in Human Behavior, 48, 615–625. 
+
+[17] Gross, J. J. (2015). Emotion regulation: Current status and 
+future prospects. Psychological Inquiry, 26, 1–26.  
+
+[18] Pekrun, R., & Linnenbrink-Garcia, L. (Eds.). (2014). Interna-
+tional handbook of emotions in education. New York, NY: 
+Routledge. 
+
+[19] Scherer, K. R. (2009). The dynamic architecture of emotion: 
+Evidence for the component process model. Cogn. Emot., 7, 
+1307–1351. 
+
+[20] Mayer, R. (Ed.). (2014). The Cambridge handbook of multi-
+media learning (2nd ed.). Cambridge, England: Cambridge 
+University Press. 
+
+ 
+
+
+

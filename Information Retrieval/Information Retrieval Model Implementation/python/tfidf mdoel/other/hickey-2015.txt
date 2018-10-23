@@ -1,0 +1,672 @@
+
+ 
+ 
+
+Formative and Summative Analyses of Disciplinary 
+Engagement and Learning in a Big Open Online Course 
+
+Daniel T. Hickey 
+Indiana University 
+
+Bloomington IN, 47401 
+01-812-856-2344 
+
+dthickey@indiana.edu 
+
+Joshua D. Quick 
+Indiana University 
+
+Bloomington IN, 4740 
+251-463-6070 
+
+jdquick@indiana.edu 
+
+Xinyi Shen 
+Beijing Normal University 
+
+Beijing 100875, China 
+86-159-0100-1713 
+
+sxy0710@foxmail.com 
+ 
+
+ABSTRACT 
+Situative theories of knowing and participatory approaches to 
+learning and assessment were used to offer a big open online course 
+on Educational Assessment using Google CourseBuilder in 2013. 
+The course was started by 160 students and completed by 60, with 
+relatively extensive instructor interaction with individual learners. 
+This yielded much higher levels of engagement and learning than 
+are typical of open or conventional online courses. The course was 
+further refined and offered a second time in 2014, where it was 
+started by 76 students and completed by 22, with a much lower 
+level of support. Comparable levels of engagement and learning 
+were obtained, suggesting that this participatory approach to 
+learning and assessment can indeed be managed with more typical 
+instructor support. Nonetheless, additional automation and 
+streamlining is called for if the model is to eventually be used in 
+massive online courses with thousands of students or as an 
+autonomous self-paced open course. 
+
+Categories and Subject Descriptors 
+K.3.1 [Computers in Education]: Computer Uses in Education—
+collaborative learning, distance learning 
+
+General Terms 
+Algorithms, Measurement, Performance, Design. 
+
+Keywords 
+Personalized learning, learning analytics, assessment, social 
+learning analysis, analytic approaches, analytic approaches. 
+ 
+1. THEORETICAL ORIENTATION 
+This research is rooted in the situative theories of cognition that 
+emerged from the Institute for Research on Learning in the 1990s 
+[3, 8]. In contrast to the individually-oriented learning principles 
+from human information processing  [1] and constructivism [7], 
+situative theories lead to learning principles that focus on social 
+participation:  (1) Learning is fundamentally social, (2) Knowledge 
+is integrated in the life of communities, (3), Learning is an act 
+ 
+Permission to make digital or hard copies of all or part of this work 
+for personal or classroom use is granted without fee provided that 
+copies are not made or distributed for profit or commercial 
+advantage and that copies bear this notice and the full citation on 
+the first page. Copyrights for components of this work owned by 
+others than ACM must be honored. Abstracting with credit is 
+permitted. To copy otherwise, or republish, to post on servers or to 
+redistribute to lists, requires prior specific permission and/or a fee. 
+Request permissions from Permissions@acm.org. 
+ LAK '15, March 16 - 20, 2015, Poughkeepsie, NY, USA Copyright 
+2015 ACM 978-1-4503-3417-4/15/03…$15.00 
+http://dx.doi.org/10.1145/2723576.2723634 
+
+ of membership, (4) Knowing depends on engagement in practice, 
+(5) Engagement is inseparable from empowerment, (6), “Failure to 
+Learn” is the normal result of exclusion from participation, and (7) 
+We already have a society of lifelong learners.1 These principles 
+formed the “metatheory” within which more specific principles 
+were used to design and analyze an open online course on the topic 
+of educational assessment. 
+This research drew specific inspiration from Engle’s notion of    
+productive disciplinary engagement [6]. The course design 
+framework assumes that engagement is “productive” when it leads 
+to new questions, clarifies misunderstanding, and leads to more 
+successful engagement by more participants; engagement is 
+“disciplinary” when it concerns both the declarative knowledge and 
+the social and cultural practices that disciplinary experts engage in. 
+In this course, the disciplinary knowledge consisted assessment 
+practices (e.g., guidelines for constructing various assessments) 
+principles (e.g., reliability and validity) and policies (e.g., 
+standardized testing and teacher evaluation). This disciplinary 
+knowledge was provided in the course via a widely-used and well-
+respected textbook on the topic, as supplemented with various 
+online resources associated with each of the weekly assignments. 
+In particular this work represents an effort to foster interactive 
+forms of online engagement with course content, instructors, and 
+peers that is exceedingly productive and disciplinary. The design 
+of the course was directly shaped by Engle’s four design principles 
+for fostering productive disciplinary engagement: (1) Problematize 
+disciplinary content from the perspective of each learner, (2) Give 
+students authority and position them as stakeholders and producers 
+of disciplinary knowledge, (3) Establish disciplinary accountability 
+and require students to defend their positions, and (4) Provide 
+ready access to disciplinary resources.  
+This work drew more general inspiration from studies of online 
+participatory culture [11] and connectivism [12]. The specific 
+objective of this research is using all of these perspective to foster 
+productive forms of networked disciplinary engagement in online 
+courses, while also addressing a range of widely-shared concerns. 
+These concerns include (a) prevailing expectations for content 
+coverage typical of formal secondary and post-secondary courses, 
+(b) enduring expectations of accountability & achievement, (c) 
+conventional goals of instructional manageability, and (d) new 
+goals of instructional scalability. In short, this research aims to 
+support the forms of participatory learning needed to foster “21st 
+Century” networked learning while still addressing a wide range of 
+other concerns. 
+
+2. PRIOR RESEARCH 
+Starting in 2009, a program of design research in the first author’s 
+own online graduate education courses was used to organize the 
+various situative practices from prior research into a coherent 
+learning design framework that others might readily employ [10].  
+This framework is now called Participatory Learning and 
+
+310
+
+
+
+ 
+ 
+
+Assessment and consists of the following five course design 
+principles: (1) Let public contexts give meaning to disciplinary 
+knowledge, (2) Recognize and reward disciplinary engagement, (3) 
+Grade disciplinary artifacts through local reflections, (4) Assess 
+disciplinary knowledge privately, and (5) Measure disciplinary 
+achievement discreetly.  
+These principles were then transformed into more specific features 
+in a “big open online course” (“BOOC”) on Educational 
+Assessment. The Assessment BOOC was offered to up to 500 
+students in fall 2013 using the Google Course Builder Platform, 
+with the support of a grant from Google. As summarized in a paper 
+presented at Learning Analytics and Knowledge 2014 [9], thirteen 
+participatory  learning features were scaled up and streamlined in 
+this new course: (1) personalized learning contexts, (2) 
+professional networking groups, (3) secondary emergent 
+networking groups, (4) publish course artifacts publically, (5) 
+ranking  relative relevance of ideas, (6) personalized external 
+content, (7) public individualized feedback, (8) peer commenting, 
+(9), peer endorsement, (10) peer promotion, (11) participatory 
+analytics & feedback, (12), appropriate accountability, and (13) 
+web-enabled digital badges. Extensive refinements to the existing 
+Google Course Builder LMS (approximately 3000 additional lines 
+of code to the existing 5000) were necessary to implement these 
+features. They were sufficiently streamlined so that the instructor 
+and two teaching assistants could manage the course. Further 
+refinements were carried out across the semester to further 
+automate these features and refine them in order to support even 
+higher levels of disciplinary engagement and learning. 
+Ultimately, 460 people registered for the first course, 160 
+completed the first assignment, and 60 completed the course. 
+Summative analyses of the weekly wikifolios, peer endorsements 
+and promotions, discussion comments, and achievement tests 
+revealed levels of disciplinary engagement and learning that appear 
+to greatly exceed those obtained in other open online courses and 
+many conventional online courses [9]. 
+
+3. NEW COURSE FEATURES 
+The Assessment BOOC was further refined in anticipation of being 
+offered a second time. This was motivated by the goal of making 
+the course more manageable with typical levels of instructional 
+support, and making progress towards an autonomous self-paced 
+version of the course that might still support this sort of 
+participatory social learning. 
+
+3.1  Online Instructor Videos 
+The prior course included just two introductory online videos. The 
+design team debated the possibility of including online videos for 
+each weekly assignment. On one hand, students like online videos 
+because they can watch them while commuting or exercising and 
+because they provide a more personal connection to the instructor. 
+On the other hand, there was a concern that weekly videos might 
+lead some students to not purchase or engage with the textbook or 
+with their peers. Additionally, high quality videos can also be quite 
+time consuming to create. More fundamentally, a participatory 
+perspective raises the concern that the reified and decontextualized 
+delivery of course knowledge within typical “lecture” videos may 
+discourage students from personalizing the disciplinary knowledge 
+of the course. The specific concern for the Assessment BOOC was 
+that the static presentation of declarative knowledge in a video 
+might encourage students to focus on that knowledge in the 
+abstract, rather than problematizing that that knowledge within the 
+context of a self-selected curricular aim that embodies their own 
+experience, interests, and aspirations. 
+
+A decision in favor of videos came with the realization that videos 
+might provide a salient way to demonstrate the personalized 
+engagement expected in each weekly assignment and an efficient 
+way for the instructor to personalize course content beyond the 
+textbook. Most of the new weekly videos that were ultimately 
+created featured the instructor considering the relative relevance of 
+the various big ideas each week in light of his own delivery of both 
+online and conventional course.  Many of the new videos also 
+feature the instructor taking positions that diverged from those in 
+the textbook. 
+
+3.2  “Drag and Rank” Wikifolios 
+One of the central innovations in this broader program of research 
+is a simple scalable routine for problematizing disciplinary course 
+knowledge. This is accomplished by having students consider and 
+discuss the “relative relevance” of elements of course knowledge 
+from their own personal context. Reflecting a situative emphasis on 
+the context in which new knowledge is learned and used, learners 
+are asked to define and then continually refine their understanding 
+of a specific course goal and their own experiences, interests, and 
+aspirations. In this way, their disciplinary knowledge and their 
+personal knowledge are presumed to unfold together and to 
+reinforce each other. 
+In the Assessment BOOC, this personalization was organized 
+around (a) the intuitional context (school level and role) selected 
+during registration and (b) a “curricular aim” that was drafted 
+initially when registering and further refined in the first assignment. 
+This accomplishes the first design principle of the PLA framework. 
+The first course confirmed that the process of ranking relevance and 
+justifying those rankings (typically for the “most relevant” and 
+“least relevant”) is a simple way of engaging students with 
+otherwise-abstract course contexts. Doing so publically fostered a 
+remarkable level of disciplinary engagement as students compared 
+their rankings with each other. Nonetheless, there was room for 
+improvement with the routine: some students in the prior course 
+only partly completed the assignment (such as only providing a 
+rationale for the first entry). A problem for the instructor was that 
+this information was very difficult to summarize and analyze for 
+the participatory analytics and feedback (described next). 
+In response, a new wikifolio routine was created whereby the edit 
+window for each wikifolio presented the student with the to-be-
+ranked ideas, with an edit box directly below each set where they 
+could draft personalized summaries of each idea and a rationale for 
+the ranking. Because students could not save their edits without 
+rearranging the boxes, student were forced to engage in the ranking. 
+It is assumed, but not known, whether this also compelled them to 
+provide more complete rationale for the ranking. 
+Each wikifolio assignment include 2-4 of these routines, generally 
+embedded with a larger set of activities (including extended 
+activities that were required for the for-credit students but optional 
+for the non-credit students. As described next, in addition to 
+streamlining the activities for the students, this feature streamlined 
+the participatory learning analytics for the instructor 
+
+3.3 Streamlined Participatory Analytics & 
+Feedback 
+Central to this approach is the desire to analyze patterns of 
+disciplinary participation across different types of learners. Seeing 
+how particular types of classmates found particular ideas more or 
+less relevant reveals otherwise nuanced and abstract disciplinary 
+knowledge. Because students are participating in the generation of 
+
+311
+
+
+
+ 
+ 
+
+this new disciplinary knowledge, they are well-positioned to 
+appreciate the nuances that it contains. 
+Consider, for example, the chapter on validity where students rank 
+the relevance of different forms of validity evidence. In the 
+previous BOOC, students in the Educator groups overwhelmingly 
+selected content-related evidence as most relevant while most of 
+the students in the Administrator groups selected criterion-related 
+evidence as most relevant; just a handful of students found 
+construct-related evidence most relevant, mostly researchers or 
+doctoral students who were interested in things like self-efficacy. 
+This kind of information is summarized each week and provided in 
+a weekly review along with links to exemplary wikifolios whose 
+posts articulate why their group tended to respond the way they did 
+The problem was that this process was quite laborious and provides 
+the participatory feedback after many students had moved on to the 
+next assignment. In the first BOOC, the teaching assistant manually 
+reviewed all of the completed wikifolios and then summarized that 
+data in a table. This was one of the most laborious and time-
+sensitive aspects of the course. The “drag and rank” routine 
+generated the table automatically and all was required was the 
+addition of exemplary posts. This allowed the information to be 
+assembled with minimal time and presented just hours after the 
+posting deadline, when students were still interacting with each 
+other. 
+
+3.4  Required Questions to Peers 
+Peer discussion is central to the underlying course design. The 
+course design framework assumes that student and instructor 
+discussion directly on student-generated artifacts is likely to be 
+much more productive and much more disciplinary than typical 
+discussion forums. [3] Particularly in open courses, discussion 
+forums have a tendency to go off in many different directions that 
+are only loosely related to the assignment or even the course. 
+Nonetheless, students need to read each other’s work and post 
+comments for this disciplinary engagement to occur. To this end, 
+the wikifolio assignments instructed students to post at least one 
+question to their classmates on their own wikifolio and to review 
+and post comments and questions on at least three of their peer’s 
+wikifolios. Reflecting the participatory nature of the model, the 
+number and nature of comments were not graded or evaluated in 
+any way and there was no accountability for peer interaction. In 
+particular, the model aims to minimize obligatory interactions that 
+are unproductive and non-disciplinary while maximizing more 
+productive and disciplinary interactions. 
+The average number of comments per wikifolio in the first BOOC 
+was 5.6 for the students who enrolled in the course for credit and 
+3.0 for the open students who completed the course. Unfortunately, 
+participation in peer commenting was quite uneven across students. 
+In fact, across the 841 wikifolios posted in the first BOOC, 32% 
+had no peer questions or comments, while another 9% included a 
+question but no peer responses (though nearly all had comments 
+and questions from the teaching assistants and the instructor).  
+In response, to uneven commenting, a new feature was added to the 
+Assessment BOOC that essentially required students to post at least 
+one question to their peers in order to post a completed wikifolio. 
+This question was prominently featured at the bottom of the 
+wikifolio in order to draw attention to it. The research team debated 
+the value and function of this feature. One of the concerns that was 
+raised was that peers and instructors might go directly to the 
+question without looking at the peer work at all; this might draw 
+attention away from potentially more productive interaction around 
+other wikifolio features such as the ranking  
+
+3.5  Embedded Formative Assessments 
+The fourth principle in the Participatory Learning and Assessment 
+design framework is Assess disciplinary understanding privately. 
+This reflects the assumption that instruction should not focus too 
+directly on static representations of disciplinary knowledge in 
+classroom assessments. Well-designed “curriculum-oriented” 
+assessments are “proximal” in that they focus on the disciplinary 
+knowledge that the course focused on. This makes them 
+particularly useful for helping students and teachers evaluate the 
+effectiveness of the activities that led up to them by ensuring that 
+the knowledge gained can be used in a somewhat different context. 
+The earlier online version of the Educational Assessment course 
+had included timed open-ended essay items as part of the midterm 
+and final examinations for this purpose. These items were scored 
+individually by the instructor. This was manageable with a small 
+course but was still quite time consuming; this was prohibitive 
+when attempting to scale up that course to the BOOC. No such 
+assessment were included in the first Assessment BOOC. For the 
+second version, each wikifolio include a practice assessment with 
+4-6 open ended items. Students had to enter a response to each item 
+in order to see the scoring key for the item. The formative 
+assessments were entirely voluntary. While the system retained 
+student responses, they were not formally evaluated as part of the 
+instruction. 
+
+4. CURRENT RESEARCH 
+Because the original grant funds were exhausted at this time, there 
+was only minimal support for instruction and research beyond 
+typical course delivery associated with graduate students who opted 
+to pay regular tuition and enroll in a credit bearing section of the 
+course. While this certainly tempers any claims that might be made 
+about the scalability of the new features, it certainly allowed us to 
+examine their feasibility of the new features, examine their 
+effectiveness, and compare engagement, learning, and retention 
+with the previous the semester. While teaching assistants were used 
+again to help manage the course load, they devoted significantly 
+less time, and much of the instructor’s time during the actual course 
+was committed to creating slides and recording weekly videos from 
+one week to the next. As such the course was not widely promoted 
+and dozens rather than hundreds of students were expected.  
+
+4.1 Enrollment in the Current Course 
+A total of 187 students registered for the second Assessment 
+BOOC. The 187 initial registrants included 12 tuition-paying 
+students who had enrolled in the course for graduate credit towards 
+an MA or PhD. Of the initial registrants, 76 (41%) completed the 
+first assignment. As is typical with open courses, students gradually 
+dropped out. Eventually, 22 students completed the course. Thus, 
+11% of the registrants and 29% of the students who completed the 
+first assignment ultimately completed the course.  
+
+4.1 Flow of the Current Course 
+
+The flow of the current course was quite similar to the previous 
+course. Each of the 11 weekly wikifolios first asked students to 
+restate and reframe their personal context and goal. They then 
+completed one or more applications of course concepts, one or 
+more relevance rankings, and a summary of the “big ideas” in the 
+chapter and related online educational resources. Each wikifolio 
+also included several optional elements that were required for the 
+for-credit students. These included additional activities, responses 
+to the “self-check” and discussion questions in the chapter, and a 
+set of three carefully-structured reflections (elaborated below).  
+
+312
+
+
+
+ 
+ 
+
+Each week, students were instructed (but not required) to endorse 
+at least three peer wikifolios as being “complete” by clicking on a 
+corresponding button, which would then show the peers name as 
+having provided the endorsement. Reflecting the second principle 
+in the design framework (Reward disciplinary engagement) 
+students were also instructed (but not required) to highlight one 
+(and only one) of their classmates work for being exemplary by 
+clicking on the corresponding button and entering a warrant for 
+what was exemplary about the particular artifact. 
+
+The course was divided into three units: Practices, Principles, and 
+Policies. Posting a wikifolio that was endorsed by at least one peer 
+as being complete and completing a time-limited multiple choice 
+achievement test automatically generated a digital badge which was 
+compliant with Mozilla’s Open Badges Infrastructure. The earner 
+could choose to share that badge out over various social networking 
+sites or email, and could choose to include links to their actual 
+completed assignments and the number of peer endorsements and 
+comments, and/or their exam scores. Students in each networking 
+group who earned the most peer promotions earned a version of the 
+badge whose image said Leader. The criteria section of the Leader 
+badge indicated that the earner’s work had been deemed exemplary 
+by peers. The earner of the Leader badges had the option of 
+including the warrants for the peer promotions in their badges as 
+well. Students who earned all three badges and completed the final 
+exam earned an Assessment Expert Badge that contained the three 
+badges and all of the evidence therein.  
+Reflecting the third course design principle (Grade disciplinary 
+artifacts through reflections), the content of the wikifolios and the 
+comments were not directly graded for the 12 for-credit students. 
+Rather their reflections were graded for evidence of consequential, 
+critical, and collaborative engagement. This practice is intended to 
+sidestep the formal evaluation content of artifacts and comments as 
+evidence of enduring knowledge. Doing so is presumed to (a) 
+undermine participation in disciplinary discourse around those 
+artifacts, (b) result in dubious evidence of knowledge, (c) lead to 
+unsustainable individualized formative feedback on artifacts, and 
+(d) lead to unsustainable summative grading demands on 
+instructors. Essentially the model relies instead on conventional 
+assessments and tests to evaluate disciplinary knowledge and 
+achievement; in practice, students who post a complete draft by the 
+deadline and post coherent reflections receive full points for their 
+11 wikifolios, which count towards 55% of the final course grade.  
+
+5. CURRENT COURSE RESULTS 
+The aforementioned resource limitations precluded some of the 
+more laborious analyses carried out with the first BOOC. Particular 
+attention was directed towards aspects of engagement and learning 
+that could be automatically analyzed. 
+
+5.1. Raw Public Individual Engagement 
+Given that there are no requirements of length of responses to the 
+weekly wikifolios, the sheer number of words written in each 
+weekly wikifolio is one indicator of student engagement. Not 
+surprisingly, the credential students averaged significantly more 
+words per wikifolio (2820) than the open students who completed 
+the course (1377) and the open students who did not complete the 
+course (1081). A clear pattern emerged whereby the length of 
+student wikifolios rises and falls with the competing demand of the 
+module exams. The average number of words from these three 
+groups in the first BOOC were 1398, 1207, and 1137, respectively. 
+Particularly for the for-credit students, this represents substantially 
+more raw individual engagement. 
+
+Given the design of the wikifolio assignments, nearly all of this 
+engagement is presumed to be “disciplinary”. There are really very 
+few opportunities for student wikifolios to stray from the topic of 
+the corresponding chapter, much less stray from the topic of 
+assessment.  
+
+5.2 Raw Local Engagement 
+Another relevant indicator of engagement concerns social 
+interaction via comments posted on student wikifolios. These 
+interactions are “local” in that they are public but directed to 
+specific individuals. The average number of comments per 
+wikifolio for the for-credit students was 4.2 across units and 3.4 
+across units for the open students who completed the course.  These 
+are to the number of comments posted in the previous BOOC (5.6 
+and 3.0, respectively). 
+
+5.3. Disciplinary Engagement  
+Of crucial concern is the extent to which the individual and social 
+engagement represented disciplinary engagement. All of the 
+comments posted by the students who completed the course were 
+coded by the third author as to the extent they addressed the topic 
+of the particular chapter (3 points), assessment in general (2 points), 
+or education in general (1 point), or something else (0 points). 
+Twenty percent of the comments were coded by the second author, 
+yielding an inter-rater reliability of .85. This revealed high levels of 
+disciplinarity for the for-credit students (2.91) and the open 
+students who completed the course (2.80). The same analysis with 
+a representative subsample of students from the first BOOC found 
+nearly identical levels (2.9 and 2.8).  
+
+5.4 Contextual Engagement 
+As argued above, participatory perspectives argue that anchoring 
+disciplinary course knowledge to personally meaningful contexts is 
+crucial for enduring understanding and knowledge transfer. To this 
+end, all wikifolio questions and comments were coded as to 
+whether they referenced a specific educational context. This 
+typically referred to the personal context of either the student who 
+posted the wikifolio, or the personal context of the student who 
+posted the comment. Comments that referenced a specific context 
+were coded as 1, while comments that did not reference any context 
+of practice were coded as 0. Twenty percent of the comments were 
+coded by a second scorer, yielding an inter-rater reliability of .83.  
+The levels of contexuality varied somewhat across the six 
+networking groups. Looking across groups showed that just .22 of 
+the comments from the for-credit students and .28 of the comments 
+from the open completers referenced specific contexts. These levels 
+are substantially lower than the .51 and the .49 found with a 
+representative sample of students in the first BOOC. This seems 
+likely to have been a consequence of the required questions, 
+because the proportion of those required questions that referenced 
+specific contexts was .25, and because it seems likely that a 
+question that is posed without referencing a specific context would 
+be likely to earn a similarly decontextualized reply. 
+
+5.5. Disciplinary Achievement 
+Both BOOCs included three 20-item unit exams and a 30-item 
+comprehensive final. These exams were entirely selected response 
+and consisted entirely of selected-response items from the textbook 
+item bank. Small changes were made from the first to the second 
+BOOC consisting of the replacement of a few items that had 
+misbehaved. While students were given their exam score 
+immediately upon completion, item-level feedback was not 
+provided in order to help secure the exam content, During the 
+several-day exam window, students were allowed to take each 
+
+313
+
+
+
+ 
+ 
+
+exam twice in three hours and take the final twice in four hours.  
+Participants were required to complete the exams and final to earn 
+digital badges, but the original 80% criteria was relaxed. 
+Participants were able to choose whether they included their exam 
+performance on their digital badges, and exam scores were factored 
+into final course grades for the for-credit students.  
+ The achievement scores for each of the three midterms and the 
+final exam for the second BOOC are similar to the scores for 
+student in the previous course (88%, 83%, 78%, and 82% for the 
+for-credit students and 84%, 76%, 78%, and 75% for the non-credit 
+completers. The one notable difference is the lower performance of 
+the open completers on the final exam. 
+6. SUMMARY 
+In summary, most of the refinements to the Assessment BOOC 
+appeared to facilitate engagement and learning, and the second 
+BOOC was successfully taught with substantially less instructional 
+support. While there were fewer students in the second BOOC, the 
+instructor and the teaching assistants devoted most of their time to 
+preparing videos and feedback and had limited interaction with 
+individual students. The one notable difference in learning 
+outcomes between the first and second course is that the proportion 
+of comments that referenced specific learning context dropped by 
+half in the second course. This seems quite likely to have been the 
+result of the requirement that wikifolio authors post a question to 
+their classmates.  
+7. CONCLUSIONS 
+This round of revisions to the Assessment BOOC made some useful 
+progress towards further streamlining the course in ways that would 
+allow a truly massive course to still foster the kinds of participatory 
+engagement. In particular the participatory learning analytics and 
+feedback will need to be further automated, ideally presenting the 
+rankings of different groups in a graph in real time as students 
+complete the assignments. Additional refinements are needed to 
+streamline the registration system as well as the formative and 
+summative assessments. In the meantime, it appears that the 
+Participatory Learning and Assessment design framework is indeed 
+a promising framework for efficiently fostering relatively high 
+levels of disciplinary engagement and learning. 
+This work laid the groundwork for a self-paced version of the 
+Assessment BOOC to be offered in summer 2015 that features all 
+of the same public peer interaction and participatory feedback. All 
+course features are now being fully automated and new features are 
+being added that let learners locate locating active peers working 
+on particular assignments and archive completed wikifolios. 
+Assuming that the course attracts a few hundred learners at any 
+given time, it should support a level of social engagement that is 
+both disciplinary and productive that is unprecedented for a fully 
+self-paced course.  
+ 
+8. ACKNOWLEDGEMENTS 
+
+1 
+http://en.wikipedia.org/wiki/Institute_for_Research_on_Learning 
+
+Initial research was supported by a gift from Google to Indiana 
+University. Additional support was provided by the Indiana 
+University Office of the Vice President of Instructional Technology 
+and the MacArthur Foundation. Garrett Poortinga and Thomas 
+Smith contributed directly to many of the features and learning 
+analytics described in this paper. Rebecca Itow contributed to key 
+aspects of the design research and the writing of this manuscript. 
+Tara Kelly and Retno Hendryanti supported the instruction 
+described here.  
+ 
+
+9. REFERENCES 
+[1] Anderson, J. R., 1990. Cognitive psychology and its 
+
+implications . WH Freeman/Times Books/Henry Holt & 
+Co 
+
+ [2]  Brinton, G. C., Chiang, M., Jain, S., Lam, H, Liu, Z., & 
+Wong, F. M. F., 2013. Learning about social learning 
+in MOOCs: From a statistical analysis to a generative 
+model. Cornell. http://arxiv.org/abs/1312.2159. 
+
+[3] Brown, J. S., Collins, A., & Duguid, P., 1989. Situated 
+cognition and the culture of learning. Educational 
+Researcher, 18(1), 32-42. 
+
+[4] Cobb, P., Confrey, J., Lehrer, R., & Schauble, L.,  2003. 
+Design experiments in educational research. 
+Educational researcher, 32, 1, 9-13. 
+
+[5] Cook, T. D., Campbell, D. T., & Day, A.,1979. Quasi-
+experimentation: Design & analysis issues for field 
+settings. Boston: Houghton Mifflin. 
+
+[6] Engle, R. A., & Conant, F. R..2002. Guiding principles 
+for fostering productive disciplinary engagement: 
+Explaining an emergent argument in a community of 
+learners classroom. Cognition and Instruction, 20 3, 
+399-483. 
+
+[7] Glaser, R., 1984. Education and thinking: The role of 
+knowledge. American Psychologist, 39(2), 93. 
+
+[8]  Greeno, J. G., 1998 The situativity of knowing, 
+learning, and research." American Psychologist 53, 1, 5-
+26 
+
+ [9] Hickey, D. T., Kelly, T. A., & Shen, X. 2014. From small 
+to big to massive: Scaling up participatory learning 
+analytics. In Proceeding of LAK 14, Indianapolis IN. 
+
+ [10] Hickey, D. T., & Rehak, A., 2013. Wikifolios and 
+participatory assessment for engagement, 
+understanding, and achievement in online courses. 
+Journal of Educational Media and Hypermedia, 22, 4, 
+229-263. 
+
+ [11] Jenkins, H., 2009. Confronting the challenges of 
+participatory culture: Media education for the 21st 
+century. Cambridge MA: The MIT Press. 
+
+ [12] Siemens, G., 2005. Connectivism: A learning theory for 
+the digital age. International Journal of Instructional 
+Technology and Distance Learning, 2, 1, 3-10. 
+
+                                                                 
+
+314
+
+
+
+
+

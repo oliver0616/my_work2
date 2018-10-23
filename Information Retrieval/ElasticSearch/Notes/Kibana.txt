@@ -1,0 +1,275 @@
+#check indices
+GET _cat/indices?v
+
+POST _bulk
+{ "index" : { "_index" : "music", "_type" : "songs", "_id" : "1" } 
+}
+{ "author" : "apple","amount" : "3"}
+#delete
+DELETE reu
+#GET
+GET reu/inproceeding/_search
+GET reu/inproceeding/4
+#check for specific indice
+GET test/my-tests/1
+#import data using terminal
+POST _bulk
+{ "index" : { "_index" : "test", "_type" : "my-tests", "_id" : "1" } }
+{ "author" : "apple","amount" : "3"}
+{ "index" : { "_index" : "test", "_type" : "my-tests", "_id" : "2" } }
+{ "author" : "banana","amount" : "4"}
+{ "index" : { "_index" : "test", "_type" : "my-tests", "_id" : "3" } }
+{ "author" : "orange","amount" : "5"}
+
+#query search
+GET test/my-tests/_search
+
+GET test/my-tests/_search
+{
+  "query": {
+    "match": {
+      "author": "orange"
+    }
+  }  
+}
+
+GET test/my-tests/_search
+{
+  "query": {
+    "bool": {
+      "must": [
+        { "match": {
+          "author": "orange"
+        } },
+        {"match": {
+          "amount": "5"
+        }
+          
+        }
+      ]
+    }
+  }
+}
+
+GET bank/account/_search
+{
+  "query": {
+    "bool": {
+      "should": [
+        { "match": {"state": "CA"} },
+        { "match": {"lastname": {"query":"Smith", "boost": 3}}}
+      ]
+    }
+  }
+}
+#============================================================================
+
+#=========================================
+#MLT Query (more like this)
+GET mlt/doc/_search
+#mapping
+PUT mlt
+{
+  "settings": {
+    "number_of_shards": 1,
+    "number_of_replicas": 0
+  },
+  "mappings": {
+    "doc": {
+      "properties": {
+        "name": {
+          "first": {
+            "type": "text",
+            "term_vector": "yes"
+          },
+          "last": {
+            "type": "text",
+            "term_vector": "yes"
+          }
+        },
+        "text": {
+          "type": "text",
+          "term_vector": "yes"
+        }
+      }
+    }
+  }
+}
+#Put Data
+PUT /mlt/doc/1
+{
+    "name":{
+      "first":"a",
+      "last":"b"
+    },
+    "text": "no one should ever drop their items in the store"
+}
+PUT /mlt/doc/2
+{
+  "name":{
+      "first":"a",
+      "last":"b"
+    },
+    "text": "i have a dog and i love to take him out"
+}
+PUT /mlt/doc/3
+{
+  "name":{
+      "first":"e",
+      "last":"f"
+    },
+    "text": "apple is on the floor"
+}
+PUT /mlt/doc/4
+{
+  "name":{
+      "first":"g",
+      "last":"h"
+    },
+    "text": "hello world hello world another doc"
+}
+GET mlt/doc/1
+#MLT Search
+GET /_search
+{
+  "query": {
+    "more_like_this": {
+      "fields": [
+        "name.first",
+        "name.last"
+      ],
+      "like": {
+        "_index": "mlt",
+        "_type": "doc",
+        "doc": {
+          "name": {
+            "first": "a",
+            "last": "b"
+          },
+          "text": "i have a apple and it is given from my parent"
+        }
+      },
+      "min_term_freq": 1,
+      "min_doc_freq": 1
+    }
+  }
+}
+#-----------------------------------
+GET reu/inproceeding/1
+
+GET reu/inproceeding/_search
+{
+  "_source" :{
+    "excludes": ["pdf"]
+  },
+  "query":{
+    "more_like_this": {
+      "fields": [
+        "Abstract"
+      ],
+      "like": "Higher education for the 21st century continues to promote discoveries in the field through learning analytics (LA) The problem is that the rapid embrace of of LA diverts educators attention from clearly identifying requirements and implications of using LA in higher education. LA is a promising emerging field, yet higher education stakeholders need to become further familiar with issues related to the use of LA in higher education",
+      "min_term_freq": 1,
+      "max_query_terms": 12
+    }
+  }
+}
+
+GET reu/inproceeding/_search
+{
+  "query": {
+    "more_like_this": {
+      "fields": [
+        "keywords"
+      ],
+      "like": "natural language process using artificial intelligence",
+      "min_term_freq": 1,
+      "max_query_terms": 12
+    }
+  }
+}
+
+DELETE mlt
+#=========================================
+#fuzzy matching
+#Find author with Ochoa with incorrect spelling
+GET /reu/inproceeding/_search
+{
+  "_source": {
+    "includes": [
+      "author"
+    ]
+  },
+  "query": {
+    "match": {
+      "author": {
+        "query": "Ocha",
+        "fuzziness": 2,
+        "prefix_length": 1
+      }
+    }
+  }
+}
+#comparison
+GET reu/inproceeding/_search
+{
+  "query": {
+    "match": {
+      "author": "Ocha"
+    }
+  }
+}
+#fuzzy like this
+
+
+#=========================================
+#Search for author: Ochoa, Xavier
+GET reu/inproceeding/_search
+{
+  "stored_fields": [
+    "title"
+  ],
+  "_source": false,
+  "query": {
+    "match": {
+      "author": "Ochoa, Xavier"
+    }
+  }
+}
+
+GET reu/inproceeding/_search
+{
+  "query": {
+    "match": {
+      "author": "Ochoa"
+    }
+  }
+}
+
+GET reu/inproceeding/_search
+{
+  "_source": {
+    "includes": [
+      "author"
+    ]
+  },
+  "query": {
+    "match": {
+      "author": "Ochoa"
+    }
+  }
+}
+GET reu/inproceeding/_search
+{
+  "_source": false,
+  "query": {
+    "bool": {
+      "must_not": [
+        {
+          "match": {
+            "author": "Ochoa"
+          }
+        }
+      ]
+    }
+  }
+}

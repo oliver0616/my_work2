@@ -1,0 +1,652 @@
+
+The Pairing of Lecture Recording Data with Assessment 
+Scores: A Method of Discovering Pedagogical Impact
+
+ 
+Negin Mirriahi 
+
+University of New South Wales 
+Sydney, NSW, Australia 
+
+negin.mirriahi@unsw.edu.au
+
+ 
+ 
+  
+
+ 
+Shane Dawson 
+
+University of South Australia 
+Adelaide, SA, Australia 
+
+shane.dawson@unisa.edu.au 
+ 
+
+ABSTRACT 
+Web technologies, such as lecture recordings, have the capacity to 
+capture and store massive amounts of data from individuals’ 
+online behavior. Such data can provide insight into student 
+learning processes and the relationship between online trace data 
+and academic performance alerting educators to when 
+intervention may be required or if their learning activities may 
+need to be adjusted. This paper discusses how data captured from 
+students’ use of lecture recordings accessed through a 
+Collaborative Lecture Annotation System (CLAS) when 
+aggregated and correlated with assessment data can help educators 
+evaluate the impact of the recordings on their students’ learning. 
+Such information can help inform and alert educators to when 
+adjustments may be required to their pedagogical approach. 
+
+Categories and Subject Descriptors 
+J.1 [Administrative Data Processing]: Education; K.3.1 
+[Computer Uses in Education]: Computer-assisted instruction 
+(CAI), Computer-managed instruction (CMI). 
+
+General Terms 
+Design, Human Factors 
+
+Keywords 
+Data Sharing, Pedagogical Adjustment/Intervention 
+
+1. INTRODUCTION 
+With the rise of attention in mainstream media to massive 
+
+online open courses (MOOCs), such as Coursera and MITx, 
+traditional higher education institutions are under increasing 
+pressure to consider alternative education delivery models that 
+provide flexible yet quality learning opportunities for their 
+students. Whether institutions implement distance education, 
+blended learning or “flipped classroom”, or a combination of 
+flexible delivery models, they require to varying degrees, the 
+adoption of web technologies. Such online technologies provide 
+opportunities for flexible learning and teaching not bounded by 
+time and place [3]. Learning management systems (LMS), 
+asynchronous discussion forums, blogs, wikis, and videos are just 
+a few of the web technologies available for facilitating learning 
+outside of the typical face-to-face classroom.  
+
+The adoption of educational technologies provides increased 
+flexible learning opportunities, alongside the capacity to capture 
+and store the interactions and behaviours students have with the 
+tools. This “data exhaust” can be further analysed and interpreted 
+for evaluating the impact of the course design. The methodology 
+and process of analyzing large sets of data available from existing 
+systems for the purpose of understanding and managing students’ 
+learning is part of the relatively new research area of learning 
+analytics [12]. Such analytics are necessary for evidence-based 
+decision-making and action to occur [8] since the data can inform 
+educators about their students’ learning and guide them in 
+modifying their pedagogical approach or intervening to help 
+students who may be struggling [4].  
+
+With the increased interest in providing flexible learning 
+opportunities, instructors have increasingly turned to developing 
+video or audio recordings of their lectures. These resources are 
+then made available online for students to review in their own 
+time and pace. While the lecture recordings provide review 
+opportunities for students, they could also reverse the classroom 
+experience by making them required out of class activities 
+allowing in-class time to be spent on more socio-constructivist 
+based activities. This has gained prominence in the term “flipped 
+classroom”. Often in large classes, there is minimal opportunity 
+for students to engage with one another or with the instructor and, 
+therefore, “flipping” lecture time with independent study activities 
+allows class time to be better spent on collaborative activities and 
+passive lectures to be delivered online to students as independent 
+study materials [5].  
+
+Similar to other web technologies, online lecture recordings can 
+provide tracking data that can help educators to understand how 
+students use and interact with the recordings for learning purposes 
+[1, 9] and subsequently share their experience with colleagues 
+who have not yet adopted this particular teaching strategy. As 
+innovators or relatively early adopters, these educators are often in 
+positions of influence in their academic departments having an 
+impact on their colleagues’ technology adoption decisions [6]. 
+Data-informed pedagogy, therefore, can influence how academic 
+departments integrate recorded lectures with classroom 
+instruction. However to date, the investigation of how tracking 
+data can be used to help explain students’ learning processes and 
+inform educators of whether the lecture recordings contribute 
+towards students’ understanding of course content has been under 
+researched. This paper discusses the way that data captured from 
+students’ interactions with online lecture recordings can be 
+aggregated with students’ assessment scores to help educators 
+evaluate their pedagogical approach and adjust learning activities 
+or assessment strategies when required. 
+
+2. Literature on Lecture Recordings 
+Students are increasingly reliant on lecture recordings for 
+
+learning or reinforcing course content as part of their independent 
+
+ 
+Permission to make digital or hard copies of all or part of this work for 
+personal or classroom use is granted without fee provided that copies are 
+not made or distributed for profit or commercial advantage and that 
+copies bear this notice and the full citation on the first page. To copy 
+otherwise, or republish, to post on servers or to redistribute to lists, 
+requires prior specific permission and/or a fee. 
+LAK '13, April 08 - 12 2013, Leuven, Belgium 
+Copyright 2013 ACM 978-1-4503-1785-6/13/04...$15.00. 
+ 
+
+180
+
+
+
+study as higher education institutions begin to offer flexible 
+learning opportunities and attempt to make use of face-to-face 
+class time for interactive activities. For example, The University 
+of Wisconsin-Madison redeveloped a large third year Computer 
+Science course by replacing two face-to-face class times per week 
+with video lecture recordings available for students to watch on 
+their own time and using class time for team problem solving 
+activities [2]. Survey results and the website’s electronic records 
+showed that 75% of the students watched all or almost all of the 
+video lectures and 59% of the students felt the videos had a 
+positive effect on their learning experience. Similarly, an 
+Engineering course at the University of Wisconsin-Madison, 
+made lecture recordings as required homework activities allowing 
+class time for emphasizing difficult concepts, problems, and 
+quizzes [7]. Survey results showed that approximately 68% of the 
+students watched all the video lectures and 78% watched three 
+quarters of them with many of the students indicating that they 
+appreciated the ability to rewind to reinforce content or skip 
+forward when they were familiar with particular concepts.  
+
+While the evaluation of the use of video lectures primarily 
+focused on students’ self-reports on whether they viewed the 
+lecture recordings and how they felt it impacted their learning, 
+another study explored the relationship between Biology students’ 
+self reports of viewing the videos and their scores on assessments 
+[10]. Students’ self reports indicated that approximately 70-85% 
+of the students watched the video lectures prior to attending class 
+in preparation for their assessment questions using a personal 
+response system, namely clickers. Statistical results showed that 
+students who viewed the lecture videos prior to class performed 
+better on assessment questions that were designed to test lower-
+order cognitive skills. While this study evaluated how the lecture 
+videos impacted students’ mastery of content based on assessment 
+scores, the data regarding students’ actual use of the video highly 
+depended on their own self reports. However, with proper access 
+and tools, tracking data from online lecture recordings can be 
+captured and used to understand students’ interactions with the 
+recordings. While the studies at the University of Wisconsin-
+Madison focused mainly on students’ self reported data on their 
+use of the lecture recordings, other studies used tracking data to 
+investigate students’ behaviour patterns with lecture recording 
+technologies over an academic term [1, 9]. The study reported in 
+this paper further adds to previous literature by examining how 
+online tracking data aggregated with students’ assessment scores, 
+can help educators assess and adjust their pedagogical approach. 
+
+3. Study Purpose 
+This paper reports on a case study investigating how data 
+
+captured from students’ use of a lecture recordings can be 
+aggregated and correlated with students’ assessment scores to help 
+evaluate the educational impact of online lecture recordings and 
+inform instructors on how students are engaged with the learning 
+activity without having to rely on students’ self reports. Such 
+information can help instructors adjust their pedagogical approach 
+to align with their intended student learning outcomes. For 
+example, if aggregated data informs instructors that students were 
+performing well on their quizzes without having viewed the 
+lecture recordings, the instructors may wish to alter their quiz 
+questions to be more challenging. Alternatively, if the data shows 
+that students were generally performing poorly on the quizzes 
+despite viewing the recordings, instructors may wish to modify 
+their lecture recordings to address areas of misconception or 
+provide additional supplementary materials. Furthermore, if the 
+aggregated data does not show any significant statistical 
+correlation between students’ performance on quizzes and 
+
+accessing the lecture recordings, instructors may consider 
+reexamining the alignment between their course design, content, 
+and assessment. 
+
+4. Methods  
+The intent of this case study was to investigate how the data 
+
+captured from students’ use of lecture recordings could be 
+aggregated with their assessment scores to evaluate the impact of 
+the activity on student’s mastery of content and help instructors 
+assess their implemented pedagogical approach. At the 
+educational institution where this study took place, instructors had 
+access to a locally hosted video annotation tool called 
+Collaborative Lecture Annotation System (CLAS). A feature of 
+the in-house developed software is the easy sharing of videos or 
+audio recordings to the student cohort. As students review the 
+uploaded resources there is opportunity to comment or annotate 
+on the recordings for self-study or reflection purposes [11]. 
+Students, in this study, were restricted from downloading the 
+recordings and had to use the CLAS interface to review the 
+streamed recorded lectures. Since CLAS was locally hosted, 
+tracking data captured on the database on students’ use of the 
+system was readily available. To protect students’ anonymity and 
+privacy, all student identifiers were obfuscated. Data such as 
+when students played or stopped a recording, the number of times 
+they accessed each recording, and the date and time of access are 
+captured in the CLAS database. In addition, data with respect to 
+students’ annotations and comments made on CLAS were also 
+captured.  
+
+This case study focused on the CLAS usage data pertaining to 
+the lecture recordings and relating to two quizzes designed to test 
+lower-order cognitive skills and understanding of the lecture 
+content. In consultation with instructors using CLAS, quiz scores 
+with obfuscated student identifiers were retrieved from the 
+learning management system (LMS) for the purpose of 
+investigating how the CLAS data coupled with students’ 
+performance on their assessments could be aggregated and 
+correlated in an informative way to help instructors examine and 
+reflect on their pedagogical strategies.   
+
+5. Findings 
+The dominant model for using CLAS in this study related to the 
+
+delivery of lecture content followed by a short answer assessment. 
+Based on prior literature [10], it was hypothesized that the greater 
+the portion of the related lecture recordings the students accessed, 
+the better they would perform on their assessment. The data most 
+pertinent for this study was anticipated to relate to the total 
+portion of each recording that every student accessed that directly 
+related to the quiz questions. For example, certain quizzes or 
+specific questions in a quiz were directly related to the content 
+presented in particular lecture recordings. Hence, knowing the 
+total portion of the related lecture recordings accessed by the 
+students correlated with how they performed on the quizzes can 
+help shed light on whether accessing the lecture recordings has 
+any effect on students’ mastery of content. In other words, it 
+would help instructors assess whether the recording content 
+appropriately matched the intended learning outcomes or if 
+modifications to either the assessment strategies or the way the 
+content is presented in the lecture recordings would be required 
+for future iterations of the course.  
+
+A script was developed to aggregate all the play and stop times 
+of each recording for every student in order to determine the total 
+portion of the lecture recording that each student accessed. While 
+students may have accessed certain portions of the recordings 
+more than once, the script removed this portion of the data since it 
+
+181
+
+
+
+would only be useful if specific segments of the lecture recording 
+were relevant to quiz questions. For the quizzes used in this 
+particular study, the entire content of the lecture recording related 
+directly to the questions.  
+
+Once the script was developed and tested for accuracy, the total 
+portion of each lecture accessed by every student was correlated 
+with the students’ quiz score using statistical analysis software, 
+SPSS. However, prior to applying any statistical correlation tests, 
+the Kolmogorov-Smirnov test was conducted to determine 
+whether the data had non-normal or normal distribution based on 
+whether the test results were significant. The results showed that 
+the scores for quiz 1, D(133) = 0.20, p < .001, and for quiz 2, 
+D(131) = 0.25, p < .001, were both non-normal.  
+
+In addition, the CLAS data on the portion of the lecture 
+recordings accessed by the students were also tested to determine 
+their distribution using the Kolmogorov-Smirnov test. The results 
+showed that the data for the three lecture recordings relating to 
+quiz 1, D(133) = 0.18, p < .001, D(133) = 0.25, p < .001, and 
+D(133) = 0.28, p <.001, are all non-normal. Likewise, the results 
+showed that the data for the three lecture recordings relating to 
+quiz 2, D(131) = 0.26, p <.001, D(131) = 0.33, p < 0.001, and 
+D(131) = 0.26, p< 0.001, were also non-normal.  
+
+Since the Kolmogorov-Smirnov tests showed that the data had a 
+non-normal distribution, a non-parametric correlation, Spearman’s 
+rho, was applied to determine any significant relationship between 
+students’ overall score on a quiz and the total portion of each 
+related lecture recording they accessed prior to the quiz.  Table 1 
+shows the results of a Spearman’s rho correlation for Quiz 1 
+(N=133) in this study. 
+
+ 
+
+Table 1: Correlation between Portion of Lecture Recordings 
+Accessed and Quiz 1 Score 
+
+ 
+
+ 
+ 
+
+Recording 1 Recording 2 Recording 3 
+
+Spearman’s rho .240* .312* .230* 
+
+*Indicates statistical significance (p < .01) 
+ 
+
+As shown in Table 1, there is a significant correlation between 
+how much of the three related lecture recordings students 
+accessed and how they performed on the quiz. Such information 
+would help the instructor assess whether students reviewing the 
+content in the lecture recordings has any impact on how they 
+answer the questions. In this case, it appears that since there is a 
+positive relationship between their quiz score and the total portion 
+of the related recordings they accessed, the activity seems to 
+benefit students’ understanding of lecture content and preparation 
+for the quiz.  
+
+However, in this particular case study, students were asked to 
+answer one randomly generated question based on one or more of 
+the three lecture recordings. Hence, students’ quiz scores were 
+also correlated with the total portion of the lecture recording they 
+accessed that specifically related to the question they answered on 
+their quiz as shown in Table 2.  
+
+ 
+ 
+
+ 
+
+Table 2: Correlation between Portion of Lecture Recordings 
+Accessed and Quiz 1 Score for Specific Questions 
+
+ 
+ 
+ 
+
+Recording 1 Recording 2 Recording 3 
+
+Spearman’s rho  
+(Question 1) 
+
+.322 
+(N=31) 
+
+  
+
+Spearman’s rho  
+(Question 2) 
+
+ .242 
+(N=33) 
+
+.298 
+(N=33) 
+
+Spearman’s rho 
+ (Question 3) 
+
+.488* 
+(N=37) 
+
+  
+
+Spearman’s rho  
+(Question 4) 
+
+  .068 
+(N=32) 
+
+*Indicates statistical significance (p < .01) 
+ 
+As can be seen in Table 2, there is a significant positive 
+correlation between students who accessed Recording 1 and who 
+randomly received Question 3 on the quiz. In other words, the 
+greater the portion of Recording 1 the students accessed, the better 
+they performed on Question 3. This finding can be used to assist 
+the instructor in aligning their presented materials with student 
+performance and understanding of the discipline content as 
+assessed by the quiz question.  
+
+However, as the other correlations in Table 2 were not 
+significant, the instructor can infer that the recordings did not 
+directly impact students’ mastery of content. This information can 
+prompt the instructor to closely examine the other three quiz 
+questions and the way the content is presented in the related 
+lecture recordings to determine if changes are required for future 
+iterations of the course or if the lecture material is challenging and 
+requires supplemental activities to support students’ learning and 
+understanding.  
+
+Considering the results presented in Table 1 and 2 together, it 
+appears that although there was a significant positive relationship 
+between the total portion of recordings accessed by all students 
+and their quiz scores regardless of which question they answered, 
+when the Spearman rho correlation was applied to the specific 
+questions and related recordings, only the third question showed a 
+significant correlation. Hence, if specific questions in a quiz relate 
+to specific lecture recordings, both sets of correlations and data 
+would be useful for instructors to evaluate the learning activity 
+and assessment strategies and make pedagogical decisions as 
+required. Similar results were obtained when the Spearman’s rho 
+correlation was applied to the overall score for quiz 2 (N=131) in 
+this case study and the portion of the related lecture recordings 
+students accessed as shown in Table 3. 
+
+ 
+
+Table 3: Correlation between Portion of Lecture Recordings 
+Accessed and Quiz 2 Score 
+
+ 
+
+ 
+ 
+
+Recording 1 Recording 2 Recording 3 
+
+Spearman’s rho .391* .355* .439* 
+
+*Indicates statistical significance (p < .01) 
+ 
+
+182
+
+
+
+Similar to the results shown in Table 1 for Quiz 1, there was a 
+significant positive correlation between the total portion of the 
+lecture recordings students accessed and their score on Quiz 2 as 
+shown in Table 3. In addition, for this second quiz, the correlation 
+coefficients are higher representing a greater relationship between 
+accessing lecture recordings and performing on the quiz. Hence, 
+these results can inform instructors that the lecture recordings 
+have some positive affect on students’ understanding or 
+reinforcement of content. Furthermore, since students received 
+one randomly generated question in this second quiz as they did in 
+the first quiz, Spearman’s rho correlation was applied to their 
+second quiz score and the portion of the lecture recording they 
+accessed that specifically related to the question they answered as 
+presented in Table 4. 
+ 
+
+Table 4: Correlation between Portion of Recordings Accessed 
+and Quiz 2 Score for Specific Questions 
+
+ 
+
+ 
+ 
+
+Recording 1 Recording 2 Recording 3 
+
+Spearman’s rho  
+(Question 1) 
+
+  .457** 
+(N=30) 
+
+Spearman’s rho  
+(Question 2) 
+
+.496* 
+(N=38) 
+
+  
+
+Spearman’s rho 
+ (Question 3) 
+
+.410* 
+(N=40) 
+
+.381** 
+(N=40) 
+
+ 
+
+Spearman’s rho  
+(Question 4) 
+
+  .213 
+(N=23) 
+
+*Indicates statistical significance (p < .01) 
+**Indicates statistical significance (p < .05) 
+ 
+
+Unlike the results shown previously in Table 2, there were more 
+significant correlations observed in Quiz 2 as depicted in Table 4. 
+The Spearman rho measures applied to Quiz 2 show that for three 
+out of four randomly generated questions, there was a 
+considerable positive relationship between the total portions of the 
+related lecture recordings the students’ accessed and how they 
+performed on their specific quiz question. This helps the instructor 
+infer that the lecture recordings had a positive impact on students’ 
+understanding or reinforcement of material assessed by three of 
+the quiz questions. However, the non-significant correlation 
+between accessing the third lecture recording and students’ 
+performance on Question 4 alerts the instructor to reexamine this 
+specific question and the way the lecture content is presented in 
+the third recording and make changes as necessary the next time 
+the course is offered.    
+
+6.  Summary & Next Steps 
+While previous reports on lecture recordings have primarily 
+
+focused on showing how students use and perceive the value of 
+such learning activities from surveys and self-reports, this case 
+study further adds to the literature by demonstrating how tracking 
+data from students online interactions with lecture recordings 
+through CLAS can be statistically correlated with students’ quiz 
+scores to evaluate their pedagogical impact. Although, the data in 
+this case study was limited to students’ performance on two 
+quizzes with one randomly generated question each resulting in a 
+
+reduced sample size and thereby not generalizable to the broader 
+population, it suggests one way that analytics from online lecture 
+recordings can inform learning and teaching strategies. Future 
+studies can further explore the impact of lecture recordings on 
+students’ understanding of content by including an increased 
+sample size that would allow for better data reliability and 
+generalizability. In addition, since the tracking data used in this 
+study was focused on the total portion of a lecture recording 
+accessed, it does not consider students’ pause behaviours or 
+repetitive access. Such additional tracking data could offer more 
+insight on how students are using the lecture recordings in 
+preparation for assessment activities.  
+
+Furthermore, in this study, quiz scores were manually extracted 
+from the LMS and correlated with the relevant aggregated lecture 
+recording data identified by the database script. A logical next 
+step is to discover a way of directly connecting the tracking data 
+from students’ interactions with the lecture recordings stored on 
+the CLAS database with the quiz scores located in the LMS in 
+order to minimize manual intervention. Once the data aggregation 
+and correlation processes have been automated through 
+algorithms and associated database scripts, a dashboard or 
+intuitive user interface should be created for instructors to readily 
+access real-time aggregated data and results from statistical 
+correlations related to their particular lecture recordings and 
+assessments for their own reflective practice. In addition, such a 
+dashboard can be designed to alert instructors when a statistically 
+significant positive relationship between students’ assessment 
+scores and interactions with the lecture recordings is not 
+discovered so they can make informed decisions regarding their 
+pedagogical approach and make changes as necessary.  
+
+Overall, this case study begins to demonstrate one way that 
+online tracking data on students’ use of lecture recordings can be 
+paired with assessment scores to gain a better understanding of 
+how video or audio recordings can affect learning and assist 
+instructors in making data-informed pedagogical decisions.  
+
+7. REFERENCES 
+[1] Brooks, C., Epp, C. D., Logan, G., and Greer, J. 2011. The 
+
+who, what, when, and why of lecture capture. In Proceedings 
+of the 1st International Conference on Learning Analytics 
+and Knowledge (Banff, Canada, February 27 - March 1, 
+2011). LAK’11. ACM, New York, NY, 9-17.  
+
+[2] Foertsch, J., Moses, G., Strikwerda, and Litzkow, M. 2002. 
+Reversing the lecture/homework paradigm using eTeach 
+web-based streaming video software. Journal of Engineering 
+Education, 91 (July 2002), 267-274. 
+
+[3] Garrison, D. R. and Kanuka, H. 2004. Blended learning: 
+Uncovering its transformative potential in higher education. 
+Internet High. Educ. 7, 2 (2nd Quarter 2004), 95-105.  
+
+[4] Greller, W. and Drachsler, H. 2012. Translating learning into 
+numbers: A generic framework for learning analytics. Educ. 
+Technol. Soc. 15, 3, 42-57.  
+
+[5] Houston, M. and Lin, L. 2012. Humanizing the classroom by 
+flipping the homework versus lecture equation. In 
+Proceedings of Society for Information Technology & 
+Teacher Education International Conference (Austin, Texas, 
+USA, March 5-10, 2012). AACE, Chesapeake, VA.  
+
+[6] Mirriahi, N., Dawson, S., and Hoven, D. 2012. Identifying 
+key actors for technology adoption in higher education: A 
+social network approach. In Proceedings of ascilite 
+Wellington, 2012 (Wellington, New Zealand, November 25-
+28, 2012).  
+
+183
+
+
+
+[7] Moses, G. and Litzkow, M. 2005. In-class active learning 
+and frequent assessment reform of nuclear reactor theory 
+course. In Frontiers in Education, 2005, Proceedings of the 
+35th Annual Conference (October 19-22, 2005). FIE’05.  
+
+[8] Norris, D., Baer, L, Leonard, J., Pugliese, L., and Lefrere, P. 
+2008. Action analytics: Measuring and improving 
+performance that matters in higher education. Educause 
+Review. 43, 1 (Jan./Feb. 2008), 42-67.  
+
+[9] Phillips, R., Preston, G.,  Roberts, P., Cumming-Potvin, W., 
+Herrington, J., Maor, D., and Gosper, M. 2010. Using 
+academic analytic tools to investigate studying behaviours in 
+technology-supported learning environments. In Proceedings 
+
+of ascilite Sydney, 2010 (Sydney, Australia, December 5-10, 
+2010).  
+
+[10] Prunuske, A. J., Batzli, J., Howell, E. and Miller, S. 2012. 
+Using online lectures to make time for active learning. 
+Genetics, 192, (September 2012), 67-72.  
+
+[11] Risko, E. F., Foulsham, T., Dawson, S., and Kingstone, A. 
+2012. The collaborative lecture annotation system (CLAS): 
+A new tool for distributed learning. IEEE Transactions on 
+Learning Technologies,  
+
+[12] Scull, W. R, Kendrick, D., Shearer, R., and Offerman, D. 
+2011. The landscape of quality assurance in distance 
+education. Continuing Higher Education Review. 75 (Fall 
+2011), 138-149.
+
+ 
+
+184
+
+
+
+
+

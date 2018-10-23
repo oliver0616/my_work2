@@ -1,0 +1,1338 @@
+
+Monitoring Student Progress Through Their Written “Point
+of Originality”
+
+Jóhann Ari Lárusson
+Library and Technology Services
+
+Brandeis University
+415 South Street
+
+Waltham, MA 02454
+johann@brandeis.edu
+
+Brandon White
+Department of English
+
+University of California, Berkeley
+330 Wheeler Hall
+
+Berkeley, CA 94709
+brandonw@berkeley.edu
+
+ABSTRACT
+This paper describes a new method for the objective evalu-
+ation of student work through the identification of original
+content in writing assignments. Using WordNet as a lex-
+ical reference, this process allows instructors to track how
+key phrases are employed and evolve over the course of a
+student’s writing, and to automatically visualize the point
+at which the student’s language first demonstrates original
+thought, phrased in their own, original words. The pa-
+per presents a case study where the analysis method was
+evaluated by analyzing co-blogging data from a reading and
+writing intensive undergraduate course. The evidence shows
+that the tool can be predictive of students’ writing in a man-
+ner that correlates with their progress in the course and
+engagement in the technology-mediated activity. By visual-
+izing otherwise subjective information in a way that is ob-
+jectively intelligible, the goal is to provide educators with
+the ability to monitor student investment in concepts from
+the course syllabus, and to extend or modify the boundaries
+of the syllabus in anticipation of pre-existing knowledge or
+trends in interest. A tool of this sort can be of value par-
+ticularly in larger gateway courses, where the sheer size of
+the class makes the ongoing evaluation of student progress
+a daunting if not otherwise impossible task.
+
+Categories and Subject Descriptors
+J.1 [Administrative Data Processing]: Education; K.3.1
+[Computer Uses in Education]: Collaborative learning,
+Computer-assisted instruction (CAI), Computer-managed in-
+struction (CMI), Distance learning
+
+Keywords
+learning analytics, evaluation of student writing, recasting,
+pedagogical adjustment/intervention, lexical analysis, infor-
+mation visualization
+
+Permission to make digital or hard copies of all or part of this work for
+personal or classroom use is granted without fee provided that copies are
+not made or distributed for profit or commercial advantage and that copies
+bear this notice and the full citation on the first page. To copy otherwise, to
+republish, to post on servers or to redistribute to lists, requires prior specific
+permission and/or a fee.
+LAK ’12, 29 April - 2 May 2012, Vancouver, BC, Canada.
+Copyright 2012 ACM 978-1-4503-1111-3/12/04 ...$10.00.
+
+1. INTRODUCTION
+Today, it is not uncommon practice for faculty to de-
+
+ploy an online instructional environment in order to pro-
+mote student conversations over course materials and ideally
+to heighten comprehension and retention of course readings.
+Co-blogging is an example of a technology-mediated learning
+activity of this sort. The“blogging”part requires students to
+explain course material in their own words. The “co-” part
+makes the students exchange ideas and interact regarding
+the course material by discussing the alternate viewpoints
+that emerge within the blogosphere [26].
+
+One of the trends in the American university system over
+a number of years has been the migration towards larger
+so-called “gateway” courses [28]. These introductory courses
+are typically a student’s first exposure to collegiate work.
+However, these large classes have a negative impact on the
+student’s learning process. Large lectures are useful for cer-
+tain things, but less useful for fostering higher order thinking
+[31, 10]. Technology like co-blogging, however, can be used
+to make the class seem smaller, and provide the foundation
+for students to learn more and better.
+
+For most if not all learning activities, a substantial amount
+of an instructor’s time and effort is devoted to evaluating
+and monitoring the quality of students’ work, and thus,
+hopefully, the depth of their learning [11]. The purpose of
+this monitoring, however, is not merely the determination of
+grades; part of the instructor’s work is entirely self-reflective,
+enabling the instructor to concurrently, or ideally even pre-
+emptively, intervene to make adjustments to course peda-
+gogy based on students’ engagement or understanding [29].
+While assigning grades might be facile, some difficulties com-
+plicate this second objective: how might an instructor intuit
+when, precisely, students have understood the material suf-
+ficiently? Making this determination manually, specifically
+in larger gateway courses, would prove an intensely labori-
+ous and time-consuming process, far more complicated than
+simple reading and re-reading of any single student’s work.
+
+When supporting learning using technology, however, a
+positive by-product is that students produce their work in
+an electronic form, which enables the creation of computer-
+assisted instructional aids [22]. This paper describes an au-
+tomated solution that can be used by educators to help re-
+solve these tensions. Through the application of lexical anal-
+ysis to student writing, we have implemented an analysis
+tool that allows an instructor to track how a student’s writ-
+ten language migrates from mere paraphrase to mastery, iso-
+lating the moment when the student’s understanding of core
+
+212
+
+
+
+concepts best demonstrates an ability to place that concept
+in his or her own words, a moment that we’ve chosen to call
+the “point of originality.” This process recreates the same
+cognitive activity that educators might ordinarily undergo,
+yet in an automatic manner that is less labor-intensive. Ul-
+timately, the resulting data is presented to the instructor by
+way of a custom visualization, which allows for continuous
+self-monitoring with minimally expended effort.
+
+In order to demonstrate the utility and validity of the
+analysis method, this paper explores the potential of the
+point of originality to preemptively predict likely student
+success or failure. The remainder of the paper is organized
+as follows. Section II explores the benefits of co-blogging in
+education. Section III and IV provide background on the
+particular problems of, and potential solutions for, evalua-
+tion in larger gateway courses. Section V and VI introduce
+the theory behind, and the specifics of, the point of origi-
+nality analysis method. Section VII and VIII report on a
+case study where the point of originality method was used
+to evaluate student co-blogging data. The paper ends by
+discussing future work.
+
+2. CO-BLOGGING AND EDUCATION
+Co-blogging is an example of a social computing activity
+
+that can be very conducive to learning [13, 26]. Overall,
+blogging provides a platform that promotes individual ex-
+pression, enables students to establish their own “voice” and
+yields a richer conversational interactivity within a commu-
+nity [48, 47]. Each student has a blog, composed of multiple
+blog posts. Students can read each other’s blog posts and
+comment on them. Because blogs are easy to use, they can
+promote students’ digital fluency [23] and encourage stu-
+dents to explore and publish their own nascent ideas under
+less pressure than in the rough-and-tumble of in-class dis-
+cussions [3].
+
+Writing a blog forces students to become analytic and crit-
+ical as they contemplate how their ideas may be perceived
+by others [47]. Being able to review older contributions af-
+fords reflection and enables students to revisit and revise
+their artifacts, further developing their own viewpoints in
+the context of each other’s writing as they sense how others
+understand the material similarly or differently [37]. Con-
+versations emerge when students read, and then comment
+on, each other’s blog posts, thus enabling them to exchange,
+explore, and present alternate viewpoints on the course ma-
+terial [17]. This type of social explanatory discussion can
+benefit learning [12, 9].
+
+Alternative spaces such as asynchronous discussion forums
+are another example of a technology that is sometimes used
+to mediate online discussions between students. However, as
+predominantly shared community spaces, forums give stu-
+dents voices that are heard but are without a distinct, indi-
+vidual identity [14]. Critical thinking may emerge for indi-
+viduals, but the organization does not promote the coherent
+and interactive dialogue necessary for conversational modes
+of learning in the same way that co-blogging does [44].
+
+A blogosphere can function as a repository of information,
+opinions, monologues and dialogues about course content,
+where students participate, and leverage each other’s con-
+tributions in other educational activities (e.g., when writing
+term papers) [2, 1]. Blogging enables students to gather
+their thoughts and come better prepared for class [24, 12]
+and can be predictive of student performance in a course
+
+[13]. Even non-active student bloggers can benefit from
+the blog’s educational value as it exposes them to differ-
+ent views of the material without necessarily participating
+directly [47].
+
+Overall, having students discuss and/or“argue”about course
+readings has significant educational utility [5, 4, 38]. Some
+discussion might take place during class, however, class time
+is a limited resource. This is particularly true for larger
+classes or so-called “gateway courses” that typically enroll
+large numbers of undergraduates where there is simply not
+time for everyone to speak up. Using co-blogging, students
+can both express individual voices and continue conversing
+with their peers outside the confines of the physical class-
+room. Unfortunately, the sheer size of these courses presents
+several challenges.
+
+3. PROBLEMS WITH LARGER GATEWAY
+COURSES
+
+The ability to monitor and respond to student progress is
+ever more imperative given the realities of the modern class-
+room. As noted even a decade ago, the political economies of
+American universities increasingly mandate large class sizes,
+particularly in the introductory or “gateway” courses that
+are typically a student’s first exposure to collegiate work
+[28]. These large classes have a negative impact on students
+and instructors alike. There is, for example, an abidingly
+inverse correlation between class size and student achieve-
+ment [20, 42]. The large lecture, while useful for reinforcing
+rote facts, is less successful in fostering higher-order think-
+ing [31, 10], or in encouraging students to construct their
+own understanding of core concepts [28]. Such a sizable
+student population further constrains instructors’ abilities
+to familiarize themselves with students’ individual learn-
+ing styles [28], thereby forcing instructors to assume that
+their audience consists of uniform types of learners [10]. Al-
+though the extent of feedback that students receive is one
+of the most powerful predictors of student achievement [46,
+40], instructor feedback in large lecture courses is often slow
+and sporadic; students typically need to wait weeks - from,
+for example, one midterm assessment to the next - to put
+their course-related skills into practice, and even longer than
+that to have their assignments evaluated by an instructor
+[10]. Pedagogical adjustments, in other words, become both
+more unwieldy and more unlikely in the precise environment
+where they would be most necessary.
+
+Given the problems inherent to large lectures classes, but
+given also their entrenched status within the American uni-
+versity system, it would thus logically be prudent to find a
+way to minimize their most pernicious consequences. Any
+broader attempt to remedy the problems of larger gateway
+courses should thus aspire to first, foster higher-order think-
+ing; second, to suit multiple types of learning styles; and
+third, to provide students with feedback as rapidly as pos-
+sible. These first two objectives are inherent virtues of the
+co-blogging process (e.g. [24, 12, 37, 9, 5, 4, 38]); the final
+objective is the focus of this paper.
+
+4. PRIOR EFFORTS
+Several attempts to minimize the unintended consequences
+
+of large gateway courses exist. Almost all efforts call for re-
+sizing the large class group, either by literally subdividing
+the class or else by designing activities to make the large
+
+213
+
+
+
+class “seem” small. This latter method, it might be argued,
+is the one already pursued by student participation in a co-
+blogging environment, where conversations take place in an
+ad hoc and freeform manner.
+
+Known interventions can be roughly classified into two
+major groups: those interventions that are specifically meant
+for in-class use, and those interventions that are intended
+to take place between classes. Those activities that take
+place during class typically interrupt the lecture itself [32,
+35, 8], asking students, for instance, to respond to a se-
+ries of prompts which they answer through remote devices.
+These same activities, however beneficial, generally disrupt
+the actual process of knowledge transmission and tend to re-
+ward rote memorization rather than higher-order thinking;
+what feedback students receive reflects only whether or not
+they got a prompt right or wrong, and not how well or how
+comprehensively they understood the material. Since the
+activities take place in the classroom, and in front of the en-
+tire student population, the activities themselves moreover
+treat all students in exactly the same manner regardless of
+learning style.
+
+Interventions intended for use between classes are roundly
+invested in providing instructors with observable statistical
+modeling in near real-time [39, 8, 19], which can then be re-
+ferred to before the next session. These activities typically
+attempt to breed higher-order thinking by forcing students
+to reflect on their own learning, asking, for instance, that
+students rate their level of confidence before responding to
+prompts [8], or that they engage in a collaborative peer re-
+view of one another’s written work [39, 19, 21]. The benefits
+of this type of activity are directly analogous to the benefits
+of co-blogging.
+
+5. ORIGINALITY IN STUDENT WRITING
+When students engage in a writing activity, the final eval-
+
+uation of their work cannot only assess whether or not the
+student has provided the most closely correct answer. Pro-
+cess is just as relevant to student writing as content [43].
+Student writing that exhibits exceptional higher-order think-
+ing is generally seen as that which demonstrates a mastery
+of the course material in new, profound or statistically un-
+usual ways [33]. The ideal is not only for students to confirm
+that they’ve understood lectures, but to do so in ways that
+even the educator might not have thought of. This process
+of mastery need not take place all at once. As a student
+is continually exposed to the same material, or is given the
+independent opportunity to rethink, reframe, or revisit that
+material [45], their writing on the subject has the chance
+to evolve, from rote regurgitation to wholly original expres-
+sion [34]. At the level of language, this evolution is reflected
+through recasting.
+
+Recasting is the learning process whereby a student refines
+his or her understanding of a concept found in course lec-
+tures or readings by putting that concept into his or her own
+words [41]. In the acquisition of new languages especially,
+this process can be useful, because it allows students to ac-
+quire new vocabulary using the assortment of words already
+available to them [41, 30]. Even where the student’s under-
+standing of a language is not an explicit concern, recasting
+can mark a student’s attempts to graduate to more sophis-
+ticated or professionalized terminology, or, inversely but to
+the same end, to place new concepts into terms that are
+nearer to what the student would naturally be more likely
+
+to say [15]. “Originality,” fully defined, can of course take
+numerous forms. The concept of recasting, however, spans
+a number of theoretical orientations, with an influence on
+theories of schema formulation [25], the sensemaking process
+known as “scaffolding” [18], as well as the express principles
+of educational constructivism [27].
+
+“Originality,” as deployed here, does not therefore strictly
+refer to a student’s creativity or capacity for non-conformity
+as might be suggested by more colloquial uses of the term.
+Rather, what the Point of Originality tool seeks to gauge
+is students’ ability to interpret, to place core concepts into
+new and diffuse usages. This definition of originality strad-
+dles the tiers of learning that Bloom’s taxonomy [6] asso-
+ciates with “understanding” and “application.” By interpret-
+ing core concepts and extrapolating to different terms, stu-
+dents demonstrate their understanding of the material, and
+when putting those concepts into play through iterative ex-
+ercises like co-blogging, they begin to apply that knowledge
+is newer and more diversedomains.
+
+For an instructor, the simple identification of recast ter-
+minology within a student’s written work can provide an
+effective barometer for pedagogical self-reflection. If a sub-
+set of terms or concepts are deemed vital to the syllabus,
+repetitions and recast iterations of those same terms will at
+least suggest that those terms are being acknowledged and
+reflected upon. Although the presence of recast terminology
+is not the only metric representative of a student’s mastery,
+the central role that recasting plays in a host of pedagogies
+(e.g. [25, 18, 27]) suggests that writing demonstrating high
+or low levels of recasting will reflect other aspects of per-
+formance within the course. Yet if the instructor hopes not
+only to identify instances where key concepts are deployed,
+but to determine how comprehensively the concepts are be-
+ing internalized, it is first necessary to possess a method of
+scoring how original any given recast might be. In order to
+do this, we have developed a metric for isolating a specific
+point of originality within student writing.
+
+6. EVALUATION OF CO-BLOGGING
+The process of computer-assisted evaluation of student
+
+writing is primarily composed of two parts: the analysis
+method, and a custom-made visualization depicting each
+student’s “originality” at any given time throughout the du-
+ration of the semester.
+
+6.1 Analysis Method: Theoretical Background
+WordNet is a lexical database that arranges nouns, verbs,
+
+adjectives, and adverbs by their conceptual-semantic and
+lexical relationships [16]. Whereas a simple thesaurus would
+be able to identify any two words as synonyms or antonyms
+of one another, WordNet is able to note the similarity be-
+tween two words that don’t have literally identical mean-
+ings. These relationships are ideally meant to mirror the
+same lexical associations made by human cognition.
+
+WordNet’s arrangement is hierarchical, which is to say
+that certain terms are more closely related than others. Within
+WordNet, these relationships are displayed as“synsets,”clus-
+ters of terms that fork, like neurons or tree branches, from
+more specific to more and more diffuse associations (see Fig-
+ure 1). If two words are found within one another’s synset
+tree, it stands to reason that these terms are, in some way,
+related, be it closely or distantly. As discussed in the next
+sub-section, these distances between two terms can be calcu-
+
+214
+
+
+
+lated, and assigned a value commensurate with their degree
+of semantic relatedness [7].
+
+Figure 1: Model synset tree (by hyponym relation)
+
+The hierarchical arrangement inherent to WordNet pro-
+vides one method of determining the relationship between
+two terms. If the synset tree of one term encompasses an-
+other term, it is simple enough to note how many synset
+jumps it takes to move from one to another. In Figure 1,
+a “Dalmatian” is a type of “dog,” which itself belongs to
+the subcategory of “domestic animals;” thus there are two
+tiers of associations between the concepts of “Dalmation”
+and “domestic animals.” Unfortunately, however, just how
+closely any two terms might be related is not a purely lin-
+ear relationship. WordNet organizes related terms by their
+precise lexical entailment, such that nouns might be cate-
+gorized as synonyms, hypernyms, hyponyms, holonyms and
+meronyms, as seen in Table 1.
+
+These possible entailments provide a rudimentary roadmap
+for all the ways in which two words might be related. Since
+WordNet attempts to map the cognitive associations auto-
+matically formed between words [16], a student’s evocation
+[36] of the holonym or hypernym of a given noun instead of
+the noun itself is more likely to form an associative recast of
+the original term.
+
+To put these abstract concepts into the same terms used
+to describe the original problem, if an instructor in a large
+lecture course in animal biology wanted to monitor how stu-
+dents had grappled with the (admittedly basic but obvi-
+ously fundamental) concept “animal,” he or she would want
+to know not only that the students had deployed the literal
+term “animal,” but were also conversant in the other asso-
+ciated concepts found (in immensely abbreviated form) in
+Figure 1. This association is consistent with the pedagogi-
+cal principle of recasting, and with the concept of “original”
+expression as defined here. Where an instructor wants stu-
+dents to know one thing - in this case, about “animals” -
+that those students can deploy more diffuse and more con-
+crete examples of animals would be the readiest evidence
+that they actually understand.
+
+Yet while this simple index displays just how any two
+terms might be related, all the possible relationships noted
+are not necessarily equal. Some relationships, like that be-
+tween synonyms smile and grin, are obviously bound to be
+more strongly associated than that between mammal and
+dog. Following a method first noted by Yang & Powers [49],
+it is possible to install a series of weights that can best cal-
+
+culate the semantic distance between any two terms. This
+method in particular is useful because of all known methods,
+it bears the highest correspondence between its own distance
+calculations and the intuitions of actual human respondents
+(at 92.1 percent accuracy).
+
+Synonym: X is a synonym of Y if X means Y
+Example: {smile,grin}
+
+Hypernym: X is a hypernym of Y if every X is a
+kind of Y
+
+Example: {dog,mammal}
+Hyponym: X is a hyponym of Y if every Y is a
+
+kind of X
+Example: {mammal,dog}
+
+Holonym: X is a holonym of Y if Y is part of X
+Example: {hand,finger}
+
+Meronym: X is a meronym of Y if X is part of Y
+Example: {finger,hand}
+
+Table 1: Possible lexical entailments for nouns in
+WordNet
+
+6.2 Analysis Method: Implemention
+Determining the point of originality of a student’s blog
+
+post depends upon the manual input of a specific query
+term by the instructor. The term relates to a key course
+topic and manual input of the topic reinforces the pedagog-
+ical utility of the process. For the query term, the process
+generates a WordNet synset tree. Words within the tree are
+then compared to the body of words extracted from a stu-
+dent’s blog post. Where matches are found, a summation of
+distance calculations between the original query term and
+the matches is performed as follows:
+
+Let q be a query term supplied by the instructor. Then,
+let W = {w0, w1, ..., wn} be a set containing all synset word
+matches (w) from the WordNet database for q.
+
+Let B = {b0, b1, ..., bn} be a set of all words composing a
+blog post by a particular student and let S = {s0, s1, ..., sn}
+be a set of stopwords, a list of common words in English
+usage (like “the” or “and”), to be omitted to speed up pro-
+cessing time. Then, M = {m0,m1, ...,mn}, the set of synset
+term matches found in a blog post for query term q can be
+defined as:
+
+M = W ? (B ? S) (1)
+
+WordNet stores synset matches in a tree structure with q
+as the root node. Then, ?, the distance (depth) for any given
+synset match (m ? M) from the root node (query term q)
+is defined as:
+
+? =
+
+?????????
+0 if m = q
+
+1 if m is first child of q
+
+2 if m is second child of q
+
+· · ·
+
+(2)
+
+WordNet also supplies the lexical entailment of each synset
+term. Thus, t, the “word type” of any given synset term
+
+215
+
+
+
+match m ?M , is defined as:
+
+t =
+
+?????????
+1.0 if m = q
+
+0.9 if m = synonym/antonym
+
+0.85 if m = hypernym/hyponym
+
+0.85 if m = holonym/meronym
+
+(3)
+
+Then ?, the weight of any given synset term match is
+calculated as:
+
+? = (? × 0.7)× t (4)
+
+The depth for any given synset term is multiplied by a
+constant value of 0.7, which reflects the diminished associa-
+tions between two terms the farther separated they are along
+the synset tree. This value is selected because it corresponds
+with the calculation of distance between terms that yields
+the nearest match with human intuition [49].
+
+Then, C, the cumulative originality score for a given query
+term q in a student’s blog post, can be defined as:
+
+C(q) =
+
+|M|?
+n=0
+
+?n (5)
+
+The point of originality for a particular course topic is in
+many cases defined by the presence of several related query
+terms, or in other words, the synset matches for those terms.
+By defining Q = {q0, q1, ..., qn} as the set of query terms sup-
+plied by the instructor at any one time, then P, the overall
+point of originality of a given student’s blog post for a par-
+ticular course topic (defined by Q), is:
+
+P (Q) =
+
+|Q|?
+n=0
+
+C(qn) (6)
+
+Finally, repeating the point of originality calculation (Equa-
+tion 6) for each blog post written by a particular student,
+and plotting all instances of originality on a horizontal time-
+line, allows for an optimal instruction comprehension whereas
+the instructor can see recasts of a particular course topic
+(defined by Q) across the entire body of a student’s writing
+throughout a single course.
+
+Although this paper focuses on the analysis of blog posts
+as students’ writing examples, given some additional pro-
+gramming work, any electronic form of student writing could
+be made compatible with the tool for subsequent analysis.
+
+6.3 Visualization for the Point of Originality
+The timeline visualization, as seen in Figure 2, displays
+
+a horizontal timeline that represents the time interval for
+the writing activity of any student for the duration of a
+particular semester. The numbered components of Figure 2
+correspond to the following features.
+
+1. This drop-down menu allows the instructor to select
+which student’s writing samples are currently being
+displayed.
+
+2. This is where query terms (Q) are input by the in-
+structor.
+
+3. This timeline displays the date/times of each of the
+students’ writing samples. Each marker is color-coded,
+from colder to warmer colors along the ROYGBIV
+spectrum, the higher the value of the point of origi-
+nality (P) score for any given writing sample. These
+
+color assignments present an intuitive way for the in-
+structor to quickly recognize that the sample has been
+assigned a higher originality value.
+
+4. If a writing sample marker is selected in the timeline
+window (see inset 3), the text of that writing sample
+is displayed here.
+
+This assortment of visualization options allows the point
+of originality calculation to be displayed in a number of intu-
+itive ways: both within chronology (inset 3) and in context
+(inset 5).
+
+7. CASE STUDY
+This section reports on a case study that explores the ca-
+
+pability of using the Point of Originality tool to assess the
+originality of student writing in a semester-long co-blogging
+activity. More specifically, the study focuses on correlating
+originality scores assigned to students’ blog posts to their ac-
+tivities in the blogosphere during the semester and the final
+grades assigned to a term paper covering the same topics.
+Although primarily aimed at testing the validity of the point
+of originality method, this study models a likely use case.
+By demonstrating how low point of originality values corre-
+spond to poor performance in other aspects of the course,
+the Point of Originality tool could provide instructors with
+an early, near-instantaneous diagnostic of which students
+might require additional help. The tool might thus ideally
+streamline the process of conducting targeted pedagogical
+adjustments or interventions.
+
+The co-blogging data was collected from a course taught
+in the Fall of 2008 in the Computer Science Department at
+Brandeis University. The course is an introductory course,
+an elective, focused on exposing students to topics such as
+the social life of information, virtual communities, privacy,
+intellectual property and peer-to-peer computing.
+
+In the co-blogging activity, each student has a blog where
+he or she writes opinions on the course readings. Students
+can read each other’s posts and comment on the posts of
+their peers. The blogosphere, provides several features fo-
+cused on increasing students’ awareness of recent activity,
+and enabling them to find interesting blog posts to read and
+conversations in which to participate.
+
+7.1 Participants
+There were 8 female and 17 male students, all undergrad-
+
+uates, enrolled in the class. There were 3 science majors
+and 1 science minor in the class. There were 12 students
+majoring in the social sciences and 8 minoring in the social
+sciences. The remainder of the class was either in the hu-
+manities or fine arts. Three students were omitted from the
+data set because they did not begin blogging until the end
+of the semester following a warning from the instructor.
+
+As an introductory course, open to non-majors, the tech-
+nical requirements for enrollment were few. No formal eval-
+uations were done to assess the students’ computer literacy
+or prior domain knowledge. In class discussions, most of the
+students expressed moderate or advanced technical skills.
+
+The instructor and teaching assistant did not design, or
+implement, the co-blogging activity in such a way that it
+pre-assigned students into particular authoring roles in the
+online blogosphere, thus potentially influencing the students
+choice of writing topics or styles.
+
+216
+
+
+
+Figure 2: The Point of Originality timeline visualization
+
+7.2 Procedure
+At the beginning of the semester, an in-class tour and ex-
+
+ercise introduced the students to the important features of
+the co-blogging environment. The students were required
+to blog at the pace of one post per lecture: there were two
+lectures per week. A typical post was 1 or 2 paragraphs in
+length. The students were also required to read and com-
+ment on other contributions to the blogosphere. The co-
+blogging work of each student counted for 35% of the final
+grade.
+
+During the semester, the students read four books and
+wrote a paper on one of these books. The focus of the anal-
+ysis presented in this paper is on the co-blogging work that
+the students did during the time the class read the book for
+which they wrote their papers.
+
+7.3 Metrics
+Lectures were presented using slides that summarized the
+
+key points of the presentation. At the beginning of each
+lecture, hard copies of the slides were handed out to support
+student note taking. We used the lecture slides as a basis
+for identifying the inputs to the blogosphere. For each set
+of slides, a set of key topics that were covered by the lecture
+ultimately became the query terms used for analysis.
+
+7.4 Method
+All of the students’ online work was automatically recorded
+
+in a transcript and analyzed using the Point Originality
+tool. Originality scores were generated for all blog posts
+and papers, which were then correlated to students’ final
+paper grades and to statistical data summarizing their read-
+ing and writing activities during the co-blogging part of the
+semester.
+
+8. RESULTS
+The analysis was composed of two principle parts.
+The first part compared the degree to which the tool indi-
+
+cated the originality of the students’ blog posts and how well
+the originality scores related to the grades that the instruc-
+tor assigned their papers. In the ideal situation, given that
+the instructor graded their papers based on how well the
+students expressed higher order understanding of the course
+material, or in other words their writing reflected original
+
+thought, the tool should provide scores where higher origi-
+nality values would correspond to higher paper grades.
+
+The second part sought to explore to what degree the stu-
+dents’ interactivity in the blogosphere influenced their un-
+derstanding of the course readings, and in what way their
+immersion in the co-blogging community positively or neg-
+atively impacted their levels of originality when writing pa-
+pers. Ideally, students would find sufficient impetus to be-
+come deeply involved in the co-blogging learning community
+and their exposure to alternate or similar viewpoints of the
+same materials would help them develop their own view-
+points or to strengthen existing ones, thus leading to more
+original thought and better papers.
+
+Since the analysis was primarily concerned with ensuring
+that the tool could be used during a course to preemptively
+diagnose likely student success, the blog post dataset was fil-
+tered to only include blog posts written in what was defined
+as the “lead-in” period of co-blogging. During this period,
+the students were writing blog posts and comments on the
+topics that they eventually wrote their papers on, but at the
+time were unaware which specific topics they would have to
+address in those papers. The paper grades were assigned
+during the fall of 2008, roughly two years prior to the study
+described in this paper. Furthermore, grading was done by
+the course instructor, who is not a participant in the Point
+of Originality project.
+
+8.1 Originality in the lead-in period
+We began by collecting the originality scores calculated
+
+by our system for the blog posts written by each student
+on the paper topics and the actual grades that each student
+received for his or her paper. The average grade for student
+papers was 80.00 with a standard deviation of 16.83. The
+highest grade assigned was 95 and lowest was 40 on a scale
+from 0 to 100. The students’ blog posts received on average
+an originality score of 10.61 with a standard deviation of
+4.29. The highest originality score assigned by our system
+was 18.30 whereas the lowest score was 3.92.
+
+Soon, a pattern emerged indicating that the more original
+the students’ co-blogging work, the higher the paper grades
+assigned by the instructor. While this is to be expected,
+the importance here is that the Point of Originality tool is
+automatically producing results that potentially correlate to
+
+217
+
+
+
+standard approaches to pedagogy. A chi-square distribution
+test confirmed that there was indeed a positive correlation
+between the two factors. As students’ blog post originality
+scores increased, their final paper grades covering the same
+topics increased as well. In other words, as their blogging
+activity became more original, the students wrote better pa-
+pers:
+
+c2(20, N = 22) = 0.492, p = .05 (7)
+
+To further confirm the potential relationship between orig-
+inality while initially learning the course materials (during
+the lead-in period) and how well that work transformed
+into mastery of course content as reflected by paper writ-
+ing, students were divided into two groups based on their
+paper grades. Students whose paper received a grade above
+the average (80.00) were assigned to one group, the upper
+group, whereas students who scored below the average were
+assigned to the lower group.
+
+Metric AVG SD SEM N
+Above average grade
+Paper grades 90.63 3.20 1.13 8
+Originality variance -6.10 21.92 7.75 8
+
+Below average grade
+Paper grades 66.79 15.14 4.05 14
+Originality variance 21.49 27.63 7.38 14
+
+Table 2: Originality variance and paper grades for
+two different groups of students
+
+As shown in Table 2, the students in the upper group re-
+ceived an average grade of 90.63 on their papers whereas
+the students in the lower group received an average grade
+of 66.79. What is more interesting, however, is what can be
+defined as the originality variance: the difference between
+how original the students’ blog posts were compared to their
+final papers. While the lower student group had an origi-
+nality variance of 21.49, the variance for the students in the
+upper group was -6.10.
+
+Because the variance for the upper group is negative, those
+students’ blog posts, written during the lead-in period, were
+on average more original than their final papers. It might
+seem then that those students were not necessarily more
+original than the students in the lower group, however, that
+is not the case. The fact that the variance is negative for
+the upper group is indicative of the fact that those students
+were at the height of their understanding of the materials
+even during the lead-in period. These students had mastered
+the materials in such a way that they had an easier time
+of writing their papers, whereas the students in the lower
+group were only first beginning to wrestle with this content
+after the papers were assigned. This is suggested by the
+fact that the originality variance for the lower group was
+a positive value of 21.49, a value more than twice as great
+as the students’ average originality score during the entire
+period.
+
+A t-test of independent samples confirmed that the orig-
+inality variance between the upper and lower groups was
+indeed statistically significant. Students who had received
+higher grades for papers wrote blog posts that were more
+
+original in the lead-in period:
+
+t(20) = 2.42, p < .02 (8)
+
+Similarly, a t-test also confirmed that the students’ distri-
+bution of grades was by itself significant:
+
+t(20) = 4.35, p < .0003 (9)
+
+The key observation is whether or not students’ retention
+of course materials was equal for both groups. Students
+that master materials when taking exams don’t necessarily
+have the ability of applying that knowledge after the course
+ends because their “grasping” of the content was short lived.
+These students knew the material well enough to pass the
+exam but not necessarily well enough to be able to easily
+apply that knowledge later on. If students can get “into the
+game” earlier in the semester, they have greater opportuni-
+ties to participate in discussions, refine their understanding
+and “lock it down deep” so that they leave the course with
+a higher degree of mastery.
+
+In a large reading- and writing-intensive course, where
+a bulk of the work towards mastery might take place in
+machine-readable form, it goes without saying that it would
+be advantageous for the instructor to be able to use technol-
+ogy to monitor each student’s progress. Specifically in larger
+gateway courses, where the odds are already stacked against
+student achievement and the need for interventions is more
+difficult to spot, students who fail to integrate completely
+with the class community - either because their experience
+comes from another discipline, or because they simply aren’t
+accustomed to the specific class environment - are likely to
+suffer poor performance. Having the ability to assess stu-
+dents’ mastery of the material, however, would enable the
+instructor to identify those students who are perhaps strug-
+gling or only falling behind, and to intervene to correct the
+students’ performance.
+
+8.2 Interactivity in the blogosphere
+In an online technology-mediated community like the one
+
+described in this paper, students benefit from the expo-
+sure to both similar and contrasting viewpoints of the same
+course material. If the students’ deep emersion in the co-
+blogging activity has a positive impact on their learning,
+one can assume that the originality score would correlate
+with the degree to which each student participates online.
+In other words, for those students that take advantage of the
+technology-mediated activity, frequently reading other stu-
+dents’ viewpoints and partaking in thoughtful conversations
+about the course readings, then originality scores should cor-
+relate with positive student outcomes.
+
+To assess student participation in the blogosphere, each
+student’s exposure (reading blog posts and comments by
+others) and contributions (writing blog posts and comments
+oneself) were measured. These activities were then corre-
+lated with the originality scores assigned to each student’s
+paper. Table 3 summarizes these metrics.
+
+Overall, the student papers received an average original-
+ity score of 53.49, with a standard deviation of 14.53. The
+highest originality score was 93.76, whereas the lowest score
+was 31.66.
+
+In terms of exposure in the blogosphere, the average num-
+ber of times that a student was exposed to other students’
+contributions was 4.36, with a standard deviation of 3.93.
+The highest number of contributions read by a student in
+
+218
+
+
+
+Metric AVG SD SEM N
+Paper originality score 53.49 14.53 3.10 22
+Exposure 4.36 3.93 0.84 22
+Contributions 4.18 2.17 0.746 22
+
+Table 3: Originality and interactivity in the blogo-
+sphere
+
+the blogosphere was 14, whereas one student read no con-
+tributions by the class at all. A chi-square test was used
+to explore the potential correlation between the originality
+of student papers and the degree of each student’s exposure
+in the blogosphere. As shown in Equation 10, there is a
+statistically significant positive correlation between the two
+factors. In other words, higher exposure in the blogosphere
+led to more original papers.
+
+c2(20, N = 22) = 0.44, p = .05 (10)
+
+In terms of contributing in the blogosphere, each student
+made on average 4.18 contributions during the lead-in pe-
+riod, with a standard deviation of 2.17. The highest num-
+ber of blog posts and comments written by a student was
+9, whereas the lowest number of contributions was 1. As
+before, a chi-square test confirmed that there was a statisti-
+cally significant positive correlation between the number of
+contributions a student makes in the blogosphere and the
+eventual originality of his or her paper.
+
+c2(20, N = 22) = 0.42, p = .05 (11)
+
+9. CONCLUSION
+Integrating technology into higher education curricula to
+
+extend the physical boundaries of the classroom can be of
+significant value, as it enables students to interact and learn
+outside of class time. This is particularly true in larger gate-
+way courses, where there are fewer opportunities for students
+to engage in higher order thinking and to construct their own
+understanding of core concepts. While the introduction of
+technology like co-blogging can create a successful learning
+experience, the large number of students creates additional
+noise that makes it harder for instructors to isolate the stu-
+dents most in need of help. This paper described a method
+and tool by which student writing can be automatically an-
+alyzed to determine whether or not students have reached
+a point of originality in their writing, reflecting mastery of
+the course content. The paper presented a case study where
+the tool was used to analyze co-blogging data collected from
+an interdisciplinary reading- and writing-intensive course.
+The evidence showed that the tool was generating original-
+ity scores for students’ blog posts that correlated both with
+the degree to which they participated in the online activity
+as well as the final grades that they received for their term
+papers. In other words, students who were more original
+during their co-blogging wrote better papers, and students
+who took advantage of the technology were more original.
+
+Although the paper was primarily aimed at confirming the
+validity of the Point of Originality method, these findings
+suggest a likely use case for the technology. In a large class,
+where students engage both in iterative writing assignments
+like co-blogging and in summative writing assignments like
+midterm essays, an instructor might employ the Point of
+Originality tool at regular intervals throughout the semester
+
+to see which students are utilizing recast terminology in their
+work. Given the correlation seen here between a student’s
+ability to recast key concepts and their eventual performance
+on an assessment of those concepts (see Equation 7), the in-
+structor could essentially use the tool to identify students
+with low point of originality values, and thus those most
+likely to do poorly on the assessment. Especially in large
+gateway courses, with potentially hundreds of students pro-
+ducing iterative assignments during the lead-in period, the
+process of identifying student learning styles and responding
+to student work is unwieldy [28, 10]. This strategy would
+allow an instructor to identify problems before it is too late:
+to determine which students might be struggling, to begin
+to isolate why, and to implement adjustments to pedagogy
+accordingly.
+
+It goes without saying that any tool of this sort might give
+a skewed measure for some students. For example, in any
+given class, some students simply learn best through face-
+to-face participation in class discussions while others accrue
+the highest learning benefit through solitary reflective writ-
+ing outside lecture hours. However, this does not reduce
+the merit or applicability of learning analytics tools such
+as the Point of Originality. On the contrary, if the “intan-
+gibility” of a technology-mediated learning activity is what
+makes any kind of evaluation or monitoring difficult, even in
+smaller classes, then the production of tools that can assist
+the teacher in performing these activities would be a signifi-
+cant boon. It is perhaps better to consider tools of this sort
+to be part of a larger “arsenal of assistive devices”, where
+one can pick-and-choose the tools most appropriate for the
+needs of a particular instructor, student, learning activity or
+course, whether it be for exploring textual content, activity
+logs or other types of data. It is the ability to be able to
+conduct any diagnoses at all, with a tailor-made analytics
+set, which is the primary benefit.
+
+10. FUTURE WORK
+The tool is currently being used to analyze even larger
+
+gateway courses that typically enroll over 90 students. Ad-
+ditional features are also being developed to combat two
+not necessarily common but plausible anomalies where the
+composition of the writing examples themselves can produce
+false positives of originality.
+
+First, within the same writing sample, a student might (in-
+advertently) repeatedly use a word that not only is a synset
+match, but a match that yields a particularly high ? value
+(see Equation 4). Therefore, an unreasonable degree of orig-
+inality might be suggested for a particular writing sample.
+Currently, development is under way for a “decay factor,”
+that once enabled will gradually decrease the weight of the
+? value for a particular synset match, given how many times
+it has appeared before in the sample. The first mention gets
+the maximum weight, where the nth mention receives the
+relative lowest possible weight.
+
+Second, where the evaluation of “originality” of a particu-
+lar course topic depends on the presence of synset matches
+of multiple query terms within the same writing sample, the
+set Q (see Equation 6), then the distance between those
+matches within the text may also be significant. For exam-
+ple, in response to a query for the compound term “color
+blindness,” the occurrence of a synset match for the word
+“color” in the first paragraph of a writing sample may be
+otherwise unrelated to a synset match for “blindness” four
+
+219
+
+
+
+paragraphs later. By implementing a “distance factor,” it
+will be possible for the instructor to specify a maximum
+distance (in terms of character, word, or paragraph count)
+between any two related synset matches in order for their ?
+values to be included in the final originality calculations for
+a given writing sample.
+
+11. ACKNOWLEDGMENTS
+Special thanks to Thanya Rajkobal for her contributions
+
+to the Point of Originality analysis tool and to the students
+in the course for providing data for this research project.
+
+12. REFERENCES
+[1] R. Alterman and J. A. Larusson. Collaborative
+
+sensemaking in the blogosphere. Technical Report
+CS-09-272, Brandeis University, Department of
+Computer Science, 2009.
+
+[2] R. Alterman and J. A. Larusson. Modeling
+participation within a community. In N. A. Taatgen
+and H. van Rijn, editors, Proceedings of the 31st
+Annual Conference of the Cognitive Science Society,
+pages 1680–1685. Cognitive Science Society, Austin,
+TX, 2009.
+
+[3] S. L. Althaus. Computer-mediated communication in
+the university classroom: An experiment with on-line
+discussions. Communication Education, 46(3):158 –
+174, 1997.
+
+[4] J. Andriessen. Arguing to learn. In R. K. Sawyer,
+editor, The Cambridge handbook of the learning
+sciences, pages 443–459. Cambridge University Press,
+New York, NY, 2006.
+
+[5] J. Andriessen, M. Baker, and D. Suthers. Arguing to
+learn: confronting cognitions in computer-supported
+collaborative learning environments. Springer, June
+2003.
+
+[6] B. Bloom. Taxonomy of educational objectives: The
+classification of educational goals . Longmans, Green,
+New York, 1956.
+
+[7] J. Boyd-Graber, D. Blei, and X. Zhu. A topic model
+for word sense disambiguation. In Proceedings of the
+2007 Joint Conference on Empirical Methods in
+Natural Language Processing and Computational
+Natural Language Learning (EMNLP-CoNLL), pages
+1024–1033, 2007.
+
+[8] C. A. Brewer. Near real-time assessment of student
+learning and understanding in biology courses.
+BioScience, 54(11):1034–1039, 2004.
+
+[9] M. T. H. Chi and K. A. VanLehn. The content of
+physics self-explanations. Journal of the Learning
+Sciences, 1(1):69–105, 1991.
+
+[10] J. L. Cooper and P. Robinson. The argument for
+making large classes seem small. New Directions for
+Teaching and Learning, 2000(81):5–16, 2000.
+
+[11] T. J. Crooks. The impact of classroom evaluation
+practices on students. Review of Educational Research,
+58(4):438–481, Dec. 1988.
+
+[12] A. Deitering and S. Huston. Weblogs and the “middle
+space” for learning. Academic Exchange Quarterly,
+8(4):273 – 278, 2004.
+
+[13] H. S. Du and C. Wagner. Learning with weblogs: An
+empirical investigation. In Proceedings of the 38th
+
+Annual Hawaii International Conference on System
+Sciences (HICSS ’05), page 7b, Washington, DC,
+2005. IEEE Computer Society.
+
+[14] P. Duffy. Engaging the YouTube Google-Eyed
+generation: Strategies for using web 2.0 in teaching
+and learning. In The Electronic Journal of e-Learning,
+volume 6, pages 119–130, 2008.
+
+[15] B. Eilam. Phases of learning: ninth graders’ skill
+acquisition. Research in Science & Technological
+Education, 20(1):5, 2002.
+
+[16] C. Fellbaum. WordNet: An electronic lexical database.
+The MIT press, 1998.
+
+[17] R. E. Ferdig and K. D. Trammell. Content delivery in
+the “blogosphere”. T.H.E. Journal Online:
+Technological Horizons In Education, 31(7):12–16,
+2004.
+
+[18] J. P. Gee and J. L. Green. Discourse analysis,
+learning, and social practice: A methodological study.
+Review of Research in Education, 23:119–169, 1998.
+
+[19] R. D. Gerdeman, A. A. Russell, and K. J. Worden.
+Web-Based student writing and reviewing in a large
+biology lecture course. Journal of College Science
+Teaching, 36(5):7, 2007.
+
+[20] G. V. Glass and M. L. Smith. Meta-Analysis of
+research on class size and achievement. Educational
+Evaluation and Policy Analysis, 1(1):2–16, Jan. 1979.
+
+[21] I. M. Goldin, K. D. Ashley, and R. L. Pinkus.
+Teaching case analysis through framing: Prospects for
+an its in an ill-defined domain. In R. Nkambou,
+E. Mephu Nguifo, and P. Fournier-Viger, editors, 8th
+International Conference on Intelligent Tutoring
+Systems, pages 395–405, 2008.
+
+[22] L. Greer and P. J. Heaney. Real-time analysis of
+student comprehension: An assessment of electronic
+student response technology in an introductory earth
+science course. Journal of Geoscience Education,
+52:345–351, 2004.
+
+[23] D. Huffaker. The educated blogger: Using weblogs to
+promote literacy in the classroom. AACE Journal,
+13(2):91–98, 2005.
+
+[24] Y. Juang. Learning by blogging: Warm-Up and review
+lessons to facilitate knowledge building in classrooms.
+In Proceedings of the Eighth IEEE International
+Conference on Advanced Learning Technologies,
+ICALT’08, pages 574–575, Washington, DC, 2008.
+
+[25] F. Korthagen and B. Lagerwerf. Levels in learning.
+Journal of Research in Science Teaching,
+32(10):1011–1038, 1995.
+
+[26] J. A. Larusson and R. Alterman. Wikis to support the
+“collaborative” part of collaborative learning.
+International Journal of Computer-Supported
+Collaborative Learning, 4(4):371–402, 2009.
+
+[27] M. Lebrun. Des technologies pour enseigner et
+apprendre. De Boeck, Bruxelles, 2nd edition, 1999.
+
+[28] J. MacGregor. Restructuring large classes to create
+communities of learners. New Directions for Teaching
+and Learning, 2000(81):47–61, 2000.
+
+[29] L. McAlpine, C. Weston, D. Berthiaume,
+G. Fairbank-Roch, and M. Owen. Reflection on
+teaching: Types and goals of reflection. Educational
+Research and Evaluation: An International Journal on
+
+220
+
+
+
+Theory and Practice, 10(4):337, 2004.
+
+[30] K. McDonough and A. Mackey. Responses to recasts:
+Repetitions, primed production, and linguistic
+development. Language Learning, 56(4):693–720, 2006.
+
+[31] W. J. McKeachie and N. Chism. Teaching Tips. DC
+Heath, 1986.
+
+[32] A. Mills-Jones. Active learning in IS education:
+Choosing effective strategies for teaching large classes
+in higher education. In Proceedings of 10th
+Australasian Conference on Inofrmtion Systems, pages
+1–13, 1999.
+
+[33] M. T. Moore. The relationship between the originality
+of essays and variables in the Problem-Discovery
+process: A study of creative and noncreative middle
+school students. Research in the Teaching of English,
+19(1):84–95, Feb. 1985.
+
+[34] N. Nelson. Writing to learn: One theory, two
+rationales. In P. Tynja?la?, L. Mason, and K. Lonka,
+editors, Writing as a Learning Tool: Integrating
+Theory and Practice, pages 23–36. Kluwer Academic
+Publishers, Dordrecht, The Netherlands, 2001.
+
+[35] D. Nicol and J. Boyle. Peer instruction versus
+class-wide discussion in large classes: A comparison of
+two interaction methods in the wired classroom.
+Studies in Higher Education, 28(4):457–473, Oct. 2003.
+
+[36] S. Nikolova, J. Boyd-Graber, and C. Fellbaum.
+Collecting semantic similarity ratings to connect
+concepts in assistive communication tools. Modelling,
+Learning and Processing of Text-Technological Data
+Structures, ser. Springer Studies in Computational
+Intelligence. Springer, 2009.
+
+[37] J. A. Oravec. Bookmarking the world: Weblog
+applications in education. Journal of Adolescent &
+Adult Literacy, 45(7):616–621, 2002.
+
+[38] A. Reznitskaya, R. C. Anderson, B. McNurlen,
+K. Nguyen-Jahiel, A. Archodidou, and S. Kim.
+Influence of oral discussion on written argument.
+Discourse Processes, 2001.
+
+[39] R. Robinson. Calibrated peer reviewTM: an
+application to increase student reading & writing
+skills. The American Biology Teacher, 63(7):474–480,
+2001.
+
+[40] B. Rosenshine and C. Meister. Scaffolds for teaching
+higher-order cognitive strategies. Teaching: Theory
+into practice, pages 134–153, 1995.
+
+[41] M. Shih. Content-Based approaches to teaching
+academic writing. TESOL Quarterly, 20(4):617–648,
+Dec. 1986.
+
+[42] M. L. Smith and G. V. Glass. Meta-Analysis of
+research on class size and its relationship to attitudes
+and instruction. American Educational Research
+Journal, 17(4):419–433, Dec. 1980.
+
+[43] B. P. Taylor. Content and written form: A Two-Way
+street. TESOL Quarterly, 15(1):5–13, Mar. 1981.
+
+[44] M. J. W. Thomas. Learning within incoherent
+structures: the space of online discussion forums.
+Journal of Computer Assisted Learning,
+18(3):351–366, 2002.
+
+[45] P. Tynja?la?, L. Mason, and K. Lonka. Writing as a
+Learning Tool: Integrating Theory and Practice.
+Kluwer Academic Publishers, Dordrecht, The
+
+Netherlands, 1 edition, 2001.
+
+[46] H. J. Walberg. Improving the productivity of america’s
+schools. Educational Leadership, 41(8):19, May 1984.
+
+[47] J. B. Williams and J. Jacobs. Exploring the use of
+blogs as learning spaces in the higher education sector.
+Australasian Journal of Educational Technology,
+20(2):232–247, 2004.
+
+[48] L. Wise. Blogs versus discussion forums in
+postgraduate online continuing medical education.
+2005. Paper presented at Blogtalk Downunder
+Conference, May 19-22, 2005, Sidney Australia.
+
+[49] D. Yang and D. M. Powers. Measuring semantic
+similarity in the taxonomy of WordNet. In Proceedings
+of the Twenty-eighth Australasian conference on
+Computer Science-Volume 38, page 322, 2005.
+
+221
+
+
+
+
+

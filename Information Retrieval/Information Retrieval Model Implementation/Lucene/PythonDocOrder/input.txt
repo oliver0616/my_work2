@@ -1,0 +1,156 @@
+IndexableField : Represents a single field for indexing.
+IndexableFieldType : Describes the properties of a field.
+CacheHelper : A utility class that gives hooks in order to help build a cache based on the data that is contained in this index.
+ClosedListener : A listener that is called when a resource gets closed.
+IndexReaderWarmer : If DirectoryReader.open(IndexWriter) has  been called (ie, this writer is in near real:time  mode), then after a merge completes, this class can be  invoked to warm the reader on the newly merged  segment, before the merge commits.
+MergeContext : This interface represents the current context of the merge selection process.
+IntersectVisitor : We recurse the BKD tree, using a provided instance of this to guide the recursion.
+QueryTimeout : Base for query timeout implementations, which will provide a shouldExit() method, used with ExitableDirectoryReader.
+TwoPhaseCommit : An interface for implementations that support 2:phase commit.
+AutomatonTermsEnum : A FilteredTermsEnum that enumerates terms based upon what is accepted by a DFA.
+BaseCompositeReader : Base class for implementing CompositeReaders based on an array of sub:readers.
+BinaryDocValues : A per:document numeric value.
+CheckIndex : Basic tool and API to check the health of an index and write a new segments file that removes reference to problematic segments.
+Options : Run:time configuration options for CheckIndex commands.
+Status : Returned from CheckIndex.checkIndex() detailing the health and status of the index.
+DocValuesStatus : Status from testing DocValues
+FieldInfoStatus : Status from testing field infos.
+FieldNormStatus : Status from testing field norms.
+IndexSortStatus : Status from testing index sort
+LiveDocStatus : Status from testing livedocs
+PointsStatus : Status from testing PointValues
+SegmentInfoStatus : Holds the status of each segment in the index.
+StoredFieldStatus : Status from testing stored fields.
+TermIndexStatus : Status from testing term index.
+TermVectorStatus : Status from testing stored fields.
+VerifyPointsVisitor : Walks the entire N:dimensional points space, verifying that all points fall within the last cell's boundaries.
+CodecReader : LeafReader implemented by codec APIs.
+CompositeReader : Instances of this reader type can only be used to get stored fields from the underlying LeafReaders, but it is not possible to directly retrieve postings.
+CompositeReaderContext : IndexReaderContext for CompositeReader instance.
+ConcurrentMergeScheduler : A MergeScheduler that runs each merge using a  separate thread.
+DirectoryReader : DirectoryReader is an implementation of CompositeReader that can read indexes in a Directory.
+DocIDMerger : Utility class to help merging documents from sub:readers according to either simple  concatenated (unsorted) order, or by a specified index:time sort, skipping  deleted documents and remapping non:deleted documents.
+Sub : Represents one sub:reader being merged
+DocValues : This class contains utility methods and constants for DocValues
+EmptyDocValuesProducer : Abstrast base class implementing a DocValuesProducer that has no doc values.
+ExitableDirectoryReader : The ExitableDirectoryReader wraps a real index DirectoryReader and allows for a QueryTimeout implementation object to be checked periodically to see if the thread should exit or not.
+ExitableFilterAtomicReader : Wrapper class for another FilterAtomicReader.
+ExitableSubReaderWrapper : Wrapper class for a SubReaderWrapper that is used by the ExitableDirectoryReader.
+ExitableTerms : Wrapper class for another Terms implementation that is used by ExitableFields.
+ExitableTermsEnum : Wrapper class for TermsEnum that is used by ExitableTerms for implementing an exitable enumeration of terms.
+FieldInfo : Access to the Field Info file that describes document fields and whether or  not they are indexed.
+FieldInfos : Collection of FieldInfos (accessible by number or by name).
+FieldInvertState : This class tracks the number and position / offset parameters of terms being added to the index.
+Fields : Provides a Terms index for fields that have it, and lists which fields do.
+FilterBinaryDocValues : Delegates all methods to a wrapped BinaryDocValues.
+FilterCodecReader : A FilterCodecReader contains another CodecReader, which it uses as its basic source of data, possibly transforming the data along the way or providing additional functionality.
+FilterDirectoryReader : A FilterDirectoryReader wraps another DirectoryReader, allowing implementations to transform or extend it.
+SubReaderWrapper : Factory class passed to FilterDirectoryReader constructor that allows subclasses to wrap the filtered DirectoryReader's subreaders.
+FilteredTermsEnum : Abstract class for enumerating a subset of all terms.
+FilterLeafReader : A FilterLeafReader contains another LeafReader, which it uses as its basic source of data, possibly transforming the data along the way or providing additional functionality.
+FilterFields : Base class for filtering Fields  implementations.
+FilterPostingsEnum : Base class for filtering PostingsEnum implementations.
+FilterTerms : Base class for filtering Terms implementations.
+FilterTermsEnum : Base class for filtering TermsEnum implementations.
+FilterMergePolicy : A wrapper for MergePolicy instances.
+FilterNumericDocValues : Delegates all methods to a wrapped NumericDocValues.
+IndexCommit : Expert: represents a single commit into an index as seen by the IndexDeletionPolicy or IndexReader.
+IndexDeletionPolicy : Expert: policy for deletion of stale index commits.
+IndexFileNames : This class contains useful constants representing filenames and extensions used by lucene, as well as convenience methods for querying whether a file name matches an extension (matchesExtension), as well as generating file names from a segment name, generation and extension ( fileNameFromGeneration, segmentFileName).
+IndexReader : IndexReader is an abstract class, providing an interface for accessing a point:in:time view of an index.
+CacheKey : A cache key identifying a resource that is being cached on.
+IndexReaderContext : A struct like class that represents a hierarchical relationship between IndexReader instances.
+IndexUpgrader : This is an easy:to:use tool that upgrades all segments of an index from previous Lucene versions to the current segment file format.
+IndexWriter : An IndexWriter creates and maintains an index.
+IndexWriterConfig : Holds all the configuration that is used to create an IndexWriter.
+KeepOnlyLastCommitDeletionPolicy : This IndexDeletionPolicy implementation that keeps only the most recent commit and immediately removes all prior commits after a new commit is done.
+LeafMetaData : Provides read:only metadata about a leaf.
+LeafReader : LeafReader is an abstract class, providing an interface for accessing an index.
+LeafReaderContext : IndexReaderContext for LeafReader instances.
+LiveIndexWriterConfig : Holds all the configuration used by IndexWriter with few setters for settings that can be changed on an IndexWriter instance "live".
+LogByteSizeMergePolicy : This is a LogMergePolicy that measures size of a  segment as the total byte size of the segment's files.
+LogDocMergePolicy : This is a LogMergePolicy that measures size of a  segment as the number of documents (not taking deletions  into account).
+LogMergePolicy : This class implements a MergePolicy that tries to merge segments into levels of exponentially increasing size, where each level has fewer segments than the value of the merge factor.
+MappedMultiFields : A Fields implementation that merges multiple  Fields into one, and maps around deleted documents.
+MergePolicy : Expert: a MergePolicy determines the sequence of primitive merge operations.
+MergeSpecification : A MergeSpecification instance provides the information necessary to perform multiple merges.
+OneMerge : OneMerge provides the information necessary to perform  an individual primitive merge operation, resulting in  a single new segment.
+OneMergeProgress : Progress and state for an executing merge.
+MergeRateLimiter : This is the RateLimiter that IndexWriter assigns to each running merge, to   give MergeSchedulers ionice like control.
+MergeScheduler : Expert: IndexWriter uses an instance  implementing this interface to execute the merges  selected by a MergePolicy.
+MergeState : Holds common state used during segment merging.
+DocMap : A map of doc IDs.
+MultiDocValues : A wrapper for CompositeIndexReader providing access to DocValues.
+MultiSortedDocValues : Implements SortedDocValues over n subs, using an OrdinalMap
+MultiSortedSetDocValues : Implements MultiSortedSetDocValues over n subs, using an OrdinalMap
+MultiFields : Provides a single Fields term index view over an IndexReader.
+MultiPostingsEnum : Exposes PostingsEnum, merged from PostingsEnum API of sub:segments.
+EnumWithSlice : Holds a PostingsEnum along with the  corresponding ReaderSlice.
+MultiReader : A CompositeReader which reads multiple indexes, appending  their content.
+MultiTerms : Exposes flex API, merged from flex API of sub:segments.
+MultiTermsEnum : Exposes TermsEnum API, merged from TermsEnum API of sub:segments.
+NoDeletionPolicy : An IndexDeletionPolicy which keeps all index commits around, never deleting them.
+NoMergePolicy : A MergePolicy which never returns merges to execute.
+NoMergeScheduler : A MergeScheduler which never executes any merges.
+NumericDocValues : A per:document numeric value.
+OneMergeWrappingMergePolicy : A wrapping merge policy that wraps the MergePolicy.OneMerge objects returned by the wrapped merge policy.
+OrdinalMap : Maps per:segment ordinals to/from global ordinal space, using a compact packed:ints representation.
+OrdTermState : An ordinal based TermState
+ParallelCompositeReader : An CompositeReader which reads multiple, parallel indexes.
+ParallelLeafReader : An LeafReader which reads multiple, parallel indexes.
+PersistentSnapshotDeletionPolicy : A SnapshotDeletionPolicy which adds a persistence layer so that snapshots can be maintained across the life of an application.
+PointValues : Access to indexed numeric values.
+PostingsEnum : Iterates through the postings.
+PrefixCodedTerms : Prefix codes term instances (prefixes are shared).
+Builder : Builds a PrefixCodedTerms: call add repeatedly, then finish.
+TermIterator : An iterator over the list of terms stored in a PrefixCodedTerms.
+QueryTimeoutImpl : An implementation of QueryTimeout that can be used by the ExitableDirectoryReader class to time out and exit out when a query takes a long time to rewrite.
+ReaderManager : Utility class to safely share DirectoryReader instances across multiple threads, while periodically reopening.
+ReaderSlice : Subreader slice from a parent composite reader.
+ReaderUtil : Common util methods for dealing with IndexReaders and IndexReaderContexts.
+SegmentCommitInfo : Embeds a [read:only] SegmentInfo and adds per:commit  fields.
+SegmentInfo : Information about a segment such as its name, directory, and files related to the segment.
+SegmentInfos : A collection of segmentInfo objects with methods for operating on those segments in relation to the file system.
+FindSegmentsFile : Utility class for executing code that needs to do something with the current segments file.
+SegmentReader : IndexReader implementation over a single segment.
+SegmentReadState : Holder class for common parameters used during read.
+SegmentWriteState : Holder class for common parameters used during write.
+SerialMergeScheduler : A MergeScheduler that simply does each merge  sequentially, using the current thread.
+SimpleMergedSegmentWarmer : A very simple merged segment warmer that just ensures  data structures are initialized.
+SingleTermsEnum : Subclass of FilteredTermsEnum for enumerating a single term.
+SlowCodecReaderWrapper : Wraps arbitrary readers for merging.
+SnapshotDeletionPolicy : An IndexDeletionPolicy that wraps any other IndexDeletionPolicy and adds the ability to hold and later release snapshots of an index.
+SoftDeletesDirectoryReaderWrapper : This reader filters out documents that have a doc values value in the given field and treat these documents as soft deleted.
+SoftDeletesRetentionMergePolicy : This MergePolicy allows to carry over soft deleted documents across merges.
+SortedDocValues : A per:document byte[] with presorted values.
+SortedNumericDocValues : A list of per:document numeric values, sorted  according to Long.compare(long, long).
+SortedSetDocValues : A multi:valued version of SortedDocValues.
+StandardDirectoryReader : Default implementation of DirectoryReader.
+StoredFieldVisitor : Expert: provides a low:level means of accessing the stored field values in an index.
+Term : A Term represents a word from text.
+TermContext : Maintains a IndexReader TermState view over IndexReader instances containing a single term.
+Terms : Access to the terms in a specific field.
+TermsEnum : Iterator to seek (TermsEnum.seekCeil(BytesRef), TermsEnum.seekExact(BytesRef)) or step through (BytesRefIterator.next() terms to obtain frequency information (TermsEnum.docFreq()), PostingsEnum or PostingsEnum for the current term (TermsEnum.postings(org.apache.lucene.index.PostingsEnum).
+TermState : Encapsulates all required internal state to position the associated TermsEnum without re:seeking.
+TieredMergePolicy : Merges segments of approximately equal size, subject to  an allowed number of segments per tier.
+MergeScore : Holds score and explanation for a single candidate  merge.
+TwoPhaseCommitTool : A utility for executing 2:phase commit on several objects.
+UpgradeIndexMergePolicy : This MergePolicy is used for upgrading all existing segments of an index when calling IndexWriter.forceMerge(int).
+DocValuesType : DocValues types.
+AcceptStatus : Return value, if term should be accepted or the iteration should END.
+IndexOptions : Controls how much information is stored in the postings lists.
+OpenMode : Specifies the open mode for IndexWriter.
+PauseReason : Reason for pausing the merge thread.
+MergeTrigger : MergeTrigger is passed to MergePolicy.findMerges(MergeTrigger, SegmentInfos, MergePolicy.MergeContext) to indicate the event that triggered the merge.
+Relation : Used by PointValues.intersect(org.apache.lucene.index.PointValues.IntersectVisitor) to check how each recursive cell corresponds to the query.
+Status : Enumeration of possible return values for StoredFieldVisitor.needsField(org.apache.lucene.index.FieldInfo).
+SeekStatus : Represents returned result from TermsEnum.seekCeil(org.apache.lucene.util.BytesRef).
+CorruptIndexException : This exception is thrown when Lucene detects an inconsistency in the index.
+ExitingReaderException : Exception that is thrown to prematurely terminate a term enumeration.
+IndexFormatTooNewException : This exception is thrown when Lucene detects an index that is newer than this Lucene version.
+IndexFormatTooOldException : This exception is thrown when Lucene detects an index that is too old for this Lucene version
+IndexNotFoundException : Signals that no index was found in the Directory.
+MergeAbortedException : Thrown when a merge was explicitly aborted because  IndexWriter.abortMerges() was called.
+MergeException : Exception thrown if there are any problems while executing a merge.
+CommitFailException : Thrown by TwoPhaseCommitTool.execute(TwoPhaseCommit...) when an object fails to commit().
+PrepareCommitFailException : Thrown by TwoPhaseCommitTool.execute(TwoPhaseCommit...) when an object fails to prepareCommit().

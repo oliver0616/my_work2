@@ -1,0 +1,265 @@
+
+Community Based Educational Data Repositories and 
+Analysis Tools 
+
+Ken Koedinger, Ran Liu, John Stamper 
+Carnegie Mellon University 
+
+5000 Forbes Avenue 
+Pittsburgh, PA 15201 
+
+koedinger,ranliu@cmu.edu; jstamper@cs.cmu.edu 
+
+Candace Thille 
+Stanford University 
+505 Lasuen Mall  
+
+Stanford, CA 94305 
+cthille@stanford.edu 
+
+Phil Pavlik 
+University of Memphis 
+400 Innovation Drive 
+Memphis, TN 38152 
+
+ppavlik@memphis.edu 
+ 
+
+ABSTRACT 
+This workshop will explore community based repositories for 
+educational data and analytic tools that are used to connect 
+researchers and reduce the barriers to data sharing. Leading 
+innovators in the field, as well as attendees, will identify and 
+report on bottlenecks that remain toward our goal of a unified 
+repository. We will discuss these as well as possible solutions. We 
+will present LearnSphere, an NSF funded system that supports 
+collaborating on and sharing a wide variety of educational data, 
+learning analytics methods, and visualizations while maintaining 
+confidentiality. We will then have hands-on sessions in which 
+attendees have the opportunity to apply existing learning analytics 
+workflows to their choice of educational datasets in the repository 
+(using a simple drag-and-drop interface), add their own learning 
+analytics workflows (requires very basic coding experience), or 
+both. Leaders and attendees will then jointly discuss the unique 
+benefits as well as the limitations of these solutions. Our goal is to 
+create building blocks to allow researchers to integrate their data 
+and analysis methods with others, in order to advance the future of 
+learning science. 
+
+CCS Concepts 
+• Information systems~Data warehouses 
+• Information systems~Data mining 
+
+Keywords 
+Learning metrics; data storage and sharing; data-informed 
+learning theories; modeling; data-informed efforts; scalability. 
+
+1. WORKSHOP BACKGROUND 
+A confluence of increasing interest both in educational technology 
+and in the use of data to improve learning has led to increased 
+tracking and storing of detailed information on student learning 
+activities and progress. There is a large variety in the kinds, 
+density, and volume of such data and to the analytic and adaptive 
+learning methods that take advantage of it. 
+
+Data can range from simple to complex: from information such as 
+clicks on menu items or structured symbolic expression, to harder 
+to interpret data, such as free-form essays, discussion board 
+dialogues, or affective sensors. Another dimension of variation is 
+
+the time scale in which observations of student behavior occur. 
+Click actions are observed within seconds in fluency-oriented 
+math games or in vocabulary practice. Problem-solving steps are 
+observed every 20 seconds or so in modeling tool interfaces (e.g., 
+spreadsheets, graphers, computer algebra) and in intelligent 
+tutoring systems for math and science. Answers to 
+comprehension-monitoring questions are given and learning 
+resource choices are made every 15 minutes or so in massive open 
+online courses (MOOCs). Lesson completion is observed across 
+days in learning management systems, chapter/unit test results are 
+collected after weeks, end-of-course completion and exam scores 
+are collected after many months, degree completion occurs across 
+years, and long-term human goals like landing a job and achieving 
+a good income occur across lifetimes. 
+
+Different paradigms of data-driven education research differ both 
+in the types of data they tend to use and in the time scale in which 
+that data is collected.  In fact, relative isolation within disciplinary 
+silos is arguably fostered and fed by differences in the types and 
+time scale of data used [4, 5]. There is a broad need for an 
+overarching data infrastructure to not only support sharing and use 
+within different levels of student data (e.g., clickstream, MOOC, 
+discourse, affect), but to also support investigations that bridge 
+across them and connect across timescales. A community based 
+infrastructure for sharing this diversity of educational data, as well 
+as analytic tools and workflows that work within and across 
+different levels of data, is needed. Such an infrastructure is needed 
+to support novel, transformative, and multidisciplinary approaches 
+to analyzing educational data that can help us understand how and 
+when long-term learning outcomes emerge as a causal 
+consequence of real-time student interactions within the complex 
+set of instructional options available [4]. Access to this variety of 
+educational data can yield actionable knowledge that improves 
+learning environments and technologies in the medium term, and 
+revolutionize learning in the longer term. 
+
+LearnSphere is an NSF funded system that supports sharing and 
+collaboration across a wide variety of educational data, including 
+MOOC data, as well as the integration of data analysis methods 
+and tools. It is poised to transform scientific discovery and 
+innovation in education through a scalable data infrastructure 
+designed to enable educators, learning scientists, and researchers 
+to easily collaborate on learning analytics over shared data. A 
+standard set of analysis tools allows researchers to quickly start 
+gathering information. Researchers can also leverage user-
+contributed analytic workflows to perform other methods of 
+analyses. 
+
+2. WORKSHOP OBJECTIVES 
+2.1 Purpose and Goals 
+The goals of this workshop are threefold. First, leaders and 
+attendees will engage in high-level discussions about the needs 
+
+Permission to make digital or hard copies of part or all of this work for 
+personal or classroom use is granted without fee provided that copies are 
+not made or distributed for profit or commercial advantage and that 
+copies bear this notice and the full citation on the first page. Copyrights 
+for third-party components of this work must be honored. For all other 
+uses, contact the Owner/Author. Copyright is held by the 
+owner/author(s). 
+LAK '17, March 13-17, 2017, Vancouver, BC, Canada 
+ACM 978-1-4503-4870-6/17/03. 
+http://dx.doi.org/10.1145/3027385.3029442 
+
+
+
+and concerns of the learning analytics community with respect to 
+sharing data and analysis tools. We will be begin and end the 
+workshop with these high-level discussions. Second, we will 
+present information on LearnSphere, an existing system that 
+supports sharing and collaboration across a wide variety of 
+educational data as well as the integration of data analysis tools, 
+as an in-progress solution to some of these community needs. 
+Finally, we will engage attendees in hands-on experience working 
+with different learning analytic workflows using LearnSphere. 
+
+In the workshop, attendees will learn about, discuss, and gain 
+hands-on experience the latest technologies used to connect 
+researchers while reducing barriers to data sharing. The hands-on 
+session may result in new learning analytics discoveries based on 
+applying and comparing analysis workflows to attendees’ choice 
+of educational datasets. It may also result in attendees successfully 
+incorporating their own analysis method or tool into LearnSphere, 
+thus making it available to the entire community of researchers 
+(including non-programmers). Workshop leaders and attendees 
+will also engage in lively discussion, providing input on what 
+barriers remain to sharing data and analyses and brainstorming 
+potential solutions that could be incorporated into an 
+infrastructure such as LearnSphere. The workshop will result in 
+new goals to incorporate additional, community needs-driven 
+functionalities into LearnSphere. As a broader contribution to the 
+field of learning analytics, the workshop will bring together 
+researchers who do analysis on varying levels of educational data, 
+which will foster collaboration that bridges gaps between these 
+levels of analysis. 
+
+LearnSphere’s current infrastructure allows for individuals to 
+share their data, models, and visualizations as well as link them to 
+others while maintaining confidentiality. It maintains a central 
+store of metadata about what datasets exist but has distributed 
+features allowing contributors control over access to their data. 
+
+In addition to supporting sharing of a wide variety of educational 
+data, LearnSphere’s goal is to support any custom analysis 
+method that can be applied to the datasets and to produce outputs 
+in a standardized way that facilitates both quantitative and 
+qualitative model comparisons. This workflow feature allows 
+researchers to apply their own analysis methods to the vast array 
+of datasets available in the educational data repository. It affords 
+researchers the advantages of (1) using the built-in learning curve 
+visualizations on the outputs of their own analysis workflows, (2) 
+easily comparing their results both quantitatively and graphically 
+to the outputs of any other analysis methods that are currently in 
+LearnSphere (e.g., Bayesian Knowledge Tracing [1], Performance 
+Factors Analysis [6], MOOC activity analysis [3], and others) or 
+that have been uploaded to LearnSphere as a custom workflow, 
+and (3) sharing their own analysis workflows with the community 
+of researchers. Without any prior programming experience, 
+researchers can use LearnSphere’s drag-and-drop interface to 
+compare, across alternative analysis methods and across many 
+different datasets, model fit metrics like AIC, BIC, and cross 
+validation as well as parameter estimates themselves. In the 
+hands-on portion of the workshop, we will provide full support to 
+attendees in exploring one or more of three activities: 
+1. Applying analysis workflows to datasets and modifying 
+
+those workflows using existing LearnSphere components. 
+(GUI interface; no programming experience required) 
+
+2. Editing existing analysis workflow components. (Requires 
+only end-user programming experience; attendees can make 
+small modifications to existing code) 
+
+3. Writing new workflow components. (Requires programming 
+experience) 
+
+ 
+
+In the discussion sessions, some of the questions we will pose to 
+attendees include: 
+1. What are some of the challenges and barriers in doing the 
+
+kind of learning analytics you think would be most 
+interesting and/or important? 
+
+2. What tools for learning analytics do you currently use and in 
+what ways are they not quite ideal? 
+
+3. For those with data that you'd like help in analyzing, what are 
+the challenges and barriers in getting the kind of help that 
+you would like?  For example, is making your data available 
+to others problematic because of privacy or proprietary 
+concerns? 
+
+In addition to engaging attendees in both discussion and hands-on 
+experience using a system that supports community data and 
+analysis sharing, the workshop will involve them in the ongoing 
+development of LearnSphere. Community driven feedback is 
+critical to furthering the infrastructure that will support 
+researchers in transforming our understanding of human learning 
+in the long term. The ultimate goal is to create building blocks 
+that allow individual groups of researchers to integrate their data 
+with other researchers we can advance the learning sciences the 
+way that harnessing and sharing big data has done for other fields. 
+
+3. REFERENCES 
+[1] Corbett, A.T., & Anderson, J.R. (1995). Knowledge Tracing: 
+
+Modeling the Acquisition of Procedural Knowledge. User 
+Modeling and User-Adapted Interaction, 4, 253-278. 
+
+[2] Koedinger, K.R., Booth, J.L., & Klahr, D. (2013). 
+Instructional complexity and the science to constrain it. 
+Science, 342(6161), 935-937. 
+
+[3] Koedinger, K.R., Kim, J., Jia, J.Z., McLaughlin, E.A., & 
+Bier, N.L. (2015). Learning is not a spectator sport: Doing is 
+better than watching for learning from a MOOC. In 
+Proceedings of the 2nd ACM Conference on Learning@ 
+Scale, pp. 111-120. 
+
+[4] Koedinger, K.R., Corbett, A.T., & Perfetti, C. (2012). The 
+Knowledge?Learning?Instruction framework: Bridging the 
+science?practice chasm to enhance robust student learning. 
+Cognitive science, 36(5), 757-798. 
+
+[5] Newell, A. (1990). Unified theories of cognition. Cambridge, 
+MA: Harvard University Press. 
+
+[6] Pavlik, P.I., Cen, H., & Koedinger, K.R. (2009). 
+Performance factors analysis – A new alternative to 
+knowledge tracing. In Proceedings of the 14th International 
+Conference on AIED, 531–538. 
+
+
+

@@ -1,0 +1,706 @@
+
+From prediction to impact:  
+Evaluation of a learning analytics retention program 
+
+Shane Dawson 
+University of South 
+
+Australia 
+Adelaide, Australia 
+
+shane.dawson@ 
+unisa.edu.au 
+
+Jelena Jovanovic 
+University of Belgrade 
+
+Serbia 
+jeljov @fon.rs 
+
+Dragan Gaševi?  
+The University of 
+
+Edinburgh 
+UK 
+
+dgasevic@acm.org 
+
+Abelardo Pardo  
+The University of Sydney 
+
+Australia 
+Abelardo.Pardo@ 
+
+sydney.edu.au 
+
+  
+ABSTRACT 
+Learning analytics research has often been touted as a means to 
+address concerns regarding student retention outcomes. However, 
+few research studies to date, have examined the impact of the 
+implemented intervention strategies designed to address such 
+retention challenges. Moreover, the methodological rigor of some 
+of the existing studies has been challenged. This study evaluates 
+the impact of a pilot retention program. The study contrasts the 
+findings obtained by the use of different methods for analysis of 
+the effect of the intervention. The pilot study was undertaken 
+between 2012 and 2014 resulting in a combined enrolment of 
+11,160 students. A model to predict attrition was developed, 
+drawing on data from student information system, learning 
+management system interactions, and assessment. The predictive 
+model identified some 1868 students as academically at-risk. 
+Early interventions were implemented involving learning and 
+remediation support. Common statistical methods demonstrated a 
+positive association between the intervention and student 
+retention. However, the effect size was low. The use of more 
+advanced statistical methods, specifically mixed-effect methods 
+explained higher variability in the data (over 99%), yet found the 
+intervention had no effect on the retention outcomes. The study 
+demonstrates that more data about individual differences is 
+required to not only explain retention but to also develop more 
+effective intervention approaches. 
+
+CCS Concepts 
+J.1 [Administrative Data Processing]: Education; K.3.0 
+[Computer Uses in Education]: General 
+
+Keywords 
+Student retention; learning analytics; mixed-effects model; early 
+alert systems; predictive models 
+
+1. INTRODUCTION 
+There has been an abundance of learning analytics research 
+investigating the development of predictive models and early alert 
+systems to address concerns regarding declining student retention 
+outcomes in higher education. The underpinning drivers for such 
+
+work are valid and well-grounded. Despite numerous university 
+and government policy changes, increased accountability 
+measures, and changes in the teaching practice [16; 30], there 
+continues to be a very real and growing concern regarding student 
+retention in post-secondary school settings. Clearly, improving 
+retention is a complex challenge. The capacity to accurately 
+predict students that may or may not continue in their course of 
+study comprises only one small piece of a larger puzzle.  
+
+This present study examined the impact of a pilot retention 
+program implemented in a large metropolitan University setting. 
+The retention program involved the development of a predictive 
+model to identify students that were deemed as at-risk of 
+academic success and retention. The designed retention strategy 
+involved implementing a series of campaigns (calls) in order to 
+contact students and provide learning and remediation support. 
+The present study specifically evaluates the impact of the contact 
+and support interventions on student retention outcomes. 
+Furthermore, the study highlights the need for critically evaluating 
+the methods employed to assess the impact on retention outcomes. 
+
+2. PREDICTIVE MODELS 
+Much of the learning analytics research to date has centered on 
+the development of models to predict student academic success. In 
+so doing, this work has effectively scaffolded the development of 
+early alert systems that aim to provide a form of intelligence to 
+course instructors that in-turn are able to enact timely learning 
+support interventions. A key example in this work is the Purdue 
+Signals early alert system. Campbell [1; 7] established a 
+predictive model based on student prior grades, demographic 
+details and engagement with the University’s learning 
+management system (LMS). The Signals early alert system uses 
+traffic light signals (red, amber, and green) as a metaphor for 
+predicting student academic success [2]. While predictive 
+analytics at this time was not a new concept for education, the 
+Purdue Signals was novel in its attempt to bring real-time 
+actionable intelligence into teaching practice.  
+
+More recently, we have witnessed a wealth of new commercial 
+and proprietary early alert systems. For instance, Brightspace has 
+developed Insights; BlackBoard has established BB analytics and 
+X-Ray analytics while research and reports on in-house developed 
+products such as E2 Coach [32], Course Signals [1], and Student 
+explorer [19] have been regularly presented at learning analytics 
+conferences. Without doubt, the continuing evolution of machine 
+learning and data-mining approaches are increasingly leading to 
+more and more sophisticated applications that are targeted 
+towards supporting student academic success [3]. However, as 
+noted by Jayaprakash et al., [14] “models do not influence course 
+completion and retention rates without being combined with 
+
+Permission to make digital or hard copies of all or part of this work for 
+personal or classroom use is granted without fee provided that copies are 
+not made or distributed for profit or commercial advantage and that copies 
+bear this notice and the full citation on the first page. Copyrights for 
+components of this work owned by others than ACM must be honored. 
+Abstracting with credit is permitted. To copy otherwise, or republish, to 
+post on servers or to redistribute to lists, requires prior specific permission 
+and/or a fee. Request permissions from Permissions@acm.org. LAK '17, 
+March 13-17, 2017, Vancouver, BC, Canada  © 2017 ACM. ISBN 978-1-
+4503-4870-6/17/03…$15.00  
+DOI: http://dx.doi.org/10.1145/3027385.3027405  
+
+
+
+effective intervention strategies” (p8.). Further work is required to 
+determine how such analytics can be effectively used to optimize 
+student learning. For instance, the identification of the types and 
+timing of interventions that will have optimal impact on student 
+learning outcomes remain largely unknown. To date the predictive 
+analytic models have been generally evaluated against the degree 
+of accuracy the model predicts the identified outcome; e.g., 
+student academic success in terms of pass or fail. For example, 
+Romero, et al., [27; 29] provided a comprehensive overview 
+detailing the process for mining LMS user-interaction data to 
+establish a prediction of student grades. Barber and Sharkey [4] 
+developed a model to identify students at-risk of academic success 
+based on data from the LMS, finances and student information 
+system. Wolff, et al., [31] added a further dimension by 
+establishing a model based on changes in student LMS user-
+behavior. Other work in this area has focused on developing 
+models from specific LMS tools such as discussion forums [21; 
+22; 28]. 
+
+Even within this research there are further refinements required to 
+aid replicability of findings and ensure theoretical and 
+methodological assumptions are well considered. For instance, 
+Gasevic, et al., [10] demonstrated the impact of alternate learning 
+contexts on the performance of an established model for 
+predicting student academic success. The authors noted that the 
+types of tools used, alongside the differing modes and diversity of 
+assessment practices heavily influence the accuracy of the 
+identified model. Similarly, Kovanovic, et al., [18] revealed the 
+vast array of differing approaches to defining student time on-task 
+in a LMS within the analytics research literature. The authors 
+empirically confirmed that how time on-task is calculated and 
+subsequently incorporated as a key variable in any developed 
+model strongly influences the performance of the predictive 
+model. Kovanovic, et al., [17; 18] stressed the importance for 
+future learning analytics research to clearly note the underpinning 
+assumptions and definitions related to how key variables are 
+defined and calculated when developing predictive models to 
+better aid generalization and replicability of the findings.  
+
+Research evaluating the impact of early alert systems on student 
+learning has been less forthcoming. However, there are some 
+notable examples. Arnold & Pistilli [2] reported the impact the 
+Purdue Course Signals early alert system has had on student 
+academic performance and retention. The results highlight the 
+significant positive association between the use of Course Signals 
+and student academic performance. However, subsequent 
+discussions related to the work have contested the statistical 
+approach undertaken and cast some doubt on the noted impact of 
+the introduction of Course Signals [8]. Wright, et al., [32] 
+described the student support tool E2 Coach developed at the 
+University of Michigan. Where prior, alert systems have been 
+designed to predict pass/ fail or specific academic performance, 
+the E2 Coach incorporated a “Better Than” or “Worse Than” 
+Expected value. The E2 Coach is very much targeted at providing 
+meaningful personalized automated support communications to 
+aid student learning in first year Physics. Wright, et al., [32] noted 
+that use of the tool was positively associated with a Better Than 
+Expected score. Simply put, high users of the tool performed 
+better. Again the results of the early alert system are promising yet 
+require further investigation to ensure that the positive findings 
+are attributed to the tool and the associated learning support 
+process in lieu of other mitigating or confounding factors. This 
+research begins to illustrate the high level of complexity involved 
+when attempting to identify how such early alert interventions can 
+be meaningfully evaluated. 
+
+3. PILOT RETENTION PROGRAM 
+3.1 Theoretical foundation 
+The pilot retention program presented in this study was grounded 
+in the student retention and development literature [16]. This body 
+of research argues that a student’s level of self-efficacy, 
+resilience, sense of connection and study motivation all play a role 
+in shaping their academic outcomes. The relationship between 
+these cognitive and affective dimensions and actual outcomes is 
+recursive: successful academic outcomes will in turn strengthen a 
+student’s cognitive and affective dispositions [6]. However, 
+academic failure can negatively impact on these dispositions, 
+possibly perpetuating poor performance. The design of the 
+retention program recognized this duality. The pilot retention 
+program sought to heighten a student’s chance for academic 
+success through the proactive provision of targeted advising and, 
+where required, referral to counseling, learning, disability or other 
+specialist support services. The program campaign calls informed 
+students about these services in the university that were available 
+to them in the belief that uptake of these services would improve 
+student success outcomes. By advising of support options, and 
+encouraging students to access these, the program both respected, 
+and sought to develop, student autonomy and agency while also 
+equipping them with resources and knowledge that had the 
+potential to enhance their future persistence and resilience in 
+study at university.  
+
+While the pilot program primarily targeted student success and 
+retention outcomes, it also provided an important pastoral care 
+benefit. By contacting students identified to be academically ‘at 
+risk’, the program was engaging with individuals that have a 
+heightened propensity and vulnerability to be socially and 
+academically disengaged from the institution [15; 33], or have 
+their academic experiences mediated by a variety of differing and 
+often extenuating personal factors [11; 33]. These cohorts of 
+students often possess poorly developed help-seeking behaviors 
+that can lead to further isolation [20; 24]. By reaching out to 
+students through campaign calls, the program circumvented the 
+need for students to initiate their help-seeking process. 
+Additionally, the contact serves as a symbolic function that 
+reinforces to the student that she/he is an important member of the 
+university community.  
+
+3.2 Approach 
+The pilot program was introduced post the establishment of a 
+University model predicting student performance and retention. 
+The predictive model was developed using an integrated 
+classification and association rule mining algorithm (CBA). The 
+model was tested for accuracy using historical data sets including 
+basic student demographic and LMS activity variables. In 
+summary, student engagement activity with the institution’s LMS, 
+as well as prior study location (secondary school), parental level 
+of education and distance from university were negatively 
+associated with performance and retention. The model contributed 
+to the development of a set of potential triggers for providing an 
+alert for a learning support intervention. The interventions 
+consisted of multiple campaigns (calls) over the semester of study 
+to maximize opportunities to reach students. The triggers were 
+grouped according to three main categories: LMS engagement, 
+attendance in class, or academic (referring to grades, or other 
+academic outcomes such as failing to submit an assignment). 
+
+The pilot program was introduced into 17 first-year university on-
+campus courses involving disciplines such as math, accounting, 
+health, and computer science. The diversity of courses ensured all 
+
+
+
+faculties were represented in the pilot program. The combined 
+course enrolment represented some 11160 students. Within these 
+courses, 1868 students of the total enrolment were identified as 
+vulnerable to poor academic outcomes and an attempt was made 
+to contact the students. Within each campaign, two attempts were 
+made to contact a student identified as “at-risk”. The mode of 
+contact was via phone calls undertaken by trained personnel. Over 
+the duration of the pilot program some 1271 students were 
+successfully contacted, representing 68% of all students identified 
+as at risk. All data related to the student cases were combined with 
+individual academic data, including, course outcome (e.g. pass or 
+fail, and GPA equivalence), and retention data (defined as student 
+enrolment in the following semester).  
+
+3.3 Analyses 
+Student retention (Retention) was the dependent variable for all 
+analyses undertaken. Retention is defined as a binary variable 
+indicating if a student continued in their future studies or 
+alternatively ceased university study or, at minimum did not enroll 
+in the following semester. The independent variables included: i) 
+basic student demographics: Age (numeric), Gender (binary), and 
+International (international/ domestic), ii) students' academic load 
+(AcademicLoad), a binary variable indicating if a student had full 
+or partial academic load; iii) Contacted, a binary variable 
+indicating if a student responded to an intervention attempt (i.e., 
+he/she was successfully contacted); iv) variables related to the 
+timing of an intervention attempt: StudyPeriod, a binary variable, 
+as the intervention program took place in semester 1 or 2, and 
+Campaign, nominal variable indicating in which of the 4 
+campaigns of a semester a particular intervention attempt was 
+made. A student may have been exposed to several intervention 
+attempts (in case of 23.23% of students, an intervention was 
+attempted more than once). All students were uniquely identified 
+by their ids (StudentID).  
+
+To examine the association between the intervention and the 
+retention outcome we started with statistical methods 
+'traditionally' used for this type of task, namely Chi Square test of 
+association and logistic regression. This was followed by 
+generalized (namely, logistic) mixed-effect models – statistical 
+models that include a combination of fixed and random effects, 
+and allow for assessing the influence of the fixed effects on the 
+outcome variable after accounting for any other variables (random 
+effects) that might have affected the outcome but could not be 
+controlled [13]. First, we built 'null' mixed-models, with random 
+effects only (as baseline), and then several 'full' mixed-models 
+with both fixed and random effects. A comparison of the 'null' 
+model with the 'full' models allowed us to determine whether the 
+intervention could predict the retention outcome above and 
+beyond the random effects. Akaike Information Criterion (AIC), 
+Log Likelihood (LL) and a likelihood ratio test were used to 
+assess the fitness of the mixed models. To estimate the variance 
+explained by the mixed-models, we used a pseudo R2 method 
+suggested by Nakagawa and Schielzeth [23]. In particular, we 
+computed marginal R2 (?!! ), which estimates the variance 
+explained by the fixed effects only, and conditional R2 (?!!) that 
+estimates the variance explained by the entire model (both fixed 
+and random effects). All the analyses were done in R. The lme4 R 
+package [5] was used for building the mixed-models. Statistical 
+significance (alpha) was set to 0.05. 
+
+4. RESULTS 
+Chi Square test of association indicated a significant association 
+between the intervention (Contacted variable) and the retention 
+
+outcome (Retention): ?! = 6.3757, ? = 0.0116, though with a 
+very small effect size (Crammer's V=0.052). 
+
+Logistic regression with Retention as the outcome variable and 
+Contacted as the only predictor variable showed that the 
+intervention (Contacted) was a significant predictor of retention 
+outcomes (? = 0.2718, ? = 0.01). After exponentiating the 
+coefficient (??? ? = 1.3124), we found that the odds of 
+contacted students keeping with the studies were 31.24% higher 
+than for those were not contacted. However, the explanatory 
+power of this model was very low, R2=0.005.   
+
+The first logistic mixed-effect model was a null model (MN) with 
+StudentID as the only random effect. This model proved to have 
+exceptional explanatory power explaining 99.23% of the 
+variability in Retention (i.e., ?!! = 0.9923). This result made it 
+clear that the variability in the retention originated in the student-
+specific features. Accordingly, the next step was to examine full 
+models with StudentID as the random effect and student-related 
+variables as fixed effects, and see if at least part of the student-
+specific variability could be attributed to those fixed effects.  
+
+The first full logistic mixed-model (MF1) with the Contacted 
+variable as the only fixed effect and StudentID as the random 
+effect was not significantly different than the baseline model 
+(MN), ?! = 0.5605, ? = 0.454. This suggested that the 
+intervention (Contacted) did not have a significant effect on the 
+Retention, when controlling for student-specific features, which 
+was confirmed by the model estimates for the fixed effect 
+(? = 0.2769, ? = 0.452).  
+
+The second full logistic mixed-model (MF2) included all student-
+related variables (Age, Gender, International, AcademicLoad, 
+Contacted) as fixed effects and StudentID as the random effect. 
+As MF1, this model was also no different than the baseline (MN), 
+?! = 1.6294, ? = .8977. This finding indicated that none of the 
+available student-related variables had a significant effect on the 
+Retention, which was confirmed by the MF2 estimates for the fixed 
+effects, none of which was significant. The model still explained 
+99.22% of variability in the Retention variable (i.e., ?!! =
+0.9922), but that was originating almost exclusively from the 
+random effect due to low value of marginal R2 (?!! = 0.0001). 
+This further means that there are other student-specific variables 
+(that we do not have data about) that influence students' retention 
+outcome. 
+
+With the third full logistic mixed-model (MF3) we aimed to 
+examine if some elements of the timing of the intervention 
+program affected the retention. Therefore, MF3 included 
+StudyPeriod and Campaign as fixed effects and StudentID as the 
+only random effect. Initially, we included interactions between 
+StudyPeriod and Contacted and Campaign and Contacted in MF3, 
+but the model failed to converge. These interactions were, 
+subsequently, examined in separate mixed-models, but were 
+insignificant. The MF3 model proved to be better than the baseline 
+(MN), ?! = 44.287, ? < 0.001, suggesting that at least one of the 
+fixed effects was significant. Indeed, StudyPeriod proved 
+significant (? = ?2.5918, ? < 0.001), indicating that, other 
+things being equal, the odds of keeping with the studies in case 
+the intervention program took place in study period 5 were 92.5% 
+lower than when it took place in study period 2 (exp(?) = 0.075). 
+However, the explanatory power of the StudyPeriod effect in 
+comparison to the power of student-idiosyncratic features 
+(unknown to us at this moment) is very small: marginal R2, 
+?!! = 0.0023, while the R
+
+2 for the overall MF3 model, ?!! =
+0.9940. 
+
+
+
+5. DISCUSSION 
+At LAK2016, Clow and colleagues [9] held a novel workshop 
+aptly titled “LAK Failathon”. The workshop was held in the spirit 
+of learning from failed learning analytic projects. As the 
+researchers noted: “most papers in the learning analytics literature 
+report success or, at least, read as if they are reporting success. 
+This is almost certainly not because learning analytics research 
+and activity are always successful. Generally, we report our 
+successes widely, but keep our failures to ourselves.” (p. 509). 
+This paper embraces the same spirit in reporting our learnings 
+from a less than successful learning analytics pilot project.  
+
+This paper outlined the evaluation of a pilot program that aimed to 
+address concerns over declining student retention in core first year 
+university courses. The findings illustrated that rigorous 
+methodological processes are required to ensure that reports of 
+impact are accurately represented. This is well demonstrated in 
+the paper through the employment of increasingly sophisticated 
+statistical approaches adopted to evaluate the overall impact of the 
+retention interventions. The initial findings using Chi square tests 
+revealed a significant association between the intervention and 
+retention outcomes. A similarly optimistic finding was observed 
+when performing a logistic regression with retention as the 
+outcome variable. The results indicated that contacted students 
+were approximately 31% more likely to be retained in their 
+studies over non-contacted students. Including additional student 
+attributes, age and international student status were also 
+significant variables. At this level of analysis, the interventions 
+would appear to be effective in achieving their desired outcome.  
+
+However, as dark clouds are harbingers of stormy days so too 
+were the outcomes of the logistic mixed-effect model. The results 
+were in stark contrast to the previous statistical analyses. In 
+essence the model demonstrated that the call campaigns were less 
+than successful and that the student-specific features, in lieu of the 
+actual implemented interventions, explained the variance. The 
+model was more robust and offered an almost perfect explanation 
+of the variance in the data. Hence, the model outcomes strongly 
+suggest that any improvement in retention cannot be attributed to 
+the pilot program.  
+
+This paper provides two important findings for future learning 
+analytics work evaluating early alert systems and the associated 
+intervention strategies. First, and as noted above, there is a need 
+for rigorous statistical approaches to validate any claims made 
+about impact of early alert systems and interventions. The paucity 
+of learning analytics research evaluating the impact of support 
+interventions can be explained in part, by the methodological 
+constraints associated with these forms of research. For example, 
+in most education settings the evaluation of any intervention 
+cannot be established through randomized control trials or control 
+groups. Hence, the limitations and constraints places a greater 
+emphasis on applying strong statistical methods. Second, further 
+data related to student individual differences such as motivation, 
+employment, prior studies and self-efficacy are required for 
+interventions to have impact.  
+
+Pardo and colleagues [25; 26] have previously argued that any 
+learning analytics feedback that is designed to improve student 
+learning must be personalized, instructional and timely. While this 
+advice reflects much of the assessment literature [12] the 
+complexity lies in the ability for educators to do this at scale and 
+at the optimal learning phase for each student. As such, Pardo et 
+al., [26] noted that there are significant challenges for educators in 
+developing sufficient knowledge of the data analyses, presentation 
+
+of results as well as the sense-making processes to appropriately 
+interpret such findings and translate them into meaningful 
+feedback processes. For the majority of teaching staff, the 
+capacity to fully appreciate and understand all steps in the 
+learning analytics chain to best enact personalized intervention 
+processes is by and large a complex and difficult undertaking.  
+
+To address these issues information related to student motivations, 
+career and learning goals can be requested at the commencement 
+of study. For instance, simply asking students via an online form 
+their reasons for undertaking the study, desired grade and career 
+and learning motivations would provide a deeper understanding of 
+the individual student and lead to richer personalization of learner 
+feedback. As a short example, a capable final year student 
+undertaking an elective course may only be seeking a pass grade. 
+In contrast other students may be seeking a high distinction to 
+maintain a high overall grade point average. The level of study, 
+motivation and timing of feedback that would be provided to 
+students in these examples would significantly differ. The work 
+by Wright, et al., [32] with the E2Coach is somewhat 
+representative of such a model. That is the integration of student 
+psychological dimensions with analytics automation processes. 
+However, the level of work required to code per course, and 
+instructor is exceedingly high and for broader adoption an 
+unlikely occurrence. Requesting student input and demonstrating 
+how this input can aid personalized feedback for students could be 
+a more scalable option to achieve similar outcomes.  
+
+6. CONCLUSION 
+This paper sought to derive productive learnings from a failed 
+pilot program. The study initially identified that the intervention 
+process was significant and positively associated with student 
+retention. However, while the introduction of more rigorous 
+statistics provided a greater explanatory power they also presented 
+a bleaker outcome. The study highlights the need to revise the 
+intervention process in order to sharpen its effectiveness. As noted 
+in the paper – even with marginal impact, the intervention process 
+still plays an important role in developing student community and 
+raising awareness of the available support services. 
+
+7. REFERENCES 
+[1] Arnold, K.E., 2010. Signals: Applying Academic Analytics. 
+
+In EDUCAUSE Quarterly Magazine EDUCAUSE. 
+[2] Arnold, K.E. and Pistilli, M., 2012. Course Signals at 
+
+Purdue: Using Learning Analytics to Increase Student 
+Success In Proceedings of the 2nd International Conference 
+on Learning Analytics and Knowledge (Vancouver, British 
+Columbia, Canada2012), ACM, 267-270. 
+
+[3] Baker, R.S.J.D. and Siemens, G., 2014. Educational data 
+mining and learning analytics. In Cambridge Handbook of 
+the Learning Sciences (2nd Edition), K. Sawyer Ed. 
+Cambridge University, New York. 
+
+[4] Barber, R. and Sharkey, M., 2012. Course correction: Using 
+analytics to predict course success. In Proceedings of the 
+2nd International Conference on Learning Analytics and 
+Knowledge (LAK’12) (Vancouver, Canada2012), ACM, 
+New York, USA, 259-262. DOI= 
+http://dx.doi.org/10.1145/2330601.2330664. 
+
+[5] Bates, D., Maechler, M., Bolker, B., and Walker, S., 2014. 
+lme4: Linear mixed-effects models using Eigen and S4. R 
+package version 1, 7. 
+
+[6] Brooman, S. and Darwent, S., 2014. Measuring the 
+beginning: a quantitative study of the transition to higher 
+education. Studies in Higher Education 39, 9, 1523-1541. 
+
+
+
+[7] Campbell, J., 2007. Utilizing student data within the course 
+management system to determine undergraduate student 
+academic success: An exploratory study Purdue University. 
+
+[8] Caulfield, M., 2013. What the Course Signals "Kerfuffle" is 
+About, and What it Means to You. Educause, 
+http://www.educause.edu/blogs/mcaulfield/what-course-
+signals-kerfuffle-about-and-what-it-means-you. 
+
+[9] Clow, D., Ferguson, R., Macfadyen, L., Prinsloo, P., and 
+Slade, S., 2016. LAK Failathon. In Sixth International 
+Conference on Learning Analytics & Knowledge, S. 
+Dawson, H. Drachsler and C. Rose Eds. ACM, Edinburgh, 
+Scotland, 509-511. DOI= 
+http://dx.doi.org/10.1145/2883851.2883918. 
+
+[10] Gaševi?, D., Dawson, S., Rogers, T., and Gasevic, D., 2016. 
+Learning analytics should not promote one size fits all: The 
+effects of instructional conditions in predicting academic 
+success. The Internet and Higher Education 28, 68-84. 
+DOI= 
+http://dx.doi.org/http://dx.doi.org/10.1016/j.iheduc.2015.10.
+002. 
+
+[11] Gilardi, S. and Guglielmetti, C., 2011. University life of 
+non-traditional students: Engagement styles and impact on 
+attrition. The Journal of Higher Education 82, 1, 33-53. 
+
+[12] Hattie, J. and Timperley, H., 2007. The power of feedback. 
+Review of Educational Research 77, 1, 81-112. 
+
+[13] Hayes, A.F., 2006. A Primer on Multilevel Modeling. 
+Human Communication Research 32, 4, 385–410. DOI= 
+http://dx.doi.org/https://doi.org/10.1111/j.1468-
+2958.2006.00281.x. 
+
+[14] Jayaprakash, S.M., Moody, E.W., Lauría, E., Regan, J.R., 
+and Baron, J.D., 2014. Early Alert of Academically At-Risk 
+Students: An Open Source Analytics Initiative Journal of 
+Learning Analytics 1, 1, 6-47. 
+
+[15] Kahu, E.R., 2013. Framing student engagement in higher 
+education. Studies in Higher Education 38, 5, 758-773. 
+
+[16] Kift, S., Nelson, K., and Clarke, J., 2010. Transition 
+Pedagogy: A third generation approach to FYE - A case 
+study of policy and practice for the higher education sector. 
+The International Journal of the First Year in Higher 
+Education 1, 1, 1-20. 
+
+[17] Kovanovic, V., Gasevic, D., Dawson, S., Joksimovic, S., 
+Baker, R.S., and Hatala, M., 2015. Does Time-on-task 
+Estimation Matter? Implications on Validity of Learning 
+Analytics Findings. Journal of Learning Analytics 2, 3, 81-
+110. DOI= 
+http://dx.doi.org/http://dx.doi.org/10.18608/jla.2015.23.6. 
+
+[18] Kovanovic, V., Gasevic, D., Dawson, S., Joksimovic, S., 
+Baker, R.S., and Hatala, M., 2015. Penetrating the black 
+box of time-on-task estimation. In Proceedings of the Fifth 
+International Conference on Learning Analytics And 
+Knowledge ACM, Poughkeepsie, New York, 184-193. 
+DOI= http://dx.doi.org/10.1145/2723576.2723623. 
+
+[19] Krumm, A.E., Waddington, R.J., Teasley, S.D., and Lonn, 
+S., 2014. A Learning Management System-Based Early 
+Warning System for Academic Advising in Undergraduate 
+Engineering. In Learning Analytics: From Research to 
+Practice,, J.A. Larusson and B. White Eds. Springer 
+Science+Business Media, New York, USA, 103-119. 
+
+[20] Laidlaw, A., Mclellan, J., and Ozakinci, G., 2015. 
+Understanding undergraduate student perceptions of mental 
+health, mental well-being and help-seeking behaviour. 
+Studies in Higher Education Published online, 1-13. DOI= 
+http://dx.doi.org/10.1080/03075079.2015.1026890. 
+
+[21] Macfadyen, L. and Dawson, S., 2010. Mining LMS data to 
+develop an “early warning system” for educators: A proof 
+of concept. Computers & Education 54, 2, 588-599. 
+
+[22] Morris, L.V., Finnegan, C., and Wu, S., 2005. Tracking 
+student behavior, persistence, and achievement in online 
+courses. Internet and Higher Education 8, 3, 221-231. 
+
+[23] Nakagawa, S. and Schielzeth, H., 2013. A general and 
+simple method for obtaining R2 from generalized linear 
+mixed-effects models. . Methods in Ecology and Evolution 
+4, 2, 133-142. 
+
+[24] Nichols, M., 2010. Student perceptions of support services 
+and the influence of targeted interventions on retention in 
+distance education. Distance Education 31, 1, 93-113. 
+
+[25] Pardo, A. and Dawson, S., 2016. Learning Analytics. How 
+can Data be used to Improve Learning Practice? . In 
+Measuring and visualising learning in the information-rich 
+classroom, P. Reimann, S. Bull, M. Kickmeier-Rust, R. 
+Vatrapu and B. Wasson Eds. Routledge, USA, 41-55. 
+
+[26] Pardo, A., Mirriahi, N., Martinez-Maldonado, R., 
+Jovanovic, J., Dawson, S., and Gaševi?, D., 2016. 
+Generating actionable predictive models of academic 
+performance. In Proceedings of the Sixth International 
+Conference on Learning Analytics & Knowledge 
+(Edinburgh, UK2016), ACM, New York, USA, 474-478. 
+
+[27] Romero, C., Espejo, P.G., Zafra, A., Romero, J.R., and 
+Ventura, S., 2013. Web usage mining for predicting final 
+marks of students that use Moodle courses. Comput. Appl. 
+Eng. Educ 21, 135-146. DOI= 
+http://dx.doi.org/10.1002/cae.20456. 
+
+[28] Romero, C., López, M.-I., Luna, J.-M., and Ventura, S., 
+2013. Predicting students' final performance from 
+participation in on-line discussion forums. Computers & 
+Education 68(10//), 458-472. DOI= 
+http://dx.doi.org/http://dx.doi.org/10.1016/j.compedu.2013.
+06.009. 
+
+[29] Romero, C. and Ventura, S., 2010. Educational Data 
+Mining: A Review of the State of the Art. IEEE 
+Transactions on Systems, Man and Cubernetics- PartC: 
+Applications and Reviews 40, 6, 601-618. 
+
+[30] Siemens, G., Dawson, S., and Lynch, G., 2013. Improving 
+the Productivity of the Higher Education Sector: Policy and 
+Strategy for Systems-Level Deployment of Learning 
+Analytics. Society for Learning Analytics Research; and the 
+Australian Government Office for Learning and Teaching. 
+
+[31] Wolff, A., Zdrahal, Z., Nikolov, A., and Pantucek, M., 
+2013. Improving retention: predicting at-risk students by 
+analysing clicking behaviour in a virtual learning 
+environment. In Proceedings of the Proceedings of the 
+Third International Conference on Learning Analytics and 
+Knowledge (Leuven, Belgium2013), ACM, New York, 
+USA, 145-149. DOI= 
+http://dx.doi.org/10.1145/2460296.2460324. 
+
+[32] Wright, M.C., Mckay, T., Hershock, C., Miller, K., and 
+Tritz, J., 2014. Better Than Expected: Using Learning 
+Analytics to Promote Student Success in Gateway Science. 
+Change: The Magazine of Higher Learning 46, 1, 28-34. 
+DOI= http://dx.doi.org/10.1080/00091383.2014.867209. 
+
+[33] Zaitseva, E., Milsom, C., and Stewart, M., 2013. 
+Connecting the dots: Using concept maps for interpreting 
+student satisfaction. Quality in Higher Education 19, 2, 
+225-247. 
+
+ 
+
+ 
+
+
+

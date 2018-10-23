@@ -1,0 +1,15 @@
+\documentclass{article}
+\usepackage{tikz}
+
+\begin{document}
+Hello world \newline
+THis is another line\newline
+\begin{tikzpicture}
+	\filldraw[gray] (0,0) circle (2pt)
+					(1,1) circle (2pt)
+					(2,1) circle (2pt)
+					(2,0) circle (2pt);
+	\draw (0,0) .. controls (1,1) and (2,1).. (2,0);
+\end{tikzpicture}
+
+\end{document}

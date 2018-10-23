@@ -1,0 +1,249 @@
+
+The Connected Learning Analytics Toolkit
+
+Kirsty Kitto
+
+#
+Aneesha Bakharia
+
+#
+Mandy Lupton
+
+#
+Dann Mallet
+
+#
+John Banks
+
+#
+
+Peter Bruza
+
+#
+Abelardo Pardo
+
+*
+Simon Buckingham Shum
+
+?
+Shane Dawson
+
+†
+
+Dragan Gaševi
+
+´
+
+c
+
+†,.
+George Siemens
+
+g
+Grace Lynch
+
+?
+
+#
+Queensland University of Technology (QUT), Australia,
+
+*
+University of Sydney, Australia,
+
+?
+University of
+
+Technology Sydney, Australia,
+
+†
+University of South Australia, Australia,
+
+.
+University of Edinburgh, Scotland,
+
+g
+University of Texas (Arlington) USA,
+
+?
+Royal Melbourne Institute of Technology (RMIT), Australia.
+
+kirsty.kitto@qut.edu.au
+
+ABSTRACT
+This demonstration introduces the Connected Learning An-
+alytics (CLA) Toolkit. The CLA toolkit harvests data about
+student participation in specified learning activities across
+standard social media environments, and presents informa-
+tion about the nature and quality of the learning interac-
+tions.
+
+Categories and Subject Descriptors
+K.3.1 [Computers and Education]: Computer Uses in
+Education; H.5.2 [Information Interfaces and Presen-
+tation]: User Interfaces
+
+Keywords
+sensemaking, dashboards, social learning analytics
+
+1. THE CONNECTED LEARNING ANALYT-
+ICS TOOLKIT
+
+The Connected Learning Analytics Toolkit (CLA Toolkit)
+aims to improve the quality of student engagement and learn-
+ing in collaborative online environments [8]. It does so by in-
+corporating and analysing data from social media platforms
+that the majority of students already use in their personal
+lives, and increasingly make use of in education. The toolkit
+addresses prior challenges associated with teaching outside
+of the Learning management system (LMS) by allowing for
+data to be collated and visualised across a suite of educa-
+tion technologies and social media that any teacher could
+choose as fit for purpose. Students sign up to have their
+data collected for a series of pre-specified learning activities,
+a move that preserves student privacy [9], and goes some
+way towards a model of data ownership where the student
+controls access to their data [5]. Upon logging in, students
+are presented with a dashboard (see Fig. 1) that helps them
+to examine their participation in almost real time.
+
+Permission to make digital or hard copies of part or all of this work for personal or
+classroom use is granted without fee provided that copies are not made or distributed
+for profit or commercial advantage and that copies bear this notice and the full citation
+on the first page. Copyrights for third-party components of this work must be honored.
+For all other uses, contact the owner/author(s).
+LAK ’16 April 25-29, 2016, Edinburgh, United Kingdom
+
+c? 2016 Copyright held by the owner/author(s).
+ACM ISBN 978-1-4503-4190-5/16/04.
+DOI: http://dx.doi.org/10.1145/2883851.2883881
+
+Figure 1: The student facing dashboard.
+
+The CLA toolkit is Open Source (under a GPL3.0 license),
+with the current version available via GitHub [6]. Collected
+data is stored in the Experience API (xAPI) format, and
+so any analytics system making use of this format could
+extend the data capture functionality of the CLA toolkit
+to its specific purpose. The analytics functionality of the
+CLA toolkit is implemented by extracting xAPI statements
+in JSON form and storing them in a PostgreSQL database
+that can be queried as needed. This has allowed us to im-
+plement a number of standard analytics and dashboards. At
+present we have taken inspiration from SNAPP [2], LOCO-
+Analyst [1] and Social Learning Analytics [10], to develop a
+set of dashboards that help (i) students to explore the na-
+ture of their online social interactions, and (ii) instructors
+to find and interpret patterns of behaviour in a class.
+
+The student facing dashboard (Fig. 1) currently includes
+an activity report that relates to their individual participa-
+tion, a word cloud of concepts discussed by that student, and
+first degree social network analysis (higher order connections
+can be extracted, but are currently not reported to students
+to respect their privacy and current ethical approvals). This
+dashboard helps students to explore the nature of their on-
+line interactions using a number of filtering options, which
+allow them to examine particular time frames, or interac-
+tions with specific students.
+
+Instructors currently see more analytics due to both pri-
+vacy concerns, and the fact that the algorithms we are using
+require larger datasets than are normally available to indi-
+viduals. Firstly, an aggregated Activity Dashboard (Fig. 2)
+
+
+
+Figure 2: The Activity Dashboard.
+
+Figure 3: The Instructor facing SNA Dashboard.
+
+can be used to both investigate behavioural patterns in a
+class, filter the other reports (i.e., SNA and Content Anal-
+ysis), and to access the student dashboards for people in
+their class. The Instructor facing Social Network Analysis
+(Fig. 3) displays the type of connections occurring between
+people signed up to the system (description is unified using
+the Connected Learning Recipe [7]), and also allows for drill
+down examination of sub-connections and interactions. The
+Content Analysis dashboard shown to instructors (Fig. 4)
+currently includes a basic word cloud; Topic Modelling using
+the Latent Dirichlet Allocation algorithm; sentiment anal-
+ysis [4]; and a Cognitive Presence classification from the
+Community of Inquiry model [3].
+
+2. THE DEMONSTRATION
+The current state of the dashboards available in the CLA
+
+toolkit can be explored by anyone in a trial account at:
+http://clatoolkit.beyondlms.org/
+
+username: trialAccount
+
+password: tryoutCLAtoolkit
+
+This Demonstration will exhibit current capabilities, as well
+as giving attendees assistance in registering for a ‘LAK16’
+course which will help them track their engagement with the
+
+Figure 4: Content Analysis Dashboard
+
+conference.
+
+3. ACKNOWLEDGMENTS
+Support for this project has been provided by the Aus-
+
+tralian Government’s O?ce for Learning and Teaching (OLT).
+The views in this project do not necessarily reflect the views
+of the OLT.
+
+4. REFERENCES
+[1] L. Ali, M. Hatala, D. Gas?evic?, and J. Jovanovic?. A
+
+qualitative evaluation of evolution of a learning
+analytics tool. Computers & Education, 58(1):470–489,
+2012.
+
+[2] S. Dawson, A. Bakharia, and E. Heathcote. SNAPP:
+Realising the a?ordances of real-time SNA within
+networked learning environments. In Proceedings of
+the 7th International Conference on Networked
+
+Learning, pages 125–133, Denmark, Aalborg, 2010.
+[3] D. R. Garrison, T. Anderson, and W. Archer. Critical
+
+thinking, cognitive presence, and computer
+conferencing in distance education. American Journal
+of distance education, 15(1):7–23, 2001.
+
+[4] C. Hutto and E. Gilbert. Vader: A parsimonious
+rule-based model for sentiment analysis of social
+media text. In Eighth International AAAI Conference
+on Weblogs and Social Media, 2014.
+
+[5] K. Kitto. Towards a manifesto for data ownership.
+http://www.laceproject.eu/blog/towards-a-manifesto-
+for-data-ownership/.
+
+[6] K. Kitto and A. Bakharia. CLAToolkit, 2015.
+https://github.com/kirstykitto/CLAToolkit.
+
+[7] K. Kitto and A. Bakharia. CLRecipe, 2015.
+https://github.com/kirstykitto/CLRecipe.
+
+[8] K. Kitto, S. Cross, Z. Waters, and M. Lupton.
+Learning analytics beyond the lms: the connected
+learning analytics toolkit. In Proceedings of the Fifth
+International Conference on Learning Analytics And
+
+Knowledge, pages 11–15. ACM, 2015.
+[9] A. Pardo and G. Siemens. Ethical and privacy
+
+principles for learning analytics. British Journal of
+Educational Technology, 45(3):438–450, 2014.
+
+[10] S. B. Shum and R. Ferguson. Social learning analytics.
+Journal of educational technology & society,
+15(3):3–26, 2012.
+
+
+

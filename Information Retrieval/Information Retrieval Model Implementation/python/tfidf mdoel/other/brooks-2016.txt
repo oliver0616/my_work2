@@ -1,0 +1,270 @@
+
+Introduction to Data Mining for Educational Researchers 
+Christopher A. Brooks 
+
+School of Information 
+University of Michigan 
+
+brooksch@umich.edu 
+
+Craig Thompson 
+Department of Computer Science 
+
+University of Saskatchewan 
+craig.thompson@usask.ca 
+
+Vitomir Kovanovi? 
+School of Informatics 
+
+University of Edinburgh 
+v.kovanovic@ed.ac.uk 
+
+  
+
+CCS Concepts 
+Computing methodologies ? Machine learning ? Machine 
+learning approaches 
+
+Keywords 
+Data mining, learning analytics, predictive modeling 
+
+1. INTRODUCTION & MOTIVATION 
+The goal of this tutorial is to share data mining tools and 
+techniques used by computer scientists with educational social 
+scientists.  We broadly define educational social scientists as 
+being made up of people with backgrounds in the learning 
+sciences, cognitive psychology, and educational research.  The 
+learning analytics community is heavily populated with 
+researchers of these backgrounds, and we believe those that find 
+themselves at the intersection of research, theory, and practice 
+have a particular interest in expanding their knowledge of data-
+driven tools and techniques. 
+
+A version of this tutorial was presented by Brooks, Pardos, and 
+Thompson at LAK14 in Indianapolis. That tutorial sold out, and 
+participant feedback was strong enough that the tutorial was 
+offered again at LASI14 at Harvard. This proposal is heavily 
+based on the LAK14 proposal, and includes updates to the 
+curriculum based on participant feedback. 
+
+One popular tool used by computer scientists for data mining is 
+the Weka toolkit.  It is open source, free, and easy to use.  To 
+apply Weka to educational datasets correctly, however, one 
+requires knowledge of the features, limitations, and subtleties of 
+the underlying techniques.  These aspects of the data mining 
+process are often not immediately clear, and even just a little time 
+exploring these techniques with experts using realistic datasets 
+can be beneficial in increasing practical data mining skills.  The 
+Weka toolkit offers a variety of advanced machine learning 
+mechanisms, allowing attendees to further explore the field further 
+after the tutorial. 
+
+We intend for this tutorial to be one way to facilitate this cross-
+disciplinary discussion.  With a focus on practical skill building 
+and hands on learning, we aim to explore with attendees the 
+
+different data mining techniques can be applied at this intersection 
+of research, theory, and practice.  We expect attendees will leave 
+the tutorial with not only a deeper understanding of how data 
+mining can be applied to their research questions, but a feeling of 
+empowerment in being able to carry out initial analysis directly. 
+
+2. OBJECTIVES 
+By the end of this course we expect that attendees are able to: 
+
+1. Describe the differences between supervised and 
+unsupervised classification 
+
+2. Understand how to choose a classification method for a 
+particular research question 
+
+3. Frame different kinds of educational datasets in a way 
+that is appropriate for data mining 
+
+4. Contextualize the results of a J48 decision tree to their 
+research questions 
+
+5. Contextualize the results of k-means clustering to their 
+research questions 
+
+6. Apply knowledge of the Weka toolkit to create decision 
+trees or clusters of new educational datasets 
+
+While there are many education and learning conferences that 
+include computer scientists and educational social scientists (e.g. 
+EDM, AIED, ITS, LAK, ICLS, CSCL, etc.), to our knowledge 
+there has been no other tutorial series focused explicitly on 
+introductory methods of data mining for practitioners. The closest 
+relevant resource we have observed is the recently offered free 
+course on Data Mining with Weka offered by the University of 
+Waikato1. While this content is an excellent way to learn the 
+Weka toolkit, it has not been largely advertised in the educational 
+technology and learning sciences communities, and it does not 
+focus on educational datasets or questions of learning outcomes.  
+We view our proposed tutorial at Learning Analytics and 
+Knowledge as one way of contextualizing the kind of instruction 
+that is available in this complimentary online course. 
+
+3. TARGET GROUP 
+This tutorial is aimed at educational researchers who are from 
+traditional social science backgrounds.  Explicitly, it is not 
+intended for computer scientists who have a background in 
+statistical analysis or artificial intelligence. Nonetheless, we 
+expect that junior graduate students in the computer sciences may 
+find this tutorial useful, and experience suggests that they are able 
+to use this opportunity to share their own experiences with data 
+mining methods in education. 
+
+Administrators, program directors, and higher education decision 
+makers are a third sub-population of the LAK community.  This 
+
+                                                                 
+1 See http://wekamooc.blogspot.com/ 
+
+ 
+
+ 
+ 
+
+Permission to make digital or hard copies of part or all of this work for 
+personal or classroom use is granted without fee provided that copies are 
+not made or distributed for profit or commercial advantage and that 
+copies bear this notice and the full citation on the first page. Copyrights 
+for third-party components of this work must be honored. For all other 
+uses, contact the Owner/Author.  
+Copyright is held by the owner/author(s).  
+LAK '16, April 25-29, 2016, Edinburgh, United Kingdom  
+ACM 978-1-4503-4190-5/16/04.  
+DOI: http://dx.doi.org/10.1145/2883851.2883879  
+
+
+
+tutorial expects only basic understanding of statistics (mean, error, 
+ANOVA, etc.), and we believe will be accessible to this group of 
+attendees as well. While we have not finalized the datasets we will 
+use for the tutorial, we expect data at the institutional level (e.g. 
+student admission and registration data) to be part of this, making 
+the tutorial inclusive for attendees who are interested in 
+institutional educational analytics as well. One significant revision 
+to the tutorial from previous iterations is that we aim to use a real 
+educational dataset that is similar to the datasets any university or 
+college would have available for analysis. 
+
+4. FORMAT 
+A schedule for this half-day tutorial2 is as follows: 
+
+• A short overview of what kinds of educational problems 
+classification in data mining has been applied to, along 
+with a description of research questions that 
+classification is not well suited to answering (20 mins) 
+
+• A guided example of building J48 decision trees using 
+Weka.  Attendees will be given access to real datasets, 
+and walked through the various parameters (leaf size, 
+ten fold testing, etc.) available in the Weka toolkit. (40 
+mins) 
+
+• A discussion of understanding the results of the decision 
+tree process, such as how to read the confusion matrix, 
+understanding rules in the tree, etc.  Participants will be 
+encouraged to explore parameters of the classification, 
+and relate these to outcomes. (30 mins) 
+
+• Coffee Break (15 mins) 
+
+• An introduction to what cluster analysis is, and a guided 
+example of applying k-means to real datasets.  
+Attendees will be walked through the process, and will 
+cluster the data using various kinds of parameters. (40 
+mins) 
+
+• A discussion of understanding the results of clustering.  
+E.g. what is a centroid, how to measure the quality of 
+the cluster analysis, applications of clustering in other 
+educational areas. (30 mins) 
+
+• A wrap up discussion reviewing the objects of the 
+tutorial, next steps for participants who wish to learn 
+more, and general questions about educational data (20 
+mins) 
+
+Depending upon the background, number of individuals, interest 
+of attendees, and time, additional content may be provided: 
+
+• Comparison with other statistical techniques for 
+classification (e.g. logistic regression) 
+
+• Attribute selection with weka (e.g. CFS) 
+
+• Balancing datasets with SMOTE 
+
+• Applying trained models to new classify data 
+
+• Using Weka to clean datasets 
+As this will be a hands-on tutorial, attendees are expected to bring 
+with them computing equipment such as laptops, and attendance 
+
+                                                                 
+2 The schedule for previous iterations of this tutorial, as well as 
+
+recordings of those tutorials, can be found online at 
+https://sites.google.com/a/umich.edu/lak-2014-tutorial-
+introduction-to-data-mining-for-educational-researchers/ 
+
+should be limited to 20 persons.  The organizers will provide 
+copies of the Weka toolkit (open source and cross platform), as 
+well as a selection of educational datasets. A projector for the 
+presentations, as well as tables for attendees to work at, are 
+minimum equipment requirements. 
+
+This tutorial is not only beneficial for established researchers, but 
+also for graduate students.  The LAK community is very much 
+global in nature and, given travel limitations, we are interested in 
+exploring whether the event can be recorded or webcast as a 
+SOLAR Storm3 or high quality captured content analogous to a 
+mini-MOOC.  While there are logistics and additional costs (high 
+speed network connection, potentially camera and audio rental 
+equipment) required with such an activity, we believe the impact 
+this tutorial will have on the broader LAK community will be 
+multiplied with a persistent online resource.  If this ends up being 
+a viable option, we will seek other off-site collaborators to help 
+manage the remote help requests using screensharing, live 
+discussion forums, etc. 
+
+5. BIOGRAPHIES 
+Christopher Brooks is a Research Assistant Professor in the 
+School of Information, and Director of Learning Analytics and 
+Research in the Office of Digital Education and Innovation, at the 
+University of Michigan. His research focuses on using machine 
+learning for predictive modeling along with information 
+visualization to build novel solutions for understanding student 
+learning. 
+
+Craig Thompson is a Ph.D. candidate and Data Analyst at the 
+University of Saskatchewan. His doctoral research interests 
+include Machine Learning and Image Recognition applied to 
+labelling images on the web. As a Data Analyst, Craig is pursuing 
+a variety of projects involving Learning Analytics and Data 
+Mining with institutional enrolment information, student survey 
+responses, and LCMS data. 
+
+Vitomir Kovanovi? is a PhD student and research assistant at 
+School of Informatics, University of Edinburgh, United Kingdom, 
+and a research assistant at the Learning Innovation and Networked 
+Knowledge Research Lab at University of Texas, Arlington. 
+Vitomir’s research is in the area of Learning Analytics and 
+Educational Data Mining focuses on the development of novel 
+learning analytics methods based on the trace data collected by 
+learning management systems and their use to improve inquiry-
+based online education. He authored and co-authored several 
+book chapters, conference papers, and journal articles. Vitomir is 
+a recipient of two best paper awards (LAK15 and HERDSA15 
+conferences) and scholarships by the Serbian ministry of 
+Education, Simon Fraser University, and the University of 
+Edinburgh. 
+
+                                                                 
+3 http://www.solaresearch.org/storm/ 
+
+
+

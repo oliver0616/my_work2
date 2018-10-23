@@ -1,0 +1,279 @@
+
+Quasi-Experimental Design for Causal Inference Using 
+Python and Apache Spark: A Hands-on Tutorial 
+Shirin Mojarad 
+
+McGraw-Hill Education 
+281 Summer Street 
+Boston, MA, USA 
+
+Shirin.mojarad@mheducation.com 
+ 
+
+Nicholas Lewkow 
+McGraw-Hill Education  
+
+281 Summer Street 
+Boston, MA, USA 
+
+Nicholas.lewkow@mheducation.com 
+Jie Zhang 
+
+McGraw-Hill Education 
+281 Summer Street 
+Boston, MA, USA 
+
+jie.zhang@mheducation.com  
+ 
+
+Alfred Essa 
+McGraw-Hill Education 
+
+281 Summer Street 
+Boston, MA, USA 
+
+Alfred.essa@mheducation.com 
+Jacqueline Feild 
+
+McGraw-Hill Education 
+281 Summer Street 
+Boston, MA, USA 
+
+jacqueline.feild@mheducation.com 
+ 
+
+ABSTRACT 
+Educational practitioners and policy makers require evidence 
+supporting claims about educational efficacy. Evidence is often 
+found using causal relationships between education inputs and 
+student learning outcomes. Causal inference covers a wide range 
+of topics in education research, including efficacy studies to prove 
+if a new policy, software, curriculum or intervention is effective in 
+improving student learning outcomes. Randomized controlled 
+trials (RCT) are considered a gold standard method to 
+demonstrate causality. However, these studies are expensive, 
+timely and costly, as well as not being ethical to conduct in many 
+educational contexts. Causality can also be deducted purely from 
+observational data. In this tutorial, we will review methodologies 
+for estimating the causal effects of education inputs on student 
+learning outcomes using observational data. This is an inherently 
+complex task due to many hidden variables and their inter-
+relationships in educational research.  In this tutorial, we discuss 
+causal inference in the context of educational research with big 
+data. This is the first tutorial of its kind at Learning Analytics and 
+Knowledge Conference (LAK) that provides a hands-on 
+experience with Python and Apache Spark as a practical tool for 
+educational researchers to conduct causal inference. As a 
+prerequisite, attendees are required to have familiarity with 
+Python. 
+
+CCS Concepts 
+• Computing methodologies ?  Knowledge representation and 
+reasoning; Parallel computing methodologies; •Mathematics 
+of computing à  Exploratory data analysis. 
+
+Keywords 
+Causal inference; big data; parallel computing; python; quasi-
+experiment design; Apache Spark. 
+
+1. INTRODUCTION 
+Educational practitioners and policy makers require evidence, 
+
+supporting claims about educational efficacy. Causal claims are 
+traditionally tested through thorough experiments. Designing 
+experiments commonly involves identifying groups of students 
+who receive and do not receive an intervention and comparing the 
+outcomes across these groups, usually assuming all other 
+experimental variables are evenly distributed between the two 
+groups. 
+
+Randomized control trials (RCTs) are considered the gold 
+standard in conducting studies to investigate the effect of a 
+particular intervention on a specific outcome [11]. In an RCT, the 
+effect of a particular intervention on an outcome is estimated by 
+dividing the sample into an intervention group who receives the 
+intervention and a control group who does not. These two groups 
+are selected randomly, so that the intervention status is not 
+confounded with other baseline characteristics of the sample 
+population [9, 11]. For example, to study the effect of a new 
+curriculum as opposed to the current curriculum in improving 
+student outcomes, a large number of students are randomly 
+assigned to an intervention group or a control group, where they 
+receive the new or current curriculum respectively. Then, the 
+course outcomes are measured for the two groups, in order to 
+determine whether there is a difference in outcome or gains 
+between groups. This difference represents the effect of new 
+curriculum compared to the existing one. 
+
+Despite efforts to fund RCT research, the application of RCTs is 
+limited in educational environments as they require large number 
+of students, which can often be unrealistic [9]. Causal inference 
+from Observational Studies (OSs) is another form of analysis to 
+evaluate intervention effects [7]. In causal inference, the causal 
+effect of an intervention on a particular outcome is studied using 
+historical data, without the need for randomization in advance [1]. 
+In this tutorial, we will show design of an OS to leverage the large 
+amounts of data available through online learning platforms and 
+student information systems.  
+
+Propensity score matching (PSM) is a common method in OSs to 
+study the causal effect of an intervention on a particular outcome 
+[1, 6]. PSM is used to design and analyze an observational study 
+such that it resembles the characteristics of a RCT. Using PSM, 
+one can create a less-confounded comparison from messy real-
+world data, in order to estimate the effect of an intervention on a 
+particular outcome, using data not collected with a specific non-
+confounded comparison in mind.  As such, this method can help 
+us take greater advantage of the rapidly increasing amount of data 
+involving varied interventions, stored within digital educational 
+
+Permission to make digital or hard copies of part or all of this work 
+for personal or classroom use is granted without fee provided that 
+copies are not made or distributed for profit or commercial 
+advantage and that copies bear this notice and the full citation on the 
+first page. Copyrights for third-party components of this work must 
+be honored. For all other uses, contact the Owner/Author. 
+Copyright is held by the owner/author(s). 
+LAK '17, March 13-17, 2017, Vancouver, BC, Canada 
+ACM 978-1-4503-4870-6/17/03. 
+DOI: http://dx.doi.org/10.1145/3027385.3029428. 
+
+
+
+platforms being used at scale [3, 5]. 
+
+2. OBJECTIVES 
+Given the focus on practical skill building, the primary objectives 
+of the proposed tutorial are: 
+
+• Understand different matching techniques for quasi-
+experiment design 
+
+• Make causal inferences using observational data 
+• Evaluate and compare the quality of matching methods 
+
+in quasi-experiment design 
+• Make inferences about the cause and effects using the 
+
+outcomes of causal analysis 
+• Utilize Apache Spark to perform simple causal 
+
+inference on data in parallel 
+While there are several conference series (e.g., LAK, EDM) 
+focusing on the intersection between educational and computing 
+research, to the best of our knowledge there have not been any 
+tutorials covering the topic of causal inference in a hands-on 
+fashion. A part of this tutorial was presented at Boston Data 
+Festival 2016.  
+There are packages available in R and Python to conduct causal 
+inference such as MatchIt [4] in R and CausalInference [2] in 
+Python. However, using these packages requires detailed 
+knowledge of matching algorithms and careful considerations to 
+ensure covariate balance in the resulting treatment and control 
+groups. TETRAD is another tool for causal discovery and 
+exploration [8]. Tetrad is unique in its user friendliness and use of 
+use for building and evaluating causal models to explore causal 
+relationship between several covariates and an outcome. These 
+techniques include path analysis, Bayesian networks and 
+structural equation modeling. In this tutorial, our focus is on using 
+statistical matching techniques for quasi-experimental designs for 
+Generalized Causal Inference including different matching 
+techniques such as propensity score and Mahalanobis distance 
+matching. In addition, we will evaluate and compare the 
+effectiveness of different matching methods for causal 
+inference [10]. Our goal in this tutorial is to make programming, 
+design of quasi-experiments for causal inferences and statistical 
+analysis of intervention effect on an outcome accessible for a wide 
+range of audience. We will cover these in the context of big data 
+and will provide hands-on tools, which use Apache Spark to make 
+causal inferences on big educational data. 
+The tutorial is designed to appeal to researchers from a wide range 
+of backgrounds including big data, predictive analytics, learning 
+sciences, educational data mining and researchers interested in 
+learning about how to have their own tool for causal inference. As 
+a prerequisite, attendees are required to have familiarity with 
+Python. The Python code for this workshop will be available on 
+GitHub in advance so that participants can review and get familiar 
+with the methods if they are interested. We will have our 
+colleagues from McGraw-Hill Education to help with the logistics 
+and to help the participants with the use of material. 
+
+The workshop will be conducted over a half day. We will first 
+introduce causal inference using simple models and methods. This 
+will get the audience comfortable with several concepts used for 
+causal inference. Next, each of the methods explained will be 
+covered by corresponding code in Python. Participants can 
+download the data and notebooks before or during the session 
+from our GitHub and stay engaged by running the notebook as we 
+
+walk through them. At the end of each objective, we will form 
+multiple groups and will assign a mini project to each group to 
+solve. We will discuss the outcome of the exercises before 
+moving to the next objective. Finally, we will expand upon the 
+causal inference models by introducing the basics of big data 
+analysis with Apache Spark. This will include revisiting 
+previously discussed models with the aim of parallelizing the 
+algorithms so that they can be used with very large data sets. 
+
+3. ACKNOWLEDGMENTS 
+We would like to thank Professor Ryan Baker for his invaluable 
+feedback and also MHE Digital Platform Group. Any opinions, 
+findings, conclusions or recommendations expressed in this paper 
+are those of the authors and do not necessarily reflect positions or 
+policies of the company. 
+
+4. REFERENCES 
+[1] Austin, P.C. 2011. An Introduction to Propensity Score 
+
+Methods for Reducing the Effects of Confounding in 
+Observational Studies. Multivariate Behavioral 
+Research. 46, 3 (May 2011), 399–424. 
+
+[2] Causalinference: 
+https://github.com/laurencium/causalinference. 
+Accessed: 2016-09-29. 
+
+[3] Feng, M. et al. 2009. Using learning decomposition and 
+bootstrapping with randomization to compare the impact 
+of different educational interventions on learning. 
+Proceedings of International Conference on Educational 
+Data Mining. (2009), 51–60. 
+
+[4] Ho, D.E. et al. 2011. MatchIt?: Nonparametric 
+Preprocessing for Parametric Causal Inference. Journal 
+of Statistical Software. 42, 8 (2011), 1–28. 
+
+[5] Koedinger, K. et al. 2012. Automated Student Model 
+Improvement. Educational Data Mining, proceedings of 
+the 5th International Conference on. (2012), 17–24. 
+
+[6] Rosenbaum, P. and Rubin, D. 1983. The Central Role of 
+the Propensity Score in Observational Studies for Causal 
+Effects. Biometrika. 70, (1983), 41–55. 
+
+[7] Rubin, D.B. 2007. The design versus the analysis of 
+observational studies for causal effects: parallels with the 
+design of randomized trials. Statistics in Medicine. 26, 1 
+(Jan. 2007), 20–36. 
+
+[8] Scheines, R. et al. 1998. The TETRAD Project: 
+Constraint Based Aids to Causal Model Specification. 
+Multivariate Behavioral Research. 33, 1 (1998), 1–53. 
+
+[9] Silverman, S.L. 2009. From Randomized Controlled 
+Trials to Observational Studies. The American Journal of 
+Medicine. 122, 2 (2009), 114–120. 
+
+[10] Stuart, E.A. 2010. Matching methods for causal 
+inference: A review and a look forward. 25, 1 (2010), 1–
+21. 
+
+[11] Sullivan, G.M. 2011. Getting Off the “Gold Standard”: 
+Randomized Controlled Trials and Education Research. 
+Journal of Graduate Medical Education. 3, 3 (Sep. 
+2011), 285–289. 
+
+ 
+
+
+

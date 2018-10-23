@@ -1,0 +1,176 @@
+
+LAK16 Workshop: Extending IMS Caliper AnalyticsTM  
+with Learning Activity Profiles 
+
+Anthony Whyte 
+ITS, Teaching and Learning 
+
+University of Michigan 
+201 E Hoover, Ann Arbor, MI, 48109 
+
+arwhyte@umich.edu 
+
+Prashant Nayak 
+Intellify Learning 
+
+51 Melcher St, Boston, MA, 02210 
+prashant@intellifylearning.com 
+
+John Johnston 
+ITS, Teaching and Learning 
+
+University of Michigan 
+201 E Hoover, Ann Arbor, MI, 48109 
+
+johnpj@umich.edu 
+ 
+
+ABSTRACT 
+Educational institutions are evolving away from the one-
+application-fits-all learning management system to a loosely 
+connected digital learning ecosystem comprising diverse services 
+that increasingly leverage data analytics to drive pedagogical 
+innovation. Yet an ecosystem rich in services but lacking a 
+common approach to measuring learning activity will find data 
+collection, aggregation and analysis time-consuming and costly. 
+The IMS Caliper AnalyticsTM specification addresses the need for 
+data and semantic interoperability by providing an extensible 
+information model, controlled vocabularies and an API for 
+instrumenting learning applications and systems that log learning 
+events.   However, many learning activities have yet to be 
+modeled by the Caliper working group.  Engaging the SoLAR 
+community directly in this effort will help ensure that the needs of 
+researchers and other consumers of learning analytics data will 
+inform future versions of the specification.  The LAK16 Caliper 
+workshop is being offered with this goal in mind.  The half-day 
+session, facilitated by members of Team Caliper, will provide 
+LAK16 participants with an opportunity to extend the Caliper 
+specification by modeling new learning activity profiles.  New 
+profiles, new connections and new friendships are expected 
+outcomes. 
+
+Categories and Subject Descriptors 
+K.3.1 [Computers in Education]: Computer Uses in Education. 
+
+General Terms 
+Measurement, Documentation, Design. 
+
+Keywords 
+Learning Analytics, Information Modeling, Controlled 
+Vocabularies, Learning Activity Profiles, IMS Caliper. 
+
+1. MOTIVATION 
+Educational institutions are evolving away from the one-
+application-fits-all learning management system to a loosely 
+connected digital learning ecosystem comprising diverse services 
+that increasingly leverage data analytics to drive pedagogical 
+innovation. Yet an ecosystem rich in services but lacking a 
+common approach to measuring learning activity will find data 
+collection, aggregation and analysis time-consuming and costly. 
+The IMS Caliper AnalyticsTM specification addresses the need for 
+
+data and semantic interoperability by providing an extensible 
+information model, controlled vocabularies and an API for 
+instrumenting learning applications and systems that log learning 
+events [1].    
+
+The Caliper information model is composed of a set of extensible 
+learning activity profiles.  Each profile specifies a controlled 
+vocabulary of actions and the entities that together comprise the 
+event and its context.  Caliper profiles are designed to encourage 
+data exchange across multiple platforms by providing both 
+structure and shared meaning to otherwise raw event streams. 
+
+However, many learning activities have yet to be modeled by the 
+Caliper working group.  Engaging the SoLAR community directly 
+in this effort will help ensure that the needs of researchers and 
+other consumers of learning analytics data will inform future 
+versions of the specification.  The LAK16 Caliper workshop is 
+being offered with this goal in mind.  The half-day session, 
+facilitated by members of Team Caliper, will provide LAK16 
+participants with an opportunity to extend the Caliper 
+specification by modeling new learning activity profiles [2]. 
+
+2. OBJECTIVES 
+The Caliper 1.0 specification comprises a modest number of 
+profiles that cover a limited set of learning activities.  Activities 
+described by the specification include logging in and out of 
+applications, navigation, viewing and annotating digital resources, 
+interacting with rich media, taking online assessments and 
+providing graded outcomes.  The Caliper working group is 
+looking to LAK16 participants to help enrich the existing set of 
+profiles as well add additional profiles in order to extend the 
+information model and increase its utility.  Caliper workshop 
+objectives are fourfold: i) increase awareness and understanding 
+of the Caliper information model and Caliper specification; ii) 
+provide practical training on modeling learning activities; iii) 
+generate a set of draft metric profiles that can be included in 
+future releases of the Caliper specification; and iv) encourage the 
+SoLAR community to consider engaging more directly with the 
+project.  New profiles, new connections and new friendships are 
+expected outcomes. 
+
+3. AUDIENCE 
+In contrast to the LAK16 Apereo/JISC hackathon, which seeks 
+participants possessing a technical mindset, the Caliper workshop 
+is open to all practitioners and researchers with a professional 
+interest in the advancement of teaching and learning and the 
+practical application of learning analytics.  In short, one need not 
+be a developer or data architect to contribute usefully to the 
+evolution of the Caliper specification. 
+
+4. FORMAT 
+Members of Team Caliper will lead the half-day workshop.  The 
+workshop will commence with a brief overview of the Caliper 
+
+Permission to make digital or hard copies of part or all of this work for 
+personal or classroom use is granted without fee provided that copies are 
+not made or distributed for profit or commercial advantage and that copies 
+bear this notice and the full citation on the first page. Copyrights for third-
+party components of this work must be honored. For all other uses, contact 
+the Owner/Author.  
+Copyright is held by the owner/author(s).  
+LAK '16, April 25-29, 2016, Edinburgh, United Kingdom  
+ACM 978-1-4503-4190-5/16/04.  
+http://dx.doi.org/10.1145/2883851.2883858 
+
+
+
+information model and its constituent profiles and controlled 
+vocabularies.  Following the overview, participants will be invited 
+to propose learning activities that they would like to model or they 
+can choose from a list of suggested activities that require 
+modeling.  A partial list of learning/instructor activities that have 
+yet to be described include learner participation, content 
+authoring, Q&A forums, chat, problem sets, peer assessments, 
+rubrics, credentialing and mentoring/advising.  Participants may 
+have a local need that requires creation of a custom profile; the 
+facilitators will happily accommodate such interests.   Participants 
+will then self-organize into teams of 2-3 in order to design one or 
+more draft Caliper profiles and then report out on their work 
+before the close of the workshop. Draft profiles will be stored in a 
+public Github repository.  
+
+5. ACKNOWLEDGMENTS 
+The Caliper AnalyticsTM specification was developed under the 
+auspices of the IMS Global Learning Consortium, a non-profit 
+organization that fosters collaboration among the world’s leading 
+education providers and technology suppliers.  Both the 
+University of Michigan and Intellify Learning are contributing 
+members of IMS Global and active participants in the IMS 
+Caliper working group. 
+
+6. REFERENCES 
+[1] IMS Global. 2015. IMS Caliper AnalyticsTM Implementation 
+
+Guide.  http://www.imsglobal.org/caliper/caliperv1p0/ims-
+caliper-analytics-implementation-guide.  
+
+[2] A. Whyte. 2016.  Extending IMS Caliper AnalyticsTM with 
+Learning Activity Profiles.  http://www.arwhyte.org/caliper-
+workshop/.
+
+ 
+
+
+

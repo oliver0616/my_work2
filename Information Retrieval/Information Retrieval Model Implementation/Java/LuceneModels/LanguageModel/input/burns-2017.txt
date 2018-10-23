@@ -1,0 +1,455 @@
+
+Automating Student Survey Reports in Online Education 
+for Faculty and Instructional Designers 
+Sean Burns 
+
+Colorado State University 
+Fort Collins, CO 80523 
+
+Sean.Burns@colostate.edu 
+
+Kimberley Corwin 
+Colorado State University 
+
+Fort Collins, CO 80523 
+Kimberley.Corwin@colostate.edu 
+
+ABSTRACT 
+In this paper, we discuss Colorado State University Online's 
+
+progress toward designing automated survey reports for student 
+
+feedback data collected through our newly designed LTI survey 
+
+tool. Using multiple R packages, including 'rmarkdown' and 'likert', 
+
+the reporting tool imports student survey response data and 
+
+generates reports for faculty and instructional designers. These 
+
+reports focus on student perceptions of communication, course 
+
+design, academic challenge, general satisfaction, and more. These 
+
+reports display visual representations of the Likert-type response 
+
+frequencies, basic descriptive statistics, and free-response 
+
+comments. Surveys are administered just before half-way through 
+
+the semester to provide formative feedback and just before the end 
+
+of the semester to provide summative feedback. In this way, faculty 
+
+and instructional designers can obtain a quick and easily digestible 
+
+report to make changes and improvements to their classes with 
+
+minimal effort in the back end production. 
+
+CCS Concepts 
+• Applied Computing?Document management and text 
+
+processing?Document preparation?Markup languages 
+
+• Software and its engineering?Software notations and 
+
+tools?General programming languages?Language 
+
+features?Modules/packages.  
+
+Keywords 
+Automated reporting, R, rmarkdown, RODBCext, likert, xtable, 
+
+Survey, Student Feedback, Course Design, Course Quality 
+
+1. INTRODUCTION 
+Incorporating student feedback into efforts to improve course 
+
+design has been suggested and encouraged many times [1,2]. At 
+
+Colorado State University (CSU) Online, our faculty and 
+
+instructional designers have wanted additional feedback from 
+
+students for many years. The assessment team has gone through 
+
+many iterations of survey designs and reports in order to provide 
+
+that desired feedback. 
+
+We faced a number of issues with our old system; students 
+
+originally needed to click through three windows, an additional 
+
+required login, and self-select their course. Additional challenges 
+
+included data clean up issues and a long manual reporting 
+
+processes. Our web designers created a Survey LTI that links 
+
+directly into each Canvas course section, thus eliminating the 
+
+possibility of self-selecting errors and significantly reducing the 
+
+number of clicks to gain access to the survey. Now we can easily 
+
+use SQL queries and many fantastic R packages to access, 
+
+download, clean, and process the data into easily digestible reports 
+
+for both faculty and instructional designers. 
+
+Permission to make digital or hard copies of part or all of this work for personal 
+or classroom use is granted without fee provided that copies are not made or 
+
+distributed for profit or commercial advantage and that copies bear this notice 
+
+and the full citation on the first page. Copyrights for third-party components of 
+
+this work must be honored. For all other uses, contact the Owner/Author.  
+
+Copyright is held by the owner/author(s). 
+
+LAK '17, March 13-17, 2017, Vancouver, BC, Canada 
+
+ACM 978-1-4503-4870-6/17/03. 
+
+http://dx.doi.org/10.1145/3027385.3029475  
+
+The reports generated at CSU Online provide breakdowns of 
+
+student perceptions of course design, clarity of learning objectives, 
+
+communication, academic challenge, general satisfaction, and free 
+
+response comments about the general quality of the course. 
+
+Students are surveyed twice over the course of the semester: at the 
+
+forty percent mark, and the eighty percent mark. This allows for 
+
+faculty to receive formative feedback in time to change or improve 
+
+aspects of their instruction and materials. Furthermore, they receive 
+
+summative feedback near the end of the semester to determine if 
+
+any implemented changes had an effect on student perceptions. 
+
+Meanwhile, instructional designers who work with faculty can take 
+
+the feedback and provide any necessary assistance to the faculty 
+
+members. Instructional designers receive multiple reports, and so 
+
+gain perspective on overall student feedback patterns to help them 
+
+plan and improve future course designs. 
+
+2. Methods 
+During the Fall 2016 semester, we built a reporting tool using R 
+
+version 3.2.3 (R Core Team, 2015) that accesses data in the CSU 
+
+SQL server, applies designated statistical analyses, generates well-
+
+formatted graphical displays, and compiles the output of these 
+
+analyses into a PDF or HTML document. These reports are 
+
+generated using the 'rmarkdown' package (Allaire et al. 2016; 
+
+hereafter R Markdown), which allows a user to combine text, code, 
+
+and code output into a variety of preformatted documents, 
+
+including PDFs and HTML pages.  
+
+This reporting tool was designed to summarize data from a student 
+
+perception survey in courses developed by CSU Online and CSU's 
+
+Institute for Teaching and Learning. The survey is hosted on CSU's 
+
+learning management system, Canvas, via a recently designed LTI. 
+
+The survey tool stores student responses on the university's SQL 
+
+server. Using the 'RODBCext' package (Mateusz et al. 2016), 
+
+which is an ODBC (Open Database Connectivity) interface, we 
+
+connect to the SQL database and import data into R using a 
+
+parameterized SQL query. The query parameterization allows the 
+
+user to easily update which survey's data is accessed.   
+
+The Fall 2016 pilot survey in the survey tool asks two free response 
+
+questions as well as 16 Likert-type questions that are grouped into 
+
+five categories. While the reporting tool neatly prints the written 
+
+free response comments at the end, the bulk of the report focuses 
+
+on presenting the results from the Likert questions. The code blocks 
+
+in the R Markdown file that analyze and build graphics and tables 
+
+for these Likert questions primarily rely on the 'likert' (Bryer & 
+
+Speerschneider, 2015), 'psych' (Revelle, 2016), and 'xtable' (Dahl, 
+
+2016) packages.   
+
+ The 'likert' package determines response frequencies for multiple 
+
+questions grouped by the user and generates a well-formatted, 
+
+centered, bar graph from this data (Figure 1). Creating a plot using 
+
+'likert' requires the user to group all related questions into a single 
+
+data frame with each question's responses recorded in a single 
+
+column. The user must then manually update the formatting of the 
+
+data frame and perform the 'likert' analyses. Since the survey tool 
+
+is designed to build new surveys with different questions in the 
+
+future, continuing to manually update the code in this manner 
+
+would prove labor and time intensive once new surveys and 
+
+http://dx.doi.org/10.1145/3027385.3029475
+
+
+questions are added. As such, we designed a mechanism for 
+
+automatically grouping questions and subsequently tabulating 
+
+response frequencies, generating plots, and calculating descriptive 
+
+statistics.   
+
+ 
+
+ 
+
+ 
+
+ 
+
+Within the file that imports the data from SQL, a new column is 
+
+created with a group identity code. Each group is labeled with the 
+
+word 'GROUP' followed by a three digit number. The questions 
+
+within each group are specified alphabetically. For example, the 
+
+third question measuring student perceptions of communication 
+
+within the course might be coded as 'GROUP103c.' The R code 
+
+then loops through all of the columns in the main dataset and groups 
+
+together those with group codes that have the same first eight 
+
+characters. These data frames are then compiled into lists. 
+
+Functions that plot the Likert data (Figure 1), generate response 
+
+frequencies and descriptive statistics (Table 1), and format data 
+
+tables are then performed on each data frame in that list in an 
+
+automatically looping form. The output from these loops are then 
+
+referenced within the R Markdown file in the appropriate location 
+
+and inserted when the file is rendered.   
+
+ 
+
+ Table 1. Example of Basic Descriptive Statistics Table 
+
+ 
+
+ 
+
+A separate file is used to specify the survey ID and render the R 
+
+Markdown file without ever having to access either of the original 
+
+source files. Two options are available to the user for rendering the 
+
+R Markdown file: render a report for a single course by selecting 
+
+the course of interest within a simple user interface or generate a 
+
+report for all courses that currently have student responses 
+
+recorded. Each report produced through the single class selection 
+
+method can be created in approximately 10 seconds. This includes 
+
+the time it takes to select the course of interest in the user interface. 
+
+To generate reports for all 21 courses in which the survey was 
+
+administered takes 1.85 minutes, meaning the tool generates a 
+
+single report in 5.29 seconds. 
+
+3. Lessons Learned 
+3.1 Response Rate Issues 
+As with all online surveys, we have experienced issues with low 
+
+response rates. During our first run early in the Fall 2016 term, we 
+
+had multiple classes with over twenty students return only a handful 
+
+of responses, or fail to return any responses at all. To improve upon 
+
+this, we began to engage in the following behaviors: 1) Suggest, at 
+
+the start of the semester, that all faculty encourage their students to 
+
+respond to the survey and remind them how the valuable nature of 
+
+their feedback; 2) Examine response rates three or four days before 
+
+the survey closes and email reminders to complete the survey; 3) 
+
+Place the survey link directly in each Canvas course’s module. 
+
+In addition, to further improve response rates we are planning to 
+
+incorporate the following into our system: 1) Host a giveaway for 
+
+a tablet each semester for students who complete both the mid- and 
+
+post- surveys; 2) Send out an automated reminder within Canvas 
+
+directly to students to encourage them to complete the survey (and 
+
+remind them of the potential prize); 3) Display the average time it 
+
+has taken students to complete the survey and emphasize the 
+
+anonymity of their responses at the top of the survey page (currently 
+
+about three minutes). 
+
+3.2 Learning How to Read Reports 
+Faculty and instructional designers have required minimal 
+
+instruction in how to read the delivered reports, but the creation of 
+
+a ‘How-to’ document would prove beneficial. The document 
+
+should give the basic description of how the question groups are 
+
+separated, where to look in the figures for positive responses, where 
+
+to look for negative responses, and a description of the basic 
+
+descriptive statistics provided. 
+
+4. Conclusion 
+CSU Online has developed surveys and an automated survey 
+
+reporting system to provide formative and summative student 
+
+feedback to faculty and instructional designers with the goal of 
+
+improving course quality. The reporting system uses R and multiple 
+
+R packages to produce a descriptive statistical report that is easily 
+
+accessible visually and can be generated for a large number of 
+
+classes in a small amount of time and with minimal effort. The 
+
+initial stages of this system have been successful, and we have 
+
+many plans to improve the viability of the reporting system. Future 
+
+work will focus on displaying these reports using R Shiny to allow 
+
+for increased interactivity with reports by faculty and instructional 
+
+designers.  
+
+5. ACKNOWLEDGMENTS 
+Our thanks to the CSU Online Web Development Team (Matt 
+
+Creighton and Matt Titchner) for putting in a fantastic effort to 
+
+design a great LTI Tool that made all of this possible. 
+
+6. REFERENCES 
+[1] Allaire, J.J., Cheng, J., Xie, Y., McPherson, J., Chang, W., Allen, J., 
+
+Wickham, H., Atkins, A. and Hyndman, R., 2016. rmarkdown: 
+
+Dynamic documents for R. R package version 
+
+1.1. DOI= https://CRAN.R-project.org/package=rmarkdown  
+
+[2] Bryer, J. and Speerschneider, K., 2015. likert: Functions to analyze 
+and visualize likert type items. R package version 
+
+1.3.3. DOI=https://CRAN.R-project.org/package=likert 
+
+[3] Dahl, D.B., 2016. xtable: Export tables to LaTeX or HTML. R 
+package version 1.8-2. DOI= https://CRAN.R-
+
+project.org/package=xtable 
+
+[4] Hazari, S. and Schnorr, D., 1999. Leveraging student feedback to 
+improve teaching in web-based courses. The Journal, 26(11), 30-38.  
+
+[5] Nathenson, M.B. and Henderson, E.S., 1980. Using student feedback 
+to improve learning materials. Taylor & Francis. 
+
+[6] R Core Team (2015). R: A language and environment for statistical 
+computing. R Foundation for Statistical Computing, Vienna, Austria. 
+
+DOI= https://www.R-project.org/.  
+
+[7] Revelle, W., 2016 psych: Procedures for personality and 
+psychological research, Northwestern University, Evanston, Illinois, 
+
+USA, http://CRAN.R-project.org/package=psych Version = 1.6.6.  
+
+[8] Zoltak, M., Ripley, B. and Lapsley, M., 2016. RODBCext: 
+Parameterized queries extension for RODBC. R package version 
+
+0.2.6. DOI=https://CRAN.R-project.org/package=RODBCext
+
+ 
+
+Figure 1. Example of Likert Visualization 
+
+ 
+
+. 
+
+ 
+
+ 
+
+https://cran.r-project.org/package=rmarkdown
+https://cran.r-project.org/package=likert
+https://cran.r-project.org/package=xtable
+https://cran.r-project.org/package=xtable
+https://www.r-project.org/
+http://cran.r-project.org/package=psych
+https://cran.r-project.org/package=RODBCext
+
+

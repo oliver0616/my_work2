@@ -1,0 +1,2 @@
+curl -H 'Content-Type: application/x-ndjson' -XPOST 'localhost:9200/test/my-tests/_bulk?pretty' --data-binary @file.json
+curl -s -H "Content-Type: application/x-ndjson" -XPOST localhost:9200/reu/inproceeding/_bulk --data-binary "@inproceedingsResult.json"; echo

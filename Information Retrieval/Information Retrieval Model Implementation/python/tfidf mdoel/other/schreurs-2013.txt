@@ -1,0 +1,618 @@
+
+Visualizing Social Learning Ties by Type and Topic: 
+Rationale and Concept Demonstrator 
+
+Bieke Schreurs1, Chris Teplovs2, Rebecca Ferguson3,  
+Maarten de Laat1 and Simon Buckingham Shum3 
+
+ 
+1 Open Universiteit NL 
+LooK, Postbus 2960 
+
+6401 DL Heerlen 
+The Netherlands 
+
+bieke.schreurs@ou.nl 
+maarten.delaat@ou.nl 
+
+2 Problemshift, Inc. & 
+University of Windsor 
+401 Sunset Avenue 
+
+Windsor, Ontario 
+Canada N9B 3P4 
+
+chris.teplovs@gmail.com 
+
+3 The Open University UK 
+Institute of Educational Technology 
+
+& Knowledge Media Institute 
+Milton Keynes, MK7 6AA, UK  
+
+r.m.ferguson@open.ac.uk 
+s.buckingham.shum@open.ac.uk  
+
+ 
+
+ABSTRACT 
+Social Learning Analytics (SLA) are designed to support students 
+learning through social networks, and reflective practitioners 
+engage in informal learning through a community of practice. 
+This short paper reports work in progress to develop SLA 
+motivated specifically by Networked Learning Theory, drawing 
+on the related concepts and tools of Social Network Analytics and 
+Social Capital Theory, which provide complementary 
+perspectives onto the structure and content of such networks. We 
+propose that SLA based on these perspectives needs to devise 
+models and visualizations capable of showing not only the usual 
+SNA metrics, but the types of social tie forged between actors, 
+and topic-specific subnetworks. We describe a technical 
+implementation demonstrating this approach, which extends the 
+Network Awareness Tool by automatically populating it with data 
+from a social learning platform SocialLearn. The result is the 
+ability to visualize relationships between people who interact 
+around the same topics.  
+
+Categories and Subject Descriptors 
+K.3.1 [Computers and Education]: Computer Uses in Education  
+H.5.3 [Group and Organization Interfaces] Computer-
+supported cooperative work 
+
+General Terms 
+Design 
+
+Keywords 
+Networked Learning, Social Learning Analytics, Social Network 
+Analysis, Visualization 
+ 
+
+1. INTRODUCTION 
+An online network of learners in a formal or informal educational 
+context, or reflective practitioners in a community of practice, can 
+
+be regarded as constituting a web of social relationships that 
+reflects the flow of resources among them [1]. Examples include a 
+group acquiring competence in technology use by sharing 
+expertise, a community collectively building knowledge of its 
+history, plus information resources necessary to deal with new 
+situations [2].  
+
+Reflective practitioners, mentors and researchers could benefit 
+from answers to questions such as: Who learns from whom? What 
+do they learn from each other? What kinds of interactions take 
+place between people who learn together? In which directions do 
+resources flow? How frequently do learning interactions take 
+place? How important are these interactions to the people 
+involved? What value do these learning interactions create?  
+
+From a learning analytics point of view, if it is possible to design 
+computationally tractable models of such learning networks, and 
+render them in coherent ways, analytics could draw attention to 
+potentially significant patterns based on the content, direction, 
+type and strength of interpersonal interactions. To provide 
+analytics for complex queries such as these, we need to design 
+‘structural signatures’ in our data models to serve as proxies, 
+which can be detected by humans and/or machines. In this short 
+paper, we report work in progress from combining OUNL’s 
+research into the Network Awareness Tool (NAT) for visualizing 
+professional face-to-face informal learning networks [3-4], with 
+the OU’s proposal that Social Learning Analytics are an important 
+class of analytic for participatory learning cultures [5].  
+
+In §2 we introduce Networked Learning theory, the paradigm 
+motivating this work. §3 considers the steps needed to move from 
+this to Social Learning Analytics software which satisfies the 
+theory’s representational requirements. §4 then describes a 
+demonstrator tool which goes beyond seeing social networks in 
+topological terms (a well established approach), and seeks to show 
+(i) the topics of interest (possibly expertise) within the 
+community, and (ii) the nature of the social ties constituting the 
+network.  
+
+2. NETWORKED LEARNING THEORY 
+Networked learning theory is an emerging perspective that is 
+employed to understand learning by investigating how people 
+develop and maintain a ‘web’ of social relations to support their 
+learning. Networked learning is a form of informal learning, 
+which involves people relying strongly on their social contacts for 
+assistance and development [6]. Recent research has linked 
+networked learning to an array of positive outcomes, including 
+student performance and school improvement [7-10]. Networked 
+
+ 
+
+Permission to make digital or hard copies of all or part of this work for 
+personal or classroom use is granted without fee provided that copies are 
+not made or distributed for profit or commercial advantage and that copies 
+bear this notice and the full citation on the first page. To copy otherwise, 
+or republish, to post on servers or to redistribute to lists, requires prior 
+specific permission and/or a fee. 
+LAK '13, April 08 - 12 2013, Leuven, Belgium  
+Copyright 2013 ACM 978-1-4503-1785-6/13/04  
+ 
+
+33
+
+
+
+learning involves the use of information and communication 
+technology (ICT) to promote collaborative or cooperative 
+connections between learners, their tutors/instructors, and learning 
+resources [11]. The term ‘networked learning’ was applied to 
+higher education to refer to ways in which new communication 
+technologies can influence teaching and learning [12-14].  
+As ICT drives increasingly varied forms of mediated collaboration 
+and contact, the field of networked learning seeks to provide 
+accounts of how learners appropriate these new tools to learn 
+informally on and through the Internet. The field’s focus is on 
+how learners (or learning designers) can build and cultivate social 
+networks, seeing technology as just one (albeit critical) enabler, 
+rather than ICT-innovation as an end in itself [1, 15].  
+
+Networked learning focuses on the diversity of social 
+relationships that people develop, the strategies they use to 
+maintain them and the value this creates for learning. Networked 
+learning theory is closely linked to and uses methodologies of 
+social network theory, including social network analysis [7, 15].  
+
+Social network analysis considers networks to be made up of 
+nodes and ties. Nodes are the individual actors within a network 
+and ties are the relationships between these actors. The impact of 
+the structure of social networks can be studied on three levels: the 
+positions actors have in a network (individual dimension), the 
+relationships between actors in the network (ties dimension) and 
+the overall network structure (network dimension). 
+
+While social network theory highlights the structural dimensions 
+of learning networks, we also use social capital theory to frame 
+social network studies from the perspective of content. Networks 
+are always about something [6-7]. Social capital theory provides a 
+lens through which we can examine the relational resources 
+embedded in social ties and the ways in which actors interact to 
+gain access to these resources [16].  
+
+The first systematic analysis of social capital was produced by 
+Bourdieu [17], who defined the concept as the aggregate of the 
+actual or potential resources existing within the relationships of a 
+durable network. According to Lin [18], the common denominator 
+of all major social capital theories can be summarized as: “The 
+resources embedded in social relations and social structure which 
+can be mobilised when an actor wishes to increase the likelihood 
+of success in purposive action.” (p. 24).  
+
+A communities-of-practice perspective considers that networks, to 
+be fruitful and active, require a shared framework of values and 
+norms [2]. Learning within communities is a process within which 
+both individual and collective learning goals and agendas are 
+carefully and constantly negotiated in relation to a topic or domain 
+that is of interest to each participant [19-20].  
+
+3. TRANSLATION INTO ANALYTICS  
+The Networked Learning position outlined above serves to define 
+the broad set of phenomena considered to be important in 
+designing effective informal learning, drawing on disciplinary 
+perspectives and tools such as Social Network Analysis and 
+Social Capital Theory. In order to translate this into a Social 
+Learning Analytics software tool [5], there are minimally three 
+interdependent steps: data capture, analysis and visualization.  
+
+Data capture. Our work on NAT has focused, to date, on face-to-
+face professional learning, with participants manually 
+constructing their networks. NAT enabled them to see, literally 
+and usually for the first time, what these networks looked like, 
+and where new relevant colleagues might be. The transition to 
+
+Social Learning Analytics, with its focus on the appropriation of 
+social media for learning, required the integration of NAT with an 
+online learning platform, with the objective of generating NAT 
+visualizations automatically from social interactions logged in the 
+database. We selected the OU’s SocialLearn system [5, 15] as a 
+data source, since we have complete control over the platform. 
+Analysis. It is necessary to translate the networked learning 
+concepts such as strength of social tie and social capital, and 
+levels of analysis such as individual, ties and network dimensions, 
+into a data model whose structures have the potential to answer 
+queries such as In which directions do resources flow? 
+Visualization. None of this pays off unless stakeholders can 
+interact with the analytics that render their connected world more 
+visible [19]. Visualizing networked learning activities can also 
+assist strategic networked learning by helping learners to decide 
+which networks they should join and which experts they should 
+aim to connect with. Commonly used network visualization 
+software includes NetDraw [21], Gephi [22], NodeXL[23], JUNG 
+[24], Pajek[25] and several packages for R [26].   
+The approach taken in the design and development of the NAT 
+plug-in for SocialLearn differed from these in two major ways.  
+First, the software is designed to be used by participants who are 
+not network analysis experts or researchers.  Second, the 
+conceptual framework we have requires data capture and network 
+filtering by semantic content (topic or tag) as well as by the type 
+of the social tie, moving beyond undifferentiated nodes and ties. 
+
+4. NAT PLUGIN FOR SOCIALLEARN  
+In this section we describe how we visualize multiple levels 
+inherent in networked learning based on the learning activities 
+within SocialLearn. The plug-in, based on the Network 
+Awareness Tool [4], is designed to be compatible with any 
+modern web browser and was developed using widely available 
+JavaScript libraries.  For the SocialLearn plug-in, we have set up 
+the following framework, taking into account the theoretical 
+perspectives introduced above.  
+
+4.1 Visualizing the Network Structure 
+The NAT plugin visualizes the overall structure of the network to 
+the users. A graphical representation of the ego-network and 
+overall network structure is visualized reflecting the current state 
+of the network. The ego-network perspective is the network from 
+one node. The overall network structure is the total of all nodes.  
+
+The resulting network of actors, with multiplex ties, is laid out 
+using a force-directed layout algorithm. The resulting diagram is 
+often complex. To reduce this complexity, users are offered a 
+variety of ways in which they can zoom in on areas of interest, 
+filter out extraneous data, and request details of any particular 
+data [27]. In addition to these filters, users can request 
+computational assistance from the system to reposition the filtered 
+actors. In this case, the layout algorithm is re-applied to the data 
+points of interest. A screencast demonstrating the functionality of 
+the plug-in is online, as shown in Figure 1. 
+
+Social network theory considers that the constitution of a network 
+may influence the accessibility of information and resources and 
+that its social structure may offer potential for the exchange of 
+resources [28-29]. Understanding the structure of a network can 
+reveal the information flow within an online learning environment 
+[30]. Teams with the same skill composition can act differently 
+depending on the structure of relations within the team and, 
+similarly, individual can act differently depending on their 
+position within a network [8, 31].  
+
+34
+
+
+
+To gain more insight into the tie level, we combine data about 
+frequency and quality with the social network analysis. This 
+supports investigation of the role of strong and weak ties in a 
+learning network. Combining data on the frequency and the 
+quality can be very valuable [31].  
+
+Levin and Cross [32] found that networked learners rely on weak 
+ties with competent people they can trust. Raegans and McEvily 
+[33] add that the transfer of tacit knowledge is a sensitive process 
+and therefore fewer people are able to engage in this process. 
+Strong ties are also important, because they are employed to 
+deepen and embed knowledge that is closely related to day-to-day 
+shared practice, as well as to build commitment to joint activities. 
+
+4.2 Visualizing the expertise and content  
+What is the focus of the network? Which themes are discussed? 
+Who is related to what theme? Who is at the centre of that theme? 
+This is represented in a tagcloud, reflecting the topics participants 
+have declared on their SocialLearn profile pages. 
+
+At an overall network level, learners can see in the general 
+tagcloud all learning topics associated with the whole community. 
+By clicking on a tag, learners filter the network and see only other 
+learners who have an interest in that learning theme. By 
+identifying topographically central people within the network, 
+they can identify the most active people, as well as potential 
+experts in the field. So learners can use the NAT plug-in as a 
+Social Learning Browser to locate people who are dealing with 
+the same learning topics. This is based on the logic of social 
+recommender systems, but most recommender systems are based 
+on people you may know through other connections, rather than 
+the thematic content around which people form relations.   
+
+Social learning is often mediated via artifacts, and social capital 
+can involve the exchanging of material resources. So both 
+SocialLearn actors and artifacts are used as sources of tags, 
+examples of artifacts being Questions posted to the Q&A site, and 
+Steps on a learning Path. For our analysis, tags on artifacts that 
+mediated associations between actors were added to the actors 
+themselves. For example, if Actor A posted a Thought (analogous 
+to a status update) with Tag T, and Actor B commented on that 
+Thought, then Tag T would also be associated with Actor B. In 
+this way we are able to visualize the flow of topics between 
+actors.  
+
+Because people learn through an active social process of meaning 
+construction [34], it is necessary to take the content of the  
+interactions into account. The kind of information that is 
+exchanged may influence the nature of the learning tie. While 
+most social networking sites focus on finding people with a 
+certain expertise, the NAT plug-in also focuses on finding people 
+with the same learning topic and learning problem.  
+
+4.3 Multiplexity of Learning Ties 
+Engaging in networked learning means that learners need to be in 
+touch with others in their network and need to build the 
+networked connections that are required to participate in 
+constructive conversations [4]. However, this is not easy because 
+networked learning is a complex process situated in a changing 
+context. It is difficult to pare this process down to one or two 
+variables. A learning relation is a multiplex set of relations all 
+acting at the same time.  
+
+ 
+Figure 1: Using NAT to visualize and filter social ties by person, type of tie, and topic. Due to space limitations, this is a composite 
+image showing the entire unfiltered network, but when a user is selected this filters the left-panel as shown, to display only her 
+ego-network and topics. Screencast: http://bit.ly/NAT-SocialLearn 
+
+35
+
+
+
+In many analyses of social networks, ties between actors are 
+differentiated only in terms of their relative strength. The 
+SocialLearn platform supports a wide variety of actions that can 
+result in the creation of ties between actors. Here we describe 
+responding ties, follower ties and friendship ties (which as 
+explained, can be further contextualized through the use of tags). 
+
+Actions that can result in interaction ties between actors include 
+responding to materials contributed by another actor (typically 
+through commenting on or replying to postings). Thus, if Actor B 
+comments on a posting by Actor A there would be a ‘respond’ 
+type tie from Actor B to Actor A. 
+
+Ties can be used to describe relations between actors in 
+SocialLearn. Two types of actions were used to generate relations: 
+friending (i.e. identifying another actor as someone who is a 
+colleague, acquaintance or friend) and following (i.e. identifying 
+that you want to be notified of the activities of another actor). 
+Both these actions serve to indicate that one actor is in some way 
+interested in another actor. Relations are directional and 
+potentially non-symmetric (e.g. Actor A can identify Actor B as a 
+‘friend’ without Actor B identifying Actor A as a ‘friend’).  
+
+We found it important to include these friend and follower 
+learning relationships because learning can be supported if 
+relations between students in the network are characterized by 
+trust, openness and confidence [35]. According to Argyris and 
+Schön [36], trust and openness in social relations make it possible 
+to test theories, experiences and practices. Borgatti and Cross [37] 
+found that students are most likely to seek information from work-
+related experts who they believe will not make them feel 
+uncomfortable. Figure 2 shows how the network visualization can 
+be filtered and thus redrawn by combining different ties. 
+
+5. SUMMARY AND FUTURE WORK 
+To summarise, we have presented our Networked Learning 
+theoretical perspective, and described a demonstrator which 
+begins to show how this can be translated into a Social Learning 
+Analytics tool. The NAT plug-in for SocialLearn visualizes 
+networks by identifying relationships between people who interact 
+around the same learning topics. From an ego-perspective 
+learners can see their own learning network, consisting of their 
+friends, followers and other learners with whom they have 
+interacted. This means that the NAT plug-in has the potential to 
+provoke learning-centric reflection by learners on how they use 
+their peers for learning. Learners can also see the content of the 
+ties, summarized in one or more tags.  
+
+Educators can use the plug-in to guide students in the 
+development of networked learning competences and to gain 
+insight into the ability of groups of students to learn collectively 
+over time. Using this plug-in, educators can detect multiple 
+(isolated) networks within the online learning environment, 
+connect ideas and foster collaboration beyond existing boundaries.  
+
+The visualizations and network data can be used to carry out 
+social network analysis of the density of a network, including the 
+centrality of persons within a network, the structure, cliques, etc, 
+in real time or over a specified period. For researchers, the 
+analysis of learning ties and networks helps clarify how 
+professionals engage in learning relationships, as well as the value 
+of this engagement.  
+
+This work is at an early stage. We have completed one iteration to 
+put the representational infrastructure in place, which now opens 
+up many possible lines of enquiry. More research is needed to 
+
+investigate which sets of ties can predict or stimulate learning. It 
+may prove possible to apply the theory of Borgatti and Cross [37] 
+to an online learning environment and to investigate whether 
+people who are friends are more likely to seek information from 
+each other. 
+
+We have not yet analysed whether different ties yield 
+sytematically different structures. Qualitative research is needed 
+to interview actors about their perceptions of their learning 
+networks, their (and mentors’) reactions to these visualizations. 
+What do learners themselves perceive as the best types of learning 
+tie? Does the content of ties influence the structure of the learning 
+network of which it forms a part, and does it help us track the 
+flow of social capital within a network? 
+
+We plan to develop the NAT plug-in further in order to make it 
+possible to conduct temporal SNA in order to study network 
+dynamics. A ‘replay’ tool should help see the growth of the 
+overall network and changes in the networked learning behaviour 
+of individual students. Do students find more peers to learn from 
+using the NAT plug-in?  
+
+6. ACKNOWLEDGEMENTS 
+We gratefully acknowledge The Open University for making this 
+work possible through a SocialLearn Project Internship awarded 
+to the first author. 
+
+ 
+Figure 2: A subnetwork already filtered by topic. Actors 
+may be connected by any combination of the ties friend / 
+follow / respond, reflected in the combination of colours on 
+the links (top). Link thickness reflects quantitative 
+strength (e.g. many blue responses between actors). 
+Filtering on just friend ties (lower) refreshes the network 
+layout, revealing a different structure in which actors may 
+become more central/peripheral. 
+
+36
+
+
+
+7. REFERENCES 
+1. Lave, J., & Wenger, E. 1991. Situated learning- Legitimate 
+
+peripheral participation. Cambridge University Press, 
+Cambridge, United Kingdom. 
+
+2. Wenger, E., Trayner, B., & De Laat, M. 2011. Telling stories 
+about the value of communities and networks: A toolkit. 
+Ruud de Moor Centrum, Open Universiteit. 
+
+3. De Laat, M.F., & Schreurs, B. (2011). Network Awareness 
+Tool: Social software for visualizing, analysing and 
+managing social networks. Ruud de Moor Centrum, Open 
+Universiteit Nederland, Heerlen. 
+
+4. Schreurs, B., & de Laat, M. (2012). Network Awareness 
+Tool – Learning Analytics in the workplace: Detecting and 
+Analyzing Informal Workplace Learning. Paper presented at 
+LAK12: 2nd International Conference on Learning Analytics 
+and Knowledge (30 April - 2 May), Vancouver, Canada. 
+
+5. Ferguson, R., & Buckingham Shum, S. (2012). Social 
+Learning Analytics: Five Approaches. Paper presented at 
+LAK12: 2nd International Conference on Learning Analytics 
+and Knowledge (30 April - 2 May), Vancouver, Canada. 
+
+6. Jones, C., Asensio, M., & Goodyear, P. 2000. Networked 
+learning in higher education: practitioners’ perspectives. 
+Journal of the Assoc. for Learning Technology, 8, 2, 18-28. 
+
+7. Coburn, C. E., & Russell, J. L. 2008. District policy and 
+teachers’ social networks. Education Evaluation and Policy 
+Analysis, 30, 203-235. 
+
+8. Moolenaar, N. M., Daly, A. J., & Sleegers, P. J. C. in press. 
+Ties with potential: Social network structure and innovative 
+climate in Dutch schools. Teachers College Record. 
+
+9. Penuel, W. R., Riel, M., Joshi, A., Pearlman, L., Kim, C. M., 
+& Frank, K. A. 2010. The alignment of the informal and 
+formal organizational supports for reform: Implications for 
+improving teaching in schools. Educational Administration 
+Quarterly, 46, 1, 57-95. 
+
+10. Pil, F., & Leana, C. 2009. Applying organization research to 
+public school reform. Acad. Mngmnt Jnl., 56, 2, 1101-24. 
+
+11. Goodyear, P., Banks, S., Hodgson, V. & McConnell, D. 
+2004. Advances in research on networked learning. Kluwer 
+Academic Publishers, Norwell, MA. 
+
+12. Siemens, G. 2004. Connectivism: A learning theory for the 
+digital age, International Journal of Instructional Technology 
+and Distance Learning. (Nov.2006), 226. 
+http://www.itdl.org/Journal/Jan_05/article01.htm  
+
+13. De Laat, M. 2006. Networked learning. Politieacademie, 
+Apeldoorn. 
+
+14. Steeples, C. and Jones, C. (Eds.) 2002 Networked learning: 
+Perspectives and issues. Springer, London.  
+
+15. Ferguson, R., & Buckingham Shum, S.(2012). Towards a 
+social learning space for open educational resources. In A. 
+Okada, T. Connolly, & P. Scott (Eds.), Collaborative 
+Learning 2.0: Open Educational Resources (pp. 309-327): 
+IGI. 
+
+16. Nahapiet, J. 2009. Capitalizing on connections: social capital 
+and strategic management. In Social capital: reaching out, 
+reaching in, V.O. Bartkus and J.H. Davis, Editors. Edward 
+Elgar Publishing, Cheltenham.  
+
+17. Bourdieu, P. 1985. The social space and the genesis of 
+groups. Theory and Society, 14, 6, 723-744. 
+
+18. Lin, N. and J. Smith. 2009. A Theory Of Social Structure And 
+Action. Cambridge University Press, Cambridge. 
+
+19. De Laat, M.F. 2011. Bridging the knowledge gap: Using 
+Social Network Methodology for Detecting, Connecting and 
+Facilitating Informal Networked Learning in Organizations. 
+Paper presented at the 44th IEEE Annual Hawaii 
+International Conference on System Sciences, Kuaui, HI. 
+
+20. De Laat, M. 2006. Networked learning. Politieacademie, 
+Apeldoorn. 
+
+21. Borgatti, S.P., 2002. NetDraw Software for Network 
+Visualization. Analytic Technologies: Lexington, KY 
+
+22. Bastian M., Heymann S., Jacomy M. (2009). Gephi: an open 
+source software for exploring and manipulating 
+networks. International AAAI Conference on Weblogs and 
+Social Media. 
+
+23. Smith, M., Milic-Frayling, N., Shneiderman, B., Mendes 
+Rodrigues, E., Leskovec, J., Dunne, C., (2010). NodeXL: a 
+free and open network overview, discovery and exploration 
+add-in for Excel 2007/2010, http://nodexl.codeplex.com 
+Social Media Research Fndn: http://www.smrfoundation.org  
+
+24. Madadhain, J., Fisher, D., Smyth, P., White, S.,  Boey, Y.B. 
+(2005). "Analysis and visualization of network data using 
+JUNG". Journal of Statistical Software: 1–25. 
+
+25. Batagelj V., Mrvar A.: Pajek - Analysis and Visualization of 
+Large Networks. in Jünger, M., Mutzel, P., (Eds.) Graph 
+Drawing Software. Springer, Berlin 2003. p. 77-103. 
+
+26. R Development Core Team (2008). R: A language and 
+environment for   statistical computing. R Foundation for 
+Statistical Computing, Vienna, Austria. http://www.R-
+project.org. 
+
+27. Shneiderman, B. 1996. The Eyes Have It: A Task by Data 
+Type Taxonomy for Information Visualizations. 
+In Proceedings of the 1996 IEEE Symposium on Visual 
+Languages (VL '96). IEEE Computer Society, Washington, 
+DC, USA, 336-343. 
+
+28. Scott, J. and P. Carrington. 2010. Handbook of Social 
+Network Analysis. Sage, London. 
+
+29. Wasserman, S. and K. Faust. 1994. Social Network Analysis. 
+Cambridge University Press, Cambridge. 
+
+30. Daly, A..J. 2010. Relationships in reform: the role of 
+teachers' social networks. Journal of Educational 
+Administration, 48, 3, 359-391. 
+
+31. Granovetter, M. 1979. The strength of weak ties. American 
+Journal of Sociology, 78, 1360-1380. 
+
+32. Levin, D. Z. & Cross, R. 2004. The strength of weak ties you 
+can trust: The mediating role of trust in effective knowledge 
+transfer. Management Science, 50, 11, 1477-1490. 
+
+33. Reagans, R. & McEvily, B. 2003. Network structure and 
+knowledge transfer: The effects of cohesion and range. 
+Administrative Science Quarterly, 48, 240-267. 
+
+34. Elliot Soloway, Mark Guzdial, and Kenneth E. Hay. 1994. 
+Learner-centered design: the challenge for HCI in the 21st 
+century. Interactions 1, 2 (April 1994), 36-48.  
+
+35. Bottrup, P. 2005. Learning in a network: A ‘third way’ 
+between school learning and workplace learning? Journal of 
+Workplace Learning, 17(8): 508–521 
+
+36. Argyris, C. & Schon, D. A. (1996). Organizational learning 
+Il: Theorv, method and practice. Reading. MA: Addison-
+Wesley.  
+
+37. Borgatti, S.P. and Cross, R. 2003. A Relational View of 
+Information Seeking and Learning in Social Networks. 
+Management Science. 49(4):432-445. 
+
+37
+
+
+
+
+

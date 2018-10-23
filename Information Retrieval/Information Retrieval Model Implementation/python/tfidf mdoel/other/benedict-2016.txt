@@ -1,0 +1,1159 @@
+
+A Study On Eye Fixation Patterns of Students in Higher 
+Education Using an Online Learning System  
+
+ 
+Benedict The 
+
+School of Computing 
+National University of Singapore 
+
+13 Computing Drive 
+Singapore 117417 
+
++65 65168354 
+the.benedict@nus.edu.sg 
+
+ 
+Manolis Mavrikis 
+UCL Knowledge Lab 
+23-29 Emerald Street 
+London WC1N 3QS 
+
+United Kingdom 
++44 (0) 20 7907 4634 
+
+m.mavrikis@ucl.ac.uk
+
+ABSTRACT 
+We study how the use of online learning systems stimulate 
+cognitive activities, by conducting an experiment with the use of 
+eye tracking technology to monitor eye fixations of 60 final year 
+students engaging in online interactive tutorials at the start of their 
+Final Year Project module. Our findings show that the students’ 
+visual scanning behaviours fall into three different types of eye 
+fixation patterns, and the data corresponding to the different types 
+relates to the performance of the students in other related academic 
+modules. We conclude that this method of studying eye fixation 
+patterns can identify different types of learners with respect to 
+cognitive activities and academic potentials, allowing educators to 
+understand how their instructional design using online learning 
+environments can stimulate higher-order cognitive activities.   
+
+Categories and Subject Descriptors 
+• Applied computing~Interactive learning environments     
+• Social and professional topics~Information technology education 
+
+General Terms 
+Experimentation, Measurement, Performance 
+
+Keywords 
+Eye Tracking, Human-Computer Interaction, Instructional Design, 
+Cognitive Activity, Online Learning 
+
+1. INTRODUCTION 
+The continuous advancement of teaching and learning with the 
+increasing use of technology within the vast selections of modules 
+offered in higher education has been evident over the years. Most 
+examples of the advancement are contributed by the increasing use 
+of online learning systems in the learning environment. The rapid 
+embracing of such technology and its pervasive use in teaching and 
+learning have been brought about by strong supporting changes, 
+ranging from institutional vision and philosophy towards 
+encouraging the use of technology, to the rising focus of building 
+
+and developing educators’ competencies in using technologies to 
+enhance instructional design.  
+
+A common use of learning systems in education is the wide range 
+of multimedia functionalities, which offer many features that can 
+enhance student learning. One study uses computers’ multimedia 
+capabilities to lend a sensory component that help reinforce 
+concepts and appeal to a wider variety of approaches to learning 
+[31]. It is highlighted that graphical aspects help students visualize 
+two- and three-dimensional geometric figures and represent 
+mathematical ideas such as the nature of arithmetic versus 
+exponential growth. It is further emphasized that students can make 
+conjectures and experiment with these graphical representations to 
+see the results. Another team of researchers has also explored the 
+use of technology to explore the impact of multimedia resources 
+situated in a national e-learning portal to improve overall science 
+learning experiences [7]. 
+
+For the School of Information Technology, Nanyang Polytechnic 
+in Singapore, the institution where our empirical research was 
+conducted, the introduction of online learning systems was focused 
+towards online tutorial and problem solving activities. The 
+introduction of online learning systems for teaching and learning of 
+computer programming for students in higher education has 
+benefited both the educators and the students. For the educators, 
+they are able to conduct their lessons using such systems as tools 
+for course material management, assignment submission, setting 
+and conducting of assessment, monitoring of grade performance 
+and student feedback. For the students, their learning deepens with 
+online collaborative work with peers, timely performance 
+feedback, instantaneous access to online course material, and 
+interactive engagement of online assignments. Although a lot has 
+been done to facilitate teaching and learning with the use of 
+technology as a communicative and collaborative channel, very 
+little study has been done on cognitive processes of students as they 
+learn using online tools, particularly in the field of human-computer 
+interaction, on how the instructional design stimulates higher-order 
+cognitive activities. 
+
+Learning is also optimized when accompanied by problem solving 
+activities [6], and problem solving induces higher-order cognitive 
+activities learning as it forces students to be active participants in 
+their learning rather than passive information receivers [2]. Online 
+courses such as those provided by lyndaCampus and Codecademy 
+are integrated into various academic modules to heighten the 
+learning experience of the students. However, individual 
+differences among the students would account for a variance in 
+learning outcomes [18, 25]. There is thus a need to address the 
+
+Permission to make digital or hard copies of all or part of this work for 
+personal or classroom use is granted without fee provided that copies are 
+not made or distributed for profit or commercial advantage and that copies 
+bear this notice and the full citation on the first page. Copyrights for 
+components of this work owned by others than ACM must be honored. 
+Abstracting with credit is permitted. To copy otherwise, or republish, to 
+post on servers or to redistribute to lists, requires prior specific permission 
+and/or a fee. Request permissions from Permissions@acm.org. 
+LAK '16, April 25-29, 2016, Edinburgh, United Kingdom  
+© 2016 ACM. ISBN 978-1-4503-4190-5/16/04…$15.00 
+http://dx.doi.org/10.1145/2883851.2883871. 
+
+
+
+diversity in the students’ learning approaches, the broad spectrum 
+of individual abilities, and the diversity of socioeconomic and 
+cultural backgrounds [1]. Another study also highlights that 
+learners’ cognitive load fluctuates during interaction while using 
+online learning tools [4]. From prior research studies, cognitive 
+activities and deep thinking has corresponded to measurements 
+such as eye fixations, saccades, dwell time percentage, pupil 
+diameter and blink rate [4, 24, 27, 28, 29]. It is unclear, however, 
+as to how these measurements eye movements by learners are 
+related to their learning experiences, and if learning indeed do 
+occurs, how such readings are related to individual academic results 
+in recent past, or use as a predictive method for future academic 
+performances. To our knowledge, no research work has been done 
+to explore these connections. Our study will thus attempt to 
+determine the different patterns of eye fixations and saccades of 
+students learning computer programming from such online learning 
+systems, in particular Codecademy, to their individual academic 
+abilities and performances via grading achieved from related 
+programming modules. The result will seek to help educators 
+understand the effectiveness of the online learning systems towards 
+achieving higher-order cognitive processing, when applied to their 
+students. 
+
+2. RELATED WORK 
+The use of eye tracking technology in the study of cognitive 
+processing has seen an increasing amount of interest in recent 
+research works. Most of the literature are based on two theoretical 
+assumptions about the relation between eye movement and 
+cognitive processing, namely the immediacy assumption and the 
+eye-mind assumption, referring to the work of Just & Carpenter 
+[19]. In immediacy assumption, information processing is 
+immediate and occurs when the information is encountered. In eye-
+mind assumption, the visual information that falls within the focus 
+of attention is also being processed, and the direction of gaze is 
+closely associated with the focus of attention. We have thus 
+conducted our research with these theoretical assumptions in mind. 
+
+Before the use of eye tracking technology in educational 
+psychology and educational research, thinking aloud was the 
+method employed in most studies on cognitive processing [3, 5, 
+16]. In the attempt to understand what happens during learning, 
+some studies have generally used the think-aloud research 
+methodology while readers are involved in text processing. 
+However, this methodology is known to have a limitation of being 
+intrusive. It is suggested that thinking aloud may alter the process 
+of thinking itself, because it requires cognitive resources that 
+should be used in carrying out the primary task of learning [22]. 
+Eye tracking does not have this limitation. It does not interrupt 
+normal reading, and thus will not lead to disruptions in cognitive 
+processing. The eye tracking data collected will completely account 
+for the allocation of visual attention of the learner during task 
+execution, and such measures can be used to draw inferences about 
+cognitive processes. 
+
+Prior research works on eye tracking collects fixation duration and 
+gaze duration measurements to draw inferences about cognitive 
+processes [26]. Single fixation duration refers to cases where only 
+a single fixation is made on a word, and gaze duration refers to the 
+sum of all fixations on a word prior to moving to another word. In 
+general, researchers agree that visual attention is related to 
+cognitive processing activities. It is through the interpretation of 
+eye movement data that researchers attempt to understand the 
+relationship of such measures and the underlying cognitive 
+processes. 
+
+In our study of students’ interaction using a technology enhanced 
+learning environment, we are inspired by the works of Hyönä & 
+Lorch [13], where they have highlighted that the various segments 
+that comprise a text are not given equal processing time. Another 
+similar research paper has also indicated that a text segment that 
+introduces a new topic or a new narrative episode is attended more 
+than the segments that are continuations of the same topic or 
+episode [21]. The conclusive segment at the end of the text has also 
+been found to receive more attention, and the end sentences have 
+been considered as the location of gaze for “wrap up” processing 
+[11]. This inequality of attention was also highlighted in other 
+similar works [9, 10], where it was reported that an increase in 
+cognitive load leads to longer fixation duration and an increase in 
+the number of fixations.  
+
+In another of such research work, eye fixations were recorded 
+during the reading of information of three pulley system 
+configurations of increasing complexity [11]. The analysis from the 
+collected data indicated that the readers from the university 
+community often reread the text to process specific information 
+about a component or set of components before building a spatial 
+mental model. Another particularly appropriate measure for our 
+study is suggested by Nielson [23], who has highlighted important 
+findings on the sequence of scanning objects on screen. From his 
+research, he assumes that headlines are examined first, then pictures 
+as well as diagrams and visual examples, followed finally by text. 
+This assumption will also be looked into in our study as well. 
+
+An important consideration for our study, as suggested by 
+Kruschke et al. [20], is that the pattern of learning varies across 
+individuals but is relatively stable within individuals. Similar 
+findings have also highlighted differences in pattern of learning, 
+where some participants achieved high accuracy very rapidly in 
+simple tasks, while others learn gradually [30], as well as 
+distinguishing between experts’ and novices’ eye movement 
+profiles [17] For this study, we will attempt to identify distinctive 
+characteristics in learning among the students. 
+
+In analysing the transition of eye fixation patterns, prior works have 
+used various methods towards determining a wide spectrum of 
+pattern types [32]. Methods such as network analysis on the 
+transition of eye fixations have highlighted different combinations 
+of the transition patterns of fixations. 
+
+However, to the best of our knowledge, the detailed studies above 
+did not conclude if there were any distinctive connections among 
+the patterns of learning and the performance of the learners in 
+related academic modules. This knowledge is advantageous to both 
+educators and learners, especially in understanding academic 
+performance, and improving on instructional design. Our empirical 
+research in this paper attempts to address this gap. 
+
+3. METHODS 
+3.1 Research Questions 
+Following the introduction and literature review in the previous 
+sections, we are particularly interested in the following research 
+questions: 
+
+Q1. What are the distinctive eye fixation patterns of the students 
+engaging in the online tutorials? 
+
+Q2. How are the fixation patterns connected with the students’ 
+performances in related academic modules? 
+
+
+
+3.2 Experiment Setup 
+A total of 60 final year students from the School of Information 
+Technology, Nanyang Polytechnic, were involved in the 
+experiment. They were at the start of their Final Year Project 
+module, and were selected to complete a series of online tutorials 
+to learn how to program in PHP using an online learning tool called 
+Codecademy. Each student did not have prior knowledge of 
+programming in PHP, and were new to the online learning 
+environment of Codecademy. The students were also selected 
+randomly. English as the medium of instruction was not highlighted 
+as a problem for any of the students. 
+
+3.3 The Codecademy Tutorials  
+The students were to individually complete 13 tasks regarding 
+different programming functions and features of PHP, a popular 
+programming language. These tasks were made available in the 
+form of an online interactive learning module provided by 
+Codecademy. An example of the online learning environment user 
+interface is shown in Figure 1.  
+
+ 
+
+  
+ 
+
+Figure 1: User Interface of Codeacademy 
+
+For the online interactive PHP tutorials, the user interface is divided 
+into 5 main blocks. Introduction(A), Instructions(B) and Hints(C) 
+are arranged in sequence on the left column of the screen. The 
+programming Editor(D) is provided at the centre of the screen. A 
+programming Output(E) is displayed on the top right corner of the 
+screen to show the results generated by the program. 
+
+The 13 tasks were presented to each student in sequence. 
+Introduction presented the title and fundamentals of the task, 
+followed by Instructions of how to solve the task. Once the students 
+completed each task, they would click the Save and Submit Code 
+button, to proceed to the next task. If a task was done incorrectly, 
+an error message would be displayed at the bottom of the screen, 
+and the student would not be allowed to proceed to the next task. 
+An option for hints was provided for students who were not able to 
+proceed and thus needed some guiding help. Hints were not 
+displayed unless requested for.  
+
+Experimental sessions were conducted individually for each 
+student using a setup as shown in Figure 2 and Figure 3, using an 
+eye tracking device from Eye Tribe connected to a laptop in a 
+computer laboratory. 
+
+Each data collection session for a student to complete all require 
+tasks lasted from 15 to 30 minutes. At the start of each session, the 
+eye tracking device would be calibrated for each student, before the 
+student proceeded to complete the tasks online. A video screen 
+capture was also recorded while the student proceeded with 
+completing the online tasks. This was to validate eye tracking 
+
+records with matching movements and inputs as they complete the 
+online tutorials. 
+
+ 
+ 
+
+Figure 2: Eye Tribe scanner connected to a laptop 
+
+ 
+
+ 
+ 
+
+Figure 3: A student during an experimental session 
+
+3.4 Methodology 
+Our study focuses on the investigation of eye fixation patterns of 
+students engaging in online learning tool, with the use of eye 
+tracking analysis as the basic method [8, 12]. There are three main 
+eye tracking parameters used in this study, namely the number of 
+fixations, the duration of fixations and sequence of saccades. 
+Fixation plots are generated to reveal the areas of interest of each 
+participant as they progress through their online tutorials. Scan 
+paths that display the series of saccades and the time duration for 
+each fixation are also generated and analysed. 
+
+3.5 Data Collection Using Eye Tribe 
+The Eye Tribe eye tracking device came with a software that helped 
+capture eye movement coordinates, determine fixations, and record 
+a time stamp for each fixation. The records were generated into a 
+text file at the end of each session. After conducting data collection 
+for all students, the text files were retrieved and stored for further 
+analysis. 
+
+The text files containing eye movement data were subsequently 
+imported into Tableau Desktop 9.0 to generate fixation plots across 
+different areas. Our research found that the fixation plots can be 
+classified into 3 distinctive patterns (Figure 4.1 – 4.3), which were 
+generated from the students based on the number of fixations, 
+corresponding to the 5 main blocks in Codecademy’s user interface, 
+as they complete the online tutorials assigned. This is done by 
+visual observation of the plot patterns generated by the 
+visualisation software. 
+
+Eye Tribe 
+Scanner 
+
+(A) 
+
+(B) 
+
+(C) 
+
+(D) (E) 
+
+
+
+ 
+ 
+
+Figure 4.1: Pattern with fixations across all blocks (Type FP1) 
+ 
+
+ 
+ 
+
+Figure 4.2: Pattern without many fixations on Introduction 
+and Instructions, but a lot on Hints (Type FP2) 
+
+ 
+
+ 
+ 
+
+Figure 4.3: Pattern with many fixations on all blocks except 
+Hints (Type FP3) 
+
+The first type of pattern (Type FP1) produced a consistent 
+distribution of fixations to all blocks while completing the tasks. 
+Students who displayed this pattern of engagement started by 
+attempting to comprehend the topics as explained in the 
+Introduction, and subsequently tried to complete the tasks 
+displayed in the Instructions block. However, the high count in 
+fixations to Hints suggested that these students had failed in 
+
+completing the tasks, and had requested for help within the Hints 
+block. This is due to the students finding the tasks too advanced or 
+having misconceptions in the tasks. 
+
+Students who displayed the pattern similar to that of the second type 
+(Type FP2), with low count of fixations on Introduction and 
+Instructions but a lot on Hints, may generally had completed the 
+tasks by copying the solutions from the hints. Their fixation plot 
+suggested that they did not value the need to understand the 
+rudiments of the topics, and favoured more towards completing the 
+tasks quickly. It could thus be inferred that since these students 
+appear not to participate in cognitive activities with respect to the 
+understanding of the topics, they had not effectively learned from 
+Introduction or Instructions blocks.  
+
+Students who displayed the pattern that corresponded with the third 
+type (Type FP3), with little fixations to Hints, generally completed 
+the tasks by reading through the introduction and instructions. Their 
+fixation plot suggested that they attempted to comprehend the 
+fundamentals of the topics, and followed the instructions 
+accordingly. The low count in fixations to Hints suggested that the 
+learning strategy of these students was to process the requirements 
+within the text of the instructions and to try to produce the solution 
+according to their understanding. These students were thus 
+considered to have higher-order cognitive activities while fixing 
+their attention on learning from Introduction and Instructions 
+throughout their sessions [10, 12]. 
+
+Scan paths were also generated for our study, to observe the 
+sequences of attention focus, as well as the patterns of look-back 
+and rereading behaviours. Such patterns of scanning behaviours 
+were studied extensively [15], where 4 types of reading strategy 
+were identified with their distinctive features. “Fast linear readers” 
+did not make return fixations on previous texts. “Slow linear 
+readers” made many rechecks before moving on. “Non-selective 
+readers” made many look-backs to previous sentences. “Topic 
+structure readers” paid close attention to headings and were also 
+those who produce the most accurate text summaries, a measure of 
+knowledge retention by the participants. These similar findings 
+were again highlighted in another study, where it was found that 
+the quality of recalls of the main ideas presented in the text also 
+correlated with the amount of time spent on look-back and 
+rereading by the participants [14]. 
+
+Scan plots of the data collected from all the sessions were 
+generated. It was observed that the participants’ scan plots largely 
+fell into 3 most profound and distinguished types (Figure 5.1 -  
+Figure 5.3).  
+For the first type (Type SP1) of scan path in Figure 5.1, it mirrored 
+characteristics similar to “slow linear readers”, as students started 
+by placing their attention to headings in Introduction and 
+Instructions, and made many rechecks as they move their attention 
+between the Introduction and Instructions blocks. The darker the 
+shades of the plots around a localized area, the longer is their gaze. 
+For the second type (Type SP2) of scan path in Figure 5.2, it 
+mirrored characteristics similar to “fast linear readers”, and is 
+similar to the previous type in terms of its linear scan path sequence. 
+However, these students quickly move their attention to Editor and 
+Output as they complete their tasks without frequent rechecks to 
+headings in Introduction and Instructions. For the third type (Type 
+SP3) of scan path in Figure 5.3, students displayed a significant 
+amount of look-backs to Instructions as the students complete their 
+task on the Editor. This type of scan path resembled that of “topic 
+structure readers”. 
+
+
+
+ 
+ 
+
+Figure 5.1: Scan path showing characteristics of slow linear 
+readers with darker plots (Type SP1) 
+
+ 
+
+ 
+ 
+
+Figure 5.2: Scan path showing characteristics of fast linear 
+readers with lighter plots (Type SP2) 
+
+ 
+
+ 
+ 
+
+Figure 5.3: Scan path showing characteristics of topic 
+structure readers (Type SP3) 
+
+ 
+
+3.6 The Datasets 
+We conducted Linear Regression analyses using records gathered 
+to form 3 datasets. For the first dataset (snapshot in Table 1), we 
+are able to derive from the eye fixations data the number of counts 
+of Fixation Plot Type (FP1 – FP3) from the set of completed 
+tutorials for each student. 
+
+ 
+
+ 
+
+Table 1: Excerpt of data showing counts of Fixation Plot Type 
+for tutorials completed by each student. 
+
+ FP1 FP2 FP3 
+
+Student01 4 2 7 
+
+Student02 3 4 6 
+
+Student03 6 3 4 
+
+… …    
+
+Student59 2 3 8 
+
+Student60 3 7 3 
+ 
+
+Similarly, in the second dataset (snapshot in Table 2), from the eye 
+fixations data, we again derived the number of counts of Scan Path 
+Type (SP1 – SP3) from the set of completed tutorials for each 
+student. 
+
+Table 2: Excerpt of data showing counts of Scan Path Type 
+for tutorials completed by each student. 
+
+ SP1 SP2 SP3 
+
+Student01 2 3 8 
+
+Student02 3 3 7 
+
+Student03 6 6 1 
+
+… …    
+
+Student59 1 3 9 
+
+Student60 4 5 4 
+ 
+
+The third dataset (snapshot in Table 3) is a collection of the 
+academic grades of all programming project modules in which the 
+students were enrolled during their course of study. As a third 
+(final) year student, all students will have completed 4 semesters of 
+project modules (Proj01 – Proj04).  
+
+From the grades score of the 4 project modules, we further 
+aggregated the score to obtain the average score (ProjAve). We also 
+recorded the students’ Grade Point Average (GPA) of all academic 
+modules which the students obtained by the end of Year 2 
+(Yr2GPA). 
+
+Table 3: Excerpt of data showing results of students’ past 
+grades from project modules and their GPA. 
+
+ 
+Proj
+01 
+
+Proj
+02 
+
+Proj
+03 
+
+Proj
+04 
+
+Proj 
+Ave 
+
+Yr2
+GPA 
+
+Student01 79 67 77 79 75.50 3.72 
+
+Student02 92 84 75 78 82.25 3.68 
+
+Student03 63 55 63 64 61.25 1.74 
+
+… …       
+
+Student59 73 61 91 78 75.75 2.73 
+
+Student60 72 80 73 70 73.75 3.56 
+
+ 
+
+ 
+
+
+
+4. RESULTS 
+This study seeks to understand how the fixation plot and scan path 
+are related to the project and academic grades of the students, we 
+used SPSS Statistics version 22 to run regression analysis on the 
+datasets collection mentioned in the previous section. For this 
+study, the multiple regression model used are having three 
+independent variables, namely FP1 – FP3 for fixation plot analysis, 
+and SP1 – SP3 for scan path analysis. The following sections will 
+show the effects of both fixation plot and scan path on project 
+average and end of Year 2 GPA scores, by deriving the coefficient 
+of the three independent variables for the linear regression analyses. 
+
+4.1 Fixation Plot and Project Average 
+Table 4 below shows the coefficients of the independent variables 
+FP1 – FP3 effect on the project average (ProjAve). 
+
+Table 4: Coefficients of the independent variables FP1 – FP3 
+effect on the project average (ProjAve). 
+
+Coefficientsa,b 
+
+Model 
+
+Unstandardized 
+
+Coefficients 
+
+Standardized 
+
+Coefficients 
+
+Sig. B Std. Error Beta 
+
+1 FP1 3.730 .336 .195 .000 
+
+FP2 6.206 .351 .370 .000 
+
+FP3 6.574 .147 .534 .000 
+
+a. Dependent Variable: ProjAve 
+
+b. Linear Regression through the Origin 
+The Adjusted R Square value for this analysis is 0.996, which 
+means that our linear model fits a set of observations very well. 
+From the results above, it can be seen that FP3 has the highest 
+standardized coefficient value that contributes positively to the 
+prediction of project average scores of the pool of students. It can 
+also be seen that FP1, having the lowest standardized coefficient 
+value, provides the least in the prediction of the students’ project 
+average grades. The randomness of the residual vs fitted plot below 
+shows that regression analysis is not biased. 
+
+ 
+
+Figure 6: Residual vs Fitted Plot for Fixation Plot Type effect 
+on Project Average 
+
+4.2 Fixation Plot and GPA 
+Table 5 below shows the coefficients of the independent variables 
+FP1 – FP3 effect on the end of Year 2 GPA (Yr2GPA). 
+
+Table 5: Coefficients of the independent variables FP1–FP3 
+effect on the end of Year 2 GPA (Yr2GPA). 
+
+Coefficientsa,b 
+
+Model 
+
+Unstandardized 
+
+Coefficients 
+
+Standardized 
+
+Coefficients 
+
+Sig. B Std. Error Beta 
+
+1 FP1 .029 .033 .037 .386 
+
+FP2 .296 .035 .424 .000 
+
+FP3 .312 .015 .608 .000 
+
+a. Dependent Variable: Yr2GPA 
+
+b. Linear Regression through the Origin 
+For this analysis, the Adjusted R Square value is 0.978, which also 
+signifies the strength of the relationship between the model and the 
+response variables. FP3 is shown again to have the highest 
+standardized coefficient value of 0.608, suggest that it provides the 
+most effect for the students’ GPA performance. Likewise, 0.37 for 
+FP1 may suggest the lowest in contribution towards the prediction 
+of GPA grades. However, since the p-value for SP1 is 0.386, and 
+since it is over the common alpha value of 0.05, it also indicates 
+that it is not statistically significant. Figure 7 shows the randomness 
+of the residual vs fitted plot. 
+
+ 
+Figure 7: Residual vs Fitted Plot for Fixation Plot Type effect 
+
+on GPA 
+
+4.3 Scan Path and Project Average 
+Table 6 below shows the coefficients of the independent variables 
+SP1 – SP3 effect on the project average (ProjAve). 
+
+For this analysis, it is again noted that the Adjusted R Square value 
+is 0.996. the standardized coefficient for SP3 is highest at 0.54, 
+suggesting that students with scan path type associated to Topic 
+Structure Readers may also have the highest retention of 
+knowledge and skillsets, and thus lead to higher project average 
+scores. The standardized coefficient of SP1 is the lowest at 0.195, 
+suggesting that it contributes the least in prediction towards project 
+performance. Figure 8 shows randomness of residual vs fitted plot. 
+
+-10
+
+-5
+
+0
+
+5
+
+10
+
+15
+
+50 60 70 80 90R
+es
+id
+ua
+ls
+
+Predicted	Value
+
+-1.5
+
+-1
+
+-0.5
+
+0
+
+0.5
+
+1
+
+1.5
+
+1 2 3 4 5Re
+sid
+
+ua
+ls
+
+Predicted	Value
+
+
+
+Table 6: Coefficients of the independent variables SP1 – SP3 
+effect on the project average (ProjAve) 
+
+Coefficientsa,b 
+
+Model 
+
+Unstandardized 
+
+Coefficients 
+
+Standardized 
+
+Coefficients 
+
+Sig. B Std. Error Beta 
+
+1 SP1 3.758 .364 .195 .000 
+
+SP2 6.220 .358 .371 .000 
+
+SP3 6.543 .142 .540 .000 
+
+a. Dependent Variable: ProjAve 
+
+b. Linear Regression through the Origin 
+
+ 
+Figure 8: Residual vs Fitted Plot for Scan Path Type effect on 
+
+Project Average 
+
+4.4 Scan Path and GPA 
+Table 7 below shows the coefficients of the independent variables 
+SP1 – SP3 effect on the end of Year 2 GPA (Yr2GPA). 
+
+Table 7: Coefficients of the independent variables SP1–SP3 
+effect on the end of Year 2 GPA (Yr2GPA) 
+
+Coefficientsa,b 
+
+Model 
+
+Unstandardized 
+
+Coefficients 
+
+Standardized 
+
+Coefficients 
+
+Sig. B Std. Error Beta 
+
+1 SP1 .035 .035 .044 .330 
+
+SP2 .290 .035 .416 .000 
+
+SP3 .312 .014 .620 .000 
+
+a. Dependent Variable: Yr2GPA 
+
+b. Linear Regression through the Origin 
+The linear regression report for this analysis also shows a high 
+Adjusted R Square value of 0.976. Similarly, from the above table, 
+
+SP3 has the highest standardized coefficient of 0.620, which 
+implies that it strongly supports GPA performances. It can also be 
+seen that for SP1, with a p-value of 0.330, it is not a significant 
+variable to affect students’ end of Year 2 GPA performance. Figure 
+9 below shows the randomness of the residual vs fitted plot. 
+
+ 
+Figure 9: Residual vs Fitted Plot for Scan Path Type effect on 
+
+GPA 
+
+5. DISCUSSION 
+The analysis from this research has enabled us to understand that 
+there are strong relations among different types of eye fixation 
+measurements and behavioural patterns in association with the 
+level of engagement in learning and the type of learners and their 
+traits towards learning. The results also suggested that students who 
+display different visual scanning behaviours have significantly 
+achieve different scores in their GPA and project grades. This may 
+give rise to early detection of students who may need more help and 
+assistance in learning well before the assessments at the end of the 
+semesters. 
+
+We can further suggest that although the approach towards learning 
+among the students varies, we found that students who are 
+identified as engaged learners using the online learning system, are 
+also high achievers in related academic modules. This finding 
+indicates that the students exhibit consistent learning traits across 
+modules conducted in the traditional methods of teaching, and 
+modules using online learning as a teaching tool. Therefore, by 
+capturing eye fixation measurements, educators may be able to 
+identify, even before any form of assessments, students who may 
+need more help in achieving better academic performance. 
+Educators can also use the findings as a measure of how effective 
+the instructional design of their online tutorials are in enhancing 
+learning with higher-order cognitive activities. 
+
+The limitations of this research study lie in the dependencies of the 
+results with the particular online UI of CodeAcademy. However, as 
+these UI features, namely onscreen blocks of Introduction, 
+Instructions, Hints, programming Editor and Outcome are 
+generally found in other Integrated development environments 
+(IDEs) for programming, our findings and insights remain useful 
+and applicable.. Other communicative and collaborative channels, 
+such as forum discussions and synchronous or asynchronous chat 
+features, may provide richer insights on the visual scanning 
+behaviours and traits of the students. In such cases, more variations 
+of eye fixation pattern types may arise, which could expand the 
+understanding of cognitive processing of different groups of 
+learners. 
+
+In order to deepen the understanding of the relationship between 
+eye fixation behaviours and cognitive activities, a more general 
+
+-10
+
+-5
+
+0
+
+5
+
+10
+
+15
+
+50 60 70 80 90R
+es
+id
+ua
+ls
+
+Predicted	Value
+
+-1.5
+
+-1
+
+-0.5
+
+0
+
+0.5
+
+1
+
+1 2 3 4
+
+Re
+sid
+
+ua
+ls
+
+Predicted	Value
+
+
+
+approach towards determining fixation plot and scan path types 
+should also be done to handle a larger variation of patterns [31]. 
+Methods such as network analysis on the transition patterns of eye 
+fixations may result in more combinations of fixation plot and scan 
+path. 
+
+Another concern about the data collected is the inference of 
+cognitive activities and meaningful learning primarily from the 
+capturing of eye movement of the learners. During the course of 
+data collection, it is observed that students could also be in deep 
+thoughts while looking elsewhere, for example an open window, a 
+ceiling fan etc. Although these actions can also be moments 
+contributing to higher-order cognitive activities of the learners, the 
+Eye Tribe sensor did not capture them. Other types of detection 
+techniques, such as neuroimaging technique using 
+Electroencephalography (EEG) may be combined together with 
+eye tracking sensor data to increase the accuracy of the results. 
+
+6. CONCLUSION 
+This study has shown that online learning systems stimulate 
+cognitive activities, and that different students have displayed 
+different levels of engagement patterns through eye fixations. 
+These eye fixation patterns are also able to characterize different 
+types of learners, from the analysis of the dataset from eye tracking 
+technology that monitored the eye fixations of 60 final year 
+students engaging in online interactive tutorials at the start of their 
+Final Year Project module. Our findings further suggest that the 
+students’ visual scanning behaviours fall into three different types 
+of eye fixation patterns, with the data which corresponded to the 
+different types of learners having strong relations to the 
+performance of the students in other related academic modules. the 
+study thus concludes that this method of analysing eye fixation 
+patterns can identify different types of learners with respect to their 
+cognitive activities and academic potential, and also allow 
+educators to understand how their instructional design using online 
+learning environment can stimulate higher-order cognitive 
+activities. 
+
+For practical usage, the findings from this study have potentials of 
+allowing educators to understand the behaviours and attributes of 
+their students through the use of online learning tools. Although 
+this study uses the modest size of a datasets from the selected final 
+year students, it has nonetheless produce insights on the 
+possibilities of assessing and monitoring students’ learning 
+progress and performance apart from relying on traditional 
+assessment tools such as test and examination papers. 
+
+For future works, educators and researchers can also perform 
+research studies by providing different sets of instructional design 
+to facilitate online learning by different learners, and analyse the 
+patterns of other neuroscientific measurements of the students. The 
+measurements can be further studied to correlate with other 
+behavioural and/or academic performance metrics, to understand 
+how best to conduct online teaching and learning. It will be most 
+apparent for MOOCs, which are Massive Open Online Courses 
+designed for worldwide engagement, students’ demographical data, 
+time zones, language competencies etc., may also affect online 
+engagement behaviours. 
+
+7. REFERENCES 
+[1] Apostol, S., Sofronia, A., Mihailescu, D. & Petrescu, L. 
+
+(2012), One size does not fit all! A theoretical model for 
+adaptive tutoring systems. The 8th International Scientific 
+Conference eLearning and software for Education, 
+
+Bucharest, April 26-27, 2012, 44-49. DOI=  
+http://dx.doi.org/ 10.5682/2066-026X-12-098. 
+
+[2] Bradsford, D., Brown, A., & Cocking, R. (Eds.). (2000). 
+How people learn: Brain, mind, experience, and school 
+committee on developments in the science of learning, 
+Washington, DC: National Academy Press. 
+
+[3] Butcher, K. R. (2006). Learning from text with diagrams: 
+Promoting mental model development and inference 
+generation. Journal of Educational Psychology, 98, 182-197. 
+DOI= http://dx.doi.org/10.1037/0022- 0663.98.1.182. 
+
+[4] Chen, A. & Epps, J. (2014). Using Task-Induced Pupil 
+Diameter and Blink Rate to Infer Cognitive Load, Human-
+computer Interaction, 2014(29), 390–413. DOI= 
+http://dx.doi.org/10.1080/07370024.2014.892428. 
+
+[5] Cromley, J. G., Snyder-Hogan, L. E., & Luciw-Dubas, U. A. 
+(2010), Reading comprehension of scientific text: A domain-
+specific test of the direct and inferential mediation model of 
+reading comprehension. Journal of Educational Psychology, 
+102, 687-700. DOI= http://dx.doi.org/10.1037/a0019452. 
+
+[6] D'Mello, S. K., Lehman, B. A., & Person, N. (2010). 
+Monitoring affect states during effortful problem solving 
+activities. International Journal of Artificial Intelligence in 
+Education, 20(4), 361–389. DOI= 
+http://dx.doi.org/10.3233/JAI-2010-012. 
+
+[7] Elliot, D., Wilson, D., & Boyle, S. (2014). Science learning 
+via multimedia portal resources:The Scottish case, British 
+Journal of Educational Technology, 45(4), 571-580. DOI= 
+http://dx.doi.org/10.1111/bjet.12085. 
+
+[8] Duchowski, A. T. (2003). Eye Tracking Methodology: 
+Theory and Practice. Springer-Verlag, London, United 
+Kingdom. 
+
+[9] Findlay, J. M., & Kapoula, Z. (1992). Scrutinization, spatial 
+attention, and the spatial programming of saccadic eye 
+movements. The Quarterly Journal of Experimental 
+Psychology A: Human Experimental Psychology, 45A(4),  
+633-647. DOI= 
+http://dx.doi.org/10.1080/14640749208401336. 
+
+[10] Graf, W. & Krueger, H. (1989). Ergonomic evaluation of 
+user-interfaces by means of eye-movement data. In M. J. 
+Smith & G. Salvendy (Eds.), Work with computers: 
+Organizational, management, stress and health aspects, 659-
+665. 
+
+[11] Hegarty, M. & Just, M. A. (1993). Constructing mental 
+models of machines from text and diagrams. Journal of 
+Memory and Language, 32, 717-742. DOI= 
+http://dx.doi.org/10.1006/jmla.1993.1036. 
+
+[12] Holmqvist, K (2015). Eye Tracking: A comprehensive guide 
+to methods and measures. Oxford University Press, Oxford, 
+United Kingdom. 
+
+[13] Hyönä, J. & Lorch, R. F. (2004). Effects of topic headings on 
+text processing: Evidence from adult readers’ eye fixation 
+patterns. Learning and Instruction, 14, 131-152. DOI= 
+http://dx.doi.org/10.1016/j.learninstruc.2004.01.001. 
+
+[14] Hyönä, J. & Nurminen, A. M. (2006). Do adult readers know 
+how they read? Evidence from eye movement patterns and 
+verbal reports. British Journal of Educational Psychology, 
+97, 31-50. DOI= 
+http://dx.doi.org/10.1348/000712605X53678. 
+
+
+
+[15] Hyönä, J., Lorch, R. F., Jr., & Kaakinen, J. (2002). Individual 
+differences in reading to summarize expository text: 
+Evidence from eye fixation patterns. Journal of Educational 
+Psychology, 94, 44-55. DOI= 
+http://dx.doi.org/10.1037//0022-0663.94.1.44. 
+
+[16] Jacob, R. J. K. & Karn, K. S. (2003). Eye tracking in human-
+computer interaction and usability research: Ready to deliver 
+the promises. In J. Hyona, R. Radach & H. Deubel (Eds.), 
+The mind's eye: Cognitive and applied aspects of eye 
+movement research, 573-605. 
+
+[17] Jarodzka, H., Scheiter, K., Gerjets, P., & Van Gog, T. (2010). 
+In the eyes of the beholder: How experts and novices 
+interpret dynamic stimuli. Learning and Instruction, 20, 146–
+154. DOI= 
+http://dx.doi.org/10.1016/j.learninstruc.2009.02.019. 
+
+[18] Jonassen, D. H. & Grabowski, B. L. 1993. Handbook of 
+Individual Difference, Learning, and Instruction. Lawrence 
+Erlbaum Associates, Publishers, Hillsdale, NJ. 
+
+[19] Just, M. A. & Carpenter, P. A. (1980). A theory of reading: 
+From eye fixations to comprehension. Psychological Review, 
+87, 329-354. DOI= http://dx.doi.org/10.1037/0033-
+295X.87.4.329. 
+
+[20] Kruschke, J. K., Kappenman, E. S., & Hetrick, W. P. (2005). 
+Eye gaze and individual differences consistent with learned 
+attention in associative blocking and highlighting. Journal of 
+Experimental Psychology: Learning, Memory, and Cognition 
+2005, 31(5), 830-845. DOI= http://dx.doi.org/10.1037/0278-
+7393.31.5.830. 
+
+[21] Lorch Jr., R. F., Lorch, E. P., & Matthews, P. D. (1985). On-
+line processing of the topic structure of a text. Journal of 
+Memory and Language, 24, 350-362. DOI= 
+http://dx.doi.org/10.1016/0749-596X(85)90033-6. 
+
+[22] McCrudden, M. T., Magliana, J. P., & Schraw, G. (2011), 
+The effect of diagram on online reading processes and 
+memory. Discourse Processes, 48, 69-82. DOI= 
+http://dx.doi.org/10.1080/01638531003694561. 
+
+[23] Nielson, J., (2001). Designing Web Usability. 
+Markt+Technik Verlag, München, Germany. 
+
+[24] Nisiforou, E. A. & Laghos, A. (2013). Do the eyes have it? 
+Using eye tracking to assess students cognitive dimensions, 
+Educational Media International, 50(4), 247-265. DOI= 
+http://dx.doi.org/10.1080/09523987.2013.862363. 
+
+[25] Pozzi, S. & Bagnara, S. (2013). Individuation and diversity: 
+the need for idiographic HCI, Theoretical Issues in 
+Ergonomics Science, 14(1), 1-21. DOI= 
+http://dx.doi.org/10.1080/1464536X.2011.562564. 
+
+[26] Rayner, K. (1998). Eye movements in reading and 
+information processing: 20 years of research. Psychological 
+Bulletin, 124(3), 372-422. DOI= 
+http://dx.doi.org/10.1037//0033-2909.124.3.372. 
+
+[27] Rayner, K., Loschky, L. C. & Reingold, E. M. (2014). Eye 
+movements in visual cognition: The contributions of George 
+W. McConkie, Visual Cognition, 22(3-4), 239-241. DOI= 
+http://dx.doi.org/10.1080/13506285.2014.895463. 
+
+[28] Reingold, E. M. (2014). Eye tracking research and 
+technology: Towards objective measurement of data quality, 
+Visual Cognition, 22(3-4), 635-652. DOI= 
+http://dx.doi.org/10.1080/13506285.2013.876481. 
+
+[29] Vansteenkiste, P., Cardon, G., Philippaerts. R. & Lenoir, M. 
+(2015) Measuring dwell time percentage from head-mounted 
+eye-tracking data – comparison of a frame-by-frame and a 
+fixation-by-fixation analysis, Ergonomics, 58(5), 712-721. 
+DOI= http://dx.doi.org/10.1080/00140139.2014.990524. 
+
+[30] Webb, M. R. & Lee, M. D. (2004). Modeling individual 
+differences in category learning. In K. Forbus, D. Gentner, & 
+T. Regier (Eds.), Proceedings of the 26th annual meeting of 
+the Cognitive Science Society, 1440-1445. 
+
+[31] Wiest, L. R. (2001). The Role of Computers in Mathematics 
+Teaching and Learning, Computers in the Schools: 
+Interdisciplinary Journal of Practice, Theory, and Applied 
+Research, 17(1-2), 41-55. DOI= 
+http://dx.doi.org/10.1300/J025v17n01_05. 
+
+[32] Zhu, M. & Feng, G. (2015). An exploratory study using 
+social network analysis to model eye movements in 
+mathematics problem solving, In Proceedings of the 5th 
+international conference on learning analytics and 
+knowledge LAK’15, 110-116. DOI= 
+http://dx.doi.org/10.1145/2723576. 2723591.
+
+ 
+ 
+
+
+

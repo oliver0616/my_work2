@@ -1,0 +1,266 @@
+
+MORPH: Supporting the Integration of Learning Analytics 
+at Institutional Level 
+
+Zoran Jeremic, Vive Kumar and Sabine Graf 
+School of Computing and Information Systems, Athabasca University, Canada 
+
+zjeremic@athabascau.ca; vive@athabascau.ca; sabineg@athabascau.ca  
+ 
+
+ 
+ABSTRACT 
+While there is high potential in using learning analytics to provide 
+educational institutions as well as teachers and learners with 
+actionable information and improve learning experiences, 
+currently only very few learning analytics tools are actually used 
+in educational institutions. In this paper, we introduce MORPH, a 
+platform that facilitates the integration of learning analytics 
+modules and tools into institutional learning systems. MORPH 
+provides a robust distributed architecture which combines batch, 
+stream and real-time data processing using a parallel processing 
+model to enable and support efficient processing of large amounts 
+of data. Furthermore, it provides common management and 
+administration features that enable the seamless integration of 
+learning analytics research modules and tools into existing 
+institutional learning systems. 
+
+CCS Concepts 
+• Applied computing?Interactive learning environments 
+• Software and its engineering?Software prototyping 
+
+Keywords 
+Learning Analytics; Institutional Learning Environments; Data 
+Streaming; Batch Processing; Real-time Processing; Dashboards  
+
+1. INTRODUCTION 
+In recent years, learning analytics is evolving rapidly and 
+garnering broad interest of both educational institutions and 
+researchers [1]. Over the last years a lot of research has been 
+conducted on different topics related to learning analytics and 
+several learning analytics tools and prototype systems have been 
+developed. However, only a very small number of such 
+tools/systems has been adopted by educational institutions. 
+
+When designing, developing and evaluating learning analytics 
+research tools and systems, the primary focus of researchers is 
+often on the learning analytics research itself, including issues 
+such as the proper collection of data from a learning system, the 
+processing of data through different algorithms, and data 
+visualization (e.g., through dashboards, alerts, notifications, etc.). 
+However, general software engineering issues as well as 
+management and administrative aspects for integrating such 
+research modules into learning systems of whole educational 
+institutions are often neglected. But such issues are crucial to 
+
+build robust research modules that can seamlessly integrate in 
+existing institutional systems of educational institutions. 
+Furthermore, designing and implementing learning analytics for a 
+whole educational institution typically involves complex 
+computing and aggregating of large amounts of data which cannot 
+be performed by traditional data management technologies [2]. 
+However, many research modules are built and/or tested to run on 
+limited or small-scale datasets (e.g., for one or few courses) to 
+evaluate these research modules and their underlying algorithms. 
+These modules often would not perform well once integrated with 
+real-world educational systems which host hundreds of courses. 
+Accordingly, a successful implementation of research modules in 
+learning analytics requires a new application development 
+paradigm to create a technical solution that effectively operates 
+with large amounts of data and allows the integration of different 
+research modules. 
+
+In order to address the above-mentioned problems, we designed 
+and developed MORPH, a dynamic and evolving platform, which 
+facilitates the integration of innovative research tools/modules in 
+the areas of learning analytics, visualization, learner profiling, 
+personalization and others, into existing institutional learning 
+environments. MORPH provides a robust distributed architecture 
+which combines batch, stream and real-time data processing, 
+using a parallel processing model. Research modules integrated 
+with MORPH are structured around the provided architecture 
+which ensures that data are processed in a reliable and efficient 
+way. MORPH provides functionalities for seamless integration, 
+management and administration of research modules in 
+institutional learning management systems (LMSs). With this 
+approach, a significant burden can be taken from researchers 
+when aiming at developing research modules that can be used in 
+real-world scenarios, so that they can focus on research-related 
+issues rather than on software engineering tasks. 
+
+2. LEARNING ANALYTICS IN MORPH 
+MORPH’s architecture is built to connect research modules to 
+LMSs while providing support for data processing and analytics 
+of huge amounts of data as well as for management and 
+administrative issues to integrate different research modules into 
+LMSs used by whole educational institutions. To address the 
+problem of aggregation and processing of large amounts of data, a 
+distributed architecture is used, in which MORPH comprises two 
+basic high level components: (1) Data Processing & Analytics 
+subsystem and (2) Data Collection & Presentation subsystem, 
+which are loosely coupled using RESTful services and Distributed 
+Messaging System. The Data Processing & Analytics subsystem 
+includes all information management components, i.e. data store 
+which is separated from the LMS database, as well as components 
+to search, transform, integrate and process data. The Data 
+Collection & Presentation subsystem is integrated with the LMS, 
+and provides different services related to the management and 
+administration of research modules as well as visual components 
+used by research modules such as dashboards, notifications, etc.  
+
+ 
+Permission to make digital or hard copies of part or all of this work for 
+personal or classroom use is granted without fee provided that copies are 
+not made or distributed for profit or commercial advantage and that 
+copies bear this notice and the full citation on the first page. Copyrights 
+for third-party components of this work must be honored. For all other 
+uses, contact the Owner/Author. 
+Copyright is held by the owner/author(s). 
+LAK '17, March 13-17, 2017, Vancouver, BC, Canada 
+ACM 978-1-4503-4870-6/17/03. 
+http://dx.doi.org/10.1145/3027385.3029478 
+
+
+
+Each research module is plugged into both subsystems and could 
+be easily disconnected (and reconnected). In addition, MORPH 
+provides management and administrative support for 
+administrators and teachers. Administrators can easily turn on/off 
+research modules and make them available to teachers, while 
+teachers can activate/deactivate research modules in their courses, 
+and tune different settings. Moreover, MORPH provides different 
+APIs and reusable components such as dashboards, alerts, 
+notifications, which can be reused by different research modules.  
+
+2.1 Data Streaming and Processing  
+To meet the complex requirements of learning analytics modules 
+which typically process large amounts of data in different ways, 
+data streaming, batch processing and real-time processing needs 
+to be supported [3]. To ensure highly efficient data processing in 
+MORPH, a separate data store is used for storing and searching 
+data, so no data has to be retrieved from the LMS database. 
+MORPH extends the LMS with a Data Collection & Presentation 
+subsystem. The Data Collection subcomponent collects events, 
+appends other relevant data and submits event data as a data 
+stream to the Data Processing & Analytics subsystem through the 
+Distributed Messaging System. The Data Processing & Analytics 
+subsystem receives the event data, classifies it and forwards the 
+data to its subcomponents called Stream Processors which are 
+subscribed for specific event types. Stream Processors define 
+operations that are applied to each individual data item as it passes 
+through (e.g., calculating the average time spent on a page, 
+session durations, etc.). A common scenario of use of Stream 
+Processors is to provide event counters (e.g., page views per 
+session, unique page views, etc.), which may then be used by 
+research modules to produce more complex information.  
+MOPRH offers two ways of processing (and accessing) data: 
+batch processing and real-time processing. Batch processing is 
+well-suited for complex calculations where access to large 
+amounts of data is required and where results are not needed in 
+real-time. A research module can use MORPH’s APIs to specify 
+(1) when to activate batch processing (e.g., based on a specific 
+input such as a user event or at specific time intervals), (2) which 
+data should be processed in batch (e.g., only last user session 
+events or data related to a specific user), and (3) which operations 
+should be performed on the data. MORPH provides different 
+types of batch job APIs for research modules and handles aspects 
+such as triggering, parallelization and failover. Once a MORPH 
+batch job is activated, data is collected from the data store based 
+on the provided parameters, processed using the provided 
+operations, and then the results are stored back to the data store. 
+Real-time processing can be used in MORPH, for example, for 
+providing recommendations, personalization and interventions. 
+The goal is to respond in real-time or near real-time to certain user 
+actions or situations identified through received events or direct 
+requests. MORPH supports two approaches of real-time 
+processing. The first approach is to retrieve data stored as a result 
+of data streams or batch job processing, aggregate and process this 
+data, run algorithms and/or analytical techniques on them, and 
+visualize the respective output for the end user. Another approach 
+is to extend a Learning Session Analyzer (LSA) provided by 
+MORPH, through a research module. Such LSA allows analyzing 
+the current and previous events of a respective learning session, as 
+defined in a research module. A LSA is controlled and triggered 
+by MORPH each time a user performs an action and uses a short-
+term data store to store the events of a learning session for 
+processing and analysis. As the result of such processing and 
+analysis, certain interventions can be provided to the end users.  
+
+2.2 Learning Interventions in MORPH 
+Besides data streaming and processing, MORPH also facilitates 
+the process of showing actionable information and 
+recommendations in a LMS. Several options are supported by 
+MORPH and in the following paragraphs, two important options 
+for learning analytics modules are presented in more detail.  
+MORPH provides a set of different notification types that can be 
+presented to students (or teachers) for direct interventions within 
+the LMS. Interruptive notifications cover a LMS page to let 
+students know that something very important requires their 
+immediate attention. Non-interruptive notifications appear in the 
+right-bottom corner of the screen and display a personalized 
+message. These notifications can have different visual appearance 
+to indicate success or risks, and provide information and 
+warnings. The third type of notifications are messages that are 
+displayed above learning content and are typically used to provide 
+information, advice or guidance. Each type of intervention can be 
+either displayed on any page of the course or only on a specific 
+page. For example, a message that encourages a student to take a 
+more active part in forums can be displayed on any page in the 
+course, while a notification that proposes additional resources to a 
+learning object can be displayed on only that learning object. 
+MORPH also provides advanced dashboard functionalities that 
+were designed to provide rich, meaningful and timely feedback to 
+students and teachers. Dashboards are tailored on the fly for each 
+course and each user based on the research modules activated in 
+the course and on the user’s role in the LMS. A dashboard is 
+divided into logical sections which are presented on the same page 
+or on different tabs, depending on the total number of widgets that 
+are displayed. Widgets are containers which hold actual visual 
+representations of data generated by research modules. A research 
+module can define the type of diagram to be displayed and 
+provide data in JSON format to populate a widget; and MORPH 
+takes care of the visualization based on the provided parameters 
+and data. However, if there is a need for more complex 
+visualizations that are not supported by MORPH, it is possible to 
+provide custom implementation for a widget.   
+
+3. CONCLUSION 
+In this paper, we presented MORPH, a platform that facilitates the 
+integration of learning analytics research modules into 
+institutional learning systems. MORPH provides different support 
+for such integration including management and administrative 
+support as well as support for streaming and processing of large 
+amounts of data. As such, it enables researchers to focus more on 
+learning analytics research rather than on general software 
+engineering issues, while ensuring that their research modules are 
+capable of being integrated in learning systems of whole 
+educational institutions. Future work deals with evaluating 
+MORPH with different research modules. 
+
+4. REFERENCES 
+[1] Chatti, M. A., Lukarov, V., Thüs, H., Muslim, A., Yousef, A. 
+
+M. F., Wahid, U., Greven, C., Chakrabarti, A., Schroeder, U. 
+2014. Learning analytics: Challenges and future research 
+directions. E-Learning and Education (eleed), 10.  
+
+[2] Manyika, J., Chui, M., Brown, B., Bughin, J., Dobbs, R., 
+Roxburgh, C., Byers, A.H. 2011. Big Data: The Next 
+Frontier for Innovation, Competition, and Productivity. 
+Report. McKinsey Global Institute. 
+
+[3] Shahrivari, S. 2014. Beyond batch processing: Towards real-
+time and streaming big data. Computers 2014, 3(4), 117-129. 
+
+ 
+
+
+	1. INTRODUCTION
+	2. LEARNING ANALYTICS IN MORPH
+	2.1 Data Streaming and Processing
+	2.2 Learning Interventions in MORPH
+
+	3. CONCLUSION
+	4. REFERENCES
+
+

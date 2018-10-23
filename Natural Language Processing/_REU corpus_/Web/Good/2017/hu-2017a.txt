@@ -1,0 +1,377 @@
+
+New Features in Wikiglass, A Learning Analytic Tool for 
+
+Visualizing Collaborative Work on Wikis 
+Xiao Hu1 Chengrui Yang2    Chen Qiao1        Xiaoyu Lu2        Sam K. W. Chu1 
+
+1. Faculty of Education  2Department of Computer Science 
+
+The University of Hong Kong 
+
+{xiaoxhu, aaron102, cqiao, lxyu0405, samchu}@hku.hk 
+
+ABSTRACT 
+Wikiglass is a learning analytic tool for visualizing collaborative 
+
+work on Wikis built by groups of secondary or primary school 
+
+students. This poster presents new features of Wikiglass 
+
+developed recently based on requests from teachers, including 
+
+flexible selection of date range, revision network, and thinking 
+
+order detection. Currently the new features are used and evaluated 
+
+in two secondary schools in Hong Kong.     
+
+CCS Concepts 
+• Human-centered computing ? Visual analytics   • Applied 
+
+computing ? Collaborative learning 
+
+Keywords 
+Wiki; visualization; revision network; thinking orders 
+
+1. INTRODUCTION 
+Wikiglass is a Learning Analytics (LA) tool for supporting 
+
+secondary and primary school teachers and students to monitor 
+
+student group collaborations on Wikis [1]. By retrieving page 
+
+content and revision history from Wiki platforms, Wikiglass 
+
+visualizes statistics of student contributions. It is one of the first 
+
+LA tools supporting Chinese text processing and customized for 
+
+secondary and primary schools. Wikiglass is now used in two 
+
+secondary schools in Hong Kong where students collaborate in 
+
+groups on inquiry-based projects over a period of three to five 
+
+months. There are two visualization modes in Wikiglass: statistics 
+
+and timeline. The former allows teachers and students to compare 
+
+statistics of student groups in one class or individual students in 
+
+one group (Figure 1), such as revision counts and word counts. 
+
+The timeline mode displays statistics accumulated by dates on a 
+
+weekly basis, allowing teachers and students to monitor progress 
+
+of groups or individual students over time [1]. During classroom 
+
+implementation of Wikiglass, teachers and students’ opinions and 
+
+suggestions have been solicited through individual or focus group 
+
+interviews, based on which new features have been developed, 
+
+including flexible selection of date range, revision network, and 
+
+thinking order detection from sentences. 
+
+2. FLEXIBLE DATE SELECTION  
+By default, statistics shown in Wikiglass are accumulated from the 
+
+start of the project period to the current time. During classroom 
+
+implementation, there came a request for the flexibility of 
+
+selecting a date range to examine student contributions, for 
+
+example, during the winter holidays. A calendar was then added 
+
+into the interface to allow date specification which was taken into 
+
+all calculations in the class, group, and individual levels (Figure 
+
+1). It is noteworthy that the selection of date ranges is propagated 
+
+to all pages in the statistics mode until a new date range or the 
+
+option “All Time” is selected. 
+
+ 
+
+Figure 1. Data selection enabled in all pages. 
+
+3. REVISION NETWORK  
+The group page in statistics mode reveals how much each student 
+
+in a group contributed to the project (the pie chart in Figure 1). 
+
+However, it cannot tell the interactions among the students, or 
+
+whether they have built upon each other’s work. To fill this gap, a 
+
+network is visualized based on the page revision histories in a 
+
+Wiki. Figure 2 shows an example network where each node 
+
+represents a student. The edges are directed, starting from the 
+
+student who revised a page and ending at the student whose 
+
+writing was modified. The thickness of an edge is proportional to 
+
+the times of revisions one student did to another student’s 
+
+writings. Therefore, this network helps not only in illustrating the 
+
+collaborative relationships among students, but also in identifying 
+
+active and inactive students. 
+
+ 
+
+Figure 2. Revision network of one group 
+
+ 
+
+Permission to make digital or hard copies of part or all of this work for 
+
+personal or classroom use is granted without fee provided that copies are 
+
+not made or distributed for profit or commercial advantage and that 
+
+copies bear this notice and the full citation on the first page. Copyrights 
+
+for third-party components of this work must be honored. For all other 
+
+uses, contact the Owner/Author. 
+
+Copyright is held by the owner/author(s). 
+
+LAK’17, March 13-17, 2017, Vancouver, BC, Canada. 
+
+ACM 978-1-4503-4870-6/17/03. 
+
+http://dx.doi.org/10.1145/3027385.3029489 
+
+
+
+ 
+
+ 
+
+4. DETECTION OF THINKING ORDERS 
+Besides statistics on quantity of students’ contributions, the 
+
+teachers and students also raised a need for quality indicators of 
+
+students’ contributions. To meet the need, a new feature was 
+
+added to automatically detect the levels of thinking order (i.e., 
+
+higher or lower levels) from student writings on Wiki.  
+
+4.1 Framework of thinking orders 
+Bloom’s taxonomy (BT) categorizes reasoning thinking into six 
+
+levels: knowledge, comprehension, application, analysis, 
+
+synthesis, and evaluation [2]. BT has been used in assessing 
+
+cognitive thinking levels in student writings [3] [4]. In this study, 
+
+we used the adapted BT in [3] to analyze student writings in 
+
+Wikis, as shown in Table 1.  
+
+Table 1. Levels of thinking order adapted from [3]. 
+
+Thinking 
+
+Order 
+
+Bloom Taxonomy Possible purposes of 
+
+writing 
+
+High Evaluation 
+
+Synthesis 
+
+Reasoning, 
+
+Argumentation, 
+
+Evaluating, etc. 
+
+Medium Analysis 
+
+Application 
+
+Data interpretation, 
+
+Comparison, etc. 
+
+Low Comprehension 
+
+Knowledge 
+
+Definition, 
+
+Information statement, 
+
+Action description, etc. 
+
+4.2 Automated text categorization 
+As student writings are of a significant amount and generated in a 
+
+continuous manner, automated detection of thinking order from 
+
+writings is necessary. For this purpose, a text categorization 
+
+model was trained and evaluated on an annotated corpus which 
+
+was built from writings of previous students in one of the schools 
+
+using Wikiglass. It maximizes the generalizability of the model to 
+
+new writings of students in later cohorts, by using previous 
+
+students’ writings on the same subject and in the same school.  
+
+To build the categorization model, a range of text features were 
+
+extracted from each sentence, including lexical, syntactic, and 
+
+semantic features [5]. Multiple text categorization algorithms 
+
+were experimented and compared. The results showed that 
+
+Support Vector Machines (SVM) plus the randomized logistic 
+
+regression (RLR) feature election method achieved the best 
+
+performance (accuracy = 0.81; kappa = 0.58) which was then 
+
+integrated into Wikglass. 
+
+4.3 Visualizing thinking orders 
+Student writings on Wikis were first downloaded from Wiki 
+
+platforms. Once a new version of a page was recorded, the new 
+
+content on top of the last version was detected. Each sentence in 
+
+the new content then underwent the feature extraction and text 
+
+categorization process. The predicted levels of thinking orders 
+
+(i.e., high, medium, or low) were then saved into the database and 
+
+aggregated for visualizations. Statistics are shown in similar ways 
+
+as in Figure 1.  
+
+To enable closer examinations on the content of the sentences, 
+
+Wikiglass also allows teachers and students to view the actual 
+
+sentences and corresponding levels of thinking orders detected by 
+
+Wikiglass. In addition, teachers also have the authority to modify 
+
+the level of thinking orders if they think a predicted level is 
+
+inaccurate (Figure 3). The changes will not only be immediately 
+
+reflected on the screen, but also be taken as teachers’ feedback 
+
+and recorded by the system. The feedback will be used for 
+
+incrementally training the text categorization model, to further 
+
+improve the performance of categorization models over time [6].   
+
+ 
+
+Figure 3. Visualization of sentences and thinking orders 
+
+5. ONGOING WORK 
+Wikiglass is currently being used by two secondary schools in 
+
+Hong Kong, with a total of 602 students and 11 teachers. The 
+
+effectiveness of the tool and especially the new functions will be 
+
+evaluated through user survey, interviews as well as system log 
+
+analysis. Meanwhile, more schools are interested in adopting 
+
+Wikiglass in their classrooms. We are planning to evaluate the 
+
+efficacy of Wikiglass and LA in general with younger students in 
+
+primary schools.  
+
+ 
+
+ACKNOWLEDGMENTS 
+The work was partially supported by an Early Career Scheme 
+
+grant from the Research Grants Council of the Hong Kong Special 
+
+Administrative Region, China. (Project No. HKU 27401114). 
+
+6. REFERENCES 
+[1] Hu, X., Ip, J., Sadaful, K., Lui, G. & Chu, S. 2016. 
+
+Wikiglass: A Learning Analytic Tool for Visualizing 
+
+Collaborative Wikis of Secondary School Students, In 
+
+Proceedings of the 6th International Conference on 
+
+Learning Analytics and Knowledge (LAK '16). ACM, 550-
+
+551. DOI: http://dx.doi.org/10.1145/2883851.2883966 
+
+[2] Bloom, B. S., Engelhart, M. D., Furst, E. J., Hill, W. H., & 
+
+Krathwohl, D. R. 1956. Taxonomy of Educational 
+
+Objectives: The Classification of Educational Goals. 
+
+Handbook 1: Cognitive Domain. London, WI: Longmans, 
+
+Green & Co. Ltd. 
+
+[3] Plack, M. M., Driscoll, M., Marquez, M., Cuppernull, L., 
+
+Maring, J., & Greenberg, L. 2007. Assessing reflective 
+
+writing on a pediatric clerkship by using a modified Bloom’s 
+
+taxonomy. Ambulatory Pediatrics, 7(4), 285-291. 
+
+[4] Brierton, S., Wilson, E., Kistler, M., Flowers, J., & Jones, D. 
+
+2016. A Comparison of Higher Order Thinking Skills 
+
+Demonstrated in Synchronous and Asynchronous Online 
+
+College Discussion Posts. NACTA Journal, 60(1), 14-21. 
+
+[5] Che, W., Li, Z., & Liu, T. (2010). LTP: A Chinese language 
+
+technology platform. In Proceedings of the 23rd 
+
+International Conference on Computational Linguistics: pp. 
+
+13-16. ACL. 
+
+[6] Mitchell, T. (1997). Machine Learning, McGraw Hill, 
+
+Columbus, USA. 
+
+
+

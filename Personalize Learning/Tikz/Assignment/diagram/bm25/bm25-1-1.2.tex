@@ -1,0 +1,31 @@
+\documentclass[tikz,border=5pt]{standalone}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{backgrounds}
+\usetikzlibrary{calc}
+
+\usepackage{mathtools}
+\newcommand*{\TickSize}{2pt}%
+
+\begin{document}
+\begin{tikzpicture}
+	[framed,background rectangle/.style={ultra thin, rounded corners=5pt, draw=gray}];
+
+	%Axis
+	\coordinate (x) at (15,0);
+	\coordinate (y) at (0,14);
+	\coordinate (o) at (0,0);
+	\draw[-{Latex[length=3mm,open]}] (o)--(x) node[right]{$x$};
+	\draw (o) -- (x) node [midway, below, sloped] (textX) {\large Term Frequency};
+	\draw[-{Latex[length=3mm,open]}] (o)--(y) node[left]{$y$};
+	\draw (o) -- (y) node [midway, above, sloped] (textY) {\large Term Weight};
+
+	%coordinate
+	\draw [draw=red]plot [domain=0:15] (\x,\x) node[anchor=west,red]{\large $y=x$};
+	\draw [draw=green] plot [domain=0:15] (\x,{(4*\x)/(\x+3)}) node[anchor=west,blue]{\large $y = \dfrac{(3+1)x}{x+3}$};
+	\draw [draw=yellow] plot [domain=0:15] (\x,{(21*\x)/(\x+20)}) node[anchor=west,blue]{\large $y = \dfrac{(21+1)x}{x+20}$};
+	\draw [draw=blue] plot [domain=0:15] (\x,{(56*\x)/(\x+55)}) node[anchor=west,blue]{\large $y = \dfrac{(56+1)x}{x+55}$};
+	%\draw [draw=green]plot [domain=0:15] (\x,4);
+	%\node [green] at (-0.8,4) {$y=3+1$};
+	%\node [blue] at (15.6,2) {\large $k=3$};
+\end{tikzpicture}
+\end{document}

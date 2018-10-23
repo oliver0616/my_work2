@@ -1,0 +1,1038 @@
+
+Leveraging Multimodal Learning Analytics to Differentiate 
+Student Learning Strategies 
+
+Marc Worsley 
+Marcelo Worsley 
+Stanford University 
+
+520 Galvez Mall, CERAS 217 
+Stanford, CA 94305 
+
+mworsley@stanford.edu 
+
+ 
+Paulo Blikstein 
+Stanford University 
+
+520 Galvez Mall, CERAS 232 
+Stanford, CA 94305 
+
+paulob@stanford.edu
+rsley@stanford.edu paulob@stanford.edu
+
+ABSTRACT 
+Multimodal analysis has had demonstrated effectiveness in 
+studying and modeling several human-human and human-computer 
+interactions. In this paper, we explore the role of multimodal 
+analysis in the service of studying complex learning environments. 
+We compare uni-modal and multimodal; manual and semi-
+automated methods for examining how students learn in a hands-
+on, engineering design context. Specifically, we compare human 
+annotations, speech, gesture and electro-dermal activation data 
+from a study (N=20) where student participating in two different 
+experimental conditions. The experimental conditions have already 
+been shown to be associated with differences in learning gains and 
+design quality. Hence, one objective of this paper is to identify the 
+behavioral practices that differed between the two experimental 
+conditions, as this may help us better understand how the learning 
+interventions work. An additional objective is to provide examples 
+of how to conduct learning analytics research in complex 
+environments and compare how the same algorithm, when used 
+with different forms of data can provide complementary results. 
+
+Categories and Subject Descriptors 
+K.3.1 [Computers and Education]: Computer Uses in Education 
+– collaborative learning, computer assisted instruction, computer 
+managed instruction.  
+
+General Terms 
+Algorithms, Human Factors. 
+
+Keywords 
+Learning Sciences; Computational; Constructionist; Data Mining 
+
+1. INTRODUCTION 
+Multimodal analysis has provided a powerful tool for studying 
+complex human-human and human-computer interactions across a 
+variety of domains. Furthermore, these technologies have had a 
+strong impact on the development of multimodal interfaces that 
+create more naturalistic, engaging and authentic environments. The 
+development of multimodal interfaces has started to make its way 
+into the education domain in the form of intelligent tutoring 
+systems, but automated multimodal analyses have been scarcely 
+explored in non-computer mediated environments. In this paper, we 
+follow in the paradigm of multimodal learning analytics [1 - 3] in 
+
+order to expand multimodal analysis to complex, hands-on learning 
+environments. While multimodal analysis has long been a staple of 
+education research, the introduction of computational multimodal 
+techniques has received some resistance. This hesitation is 
+understandable given the infancy of the field. In an effort to 
+contribute to this discussion and propel the advancement of the 
+multimodal learning analytics paradigm, we report on the 
+affordances of employing a multimodal analysis in a complex 
+learning environment and show how multimodal learning analytic 
+techniques can be relevant for improving the field. 
+This study builds on our prior work [4], where we present two 
+different approaches that students use in engineering design: 
+example-based reasoning – using examples from the real-world as 
+an entry point into solving a task; and principle-based reasoning – 
+using engineering fundamentals as the basis for one’s design. These 
+two reasoning strategies complement prior work on analogical 
+problem solving [5], case-based reasoning [6], mechanistic 
+reasoning [7, 8] and expertise [9 - 11]. In [4] we described example-
+based reasoning and principle-based reasoning in qualitative terms, 
+and then proceeded to use these two approaches in a controlled 
+study (N=20) that compares how each approach impacts learning 
+gains and performance during a collaborative hands-on activity. In 
+that study we found that students in the principle-based reasoning 
+condition engineered higher quality structures and also had higher 
+learning gains from pre-test to post-test. The goal of this paper is to 
+discover the multimodal practices that can help explain the 
+observed differences in the two experimental conditions, learning 
+and success. Furthermore, as a primary objective we want to show 
+that the two experimental conditions are associated with markedly 
+different processes. Finally, we want to compare the results that we 
+obtain from the analysis of hand-annotated data, to the results 
+achieved from multimodal sensor data. 
+In what follows we briefly present some pertinent prior literature; 
+describe the experiment from which the data was derived; delineate 
+the basic algorithm used to analyze the data; summarize important 
+results; and discuss the implications of this work. 
+
+2. PRIOR LITERATURE 
+This paper builds on a rich body of research in educational data 
+mining and learning analytics [12]. Through these disciplines 
+researchers have demonstrated the ability to analyze data from a 
+wide range of modalities. Previous work includes examples from 
+intelligent tutoring systems that leverage: discourse analysis (e.g. 
+[13]), content word extraction (e.g. [14]), uncertainty detection 
+(e.g. [15]), sentiment analysis (e.g. [16 - 18]), linguistic analysis, 
+prosodic and spectral analysis, and multi-modal analysis (e.g. [13, 
+19]). Additionally we leverage approaches from the multimodal 
+interfaces community: technological tools and research for 
+integrating data streams [1, 20]; extracting rich context from audio-
+video data [21]; and behavior [22], for example. We also build on 
+
+Permission to make digital or hard copies of all or part of this work for 
+personal or classroom use is granted without fee provided that copies are 
+not made or distributed for profit or commercial advantage and that copies 
+bear this notice and the full citation on the first page. Copyrights for 
+components of this work owned by others than ACM must be honored. 
+Abstracting with credit is permitted. To copy otherwise, or republish, to 
+post on servers or to redistribute to lists, requires prior specific permission 
+and/or a fee. Request permissions from Permissions@acm.org. 
+ 
+LAK '15, Mar 16-20, 2015, Poughkeepsie, NY, USA 
+ACM 978-1-4503-3417-4/15/03$15.00 
+http://dx.doi.org/10.1145/2723576.2723624 
+
+360
+
+
+
+work from engineering education that has focused on studying 
+design patterns among novices and experts (e.g. [23]).  
+Through the computer science and learning analytics communities 
+we are continually seeing new technologies and techniques for 
+analyzing data. The challenge, however, is to leverage those 
+technologies in a way that aligns with learning theory, and that 
+allows us to answer important questions about learning. In terms of 
+learning theory, this work is informed by that of [24] which 
+qualitatively identified different multimodal learning and/or 
+epistemic states. These states were characterized by body pose, 
+amount of dialogue and student gaze as they worked in groups to 
+complete a worksheet. Because of differences in context, we are not 
+examining the same modalities, nor do we expect to see the same 
+states. Nonetheless, the underlying assumptions around the 
+connection between behavior, epistemology and learning remain 
+central to the approach that we employ. 
+Additionally, the analytic tools used to identify student behavioral 
+states borrows strategies from our prior work in learning analytics 
+[25,26]. In these papers we analyzed high frequency data by 
+reducing the dataset down to a set of representative states that 
+generalized to all of the participants. This is the same approach that 
+we will employ in this paper, but differ from the prior work in that 
+we construct states that include multimodal data, as opposed to 
+constructing states from log-files, computer program snapshots or 
+click-streams. 
+Finally, readers may note an alignment between this research and 
+work on productive multivocality [27]. In particular, the 
+multivocality project involved a diverse group of researchers 
+engaging in conversations about the different approaches, analytics 
+techniques and pivotal moments that occurred in a variety of 
+datasets. Many of these researchers used a similar construct of 
+interaction analysis to examine how groups of students engage in a 
+given learning experience. As an outcome of their work, the authors 
+highlight the ways that diverse opinions and approaches improved 
+the quality of the findings, assuming some amount of shared 
+understanding and loosely similar goals. The research described in 
+this paper differs from that of the multivocality community in a 
+number of ways. First, in using a traditional two condition 
+experimental design, a primary objective of our work was to 
+compare two learning strategies for the multimodal behaviors that 
+distinguish one group from the other. Secondly, while the 
+multivocality project did contain a Group Scribbles dataset that 
+included both face-to-face interactions and hands-on manipulation 
+of objects, the majority of the datasets involved computer-mediated 
+environments. The present dataset does not involve any computer-
+mediated interactions. A final point of distinction is that the 
+multivocality project reported having trouble comparing across 
+analyses because of different units of analysis. In the present paper, 
+we are able to use the same analytic technique at the same unit of 
+analysis, with two different data streams. In this way the results 
+have less to do with the analytic technique or the grain size of the 
+analysis, and have more to do with the data being analyzed. There 
+are other notable differences that we will exclude for the sake of 
+brevity. 
+
+3. METHODS 
+To provide the reader with additional context, we briefly describe 
+the research participants and the task that they completed before 
+entering into a discussion of the analyses and results. 
+Students used common household materials: one paper plate, 4 ft. 
+of garden wire, four drinking straws and five wooden Popsicle 
+sticks. The objective was to use the materials provided to create a 
+structure that could support a weight of approximately half a pound. 
+
+Participants were also asked to support the weight as high off the 
+table as possible.  
+Our population of students consisted of twelve 9th- through 12th-
+grade students and eight undergraduate students. Pairs of students 
+were randomly assigned to either use example- or principle-based 
+reasoning, after controlling for prior education experience. Thus, 
+each condition had six high school students and four undergraduate 
+students. In the example-based condition, students generated three 
+example structures from their home, community or school in order 
+to motivate their design. In the principle-based condition, students 
+identified three engineering principles that conferred strength and 
+stability to a ladder, an igloo and a bridge before embarking on the 
+building task. 
+The data capture environment included: a Kinect sensor – for 
+capturing audio, gesture and video; a high resolution web camera - 
+to record how students moved the different materials; and an 
+electro-dermal activation sensor – for measuring stress and/arousal. 
+All sensor data was synchronized through the data collection 
+software, and also verified by a research assistant. 
+
+3.1 Activity Sequence 
+The overall flow of activities that students completed included: a 
+pre-test; an intervention, i.e. one of the two conditions; a 
+preliminary design drawing; a hands-on, paired, building activity; 
+post-test; and reflection (Figure 1). 
+
+ 
+Figure 1. Overall study design 
+
+3.2 Data 
+The two analyses included in this paper are drawn from two 
+different sets of modalities.  
+Hand-Annotated Data. The first consists of manually annotated 
+object manipulation classes (Table 1), and are based on our prior 
+work [28, 29]. 
+
+Table 1. Object Manipulation Classes 
+Class Codes 
+
+REALIZE Actively constructing the final 
+product 
+
+PLAN Prototyping ideas or inspecting the 
+materials 
+
+EVALUATE Testing a mechanism or testing the 
+system 
+
+Pre-Test
+
+Intervention
+
+Design Sketch
+
+Activity
+
+Post-Test
+
+Reflection
+
+361
+
+
+
+MODIFY Making changing to an existing 
+design 
+
+REVERT Undoing one of more parts of a 
+previous design 
+
+NOTHING Engaging in little to no physical or 
+verbal activity 
+
+ 
+The second set of modalities included audio data, hand/wrist 
+movement data and electro-dermal activation data. 
+Audio data. Data was derived from a combination of audio channels 
+from an overheard web camera, and from the Xbox Kinect sensor. 
+A custom piece of software was developed based on the Carnegie 
+Mellon University (CMU) Sphinx Speech Recognition Toolkit. 
+Specifically, the source code was modified to leverage the 
+program’s voice activity detection feature. Voice activity detection 
+is an automated means for determining when voice-based audio is 
+being generated. Several speech recognition software solutions 
+contain some variant of voice activity detection. The custom 
+software provided voice detection start and stop times for all of the 
+audio channels. Audio was considered to be present if either of the 
+audio sources detected a voice, within a given second of time. Thus 
+the final format of this data is a binary representation. Every second 
+of the activity is labeled with a zero or one, for the absence or 
+presence of audio at that time stamp. Because the audio channel 
+captured sound from both participants this piece of data is the same 
+for each person in a dyad. 
+Hand/wrist movement. Hand/wrist movement data was also 
+generated from the Xbox Kinect sensor. Once again a custom built 
+application was used to store three dimensional data for twelve 
+upper body joints. The application uses native features available 
+from the Kinect for Windows SDK, specifically, the ability to 
+conduct skeletal tracking in the seated position. The custom 
+application stores the data at 10 Hz. From the file generated, we 
+utilize only the left and right wrist, hand and elbow data points. For 
+each successive pair of data points we compute the angular 
+displacement for the vectors that connect: left wrist and left hand; 
+left wrist and left elbow, right wrist and right hand; right wrist and 
+right elbow. The eventual angular displacement that is recorded is 
+an average of the four angular displacements. Using angle as the 
+means for comparison reduces biases introduced by participants 
+having different sized bodies and limbs. Accordingly, for each 
+tenth of a second in time we have stored the total angular hand/wrist 
+displacement. 
+Electro-dermal Activation. Electro-dermal activation (also referred 
+to galvanic skin response and/or skin conductance) readings were 
+captured at 8 Hz. Processing electro-dermal activation data 
+involved controlling for individual differences in variance, as well 
+as individual differences in stress response. In practice, this was 
+achieved by collecting baseline data as students completed the task 
+of counting down by 7.We will refer to this as the “math” stress 
+test. As additional baseline data, students also completed a Stroop 
+test, and had their electro-dermal activation recorded during non-
+task related activities. As before, each data point was time-stamped 
+with the local date and time. Each data point was then transformed 
+into an index value by subtracting the mean from the “math” stress 
+test, and then dividing by the standard deviation of the “math” 
+stress test data for that student. When we compared electro-dermal 
+activation index values across the different activities, there were no 
+statistically significant differences between experimental 
+conditions for the baseline data, the Stroop test, or the math test. 
+However, across the intervention, design phase and the building 
+
+activity differences were statistically significant. This provided 
+validation that this normalization was effective. 
+
+3.3 Algorithm 
+The approach follows our previous work [28, 29] on analyzing 
+design strategies and success on hands-on engineering tasks. Here 
+we significantly extend that work by incorporating multimodal 
+data, as opposed to simply using hand-coded data. A visualization 
+of the general algorithm is provided in Figure 2. 
+
+ 
+Figure 2. General algorithm 
+Time-stamp. The first step of extracting process data is to ensure 
+that all data is properly time-stamped. This provides a means for 
+synchronizing across the different modalities. 
+Segment. The time-stamped data is then segmented. Data is 
+segmented every time a pair’s structure is tested. We interpret 
+testing as representing an instance in which at least one person in 
+the pair is eliciting feedback that will update the students on the 
+current stability of their structure. Testing usually takes the form of 
+a team member placing the weight on the structure. We will refer 
+to individual segments as “test segments.” 
+Segmentation always resulted in a single value for each data stream. 
+For the audio data the value is the proportion of the “test segment” 
+during which voice activity was detected. For the hand/wrist 
+movement data, the value is the average total angular displacement 
+during that “test segment.” Finally, the electro-dermal activation 
+value is the average index value during that particular “test 
+segment.” 
+
+Timestamp
+
+Segment
+
+Cluster
+
+Re-label
+
+Normalize
+
+Compare 
+Behavior 
+
+Frequency
+
+Compute 
+Distances
+
+Group 
+Participants
+
+Compare 
+Clusters
+
+362
+
+
+
+As a whole, the segmentation process serves to smooth the data. 
+Instead of having to take into account each of the spikes and troughs 
+that may emerge from any of the data streams, segmentation allows 
+us to look at broader trends. Noise reduction is also achieved during 
+the following step. 
+Cluster. After the segmentation process, there are hundreds of 
+unique “test segments.” Some of these will be very similar to one 
+another, only differing by an infinitesimal amount, while others 
+will vary quite extensively from one another. The goal of clustering 
+is to identify natural groupings among the various “test segments” 
+and ultimately provide a common set of states, or behaviors, by 
+which to compare individual user sequences. However, before 
+proceeding with clustering, we first do data standardization. 
+Namely, we adjust each value, such that all of the data in a given 
+column has a mean of zero and a standard deviation of one. This 
+process eliminates bias in clustering, by ensuring that each column 
+contributes equally to the distance metric, which in the case was 
+Euclidean distance. After standardizing the data, we used X-Means 
+clustering to group the data points into a set of clusters that place 
+each “test segment” with the other “test segments” that it is most 
+similar to. Once each “test segment” has been grouped with similar 
+“test segments,” each cluster, or group, can be described based on 
+the average values of all of its members. These values provide the 
+basis for determining common behavioral practices in later 
+sections. 
+Re-label. All “test segments” that are put into the same cluster are 
+given the same name and value. Accordingly, each student’s 
+sequence of “test segments” can now be represented as a list of 
+clusters. 
+Normalize. In the normalization step, each student’s re-labeled 
+sequence is lengthened to permit direct comparisons between each 
+pair of participants. The two forms of normalization used are L-1 
+normalization and dynamic time warping [30]. In the case of L-1 
+normalization, each sequence is lengthened so that all participants’ 
+sequences are of equal length. In dynamic time-warping, a 
+modification of Levenshtein distance [31] is used to find the best 
+match between pairs of sequences. 
+Compare Behavior Frequency. After L-1 normalization, the next 
+step is to compare behavior frequency data across the three metrics 
+of interest: success, experimental condition; and learning. The 
+comparisons are based on Mood Median Tests along each of the 
+individual clusters of “test segments.”  However, instead of the 
+traditional Mood Median Test, which computes statistical 
+significance based on a Chi-Square distribution, we use a binomial 
+test. These two tests were used because the data did not meet the 
+requirements for other traditional statistical tests. This step 
+represents the conclusion of one branch of the analysis tree (left 
+hand branch of Figure 2). 
+Compute Distances. Following dynamic time warping, a distance 
+is computed between each pair of participants. 
+Group Participants. Based on the pair-wise distances, similar 
+participants are forced into one of two groups using K-Means 
+clustering. In each case a student is put into the group that contains 
+other students whose process was most similar to their own. 
+Forcing the students into one of two groups was done to align with 
+the two experimental conditions. 
+Compare Participant Groups. Finally, the groups are compared 
+using a binomial test to determine the probability that individuals 
+were randomly assigned to their specific group. Specifically, it is 
+here that we examine the hypothesis that different groups, as 
+partitioned by experimental condition, success on the activity, or 
+
+based on post-test score, used markedly different processes from 
+one another. 
+
+4. Results 
+We present the results from the two analyses separately. First, we 
+consider the results from the hand-annotated analysis and then the 
+multimodal sensor data. 
+
+4.1 Hand-Annotated Data Analysis 
+The first entry point for analysis is the generalized “test segment” 
+cluster centroids that are derived from the clustering step for each 
+analysis. From Figure 3 we see that hand-coded analysis results in 
+four clusters that we have entitled: PREPARE – which primarily 
+consists of PLAN and NOTHING actions; IMPLEMENT – which 
+primarily consists of REALIZE and REVERT actions; ADJUST – 
+which primarily consists of MODIFY actions; and 
+SIGNIFICANTLY ADJUST – which is represented by extensive 
+MODIFY actions. This provides a canonical set of actions that 
+interestingly, distinguishes between two variants of modifying 
+(Figure 3). Additionally, Figure 4 provides the distribution of the 
+four “test segment” behaviors derived from the hand-annotated 
+data. 
+
+ 
+Figure 3. Test segment cluster centroids for hand-coded data 
+ 
+
+ 
+Figure 4. Relative frequency of common behaviors for hand-
+annotated data 
+ 
+When we use the cluster centroids to re-label each students’ test 
+segments and compare sequence similarity, we find a weak 
+
+-1.5
+
+-1
+
+-0.5
+
+0
+
+0.5
+
+1
+
+1.5
+
+2
+
+2.5
+
+3
+
+PREPARE IMPLEMENT MODIFY SIGNIFICANTLY
+MODIFY
+
+St
+an
+
+da
+rd
+
+iz
+ed
+
+ T
+im
+
+e
+
+plan nothing build adjust undo
+
+PREPARE
+37%
+
+IMPLEMENT
+39%
+
+ADJUST
+17%
+
+SIGNIFICANT
+LY ADJUST
+
+7%
+
+363
+
+
+
+correlation between experimental condition and overall process 
+similarity (p < 0.07). 
+
+ 
+Figure 5. Participant Cluster Assignment based on Process 
+Similarity 
+Finally, when we compare the two experimental conditions in terms 
+of how frequently they use the different test segments (PREPARE, 
+IMPLEMENT, ADJUJST, SIGNIFICANLY ADJUST) we find 
+that usage of IMPLEMENT is positively correlated with principle-
+based reasoning (p = 0.011) (Figure 6), design quality (p = 0.011), 
+and learning (p < 0.001). Recall that these differences are based on 
+Mood Median Tests where we used a binomial distribution as 
+opposed to a Chi-Squared distribution. Accordingly, all p-values 
+are based on an exact binomial test. 
+
+ 
+Figure 6. Median common behavior usage by condition 
+From this analysis, then, it appears as though the IMPLEMENT 
+behavior is beneficial and correlates with experimental conditions, 
+success and learning. 
+
+4.2 Multimodal Sensor Data Analysis 
+Again, the first entry point for analysis is the generalized “test 
+segment” cluster centroids that are derived from the X-Means 
+clustering step. In particular, we found four multimodal “test 
+segment” types (Figure 7). As before, for each cluster, we created 
+a name that captures the primary multimodal behaviors associated 
+with that cluster of “test segments. 
+
+ 
+Figure 7. “Test Segment” cluster centroids for multimodal data 
+The most common segment, FLOW, is characterized by near or 
+below average behavior across all three variables: audio, hand/wrist 
+movement and electro-dermal activation; and is 56% of all “test 
+segments” (Figure 8). Furthermore, the FLOW “test segment” 
+appears to bear some similarity to “flow” as described in [32].   
+
+ 
+Figure 8. Distribution of Multimodal “Test Segments” 
+The second most frequently occurring “test segment” is ACTION, 
+which represents 18% of all “test segments.” This behavior 
+primarily consists of students who are currently engaging in above 
+average hand/wrist movement and nothing more. 
+The third most frequently occurring state is TALK. The amount of 
+audio in this cluster is approximately two standard deviations above 
+the mean. Hand/wrist data is just above the mean, and electro-
+dermal activation is nearly half a standard deviation below average.  
+The final cluster is STRESS. This behavior is characterized by 
+extremely large values of electro-dermal activation, as well as 
+above average hand/wrist movement 
+When we re-label each student’s sequence with the cluster 
+centroids, and compare process similarity, we find that there is a 
+
+0
+
+2
+
+4
+
+6
+
+8
+
+10
+
+12
+
+Group A Group B
+
+N
+um
+
+be
+r o
+
+f S
+tu
+
+de
+nt
+
+s
+
+Example-Based
+
+Principle-Based
+
+0
+2
+4
+6
+8
+
+10
+12
+
+PREPARE IMPLEMENT ADJUST SIGNIFICANTLY
+ADJUST
+
+N
+um
+
+be
+r o
+
+f I
+ns
+
+ta
+nc
+
+es
+
+Example-Based Principle-Based
+
+-1.5
+
+-1
+
+-0.5
+
+0
+
+0.5
+
+1
+
+1.5
+
+2
+
+2.5
+
+3
+
+3.5
+
+TALK FLOW ACTION STRESS
+
+St
+an
+
+da
+rd
+
+ D
+ev
+
+ia
+tio
+
+ns
+
+electro-dermal activation hand/wrist movement
+
+audio
+
+TALK
+18%
+
+FLOW
+56%
+
+ACTION
+18%
+
+STRESS
+8%
+
+364
+
+
+
+very high correlation between the results of the unsupervised 
+clustering and the initial experimental conditions. Specifically, 
+seven of the eight students assigned to Group A are from the 
+principle-based condition. The inverse pattern is observed for 
+Group B, with seven of the eight individuals in that group coming 
+from the example-based reasoning condition (Figure 9).  
+
+ 
+
+Figure 9. Composition of groups based on experimental 
+condition as derived from process similarity 
+
+The likelihood of this happening randomly is less than 0.002, 
+suggesting that the two conditions did, in fact, utilize markedly 
+different processes. Having observed that there are salient 
+differences between the processes that the two conditions use, as 
+determined through multimodal data, we now consider the nature 
+of those differences. 
+Comparing the frequency with which students use the different 
+multimodal “test segments” we find that students in the principle-
+based reasoning condition were more frequently in the multimodal 
+behavior FLOW (p = .007) (Figure 10). We also observed that the 
+multimodal behavior FLOW is positively correlated with student 
+learning (p < 0.001). 
+
+ 
+Figure 10. Median common behavior usage by condition 
+
+5. DISCUSSION 
+The two analyses included in this paper pinpointed different 
+behaviors (or “test segments”) that were associated with principle-
+based reasoning, success and learning. Furthermore, the results 
+from both analyses help us answer questions about how principle-
+based reasoning and example-based reasoning are manifested 
+differently. The results from the hand-annotated data, which all 
+correlated with IMPLEMENT provided a consistent picture of how 
+principle-based reasoning may be related to success and learning, 
+
+namely that IMPLEMENT is mediating all three variables. 
+However, where the hand-annotated data provided a consistent 
+result, the multimodal sensor data provided a much more definitive 
+delineation between the two experimental conditions. Specifically, 
+the multimodal analysis resulted in participant clusters that almost 
+perfectly aligned to the two experimental conditions. This is 
+particularly significant because this result was achieved without 
+any algorithmic supervision and was based only on multimodal 
+sensory data. Additionally, the differences between the two 
+experimental conditions was also more pronounced in terms of 
+differential usage of the multimodal behavior FLOW. Recall that 
+students in the principle-based reasoning condition were much 
+more likely to use FLOW (p = 0.007) than their peers in the 
+example-based reasoning condition. In this way, then, the two 
+analyses provided complementary results that may not have been 
+easily garnered from either analysis by itself. Hence it may be 
+instructive to continue using hand-annotated data, as it still has 
+great utility. Furthermore, though, this study suggests that an 
+integrated multimodal analysis can significantly enhance the field’s 
+ability to detect and model student learning. 
+The process of clustering the data into different “test segments” was 
+also constructive in that it enabled us to eliminate some of the noise 
+in the data and reduce each student’s time series into a set of 
+common behaviors. This was particularly useful when dealing with 
+the continuous data provided from both sets of modalities. In the 
+case of the hand-annotated data, clustering grouped actions that 
+were similarly performed in conjunction with one another, and 
+created higher level groups of actions. For the multimodal sensor 
+data, three of the four “test segments” can easily be explained as 
+being unimodal in nature. However, FLOW which was the most 
+prevalent only becomes distinct from the other categories when 
+considered as multimodal. 
+
+6. FUTURE WORK 
+In future work we will endeavor to automatically draw additional 
+semantics from the multimodal sensor data. For example, we will 
+more closely examine prosodic, spectral and voice quality features 
+of the speech being generated, as well as detect moments of 
+laughter, for example. Additionally, we will use the video data to 
+more closely examine the nature of the collaboration. For example, 
+head and body position information may be indicative of pair of 
+students that is working collaboratively by co-constructing objects, 
+as compared to a pair of students that are working individually and 
+only occasional consulting one another. Identifying these patterns 
+of interactions may be an additional asset to studying the impact 
+that a given learning strategy has on students’ behavioral practices. 
+
+7. CONCLUSION 
+In this paper, we embarked upon presenting a comparative analysis 
+of learning analytics on hand-annotated and multimodal sensory 
+data. For both analyses we used the same analytic technique, and 
+examined how these approaches can be used in the service of 
+studying the differences between two experimental conditions. 
+Ultimately, we found that both have significant utility in helping us 
+better understand student learning. Additionally, these techniques 
+provide a reasonable means for studying complex, open-ended, 
+hands-on learning environments. Our hope is that through this 
+paper, researchers will develop additional insights and motivation 
+for leveraging human-annotated data and multimodal learning 
+analytics to study complex learning environments in ways that can 
+clearly connect the learning sciences with learning practices. 
+
+0
+
+2
+
+4
+
+6
+
+8
+
+10
+
+Group A Group B
+
+N
+um
+
+be
+r o
+
+f S
+tu
+
+de
+nt
+
+s
+
+Principle-Based Example-Based
+
+0
+
+5
+
+10
+
+15
+
+20
+
+25
+
+30
+
+TALK FLOW ACTION STRESS
+
+Example-based reasoning Principle-based reasoning
+
+365
+
+
+
+8. REFERENCES 
+[1] Worsley, M. 2012. Multimodal Learning Analytics: Enabling 
+
+the Future of Learning through Multimodal Data Analysis 
+and Interfaces. In Proceedings of the 14th ACM international 
+conference on Multimodal interaction (ICMI '12). ACM, 
+New York, NY, USA. 353-356. 
+
+[2] Blikstein, P. 2013. Multimodal Learning Analytics. In 
+Proceedings of the 3rd Annual Learning Analytics and 
+Knowledge Conference. Leuven, Belgium.  
+
+[3] Scherer,S., Worsley,M. and Morency, L. 2012. 1st 
+international workshop on multimodal learning analytics: 
+extended abstract. In Proceedings of the 14th ACM 
+international conference on Multimodal interaction (ICMI 
+'12). ACM, New York, NY, USA, 609-610. 
+
+[4] Worsley, M., & Blikstein, P. (2014). Assessing the Makers: 
+The Impact of Principle-Based Reasoning on Hands-on, 
+Project-Based Learning. Proceedings of the 2014 
+International Conference of the Learning Sciences (ICLS), 3, 
+1147–1151. 
+
+[5] Gick, M., & Holyoak, K. (1980). Analogical problem 
+solving. Cognitive Psychology, 355, 306–355 
+
+[6] Kolodner, J. L. 1997. Educational implications of analogy: A 
+view from case-based reasoning. American psychologist, 
+52(1) 
+
+[7] Russ, R. S., Coffey, J. E., Hammer, D., & Hutchison, P. 
+2009. Making classroom assessment more accountable to 
+scientific reasoning: A case for attending to mechanistic 
+thinking. Science Education, 93(5), 875–891.  
+
+[8] Lehrer, R., & Schauble, L. (1998). Reasoning about structure 
+and function: Children’s conceptions of gears. Journal of 
+Research in Science Teaching, 35(1), 3–25. 
+
+[9] Chi, M. Glaser, Rees. 1981. Expertise in problem solving.  
+[10] Nokes T J, Schunn C D and Chi M. 2010, Problem Solving 
+
+and Human Expertise. In: Penelope Peterson, Eva Baker, 
+Barry McGaw, (Editors), International Encyclopedia of 
+Education. volume 5, pp. 265-272. Oxford: Elsevier. 
+
+[11] Ahmed, S., & Wallace, K. M. 2003. Understanding the 
+differences between how novice and experienced designers 
+approach design tasks, 14, 1–11. doi:10.1007/s00163-002-
+0023-z 
+
+[12] Baker, R.S.J.d., Yacef, K. 2009. The State of Educational 
+Data Mining in 2009: A Review and Future Visions. Journal 
+of Educational Data Mining, 1 (1), 3-17. 
+
+[13] Litman, D., Moore, J., Dzikoska, M., and Farrow. E. 2009. 
+Using Natural Language Processing to Analyze Tutorial 
+Dialogue Corpora Across Domains and Modalities. 
+Proceedings 14th International Conference on Artificial 
+Intelligence in Education (AIED), Brighton, UK, July. 
+
+[14] Chi, M., Van Lehn, K., Litman, D., and  Jordan, P. 2010. 
+Inducing Effective Pedagogical Strategies  Using Learning 
+Context Features. In: Proc. of the 18th Int. Conference on 
+User Modeling. 
+
+[15] Liscombe, J., Hisrchberg, J., and Venditti, J. 2005.  Detecting 
+Certainness in Spoken Tutorial Dialogues.  In Proceedings of 
+Interspeech 2005—Eurospeech, Lisbon, Portugal. 
+
+[16] Craig, S. D., D'Mello,S., Witherspoon, A. and Graesser, A. 
+2008. 'Emote aloud during learning with AutoTutor: 
+Applying the Facial Action Coding System to cognitive-
+
+affective states during learning', Cognition & Emotion, 22: 5, 
+777 — 788. 
+
+[17] D’Mello, S. K., Craig, S. D., Witherspoon, A., McDaniel, B., 
+and Graesser, A. 2008. Automatic detection of learner's 
+affect from conversational cues. User Modeling and User-
+Adapted Interaction 18, 1-2 (Feb. 2008), 45-80. 
+
+[18] Conati, C. and Maclaren, H. 2009. Empirically building and 
+evaluating a probabilistic model of user affect. User 
+Modeling and User-Adapted Interaction. August, 2009 267-
+303. 
+
+[19] Worsley, M. & Blikstein P. (2010). Towards the 
+development of learning analytics: student speech as an 
+automatic and natural form of assessment. Paper Presented 
+at the Annual Meeting of the American Education Research 
+Association (AERA). 
+
+[20] Fouse, A., Weibel, N., Hitchins, E. & H, J. 2011. Chronoviz 
+A System for Supporting Navigating Time-Coded Data. In 
+Proceedings of CHI 2011, SIGCHI/ACM. PP. 299-304. 
+
+[21] Schick, A., Morlock, D. Amma, C., Schultz, T. and 
+Stiefelhagen, R. 2012. Vision-Based Handwriting 
+Recognition for Unrestricted Text Input in Mid-air. In 
+Proceedings of the 14th ACM International on Multimodal 
+Interaction (ICMI '12). ACM, New York, NY, USA, 217-
+220 
+
+[22] Song, Y., Morency, L. and Davis, R. 2012. Multimodal 
+Human Behavior Analysis: Learning Correlation and 
+Interaction Across Modalities. In Proceedings of the 14th 
+ACM International on Multimodal Interaction (ICMI '12).  
+
+[23] Atman, C. J., Cardella, M. E., Turns, J., & Adams, R. 2005. 
+Comparing freshman and senior engineering design 
+processes: an in-depth follow-up study. Design studies, 
+26(4), 325-357. 
+
+[24] Scherr, R. E., & Hammer, D. 2009. Student Behavior and 
+Epistemological Framing: Examples from Collaborative 
+Active-Learning Activities in Physics. Cognition and 
+Instruction, 27(2), 147–174. 
+doi:10.1080/07370000902797379  
+
+[25] Piech, C., Sahami, M., Koller, D., Cooper, S., & Blikstein, P. 
+(2012, February). Modeling how students learn to program. 
+In Proceedings of the 43rd ACM technical symposium on 
+Computer Science Education (pp. 153-160). ACM. 
+
+[26] Blikstein, P., Worsley, M., Piech, C., Sahami, M., Cooper, 
+S., & Koller, D. 2014. Programming pluralism: Using 
+learning analytics to detect patterns in the learning of 
+computer programming. Journal of the Learning Sciences, 
+23(4), 561-599. 
+
+[27] Suthers, D. D., Lund, K., Rosé, C. P., Teplovs, C., Law, N., 
+& others. (2013). Productive multivocality in the analysis of 
+group interactions. Springer  
+
+[28] Worsley, M. and Blikstein, P. (2013). Toward the 
+Development of Mulitmodal Action Based Assessment. In 
+Proceedings of the Third International Conference on 
+Learning Analytics and Knowledge (LAK '13). ACM, New 
+York, NY, USA, 94-101. 
+
+[29] Worsley, M., & Blikstein, P. (2014). Analyzing Engineering 
+Design through the Lens of Computation. Journal of 
+Learning Analytics, 1(2), 151-186. 
+
+366
+
+
+
+[30] Rabiner, L. R., Rosenberg, A. E., & Levinson, S. E. 1978. 
+Considerations in dynamic time warping algorithms for 
+discrete word recognition. The Journal of the Acoustical 
+Society of America, 63(S1), S79–S79. 
+
+[31] Levenshtein, V. I. 1966. Binary Codes Capable of Correcting 
+Deletions, Insertions and Reversals. Soviet Physics Doklady, 
+10(8), 707–710. 
+
+[32] Csikszentmihalyi, M. 1992. Flow?: the psychology of 
+happiness. London: Rider. 
+ 
+
+ 
+
+ 
+ 
+
+367
+
+
+
+
+

@@ -1,0 +1,609 @@
+
+Model-Driven Assessment of Learners in Open-Ended
+Learning Environments
+
+James R. Segedy
+Department of EECS/ISIS
+
+Vanderbilt University
+Nashville, TN 37203, U.S.A.
+
+james.r.segedy
+@vanderbilt.edu
+
+Kirk M. Loretz
+Department of EECS/ISIS
+
+Vanderbilt University
+Nashville, TN 37203, U.S.A.
+
+kirk.m.loretz
+@vanderbilt.edu
+
+Gautam Biswas
+Department of EECS/ISIS
+
+Vanderbilt University
+Nashville, TN 37203, U.S.A.
+
+gautam.biswas
+@vanderbilt.edu
+
+ABSTRACT
+Open-ended learning environments (OELEs) provide stu-
+dents with opportunities to take part in authentic and com-
+plex problem-solving tasks. However, many students strug-
+gle to succeed in such complex learning endeavors. Without
+support, these students often use system tools incorrectly
+and adopt suboptimal learning strategies. However, provid-
+ing adaptive support to students in OELEs poses significant
+challenges, and relatively few OELEs provide students with
+adaptive support. This paper presents the initial develop-
+ment of a systematic approach for interpreting and evaluat-
+ing learner behaviors in OELEs called model-driven assess-
+ments, which uses a model of the cognitive and metacog-
+nitive processes important for completing the open-ended
+learning task. The model provides a means for both classi-
+fying and assessing students’ learning behaviors while using
+the system. An evaluation of the analysis technique is pre-
+sented in the context of Betty’s Brain, an OELE designed
+to help middle school students learn about science.
+
+Keywords
+open-ended learning environment, model-driven assessment,
+adaptive scaffolding, performance metrics
+
+1. INTRODUCTION
+Advances in computer technology have provided learning
+
+science and learning technology researchers the affordances
+for designing computer-based learning environments that
+provide students with opportunities to take part in authen-
+tic, complex problem solving tasks. These environments,
+generically called open-ended learning environments (OE-
+LEs) [5, 9], provide students with a learning context and a
+set of tools for pursuing learning tasks. Examples of such en-
+vironments include hypermedia learning environments (e.g.,
+[3]), modeling and simulation environments (e.g., [4]), and
+educational games featuring open worlds (e.g., [12]). While
+
+Permission to make digital or hard copies of all or part of this work for
+personal or classroom use is granted without fee provided that copies are
+not made or distributed for profit or commercial advantage and that copies
+bear this notice and the full citation on the first page. To copy otherwise, to
+republish, to post on servers or to redistribute to lists, requires prior specific
+permission and/or a fee.
+LAK ’13, April 08 - 12 2013, Leuven, Belgium
+Copyright 2013 ACM 978-1-4503-1785-6/13/04 ...$15.00.
+
+OELEs may vary in the particular set of tools they pro-
+vide, they almost always include tools for: (i) seeking out
+and acquiring information, (ii) applying information to a
+problem-solving context, and (iii) evaluating the quality of
+the constructed solution [8, 13]. During evaluation, learn-
+ers have opportunities to reflect on their understanding of
+the information, their approach to generating solutions, and
+possible next steps for improving their solutions.
+
+OELEs place high cognitive demands on learners [9]. To
+be successful, learners must understand how to execute: (i)
+cognitive processes for accessing and interpreting informa-
+tion, constructing problem solutions, and evaluating con-
+structed solutions; and (ii) metacognitive processes for co-
+ordinating the use of various cognitive processes and reflect-
+ing on the outcome of solution evaluations. This presents
+significant challenges to novice learners; they may have nei-
+ther the proficiency for using the system’s tools nor the ex-
+perience and understanding necessary for regulating their
+learning behaviors. Not surprisingly, research has shown
+that novices often struggle to succeed in OELEs (e.g., [9,
+11]). Without support, these learners typically use tools in-
+correctly and adopt suboptimal learning strategies [1, 14].
+However, providing adaptive support to students in OELEs
+poses significant challenges (e.g., see [2]); it requires sys-
+tematic analysis techniques for diagnosing learners’ needs as
+they relate to one or more cognitive and metacognitive pro-
+cesses. In OELEs, such diagnoses involve assessing learners’
+cognitive skill proficiency, interpreting their action sequences
+in terms of learning strategies, and evaluating their success
+in accomplishing their current tasks. The open-ended na-
+ture of OELEs combined with the longer term nature of
+the problems presented in such environments further exacer-
+bates the problem; successfully solving a problem presented
+in an OELE often requires many more “steps” than does a
+problem in a typical ITS, and OELEs allow students to make
+progress along several paths, each linked to a different ap-
+proach or different order for solving the components of the
+problem. Thus, interpreting and assessing students’ learning
+behavior is inherently complex; at any point in time, there
+may be a dozen or more “correct next steps” from which
+students may choose. This makes techniques like model-
+tracing, often employed in intelligent tutoring systems [7]
+difficult to implement, as the space of possible learning paths
+in an OELE quickly becomes intractable.
+
+While several OELEs have been developed, relatively few
+perform systematic interpretations of how learners approach
+the learning task in order to provide adaptive support. In-
+
+200
+
+
+
+stead, these systems include non-adaptive scaffolded tools
+(e.g., lists of sub-goals or guiding questions) designed to
+provide support for learners who choose to use them. The
+main contribution of the present work is establishing a sys-
+tematic and theoretically-grounded approach for interpret-
+ing learner behaviors in OELEs called model-driven assess-
+ments (MDAs). MDAs interpret and assess students’ ac-
+tions using a model of relevant cognitive and metacognitive
+processes important for completing the learning task in an
+effective manner. We present our high-level interpretation
+framework and then use apply it to assess students’ cogni-
+tive skill levels in the context of Betty’s Brain [10, 15], an
+OELE designed to help middle school students learn about
+science.
+
+The remainder of this paper presents the Betty’s Brain
+learning environment in more detail, including a description
+of the learning task and the cognitive and metacognitive
+model that drives the assessments. We then use the cog-
+nitive model to define a set of MDA metrics and use those
+metrics to perform post-hoc analysis with data from a recent
+study conducted with Betty’s Brain.
+
+2. OVERVIEW OF BETTY’S BRAIN
+The Betty’s Brain learning environment presents students
+
+with the task of teaching a virtual agent, named Betty, about
+science topics by constructing a causal map that represents
+relevant science phenomena as a set of entities connected by
+directed links which represent causal relations. Once taught,
+Betty can use the map to answer causal questions and ex-
+plain those answers by reasoning through chains of links [10].
+The goal for students is to teach Betty a causal map that
+matches a hidden, expert model of the domain.
+
+As an OELE, Betty’s Brain includes tools for acquiring
+information about a particular science topic, applying that
+information to a problem-solving task, and evaluating the
+quality of the constructed solution. Students can acquire
+domain knowledge by reading a set of hypertext resources,
+which include both high-level descriptions of scientific pro-
+cesses (e.g., shivering) and information pertaining to each
+concept that appears in the expert map (e.g., friction). As
+students read, they need to identify causal relationships,
+such as ‘skeletal muscle contractions create friction in the
+body.’ Students can then apply the learned information by
+adding the concepts and causal links to their causal map
+(which “teaches” the information to Betty).
+
+Students can evaluate their causal map by asking Betty
+to answer questions (e.g., if the hypothalamus response in-
+creases, what effect does it have on heat loss from the body? ),
+take quizzes (which are sets of questions), and explain her
+answers. To answer questions, Betty uses qualitative rea-
+soning methods that operate through chains of links from
+the source concept to the target concept [10]. When Betty
+explains her answers, she illustrates her reasoning through
+text and animation; she simultaneously explains her think-
+ing (e.g., an increase in the hypothalamus response causes
+skin contraction to increase. This leads to...) and animates
+her explanation by highlighting concepts and links on the
+map as she mentions them.
+
+After Betty answers a question, learners can ask Mr. Davis,
+another pedagogical agent in the system that serves as a
+mentor, to evaluate her answer. If Betty’s answer and ex-
+planation match the expert model (i.e., both maps use the
+same set of causal links to answer the question), then Betty’s
+
+answer is correct. Learners can also have Betty take a quiz.
+Quiz questions are selected dynamically such that a set of
+questions is chosen (in proportion to the completeness of the
+map) for which Betty will generate correct answers. The
+rest of the quiz answers are incorrect, and they are chosen
+to direct the student’s attention to parts of the map with
+missing or incorrect links. When Betty is unable to answer
+a question correctly, the students can use that information
+to discover Betty’s misunderstandings and correct them by
+identifying and modifying erroneous links in the causal map.
+Similarly, when Betty answers a question correctly, students
+know that each link that Betty uses to explain her answer to
+that question is also correct. When Betty answers all quiz
+questions correctly, students know that they have completed
+their task. To help students in keeping track of which links
+are correct and which are not, the system allows students
+annotate links as being correct.
+
+3. MODEL-DRIVEN ASSESSMENTS
+As mentioned previously, MDAs are derived from a model
+
+of the cognitive and metacognitive processes important for
+completing the learning task. Figure 1 presents our model
+for learning with OELEs. The cognitive portion of the model
+defines three classes of cognitive processes related to the
+tools often included in OELEs: information seeking/acquisition,
+solution construction, and solution assessment. The stu-
+dents’ tasks are facilitated by the system providing a set of
+system within Betty’s Brain. These lists of associated sys-
+tem tools are the only portion of the model specific to the
+particular OELE under study. The metacognitive portion
+of the model, dealing primarily with metacognitive regula-
+tion, is divided into five key metacognitive processes: goal
+selection, planning, monitoring, control, and reflection.
+
+Our approach leverages the cognitive and metacognitive
+model in interpreting students’ actions and behavior pat-
+terns (i.e., sequences of actions) in terms of the cognitive and
+metacognitive processes defined by the model (e.g., [14]).
+This paper focuses on using the cognitive portion of the
+model to interpret and assess how students use the system
+tools for solution construction and solution evaluation. As
+seen in the model, several tools in Betty’s Brain correspond
+to at least one of the three types of cognitive processes.
+Thus, when a student uses one of these tools, the system
+can classify it according to the model. Once classified, the
+system can assess these actions according to their effective-
+ness. Actions in an OELE are considered effective if they
+move the learner closer to the task goal (teaching Betty the
+expert map). Effective solution construction behaviors im-
+prove the overall quality of Betty’s causal model, and ef-
+fective solution evaluation behaviors produce and record in-
+formation about the correctness and completion of Betty’s
+current causal model.
+
+Together, measures of student actions along with mea-
+sures of the effectiveness of those actions provide the system
+with a set of measures for deciding whether or not to scaf-
+fold learners as they work: if a learner repeatedly utilizes
+tools ineffectively, then the system can offer feedback and
+scaffolding to support the learner in improving their under-
+standing of the cognitive skills involved in using those tools
+more effectively in the future.
+
+201
+
+
+
+Figure 1: Cognitive/Metacognitive Model of the Betty’s Brain Learning Task
+
+4. POST-HOC ANALYSIS USING MDA
+To illustrate the model-driven assessment approach, this
+
+section presents a post-hoc analysis of data from a recent
+study conducted in a middle-school classroom using Betty’s
+Brain. Fifty eighth-grade students from three middle Ten-
+nessee science classrooms, taught by the same teacher, par-
+ticipated in the study. Because use of Betty’s Brain relies on
+students’ ability to independently read and understand the
+resources, the system is not suited to students with lim-
+ited English proficiency or cognitive-behavioral problems.
+Therefore, data from ESL and special education students
+were not analyzed. Similarly, we excluded the data of stu-
+dents who missed more than two class periods of work on
+the system. The final sample was forty students.
+
+Students used the Betty’s Brain system over five 45-minute
+class periods to learn about mammalian thermoregulation in
+cold temperatures. The expert map contained 13 concepts
+and 15 links representing cold detection and three bodily
+responses to cold: skin contraction, vasoconstriction, and
+shivering. The resources were 15 pages (1,981 words) with a
+Flesch-Kincaid reading grade level of 8.9. Further details of
+the study, including pre-post test results, have been reported
+in [6].
+
+The data analysis focused on applying the MDA method-
+ology to assess students’ use of cognitive processes while
+working with Betty’s Brain. In particular, this analysis fo-
+cused on students’ use of solution construction and solution
+evaluation tools. Solution evaluation tools were further di-
+vided into tools for model assessment (i.e., quizzes, ques-
+tion evaluations and explanations) and tools for recording
+progress (i.e., link annotations).
+
+For each class of cognitive processes, two metrics were
+calculated for each student: (1) skill use, and (2) effective-
+
+ness. Skill use is simply the average number of times one
+of the cognitive tools related to that process was used per
+minute. For solution construction, for example, a student’s
+skill use metric refers to the average number of causal map
+edits that student performed per minute on the system. For
+model assessment, the skill use metric refers to the average
+number of question evaluations, quizzes, and explanations
+performed per minute of using the system. For progress
+recording, the average number of causal link annotations
+created per minute serves as the measure of skill use.
+
+Effectiveness was calculated as the percentage of actions
+that moved students closer to their task goal. For solution
+construction, effectiveness refers to the percentage of causal
+link additions, removals, and modifications (with respect to
+the total number of such edits) that improved the quality of
+Betty’s causal map, where causal map quality is measured
+as the number of correct links minus the number of incorrect
+links in the map. For model assessment, effectiveness refers
+to the percentage of assessment actions that generated spe-
+cific information about the correctness of one or more causal
+links. For progress recording, effectiveness refers to the per-
+centage of link annotations created that correctly describe
+the annotated causal link.
+
+In addition to assessing the group of students as a whole,
+an additional set of analyses were employed to compare stu-
+dents who were more and less successful in teaching Betty
+the correct causal model. Students were divided into three
+groups based on the quality of their causal maps at the end
+of the study. Students in the Low group taught Betty a
+map that achieved a score of 5 or below. Students in the
+Medium group taught Betty a map with a score of 6 to 10,
+and students in the High group taught Betty a map with a
+score of 11 to 15 (where 15 is the maximum possible score).
+
+202
+
+
+
+Table 1: Means (and Standard Deviations) of MDA
+Metrics for All Students
+
+Actions/Min Effectiveness
+Solution Construction 0.439 (0.190) 0.525 (0.113)
+
+Model Assessment 0.194 (0.1236) 0.370 (0.218)
+Progress Recording 0.012 (0.033) 0.161 (0.347)
+
+Table 2: Means (and Standard Deviations) of As-
+sessment Actions
+
+Actions/Min Effectiveness
+Question Eval 0.013 (0.019) 0.122 (0.280)
+
+Explanation 0.056 (0.057) 0.023 (0.258)
+Quiz 0.147 (0.111) 0.391 (0.427)
+
+These resulting Low, Medium, and High groups contained
+18, 6, and 16 students, respectively. The behavior use and
+effectiveness metrics were computed for the Low and High
+groups in order to draw comparisons between those who were
+successful and those who were not.
+
+5. RESULTS
+Results of the group level assessments are shown in Table
+
+1. Students using the system regularly engaged in solution
+construction and model assessment activities. On average,
+students edited their causal maps once every 2.28 minutes
+and assessed their map once every 5.15 minutes. However,
+students rarely made explicit records of the results of their
+assessment activities; they performed progress recording ac-
+tions an average of once every 83.33 minutes.
+
+Despite regularly engaging in solution construction and
+model assessment activities, the students in this study were
+not particularly effective in their endeavors. For solution
+construction, an average of just over half of their causal map
+edits improved the quality of their model. This suggests
+that students may have struggled to understand the causal
+relations described in the resources; alternatively, they may
+have edited their causal maps without first consulting the
+resources.
+
+Students were even less effective in assessing Betty’s un-
+derstanding of the science domain. On average, just over
+one third of their model assessment actions provided infor-
+mation about the correctness of one or more causal links.
+Moreover, these actions were largely limited to quizzes (see
+Table 2). This is striking, as quizzes can rarely provide cor-
+rectness information without being combined with Betty’s
+explanations, which connect graded quiz answers to the sets
+of causal links that were used to generate those answers. It
+is important to note, however, that in some cases, students
+may have been able to infer which causal links generated an
+answer without requiring an explanation from Betty.
+
+Together, these results suggest that students in this study
+struggled to use Betty’s Brain in an effective manner. More
+often than not, their solution construction, model assess-
+ment, and progress recording activities did not help them
+move toward their task goal. These students may have ben-
+efited from more explicit feedback and scaffolding aimed at
+supporting their use of the cognitive and metacognitive pro-
+cesses important for success in Betty’s Brain. However,
+despite these limitations, several students were successful
+(or close to successful) in teaching Betty the correct causal
+
+Figure 2: MDA Metrics for High and Low Groups
+
+model. To explore the differences between students who
+were successful and those who were not, the MDA metrics
+were calculated for the High and Low student groups iden-
+tified earlier. Because students rarely engaged in progress
+recording activities, the analysis focused only on solution
+construction and model assessment. These results appear in
+Figure 2.
+
+The results of the comparative analysis show that the
+High group students more often used tools linked to solu-
+tion construction. Additionally, the High group’s solution
+construction actions were more likely to be effective. Inde-
+pendent samples t-Tests conducted on these data showed a
+significant effect for actions per minute, t(32) = 2.67, p =
+.012, and effectiveness, t(32) = 5.99, p < .001. Figure 2 also
+shows that the High group performed slightly more model
+assessment actions/min than did the Low group; however,
+the Low group’s model assessment actions were more likely
+to produce information about the correctness of one or more
+links. Independent samples t-Tests conducted on these data
+failed to reveal a significant effect for actions per minute,
+t(32) = 1.48, p = n.s., or effectiveness, t(32) = 1.77, p =
+n.s.
+
+This set of results shows that the High group students’
+superior performances were associated with a higher rate
+of causal map editing and more effective edits. However,
+their success was not associated with more effective model
+assessments. One possible interpretation is that these stu-
+dents were more effective than students in the Low group
+in identifying causal links during reading. However, even
+students who successfully completed the learning task might
+have benefited from feedback and support encouraging them
+to employ more effective strategies for assessing their map
+and recording the results of those assessments.
+
+6. DISCUSSION AND CONCLUSIONS
+The results of applying an MDA methodology to the post-
+
+hoc analysis of data from students using an open-ended
+learning environment called Betty’s Brain provided valuable
+information about the effectiveness of actions that students
+took on the system. The main finding was that while stu-
+dents employed several learning behaviors related to solu-
+tion construction and evaluation, their use of these strate-
+gies was often sub-optimal. A large proportion (47.5%) of
+their causal map edits were incorrect, and an even larger
+proportion (63.0%) of their model assessment activities did
+not produce information related to the correctness of one or
+more causal links. Even students who were able to success-
+
+203
+
+
+
+fully teach Betty the correct causal map performed a large
+proportion of incorrect map edits (38.2%) and ineffective
+model assessment actions (68.9%). The results of this anal-
+ysis reveal that students using Betty’s Brain in this study
+might have benefited from feedback targeted toward helping
+students employ more effective strategies as they worked to-
+ward completing the learning task. Moreover, they show the
+usefulness of the MDA methodology. By using just a subset
+of possible behavior and effectiveness metrics, the analysis
+provided information that could be used to describe how the
+learners in this study approached their open-ended learning
+task.
+
+The MDA metrics used in this analysis focused on eval-
+uating students’ use of cognitive activities for solution con-
+struction and solution evaluation; each measured use of a
+system tool was judged as either being effective or ineffec-
+tive. However, MDA is not limited to assessing tool use on
+an OELE in isolation. Future work will focus on using the
+metacognitive portion of the task model to develop measures
+for assessing aspects of students’ metacognition, such as goal
+setting, planning, and monitoring. Additionally, we will be-
+gin incorporating these MDA metrics into Betty’s Brain in
+order to identify opportunities for providing scaffolding and
+feedback to learners based on their needs. Once the decision
+to support students in using a particular type of cognitive
+or metacognitive process has been made, the pedagogical
+agents in the system will use what they learn from the MDA
+metrics to drive a discussion toward identifying exactly why
+the learner is having trouble. Ideally, the agents will be
+able to provide students with the scaffolding and support
+they need to gain a better understanding of both the cog-
+nitive and metacognitive strategies important for learning
+with OELEs. To that end, we have developed a set of tuto-
+rial activities for students to practice the cognitive processes
+important for success in teaching Betty, such as identify-
+ing causal relations from reading materials and identifying
+relevant link correctness information from quizzes. Hope-
+fully, this support will lead to improved student learning
+with Betty’s Brain.
+
+7. ACKNOWLEDGEMENTS
+This work has been supported by the National Science
+
+Foundation’s IIS Award #0904387
+
+8. REFERENCES
+[1] R. Azevedo and A. Hadwin. Scaffolding self-regulated
+
+learning and metacognition - implications for the
+design of computer-based scaffolds. Instructional
+Science, 33(5-6):367–379, 2005.
+
+[2] R. Azevedo and M. Jacobson. Advances in scaffolding
+learning with hypertext and hypermedia: A summary
+and critical analysis. Educational Technology Research
+and Development, 56(1):93–100, 200
+
+[3] R. Azevedo, A. Johnson, A. Chauncey, and
+C. Burkett.
+
+Self-regulated learning with metatutor: Advancing the
+science of learning with metacognitive tools. In
+M. Khine and I. Saleh, editors, New Science of
+Learning, pages 225–247, 2010.
+
+[4] C. Bravo, W. van Joolingen, and T. de Jong.
+Modeling and simulation in inquiry learning: Checking
+solutions and giving intelligent advice. Simulation,
+82(11):769–784, 2006.
+
+[5] G. Clarebout and J. Elen. Advice on tool use in open
+learning environments. Journal of Educational
+Multimedia and Hypermedia, 17(1):81–97, 2008.
+
+[6] J. S. Kinnebrew, K. M. Loretz, and G. Biswas. A
+contextualized, differential sequence mining method to
+derive students’ learning behavior patterns. Journal of
+Educational Data Mining, in press.
+
+[7] K. Koedinger and A. Corbett. Cognitive tutors:
+Technology bringing learning science to the classroom.
+In K. Sawyer, editor, The Cambridge Handbook of the
+Learning Sciences, pages 61–78. Cambridge University
+Press, 2006.
+
+[8] S. Lajoie and R. Azevedo. Teaching and learning in
+technology-rich environments. In P. Alexander and
+P. Winne, editors, Handbook of Educational
+Psychology, pages 803–821. Erlbaum, Mahwah, NJ,
+second edition, 2006.
+
+[9] S. Land. Cognitive requirements for learning with
+open-ended learning environments. Educational
+Technology Research and Development, 48(3):61–78,
+2000.
+
+[10] K. Leelawong and G. Biswas. Designing learning by
+teaching agents: The betty’s brain system.
+International Journal of Artificial Intelligence in
+Education, 18(3):181–208, 2008.
+
+[11] R. E. Mayer. Should there be a three-strikes rule
+against pure discovery learning? American
+Psychologist, 59(1):14–19, 2004.
+
+[12] S. McQuiggan, J. Rowe, and J. Lester. Story-based
+learning: The impact of narrative on learning
+experiences and outcomes. In B. Woolf, E. Aimeur,
+R. Nkambou, and S. Lajoie, editors, Lecture Notes in
+Computer Science, volume 5091, pages 530–539, 2008.
+
+[13] R. Moreno and R. Mayer. Interactive multimodal
+learning environments. Educational Psychology
+Review, 19(3):309–326, 2007.
+
+[14] J. R. Segedy, J. S. Kinnebrew, and G. Biswas.
+Modeling learner’s cognitive and metacognitive
+strategies in an open-ended learning environment. In
+Advances in cognitive systems: Papers from the AAAI
+Fall Symposium, pages 297–304. AAAI Press, 2011.
+
+[15] J. R. Segedy, J. S. Kinnebrew, and G. Biswas. The
+effect of contextualized conversational feedback in a
+complex open-ended learning environment.
+Educational Technology Research and Development,
+61(1):71–89, 2013.
+
+204
+
+
+
+
+

@@ -1,0 +1,60 @@
+Lucene  :
++-- Analysis:
+¦   +-- Analyzer_Common: Analyzers for indexing content in different languages and domains
+¦   +-- Analyzer_Icu: Analyzer integration with ICU (International Components for Unicode)
+¦   +-- Analyzer_Kuromoji: Japanese Morphological Analyzer
+¦   +-- Analyzer_Morfologik: Analyzer for dictionary stemming, built-in Polish dictionary
+¦   +-- Analyzer_Nori: Korean Morphological Analyzer
+¦   +-- Analyzer_OpenNLP: OpenNLP Library Integration
+¦   +-- Analyzer_Phonetic: Analyzer for indexing phonetic signatures (for sounds-alike search)
+¦   +-- Analyzer_Smartcn: Analyzer for indexing Chinese
+¦   +-- Analyzer_Stempel: Analyzer for indexing Polish
+¦   +-- Analyzer_Uima: Analysis integration with Apache UIMA
++-- Backward_codecs:
+¦   +-- Backward_Codecs: Codecs for older versions of Lucene.
++-- Benchmark:
+¦   +-- Benchmark: System for benchmarking Lucene
++-- Classfication:
+¦   +-- Classfication: Classification module for Lucene
++-- Codecs:
+¦   +-- Codecs: Lucene codecs and postings formats.
++-- Core:
+¦   +-- Core: Lucene core library
++-- Demo:
+¦   +-- Demo: Simple example code
++-- Docs:
+¦   +-- Docs: Contain all Lucene Java documentations
++-- Expressions:
+¦   +-- Expressions: Dynamically computed values to sort/facet/search on based on a pluggable grammar.
++-- Facet:
+¦   +-- Facet: Faceted indexing and search capabilities
++-- Grouping:
+¦   +-- Grouping: Collectors for grouping search results.
++-- Highliter:
+¦   +-- Highliter: Highlights search keywords in results
++-- Join:
+¦   +-- Join: Index-time and Query-time joins for normalized content
++-- Licenses:
+¦   +-- Licenses: Contain Lucene Licenses
++-- Memory:
+¦   +-- Memory: Single-document in-memory index implementation
++-- Misc:
+¦   +-- Misc: Index tools and other miscellaneous code
++-- Queries:
+¦   +-- Queries: Filters and Queries that add to core Lucene
++-- Queryparser:
+¦   +-- Queryparser: Query parsers and parsing framework
++-- Replicator:
+¦   +-- Replicator: Files replication utility
++-- Sandbox:
+¦   +-- Sandbox: Various third party contributions and new ideas
++-- Spatial:
+¦   +-- Spatial: Geospatial search
++-- Spatial3d:
+¦   +-- Spatial3d: 3D spatial planar geometry APIs
++-- Spatial_extras:
+¦   +-- Spatial_extras: Geospatial search
++-- Suggest:
+¦   +-- Suggest: Auto-suggest and Spellchecking support
++-- Test_framework:
+    +-- Test_framework: Framework for testing Lucene-based applications

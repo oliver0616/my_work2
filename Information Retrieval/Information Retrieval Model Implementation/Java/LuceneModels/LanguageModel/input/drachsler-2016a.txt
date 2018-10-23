@@ -1,0 +1,304 @@
+
+Ethical and Privacy Issues  
+in the Design of Learning Analytics Applications 
+
+Hendrik Drachsler 
+Welten Institute 
+
+Open University of the Netherlands 
+hendrik.drachsler@ou.nl 
+
+ 
+Gábor Kismihók 
+
+Center of Job Knowledge Research 
+Amsterdam Business School 
+
+University of Amsterdam 
+G.Kismihok@uva.nl 
+
+ 
+Weiqin Chen 
+
+Oslo and Akershus University College 
+of Applied Sciences 
+
+Oslo, Norway 
+Weiqin.Chen@hioa.no 
+
+ 
+
+Tore Hoel 
+Oslo and Akershus University College 
+
+of Applied Sciences 
+Oslo, Norway 
+
+tore.hoel@hioa.no 
+ 
+
+Alan Berg 
+ICT Services 
+
+University of Amsterdam 
+a.m.berg@uva.nl 
+
+ 
+ 
+ 
+ 
+ 
+ 
+
+Adam Cooper 
+CETIS 
+
+United Kingdom 
+adam@cetis.org.uk 
+
+ 
+Maren Scheffel 
+
+Welten Institute 
+Open University of the Netherlands 
+
+Maren.Scheffel@ou.nl 
+ 
+
+Rebecca Ferguson 
+Institute of Educational Technology, 
+
+The Open University, UK 
+rebecca.ferguson@open.ac.uk 
+
+ 
+ 
+
+ABSTRACT 
+Issues related to Ethics and Privacy have become a major 
+stumbling block in application of Learning Analytics technologies 
+on a large scale. Recently, the learning analytics community at 
+large has more actively addressed the EP4LA issues, and we are 
+now starting to see learning analytics solutions that are designed 
+not only as an afterthought, but also with these issues in mind. 
+The 2nd EP4LA@LAK16 workshop will bring the discussion on 
+ethics and privacy for learning analytics to a the next level, 
+helping to build an agenda for organizational and technical design 
+of LA solutions, addressing the different processes of a learning 
+analytics workflow. 
+
+CCS Concepts 
+Security and privacy ? Privacy protections,  
+General and reference ? Design    
+Security and privacy ? Social aspects of security and privacy    
+Security and privacy ? Privacy protections    
+Applied computing ? E-learning 
+
+General Terms 
+Algorithms, Measurement, Design, Human Factors, Legal Aspects 
+
+Keywords 
+Learning analytics, ethics, privacy, legal rights, data ownership, 
+surveillance 
+ 
+
+1. INTRODUCTION 
+Since the Ethics & Privacy for Learning Analytics (EP4LA)  
+workshop at LAK15 it has become more and more clear that 
+Ethics and Privacy issues play a major role in preparing for large-
+scale adoption of learning analytics. Cases of ‘moral panics’ are 
+still used to create attention to these important issues – the 
+infamous inBloom case in USA [1], and the less known Stiching 
+Snapped case in the Netherlands [2] are both cases in point. Now 
+we start to see that ethics and privacy are not only an afterthought 
+when something has gone wrong; it starts to be built into the new 
+designs from the very beginning. This workshop will focus on 
+how ethics and privacy concerns would form the basis, on which 
+technical architectures and educational practices will be built. 
+
+Literature review for the EP4LA@LAK15 workshop found few 
+papers published related to ethics and privacy in the research field 
+known as ‘learning analytics’, and even fewer policies or 
+guidelines regarding privacy, legal protection rights or other 
+ethical implications [3]. Now a special issue of Journal of 
+Learning Analytics on ethics and privacy is in press, with a 
+number of articles originating from the LAK workshop [4]. 
+Furthermore, projects funded to do research and developments 
+within the field of learning analytics now have deliverables 
+addressing ethics and privacy [5]. 
+
+ 
+
+2. ETHICS & PRIVACY IN APPLICATION 
+DESIGN 
+Another recent trend is implementation of Codes of Practice for 
+Learning Analytics. JISC, a charitable organization supporting the 
+use of digital technologies in UK education and research, 
+supported by LACE and other European projects has developed a 
+Code of Practice covering the main issues institutions need to 
+address in order to progress ethically and in compliance with the 
+law [6]. The first university to establish an institutional Code of 
+Practice for Learning Analytics was the Open University, UK [7]. 
+
+A Code of Practice is only the first step in developing a new 
+ecosystem for learning analytics that allows large-scale adoption. 
+
+Permission to make digital or hard copies of all or part of this work for 
+personal or classroom use is granted without fee provided that copies are not 
+made or distributed for profit or commercial advantage and that copies bear 
+this notice and the full citation on the first page. Copyrights for components 
+of this work owned by others than the author(s) must be honored. 
+Abstracting with credit is permitted. To copy otherwise, or republish, to post 
+on servers or to redistribute to lists, requires prior specific permission and/or 
+a fee. Request permissions from Permissions@acm.org.  
+LAK '16, April 25 - 29, 2016, Edinburgh, United Kingdom  
+Copyright is held by the owner/author(s). Publication rights licensed to 
+ACM.  
+ACM 978-1-4503-4190-5/16/04…$15.00  
+DOI: http://dx.doi.org/10.1145/2883851.2883933 
+
+
+
+Open architectures are needed that provide technical solutions to 
+the challenges of data ownership, consent to use, and ethical 
+management and stewardship of the data. We are now starting to 
+see these architectures emerge [8]. 
+
+The Workshop at LAK16 will take stock of current ethics and 
+privacy-led design for learning analytics and contribute to an 
+agenda for large-scale implementations that goes beyond mere 
+policy guidelines. 
+
+3. WORKSHOP DESCRIPTION 
+3.1 Overall Motivation 
+The Workshop will develop an agenda for EP4LA-based design 
+of organizational and technical infrastructures based on the recent 
+awareness of the importance of ethical and privacy issues related 
+to big data. This year’s workshop will build on and strengthen the 
+impact of the EP4LA@LAK15 workshop and drive the discussion 
+in the direction of actions that could be implemented in 
+educational cultures and technologies. 
+
+ 
+
+3.2 Workshop Objectives 
+The Workshop builds on the series of EP4LA workshops1, which 
+for the one in LAK15 gathered around 50 participants discussing 
+five papers. The target audience for the Workshop this year is 
+LAK participants, both managers and developers, who want to see 
+EP4LA crystalized as a set of requirements and blueprints for 
+organizational and technical designs that could be implemented in 
+different sectors of the educational ecosystem. Following the path 
+of data sharing through the different processes of a LA system, 
+e.g., Learning Activity, Data Collection, Data Storing and 
+Processing, Analyzing, Visualization, and Feedback Actions 
+(Figure1), the objective of the Workshop is to give the 
+participants input to build an agenda for ethics and privacy for all 
+these processes. 
+
+ 
+Figure 1: Processes in a Learning Analytics cycle 
+
+ 
+
+3.3 Workshop Organization 
+A Call for Papers will be issued outlining the objectives of the 
+Workshop. The organizers are confident that they have a 
+community outreach that would result in paper submission 
+covering the full range of the LA ecosystem. The 3 hours 
+workshop will be organized as both paper presentation and 
+discussions along the lines of the LA process model. 
+
+ 
+
+3.4 Workshop Facilitators  
+The workshop will be organized jointly by the FP7 EU LACE 
+project (http://www.laceproject.eu), the Apereo Foundation, the 
+Asian-Pacific Society of Computers in Education (APSCE) SIG 
+on Learning Analytics  (https://sites.google.com/site/ 
+apscesiglaedm/) and the European Association for Technology 
+Enhanced Learning (EATEL) SIG dataTEL (http://ea-tel.eu/sig-
+
+                                                                 
+1 http://www.laceproject.eu/ethics-privacy-learning-analytics/ 
+
+datatel/). All partners aim at advancing the learning analytics field 
+by coming up with practical solutions and guidelines for ethical & 
+privacy issues that are a critical part of most data-driven research 
+in Education. The main goals are to increase the knowledge and 
+awareness about ethical and privacy boundaries of Learning 
+Analytics research and practice, to identify existing theories of 
+trust and privacy, to promote the re-use of best practice solutions 
+on privacy and ethics, to foster the cooperation between different 
+Learning Analytics research units, and to develop a kind of code 
+of honor for Learning Analytics research supported by IT based 
+legal tools.  
+
+ 
+
+4. REFERENCES 
+[1] New York Times. 2014. InBloom student data reporitory to 
+
+close. News story 2014-04-21, online at 
+http://bits.blogs.nytimes.com/2014/04/21/inbloom-student-
+data-repository-to-close, retrived 2015-01-15 
+
+[2] CBP. 2014. College bescherming persoonsgegevens 
+Onderzoek. CBP naar de verwerking van persoonsgegevens 
+door Snappet Rapport definitieve bevindingen van 14 juli 
+2014 met corrigendum van 27 augustus 2014 Juli 2014 
+Online at 
+https://cbpweb.nl/sites/default/files/downloads/mijn_privacy/
+rap_2013_snappet.pdf, accessed 2015-10-30 
+
+[3] Ethical and Privacy Issues in the Application of Learning 
+Analytics, LAK’15, March, 2015, Poughkeepsie, NY, USA. 
+
+[4] Drachsler, H.,  Ferguson, R.,  Hoel, T., & Scheffel, M (eds.) 
+In press. Special issue on Ethics and Privacy in Learning 
+analytics of Journal of Learning Analytics 
+
+[5] Steiner, C., Masci, D., Johnson, M., Türker, A., Drnek, M.,  
+& Kickmeier-Rust, M. 2014. Privacy and Data Protection 
+Policy. Deliverable D2.3 from LEA’s BOX project. Online at 
+http://css-kmi.tugraz.at/mkrwww/leas-
+box/downloads/D2.3.pdf, accessed 2015-10-30 
+
+[6] Sclater, N., & Bailey, P. 2015. Code of Practice for Learning 
+Analytics. Jisc. Available at 
+http://www.jisc.ac.uk/guides/code-of-practice-for-learning-
+analytics 
+
+[7] Open University. 2014. Policy on Ethical Use of Student 
+Data for Learning Analytics. Available at 
+http://www.open.ac.uk/students/charter/essential-
+documents/ethical-use-student-data-learning analytics-policy 
+
+[8] Sclater, N. 2015. Jisc’s Learning Analytics Architecture – 
+who’s involved, what are the products and when will it be 
+available? Available at 
+http://analytics.jiscinvolve.org/wp/2015/06/15/jiscs-learning-
+analytics-architecture-whos-involved-what-are-the-products-
+and-when-will-it-be-available/ 
+
+ 
+
+ 
+
+Learning
+Activity
+
+Data
+Collection
+
+Data Storing
+&
+
+Processing
+Analyzing Visualization
+
+Feedback
+Actions
+
+
+

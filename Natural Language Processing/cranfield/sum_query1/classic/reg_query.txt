@@ -1,0 +1,337 @@
+regular match query:
+{
+  "_scroll_id": "DnF1ZXJ5VGhlbkZldGNoBQAAAAAAAA3eFi1RT1k3Zm9qUlVPYXQ1YlV6NnVzNHcAAAAAAAAN3RYtUU9ZN2ZvalJVT2F0NWJVejZ1czR3AAAAAAAADd8WLVFPWTdmb2pSVU9hdDViVXo2dXM0dwAAAAAAAA3gFi1RT1k3Zm9qUlVPYXQ1YlV6NnVzNHcAAAAAAAAN4RYtUU9ZN2ZvalJVT2F0NWJVejZ1czR3",
+  "took": 2,
+  "timed_out": false,
+  "_shards": {
+    "total": 5,
+    "successful": 5,
+    "skipped": 0,
+    "failed": 0
+  },
+  "hits": {
+    "total": 430,
+    "max_score": 16.778769,
+    "hits": [
+      {
+        "_index": "cranefield",
+        "_type": "doc",
+        "_id": "12",
+        "_score": 16.778769,
+        "_source": {
+          "date": "j. ae. scs. 23, 1956, 289.",
+          "author": "bisplinghoff,r.l.",
+          "title": "some structural and aerelastic considerations of high speed flight ."
+        }
+      },
+      {
+        "_index": "cranefield",
+        "_type": "doc",
+        "_id": "878",
+        "_score": 14.287379,
+        "_source": {
+          "date": "air. eng. 1958.",
+          "author": "molyneux,w.g.",
+          "title": "experimental model techniques and equipment for flutter investigations ."
+        }
+      },
+      {
+        "_index": "cranefield",
+        "_type": "doc",
+        "_id": "184",
+        "_score": 14.176531,
+        "_source": {
+          "date": "rae tn.struct.294, 1961.",
+          "author": "molyneux,w.g.",
+          "title": "scale models for thermo-aeroelastic research ."
+        }
+      },
+      {
+        "_index": "cranefield",
+        "_type": "doc",
+        "_id": "486",
+        "_score": 13.968504,
+        "_source": {
+          "date": "j.ae.scs. 29, 1962, 935.",
+          "author": "dugundji,j.",
+          "title": "similarity laws for aerothermoelastic testing ."
+        }
+      },
+      {
+        "_index": "cranefield",
+        "_type": "doc",
+        "_id": "13",
+        "_score": 12.793522,
+        "_source": {
+          "date": "j. ae. scs. 20, 1953, 1.",
+          "author": "tsien,h.s.",
+          "title": "similarity laws for stressing heated wings ."
+        }
+      },
+      {
+        "_index": "cranefield",
+        "_type": "doc",
+        "_id": "141",
+        "_score": 12.527584,
+        "_source": {
+          "date": "j.roy.ae.s. 60, 1956, 151.",
+          "author": "hamilton,j.a. and hufton,p.a.",
+          "title": "free-flight techniques for high speed aerodynamic research ."
+        }
+      },
+      {
+        "_index": "cranefield",
+        "_type": "doc",
+        "_id": "51",
+        "_score": 12.011655,
+        "_source": {
+          "date": "naca tn.4115, 1957.",
+          "author": "o'sullivan,w.j.",
+          "title": "theory of aircraft structural models subjected to aerodynamic heating and external loads ."
+        }
+      },
+      {
+        "_index": "cranefield",
+        "_type": "doc",
+        "_id": "875",
+        "_score": 11.913488,
+        "_source": {
+          "date": "arc cp.255, 1955.",
+          "author": "templeton,h.",
+          "title": "models for aeroelastic investigation ."
+        }
+      },
+      {
+        "_index": "cranefield",
+        "_type": "doc",
+        "_id": "747",
+        "_score": 11.025894,
+        "_source": {
+          "date": "rae r. struct.237, 1957.",
+          "author": "gaukroger,d.r.",
+          "title": "bodt freedom flutter of ground launched rocket models at supersonic and high subsonic speeds ."
+        }
+      },
+      {
+        "_index": "cranefield",
+        "_type": "doc",
+        "_id": "195",
+        "_score": 10.906367,
+        "_source": {
+          "date": "j.app.mech. 27, 1960.",
+          "author": "tramposch,h. and gerard,g.",
+          "title": "correlation of theoretical and photo-thermoelastic results on thermal stresses in idealized wing structure ."
+        }
+      },
+      {
+        "_index": "cranefield",
+        "_type": "doc",
+        "_id": "1268",
+        "_score": 10.643156,
+        "_source": {
+          "date": "j. ae. scs.1960.",
+          "author": "turcotte,d.l.",
+          "title": "stable combustion of a high-velocity gas in a heated boundary layer ."
+        }
+      },
+      {
+        "_index": "cranefield",
+        "_type": "doc",
+        "_id": "746",
+        "_score": 10.548618,
+        "_source": {
+          "date": "j. roy. aero. soc. 1956.",
+          "author": "broadbent,e.g.",
+          "title": "aeroelastic problems in connection with high speed flight ."
+        }
+      },
+      {
+        "_index": "cranefield",
+        "_type": "doc",
+        "_id": "14",
+        "_score": 10.080725,
+        "_source": {
+          "date": "j. ae. scs. 23, 1956, 1109.",
+          "author": "ashley,h. and zartarian,g.",
+          "title": "piston theory - a new aerodynamic tool for the aeroelastician ."
+        }
+      },
+      {
+        "_index": "cranefield",
+        "_type": "doc",
+        "_id": "1144",
+        "_score": 9.696638,
+        "_source": {
+          "date": "technical note d-1382",
+          "author": "william a. newsom, jr., and louis p. tosti",
+          "title": "slipstream flow around several tilt-wing vtol aircraft models operating near the ground ."
+        }
+      },
+      {
+        "_index": "cranefield",
+        "_type": "doc",
+        "_id": "78",
+        "_score": 9.165276,
+        "_source": {
+          "date": "nasa tn.d659, 1961.",
+          "author": "reed,w.h. and bland,s.r.",
+          "title": "an analytical treatment of aircraft propeller precession instability ."
+        }
+      },
+      {
+        "_index": "cranefield",
+        "_type": "doc",
+        "_id": "252",
+        "_score": 8.7905855,
+        "_source": {
+          "date": "and a. b. haines, a.r.a.",
+          "author": "f. o/hara and l. c. squire, r.a.e.",
+          "title": "an investigation of interference effects on similar models of different size in various transonic tunnels in the u.k. ."
+        }
+      },
+      {
+        "_index": "cranefield",
+        "_type": "doc",
+        "_id": "665",
+        "_score": 8.621902,
+        "_source": {
+          "date": "j. app. math. mech. 24, 1960, 756.",
+          "author": "sychev,v.v.",
+          "title": "on the theory of hypersonic gas flow with a power law shock wave ."
+        }
+      },
+      {
+        "_index": "cranefield",
+        "_type": "doc",
+        "_id": "1098",
+        "_score": 8.510742,
+        "_source": {
+          "date": "nasa tm.x-263, 1960.",
+          "author": "rashis,b. and walton,t.e.",
+          "title": "an experimental investigation of ablating material at low and high enthalpy potentials ."
+        }
+      },
+      {
+        "_index": "cranefield",
+        "_type": "doc",
+        "_id": "685",
+        "_score": 8.369936,
+        "_source": {
+          "date": "nasa tn.d984, 1961.",
+          "author": "hanson,p.w.",
+          "title": "aerodynamic effects of some configuration variables on the aeroelastic characteristics of lifting surfaces at mach numbers from 0. 7 to 6. 86 ."
+        }
+      },
+      {
+        "_index": "cranefield",
+        "_type": "doc",
+        "_id": "1169",
+        "_score": 8.269702,
+        "_source": {
+          "date": "nasa tn.d735, 1961.",
+          "author": "reeder,j.p.",
+          "title": "hangling qualities experience with several vtol research aircraft ."
+        }
+      },
+      {
+        "_index": "cranefield",
+        "_type": "doc",
+        "_id": "792",
+        "_score": 8.105583,
+        "_source": {
+          "date": "j. royal aero. soc. v. 66, april 1962, pp 211-225 .",
+          "author": "spence, a. and clean, d.",
+          "title": "some low speed problems of high speed aircraft ."
+        }
+      },
+      {
+        "_index": "cranefield",
+        "_type": "doc",
+        "_id": "345",
+        "_score": 7.6638727,
+        "_source": {
+          "date": "j. ae. scs. 18, 1951, 229.",
+          "author": "barry,f.w., shapiro,a.h. and neumann,e.p.",
+          "title": "the interaction of shock waves with boundary layer on a flat surface ."
+        }
+      },
+      {
+        "_index": "cranefield",
+        "_type": "doc",
+        "_id": "311",
+        "_score": 7.3626947,
+        "_source": {
+          "date": "n.p.l. aero. 358, fm 2763. dec. 1958 .",
+          "author": "pearcey, h. h.",
+          "title": "a method for predicting the onset of buffeting and other separation effects from wind tunnel tests on rigid models ."
+        }
+      },
+      {
+        "_index": "cranefield",
+        "_type": "doc",
+        "_id": "1042",
+        "_score": 7.354227,
+        "_source": {
+          "date": "",
+          "author": "",
+          "title": "on transverse vibrations of thin, shallow elastic shells ."
+        }
+      },
+      {
+        "_index": "cranefield",
+        "_type": "doc",
+        "_id": "880",
+        "_score": 7.288649,
+        "_source": {
+          "date": "j. aero. sc. june, 1956 .",
+          "author": "mccarthy, j.f. and halfman, r.l.",
+          "title": "the design and testing of supersonic flutter models ."
+        }
+      },
+      {
+        "_index": "cranefield",
+        "_type": "doc",
+        "_id": "686",
+        "_score": 7.2495966,
+        "_source": {
+          "date": "nasa memo 4-8-59l, 1959.",
+          "author": "morgan,h.g. and miller,r.w.",
+          "title": "flutter tests of some simple models at a mach number of 7. 2 in helium flow ."
+        }
+      },
+      {
+        "_index": "cranefield",
+        "_type": "doc",
+        "_id": "1101",
+        "_score": 7.1455,
+        "_source": {
+          "date": "nasa tn d-800, 1961 .",
+          "author": "winters, c.w. and bracalente, e.m.",
+          "title": "a sensor for obtaining ablation rates ."
+        }
+      },
+      {
+        "_index": "cranefield",
+        "_type": "doc",
+        "_id": "429",
+        "_score": 7.11882,
+        "_source": {
+          "date": "rae tn.aero.2678,1960",
+          "author": "poole,j.a.",
+          "title": "a description of the r. a. e.  high speed supersonic tunnel ."
+        }
+      },
+      {
+        "_index": "cranefield",
+        "_type": "doc",
+        "_id": "154",
+        "_score": 7.0009527,
+        "_source": {
+          "date": "proc.cam.phil.s. 34, 1938, 345.",
+          "author": "hall,a.a. and hislop,g.s.",
+          "title": "velocity and temperature distributions in the turbulent wake behind a heated body of revolution ."
+        }
+      }
+    ]
+  }
+}

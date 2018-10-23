@@ -1,0 +1,690 @@
+Sequencing Content in an Adaptive Testing System:  
+
+Worcester Polytechnic Institute 
+
+Seth A. Adjei 
+100 Institute Road 
+
+Worcester 
+
+The Role of Choice
+Worcester Polytechnic Institute 
+
+ Anthony F. Botelho 
+
+100 Institute Road 
+
+Worcester 
+
+Telephone number, incl. country code 
+
+saadjei@wpi.edu 
+
+Telephone number, incl. country code 
+
+abotelho.777@gmail.com 
+
+Worcester Polytechnic Institute 
+
+Neil T. Heffernan 
+100 Institute Road 
+
+Worcester 
+
+Telephone number, incl. country code 
+
+nth@wpi.edu 
+
+ 
+ 
+
+learning 
+
+is  purely 
+
+teacher-paced,  where 
+
+mastery 
+teachers 
+determine  the  order  in  which  students  must  learn  specific 
+knowledge components or skills.  
+An  opposing  philosophy  to  mastery  learning  is  known  as  the 
+personalized system of instruction (PSI), in which students decide 
+on  their  pace  and  the  amount  of  content  they  learn.  [2]  Ritter, 
+Yudelson,  Fancsali,  and  Berman  conducted  a  study  in  which 
+mastery learning of content in the Cognitive Tutor was compared 
+to teachers’ prescriptions of the order in which to present content. 
+[10] It was found in this work that the system’s determination of 
+ordering  caused  significant  improvements  in  student  learning. 
+Their findings suggested that using ITS to prescribe the order in 
+which students were presented a set of knowledge components or 
+skills was a better approach to learning than allowing teachers to 
+determine or prescribe content order. From a different perspective, 
+these  results  seemed  to  show  that  choice,  at  least  at  the  teacher 
+level, did not cause learning gains.  
+The  effect  of  choice  on  various  aspects  of  human  life  has  been 
+studied  for  many  decades.  Watanabe  &  Sturmey  performed  a 
+meta-analysis of publications in the area of metacognition and the 
+effect  of  choice  on  student  performance  and  found 
+that, 
+particularly for students with disability, allowing choice has many 
+benefits. [13] Choice was shown to improve student engagement 
+on tasks as well as propensity of completion. Additionally, it has 
+been shown that intrinsic motivation to carry out general tasks can 
+be 
+improved  when  students  are  given  choice.  [3]  Other 
+researchers  have  observed  the  positive  effect  of  choice  on 
+outcome  measures  in  a  number  of  varied  activities.  [6,  9,  14] 
+Wang & Stiles showed that students completed more tasks when 
+asked  to  choose  when  and  how  to  complete  the  tasks.  [12]  This 
+phenomenon  is  evident  in  preschoolers  [1],  high-schoolers  [11], 
+and  college  undergraduates  [14].  Across  ages,  the  primary 
+contributing factor causing the increase in performance and rate of 
+completion  has  been  attributed  to  the  motivational  effects  of 
+choice. 
+The  extent  of  the  effects  of  choice  are  sometimes  conflicting 
+across different studies. Flowerday and Schraw [4], for example, 
+show  that  choice  had  a  positive  effect  on  attitude  and  effort, 
+however the effect on cognitive engagement was minimal or non-
+existent.    While  not  unanimous  across  all  domains  and  studies, 
+there is compelling argument to pursue the study of choice for its 
+potential  benefits  in  learning.  Understanding  how  the  positive 
+aspects  of  choice  can  best  be  implemented  to  improve  students’ 
+learning experiences is a topic still in need of research.  
+Despite  the  many  benefits  that  seem  to  be  derived  from  choice, 
+ITSs  rarely  offer  features  that  allow  students  to  make  choices 
+
+in 
+
+leads 
+
+ABSTRACT 
+The effect of choice on student achievement and engagement has 
+been an extensively researched area of learning analytics. Current 
+research  findings  suggest  a  positive  relationship  between  choice 
+and  varied  outcome  measures,  but  little  has  been  reported  to 
+indicate whether these findings hold in the context of Intelligent 
+Tutoring Systems (ITS). In this paper, we report the results of a 
+randomized  controlled  experiment  in  which  we  investigate  the 
+effect  of  student  choice  on  assignment  completion  and  future 
+achievement  in  an  ITS.  The  experimental  design  uses  three 
+conditions to observe the effect of choice. In the first condition, 
+students  are  able  to  choose  the  order  in  which  to  complete 
+assignments,  while 
+the  second  condition,  students  are 
+prescribed  an  intuitive  order  in  which  to  complete  assignments. 
+Those  in  the  third  condition  were  prescribed  a  counter-intuitive 
+order  in  which  to  complete  assignments.  Results  indicate  that 
+allowing  students  to  choose  the  order  in  which  to  work  on 
+assignments 
+to  higher  completion  rates  and  better 
+achievement  at  posttest.  A  post-hoc  analysis  also  revealed  that 
+even  considering  students  with  similar  completion  rates,  those 
+given choice had higher posttest scores than those observed in any 
+other condition. These results seem to support the many theories 
+of the positive effect of choice on student achievement. 
+CCS Concepts 
+• General  and  reference~Empirical  studies     • General  and 
+reference~Experimentation. 
+Keywords 
+Mastery Learning; Student Choice; PLACEments; ASSISTments; 
+Remediation Assignments.  
+1.  INTRODUCTION 
+The  concept  of  mastery  learning  is  based  on  a  philosophy  that 
+states that “all students have the ability to learn anything” and that 
+this  ability  is  a  function  of  time.    In  other  words,  given  a  new 
+topic,  it  is  merely  a  matter  of  time  and  practice  before  one  can 
+reach  a  state  of  understanding.  It  has  also  been  suggested  that 
+
+Permission to make digital or hard copies of all or part of this work for personal or 
+classroom use is granted without fee provided that copies are not made or 
+distributed for profit or commercial advantage and that copies bear this notice and 
+the full citation on the first page. Copyrights for components of this work owned by 
+others than the author(s) must be honored. Abstracting with credit is permitted. To 
+copy otherwise, or republish, to post on servers or to redistribute to lists, requires 
+prior specific permission and/or a fee. Request permissions from 
+Permissions@acm.org. 
+LAK '17, March 13 - 17, 2017, Vancouver, BC, Canada 
+Copyright is held by the owner/author(s). Publication rights licensed to ACM. 
+ACM 978-1-4503-4870-6/17/03…$15.00  
+DOI: http://dx.doi.org/10.1145/3027385.3027412 
+
+regarding  what  they  learn,  and  when  and  how  to  remediate 
+content that they may be lacking. Ostrow & Heffernan conducted 
+a  randomized  controlled  experiment  in  which  they  investigated 
+allowing students to choose the type of feedback received while 
+working  on  an  assignment  and 
+its  effect  on  assignment 
+completion and future performance. [8] They compared students 
+who  were  given  the  choice  to  decide  on  the  type  of  feedback 
+received  with  those  who  randomly  received  a  particular  type  of 
+feedback. They found that students given choice had significantly 
+better  achievement  than  those  in  the  control  group,  lending 
+credence to the notion that choice has a positive impact on student 
+performance within an ITS. 
+In  this  study  our  goal  is  to  investigate  the  effect  of  choice  on 
+student assignment completion and learning gains when given the 
+opportunity to choose the order in which to complete assignment 
+tasks. We report on a randomized controlled experiment in which 
+students  were  placed  into  three  conditions.  In  one  condition, 
+students were asked to choose the order in which to complete the 
+assignments,  whereas  students  in  the  other  two  conditions 
+followed  different  prescribed  content  orders.  We  also  report  a 
+post-hoc analysis of the study in which we find that, for students 
+with  similar  assignment  completion  rates,  those  in  the  choice 
+group performed better at posttest than those in either prescribed 
+condition. 
+1.1  Research Question 
+The following research question is addressed in the present study: 
+Does allowing students to choose the order in which to remediate 
+skills  improve  adherence  in  the  form  of  assignment  completion 
+rates, and/or Math achievement?  
+In  other  words,  does  choice  matter?  What  is  the  relationship 
+between student choice and mastery learning? 
+2.  METHODS 
+This  section  describes  the  methods  employed  in  answering  the 
+research  questions  stated  above.  We  ran 
+the  randomized 
+controlled  experiment  in  PLACEments,  an  adaptive  testing 
+system. This system is described briefly in this section. We then 
+present  the  experimental  design,  the  participants  used  in  the 
+experiment, and the outcome measures of interest.   
+2.1  An introduction to PLACEments 
+PLACEments  is  a  computer-aided  adaptive  testing  feature  of 
+ASSISTments, an online learning platform powered by Worcester 
+Polytechnic  Institute.  [5]  PLACEments  uses  a  prerequisite  skill 
+graph 
+the 
+Massachusetts  Common  Core  State  Standards  for  Mathematics. 
+[7]  All  PLACEments  tests  are  teacher-driven,  in  that  teachers 
+choose what and when to assign. These tests are composed of an 
+initial  set  of  skills  selected  by  the  teacher,  and  once  assigned, 
+students  are  tested  on  questions  related  to  the  initial  skills.  If  a 
+student  performs  poorly  on  any  of  the  initial  skills,  the  system 
+traverses  the  skill  graph  to  select  questions  from  the  immediate 
+prerequisite  skills  of  the  incorrect  items.  These  items  are  then 
+included  on  the  test,  and  the  graph  traversal  for  item  selection 
+continues  until  the  system  determines  that  there  are  no  further 
+prerequisite  skills  to  be  shown  or  the  traversal  reaches  a 
+predefined end point in the graph; the predefined end-point is set 
+at  test  creation  time.  In  this  manner,  the  system  can  isolate  and 
+map  the  depth  of  gaps  in  students’  knowledge,  while  providing 
+opportunity for remediation.  
+
+the  system,  created  based  on 
+
+that  underlies 
+
+2.1.1  Progressing through the Test 
+For the sake of simplicity, we use the hypothetical graph shown in 
+Figure 1 to explain how the test proceeds. The nodes in the graph 
+represent  skills  or  knowledge  components.  The  arrows  between 
+skills  represent  the  order  in  which  students  need  to  learn  these 
+skills/concepts in order to succeed in the subsequent skills. They 
+therefore show the prerequisite relationships between skills (thus, 
+skill ‘D’ is one of the prerequisites of skill ‘A’). The correctness 
+indicators attached to each node in the graph are a representation 
+of  a  given  student’s  performance  during  the  test.  In  this 
+configuration, the student is assigned ‘A’, ‘B’, and ‘C’ as initial 
+skills in the test. The system presents the student with questions 
+from these skills, and since the student performs poorly on skill A 
+(as shown in the graph), the student is further tested on skills D, E, 
+and  then  subsequently  H  since  the  student  did  not  demonstrate 
+mastery of skills E and H respectively. 
+ 
+
+Figure 1 A sample skill graph and a sample student’s 
+
+response configuration 
+
+ 
+
+the 
+
+subsequent 
+
+post-requisite 
+
+the  knowledge  gaps  are  determined  from 
+
+Generally, the tests are meant to identify students’ lack of specific 
+skill knowledge and to find which prerequisite skills to blame for 
+that missing knowledge.  
+2.1.2  Remediation Assignment Creation and Release 
+Once 
+test, 
+PLACEments attempts to help students close that gap. Once the 
+test 
+is  completed,  students  are  assigned  remedial  practice 
+questions  on  the  skills  in  which  they  performed  poorly.  The 
+release  of  these  assignments  is  staggered  and  is  based  on  the 
+underlying  prerequisite  skill  graph  that  PLACEments  depends 
+upon, and the number of these “remediation” assignments given is 
+dependent  on  the  student’s  performance  during  the  test.  The 
+remediation assignments of the lowest grade level skills on which 
+the  students  performed  poorly  are  released  first  and,  once 
+completed, 
+remediation 
+assignments follow. In the configuration depicted in Figure 1, the 
+remediation  assignment  for  skill  H  is  released  and  completed 
+before the assignment for E is released. The assignment for skill A 
+will  be  held  back  until  the  student  completes  skill  E.    All 
+remediations  are  mastery-based  assignments  referred  to  as  “skill 
+builders,”  in  which  students  are  given  similar  skill-based  items 
+until  a  predefined  threshold  of  understanding  is  reached;  this 
+threshold  is  usually  met  by  answering  three  consecutive  items 
+correctly. 
+2.2  Experiment Design 
+We  ran  a  randomized  controlled  trial  in  PLACEments  in  which 
+we experimented with the order in which remediation assignments 
+were released. Figure 2 illustrates the experimental design for this 
+study. 
+As  shown  in  Figure  2,  each  participant  is  given  a  predefined 
+PLACEments 
+initial  skills.  These 
+
+test  which  has  various 
+
+skill 
+
+assignments  are  teacher-assigned  and  may  have  varying  degrees 
+of difficulty. After the tests, students are randomly placed in one 
+of  three  conditions.  In  the  first  condition,  “Prerequisite  to 
+Postrequisite,” participants are assigned remediation skill builder 
+assignments  beginning  with  the  skills  of  the  lowest  grade  level 
+and the graph is traversed in the pre-to-post direction. Participants 
+are required to complete all released remediation assignments for 
+a  given  test  before  the  subsequent  post-requisite  skill  related 
+assignments are released. This condition typifies the current graph 
+traversal direction for remediation assignments that are released in 
+PLACEments (See section 2.1.2 for more details). 
+
+ 
+
+Figure 2 Experimental Design 
+
+The  “Post-requisite  to  Prerequisite”  condition  has  a  similar 
+behavior as the “Prerequisite to Post-requisite” condition with the 
+exception  that  the  graph  is  traversed  in  reverse,  from  the  post-
+requisite  to  the  prerequisite  skills,  which  is  counter  intuitive  to 
+most  teachers.  In  the  third  condition,  graph  traversal  is  not 
+considered. For all participants in this third condition, the release 
+of remediation assignments is not staggered, nor is it based on the 
+prerequisite  skill  graph.  Instead,  all  remediation  assignments  are 
+released to the students at once and they get to choose the order in 
+which to complete their assignments.  
+A  month  after  the  initial  test,  students  had  the  opportunity  to 
+retake  their  initial  PLACEments  test  as  a  posttest  to  gauge  the 
+amount  of  learning  that  had  occurred  from  the  remediation 
+assignments and, ultimately, the effect of condition. 
+We also performed a post-hoc analysis of the data collected from 
+this  experiment.  In  this  post-hoc  analysis,  we  investigated  the 
+effect  of  other  PLACEments  test  features  and  the  condition 
+assignment on student’s performance gain over the study period. 
+2.3  Participants  
+For this experiment, there were 410 student participants, each of 
+whom  was  assigned  the  initial  PLACEments  test  as  well  as  the 
+reassignment  that  served  as  the  outcome  measure.  All  students 
+were  7th  and  8th  grade  users  of  ASSISTments.  The  participants 
+had  varying  levels  of  math  competence  and  were  randomly 
+assigned to one of the three previously described conditions in the 
+study.  The  “Prerequisite-to-Post-requisite,”  “Post-requisite-to-
+Prerequisite,”  and  “Release  All”  conditions  had  129,  145,  136 
+students  respectively.  Random  assignment  to  condition  was 
+performed after the initial PLACEments test was completed. The 
+results of the tests in no way impacted random assignment.  
+
+2.4  Outcome measures 
+To determine the effectiveness of choice, the following outcome 
+measures  were  used:  remediation  completion  rate,  performance 
+on posttest, and the learning gain from the initial to the reassigned 
+PLACEments tests (i.e., from pre to posttest). 
+The  completion  rate,  in  this  context,  is  the  ratio  of  remediation 
+assignments completed to the number of remediation assignments 
+assigned. This outcome measure was intended to help determine 
+whether the order in which remediation assignments were released 
+had  an 
+impact  on  students’  assignment  completion  rates. 
+Additionally,  we  use  students’  performance  on  the  second 
+PLACEments  test  as  a  second  outcome  measure  (i.e.,  posttest). 
+We  also  considered  the  gain  in  PLACEments  test  performance. 
+This gain was the mathematical difference between the initial test 
+performance  (expressed  as  percent  of  items  answered  correctly) 
+and that of the second PLACEments test. 
+3.  RESULTS  
+In this section, we present an initial intent-to-treat analysis of all 
+the participants in the experiment and further describe an analysis 
+of students who participated in the post-test. We then proceed to 
+answer the proposed research questions using data from students 
+who were actually treated. The dataset for this experiment can be 
+found at http://tiny.cc/palsrct5data.  
+3.1  Effect of Choice on Remediation 
+Assignment Completion Rate 
+Though all 410 students in the study were expected to complete 
+the posttest, we found that a high percentage of students did not 
+have the opportunity to do so. In some cases teachers prevented 
+entire classes from completing the posttest, while in other cases, 
+the school year ended before students had the opportunity to take 
+the  posttest.  In  view  of  this,  only  one  of  our  research  questions 
+can be answered using the entire population of the study.  
+In  regards  to  the  impact  of  choice  on  assignment  completion, 
+Table  1  shows  the  remediation  completion  rate  for  each  of  the 
+conditions  in  the  study.  There  was  no  significant  difference  in 
+remediation completion rates between conditions (p-value > 0.05). 
+Though students in the counter intuitive condition (i.e. post-to-pre 
+condition)  seemed  to  have  a  slight  edge  over  students  in  other 
+conditions,  the  difference  was  not  significant.  The  observed 
+difference  may  be  due  to  the  fact  that  the  post-to-pre  condition 
+encouraged students to complete more assignments because they 
+presumably  navigated  from  difficult  assignments 
+to  easier 
+assignments.  Generally,  there  was  a  low  average  remediation 
+assignment completion rate of 0.38 across the entire population. 
+
+Table 1: Remediation Completion Rates by Condition 
+Condition 
+Participants  Mean Completion 
+
+Pre-to-post 
+Post-to-pre 
+StudentChoice 
+
+129 
+145 
+136 
+
+Rate 
+0.38 
+0.42 
+0.35 
+
+ 
+3.2  Effect of Choice on Post-test Performance 
+Of the 410 initial students, 70 students completed the post-test. As 
+Table  2  shows,  the  students  were  randomly  and  almost  equally 
+distributed across the different conditions. This section describes 
+the effect of choice on performance of these students on the post-
+test. 
+
+Table 2 Completion Rates and Learning Gains 
+
+Condition 
+
+Pre-to-post 
+Post-to-pre 
+Release 
+All/ 
+Student Choice 
+Total 
+
+Number of 
+Participants 
+
+Average 
+Completion 
+Rate* 
+
+Learning 
+Gain* 
+
+22 
+26 
+
+22 
+
+70 
+
+0.457 
+0.476 
+
+0.512 
+
+ 
+
+0.038 
+0.120 
+
+0.310 
+
+ 
+
+* Significance with p-value <0.05 
+
+in 
+
+increase  assignment  completion  rates  for 
+
+Among  others,  Table  2  shows  that  students  in  the  pre-post 
+condition  who  completed  the  posttest  also  completed  far  more 
+remediation  assignments  than  those  in  the  other  two  groups. 
+Additionally,  students 
+the  choice  condition  were  not 
+completing  as  many  assignments  as  those  in  either  prescriptive 
+condition. These results suggest that choice in this setting did not 
+necessarily 
+these 
+students,  as  described  in  section  3.1  above.  However,  Table  2 
+suggests that this same group of students performed better on the 
+posttest  than  students  in  the  two  prescriptive  conditions.  Their 
+gain  in  achievement  from  the  pre-test  to  the  post-test  was  more 
+than  twice  the  gain  for  the  counter  intuitive  group  and  10  times 
+that of the intuitive group. This seems to suggest that students in 
+this  condition  may  have  recognized  the  skills  they  performed 
+poorly  on  and  were  therefore  able  to  make  intelligent  choices 
+regarding which skills required remediation. 
+We also performed a one-way ANOVA and the results show that 
+there  was  a  significant  difference  in  math  achievement  for 
+students who had the chance to complete the experiment (p-value 
+< 0.05). 
+4.  ANALYSIS OF RESULTS 
+4.1  Post-hoc Analyses 
+Across our population, 32 students had an assignment completion 
+rate of 100%. (see Table 3) We analyzed these 32 participants and 
+found  that,  first  of  all,  they  were  equally  distributed  among  the 
+conditions.  Secondly,  students  in  the  choice  condition  achieved 
+huge  learning  gains  over  those  from  the  other  prescriptive 
+conditions. This result seems to suggest that even among students 
+who  are  consistent  in  completing  their  assignments,  prescribing 
+the  order  in  which  to  complete  assignments  is  not  ultimately 
+helpful to learning. When there are multiple tasks to be performed 
+by students, it is best to allow them to choose the order in which 
+to  work  on  the  assignments,  as  suggested  by  our  results  here. 
+Allowing  students  to  choose  the  order  in  which  they  work  on 
+assignments  appears  to  provide  better  gains  than  when  the 
+systems  make  the  choice  for  them,  especially  for  students  who 
+have high assignment completion rates. 
+
+Table 3: Learning Gains among students with comparable 
+
+assignment completion rates 
+
+Condition 
+
+Pre-to-post 
+Post-to-pre 
+Student Choice 
+Total 
+
+Number of 
+Participants 
+
+Learning 
+Gain* 
+
+11 
+11 
+10 
+32 
+
+0.056 
+0.086 
+0.333 
+
+ 
+
+* Significance with p-value <0.05 
+
+5.  DISCUSSION 
+Student  choice  has  been  found  to  be  helpful  for  encouraging 
+learners to perform well on certain outcome measures of interest. 
+Research  has  shown  that  giving  students  opportunities  to  make 
+choices  regarding  the  pace  and  sequence  of  math  content  has 
+many  positive  effects  on  students.  These  findings  informed  our 
+quest  to  determine  whether  the  phenomenon  would  hold  true  in 
+the  context  of  PLACEments,  the  adaptive  testing  system  that 
+leverages the ASSISTments learning platform.  
+In the current study, we set out to determine whether the touted 
+benefits  of  student  choice  could  be  replicated  in  our  testing 
+system,  and  if  so,  to  what  degree  it  mattered.  Contrary  to  the 
+established  notion  that  choice  improves  assignment  completion, 
+the  present  study  showed  that  assignment  completion  rates  were 
+not  significantly  different  among  conditions.  These  findings 
+reveal  that  though  there  were  differences  in  student  completion 
+rates, these differences were not significant and their magnitudes 
+were minimal at best. We think this may be the result of several 
+factors,  the  most  prominent  of  which  is  the  possibility  that  the 
+lengths of the PLACEments tests in these classes were too short. 
+However,  of  the  students  who  completed  the  posttest,  we  found 
+that  differences  in  assignment  completion  were  significant.  We 
+also  found  that  among  those  students  who  completed  the 
+experiment,  there  were  significant  differences  in  learning  gains. 
+Post-hoc analysis of the results seemed to suggest that choice was 
+very  important  amongst  students  with  comparable  assignment 
+completing behavior.  This is an impactful finding, as it suggests 
+that  choice  increases  performance.  Of  note  here,  the  observed 
+performance boost could not be attributed to students completing 
+more assignments than those in the other groups; the assignment 
+completion  rates  were  not  significantly  different,  and  yet  the 
+difference in performance remains. 
+The  contributions  of  this  paper  support  that  in  every  learning 
+analytics study that tries to model students learning and behavior, 
+the effect of choice cannot be ignored. Additionally, designers of 
+ITSs must look for ways to incorporate opportunities for students 
+with  comparable  abilities  and  assignment  completion  rates  to 
+make  choices  in  the  order  in  which  they  complete  assignments 
+while  using  the  system.  This  consideration  will  contribute  to  an 
+improved learning experience for students. 
+6.  FUTURE WORK 
+The study we report in this paper has one clear limitation in that 
+there  was  a  considerably  high  dropout 
+rate  among  all 
+experimental conditions. We presume this high attrition may have 
+been caused by a number of possible factors which require further 
+scrutiny. We think that this may be an artifact of the PLACEments 
+system and the size and difficulty of the assignments used in the 
+study. Further investigations into the causes of this high dropout 
+rate are necessary to help rectify the issue in future analyses, and 
+to boost teacher and student fidelity of the PLACEments system. 
+The current study investigated the effect of choice on the release 
+and  completion  of  remediation  assignments.  Another  feature  of 
+the system in which we can implement choice is in the test itself. 
+Additional  experiments  are  being  planned  to  determine  how 
+choice can be incorporated in this aspect. An illustrative example 
+of  this  involves  providing  choice  in  completing  the  initial  skills 
+for the test.  
+We  intend  to  run  additional  experiments  to  replicate  these 
+findings and improve upon the current results. If the results hold 
+in  replication  trials,  we  will  modify  the  PLACEments  system  to 
+allow  students  to  choose  the  order  in  which  to  complete  their 
+
+remediation  assignments  as  it  is  shown  here  to  significantly 
+benefit student learning. 
+7.  ACKNOWLEDGMENTS 
+We  acknowledge  funding  from  multiple  NSF  grants  (ACI-
+1440753, DRL-1252297, DRL-1109483, DRL-1316736 & DRL-
+1031398), the U.S. Department of Education (IES R305A120125 
+&  R305C100024  and  GAANN),  the  ONR,  and  the  Gates 
+Foundation. 
+8.  REFERENCES 
+[1]  Amabile, T. M., and Gitomer, J. (1984) , “Children’s Artistic 
+Creativity: Effects of Choice in Task Materials,” Personality 
+and Social Psychology Bulletin, vol. 10, 1984, pp. 209-15. 
+
+[2]  Block, James H., & Burns, Robert B. (1976). Mastery 
+Learning. Review of Research in Education, 4, 3-49. 
+doi:10.2307/1167112 
+
+[3]  Cordova, D. I., & Lepper, M. R. (1996). Intrinsic motivation 
+
+and the process of learning: Beneficial effects of 
+contextualization, personalization, and choice. Journal of 
+Educational Psychology, 88(4), 715-730. doi:10.1037/0022-
+0663.88.4.715 
+
+[4]  Flowerday, Terri, & Schraw, Gregory. (2003). Effect of 
+
+Choice on Cognitive and Affective Engagement. The Journal 
+of Educational Research, 96(4), 207-215. 
+doi:10.1080/00220670309598810 
+
+[5]  Heffernan, N. & Heffernan, C. (2014). The ASSISTments 
+Ecosystem: Building a Platform that Brings Scientists and 
+Teachers Together for Minimally Invasive Research on 
+Human Learning and Teaching. International Journal of 
+Artificial Intelligence in Education. 24(4), 470-497 DOI 
+10.1007/s40593-014-0024-x. 
+
+[6]  Langer, E. J., & Rodin, J. (1976). The effects of choice and 
+
+enhanced personal responsibility for the aged: A field 
+experiment in an institutional setting. Journal of Personality 
+and Social Psychology, 34, 191–198 
+
+[7]  National Governors Association Center for Best Practices, 
+
+Council of Chief State School Officers Title: Common Core 
+
+State Standards; Publisher: National Governors Association 
+Center for Best Practices, Council of Chief State School 
+Officers, Washington D.C. 
+
+[8]  Ostrow, K. & Heffernan, N. (2015). The Role of Student 
+Choice Within Adaptive Tutoring. In Conati, Heffernan, 
+Mitrovic & Verdejo (eds.) Proceedings of the 17th 
+International Conference on Artificial Intelligence in 
+Education (AIED 2015). Springer International Publishing. 
+Madrid, Spain. June 22-26. pp. 752- 755. 
+
+[9]  Perlmuter, L. C., & Monty, R. A. (1977). The importance of 
+perceived control: Fact or fantasy? American Scientist, 65, 
+759–765. 
+
+[10] Ritter, Steve, Yudelson, Michael, Fancsali, Stephen E., & 
+
+Berman, Susan R. (2016). How Mastery Learning Works at 
+Scale. 
+
+[11] Rainey, R. G. (1965), “The Effects of Directed Versus Non-
+
+Directed Laboratory Work on High School Chemistry 
+Achievement,” Journal of Research in Science Teaching, 
+vol. 3, 1965, pp. 286-92. 
+
+[12] Wang, M. C.  and Stiles, B. (1976), “An Investigation of 
+
+Children’s Concept of Self-Responsibility for Their School 
+Learning,” American Educational Research Journal, vol. 13, 
+1976, pp. 159-79. 
+
+[13] Watanabe, Mari, & Sturmey, Peter. (2003). The Effect of 
+
+Choice-Making Opportunities During Activity Schedules on 
+Task Engagement of Adults with Autism. Journal of Autism 
+and Developmental Disorders, 33(5), 535-538. 
+doi:10.1023/A:1025835729718 
+
+[14] Zuckerman, M., Porac, J., Lathin, D., Smith, R., & Deci, E. 
+
+L. (1978). On the importance of self-determination for 
+intrinsically motivated behavior. Personality and Social 
+Psychology Bulletin, 4, 443–446.Bowman, M., Debray, S. 
+K., and Peterson, L. L. 1993. Reasoning about naming 
+systems. ACM Trans. Program. Lang. Syst. 15, 5 (Nov. 
+1993), 795-825. DOI= 
+http://doi.acm.org/10.1145/161468.16147.  
+
+ 
+
+ 
+
+

@@ -1,0 +1,1634 @@
+
+Formative Assessment Method of Real-world Learning
+by Integrating Heterogeneous Elements of Behavior,
+
+Knowledge, and the Environment
+
+Masaya Okada
+Graduate School of Informatics,
+
+Shizuoka University
+3-5-1 Jyohoku, Naka-ku, Hamamatsu, Shizuoka,
+
+Japan
+m.okada@acm.org
+
+Masahiro Tada
+ATR Intelligent Robotics and Communication
+
+Laboratories
+2-2-2 Hikaridai, Keihanna Science City, Kyoto,
+
+Japan
+mtada@atr.jp
+
+ABSTRACT
+Real-world learning in a field is an important educational area for
+experience-based activities. Formative assessment by constant mon-
+itoring of the intellectual achievement of real-world learners is es-
+sential for adaptive learning support, but no assessment methodol-
+ogy has yet been developed. We consider a method to systemati-
+cally integrate heterogeneous factors of real-world learning: learn-
+ers’ internal situations, their external situations, and their learning
+field. Then, we propose a method for formatively assessing the
+situation of real-world learning. The method enables us to recog-
+nize the sequence of characteristic stay behavior and the associated
+body posture of a learner, and to estimate the 3D location of his/her
+interest. The method enables the estimation of not only the learn-
+ing topic that a learner is currently examining in a field but also the
+prospective topics that he/she should learn. Our assessment method
+is the basis for context-aware support to promote the emergence of
+new knowledge from intellectual collaboration in the world.
+
+Categories and Subject Descriptors
+K.3.1 [Computer Uses in Education]: Collaborative learning
+
+General Terms
+Design; Experimentation; Human Factors; Measurement; Verifica-
+tion
+
+Keywords
+Real-world learning; formative assessment; context estimation; spa-
+tial information distribution; multimodal sensing
+
+1. INTRODUCTION
+Traditional educational practices are often conducted in many schools
+[1, 19], but as another aspect of learning, recent research on edu-
+cational support also acknowledges that out-of-school learning by
+interaction and physical experiences in the world is an important
+
+Permission to make digital or hard copies of all or part of this work for
+personal or classroom use is granted without fee provided that copies are not
+made or distributed for profit or commercial advantage and that copies bear
+this notice and the full citation on the first page. Copyrights for components
+of this work owned by others than ACM must be honored. Abstracting with
+credit is permitted. To copy otherwise, or republish, to post on servers or to
+redistribute to lists, requires prior specific permission and/or a fee. Request
+permissions from Permissions@acm.org.
+LAK’14, March 24 - 28 2014, Indianapolis, IN, USA
+Copyright 2014 ACM 978-1-4503-2664-3/14/03...$15.00.
+http://dx.doi.org/10.1145/2567574.2567579
+
+Figure 1: Environmental learning in a natural field. A typical
+example of experience-based and out-of-school learning.
+
+educational area, since knowledge is discovered not only from text-
+books in a classroom [2, 10]. This paper calls experience-based and
+out-of-school learning “real-world learning”. A typical example of
+real-world learning is environmental learning in nature for discov-
+ering forest ecology [12]. Figure 1 shows one of our field practices
+of environmental learning. In contrast with classroom learners in a
+fixed setting, real-world learners behave in a physical field (e.g., a
+natural environment) without restriction of movement, and so it is
+hard for educators to observe and assess all situations of real-world
+learning. A methodology for constantly monitoring and assessing
+intellectual activities in the world is essential for heightening the
+effects of real-world learning.
+
+Mobile or ubiquitous computing technologies are rapidly advanc-
+ing, and new analytics realized with these technologies have the
+power to innovate real-world learning (e.g., support adaptive to the
+situation of a learner in the world). With the use of small computer
+devices and wearable or ubiquitous sensors, we propose a method
+of ubiquitous and multimodal sensing for assessing the situation
+of how intellectual collaboration (e.g., learner-learner interaction
+in a group and learner-environment interaction) proceeds through
+autonomous and bottom-up learning in the world.
+
+1.1 Designing Autonomous Bottom-up
+Learning in the World
+
+Traditional education in a classroom usually predefines what and
+how a learner should learn [1, 19]. This is because a cognitive
+architecture has traditionally been considered to be a closed process
+
+1
+
+
+
+Strange but  interesting objects exist.
+What are these? 
+For what purpose do these exist here?
+
+Information access behavior
+
+Action
+
+Manipulation
+Information 
+
+acquisition
+
+Learner
+
+Real world
+
+Distribution of information 
+
+      (i.e., knowledge seeds) A place with discovery knowledge
+
+Zooming
+
+Figure 2: Learning through interaction with the world.
+
+for forming a structured internal representation of the cognition of
+a person. Such a traditional learning design encourages learners to
+follow educators’ predefined scenarios to acquire knowledge [1].
+This is a top-down approach driven by educators.
+
+In contrast, the theory of situated cognition gives a foundation of
+real-world learning and suggests a bottom-up approach driven by
+each learner. Situated cognition explains that a learner situated in
+real situations in the world can often make the bottom-up acqui-
+sition of knowledge that can be practically used in a society [2,
+10]. This theory, which postulates that a learner’s cognitive pro-
+cess is embedded in the world, proposes a cognitive architecture
+for acquiring knowledge through human interaction with the world
+[2, 10]. People generally have different viewpoints, and the diver-
+sity of knowledge emerges through the autonomous and bottom-up
+process of learning when learners interact with the world, com-
+municate with each other, and decide what and how they investi-
+gate. Navigating learners by providing predefined knowledge in
+a specific field (e.g., navigating visitors at a museum to observe
+and study objects in an art exhibition [3]) is a well-known work-
+able approach, but its position seems closer to traditional top-down
+approaches. Our challenge is designing and creating a new learner-
+centered environment for promoting discovery learning through au-
+tonomous bottom-up knowledge acquisition in the world.
+
+1.2 Formative Assessment of Real-world
+Learning
+
+It is generally known that the effect of educational support is achieved
+when it is properly delivered to learners according to their intellec-
+tual state (e.g., the level of understanding and interest). Therefore,
+it is fundamental to develop a method for formative assessment of
+learning by constantly monitoring learner activities and evaluating
+the intellectual situation of each learner at a given time. For ex-
+ample, a mini paper test in a classroom is often used to assess
+top-down knowledge. System use logs, test results, and reports
+are used for assessment by learning management systems (LMS)
+in a classroom [17]. Recent studies have attempted to estimate
+the affects (e.g., boredom, confusion, delight, or frustration) of
+classroom learners from sensor data (e.g., data from a fixed video
+camera, a pressure-sensitive mouse, and a pressure-sensitive chair)
+[6, 8]. However, designing a learner-centered environment for au-
+tonomous bottom-up learning in the world is a new challenge in the
+field of computer-supported collaborative learning (CSCL), and so
+far the methodology to assess such real-world learning has not been
+well investigated.
+
+The first difficulty is that the effects of autonomous bottom-up learn-
+ing cannot be measured by comparing learners’ achievements with
+predefined answers, which is the method of testing the effects of
+
+Interest-level learning
+
+(finding and examining knowledge seeds)
+
+Knowledge-level 
+
+learning
+
+(germinating knowledge seeds)
+
+Preparatory-level learning
+
+(exploring nature, but not finding any information)
+
+level
+
+Figure 3: Learning levels about finding and interpreting infor-
+mation in the world.
+
+top-down education. The second difficulty is that the effects of
+real-world learning are derived from an outdoor experience that
+a learner autonomously obtains by dynamically interacting in and
+with the world. In other words, no methodology has been proposed
+to assess knowledge that comes from the interaction between learn-
+ers and the environment, and to carry out a real-time evaluation of
+the state of intellectual collaboration that changes from moment to
+moment in the world.
+
+1.3 Research Objective
+Our research objective is to evaluate the performance of individual
+learners participating in collaboration activities in the real world.
+It is expected that the effects of bottom-up knowledge creation by
+learners are heightened if we can dynamically provide each real-
+world learner with dedicated context-aware support that is tailored
+to his/her state of collaboration. Context estimation (e.g., place of
+interest, learning topics, unachieved knowledge, and tendency of
+viewpoint) of a real-world learner is conventionally an unsolved
+issue. We consider this issue in this study so that we can create
+a learner-centered environment for strengthening and enhancing a
+learner’s interest and viewpoint and for promoting effective learner-
+learner interaction and learner-environment interaction. Thus, we
+propose a new method to systematically grasp the human-world
+dynamics through which intelligence emerges and to formatively
+assess the situation of a real-world learner at a given time.
+
+The type of learning considered in this paper is exploratory learn-
+ing in which individuals in an environment interact and collabo-
+rate with their surroundings and achieve knowledge. Since human-
+world interaction is the essential key to directly cause learning ef-
+fects, our method mainly focuses on improving the human-world
+interaction of each individual learner. Our method is a basic assess-
+ment method for realizing computer-based support for exploratory
+learning that is interactively and collaboratively made between peo-
+ple and the world, and is an important contribution in the field of
+new analytics enhanced with mobile and ubiquitous computing.
+
+2. ASSESSMENT FRAMEWORK
+As stated above, an approach for estimating the situation of a real-
+world learner at a given time has not been well researched. Conse-
+quently, the first argument we have to make concerns the distinctive
+characteristics of real-world learning. As shown in Figure 2, real-
+world learning is driven by field activities for searching and dis-
+covering physical “information” existing in the world [14]. Such
+real-world information can be regarded as a knowledge seed [14].
+A learner visits a certain location in the world and explores and
+searches for information as the stage of preparatory-level learning
+
+2
+
+
+
+prior knowledge
+
+stable
+
+stay
+
+Estimation by signal processing
+
+Estimation by information integration
+
+2D
+
+location
+
+head
+
+posture
+
+body
+
+posture
+
+LPS
+
+place of
+
+interest
+
+barometer
+
+learning
+
+topic
+
+acceler
+
+-ometer
+gyroscope
+
+Usage as context information
+
+Intellectual states
+
+GPS
+
+Adaptive and context-aware learning support
+
+unachieved
+
+knowledge
+
+spatial
+
+characteristics 
+
+of information
+
+Low-level sensing
+
+Physical  situation
+
+tendency of
+
+viewpoint
+
+Component 1
+
+Component 2
+
+Component 3
+
+2D locating
+
+behavior
+
+Information access behavior
+
+3D focusing
+
+behavior
+
+probing
+
+behavior
+
+Recognition by machine learning algorithm Content and process of 
+
+internal situation
+
+activity
+
+map
+
+field
+
+notes
+audio-visual 
+
+recorder
+
+Knowledge 
+
+sensing
+
+Experience
+
+capture
+
+interest 
+
+acquisition
+
+knowledge
+
+acquisition
+
+learning
+
+achievements
+
+enencecece
+
+Local Positioning System (LPS) 
+
+Hybrid motion sensor
+   
+
+Wearable camera & microphone
+
+Microphone
+
+Eye cameraData 
+
+storage
+
+LPS
+GPS 
+
+receiver
+
+Example of wearable-type
+
+sensor sets
+
+a 3-axis accelerometer,
+
+a 3-axis gyroscope,
+
+and a barometer
+
+Figure 4: Method for assessing the situation of intellectual ac-
+tivities in the world.
+
+(Figure 3). When the learner finds information of his/her interest,
+this learner starts interest-level learning to examine the nature of the
+information. Interest-level learning can trigger higher knowledge-
+level learning (Figure 3). When he/she successfully examines and
+interprets the information, knowledge is then constructed by the
+learner as a mental model of the environment functions [14]. When
+the learner fails in the examination or interpretation of the informa-
+tion, he/she cannot achieve knowledge.
+
+Real-world learners use their body to interact with their surround-
+ings and to obtain information in the world. A real-world learner’s
+body functions as a sensor for obtaining information about the real
+world and also functions as an actuator for manipulating the world
+(Figure 2). We focus on both “the role of the real world” (viewpoint
+1) and “the behavior of a learner in the world” (viewpoint 2).
+
+Viewpoint 1. The role of the real world
+What a learner can learn in the world depends on what infor-
+mation is embedded around his/her location. Some locations
+in a learning field have valuable observation targets, but some
+locations do not. If we know the spatial characteristics of a
+learning field, in other words, if we know what intellectual
+activities are drawn out at each location in the field, we can
+narrow down the learning situation that can occur at each lo-
+cation. Thus, we need to develop a technique for extracting
+the spatial characteristics of a real-world learning field.
+
+Viewpoint 2. The behavior of a learner in the world
+What a learner can learn in the world depends on his/her be-
+havior, as well as his/her surrounding information. For ex-
+ample, Figure 2 shows a location with discovery knowledge,
+where strange but interesting objects (e.g., aerial roots of a
+plant) exist on the ground. Just visiting this location without
+sufficient observation is not enough for a learner to discover
+the nature of the strange objects, and so appropriate behavior
+
+becomes indispensable. A real-world learner interacts with
+the world, selects from a range of possible actions, and then
+executes an action. The final output of thinking is behavior,
+and the intellectual state of a real-world learner is to some
+extent physically reflected by their body. It is not possible to
+directly observe the internal state of the learner’s brain, but
+his/her physical interaction with the world can be observed
+from outside, and the differences of behavior can be a clue to
+understanding learning situations. For understanding a learn-
+ing situation, we need to develop a technology to grasp a
+learner’s body-based behavior for accessing the information
+embedded in the world.
+
+The central topic discussed in this paper is how we can systemat-
+ically integrate the elements of knowledge, behavior, and the en-
+vironment for assessing real-world learners’ situations. This is an
+issue of finding a way to combine heterogeneous factors: learners’
+internal situations, their external situations, and their real-world
+learning field. Here, we consider the following three requirements
+for assessing real-world learning situations. Requirements 1, 2, and
+3 were developed as components 1, 2, and 3 of our assessment
+method, respectively (Figure 4).
+
+Requirement 1. Development of an externalization method of
+interests and knowledge to grasp the internal situation
+It is necessary to develop a method that encourages each
+learner to externalize new information and knowledge gained
+as the result of real-world learning, and to show the process
+and contents of internal intellectual activities (e.g., thinking
+and knowledge acquisition). With such a method, it is nec-
+essary to quantitatively and qualitatively analyze the intel-
+lectual process of how each intellectual activity draws out
+intellectual achievements (e.g., a hypothesis, a question, or a
+discovery) from each learner. Then, it is necessary to extract
+the spatial relationship of how information and knowledge
+that a learner can obtain in the world are related to the envi-
+ronment where he/she exists. In this research, requirement 1
+was satisfied by developing component 1 with the technique
+of knowledge externalization with a semantic network, ex-
+perience capturing with wearable audio-visual sensors, and a
+spatial analysis.
+
+Requirement 2. Development of a sensing method of time-series
+behavior to grasp the external situation
+It is necessary to have a detailed understanding of the phe-
+nomena occurring in a learning field. The differences of be-
+havior observable from outside a learner can be a clue to un-
+derstanding learning situations. Thus, we need to investigate
+how learning behavior is related to the intellectual situation,
+and we need to find what learning behavior is displayed dur-
+ing a certain learning situation of real-world learning. We
+need to watch every behavior of a learner to trace the entire
+time series of a learner’s physical behavior in accessing in-
+formation in the world. In this research, requirement 2 was
+satisfied by developing component 2 through behavior sens-
+ing by multimodal motion sensors and recognizing behavior
+by signal processing and machine learning.
+
+Requirement 3. Development of a spatial integration method
+of internal and external situations
+Evaluations of both the learners’ internal and external situ-
+ations are qualitatively different, and can complementarily
+explain a phenomenon in a learning field. Thus, it is nec-
+essary to integrate these two evaluation results and to form
+
+3
+
+
+
+an understanding of how knowledge, behavior, and the envi-
+ronment are related. For example, it is necessary to spatially
+summarize the situation of past intellectual activities (e.g.,
+acquisition of interests and knowledge) in the world to make
+a spatial pattern of knowledge acquisition activities, and to
+extract the spatial characteristics of how information is dis-
+tributed in a learning field. Then, it is necessary to under-
+stand the state of real-world learning at a high level of ab-
+straction (e.g., topics of interest, unachieved knowledge, and
+tendency of viewpoints). The various context information es-
+timated by our method acts as the core for realizing context-
+aware learning support adapted to the interest, knowledge,
+and viewpoint of each learner. In this research, requirement
+3 was satisfied by developing component 3 with information
+integration techniques.
+
+The rapid progress being made in engineering technologies has
+led to new ways of innovating learning support. Our intention is
+not to select engineering technologies that fit conventional method-
+ologies, nor to replace old educational tools with new ones. Our
+method is for educators and system designers who want to design
+and create an effective methodology of future learning support that
+can be embodied only by using the innovations of computational
+devices and sensing technologies in a real-world environment.
+
+3. STRUCTURING 3D INFORMATION
+DISTRIBUTION
+
+As component 1, we developed a technology to observe the inter-
+est and the knowledge that a learner obtains in a field and used this
+technology to consider the spatial structure of information distribu-
+tion in a real-world learning field.
+
+3.1 Capturing and Analyzing Real-world
+Learning Experiences
+
+To model the role of a real-world learning field, we developed a
+technique to grasp the process and contents of information acquisi-
+tion and knowledge acquisition. In our example of outdoor learn-
+ing, each learner is equipped with a wearable camera (on his/her
+head) and a microphone (at his/her mouth) to record his/her vision
+and utterances (Figure 4). This makes it possible to know exactly
+where the learners are looking and finding or not finding real-world
+information. The learners’ behavior and communication are also
+recorded with video cameras operated or set by the observers. Dur-
+ing outdoor learning, each learner is asked to take field notes of
+what he/she is interested in so that we can grasp the information
+found by each group.
+
+Among the various definitions of knowledge, we consider knowl-
+edge acquisition as structuring the internal representation of a se-
+mantic network between different concepts (information) [14]. A
+conventional concept map [13] is widely used for structuring peo-
+ple’s knowledge, but when we used it for our research purposes, we
+found that a conventional concept map was hard to use for distin-
+guishing newly acquired knowledge from a learner’s background
+knowledge and for clearly identifying the contents and process of
+real-world learning [14]. Thus, we improved the knowledge repre-
+sentation of a conventional concept map by developing an activity
+map to objectively externalize the content and process of his/her
+knowledge acquisition [14].
+
+Immediately after the outdoor learning, each learner is requested to
+draw an activity map (Figure 5) to express the semantic structure of
+
+Attribute information of
+
+knowledge or an activity
+
+Attributes:
+
+- example
+
+- general knowledge
+
+- question
+
+- hypothesis
+
+- observation
+
+- verification
+
+- discovery
+
+(defined from 90 learners’ experiments)
+
+Figure 5: Activity map with semantic network.
+
+the information and knowledge that he/she newly acquired by the
+outdoor learning [14]. A node in an activity map is used to write
+information that a learner found. Each arc is used to express the
+semantic relationship between information that the learner found.
+Unlike a conventional concept map [13], a node and an arc in an ac-
+tivity map can be expressed with a single word or phrase in natural
+language. Moreover, we examined field notes written by 90 learn-
+ers in our past experiments and designed attribute information that
+identified the activity from which a learner found the relationship
+[14]. The attribute information can be added to each arc and con-
+sists of the following: example of a concept, general knowledge (a
+learner’s background knowledge), question, hypothesis to explain
+the relationship between concepts, observation of a phenomenon in
+the world carefully watched for a period of time, verification (be-
+havior to examine and verify the hypothesis), and discovery. The
+granularity of each attribute information was set at a level that the
+learners were able to consistently judge. We used free software1 to
+draw an activity map.
+
+A learner’s field notes show his/her interests, and the activity map
+of the learner shows the knowledge that he/she acquired. We syn-
+chronously replay all multiview audio-visual records (e.g., from
+learners’ wearable cameras and microphones, and experimenters’
+hand-held cameras) to correlate the topic and level of intellectual
+activity at each time point with the results of the learners’ knowl-
+edge externalization. When the content that a learner deals with at
+a certain point of time is what he/she externalized in his/her field
+notes, the learning at this time point is regarded as “learning con-
+tributing to obtaining real-world information” or “learning for ex-
+amining the nature of real-world information” (i.e., interest-level
+learning; Figure 3). Similarly, when the content is properly exter-
+nalized in the learner’s activity map, the learning at this time point
+is regarded as “learning contributing to constructing understanding
+by interpreting real-world information” or “learning for examin-
+ing newly constructed knowledge” (i.e., knowledge-level learning;
+Figure 3). When the content does not meet the requirements of
+interest-level learning or knowledge-level learning, the learning at
+this time point is regarded as preparatory-level learning (Figure 3).
+
+3.2 2D Dependence of Learning Topics
+1Reflective mapper “Ando-Kun”, http://www2.kobe-u.ac.
+jp/~inagakis/undo.html
+
+4
+
+
+
+Figure 6: 3D change of learners’ postures according to learning
+topics being considered.
+
+We conducted experiments with 15 learners in Kamigamo Exper-
+imental Forest, Kyoto University in 2010 and investigated the re-
+lationship between learning topics and locations by dividing the
+experimental field (130 x 50 m) into 80 regions (10 x 10 m grid)
+in a two-dimensional (2D) plane. These learners had not visited
+our experimental field beforehand and so did not have any prior
+knowledge of the field.
+
+We determined the learning topics examined by the learners by cap-
+turing and analyzing learning experiences, as described in the pre-
+vious section. The learners considered various topics (142 topics
+total), but the learning topics tended to depend on the learner’s lo-
+cation. On average, each topic was considered in 1.71 regions, and
+2.16 topics were considered per region. “What is learned in a field”
+is closely related to “the position of the learner,” which illustrates
+the uniqueness of the physical information in each region. These
+experiments confirmed that the range of learning topics can be nar-
+rowed down based on the 2D location.
+
+3.3 3D Existence of Real-world Information
+The learning topics that can be examined are region dependent.
+Thus, 2D positional information limits the range of the situation
+of the learner and narrows down possible learning topics that can
+be examined at his/her location. However, in regions where more
+than one learning topic exists, 2D location information is insuf-
+ficient to uniquely identify the topic of interest that a learner is
+examining. Therefore, additional information is required to deter-
+mine the learner context. We note that a natural ecosystem gener-
+ally has a multi-layered hierarchy. As shown in Figure 6, learners
+behave differently even if they stay in the same location. They
+sometimes look up and sometimes crouch down, and their posture
+changes according to the learning topics that they are considering.
+We therefore performed a 3D classification of the learning topics to
+be learned in the experiment. We found the tendency that the top-
+ics were not only region dependent in 2D but also height dependent,
+and were related to the following three layers:
+
+(1) Upper layer: Objects above the level of the learners’ heads
+(e.g., tall trees, branches and leaves, and light sources). The learn-
+ing topics related to this layer are usually examined when a learner
+is looking up.
+
+(2) Middle layer: Objects at eye level (e.g., tree trunks and shrubs).
+The learning topics related to this layer are usually examined when
+a learner is looking straight ahead.
+
+(3) Lower layer: Objects at ground level (e.g., mushrooms, moss,
+soil, undergrowth, aerial roots, mountain streams, and ponds). The
+learning topics related to this layer are usually examined when a
+learner is looking down or crouching down.
+
+What a learner examines depends on the 2D region, and each 2D
+region offers only a small number of topics. Moreover, this re-
+search also found that each layer of an ecosystem contains different
+information, and height is therefore another factor influencing the
+knowledge that a learner can acquire. Even if more than one topic
+occurs in the same region, we found that height information is use-
+ful for distinguishing such topics. If the learning topics cannot be
+distinguished in a 2D space, it is possible to distinguish them in a
+higher 3D space.
+
+4. 3D ESTIMATION OF INFORMATION
+ACCESS BEHAVIOR
+
+As component 2, we developed sensing technologies to determine
+the time series of learning that occurs in the world. These technolo-
+gies recognize a learner’s 3D behavior for accessing and acquiring
+information embedded in the world.
+
+4.1 Estimating Time-series Probing Behavior
+4.1.1 Probing Behavior
+
+Two types of behavior can be found in environmental learning: be-
+havior effective for learning, and behavior ineffective for learning
+[12, 15]. Behavior effective for learning includes observation (e.g.,
+visual inspection and examination by touch), knowledge exchange
+(e.g., cooperative thinking and discussion), and intellectual investi-
+gation (e.g., cooperative thinking and discussion through a collab-
+orative field survey). This type of behavior, which accesses and ac-
+quires real-world information, is called “probing behavior” in this
+paper. As discussed, probing behavior at each time point is at one
+of the three levels about how a learner is finding and interpreting
+information in the world (Figure 3). On the other hand, behavior
+ineffective for learning includes trivial chat, idle talk, lack of ob-
+servation, lack of conversation, and rest. This paper calls this type
+of behavior “non-probing behavior”.
+
+4.1.2 Relationship between Intellectual Situations
+and Behavior
+
+Although human behavior can be estimated from sensor data [9,
+11, 21, 22], it is conventionally difficult to estimate the intellec-
+tual state of a learner by using sensors. To begin with, sensors are
+devices for measuring physical quantities (e.g., velocity, acceler-
+ation, angular velocity, and signal strength) associated with body
+movement. A typical example of behavior sensing is identifying
+the location of humans at a given time [21]. Other examples in-
+clude recognition of daily activities (e.g., walking and ascending
+stairs) [11], and abnormal activities (e.g., slipping on a wet floor)
+[22]. This has recently been extended to the ability to sense human
+activities by using consumer devices such as mobile phones [9].
+However, few studies have attempted to determine the relationship
+between the physical behavior and the intellectual state of humans.
+Hence, even if we measure real-world activities using sensors, it
+is quite difficult to infer the internal intellectual state of the learner.
+Thus, we conducted field surveys to investigate how intellectual sit-
+uations are accompanied by physical behavior in the world. Then,
+we obtained the following significant results [15].
+
+(1) When learners walk inattentively in an environment, they rarely
+have enthusiastic discussions and obtain only superficial informa-
+tion about the environment.
+
+(2) When learners engage in probing behavior (e.g., observation,
+knowledge exchange, and intellectual investigation), they display
+
+5
+
+
+
+a characteristic physical motion. We call this motion stable stay.
+Stable stay is defined as a condition that extends for Tt [sec] or
+more, during which a fixed body posture is adopted (horizontal an-
+gular rotation of T? [deg/sec] or less) and movement is restricted
+to a velocity of Tv [m/sec] or less. Stable stay includes the state of
+crouching down.
+
+(3) When learners are not focused on a specific learning topic and
+casually look around, their body orientation in the horizontal plane
+is not fixed, even if they are not walking.
+
+4.1.3 Recognizing Probing Behavior by Sensing
+Stable Stay
+
+Learners exhibit a wide variety of behaviors, such as looking at
+various parts of the environment, touching objects at various points
+with their hands, and observing objects while crouching down. How-
+ever, whatever each learner actually notices, observes, or investi-
+gates, stable stay is commonly displayed when probing behavior
+is performed. In fact, under stable stay conditions, the possibility
+that probing behavior occurred was found to be 3.12 times higher
+than that under other conditions [15]. This is an important finding
+concerning the common structure of diverse learning activities.
+
+On the premise that probing behavior and stable stay conditions
+frequently co-occur [15], each learner was given a wearable local
+positioning system (LPS, 255 g, 111 x 82 x 39 mm; Figure 4) to
+be placed on their lower back in order to capture the local move-
+ment and body orientation of the learner. The time series of probing
+behavior was determined by detecting stable stay conditions from
+the LPS data with three threshold parameters (Tt = 15.00 [sec], Tv
+= 0.10 [m/sec], T? = 60.00 [deg/sec]). These values were deter-
+mined by pre-evaluating sensor data for experimental learners and
+inspecting the data distribution of physical movements associated
+with both probing behavior and non-probing behavior. The data
+for these learners were not used in the subsequent experiments for
+evaluating the recognition accuracy.
+
+We carefully specified the contents and levels of learning at a cer-
+tain time point by referring to multiview audio-visual records (e.g.,
+from learners’ wearable cameras and microphones, and from ex-
+perimenters’ hand-held cameras) and made the ground-truth data of
+the series occurrence of learning activities (time precision: second
+order). Then, we evaluated the accuracy of the recognition tech-
+nology by using the ground-truth data for the time series of stable
+stay and probing behavior (18,000 sec; data for five groups repre-
+senting 15 learners). Our technique extracted data for 7,787 sec as
+candidates of probing behavior, and among these data, 6,786 sec
+correctly matched the ground-truth data. Thus, we confirmed that
+the technology could accurately recognize the time when probing
+behavior occurred (precision = 87.1%) by automatically analyzing
+the LPS data of the learners [15].
+
+Knowledge exchange and intellectual investigation are the states
+of group collaboration based on the interaction between learners.
+With our sensing technique, we were able to estimate such group
+collaboration by individually sensing each person who participated
+in the collaboration.
+
+4.2 3D Determination of Target of Interests
+By sensing stable stay conditions, an accurate real-time estimation
+can be made of how probing behavior occurs in a learning field.
+Moreover, by tracing the location of a learner with a GPS receiver,
+
+walking pace
+
+Tv [m/sec]
+
+horizontal body 
+
+orientation
+
+T? [deg/sec]
+duration
+
+Tt [sec].....................
+
+3D posture during the stable stay
+
+looking 
+straight
+
+head height 1
+
+looking
+ up
+
+crouching 
+down
+
+head height 2
+
+head 
+posture
+
+body
+posture
+
+stable stay
+
+Figure 7: Estimating 3D posture during the state of stable stay.
+
+both the 2D locations of interest and the time spent engaged in
+probing behavior can be determined. Because this is an advanced
+technology, it is still difficult to estimate what the learner actually
+learns in the world. By identifying the targets on which probing be-
+havior is focused, we hope to clarify the associated content and the
+knowledge acquisition process. Stable stay is defined in a horizon-
+tal 2D plane and can be used for robust identification of probing
+behavior. As shown in Figure 6, the postures of learners reflect
+their interests at that time. In this research, we therefore extended
+the technique for recognizing stable stay behavior to also identify
+the posture involved (Figure 7), thus allowing the 3D position of
+the topic of interest to be determined.
+
+An eye-mark recorder is conventionally used to track the gaze di-
+rection of a person. However, because current eye-mark recorders
+are large and heavy, they restrict the movement of a learner in the
+world. Furthermore, when a learner moves, his/her location and
+head direction constantly change without constraint. This makes it
+difficult to use data from an eye-mark recorder for automatic de-
+termination of what is being observed. Here, we trace the head
+direction instead of eye movement, because it is known that head
+direction and gaze direction are closely related, and head direction
+can be substituted for gaze direction [20]. For example, as shown in
+Figure 6 and Figure 7, to observe objects at ground level, learners
+need to crouch or bend their head down. A learner who is crouching
+down has a different head height from one who is standing upright
+(Figure 7). Thus, this paper proposes an idea to classify a learner’s
+posture (e.g., looking straight ahead, looking up, looking down, or
+crouching down) based on head height, head tilt, and body tilt. In
+this method, we provide each learner with wearable-type hybrid
+motion sensors (shown in Figure 4) for the head and body, in addi-
+tion to an LPS for the lower back and a GPS receiver for the head.
+The hybrid motion sensor (22 g, 37 x 46 x 12 mm) has a 3-axis ac-
+celerometer (50 Hz), a 3-axis gyroscope (50 Hz), and a barometer
+(25 Hz) built in. The accelerometers obtain 3D tilt information, and
+the barometer obtains height information. The gyroscopes obtain
+3D information about the rotation of a learner’s body and head.
+
+Preliminary evaluation of sensor data was done to test our assump-
+tion for designing a classifier for recognizing body posture, and
+the evaluation found the typical characteristics of sensor data as-
+sociated with each target posture [16]. For a detailed analysis, in
+this paper, we further investigated the data obtained in experiments
+with 33 adult learners at Kamigamo Experimental Forest in 2009
+
+6
+
+
+
+and 2010. When learners stood upright and were looking straight
+ahead, the output from the vertical axes of the accelerometers at-
+tached on the body and the head almost equaled the gravitational
+acceleration (1000 mG). In contrast, when the body and head of
+a learner were tilted, the accelerometers also tilted and the gravita-
+tional acceleration was properly split into two or three components.
+The experiments also showed that the sensor data exhibited differ-
+ent characteristics for each of the target behaviors (e.g., looking up,
+standing upright, and crouching down). We also examined actual
+behavior of the learners at the experiments by manually checking
+video records. Then, we found that the information of acceleration,
+angular velocity, and height is useful for determining the posture of
+a learner’s head and body. Moreover, although noise reduction is a
+basic problem of signal processing, these experiments showed that
+sensor data noise caused by the learner’s movement is considerably
+reduced during the state of stable stay. We found that this is a merit
+for robust pattern classification of learner behavior. For implement-
+ing a posture identification technique, the integration of multimodal
+sensor data is carried out by a support vector machine (SVM). Our
+signal processing is implemented to be done in real time to realize
+real-time learning support according to learner situations.
+
+5. FORMATIVE ASSESSMENT BY SPATIO-
+TEMPORAL BEHAVIOR INFORMATION
+
+Our method consists of three key elements formed by components
+1, 2, and 3: knowledge, behavior, and the environment. First, our
+research on component 1 showed that knowledge and topics that
+can be learned in a real-world learning field are three-dimensionally
+dependent, although a wide variety of intellectual activities occur
+there. We showed that each region in the horizontal plane offers
+only a small number of topics, and each layer in the vertical direc-
+tion of an ecosystem promotes the acquisition of different knowl-
+edge. Second, component 2 was developed by focusing on the
+3D role of a learner’s body as an interactive medium for obtain-
+ing real-world information from his/her surroundings. We found
+the time series of probing behavior can be precisely estimated by
+determining a characteristic stay behavior (i.e., stable stay) that fre-
+quently occurs during the state of probing behavior. Importantly,
+the ground-truth data from audio-visual records of learning activ-
+ities showed that a learner in a group rarely did stable stay when
+learner collaboration in his/her group did not actively function. It
+follows from this that the occurrence estimation of stable stay pro-
+vides us not only with an index to evaluate the activity of each
+individual learner at a given time, but also with an index to evalu-
+ate the activities made by the learner’s group at that time. We also
+confirmed the possibility that the 3D position of a learner’s focus
+can be identified by sensing and determining a learner’s 3D posture
+that is involved in the state of stable stay.
+
+However, we should point out that it is hard to estimate real-world
+contexts in which learners are involved if we do not systematically
+integrate world characteristics (e.g., spatial distribution of real-world
+information) and human behavior. Behavior-based context estima-
+tion alone is not enough for our purpose, even if we determine
+the occurrence of probing behavior and 3D spatial placement of
+the learners’ focus. Diversity and the effects of discovery learning
+emerge in the process of learners’ bottom-up knowledge processing
+based on their own interests. But without the data of spatial infor-
+mation distribution in a field, it is hard to estimate the information
+that a learner actually accesses or does not access. Similarly, it is
+not possible to consider the spatial contexts around a learner, such
+as the difficulty of knowledge acquisition at his/her current loca-
+tion.
+
+23
+
+34
+
+ 6
+
+14
+
+22
+
+33
+
+47
+
+ 5
+
+13
+
+32
+
+46
+
+59
+
+ 4
+
+12
+
+31
+
+45
+
+58
+
+ 3
+
+11
+
+21
+
+44
+
+57
+
+69
+
+ 2
+
+10
+
+20
+
+43
+
+56
+
+68
+
+ 1
+
+ 9
+
+19
+
+30
+
+42
+
+55
+
+67
+
+ 8
+
+18
+
+29
+
+41
+
+54
+
+66
+
+76 
+
+ 7 
+
+17
+
+28
+
+40
+
+53
+
+65
+
+75
+
+16
+
+27
+
+39
+
+52
+
+64
+
+74
+
+15
+
+26
+
+38
+
+51
+
+63
+
+73
+
+25
+
+37
+
+50
+
+62
+
+72
+
+80
+
+24
+
+36
+
+49
+
+61
+
+71
+
+79
+
+35
+
+48
+
+60
+
+70
+
+77
+
+Area for learning
+(each grid: 10x10 m)
+
+Location with information that is hard to understand
+
+7877
+
+7672
+
+50 51 5248
+
+42 44 45
+
+12
+
+20
+
+26 29
+
+Figure 8: Difficulty of knowledge acquisition at each location.
+
+5.1 Extracting Spatial Characteristics of a Field
+As component 3, we integrate the heterogeneous elements of knowl-
+edge, behavior, and the environment, and summarize the spatiotem-
+poral occurrence of learning activities in a field for systematically
+understanding real-world learning situations.
+
+5.1.1 3D Spatial Characteristics of a Learning Field
+By analyzing 15 learners’ data in our experimental field in 2010, we
+found that a different quality of information exists at each location
+in a field [15]. For example, we found the locations where learners
+casually passed through without staying (26 regions of 80 regions;
+32.5%). We also found the locations where probing behavior and
+interest level occurred for a long period of time, but knowledge-
+level learning hardly occurred. In Figure 8, 15 regions (18.8%)
+are such locations, where learners had acute interests, actively tried
+to obtain information through observation or investigation, but did
+not successfully understand the nature of the information. 2D clas-
+sification of a field from the time amount of learning activities at
+each location showed that the value of each location in a field is not
+equal. This classification extracted important locations that have
+discovery knowledge that is hard to understand, even if learners en-
+thusiastically make an observation, an investigation, and a discus-
+sion. This is a basic result showing that our method can illustrate
+learning situations involving a learner in the world.
+
+Furthermore, as an advantage of our method, the above classifica-
+tion technique can be three-dimensionally extended to better ex-
+plain real-world spatial characteristics. For example, information
+distribution inherent in each 3D region in a learning field can be
+extracted by using our sensing technologies for 3D measurement
+of learner behavior and 3D determination of a learner’s focus in
+the world. Such 3D spatial characteristics of a field can be used
+as prior knowledge for determining the situation where learners fo-
+cusing on each 3D location are expected to be involved. In other
+words, this extended technique makes it possible to express the 3D
+spatial contexts around a learner, for example, from the difficulty of
+knowledge acquisition at the 3D location of his/her current interest.
+
+5.1.2 Probabilistic Spatial Modeling Based on Learn-
+ing Processes
+
+The result of learning is achieved through the process of a chain
+of activities from the past to the present. In the case that learners
+failed in knowledge acquisition at a location, it is expected that the
+process of their activities had some problems. The analysis shown
+in the previous subsection was a method to show the “result” of
+learning at each location (e.g., whether learners understood infor-
+mation at each location), and is useful to predict the result in how
+
+7
+
+
+
+learning at each location tends to end.
+
+As an advantage of our method, we can identify the problematic
+learning processes that posed obstacles to knowledge development
+and then structure a field including the “process” of learning at each
+location. We can make a location-based model explaining how in-
+dividual learning activities (i.e., points in time) made a time-series
+sequential chain (i.e., lines, or a network) and promoted intellectual
+achievements. For example, the multimodal techniques discussed
+in this paper can be used to track the sequence and co-occurrence of
+behavior and each level of learning at each location, to find patterns
+of learning activities inherent at each location, and to extract struc-
+tural problems in the chain or transition of learning activities. This
+makes it possible to calculate the probabilistic structure of the oc-
+currence and transition of learning situations in a field, including,
+for example, the probability of acquiring and developing knowl-
+edge at each location based on the probability that preparatory-level
+learning at a location failed to promote interest-level learning or
+knowledge-level learning.
+
+5.2 Process of Assessing Real-world Learning
+Discovery learning in a bottom-up style should be autonomously
+driven by learners, not by educators. However, such bottom-up
+learning does not necessarily mean learning without the aid of ed-
+ucational support. When bottom-up learning is deadlocked, small
+hints (not answers) are helpful for encouraging learners to do prospec-
+tive activities for breaking the deadlock. Here, how and when
+should learning support be given to learners in the world? Needless
+to say, it is not our position to one-sidedly provide definite and cor-
+rect answers with learners in a top-down style because this will not
+promote the learners’ autonomy. In our position, the necessity of
+learning support needs to be determined by considering what activ-
+ities learners are autonomously doing or not doing. Similarly, the
+delivery of learning support needs to be driven by considering the
+state of bottom-up knowledge acquisition in the world.
+
+In conventional studies, few approaches have been proposed about
+how to systematically understand the intellectual state of learners
+interacting with and in the world. As component 3 in Figure 4
+shows, we can integrate the recognition results of 3D behavior in a
+region in a field with the 3D spatial characteristics of the region and
+then form an understanding of learning situations at a given time at
+a high level of abstraction. Real-time data processing (e.g., signal
+processing and information retrieval) is mainly designed to run on a
+Java software environment as a client service of a mobile computer
+with ubiquitous sensors, so that a learner in the world can acquire
+the services of adaptive learning support. At the first system boot, a
+local client is designed to access the server database that stores the
+spatial characteristics of the field (spatial index database), to make
+a local copy of the database, and to use the local copy for efficient
+information retrieval.
+
+Our method gives us knowledge on specific objects and informa-
+tion that are potentially effective in a learning field. Although such
+knowledge can be used in top-down education, our scaffolding of
+learning, based on learners’ autonomy, is intended to avoid unnec-
+essary intervention in learners’ activities. Learners’ autonomous
+activities observed with our method are used as service triggers
+for driving context-aware learning support to encourage bottom-up
+knowledge acquisition in the world.
+
+Let us assume that learners stay at a location with discovery knowl-
+edge (Figure 2) and examine the aerial roots of a plant on the
+
+ground while crouching down. The following is an example of
+estimating such a situation by using the 3D spatial contexts of the
+world.
+
+(1) Real-world behavior of a learner is measured and estimated with
+wearable sensors. GPS information shows the 2D stay location of
+a learner at a given time. The 3D location of the target of his/her
+interest or consciousness is determined by sensing his/her 3D pos-
+ture during the state of stable stay. In this example, the posture of
+crouching down is estimated and shows that the learner notices the
+lower layer of the ecosystem and that he/she is examining learning
+objects inherent at this layer as the current learning topic.
+
+(2) Queries are sent to the spatial index database (local database)
+by using these recognition results as reference keys. A learner’s
+2D location at a given time limits the range of potential learning
+contents that can be examined at his/her location. In this example,
+the database answers several possible topics, including the topic
+of aerial roots of a plant on the ground. The 3D location of the
+learner’s focus determines the topic that can be studied by focusing
+on each layer. Learners can examine several topics at the location,
+but, in this case, the estimation result shows the situation that the
+learner in the world is examining aerial roots on the ground as the
+main topic. At the same time, the characteristics of each topic can
+be known by referring to the spatial index database, and we can
+estimate the features (e.g., difficulty of knowledge acquisition) of
+the learning topic that the learner is examining.
+
+Various context information estimated by our method acts as the
+core for realizing context-aware learning support adapted to the in-
+terest and viewpoint of each learner. For example, if a learner ca-
+sually passed through an important location with abundant discov-
+ery knowledge without doing a suitable amount of stable stay, the
+learner was probably unaware of the interest, values, and wonder
+of the location. Or, if a learner did stable stay but did not carefully
+watch the layer where information was embedded, he/she failed to
+find the seeds of discovery knowledge as a topic of observation
+or discussion. In these cases, our estimation method regards the
+learner’s observation, investigation, and discussion as insufficient.
+Estimation with our method identifies 3D locations where knowl-
+edge has not yet been achieved and determines important learning
+objects whose existence is overlooked or whose value is not dis-
+covered. Then, learners are encouraged to study at the locations
+that are interesting but difficult for achieving knowledge, and are
+encouraged to be aware of potential information that should be ex-
+amined. As another example, by extracting the locations where a
+small number of learners did very active learning, we can find the
+locations that only sensitive and keen learners can notice. Learn-
+ers are encouraged to visit such important locations and to acquire
+the discovery knowledge there. Furthermore, by considering prob-
+lematic situations that tend to occur at each location, appropriate
+support can be provided to learners. These supports do not aim at
+top-down educational support for giving learners concrete answers.
+Instead, these supports aim at bottom-up learning support for di-
+recting learners’ attention to potential information in the world and
+for drawing out prospective activities to approach an answer and
+autonomously make discovery in the world. The timing and the
+frequency of these supports can be tuned according to the strategy
+of bottom-up learning.
+
+This research considered integrating components 1, 2, and 3 as a
+unified and systematical assessment method for real-time CSCL
+applications. The evaluation results of each component show the
+
+8
+
+
+
+basic performance of our technologies for context-aware and adap-
+tive real-time support for real-world learning, such as the deter-
+mination of spatial contexts that learners at each location are ex-
+pected to be involved in. An important contribution of this pa-
+per is our proposed new method for real-time formative assessment
+of various high-level situations of intellectual collaboration chang-
+ing from moment to moment in the world. Our method integrates
+both the distribution structure of real-world information and the hu-
+man real-world interaction. An advantage of our method is that we
+showed a method to generate many indexes to systematically un-
+derstand real-world learning situations. For example, “the duration
+of stable stay about a certain target” can be used as an index of
+“the intensity of a learner’s interest in the target”, and an index of
+“the intensity of collaboration in his/her group”. “The tendency of
+the time series and the spatial change of topics in which a learner
+is interested and learns in the world” is an index to understand the
+viewpoints from which the learner grasps and examines real-world
+problems. Our method realizes a new way to objectively grasp the
+direction of his/her interest, thinking, and learning activities. Our
+method focuses on each of the diverse learning activities and serves
+to strengthen and enlarge the interest of each learner. This draws
+out new viewpoints and learning activities from each learner and
+promotes his/her discovery activities. Consequently, it is possible
+to promote active collaboration between learners in a group activ-
+ity, and to help the bottom-up emergence of new knowledge from
+real-world collaboration. Our method is a type of methodology that
+is not proposed by conventional studies and is valuable for the inno-
+vation of collaboration support technologies in real-world settings.
+
+5.3 Extensibility of the Method
+An effective learning environment can be formatively designed by
+making a field practice, getting feedback from the practice, and re-
+fining the design principle [4]. Our method is designed so that it can
+be flexibly extended. For example, when system designers want to
+use sensors installed in the environment, sensing information from
+such environmental sensors can be incorporated into the component
+2 functions of our method. When system designers find behaviors
+that are complementarily useful for identifying learning situations,
+they can add new behavior-estimation engines to component 2 and
+improve the granularity and coverage of learners’ context that the
+method deals with. For example, recent social science has shown
+that a body condition called “body torque” (i.e., the condition that
+only a person’s upper body twists independently of his/her lower
+body) is displayed when a person is inactively and subordinately
+involved in an activity [18]. By adopting such research results from
+behavior science, it is possible to estimate that “a learner who si-
+multaneously displays both stable stay and body torque at a given
+time” is in the state of probing behavior, but his/her interaction
+with the world is not so active. As illustrated by this example,
+context-aware CSCL services with our method are improved by
+better scientific understanding of human behavior. Similarly, com-
+ponent 1 can be replaced according to developments of knowledge
+science, and component 3 can be replaced by an information inte-
+gration method such as probabilistic reasoning algorithms. This pa-
+per looked at the future extension of context estimation techniques
+adapted to various demands and possible advances in research and
+proposed a basic method to systematically and flexibly grasp situa-
+tions in real-world learning.
+
+5.4 Future Work
+Our research made it possible to automatically estimate not only the
+occurrence of important learning but also the 3D target of interest
+by examining the sensor data of learners’ physical behavior. Our
+
+future work includes simplifying the labor of other processes of the
+analysis. If we enable a learner in the world to make a digital memo
+(automatically time-stamped) with a portable device, then we can
+record the time-series process of acquiring knowledge seeds in the
+world. This is technically easy and would reduce the work of gen-
+erating the time-series occurrence data of learning activities. More-
+over, conventional research suggests that it is possible to automat-
+ically estimate the detailed structure of a semantic network if the
+network is written with simple sentences and obviously describes
+the co-reference information [7]. These techniques are expected to
+simplify and automate the analysis of the activity map.
+
+Our method was applied to autonomous bottom-up learning in the
+world without forcing real-world learners to follow predefined sce-
+narios or viewpoints to explore a field. In general, each individual
+differently grasps and interprets the world according to his/her own
+schema. An important point is that our spatial indexing technique
+integrated the different results of such spatial recognition. In the
+future, we will conduct larger-scale experiments with more partici-
+pants to further investigate the applicability of our method. Our fu-
+ture work includes verifying learning effects achieved by our new
+approach to real-world learning. It is valuable to take more con-
+sideration of the relationship between real-world interpretation and
+people’s subjective views, and to apply our method to people from
+different cultures and different domains (e.g., learning in museums
+and learning in the sea). Our method mainly focused on human-
+world interaction for interactively acquiring knowledge from the
+world. Future work should consider integrating the social elements
+of human-human interaction that include, for example, the dynamic
+development of collaboration policies in group learning.
+
+Our method is designed for a real-world field in which the occur-
+rence of behavior can be structured according to location, and we
+should consider how our method is applicable to other fields. Since
+our method focused on behavior externalized outside of a learner,
+it is not designed for tracing internally hidden mental states such as
+silent reflection inside a learner. The method has these limitations,
+but, as potential application fields of our method, we can find many
+real-world fields in which the occurrence of behavior is restricted
+by location, and situations at such fields are expected to be deter-
+mined from the information of behavior and location. For example,
+areas in an office have functions associated with a certain physical
+behavior (e.g., corridors for walking, places for doing desk work,
+and places for taking a break by sitting in a chair) [5]. Similarly, at
+a hospital, different rooms are assigned for doing certain behaviors
+(e.g., rooms for doctor consultations, rooms for performing medi-
+cal operations, and rooms for staff meetings). Automatic tracing of
+business procedures at such real-world fields is a potential advan-
+tage for labor management and optimization of human resources.
+Our proposed basic ideas and analysis techniques will be applica-
+ble to the investigations of the tendency of the spatial occurrence
+of collaboration in other real-world fields. Therefore, it is an im-
+portant theme of the future to accumulate practical knowledge in
+various real-world fields by using our method.
+
+6. CONCLUSIONS
+Our challenge is designing and creating a new learner-centered en-
+vironment for promoting discovery learning through autonomous
+bottom-up knowledge acquisition in the world. Automatic assess-
+ment of a learning activity is the base for effective learning support,
+but, unlike classroom learning, the methodology to formatively as-
+sess autonomous bottom-up learning in the world has not yet been
+well investigated. The main difficulty in the assessment is the lack
+
+9
+
+
+
+of a methodology to measure, grasp, and summarize the learning
+experience that a learner autonomously obtains in the world. For
+considering new analytics for real-world learning, we confronted
+this difficulty by capturing and understanding human learning ex-
+periences in the world with ubiquitous computing technologies.
+
+We discussed the distinctive characteristics of real-world learning
+and considered the requirements for assessing real-world learning
+situations. Our originality is based on the viewpoint that real-world
+learners use their bodies to interact with their surroundings and
+then to obtain knowledge about the world. We suggested obser-
+vation techniques of internal and external situations of a real-world
+learner and proposed a context estimation method for real-world
+learning by systematically integrating the heterogeneous elements
+of knowledge, behavior, and environment.
+
+As a result of observing the internal situation (e.g., interest and
+knowledge) of a learner, we showed that each 3D region in an
+ecosystem promotes the acquisition of different knowledge. As
+a result of sensing the external situation of a learner, we showed
+that information access behavior and the 3D location of interest
+can be identified by sensing the learners’ body motion and pos-
+ture. As a result of integrating the internal and external situation of
+a learner, we showed that our technique can illustrate real-world
+spatial contexts of how each 3D region of the field encourages
+the learners’ knowledge acquisition (e.g., from the probability of
+knowledge acquisition and problematic situations). Our method
+enabled the estimation of 3D locations where discovery knowledge
+has not yet been achieved and the identification of potential infor-
+mation that should be examined. As another advantage, we showed
+a method to generate many indexes to systematically understand
+real-world learning situations, including, for example, the intensity
+of a learner’s interest in a certain target, the intensity of collabo-
+ration in his/her group, and the viewpoints from which the learner
+grasps and examines real-world problems.
+
+The assessment method of high-level learners’ contexts in real-
+world learning is not proposed by conventional studies, but our sys-
+tematic integration method of the spatiotemporal occurrence infor-
+mation of real-world behavior is a foundation for learner-centered
+support adapted to the interest and viewpoint of each of the diverse
+learners in the world. Such support draws out new interests, view-
+points, and activities from each of the participants in group learning
+and promotes the emergence of new knowledge from real-world
+collaboration. Our new analytics with ubiquitous computing tech-
+niques is expected to be helpful in formatively designing a better
+learning environment for real-world learning.
+
+7. ACKNOWLEDGEMENTS
+The authors thank the staff at Kamigamo Experimental Forest, Ky-
+oto University for supporting our experiments. This research was
+funded by MEXT/JSPS KAKENHI (22700121, 25330234).
+
+8. REFERENCES
+[1] B. S. Bloom. Human Characteristics and School Learning.
+
+McGraw-Hill, New York, 1976.
+[2] J. S. Brown, A. Collins, and P. Duguid. Situated cognition
+
+and the culture of learning. Educational Researcher,
+18(1):32–42, January–February 1989.
+
+[3] H.-C. Chu, G.-J. Hwang, C.-C. Tsai, and J. C. R. Tseng. A
+two-tier test approach to developing location-aware mobile
+learning systems for natural science courses. Computers &
+Education, 55(4):1618–1627, December 2010.
+
+[4] A. Collins, D. Joseph, and K. Bielaczyc. Design research:
+theoretical and methodological issues. Journal of the
+Learning Sciences, 13(1): 15-42, January 2004.
+
+[5] D. Demirdjian, K. Tollmar, K. Koile, N. Checka, and
+T. Darrell. Activity maps for location-aware computing. In
+Proc. WACV2002, pages 70–75. IEEE, December 2002.
+
+[6] S. D’Mello and A. Graesser. Automatic detection of learner’s
+affect from gross body language. Applied Artificial
+Intelligence, 23(2):123–150, February 2009.
+
+[7] K. Hasida. Semantic platform based on ontologies and
+constraints (written in Japanese). Japanese Society for
+Artificial Intelligence, 21(6):712–717, November 2006.
+
+[8] A. Kapoor, W. Burleson, and R. W. Picard. Automatic
+prediction of frustration. International Journal of
+Human-Computer Studies, 65(8):724–736, August 2007.
+
+[9] A. Kobayashi, S. Muramatsu, D. Kamisaka, T. Watanabe,
+A. Minamikawa, T. Iwamoto, and H. Yokoyama. Shaka: User
+movement estimation considering reliability, power saving,
+and latency using mobile phone. IEICE Transactions on
+Information and Systems, E94-D(6):1153–1163, June 2011.
+
+[10] J. Lave and E. Wenger. Situated Learning: Legitimate
+Peripheral Participation. Cambridge University Press,
+Cambridge, UK, 1991.
+
+[11] J. Lester, T. Choudhury, and G. Borriello. A practical
+approach to recognizing physical activities.
+PERVASIVE2006, LNCS3968:1–16, May 2006.
+
+[12] T. Mizukoshi and T. Kihara. Creation of New Environmental
+Education (in Japanese). Minerva Shobo, Kyoto, 1995.
+
+[13] J. D. Novak and D. B. Gowin. Learning How to Learn.
+Cambridge University Press, Cambridge, UK, 1984.
+
+[14] M. Okada and M. Tada. Method to analyze spatial
+characteristics of a real-world learning field. In Proc.
+ED-MEDIA2011, AACE, pages 1413–1422, June 2011.
+
+[15] M. Okada and M. Tada. Multimodal analysis of spatial
+characteristics of a real-world learning field. In Proc.
+WMUTE2012, IEEE, pages 25–32, March 2012.
+
+[16] M. Okada and M. Tada. Sensing learner access to the
+knowledge spatially embedded in the world. In Proc.
+MOBILITY 2012, pages 27–33, October 2012.
+
+[17] T. Okamoto, N. Nagata, and F. Anma. The knowledge
+circulated-organisational management for accomplishing
+e-learning. Knowledge Management & E-Learning,
+1(1):6–17, March 2009.
+
+[18] E. A. Schegloff. Body torque. Social Research,
+65(3):535–596, September 1998.
+
+[19] B. F. Skinner. The Technology of Teaching. Prentice-Hall,
+Englewood Cliffs, NJ, 1968.
+
+[20] M. Tada, H. Noma, A. Utsumi, M. Okada, and K. Renge.
+Automatic evaluation system of driving skill using wearable
+sensors for personalized safe driving lecture. In Proc. Mobile
+Learning 2012, pages 173–180, March 2012.
+
+[21] O. Türkyilmaz, F. Alagöz, G. Gür, and T. Tugcu.
+Environment-aware location estimation in cellular networks.
+EURASIP Journal on Advances in Signal Processing,
+2008(139): 1–9, January 2008.
+
+[22] J. Yin, Q. Yang, and J. J. Pan. Sensor-based abnormal
+human-activity detection. IEEE Transactions on Knowledge
+and Data Engineering, 20(8):1082–1090, August 2008.
+
+10
+
+
+
+
+

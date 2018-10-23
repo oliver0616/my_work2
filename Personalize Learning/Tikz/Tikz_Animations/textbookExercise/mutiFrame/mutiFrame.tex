@@ -1,0 +1,23 @@
+\documentclass{article}
+\usepackage{animate}
+\usepackage{tikz}
+%\usetikzlibrary{lindenmayersystems}
+%\pgfdeclarelindenmayersystem{A}
+%{
+%  \symbol{F}{\pgflsystemstep=0.6\pgflsystemstep\pgflsystemdrawforward}
+%  \rule{A->F[+A][-A]}
+%}
+
+\begin{document}
+\begin{animateinline}{1}
+\multiframe{10}
+{
+	iCount=1+1,
+	dLength=0cm+0.2cm
+}
+{
+	\rule{\dLength}{1ex}
+	Frame~\iCount
+}
+\end{animateinline}
+\end{document}

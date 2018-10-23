@@ -1,0 +1,317 @@
+
+Learning from Learning Curves: Discovering Interpretable
+Learning Trajectories
+
+Lujie Chen
+Carnegie Mellon University
+
+Pittsburgh, PA
+lujiec@andrew.cmu.edu
+
+Artur Dubrawski
+Carnegie Mellon University
+
+Pittsburgh, PA
+awd@cs.cmu.edu
+
+ABSTRACT
+We propose a data driven method for decomposing popula-
+tion level learning curve models into mutually exclusive dis-
+tinctive groups each consisting of similar learning trajecto-
+ries. We validate this method on six knowledge components
+from the log data from an online tutoring system ASSIST-
+ment. Preliminary analysis reveals interpretable patterns of
+”skill growth” that correlate with students’ performance in
+the subsequently administered state standardized tests.
+
+CCS Concepts
+•Information systems ? Data analytics; Clustering;
+
+Keywords
+Learning curves, Student models, Clustering
+
+1. INTRODUCTION
+Learning curves are intuitive tools of descriptive analy-
+
+sis often used in learning science to characterize students’
+growth of skill or knowledge with experience. A popula-
+tion level skill-specific learning curve may be constructed by
+aggregating all students’ performance at a sequence of time-
+ordered learning opportunities. This construction implicitly
+assumes the homogeneity of students’ learning trajectories,
+which may not hold in reality due to the disparity either in
+terms of prior knowledge or individual learning rates.
+
+Much has been explored to cluster students into sub-groups
+with the goal to improve prediction. For instance [Trivedi
+et al. 2011] proposed K-means and spectral clustering meth-
+ods using the dynamic features gathered from students’ in-
+teraction with an intelligent tutor, the clusters are then used
+to train ensemble models for predicting post-test scores. The
+focus of this work is to explicitly model students’ learning
+trajectories for the purpose of discovering and understand-
+ing the heterogeneous patterns of ”skill growth” of the stu-
+dents as well as their implications on their performance in
+the subsequent tests.
+
+Permission to make digital or hard copies of part or all of this work for personal or
+classroom use is granted without fee provided that copies are not made or distributed
+for profit or commercial advantage and that copies bear this notice and the full citation
+on the first page. Copyrights for third-party components of this work must be honored.
+For all other uses, contact the owner/author(s).
+
+LAK ’17 March 13-17, 2017, Vancouver, BC, Canada
+c© 2017 Copyright held by the owner/author(s).
+
+ACM ISBN 978-1-4503-4870-6/17/03.
+
+DOI: http://dx.doi.org/10.1145/3027385.3029449
+
+2. DATA AND METHODS
+We used the ’Assistments Math 2004-2005 (912 Students)’
+
+data accessed via DataShop [Koedinger et al. 2010]. It con-
+tains logs of 912 middle school students interacting with AS-
+SISTment, an online tutoring system that provides help or
+hints at each step of math problem solving. These logs are
+linked with the post-test scores from MCAS (Massachusetts
+Comprehensive Assessment System) of the same set of stu-
+dents. We used the student-step roll up data available from
+DataShop summarizing students’ performance at each learn-
+ing step which was annotated with a version of a Knowledge
+Component (KC) model comprised of 39 skills.
+
+For each specific KC, we extracted the first-attempt per-
+formance (correct or incorrect) for each student, with each
+response indexed by the opportunity count that starts with
+1 and increments by 1 for each additional opportunity that
+student encounters. For steps annotated with multiple KCs,
+we assigned the step level performance for each of the KC
+involved. For this analysis, we selected 6 KCs with at least
+several hundred students each of whom had practiced at
+least 10 times on those KCs.
+
+Based on the student-level performance data described
+above, we then fit a Group Based Model (GBM, [Nagin
+2005]) to discover distinct groups of learning trajectories.
+GBM models a set of learning curves as a mixture of poly-
+nomial functions with timestamps (in our case, the oppor-
+tunity count indices) as the covariates. For a given learning
+curve of length T, assuming K groups, the likelihood func-
+tion of the observed trajectory is provided as follows:
+
+K?
+i=1
+
+?i
+
+T?
+j=1
+
+Pi(Yj |Xj) (1)
+
+where ?i and Pi are respectively the prior probability of data
+belonging to a certain group and the likelihood function for
+group indexed by i. Yj is the response variable value at
+step j, in our case it is student’s performance in a binary
+form; and Xj is the covariate, in our case it is the oppor-
+tunity count (i.e., Xj = j). Given the assumed number of
+distinct groups of learning trajectories (K) and the chosen
+order of the polynomials, the model estimates K smooth,
+polynomial in time trajectories one for each of the groups.
+The form of the likelihood function Pi is determined by the
+response variable. In our case, since the response variable is
+binary value of 0 and 1, we used the Bernoulli distribution.
+The GBM model also estimates the prior distribution of the
+group membership across data. The model parameters are
+inferred using Maximum Likelihood method through a nu-
+
+
+
+0.00
+
+0.25
+
+0.50
+
+0.75
+
+1.00
+
+1 2 3 4 5 6 7 8 9 10
+Opportunity
+
+A
+cc
+
+u
+ra
+
+cy
+
+group
+1
+
+2
+
+3
+
+Figure 1: Estimated mean learning curves by group
+(solid lines) and 95% confidence intervals, overlaid
+with estimated latent polynomial functions (dotted).
+
+0
+
+10
+
+20
+
+30
+
+1 2 3
+Group
+
+m
+e
+
+a
+n
+
+ M
+C
+
+A
+S
+
+ s
+c
+o
+
+re
+
+group
+1
+
+2
+
+3
+
+Figure 2: Mean MCAS scores for each of the learn-
+ing trajectory groups with 95% confidence intervals.
+
+merical optimization procedure. In this experiment, we fit
+models with K = 3 groups and polynomial functions up to
+the third degree for each group.
+
+Posterior group membership for each individual student’s
+learning curve can then be computed as follows:
+
+P (Group = i|Y,X) =
+??i
+
+T?
+j=1
+
+P?i(Yj |Xj)
+
+K?
+i=1
+
+??i
+T?
+
+j=1
+
+P?i(Yj |Xj)
+(2)
+
+In order to assess the predictive utility of discovered groups,
+we correlate the posterior group membership for each stu-
+dent with their MCAS scores, from there the ANOVA p-
+values are computed and predictive accuracies are estimated.
+
+3. RESULTS
+Figure 1 summarizes one main output from GBM for one
+
+of the KC named “P.2.8-evaluating-algebraic-expressions”,
+which is learned by 388 students. The plot shows the learn-
+ing curve distributions aggregated from students belonging
+to each of the group as computed from maximum posterior
+group membership probability 2. The plot is overlaid (dot-
+ted line) with model’s estimated group trajectories (i.e., the
+latent polynomial function). As shown, the first group (red)
+is the most likely to be comprised of students who learned
+very little within the first 10 steps as suggested by the almost
+
+flat learning curve, while the second group (green) represents
+a subset of students who seemed to learn quickly t first but
+then slipped into a “forgetful state” as evidenced by the drop
+of their learning curves after 5 steps. The students in the
+third group (blue) follow a steadily increasing learning tra-
+jectory. Presumably, this type of students are most likely to
+show good performance in subsequent tests.
+
+We then correlate the posterior group memberships with
+MCAS scores. As shown in Figure 2, the mean score for the
+1st group is the lowest as expected. Students from the 2nd
+group achieved significantly higher scores on average but not
+as high as the 3rd group who exhibited “healthy” learning
+curves. ANOVA p-value less than 0.001 suggests an overall
+correlation between group membership and post test scores.
+Similarly significant relationships have been found for all of
+the other five KCs evaluated.
+
+We further estimated the potential predictive utility of
+group membership by predicting each student’s MCAS test
+score using the mean score of the group that the student
+belongs to, based on which we compute Mean Absolute Error
+(MAE). For the six KCs we studied, MAD ranges from 8.77
+to 9.49, which is on par with the performance of the cluster-
+ensemble model reported in [Trivedi et al. 2011].
+
+4. DISCUSSION AND FUTURE WORK
+We presented a method to model heterogeneity of stu-
+
+dents’ learning trajectories by employing a group-based ap-
+proach. In our preliminary analysis that models step-level
+student log data for 6 different KCs, we noted interesting dis-
+tinct group level patterns of skill growth that can be readily
+interpreted. In addition, the observed significant correlation
+between posterior group membership and MCAS scores sug-
+gests that the apparent heterogeneity of learning trajectories
+is reflected in the students’ performance in the future tests.
+Future work will investigate the likely cause for particular
+patterns of learning curves (e.g., the forgetting phenomenon
+in the green plot in Figure 2), to evaluate the opportunity
+for interventions that might shift students to the more ef-
+fective trajectories. We will also study the utility of our ap-
+proach for early detection of group membership when only
+initial performance data is available, to inform timely inter-
+ventions.
+
+5. ACKNOWLEDGMENTS
+The research reported here was supported, in whole or in
+
+part, by the Institute of Education Sciences, U.S.Department
+of Education, through Grant R305B150008 to Carnegie Mel-
+lon University. The opinions expressed are those of the au-
+thors and do not represent the views of the Institute or the
+U.S. Department of Education.
+
+6. REFERENCES
+[Koedinger et al. 2010] Koedinger, K. R., R. S. J. Baker,
+
+K. Cunningham, and A. Skogsholm (2010). A Data
+Repository for the EDM community : The PSLC
+DataShop. Handbook of Educational Data Mining , 43–55.
+
+[Nagin 2005] Nagin, D. (2005). Group-based modeling of
+development. Cambridge, MA: Harvard University Press.
+
+[Trivedi et al. 2011] Trivedi, S., Z. Pardoz, and
+N. Heffernan (2011). Spectural Clustering in Educational
+Data MIning. Proceedings of the 4th International
+Conference on Educational Data Mining , 129–138.
+
+
+

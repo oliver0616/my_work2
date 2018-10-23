@@ -1,0 +1,273 @@
+
+ 
+
+ 
+
+Best Intentions: Learner Feedback on  
+Learning Analytics Visualization Design 
+
+Halimat Alabi, Marek Hatala 
+Simon Fraser University 
+
+250-13450 102nd Avenue 
+Surrey, BC V3T 0A3 
+
+{halabi, mhatala}@sfu.ca 
+ 
+ABSTRACT 
+A mixed methods approach was undertaken in this exploratory 
+study to better understand how learners perceive and utilize 
+learning analytics visualizations during online discussions 
+activities. Internal conditions such as goal orientation and 
+numeracy were measured alongside the external conditions 
+created by the discussion structure and learning analytics. Our 
+results emphasize key factors that should be considered when 
+designing learning analytics tools. 
+
+CCS Concepts 
+• Information systems ? Data analytics • Human-centered 
+computing ? Empirical studies in visualization • Applied 
+computing ? Computer-assisted instruction 
+
+Keywords 
+Learning analytics, information visualization, judgments of 
+learning, evaluation 
+
+1. INTRODUCTION 
+A primary functions of learning analytics (LA) is to aid in the 
+development, monitoring, and regulation of learning strategies. As 
+a self-regulated learning (SLR) feedback provisioning tool, LA 
+contribute to the conditions that influence learners’ interpretations 
+of their academic standings in relationship to their own goals 
+and/or the performance of their peers. To employ appropriate 
+regulatory strategies learners must draw the correct conclusions 
+from the information visualized, yet how this happens is poorly 
+understood. It is of the utmost importance then for educational 
+technology designers to ensure that the pedagogically founded 
+intentions exemplified by the LA visualizations produce the 
+desired effects.  
+
+2. BACKGROUND 
+The types of assumptions that people make with graphs are 
+influenced by several factors including graphicacy or graph 
+literacy, numeracy, subject matter expertise, and individual 
+difference. It is known that visualizations carry framing effects; 
+low numerate individuals are more apt to be misled by framing 
+and format effects [6]. Individuals with low graphicacy tend to 
+ignore the relationships depicted within [5]. Conversely, high 
+numeracy and cognitive reflexivity – the tendency for in depth 
+
+rational thought – are both correlated with successful performance 
+on probabilistic prediction tasks [9]. Particularly within the 
+context of learning, internal motivational and metacognitive states 
+are pivotal. These internal conditions move learners to delve 
+deeper, to reflect, act upon, and trust the feedback provided by 
+LA. Together LA visualizations act in concert with these internal 
+conditions, forming the visual foundation of learners’ judgments 
+of learning (JOL). Though there exists no established set of “best 
+practices” for graphically displaying risky information [7], may be 
+tailored to be contextually relevant for non-expert users’ skill and 
+experience level with visualizations. Educational technology 
+designers must recognize these contextual factors in order to 
+mitigate the application of incorrect learning strategies that may 
+ultimately risk learners’ academic success.  
+
+3. METHODOLOGY  
+Designed to visually emphasize either post quality or performance 
+in comparison to high performing peers, two types of LA 
+visualizations were deployed in online small group discussion 
+activities. We hypothesized that (1) learners with mastery 
+achievement goals would view both types of visualizations more 
+frequently, that (2) learners with a performance orientation would 
+utilize the top contributor visualization more often, and that (3) 
+highly numerate learners would demonstrate a preference for 
+numerical, less abstract visualizations. Quantitative performance 
+information – including posts, replies, discussion thread and 
+visualization views – was collected directly from the learning 
+management system. Questionnaires on numeracy and goal 
+orientation were distributed to determine if individual differences 
+in these areas would impact learners’ behaviours. In one-on-one 
+interviews learners provided feedback on (1) their actual use of 
+the visualizations in the discussion activities, (2) the perceived 
+utility of new visualizations in simulated discussions, and (3) 
+perceived utility after interaction with new LA visualization 
+prototypes.  
+
+3.1 Participants  
+Study participants were volunteers from online and blended 
+learning undergraduate courses offered by Simon Fraser 
+University. Across 8 discussion activities 178 learners had the 
+opportunity to utilize one of the two randomly assigned 
+visualizations, with remaining learners in each course serving as 
+the control group. Twelve learners volunteered for additional 
+follow-up interviews. 
+
+3.2 Procedure  
+In courses 1 and 2 one third of participants saw the visualizations. 
+A crossover design was used in courses 3 and 4; one quarter of 
+participating learners in each of two discussions was assigned 
+either the top contributor or quality visualizations. Learners were 
+not required to complete all of the questionnaires to participate in 
+the study, resulting in disparate numbers between each section. 
+
+Permission to make digital or hard copies of part or all of this work for 
+personal or classroom use is granted without fee provided that copies are 
+not made or distributed for profit or commercial advantage and that 
+copies bear this notice and the full citation on the first page. Copyrights 
+for third-party components of this work must be honored. For all other 
+uses, contact the Owner/Author. 
+
+Copyright is held by the owner/author(s). 
+LAK '17, March 13-17, 2017, Vancouver, BC, Canada   
+ACM 978-1-4503-4870-6/17/03.       
+http://dx.doi.org/10.1145/3027385.3029487 
+
+http://dx.doi.org/10.1145/3027385.3029487
+
+
+ 
+
+ 
+
+3.2.1 Instruments 
+The 2×2 achievement goal questionnaire (AGQ) instrument 
+divides responses into four categories corresponding to 
+achievement goals – mastery or performance, and approach or 
+avoidance – together representing relatively stable learning 
+orientations [2]. A short self-assessment of numerical preference 
+and aptitude, the Subjective Numeracy Scale (SNS) is strongly 
+correlated with objective tests of numeracy [3, 6] such as the 
+Berlin Numeracy Test (BNT) [1], also used in this study. The 
+Cognitive Reflection Test (CRT) examines cognitive impulsivity 
+[4, 8]. Taken together they represent the internal conditions, the 
+academic orientation that learners bring to the activity.  
+
+The 2 course visualizations and the proposed prototypes all 
+supported both self and socially shared learning regulation. The 
+four proposed visualizations – a polar graph, avatar, bar-graph-
+based cityscape, and ecosystem – ranged in aesthetic complexity. 
+Two versions of each visualization were constructed to allow 
+individual and group performance comparisons.    
+
+4. FINDINGS 
+We sought to examine how learners use the formative feedback 
+from LA visualizations to monitor, make learning judgments, and 
+metacognitively reflect upon their self-regulatory learning 
+strategies. Of the factors hypothesized to attribute to differences in 
+learners’ performance with LA – including goal orientation, self-
+reported or objective numeracy – none were substantiated in the 
+quantitative data from all of the classes combined. Results on the 
+SNS and CRT were low; 75% of learners were at or below the 
+median SNS score, 67% at or below the median CRT score. 
+Similarly, 50% of the interviewees scored in the lowest quartile of 
+the BNT, and 75% in the lowest tertile of the CRT. Indications of 
+superficial cognition were evident in the number of learners who 
+did not read the instructions for how to access or interpret the 
+visualizations. This behavior was so common that LA designers 
+must plan for it; options include the employment of pop up 
+messages or locking the visualizations until the explanatory text is 
+reviewed. The high number of interviewees who made incorrect 
+assumptions about the information depicted might also indicate 
+low graphicacy. Though it has been theorized that 80% of the 
+population are graphically literate, these results are in line with an 
+international review of adult graphicacy that places Canadian 
+graphicacy at 50%.1 
+
+Interview questions focused on JOL made with the LA, 
+particularly if, when, and how these judgements resulted in 
+behavioural changes. The LA were utilized most often by 
+interviewees motivated by competition. Though both 
+visualizations support social regulation of learning, the top 
+contributor visualization resulted in more messages being posted 
+than the quality visualization. Results were mixed when 
+interviewees were asked if they would use the visualizations to 
+decide whom to interact with. Use of the LA as a memory aid was 
+even less common, though one interviewee requested LA 
+visualizations indicating change over time to track her progress. 
+
+Our initial coding scheme had to be adjusted to reflect affect, 
+which was mentioned by all participants as being influential to 
+their behaviors. Specifically stated was the need for elucidations 
+of trust within both the visualizations and their underlying 
+
+                                                                    
+1 Programme for the International Assessment of Adult 
+
+Competencies (PIAAC) found at http://www23.statcan.gc.ca-
+/imdb/p2SV.pl?Function=getSurvey&SDDS=4406   
+
+algorithms. This presents a challenge since 7 of the 12 
+interviewees had difficulty understanding the visualizations, and 8 
+of the 12 misunderstood some aspect of the collected data. This 
+was due at least in part to not reading the instructions or tooltips. 
+Some participants viewed the LA, but gave them little credence 
+when they differed from what was expected. Instead, these 
+learners preferred to persist in their own biased opinions of their 
+performance, potentially exhibiting the effects of anchoring bias.  
+
+The sizeable impact of affect on JOL and subsequent behaviour 
+was echoed later in the interviews, when participants rated the 
+visualization prototypes. The majority of participants, 11 of 12, 
+chose the visualizations that were either visually stimulating or 
+made them feel good. Tellingly, the person who rated the 
+visualization with the least affective impact the highest said, “I 
+don’t really like anything that has an emotional connection, 
+because I don’t want to be judging how I feel about myself based 
+on what an algorithm is saying my [discussion activity] posts 
+are.” 
+
+5. FUTURE DIRECTIONS  
+Even when based in pedagogy, sometimes the best designerly 
+intentions are misconstrued. To support learners’ accurate JOL, 
+we must better understand the internal and external conditions that 
+contribute to the learning environment. To this end this study is 
+currently being conducted with online learners, recognizing that 
+online learners may be more reliant on LA than blended learners 
+to navigate course discussions. 
+
+6. ACKNOWLEDGMENTS  
+Support was provided by a SSHRC Doctoral Research Grant. 
+
+7. REFERENCES 
+[1] Cokely, E. T., Galesic, M., Schulz, E., & Ghazal, S. (2012). 
+
+Measuring risk literacy: The Berlin numeracy test. Judgment 
+and Decision Making, 7, 25–47. 
+
+[2] Elliot, A. J., & McGregor, H. A. (2001). A 2 × 2 
+achievement goal framework. J. of Personality and Social 
+Psychology, 80(3), 501–519.  
+
+[3] Fagerlin, A., Zikmund-Fisher, B. J., Ubel, P. A., Jankovic, 
+A., Derry, H. A., & Smith, D. M. (2007). Measuring 
+Numeracy without a Math Test: Development of the 
+Subjective Numeracy Scale. Medical Decision Making, 
+27(5), 672–680.  
+
+[4] Frederick, S. (2005). Cognitive Reflection and Decision 
+Making. J. of Economic Perspectives, 19(4), 25–42.  
+
+[5] Okan, Y., Garcia-Retamero, R., Galesic, M., & Cokely, E. T. 
+(2012). When Higher Bars Are Not Larger Quantities: On 
+Individual Differences in the Use of Spatial Information in 
+Graph Comprehension. Spatial Cognition & Computation, 
+12(2-3), 195–218.  
+
+[6] Peters, E. (2012). Beyond comprehension the role of 
+numeracy in judgments and decisions. Current Directions in 
+Psychological Science, 21(1), 31–35.  
+
+[7] Stone, E. R., Gabard, A. R., Groves, A. E., & Lipkus, I. M. 
+(2015). Effects of Numerical Versus Foreground-Only Icon 
+Displays on Understanding of Risk Magnitudes. J. of Health 
+Communication, 20(10), 1230–1241.  
+
+[8] Toplak, M. E., West, R. F., & Stanovich, K. E. (2011). The 
+Cognitive Reflection Test as a predictor of performance on 
+heuristics-and-biases tasks. Memory & Cognition, 39(7), 
+1275–1289.
+
+
+
+
+

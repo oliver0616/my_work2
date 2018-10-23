@@ -1,0 +1,276 @@
+
+Analysis of Learners’ Study Logs: Mouse Trajectories to Identify      
+the Occurrence of Hesitation in Solving Word-Reordering 
+
+Problems 
+Mitsumasa Zushi 
+
+   Graduate School of Informatics, 
+Shizuoka University 
+
+Johoku 3-5-1, Naka-ku Hamamatsu City, 
+432-8011, Japan 
+
++81 (53) 478-1539 
+mzushi@inf.shizuoka.ac.jp 
+
+Yoshinori Miyazaki 
+    Graduate School of Informatics, 
+
+Shizuoka University 
+    Johoku 3-5-1, Naka-ku Hamamatsu 
+
+City, 432-8011, Japan 
++81 (53) 478-1476 
+
+    yoshi@inf.shizuoka.ac.jp 
+
+Ken Norizuki 
+School of Information Studies,  
+Shizuoka Sangyo University 
+
+4-1-1, Surugadai Fujieda City, 
+ 426-8668, Japan 
+
++81 (54) 646-5460 
+norizuki@ssu.ac.jp 
+
+ 
+ 
+
+ABSTRACT 
+In this paper, we describe a Web application we have been 
+developing in order to help both teachers and learners notice the 
+crucial aspects of solving word-reordering problems (WRPs). 
+Also, we discuss ways to analyze the recorded mouse trajectories, 
+response time, and drag and drop (D&D) logs, because these 
+records are potential indicators of the degree of learners’ 
+understanding.    
+
+Categories and Subject Descriptors 
+K.3.1 [Computers and Education]: Computer Uses in Education – 
+Computer-assisted instruction (CAI). 
+
+General Terms 
+Languages 
+
+Keywords 
+E-Learning, Mouse Trajectory, Study Logs, Information 
+Retrieving Tool, Occurrence of Hesitation  
+
+1. INTRODUCTION 
+A major goal of this study is to provide learners and teachers with 
+a practical Web application which will sensitize them to the 
+crucial aspects of solving WRPs. In WRPs learners are required to 
+make an English sentence from given words. This type of problem 
+is a popular means in Japan to measure learners’ knowledge of 
+grammatical items, sentence structure, idioms, and usages—the 
+command of which is essential for producing correct sentences. 
+Since Japanese is a synthetic language, it has quite a loose word 
+order, while in an analytic language like English, word ordering 
+has an extreme importance to decide the meaning and 
+grammaticality of the sentence. This is why novice or poor 
+Japanese learners of English have difficulty in making a correct 
+English sentence, and WRPs are effective in confirming the 
+
+ability needed to produce English sentences. In the process to 
+achieve our goal, we have been developing software that records 
+mouse movements when learners solve problems, so that teachers 
+can analyze the mouse trajectories and other study logs in order to 
+ascertain the understanding levels of learners. There have been 
+several analyses of mouse movements such as Arroyo, E. et al. 
+(2006) and Freeman, J. B. and Ambady, N. (2010), but their goals 
+were not to ascertain learners’ understanding levels like ours. 
+
+In this paper, we will describe our Web application briefly and 
+discuss the results from a recent experiment conducted with 
+learners at a certain Japanese university. Exploration of mouse 
+movements, we hypothesize, will lead to a better evaluation of 
+learners’ performance than mere scores by binary computer 
+marking system. 
+
+2. WEB APPLICATION  
+Our web application has three modules with independent, but also 
+interrelated functions, with each module incorporated with special 
+functions to facilitate both learners’ and teachers’ using of this 
+software. This software has been programmed using PHP, 
+JavaScript, and MySQL. 
+
+1) Study Module requires learners to perform word-reordering 
+tasks by “dragging and dropping” each word into the 
+appropriate position in a sentence, and then to rate their 
+confidence levels. The module records all mouse trajectories 
+as well as the timing of D&Ds in answering the problems.  
+
+2) Problem Constructing Module, where all teachers have to do 
+is just type correct sentences in English and the 
+corresponding meaning in Japanese, has Chunking and Word 
+Fixing functions. They help teachers adjust the problems’ 
+length or avoid double answers to one problem.   
+
+3) Retrieval & Analysis Module reproduces all the actions 
+recorded in the learners’ mouse trajectories, and analyzes the 
+study logs both from the learners’ and problems’ 
+perspectives, such as the percentage of correct answers 
+classified by grammatical items, the total number of 
+problems attempted, the percentage of overall correct 
+answers, the average time needed for answering problems, 
+and the number of times a particular problem attempted by 
+all learners. 
+
+3. EXPERIMENT AND DISCUSSION 
+An important consideration is how to differentiate a confident 
+correct answer from a lucky hunch. Both answers are correct, but 
+one is reached by a learner who has full control of grammatical 
+
+Permission to make digital or hard copies of part or all of this work for 
+personal or classroom use is granted without fee provided that copies are 
+not made or distributed for profit or commercial advantage and that 
+copies bear this notice and the full citation on the first page. Copyrights 
+for third-party components of this work must be honored. For all other 
+uses, contact the Owner/Author.  
+
+Copyright is held by the owner/author(s). 
+LAK '15, Mar 16-20, 2015, Poughkeepsie, NY, USA 
+ACM 978-1-4503-3417-4/15/03. 
+http://dx.doi.org/10.1145/2723576.2723645 
+
+ 
+
+428
+
+
+
+structures and lexical items to construct the right sentence, while 
+the other answer, though correct, may be produced by a learner 
+who possibly lacks that particular knowledge. The latter learner 
+may have managed to reach the target structure by coincidence 
+after a long period of fluctuating mouse movements. The fact of 
+being correct or wrong alone may not always be a true reflection 
+of the ability tested unless the process of the learners’ responses 
+are carefully considered. 
+
+The answers reached by learners fell into one of four categories: 
+1) confident and correct, 2) confident but incorrect, 3) not 
+confident but correct, and 4) not confident and incorrect. 
+Confident and correct answers include the most useful logs for 
+finding characteristic mouse trajectories of “answers without 
+hesitation or uncertainty.” The answers from category 3 need very 
+careful treatment because most computer marking systems may 
+evaluate them as “passing” in spite of the fact that learners are not 
+yet sure of the correct answer, or they might have reached the 
+correct answers accidentally. There is no need of analyzing the 
+answers of category 4 for the purpose of ascertaining learners’ 
+understanding levels because they clearly do not understand, 
+which means that they have to review from the beginning. 
+
+Through the comparison of confident and not confident answers 
+in our former experiments, it was found that important parameters 
+for mouse movements included time needed for answering, D-C 
+time (duration between a drop and the next click), the number of 
+D&Ds, and number of U-turns (the right-and-left or up-and-down 
+mouse movements). As is discussed in Zushi, M. et al. (2012) and 
+(2014), these parameters could serve as an index of hesitation 
+resulting from learners’ lack of confidence.  
+
+In order to analyze the parameters in more detail, we conducted 
+another experiment, asking 20 learners to solve 30 problems on 
+our system. We collected 581 sets of data, with 19 sets of data 
+missing owing to recording failure or clicking mistakes on the part 
+of learners. The 158 answers of category 1 and 26 of category 3 
+are totally different in mouse trajectories, and we found that time 
+for answering and D-C time are of great use as indicators which 
+separate these two types of answers. 
+
+Longer time needed for answering is, in the general assumption, 
+connected to difficulty for learners to solve the problem, and thus 
+to high rate of incorrect answers. But answer time does not clearly 
+separate the two groups of correct and incorrect answers.  
+
+N: # of data.   M: mean value.   SD: standard deviation. 
+
+ 
+Fig. 1. Distribution of correct and incorrect answers in terms of answer 
+
+time. 
+
+Answer time, as is illustrated in the box-whisker diagram (Fig. 1), 
+is not a perfect classifier of correct and incorrect answers. The 
+middle range of distribution is a domain for both types of answers.  
+Compare this with the diagram below (Fig. 2). Both types of 
+
+ 
+Fig. 2. Distribution of confident and not confident answers in terms of 
+
+answer time. 
+
+answers are correct, but they are far apart from each other in terms 
+of confidence levels, and the difference between confidence levels 
+
+is illustrated in the time difference needed for answering. Thus, 
+time for answering and learners’ confidence are deeply connected, 
+showing this time’s availability as clues to uncertainty or 
+hesitation in the process of solving problems. If an e-Learning 
+system detects problems whose answers are correct but their 
+trajectories belong to category 3, the system should not pass the 
+learners but demand them to review more of the same type of 
+problems. Another parameter for mouse trajectories that can be an 
+indicator for confidence is the longest D-C time as shown below 
+(Fig. 3). 
+
+ 
+Fig. 3. Distribution of confident and not confident answers in terms of the 
+
+longest D-C time. 
+
+The more uncertain the learner is of the correct sentence, the 
+longer the D-C time will be somewhere in performing a task, and 
+this time can be interpreted as hesitation of mouse movements. 
+
+These parameters, combined with excessive D&Ds (i.e., D&Ds 
+employed more than necessary) will be useful clues not only to 
+detect difficult problems for a particular learner but also to locate 
+which part of a problem is difficult for the learner. The process of 
+answers being produced is a more important clue than the answers 
+themselves, which might include lucky hunches, when we try to 
+measure learners’ understanding levels. Uncertainty and hesitation 
+in solving problems resulting from lack of knowledge or 
+inadequate understanding are revealed more clearly in the 
+processes for answering than in answers themselves. 
+
+ACKNOWLEDGMENTS 
+This work was supported by a Grant-in-Aid (KAKENHI) for 
+“Scientific Research (C) (25370621),” and we also owe special 
+thanks to Takashi Miyamoto (a student from Faculty of 
+Informatics, Shizuoka University) for his help with the data 
+processing indispensable in our study. 
+
+REFERENCES 
+[1] Arroyo, E. et al. 2006. Usability Tool for Analysis of Web 
+
+Designs Using Mouse Tracks. In Proceedings of CHI EA’06, 
+ACM, 484-489. 
+
+[2] Freeman, J. B. and Ambady, N. 2010. MouseTracker: 
+Software for Studying Real-Time Mental Processing Using a 
+Computer Mouse-Tracking Method. Behavior Research 
+Methods, Vol. 42, No. 1, 226-241. 
+
+[3] Zushi, M. et al. 2012. Web Application for Recording 
+Learners’ Mouse Trajectories and Retrieving Their Study 
+Logs for Data Analysis. APTEL 2011 Best papers: 
+Knowledge Management & E-Learning: An International 
+Journal, Vol. 4, No. 1, 37-50. 
+
+[4] Zushi, M. et al. 2014. Development of a Web Application: 
+Recording Learners' Mouse Trajectories and Retrieving Their 
+Study Logs to Identify the Occurrence of Hesitation in 
+Solving Word-Reordering Problems.  Journal on Systemics, 
+Cybernetics and Informatics: JSCI, Vol. 12, No. 2, 86-91.  
+
+429
+
+
+
+
+

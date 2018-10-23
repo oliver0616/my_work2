@@ -1,0 +1,39 @@
+\documentclass[tikz,border=5pt]{standalone}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{backgrounds}
+\usetikzlibrary{calc}
+
+\usepackage{mathtools}
+\newcommand*{\TickSize}{2pt}%
+
+\begin{document}
+\begin{tikzpicture}
+	[framed,background rectangle/.style={ultra thin, rounded corners=5pt, draw=gray}];
+
+	%Axis
+	\coordinate (x) at (15,0);
+	\coordinate (y) at (0,14);
+	\coordinate (o) at (0,0);
+	\draw[-{Latex[length=3mm,open]}] (o)--(x) node[right]{\large $document$ $length$};
+	\draw[-{Latex[length=3mm,open]}] (o)--(y);
+	
+
+	% x y labels
+	\draw[ultra thick] (8,0) -- (8,0.5);
+	\node at (8,-0.5) {\large $avdl$};
+	\draw[ultra thick,draw=red ,-{Latex[length=3mm]}] (8,-1) -- (15,-1) node[midway, below, sloped] {\large $> avdl$};
+	\draw[ultra thick,draw=green ,-{Latex[length=3mm]}] (8,-1) -- (0,-1) node[midway, below, sloped] {\large $< avdl$};
+
+	\node at (0,14.6) {\large $normalizer=1-b+b\dfrac{|d|}{avdl}$};
+	\node at (15,14) {\large $0 \le b \le 1$};
+
+	\draw[ultra thick] (0,7) -- (0.5,7);
+	\node at (-0.5,7) {\large $1.0$};
+
+	%function
+	\draw[gray] (1,7) -- (15,7) node[right] {\large $b=0$};
+	\draw[blue] (1,1) -- (15,13);
+	\draw[red] (1,4) -- (15,10);
+
+\end{tikzpicture}
+\end{document}

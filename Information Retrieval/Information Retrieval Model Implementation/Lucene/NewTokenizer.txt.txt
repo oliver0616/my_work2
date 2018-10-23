@@ -1,0 +1,64 @@
+package analyzerPack;
+
+import java.io.IOException;
+import java.io.Reader;
+
+import org.apache.lucene.analysis.Tokenizer;
+import org.apache.lucene.analysis.tokenattributes.CharTermAttribute;
+
+public class NewTokenizer extends Tokenizer{
+
+	protected String stringToTokenize;
+    protected int position = 0;
+	protected CharTermAttribute charTermAttribute = addAttribute(CharTermAttribute.class);
+	
+	//increment through the tokens
+	@Override
+	public boolean incrementToken() throws IOException {
+		this.charTermAttribute.setEmpty();
+		int nextIndex = this.stringToTokenize.indexOf(' ', this.position);
+		
+		//if space is found in the index, append the word and move on to next
+		if(nextIndex != -1) {
+            String nextToken = this.stringToTokenize.substring(this.position, nextIndex);
+            this.charTermAttribute.append(nextToken);
+            this.position = nextIndex + 1;
+            return true;
+        }
+		//if no words after the token is on now, append the token
+		else if (this.position < this.stringToTokenize.length()) {
+            String nextToken = this.stringToTokenize.substring(this.position);
+            this.charTermAttribute.append(nextToken);
+            this.position = this.stringToTokenize.length();
+            return true;
+        }
+		else {
+            return false;
+        }
+	}
+	
+	//Constructor of the Class
+	public NewTokenizer(Reader reader) {
+        //super(reader);
+        int numChars;
+        char[] buffer = new char[1024];
+        StringBuilder stringBuilder = new StringBuilder();
+        try {
+        	// read the string into array until it reach the end and return -1
+            while ((numChars = reader.read(buffer, 0, buffer.length)) != -1) {
+                stringBuilder.append(buffer, 0, numChars);
+            }
+        }
+        catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        this.stringToTokenize = stringBuilder.toString();
+    }
+	
+	//reset position when reset is called
+	@Override
+    public void reset() throws IOException {
+        super.reset();
+        this.position = 0;
+    }
+}

@@ -1,0 +1,732 @@
+
+A Handwriting Recognition System for the Classroom 
+Eric Gross 
+
+PARC, A Xerox Company 
+800 Phillips Rd., 128-27E 
+
+Webster, NY 14580 
+Phone: +1 (585) 422-6696  
+eric.gross@xerox.com 
+
+Safwan Wshah 
+PARC, A Xerox Company 
+800 Phillips Rd., 128-27E 
+
+Webster, NY 14580 
+Phone: +1 (585) 231-5499 
+
+safwan.wshah@xerox.com 
+Gary Skinner 
+
+PARC, A Xerox Company 
+800 Phillips Rd., 147-250W 
+
+Webster, NY 14580 
+Phone: +1 (585) 422-9232 
+
+gary.skinner@xerox.com 
+
+Isaiah Simmons 
+PARC, A Xerox Company 
+800 Phillips Rd., 128-27E 
+
+Webster, NY 14580 
+Phone: +1 (585) 422-9998 
+
+isaiah.simmons@xerox.com 
+ 
+
+ABSTRACT 
+The Xerox IgniteTM Educator Support System (henceforth referred 
+to simply as IgniteTM) is a data collection, analysis, and 
+visualization workflow and software solution to assist K-12 
+educators.  To illustrate, suppose a third-grade teacher wants to 
+know how well her class has grasped a lesson on fractions.  She 
+would first scan her students’ homework and/or exams into the 
+Ignite system via a range of multifunctional input devices.  Xerox 
+Ignite™ reads, interprets, and analyzes the students’ work in 
+minutes. Then the teacher can select how to view the data by 
+choosing from numerous reports.  Examples are; an “at a glance” 
+class summary that shows who needs extra help in what areas and 
+who is ready to move on; a “context” report showing how each 
+skill for each student is progressing over time; a grade-level 
+performance report that helps third-grade teachers share best 
+practices and cluster students into learning groups; and a student 
+feedback report that tells each student what he/she needs to 
+improve upon.  Ignite™ intent is also to make it easier for districts 
+to administer, score and evaluate content based on academic goals 
+set for schools and students.  The scanning and 'mark 
+lifting' technology embedded into Ignite™ reduces the time 
+needed to correct papers and frees time for the teacher to apply 
+detailed insights to their day-to-day instruction tasks.  Critical to 
+this function is the automated reading of student marks, including 
+handwriting, to enable the digitization of student performance at a 
+detailed level.  In this paper we present a system level description 
+of the Ignite™ handwriting recognition module and describe the 
+challenges and opportunities presented in an educational 
+environment.   
+
+Categories and Subject Descriptors 
+I.4.6 [Digitization and Image Capture]: Segmentation – Region 
+Growing, Partitioning I.5.1 [Pattern Recognition]: Models – 
+Neural Nets, Statistical. K.3.1 [Computers and Education]: 
+Computer Uses in Education –Computer Assisted Instruction. 
+
+General Terms 
+Algorithms, Design, Measurement, Performance, Human Factors, 
+Languages. 
+
+Keywords 
+Intelligent Character Recognition, Handwriting, Learning 
+Analytics, Xerox IgniteTM. 
+
+1. INTRODUCTION 
+The IgniteTM Educator Support System, a Xerox product offering, 
+is a data collection, analysis, and visualization workflow and 
+software solution to assist K-12 educators.  Implementations 
+include both tablet and paper based forms of data input.  In the 
+following we consider the paper based implementation though the 
+concepts apply equally to the tablet based implementation (in fact 
+the tablet is a less challenging application since additional 
+information in the form of the character stroke vs. time sequence 
+can be exploited).  Student responses are recorded on paper that 
+we refer to as a student assessment.  The assessment is usually a 
+set of questions for which there are one or a few correct student 
+responses; the responses are phrases on the order of 5 words or 
+less; the responses are numerical; or the responses are a 
+combination of numbers with units.  For simplicity we will 
+assume only one correct response though this constraint can be 
+easily relaxed.  The IgniteTM system lifts and identifies the student 
+responses off the page, analyzes the responses, and returns 
+actionable next steps.  The correct written responses are known, 
+though it is certainly not known if the student responded 
+correctly.  The IgniteTM work flow is illustrated in figure 1.   
+
+Scan
+
+Generate Reports Auto-score & Validate
+
+Select & Print
+
+Administer
+
+Build Knowledge 
+and Skills
+
+Complete 
+Assessments
+
+Deliver Differentiated 
+Learning Opportunities
+
+Compile & Analyze 
+Results Score Assessment
+
+Informed 
+Planning
+
+Classroom
+
+Student
+
+Teachers
+
+ 
+Figure 1: Student-Teacher Classroom Workflow 
+
+Permission to make digital or hard copies of all or part of this work for 
+personal or classroom use is granted without fee provided that copies are 
+not made or distributed for profit or commercial advantage and that 
+copies bear this notice and the full citation on the first page. To copy 
+otherwise, or republish, to post on servers or to redistribute to lists, 
+requires prior specific permission and/or a fee.  Request permissions 
+from Permissions@acm.org 
+LAK’15, March 16–20, 2015, Poughkeepsie, NY, USA 
+Copyright 2015 ACM 978-1-4503-3417-4/15/03…$15.00 
+http://dx.doi.org/10.1145/2723576.2723601 
+ 
+
+218
+
+http://www.office.xerox.com/multifunction-printer/enus.html
+
+
+The handwriting recognition module resides in the Auto-score and 
+Validate processing step as shown in figure 1.  The scanned image 
+of the assessment is displayed in a GUI and the validation is 
+performed visually.  If the written content, as read by the 
+handwriting recognition system, agrees with the correct answer 
+then the answer region is highlighted in green.  If it is determined 
+that the student’s response is not in agreement with the correct 
+answer then the region is highlighted in red.  An example of an 
+educator’s view of the assessment during the validation phase is 
+shown in Figure 2.  If manual validation is desired, the educator 
+can tab through the various highlighted answer regions and 
+confirm if the assessment has been graded properly.  To the lower 
+left of each answer region is displayed the handwriting 
+recognition result.  The educator can see at a glance what the 
+student has written, what has been recognized, and the grading 
+result.  The educator can confirm the automated grading decision 
+or override the decision and manually enter their interpretation of 
+the student’s response.  The recognition engine is calibrated such 
+that false positives are rare (<.05%) at the expense of false 
+negatives.  Consequently educators can safely skip portions of the 
+assessment that are highlighted in green and focus on validating 
+the handwriting recognition results that are highlighted in red.  
+
+ 
+
+ 
+Figure 2: Example assessment during validation. Fields 
+marked red if determined to not agree with known correct 
+response. 
+The handwriting recognition task consists of two hierarchical 
+processes.  The first task is to determine if the student response is 
+correct.  This is a simpler binary decision.  If determined to be 
+correct, then the only type of error in this case is that of a false 
+positive and the recognition task proceeds to the next assessment 
+question.  If the student response is determined to be incorrect, 
+then two types of errors are possible.  First, the student response 
+may in fact have been correct in which case a false negative has 
+occurred. Alternatively, the student response may be incorrect and 
+the recognition result may also be incorrect.  Here the grading is 
+properly completed, however the determination of what was 
+written is incorrect and this may adversely impact the analytics 
+that are performed such as in classifying the types of errors being 
+made by the student.   
+
+In the next section we describe the handwriting recognition 
+components with particular emphasis on enablers for enhanced 
+
+accuracy available in an educational environment.  Next we 
+describe some details of the implementation. Finally we present 
+conclusions and suggest future activities.                                                                                                                                                                                                                                                
+
+2. EDUCATION ENVIRONMENT 
+There are significant challenges in reading children’s handwriting.  
+The challenges include varied writing styles, added strokes, 
+missing strokes, struck out characters, connected characters, and 
+writing partially outside regions in which the written response is 
+expected.   
+
+The IgniteTM system operates in an environment that provides 
+some key features that differentiate the handwriting recognition 
+task from that which is most typical.  These features are 
+knowledge of the correct answer (i.e. what student should have 
+recorded); knowledge of the student entering the information and 
+so knowledge of student’s average performance level in the 
+subject matter (is the student in the “A”, “B”, “C”, etc… range?); 
+and on a per student basis a potentially large number of prior 
+handwritten characters vs. time with the corresponding correct 
+classification from past validated assessments.  These features can 
+be exploited for improved recognition accuracy in the following 
+ways: 
+
+1. The character classification engine developed for 
+IgniteTM is based on a supervised learning neural 
+framework.  Supervised learning implies that the 
+classification algorithm requires a learning phase in 
+which labeled training data is available.  The algorithm 
+is first trained over time by repeatedly presenting 
+images, observing the neural network classification 
+decision, comparing that decision with the known 
+correct label, and then adjusting the engine parameters 
+so as to improve classification accuracy.  Neural 
+networks have a long history of being applied 
+successfully to image classification tasks [5] [6].  In the 
+IgniteTM application, each assessment includes a bar 
+code with a student identifier.  In this way Image 
+samples of the student’s unique handwriting can be 
+obtained.  Additionally since we know if an assessment 
+has been manually validated, then we know the correct 
+label corresponding to each image.   A rich data set of 
+samples on a student by student basis and their 
+corresponding correct labels can therefore be obtained 
+over time.  This data can in turn be used to customize 
+on a per student basis the classification engine.  Also 
+since it is common for young students to have 
+handwriting that evolves over time, more recent images 
+and validated labels can be extracted from assessments 
+enabling adaptive handwriting classification.    
+
+2. In IgniteTM the assessment questions have a correct 
+answer that is known a-priori, though it is not known if 
+the student answered the question correctly.  Also the 
+quality of the student in a particular subject matter is 
+generally known because past scores associated with the 
+student are maintained.  To exploit this information the 
+probability of a correct answer being written can be 
+formulated as an optimal decision.  Baye’s formula is,  
+
+( | ) ( )( | )
+( )
+
+P D h P hP h D
+P D
+
+= . 
+
+219
+
+
+
+This formula can be informally stated as the posterior 
+probability is equal to the likelihood times the prior 
+divided by the evidence.  Here h is the hypothesis and 
+we would like to determine its probability given 
+evidence D , that is ( | )P h D .  If the latter can be 
+determined for each hypothesis h , then we can 
+determine the probabilities associated with any 
+hypothesis.  By way of example suppose the correct 
+answer to a single digit arithmetic assessment is the 
+digit 9, yet the classifier indicated that a digit 4 has been 
+identified.  We would like to determine (9 | 4)P .  To 
+compute this we note that (9)P , the prior, is the 
+probability that in fact the student wrote a 9 without 
+considering the immediate evidence and is based on 
+knowledge of the overall student capability.  For an 
+average student it is reasonable to set this to .75 (a “C” 
+student).  (9 | 4)P  is the probability that in fact a 9 is 
+written though the classifier classified the image as a 4.  
+An estimate of this probability is easily obtained by a 
+prior characterization of the classification engine’s 
+confusion matrix.  This matrix is obtained empirically 
+by presenting known images and recording the 
+percentage of times input images are misclassified as 
+other images. Since digits 9 and 4 are often similar we 
+would expect a nonzero percentage (for our 
+classification engine we recorded 3.2%).  ( )P D  is a 
+term that can be readily computed, and is just a scale 
+factor such that the probabilities sum to one.  It is not 
+needed if comparing the relative probability 
+magnitudes, and choosing for example the maximum 
+one.  
+
+3. Lastly given knowledge of the correct answer, we can 
+consider breaking down the task to identifying if the 
+student answer matches and so is correct.  This is a 
+binary decision.  If a match is not found, then we seek 
+to determine what was in fact written.  This task is less 
+critical than the first.  For the first task knowledge of the 
+answer also implies knowledge of the answer length, i.e. 
+how many characters to expect.  This information is 
+useful in our character segmentation scheme that is 
+required if characters are connected as in script. 
+
+Figure 3 illustrates the architecture for the handwriting 
+recognition system.  There is image preprocessing, a 
+segmentation process, classification of the segments, and 
+then a post processing algorithm.  In the next section we 
+consider some of these steps comprising the recognition 
+system in greater detail.  
+ 
+
+*Segmentation 
+Candidates
+
+Calibration
+
+Character Spacing
+Calibration
+
+Assessment
+
+Imaging
+Pre Processing
+
+(feature 
+extraction &
+
+Normalization)
+
+ICR Engine (e.g. NNET, TD BayesInference
+
+Classification 
+Performance 
+
+Table
+(conditional 
+probabilities)
+
+Past Student 
+Performance
+
+Student 
+Achievement 
+Level (priors)
+
+Knowledge of 
+Correct Answer
+
+Calibration
+
+Handwriting Calibration
+Assessment for Student
+
+Customization
+
+Classification Output
+
+Neighboring Results
+
+Vocabulary
+
+Context
+probabilities
+
+Segmentation (Active,
+Free TBD)
+
+ 
+Figure 3:  System diagram illustrating various potential 
+components of the character recognition system. 
+
+3. RECOGNITION SYSTEM 
+We approached the problem of recognition by combining two 
+main blocks namely, character segmentation and a character 
+recognizer as shown in figure 4. We used various datasets [1, 2] to 
+build the system using deep learning approaches such as stacked 
+de-noising auto encoders and convolutional neural networks.  We 
+evaluated our system on both publicly available adult handwritten 
+character datasets and on datasets of handwritten words collected 
+from primary school children. Our method compared favorably 
+with the commercially available handwritten word recognition 
+system Pegasus (Accusoft Corp.). On a dataset of approximately 
+132000 word images, we achieved ~93% accuracy with the use of 
+prior knowledge (see comparison results in section 4). 
+
+  
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+       Figure 4: Recognition System Flow 
+
+3.1 Preprocessing  
+The student written answer images are extracted from the 
+assessment forms and preprocessed in preparation for 
+segmentation.  The processing includes noise filtering, horizontal 
+and vertical line removal, de-skewing and slant correction. 
+
+3.2 Image Segmentation 
+The student written answer image is segmented to generate 
+isolated individual character candidates. Two separate algorithms 
+are used to generate candidates; the first uses skeleton and chain 
+code information to find the cut points; the second is based on a  
+line minimal cut algorithm.  Segmentation is a very challenging 
+problem when written characters are connected or overlap.  
+
+Segmentation using skeleton and chain code algorithm 
+
+This approach segments the image based on the image skeleton 
+[3] and chain code [4].  The skeleton algorithm finds a one pixel 
+thick representation showing the centerlines of the text. We use 
+the skeleton to find the touching points between the connected 
+digits, that is intersection points on the skeleton contour.  The 
+chain code information which represents the border pixels are 
+used to find the segmentation line of the connected text.  The 
+algorithm then produces a list of segment hypotheses (cut 
+candidates) and the list is then reduced by applying an algorithm 
+that combines the segments based on geometrical information.  
+An example of this algorithm is illustrated in figure 5. 
+
+Student written answer (image) 
+
+Image preprocessing 
+
+Character segmentation: Find 
+candidate cuts 
+
+Character recognizer 
+
+Word recognition that maximizes the 
+average probability path 
+
+220
+
+
+
+ 
+Figure 5: Skeleton and chain code segmentation.  
+
+ 
+
+Segmentation using line minimal cut algorithm 
+ 
+The line minimal cut algorithm begins with many candidate lines 
+drawn at pre-specified angles and at pre-specified distances apart. 
+As shown in figure 6 many of these lines are removed according 
+to specific heuristic rules: 
+
+- Choose lines with a background to foreground pixels 
+ratio above a threshold as shown in figure 6(a). 
+
+- Merge consecutive similar cuts as shown in figure 6(b). 
+
+- Remove cuts which intersect with more the one set of 
+foreground pixels, or intersect other cuts half way 
+through the image as shown in figure 6(c) 
+
+- Remove cuts where the number of foreground pixels 
+between them are less than a threshold as shown in 
+figure 6(d) 
+
+- Remove cuts with number of foreground pixels between 
+them less than a threshold as shown in 6(e). 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 6: Result from candidate segmentation cut heuristic. 
+
+ 
+3.3 Character Recognizer 
+The character recognizer is a classifier applied to all combinations 
+of character candidates that result from the proposed segmentation 
+algorithms. Recent methods of classification based on deep 
+learning [5] have demonstrated state-of-the-art performance in a 
+variety of tasks such as visual recognition, audio recognition, and 
+natural language processing [6].  
+
+Because of the large variation in handwriting styles, 
+recognition accuracy is rarely sufficient using a single classifier. 
+We combined a set of deep learning based classifiers; each with a 
+different architecture and trained on different subsets of the 
+dataset in order to help reduce correlation among the classifiers.  
+We used two types of deep learning approaches, that of a 
+convolutional neural network (CNN), and that of the stacked de-
+noising auto-encoder. Three CNN’s and two stacked de-noising 
+auto-encoders were found to be sufficient.  The final 
+determination was based on majority vote.  For details and 
+performance reviews on various methods of deep learning refer to 
+[5], [6], and [7]. 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+Figure 7: Character recognition structure. 
+
+3.4 Word Recognition 
+To recognize the word we created segmentation graphs for the 
+candidate cuts, the heat map of the recognition score for every 
+possible candidate cut pair is calculated, and the probability and 
+score graphs are constructed. Recognition score is equivalent to 
+the numerical value of the neural net output (or weighted output 
+in the case of multiple neural networks).  The algorithm shown 
+below in pseudo code is implemented to recognize the word.  The 
+main objective of the algorithm is to determine the path that 
+maximizes the average probability.  
+
+Input: Probability Graph G 
+  for each vertex v in Graph 
+    dist[v] ?0;keeps track of maximum avg prob from 0 to v 
+    prev[v] ?undefined; keeps track of previous choice 
+    numSegs[v]=0;keeps track of number of segments from 0 to v 
+  for u=1 : numNodes 
+    for v=u+1 : numNodes 
+      if G[u,v]==0 
+       break; 
+      alt=(dist[u]*numSegs[u]+G[u,v])/(numSegs[u]+1) 
+      if alt>dist[v] 
+       dist[v]=alt 
+       numSegs[v]=numSegs[u]+1 
+       prev[v]=u 
+     return dist,prev,numSegs 
+
+CNN 1 
+
+C3 
+
+C4 
+ 
+
+C5 
+
+C2 
+
+C1 
+
+Character 
+segment 
+
+candidate 
+
+Auto-Encoder 1 
+
+Auto-Encoder 2 
+
+CNN 2 
+
+CNN 3 
+Majority 
+voting 
+
+decision 
+
+221
+
+
+
+3.5 Prior Knowledge 
+As mentioned previously, in educational assessment scenarios we 
+often know what the correct answer ought to be.  To exploit this 
+information we first find the best probability path given a number 
+of segments L, and then based on the segmented image using the 
+prior length of the word we check for each character.  If any of the 
+top 2 choices from the classifier output match the correct answer, 
+we return that character, else we return the first choice. The 
+algorithm pseudo code shown below finds the best maximum 
+probability path given the number of segments L. 
+
+Input: Probability Graph G, length of the word L 
+for each vertex v in Graph 
+  for  p = 1  :  L 
+  dist[v,p] ?0;keeps track of maximum average probability from 0 to v given p 
+segments 
+    prev[v,p] ?undefined;keeps track of previous choice 
+for u=1 :numNodes 
+  for v=u+1 :numNodes 
+    if G[u,v]==0 
+      break; 
+    for p = 1 : L 
+      alt=(dist[u,p-1]*(p-1)+G[u,v])/(p) 
+      if alt>dist[v,p] 
+       dist[v,p]=alt 
+       prev[v,p]=u 
+return dist,prev 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+Figure 8: candidate and probability graph. 
+
+4. DATASETS and RESULTS 
+The systems has been trained and evaluated on public and internal 
+datasets, all the images are resized to 46x46 pixels while 
+maintaining the aspect ratio and then later resized to different 
+scales based on the character classifier input feature vector.  
+
+Public Data Set  
+
+We used the NIST Special Database 19 dataset that is composed 
+of over 800,000 images of hand written characters (digits, upper 
+case and lower case letters). The other public dataset is InftyCDB-
+3. The images in this dataset are collected mathematic 
+publications and are mainly used for research into OCR for 
+scientific documents. We used this dataset for special characters, 
+that is characters such as periods, commas, question marks, and 
+equal signs (.,;:?!#$%&*+-^<>=()).  
+
+Internal Data Set 
+
+This dataset contains approximately 132000 word images 
+collected by IgniteTM from actual students in mainly grads K 
+
+through 5.  Challenges in this set include missing strokes, poor 
+handwriting, touching characters, and strike outs.  
+
+Results  
+
+Throughout this description there have been a number of 
+parameters that required selection such as thresholds in the 
+segmentation algorithms and the number of recognition engine 
+outputs to consider (we ultimately selected the top 2 most 
+probable).  The selection of such parameters results from 
+experimentation over a range of parameter values and assessing 
+their impact on classification accuracy. After extensive 
+experimentation we were able to tune the system performance to 
+yield the results below with accuracy defined as the percentage of 
+correctly recognized images: 
+
+- 83.7% accuracy with Pegasus. 
+
+- 76.9% accuracy with proposed approach. 
+
+- 86.6% accuracy with proposed approach with expected 
+answer length prior information. 
+
+- 92.8% accuracy with proposed approach with length 
+and content prior information. 
+
+5. FUTURE WORK 
+A key capability that has not yet been exploited is the 
+customization of the recognition system on a student by student 
+basis.  Since the educators validate the student handwriting and 
+specify what in fact has been written, we can build overtime a 
+substantial supervised training set per student (or clusters of 
+students by similar handwriting style), and consequently enhance 
+classification accuracy.  This will be the main focus of this work 
+for the foreseeable future.     
+
+6. REFERENCES 
+[1] NIST dataset 19 http://www.nist.gov/srd/nistsd19.cfm 
+[2] Infty dataset http://www.inftyproject.org/en/database.html 
+[3] Lam, L., Seong-Whan Lee, and Ching Y. Suen, "Thinning 
+
+Methodologies-A Comprehensive Survey," IEEE 
+Transactions on Pattern Analysis and Machine Intelligence, 
+Vol 14, No. 9, September 1992.  
+
+[4] H. Freeman, “Techniques for the Digital Computer Analysis 
+of Chain-Encoded Arbitrary Plane Curves,” Proc. Nat. 
+Electronics Conf., vol. 17, pp. 412–432, 1961. 
+
+[5] Bengio, Y. Learning deep architectures for ai. Foundations 
+and Trends in Machine Learning 2, 1 (2009), 1-127. 
+
+[6] Bengio, Y., Courville, A. C., and Vincent, P. Representation 
+learning: A review and new perspectives. IEEE Trans. 
+Pattern Anal. Mach. Intell. 35, 8 (2013), 1798-1828. 
+
+[7] Le Cun, Y., Bottou, L., Bengio, Y., Haffner, P.: Gradient-
+based learning applied to document recognition. 
+Proceedings of the IEEE 86(11) (1998) 
+
+222
+
+http://www.nist.gov/srd/nistsd19.cfm
+http://www.inftyproject.org/en/database.html
+
+
+
+

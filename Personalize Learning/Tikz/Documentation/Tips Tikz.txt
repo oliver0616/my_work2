@@ -1,0 +1,7 @@
+Documentation
+Set up Tikz file There are two ways:
+1. create a Latex file and create the Tikz object right inside the latex file
+2. create a latex file and tikz file, import tikz file insdie the latex file and run it
+Compile:
+In terminal use "letax 'filename.tex'" to compile latex file and it will create the pdf that user request
+Use "divps 'filename.dvi'" to compile the .ps picture file

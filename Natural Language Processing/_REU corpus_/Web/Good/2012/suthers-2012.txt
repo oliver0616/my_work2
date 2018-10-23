@@ -1,0 +1,481 @@
+
+Connecting Levels and Methods of Analysis  
+in Networked Learning Communities 
+
+Daniel D. Suthers 
+
+University of Hawai‘i 
+Honolulu, USA 
+1.808.956.3890 
+
+suthers@hawaii.edu 
+
+H. Ulrich Hoppe 
+
+University of Duisburg-
+Essen, Germany  
+49.203.379.3553 
+
+hoppe@collide.info 
+
+Maarten de Laat 
+
+Open University  
+Heerlen, NL  
+
+31.45.576.2961 
+
+maarten.delaat 
+@ou.nl 
+
+Simon Buckingham Shum 
+
+Open University  
+Milton Keynes, UK 
+44.1908.655723 
+
+s.buckingham.shum 
+@open.ac.uk 
+
+ABSTRACT 
+This paper describes the rationale behind a workshop on using 
+
+data-intensive computational methods of analysis for empirical-
+
+analytical studies of collaborative and networked learning, with 
+
+a particular focus on how learning takes place in the 
+
+technically-mediated interplay between individual, small group 
+
+and collective levels of agency. This workshop is primarily 
+
+designed for researchers interested in empirical-analytical 
+
+studies using data-intensive computational methods of analysis 
+
+(including social-network analysis, log-file analysis, data 
+
+mining, video analysis).     
+
+Categories and Subject Descriptors 
+J.1 [Administrative Data Processing] Education; K.3.1 
+
+[Computer Uses in Education] Collaborative learning 
+
+General Terms 
+Measurement, Experimentation, Human Factors 
+
+Keywords 
+Collaborative and networked learning, socio-technical 
+
+networks,  
+
+1. LEARNING AT MULTIPLE LEVELS 
+Technological and societal developments over the past few 
+
+decades have led to the emergence and confluence of multiple 
+
+conceptions of learning beyond what was possible at scale in a 
+
+pre-networked age. Studies of collaborative learning originating 
+
+in educational and cognitive psychology first conceived of 
+
+social settings as providing stimuli and conditions for 
+
+individual learning, but progressed towards more collective 
+
+forms of learning agency [5]. Led by the seminal work of 
+
+Roschelle and Teasley [19], a productive line of research and 
+
+practice focuses on understanding how small groups maintain a 
+
+“joint conception of a problem,” taking the group as the unit of 
+
+learning agency [16, 10]. At the community level, we find 
+
+concepts of learning as “legitimate peripheral participation” in 
+
+the practices of a community [12]; a process that also constructs 
+
+personal identity, entwining individual learning with group 
+
+practices that themselves can change; and “knowledge 
+
+building”: the deliberate effort of a community to increase its 
+
+cultural capital. 
+
+The growth of online learning and increasing percentages of 
+
+working or geographically distributed students enrolled in 
+
+educational institutions makes the understanding of formal and 
+
+informal learning in online settings more pressing [1]. 
+
+Furthermore, Web 2.0 technologies and their associated 
+
+practices have increased the prominence of “networked 
+
+individualism” [2], leading to greater emphasis on “networked 
+
+learning” [3]. As Jones, Dirckinck-Holmfeld, & Lindstrom [8] 
+
+point out, this conception of learning emphasizes the power of 
+
+“weak ties” to enable individuals to access large networks of 
+
+resources [6], and thereby challenges the emphasis on strong 
+
+ties implied by both theories of collaborative learning in closely 
+
+interacting small groups [15] and the shared identity of 
+
+communities of practice [20].  
+
+Rather than viewing these and other conceptions of learning as 
+
+competing alternatives, we recognize that today’s learners 
+
+participate in multiple forms of learning that take place 
+
+simultaneously at different scales and that influence each other 
+
+in constitutive and contextual relationships. Networked 
+
+learning succeeds when there is positive synergy between 
+
+individual activity and accrual of collective value that can be 
+
+drawn upon further by individuals [9]. Sociotechnical systems 
+
+intensify pathways of influence between local times and places 
+
+and support the emergence of global social phenomena from the 
+
+myriad of associations between many actors and artifacts [11]. 
+
+The information and communication technologies (ICT) 
+
+underlying such systems enable us, as was never before 
+
+possible, to observe these processes through the electronic 
+
+traces left by participants [3, 18]. Multiple levels and forms of 
+
+learning phenomena are manifest in these traces in different 
+
+ways, leading researchers to combine different analytic 
+
+techniques. For example, Harrer and colleagues [7] and 
+
+Martinez and colleagues [13, 14] have combined quantitative 
+
+and qualitative content analysis with social network analysis; 
+
+De Laat, Lally, Lipponen & Simons [4] investigate patterns of 
+
+interaction using content analysis, critical event recall, and 
+
+social network analysis; and Suthers and colleagues [18, 17] 
+
+have developed an analytic hierarchy that transforms log files 
+
+into representations of action, interaction, associations, and ties 
+
+for multilevel analysis of online learning. The present 
+
+workshop is concerned with further developing the analytic 
+
+tools needed to address multiple levels of learning embedded in 
+
+networks.  
+
+ 
+ 
+Permission to make digital or hard copies of all or part of this work for 
+personal or classroom use is granted without fee provided that copies are 
+not made or distributed for profit or commercial advantage and that copies 
+bear this notice and the full citation on the first page. To copy otherwise, or 
+republish, to post on servers or to redistribute to lists, requires prior specific 
+permission and/or a fee. 
+
+LAK’12,  29 April – 2 May 2012,  Vancouver,  BC,  Canada., 
+Copyright 2012 ACM 978-1-4503-1111-3/12/04…$10.00 
+
+11
+
+
+
+2. OBJECTIVES OF THE WORKSHOP 
+The workshop continues a series of workshops on a 
+
+“multivocality” theme, in which multivocal dialogue takes 
+
+place between analysts who address multiple scales of groups 
+
+and learning communities at multiple granularities of analysis, 
+
+with multiple methods of analysis and theoretical foundations.  
+
+The workshop on Connecting Levels of Learning in Networked 
+
+Communities, held at the 9th International Conference on 
+
+Computer Supported Collaborative Learning in Hong Kong, 
+
+was convened to address the theoretical and methodological 
+
+challenges of studying multi-level learning phenomena. The 
+
+workshop organizers perceive a need to connect (bridge 
+
+between, coordinate, etc.) analyses of how learning takes place 
+
+locally via individual activity and in small group settings and 
+
+global learning phenomena such as the learning of a community 
+
+or how local activity produces resources for learning in other 
+
+locales. Concomitant with these questions of the relationships 
+
+between local and network level learning phenomena come 
+
+questions of how theories at these levels articulate with each 
+
+other or explain phenomena across levels, and how methods for 
+
+local analysis, such as microanalytic or process oriented 
+
+methods and content analysis can be coordinated with methods 
+
+for qualitative case comparisons and methods for global 
+
+analysis, such as social network analysis.  
+
+The present workshop stresses how integrating multiple 
+
+methods of analysis reaches to practical questions of integrating 
+
+computational tools. Especially the interaction between certain 
+
+analysis methods and techniques and certain models and 
+
+approaches to theory building is of high interest. Guiding 
+
+questions and themes include:  
+
+• How to detect emergent phenomena and patterns in traces 
+
+of collective/collaborative learning activities by using a 
+
+plurality of methods? How do we interconnect these 
+
+methods? 
+
+• What theoretical perspectives are relevant to bridging 
+
+levels and methods of analysis? 
+
+• What practical techniques such as different types of 
+
+triangulation or visualization can help to connect different 
+
+levels and approaches of analysis? 
+
+• What are the prospects of technical integration of analysis 
+
+tools through a kind of “open analysis workbench” (open 
+
+architecture, adequate GUI metaphors)?  
+
+REFERENCES 
+
+[1] I. E. Allen and J. Seaman, Growing by Degrees: Online 
+
+Education in the United States, 2005, Alfred P. Sloan 
+
+Foundation, Needham, MA, 2005. 
+
+[2] M. Castells, The Internet Galaxy: Reflections on the 
+
+Internet, Business, and Society, Oxford University Press, 
+
+2001. 
+
+[3] M. de Laat, Networked Learning, Politie Academie, 
+
+Apeldoorn, 2006. 
+
+[4] M. de Laat, V. Lally, L. Lipponen and R.-J. Simons, 
+
+Investigating patterns of interaction in networked learning 
+
+and computer-supported collaborative learning: A role for 
+
+Social Network Analysis, International Journal of 
+
+Computer Supported Collaborative Learning, 2 (2007), pp. 
+
+87-103. 
+
+[5] P. Dillenbourg, M. Baker, A. Blayne and C. O'Malley, The 
+
+evolution of research on collaborative learning, in H. 
+
+Spada and P. Reimann, eds., Learning in Humans and 
+
+Machine: Towards an interdisciplinary learning science, 
+
+Elsevier, Oxford, 1996, pp. 189-211. 
+
+[6] M. S. Granovetter, The strength of weak ties, American 
+
+Journal of Sociology, 78 (1973), pp. 1360-1380. 
+
+[7] A. Harrer, N. Malzahn, S. Zeini and H. U. Hoppe, 
+
+Combining Social Network Analysis with semantic 
+
+relations to support the evolution of a scientific 
+
+community, in C. Chinn, G. Erkens and S. Puntambekar, 
+
+eds., Mice, Minds, and Society — The Computer 
+
+Supported Collaborative Learning (CSCL) Conference 
+
+2007, International Society of the Learning Sciences, 
+
+2007, pp. 267-276. 
+
+[8] C. Jones, L. Dirckinck-Holmfeld and B. Lindstrom, A 
+
+relational, indirect, meso-level approach to CSCL design 
+
+in the next decade, International Journal of Computer-
+
+Supported Collaborative Learning, 1 (2006), pp. 35-56. 
+
+[9] S. Joseph, V. Lid and D. D. Suthers, Transcendent 
+
+Communities, in C. Chinn, G. Erkens and S. 
+
+Puntambekar, eds., The Computer Supported 
+
+Collaborative Learning (CSCL) Conference 2007, 
+
+International Society of the Learning Sciences, New 
+
+Brunswick, 2007, pp. 317-319. 
+
+[10] T. Koschmann, A. Zemel, M. Conlee-Stevens, N. Young, 
+
+J. Robbs and A. Barnhart, How do people learn: Member's 
+
+methods and communicative mediation, in R. Bromme, F. 
+
+W. Hesse and H. Spada, eds., Barriers and Biases in 
+
+Computer-Mediated Knowledge Communication (and how 
+
+they may be overcome), Kluwer Academic Press, 
+
+Amsterdam, 2005, pp. 265-294. 
+
+[11] B. Latour, Reassembing the Social: An Introduction to 
+
+Actor-Network-Theory, Oxford University Press, New 
+
+York, 2005. 
+
+[12] J. Lave and E. Wenger, Situated Learning: Legitimate 
+
+Peripheral Participation, Cambridge University Press, 
+
+Cambridge, 1991. 
+
+[13] A. Martinez, Y. Dimitriadis, E. Gomez-Sanchez, B. 
+
+Rubia-Avi, I. Jorrin-Abellan and J. A. Marcos, Studying 
+
+participation networks in collaboration using mixed 
+
+methods, International Journal of Computer-Supported 
+
+Collaborative Learning, 1 (2006), pp. 383-408. 
+
+[14] A. Martinez, Y. Dimitriadis, B. Rubia-Avi, E. Gomez-
+
+Sanchez and P. de la Fuente, Combining qualitative 
+
+evaluation and social network analysis for the study of 
+
+classroom social interactions, Computers & Education, 41 
+
+(2003), pp. 353-368. 
+
+[15] R. Slavin, An Introduction to Cooperative Learning, 
+
+Cooperative Learning: Theory Research and Practice, 
+
+Allyn and Bacon, Boston, 1990, pp. 1-46. 
+
+[16] G. Stahl, Group Cognition: Computer Support for 
+
+Collaborative Knowledge Building, MIT Press, 
+
+Cambridge, MA, 2006. 
+
+12
+
+
+
+[17] D. D. Suthers, N. Dwyer, R. Medina and R. Vatrapu, A 
+
+framework for conceptualizing, representing, and 
+
+analyzing distributed interaction, International Journal of 
+
+Computer Supported Collaborative Learning, 5 (2010), pp. 
+
+5-42. 
+
+[18] D. D. Suthers and D. Rosen, A unified framework for 
+
+multi-level analysis of distributed learning Proceedings of 
+
+the First International Conference on Learning Analytics & 
+
+Knowledge, Banff, Alberta, February 27-March 1, 2011, 
+
+2011. 
+
+[19] S. D. Teasley and J. Roschelle, Constructing a joint 
+
+problem space: The computer as a tool for sharing 
+
+knowledge, in S. P. Lajoie and S. J. Derry, eds., 
+
+Computers as Cognitive Tools, Lawrence Erlbaum 
+
+Associates, Hillsdale, NJ, 1993, pp. 229-258. 
+
+[20] E. Wenger, Communities of Practice: Learning, Meaning 
+
+and Identity, Cambridge University Press, Cambridge, 
+
+1998.
+
+ 
+
+13
+
+
+
+
+

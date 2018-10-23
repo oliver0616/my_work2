@@ -1,0 +1,611 @@
+
+Opportunities for Personalization in Modeling Students as
+Bayesian Learners
+
+Charles Lang
+Teachers College,
+
+Columbia University
+525 West 120th St
+New York, NY, USA
+
+charles.lang@tc.columbia.edu
+
+ABSTRACT
+The following paper is a proof-of-concept demonstration of a
+novel Bayesian framework for making inferences about indi-
+vidual students and the context in which they are learning.
+It has implications for both efforts to automate personal-
+ized instruction and to probabilistically model educational
+context. By modelling students as Bayesian learners, in-
+dividuals who weigh their prior belief against current cir-
+cumstantial data to reach conclusions, it becomes possible
+to both generate estimates of performance and the impact
+of the educational environment in probabilistic terms. This
+framework is tested through a Bayesian algorithm that can
+be used to characterize student prior knowledge in course
+material and predict student performance. This is demon-
+strated using both simulated data. The algorithm generates
+estimates that behave qualitatively as expected on simulated
+data and predict student performance substantially better
+than chance. A discussion of the results and the conceptual
+benefits of the framework follow.
+
+CCS Concepts
+•Applied computing ? Computer-assisted instruc-
+tion; E-learning;
+
+Keywords
+Personalization; individualization; context modelling; Bayes
+
+1. INTRODUCTION
+Personalization can be framed as an unsupervised learn-
+
+ing problem in which we try to resolve both the individual
+structure of a student’s data and estimate the impact of
+this structure on their behavior simultaneously. This is dif-
+ficult for groups of students, but for individuals it has the
+added difficulty of generating probability statements that
+make sense at the individual level. What does a statement
+such as, “The probability that Susan is correct is 0.6”, actu-
+
+Permission to make digital or hard copies of all or part of this work for personal or
+classroom use is granted without fee provided that copies are not made or distributed
+for profit or commercial advantage and that copies bear this notice and the full citation
+on the first page. Copyrights for components of this work owned by others than the
+author(s) must be honored. Abstracting with credit is permitted. To copy otherwise, or
+republish, to post on servers or to redistribute to lists, requires prior specific permission
+and/or a fee. Request permissions from permissions@acm.org.
+
+LAK ’17, March 13 - 17, 2017, Vancouver, BC, Canada
+c© 2017 Copyright held by the owner/author(s). Publication rights licensed to ACM.
+
+ISBN 978-1-4503-4870-6/17/03. . . $15.00
+
+DOI: http://dx.doi.org/10.1145/3027385.3027410
+
+ally mean given that Susan will only ever perform the task
+in question once? [13] This question lies at the heart of what
+it means to automate the personalization of education, and
+how we approach it will determine our assessments of stu-
+dents and the impact of subsequent educational decisions.
+
+The most common solution to deal with the issue of mak-
+ing meaning from probabilistic statements about individu-
+als is to make them not about individuals at all. Instead
+we personalize based on subgroup membership [1]. If Susan
+is left-handed, her probability of being correct is the prob-
+ability of left-handed people being correct. The probability
+statement makes sense and is intuitive in that it corresponds
+to a proportion of the group, but it is limited in that it re-
+quires the identification of appropriate subgroups. Subgroup
+identification is further complicated by the possibility that
+behavior is mediated not only by membership in one sub-
+group [9], but by several, and becomes diabolically complex
+if subgroups are defined as latent psychological constructs
+which themselves are probabilistic in nature [15].
+
+What follows is one possible way to skirt the theoretical
+problem of making individual level probability statements
+by treating probability not only as a frequency but also as
+a logical property. The most common utilization of logical
+probability is the use of Cox’s Axioms in Bayesian statistics
+[6] and we can apply this formalization to the problem of per-
+sonalization by treating students as Bayesian learners (they
+weigh new data against prior experience to generate a behav-
+ior) and the probability that they will perform a particular
+behavior as a logical property belonging to them. Since the
+property belongs to the student, we can then circumvent the
+need to rely on group based probability statements to per-
+sonalize. Rather, we can make probability statements about
+individuals based purely on probabilistic characterization of
+their prior knowledge and new data.
+
+1.1 Human Bayesians
+Modelling people as Bayesian makes some intuitive sense
+
+though it is distinct from the work of Corbett and Anderson
+on Bayesian Knowledge Tracing that uses Bayes Rule to
+calculate the parameters of a latent structure [4]. Modelling
+people as Bayesian is the explicit statement that we weigh
+new knowledge against our prior beliefs to reach conclusions,
+and Bayes Rule provides a mathematical formalism for this
+intuition:
+
+p(H|D) ? p(D|H).p(H) (1)
+
+Read as, the probability of a hypothesis (H) given some data
+(D) is proportional to the likelihood of that data, given the
+
+
+
+hypothesis, multiplied by the prior knowledge of the hypoth-
+esis. The idea that Bayes reflects some internal psycho-
+logical mechanism has been around at least since 1931 [14]
+and was applied directly to psychometrics by de Finetti in
+1965 [7] and Economics and Decision Theory adopted the
+idea in the 1960s [16]. Yet, in the 1970s experimental psy-
+chology largely dismissed Bayes as an illegitimate psycho-
+logical model [2]. It seems that humans deviate from the
+model in all kinds of ways: they rely on heuristics [12], their
+intuitions of the probability of occurrences do not match
+Bayesian calculations [5], and they do not optimize their
+economic choices in a way that is coherent with Bayesian
+logic [17]. In short, people do not behave in a way that is
+rational in a Bayesian sense. But in the early 2000s interest
+in Bayes as a psychological model was reignited by Compu-
+tational Cognitive Psychologists such as Gopnik, Griffiths
+and Tenenbaum, who successfully re-formulated psychologi-
+cal problems in Bayesian terms particularly focusing on how
+young children learn [11, 10, 8] as well as renewed interest
+within Computational Economics and Decision Theory [3].
+This new research pushed against the purely rational model
+of Bayes, concentrating on Bayes as a model of the algo-
+rithmic rather than the computational level of explanation.
+Yet, Learning Analytics may benefit from pushing the model
+even further from its rational cousins.
+
+1.2 Bayesian Framework
+The goal in much of the research discussed above is to
+
+demonstrate that, on average, populations perform in ac-
+cordance with Bayes rule - in other words, they are rational
+in a Bayesian sense. The following framework will deviate
+from this goal in some important ways though. The first is
+that we are not attempting to demonstrate that people are
+rational and we can relax this assumption by redefining the
+likelihood function. The second is that we are attempting
+to model individual students rather than uncover an aver-
+age trend across students. A rational Bayesian human would
+take the probabilities observable in the world to calculate a
+posterior probability of the truth of a hypothesis, given the
+current data (p(H|D)), from the likelihood of the data in
+light of the hypothesis (p(D|H)) and their prior belief in the
+hypothesis from their accumulated experience (p(H)). The
+rational Bayesian model often assumes that the likelihood
+is external to the individual - it is an objective observation
+about the world, but if we instead assume that it is a pro-
+cess that exists within the individual - it is their subjective
+interpretation or perception of the conditions, rather than
+the objective description of them, we can re-frame Bayes
+Rule as a model for personalization at the individual level.
+The likelihood is the degree to which the data confirms or
+dis-confirms the students belief in the hypothesis. The mod-
+eller’s job then becomes to generate estimates of each indi-
+viduals‘ likelihood and prior, to best predict their individual
+behavior at a task represented by the posterior probability.
+Within this framework, if we can characterize probabilis-
+tically a student’s prior knowledge and how that student
+interprets their conditions as a likelihood we should be able
+to accurately predict their behavior. In other words, mod-
+elling student behavior becomes a matter of resolving what
+each individual student brings to the table vs. what the table
+brings to each student :
+
+Behavior ? Context× PriorKnowledge (2)
+
+This is not dissimilar to how Snow describes a student tack-
+ling a test item, behavior is the interface between the affor-
+dances provided by the environment and the student’s apti-
+tude within the task domain [18]. Within this framework we
+are assuming that all variation for an individual’s actions is
+partitioned into either contextual or personal factors - there
+is no left over variation. This provides us the guide for inter-
+preting error in our model and validation more generally. If
+a prediction based on our conclusions is wrong it is because
+we have failed to estimate the ratio between prior knowledge
+and context. As such, we have a framework for building an
+unsupervised learning algorithm that attempts to simulta-
+neously impose the structure of context vs prior knowledge
+and partition the variance in student behavior between these
+factors.
+
+2. MODEL
+The following represents one formulation of this personal
+
+Bayesian framework. There are likely more elegant formula-
+tions but it provides a proof-of-concept to demonstrate the
+viability of the approach.
+
+There are three parts to the model, the abstract model
+just discussed as the conception of students as Bayesians
+who resolve evidence and hypotheses using Bayes Rule, an
+operational model or how behavior is operationalized (what
+is being counted) to fit the model, and a validation model,
+or how the model’s success at characterizing the student’s
+behavior is determined.
+
+2.1 Abstract Model
+It is easiest to think of each of these models in terms of
+
+a specific example. Here we will use a single student an-
+swering a test item in an on-line quiz. In this scenario our
+student is required to confirm or dis-confirm her belief in the
+content being tested, for example Pythagoras’ Theorem. In
+each item on the quiz we observe her posterior probability -
+if she is correct this indicates a stronger belief in Pythago-
+ras’ Theorem, if she is incorrect it indicates a weaker belief.
+She reaches this posterior probability by weighting her prior
+knowledge of Pythagoras‘ with the likelihood of the data
+provided in the quiz items. Prior knowledge is an intuitive
+concept to some extent, a stronger prior probability repre-
+sents a stronger belief in the underlying hypothesis, but the
+likelihood requires some deeper explanation. From the per-
+spective of the student we can look at the likelihood in two
+subtly different ways:
+
+1. From a rational point of view, in which the likelihood
+represents how the student should rationally weigh
+specific relevant data in the quiz item against their
+prior belief.
+
+2. From a subjective point of view, in which we acknowl-
+edge that we don’t really have any idea what the stu-
+dent thinks is relevant in the quiz item in order to an-
+swer it correctly, and so the likelihood represents how
+the circumstances of the quiz influence the student’s
+behavior. Do they push her away or towards her prior
+belief? For example, the student may find the order
+of the answers in a multiple choice item to be more
+relevant than a diagram provided to assist answering
+the question.
+
+
+
+It is this second interpretation that makes Bayes a use-
+ful model for personalization. It defines the goal for the
+modeller and provides something to numerically estimate:
+to parse a student’s condition (her prior probability) from
+her context (the likelihood), in other words, separating what
+she brings to the learning task from how the learning task
+immediately impacts her.
+
+2.2 Operational Model
+In the abstract this model makes a lot of sense, though
+
+it is only ever going to be imperfectly operationalized as
+we cannot directly confirm the mental states of students, or
+whether the model has any biological or other representa-
+tion. In the following examples we will treat the student as
+a Markov Process, where when a student answers a series of
+questions each answer contains the information of the previ-
+ous answers. The posterior is represented by a time series of
+correct/incorrect answers. For this example, the likelihood
+will be represented by item difficulty (proportion of correct
+answers). A choice that is convenient but flawed in that it
+assumes that each student will respond to conditions in the
+same way. So the operational model, using a normalization
+factor, is represented as:
+
+? =
+?.?
+
+(?.? + (1? ?).(1? ?)) (3)
+
+Where theta is the posterior probability, ? is item diffi-
+culty and ? is the prior probability. Our strategy here is to
+recursively estimate the prior (?) using the sequential feed
+of correct/incorrect answers from the student. In a classic
+recursive Bayes model the prior would be replaced with the
+posterior, but we want to incorporate feedback from the suc-
+cess of the estimation into our model through a validation
+model.
+
+2.3 Validation Model
+There are many possibilities for a validation model, AUC
+
+or some form of likelihood estimator, but here we will use
+the conditional probability that the model predicts the an-
+swer given a particular student. In this way, we will generate
+an individual probability of accuracy for each student that
+the model is estimating. The prior probability in the stu-
+dent model (?) will then be weighted by this probability of
+accuracy for the subsequent estimation - higher probability
+of over-prediction will revise the prior probability down and
+higher probability of under-prediction will revise the prior
+up. In this manner, as each item is predicted the proba-
+bility of accuracy is updated, and used to adjust the prior
+probability in the operational model. The algorithm can be
+represented as:
+
+Figure 1: Validation algorithm.
+
+The weighting is calculated as the probability of over pre-
+
+dicting (O) multiplied by the proportion of the prior above
+the current estimate and the probability of under (U) pre-
+dicting multiplied by the proportion of the prior below the
+current estimate:
+
+?2 = p(O|student)× (1? ?1)? p(U |student)× ?1 (4)
+
+3. SIMULATION
+A number of simulations of students with three different
+
+belief values answering 30 items were run to determine how
+accurately the algorithm captured prior beliefs. The first
+simulation generated three students individually, with dif-
+ferent underlying belief values that were unchanging to de-
+termine if the algorithm could differentiate between their
+different prior beliefs. Then several changing belief values
+were simulated: 1. a student who’s belief in a single hy-
+pothesis is linearly increasing, a student who’s belief is lin-
+early decreasing, and students’ whose belief suddenly jumps
+up and suddenly jumps down. These belief characteristics
+were repeated for 1000 students to produce overall accuracy
+statistics.
+
+To simulate students as they answered items we drew ran-
+dom values from a Gaussian distribution where the mean
+represented the students’ average belief value. The difficulty
+of the items was modelled as the noise in these random sam-
+ples. For linearly increasing or decreasing belief the random
+draws were also weighted by the number of the trials and
+for a sudden jump/drop in belief they were doubled/halved.
+
+3.1 Simulation Results: Individual Students
+
+Figure 2: Prediction of individual student priors for
+three simulated students over 30 items.
+
+For three simulated students (Figure 2) simulated by
+drawing from Gaussian distributions with means of 0.25, 0.5
+and 0.75 and predictions made over 30 items with a starting
+prior of 0.50, the algorithm resolves student priors of 0.29,
+0.52 and 0.67. The accuracy for the three is 0.84 and the
+posterior probability of being correct of a belief value of 0.25,
+0.5 and 0.75 is 0.84, 0.77 and 0.83 respectively.
+
+When looking at linear increases over time, over thirty
+items the individual predictions start to track the distribu-
+tions after 15-20 items (Figure 3). The average accuracy
+for these two is 0.86 and the posterior probability of being
+
+
+
+Figure 3: Prediction of individual student priors
+for linear change, increasing and decreasing over 30
+items. Dashed lines show mean of the distribution
+answer was drawn from.
+
+correct for both the increasing and decreasing students is
+0.84.
+
+Figure 4: Prediction of individual student priors
+for sudden increases and sudden decreases over 30
+items, change indicated by vertical dashed line.
+
+For sudden changes in learning state (Figure 4) the algo-
+rithm does a better job, over thirty items the individual pre-
+dictions start to track the distributions almost immediately
+though they are less accurate overall. The average accuracy
+is 0.83 and the posterior probability of being correct is 0.81.
+
+4. DISCUSSION
+This paper presents a novel algorithm for predicting stu-
+
+dent performance by characterizing students as Bayesian
+learners. It makes predictions about individual students us-
+ing only the sequence of correct and incorrect answers. It
+further attempts to quantify how successful it is at forecast-
+ing student scores using simulated student data. Forecasting
+success is important if the parameters from the model are
+ever to be used to inform automated personalization strate-
+gies.
+
+Table 1: Accuracy statistics for simulations of 1000
+students over 30 items
+
+Type % Accuracy %Over %Under
+(Av.p(A|S)) (Av.p(O|S)) (Av.p(U|S))
+
+0.25 0.889 0.006 0.104
+(0.861) (0.022) (0.116)
+
+0.50 0.506 0.237 0.257
+(0.490) (0.237) (0.265)
+
+0.75 0.886 0.106 0.008
+(0.858) (0.118) (0.02)
+
+Linear 0.807 0.133 0.060
+Increase (0.781) (0.145) (0.074)
+Linear 0.799 0.077 0.150
+Decrease (0.773) (0.077) (0.150)
+Jump 0.894 0.053 0.053
+
+(0.865) (0.067) (0.068)
+Drop 0.891 0.055 0.54
+
+(0.862) (0.070) (0.069)
+
+4.1 Accuracy
+The algorithm estimates the relative impact of student
+
+learning or aptitude factors and contextual factors on stu-
+dent performance. These aptitude factors are comprised
+of the skills and information that a student enters a task
+with, while contextual factors are those things that influ-
+ence her ability to demonstrate that knowledge. The calcu-
+lations are made using score sequences but assume an un-
+derlying continuous spectrum of knowledge that we might
+think of in terms of belief. The algorithm treats the student
+as a Bayesian learner; her score is proportional to her prior
+knowledge and how she interprets her context. The Bayesian
+algorithm splits student performance into these two factors
+and then uses that information to make a prediction about
+the student‘s next score. This process generates estimates of
+a student‘s knowledge, the impact of context, and prediction
+accuracy.
+
+The algorithm performs reasonably successfully on the
+simulated data. It performed adequately over a 30 ques-
+tion sequence, predicting with substantial accuracy students
+simulated to have low, medium and high belief in the tested
+material. It also responded within 10 items to students with
+gradually decreasing and increasing belief and responded
+within 1-2 items to students who suddenly and dramati-
+cally changed their belief. When these tests are repeated
+over 1000 students we see prediction patterns that we might
+expect. It is substantially more difficult to predict a student
+whose belief is middling than those who are very certain or
+very uncertain. The algorithm also tends to over-predict low
+values and under-predict high values. This is likely a func-
+tion of the value that all predictions start from, 0.5. There
+is a certain burn in period while the algorithm calibrates.
+
+4.2 Interpretation
+To return to the problem posed at the beginning of this
+
+article, how do we interpret probability statements for an
+individual student performing an individual task? For the
+Personal Bayesian model this is a more tractable problem
+as the probability statement refers to a property of the stu-
+dent, rather than a proportion of students, proportion of
+times, or proportion of correct/incorrect answers. In this
+Personal Bayes formulation it is the proportion of the se-
+
+
+
+quence of correct and incorrect answers weighted by an esti-
+mate of the impact of the context on the student. This is a
+logical probability rather than a Frequentist sense of prob-
+ability but it also means that we do not fall into the traps
+of either having to overgeneralize about individual students
+by assuming they all form a homogeneous group or imag-
+ining hypothetical long range frequencies of students as is
+common in psychometrics.
+
+4.3 Conceptual Benefits for Personalization
+Although the results from this work provide a promis-
+
+ing proof of concept, the most substantial benefits that this
+Bayesian approach may have for personalization are concep-
+tual. The abstract model provides a framework for pursuing
+a quantified approach to personalization. Unlike traditional
+testing measures that rely on parsing student behavior into
+signal and noise this approach is optimal - it allows error
+to be further characterized as either an incorrect estimation
+about what the student knows, or an incorrect estimation
+about the context the student is in. This points the way to-
+ward building an unsupervised learning algorithm that will
+characterize each students’ data structure individually. It
+changes the nature of the problem, from assigning relevant
+subgroup membership, to estimating the impact of the con-
+text on the student in a single numerical value or possibly
+a distribution. This methodology is particularly useful in
+the personalization enterprise as it does so on an individual
+student basis and may even be able to generate estimates
+without reference to other students at all (unlike the solu-
+tion presented here that uses difficulty as a proxy for the
+likelihood), using only the variation in the sequence of a
+student‘s answers. This may find use in situations where
+only data about learning experiences are available for rea-
+sons of anonymity. There is currently no method with this
+characteristic available and it may prove a useful addition
+to the Learning Analytics methodology as it allows us to
+make more efficacious statements about individual students,
+rather than relying on subgroup allocation. The benefits for
+automated personalization are substantial, but also for con-
+text modelling as this is an essential part of the method-
+ology. Since the model requires context to be numerically
+estimated, context cannot be ignored nor treated as noise.
+
+5. RESOURCES
+Data and R code can be found at: https://github.com/
+
+charles-lang/LAK17-bayeslearner
+
+6. REFERENCES
+[1] D. Borsboom. Measuring the Mind : Conceptual
+
+Issues in Contemporary Psychometrics. Cambridge
+University Press, Cambridge, UK, 2005.
+
+[2] J. S. Bowers and C. J. Davis. Bayesian just-so stories
+in psychology and neuroscience. Psychological
+Bulletin, 138(3):389–414, 2012.
+
+[3] N. Chater and M. Oaksford. The Probabilistic Mind:
+Prospects for Bayesian Cognitive Science. Oxford
+University Press, Oxford, UK, 2008.
+
+[4] A. T. Corbett and J. R. Anderson. Knowledge tracing:
+Modeling the acquisition of procedural knowledge.
+User Modeling and User-Adapted Interaction,
+4(4):253–278, Dec. 1994.
+
+[5] L. Cosmides and J. Tooby. Better than rational:
+Evolutionary psychology and the invisible hand. The
+American Economic Review, 84(2):327–332, 1994.
+
+[6] R. T. Cox. Probability, frequency and reasonable
+expectation. American Journal of Physics, 14(1):1–13,
+1946.
+
+[7] B. de Finetti. Methods for discriminating levels of
+partial knowledge concerning a test item. British
+Journal of Mathematical and Statistical Psychology,
+18(1):87–123, 1965.
+
+[8] A. Gopnik and J. Tenenbaum. Bayesian networks,
+Bayesian learning and cognitive development.
+Developmental Science, 10(3):281–287, May 2007.
+
+[9] G. Gray. A Review of psychometric data analysis and
+applications in modelling of academic achievement in
+tertiary education. Journal of Learning Analytics,
+1(1):75–106, May 2014.
+
+[10] T. L. Griffiths, C. Kemp, and J. B. Tenenbaum.
+Bayesian models of cognition. In R. Sun, editor, The
+Cambridge Handbook of Computational Psychology,
+pages 59–100. Cambridge University Press, 2008.
+
+[11] T. L. Griffiths and J. B. Tenenbaum. Structure and
+strength in causal induction. Cognitive Psychology,
+51(4):334–384, Dec. 2005.
+
+[12] D. Kahneman, P. Slovic, and A. Tversky. Judgment
+Under Uncertainty: Heuristics and Biases. Cambridge
+University Press, Cambridge, Massachusetts, 1982.
+
+[13] P. Molenaar, H. Huizenga, and J. Nesselroade. The
+relationship between the structure of inter-individual
+and intra-individual variability: A Theoretical and
+Empirical Vindication of Developmental Systems
+Theory. In U. M. Staudinger and U. E. R.
+Lindenberger, editors, Understanding Human
+Development: Dialogues With Lifespan Psychology,
+pages 339–360. Springer, 2003.
+
+[14] F. P. Ramsey. Truth and probability. The foundations
+of Mathematics and Other Logical Essays, pages
+156–198, 1931.
+
+[15] M. A. Sao Pedro, R. S. J. d. Baker, and J. D. Gobert.
+Improving construct validity yields better models of
+systematic inquiry, even with less information. In
+J. Masthoff, B. Mobasher, M. C. Desmarais, and
+R. Nkambou, editors, User Modeling, Adaptation, and
+Personalization, number 7379 in Lecture Notes in
+Computer Science, pages 249–260. Springer Berlin
+Heidelberg, July 2012.
+
+[16] R. Schlaifer and H. Raiffa. Applied Statistical Decision
+Theory. Studies in Managerial Economics. Division of
+Research, Graduate School of Business
+Administration, Harvard University, Boston, MA,
+1961.
+
+[17] H. A. Simon. Rationality in psychology and economics.
+The Journal of Business, 59(4):S209–S224, 1986.
+
+[18] G. M. Sinatra, L. J. Cronbach, H. Kupermintz, D. F.
+Lohman, E. B. Mandinach, A. W. Porteus, J. E.
+Talbert, and L. Corno. Remaking the Concept of
+Aptitude: Extending the Legacy of Richard E. Snow.
+Taylor & Francis, New York, NY, 2001.
+
+
+

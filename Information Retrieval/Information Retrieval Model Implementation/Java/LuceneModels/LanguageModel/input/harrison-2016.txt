@@ -1,0 +1,1150 @@
+
+Measuring financial implications of an early alert 
+system 
+
+Scott Harrison 
+University of New England 
+
+Armidale, NSW 2351 
+Australia  
+
+sharris3@myune.edu.au 
+
+Renato Villano 
+University of New England 
+
+Armidale, NSW 2351 
+Australia  
+
+rvillan2@une.edu.au 
+ 
+
+George Chen 
+University of New England 
+
+Armidale, NSW 2351 
+Australia  
+
+gchen2@une.edu.au 
+
+Grace Lynch 
+University of New England 
+
+Armidale, NSW 2351 
+Australia  
+
+glynch2@une.edu.au 
+ 
+
+ABSTRACT 
+The prevalence of early alert systems (EAS) at tertiary institutions 
+is increasing. These systems are designed to assist with targeted 
+student support in order to improve student retention. They also 
+require considerable human and capital resources to implement, 
+with significant costs involved. It is therefore an imperative that 
+the systems can demonstrate quantifiable financial benefits to the 
+institution. The purpose of this paper is to report on the financial 
+implications of implementing an EAS at an Australian university 
+as a case study. The case study institution implemented an EAS 
+in 2011 using data generated from a data warehouse. The data set 
+is comprised of 16,124 students enrolled between 2011 and 2013. 
+Using a treatment effects approach, the study found that the cost 
+of a student discontinuing was on average $4,687. Students 
+identified by the EAS remained enrolled for longer, with the 
+institution benefiting with approximately an additional $4,004 in 
+revenue per student over the length of enrolment. All schools had 
+a significant positive effect associated with the EAS and the EAS 
+showed significant value to the institution regardless of the timing 
+when the student was identified. The results indicate that EAS had 
+significant financial benefits to this institution and that the 
+benefits extended to the entire institution beyond the first year of 
+enrolment.  
+
+Categories and Subject Descriptors 
+G.1.6 [Numerical Analysis]: Optimization – Linear 
+programming; G.3 [Probability and Statistics]: Multivariate 
+statistics, Statistical computing;  
+
+General Terms 
+Measurement, Reliability, Theory 
+
+Keywords 
+Financial, evaluation, student retention, early alert systems 
+
+1. INTRODUCTION 
+An increased number of universities are implementing EAS, and 
+correspondingly an increased number of vendors are offering 
+systems. Proactively identifying students in need of support 
+comes at a cost in terms of implementing and maintaining such 
+systems. For the administrators, hard questions about financial 
+resources need to be asked. How much should an institution spend 
+to attain an improvement in student outcomes? Do early alert 
+systems have a positive return on investment and, if so, by how 
+much? If changes are made to the system, can those changes be 
+quantified?  
+
+This study analyses the effect of a specific EAS using a financial 
+metric; namely, student tuition fees. From the intuition's 
+perspective, these tuition fees can be termed as revenue. The 
+interchangeability of these terms depends on perspective; 
+however throughout this study the term revenue is used.  
+
+The data set captured 16,124 students enrolled over a three-year 
+period between 2011 and 2013 when the EAS was initially 
+deployed at the case study institution. Several revenue models 
+were tested using a treatment effects approach. This study (1) 
+analyzed the financial implications of student retention rates, 
+estimating the overall cost of students discontinuing, (2) the 
+overall effect EAS had on revenue from students, (3) compared 
+the difference in revenue for continuing and completing students 
+versus discontinuing students, under the conditions of EAS 
+identification, (4) analyzed the variation in revenue between 
+schools within the university, and (5) examined the effects on  
+revenue associated with the timing of identification. All estimated 
+financial effects are calculated in Australian dollars. 
+
+2. PREVIOUS STUDIES  
+Research into the financial implications and effectiveness of EAS 
+is limited due to the field still developing and maturing. Simons 
+[10] conducted a survey of 529 four-year higher education 
+providers in the US. A key research question of the study focused 
+on the effectiveness of early alert programs, how did institutions 
+measure effectiveness and the overall impact of the program on 
+students [10]. Two key measures, overall retention and between 
+
+Permission to make digital or hard copies of all or part of this work for 
+personal or classroom use is granted without fee provided that copies are 
+not made or distributed for profit or commercial advantage and that copies 
+bear this notice and the full citation on the first page. Copyrights for 
+components of this work owned by others than ACM must be honored. 
+Abstracting with credit is permitted. To copy otherwise, or republish, to 
+post on servers or to redistribute to lists, requires prior specific permission 
+and/or a fee. Request permissions from Permissions@acm.org. LAK '16, 
+April 25-29, 2016, Edinburgh, United Kingdom © 2016 ACM. ISBN 978-
+1-4503-4190-5/16/04…$15.00 
+DOI: http://dx.doi.org/10.1145/2883851.2883923  
+
+
+
+teaching periods persistence, were the most frequent responses. 
+In evaluating the program effectiveness,  
+
+“of the almost 40% that noted retention as the ultimate goal, most 
+did not clarify a specific program outcome that precipitated 
+retention. It is nearly impossible to link student retention in 
+general terms directly back to a service area.” [10] 
+
+While some time has passed since this survey was conducted, the 
+facts still hold true that there has been little published on program 
+effectiveness.  
+
+Arnold and Pistilli [1] estimated the benefits of Course Signals 
+program at Purdue. It was concluded that students taking signals 
+courses had the effect of improving graduation rates by 21%. This 
+study however was criticized by Caufield [7] for not making it 
+clear if the number of courses were controlled for. As such, it was 
+not possible to disaggregate the effects of “students taking more 
+Course Signals courses because they persist, … [compared to] 
+persisting because they are taking more Signals courses” [6]. 
+
+Marrington et al. [9] analyzed the benefits of an in-house program 
+for the first-year students at Queensland University of 
+Technology. The student success program monitored first-year 
+student data identifying students at risk of attrition, allowing 
+targeted interventions to take place. A critical part of this study 
+was to take the estimated effects of the program and to turn these 
+into tangible financial benefits of the program. Using EFTSL 
+(equivalent full-time student load) estimates of student tuition 
+fees paid, around AUD$1.7 million in student tuition fees were 
+retained, taking into account program costs. It was argued that this 
+was positive evidence for the economic case of EAS.  
+
+The main issue with EAS evaluation is establishing a causal link 
+between the system and improved retention outcomes. It is 
+fundamental to all institutions implementing EAS that they can 
+prove that the system is causing an improvement in outcomes. 
+The objective of this section is to quantify financially the 
+additional benefit derived from improvements in retention. 
+
+3. METHODOLOGY 
+3.1 Case study institution 
+The case study institution is one of 39 public institutions in 
+Australia. It is a regional university with approximately 22,400 
+students (undergraduates and postgraduates), of which 79% are 
+distance (off-campus online) students. The university comprises 
+of 10 traditional schools of study, including arts, science, business 
+and health. It has a strong focus on supporting students from 
+diverse backgrounds, with multiple pathways of admission. The 
+retention rate is typically below the national average and 
+improving retention is an important focus of the university. 
+
+The EAS implemented at the case study institution was developed 
+in 2009, revised in 2011, and deployed across the institution. 34 
+triggers which capture various aspects of the students’ enrolment 
+are used to create a daily score. The scores are ranked, with the 
+top-200 students each day being identified as in need of targeted 
+support. The identification process is the demarcation for 
+separating students into identified and not-identified categories. 
+
+3.2 Calculating revenue 
+Revenue is generally calculated by the price per unit of study 
+multiplied by the quantity of units undertaken. In an ideal 
+situation, tuition fees for each student are provided as part of the 
+data set. However, in lieu of this data not being presented, it is 
+possible to create a close approximation of the student fees paid 
+by each student, using the fee schedule of the institution and 
+
+matching this with the student’s academic record. The fee 
+schedule comes in three distinct brackets which were used in 
+previous statistical models. These are domestic Higher Education 
+Loan Program (HELP) students, domestic fee paying students and 
+international students. Intersecting with domestic student fee 
+categories, university courses are assigned “bands”, an Australian 
+government regulated fee structure for study undertaken in a 
+given area. The domestic student fee schedule is provided in 
+Table 3.1. 
+
+Table 3.1: Fees per unit of study 
+
+ 
+
+Domestic 
+HELP 
+
+Domestic 
+Fee Paying 
+
+ Per Unit Per Unit 
+
+Band 1 $755 $679 
+
+Band 2 $1,076 $968 
+
+Band 3 $1,260 $1,134 
+
+Band 4 $755 $679 
+
+Band 5 $1,260 $1,134 
+
+Band 6 $1,076 $968 
+
+Band 7 $1,076 $968 
+ 
+
+International student fees are set independent from the regulated 
+pricing scheme and charged on an annual basis. A full year of 
+study typically consists of 8 units of study. The annual 
+international fee is divided by 8, proving the estimated cost per 
+unit of study for an international student. The cost per unit of 
+study was imputed based on the international student fee schedule 
+for 2013 [11] and matched with the corresponding bands of study 
+for domestic students. The fee schedule used in this study links 
+schools to fee category, presented in Table 3.2. 
+
+Table 3.2: Fee schedule by school 
+
+School Band Domestic Help 
+Domestic 
+Upfront 
+
+International 
+Fee 
+
+1 Band 1 $755 $680 $2,228 
+
+2 Band 1 $755 $680 $2,228 
+
+3 Band 2 $1,076 $968 $2,621 
+
+4 Band 6 $1,076 $968 $2,621 
+
+5 Band 3 $1,260 $1,134 $2,231 
+
+6 Band 4 $755 $680 $2,228 
+
+7 Band 3 $1,260 $1,134 $2,621 
+
+8 Band 2 $1,076 $968 $2,296 
+
+9 Band 1 $755 $680 $2,228 
+
+10 Band 5 $1,260 $1,134 $1,966 
+ 
+
+Using the fee schedule in Table 3.2, the revenue generated from 
+each student is estimated by multiplying the student’s fee 
+category for school of enrolment, with the number units 
+undertaken where tuition fees would be paid. A limitation on this 
+method is that it fails to capture the effect on fees when students 
+
+
+
+undertake double degrees in different schools with different 
+bands. The model categorizes students in the school where the 
+majority of study was undertaken. This is a source of variation 
+between the estimated tuition fees and the actual tuition fees. 
+However, it can be argued that on aggregate across the large data 
+set, the tuition fees associated with double degrees will balance 
+out.  
+
+3.3 Treatment effects modelling 
+3.3.1 Background 
+Treatment effects models refer to a family of statistical models 
+which allow causal inferences to be made using observational 
+data. The models were originally designed for use in medicine, 
+where ethical reasons and study design limitations prevented the 
+use of control groups. The model is applicable for the evaluation 
+of EAS’s, where it is difficult to have a true control group of 
+students with limited, controlled or no access to student support.  
+
+There exist many different treatment effects models to suit 
+varying situations. Propensity score matching (PSM) is one of the 
+models, with frequent use in economic applications. Propensity 
+score refers to the likelihood of being in the treated/untreated 
+groups based on observed explanatory variables. Bryson [3] used 
+PSM to test if being a union member caused employees to have 
+higher wages, finding that this only occurred in specific cases. 
+Brand and Halaby [2] used a combination of regression and PSM 
+approaches to analyze the effects of elite college attendance and 
+career outcomes, with mixed results when analyzing wage 
+premiums. Caliendo et al. [4] used PSM to measure the effects of 
+job creation schemes in Germany, with sub-group analysis 
+revealing that only long-term unemployed women from East 
+Germany having a significant benefit from the schemes.  
+
+PSM functions on matching observations from the treatment 
+group to the non-treatment group to develop the counterfactual 
+analysis required in causal analysis. A contextualized diagram 
+depicting the matching process is presented in Figure 3.1.  
+
+ 
+Figure 3.1: Diagram of treatment effects nearest neighbor 
+
+matching 
+In the diagram, a student identified by the EAS is matched with a 
+similar student with exactly the same gender (Male = Blue, 
+Female = Red) and school (S). Comparing the two students, the 
+treatment effects model imputes how much the identified student 
+would pay in tuition fees based on not being identified, estimated 
+
+from the non-identified students outcome. The vice versa applies; 
+the non-identified students’ tuition fees are imputed based on 
+being identified by the EAS. The imputed results are then 
+compared, allowing an estimation of the treatment effect. The 
+method further allows matching on multiple nearest-neighbors, 
+which increases the precision of effect estimation [5]. 
+
+Two characteristics of the matching process are, firstly, some 
+students will be excluded due to no suitable match being found. 
+For example, in Figure 3.1, the male student from school 9 has no 
+comparable match in the treatment group. This results in varying 
+sample sizes for models. Secondly, excluding some students from 
+the sample means some explanatory variables may be excluded 
+due to collinearity. While these characteristics of the process are 
+not ideal, the estimated effects remain robust due to the model 
+focusing on the overall average effect of the treatment, and not 
+the individual effect of any one explanatory variable. 
+
+Caliendo and Kopeinig [5] outlined the practical considerations 
+of implementing PSM methods, including selection of the 
+matching algorithm. Four matching algorithms are commonly 
+used to pair observations for analysis. Firstly, the nearest neighbor 
+(NN) algorithm identifies the nearest neighbor based on a distance 
+function measure of propensity score. The second algorithm, 
+caliper and radius, limits the distance to the nearest neighbor to 
+ensure that matches are representative of the alternative outcomes 
+of treatment. Thirdly, stratification and interval matching allows 
+analysis within sub-groups, comparing mean differences in 
+outcomes between treated and control observations. Finally, 
+kernel and local linear matching are “non-parametric estimators 
+that use weighted averages on (nearly) all, depending on the 
+choice of kernel function, individuals in the control group to 
+construct the counterfactual outcome” [5].  
+
+3.3.2 Approach taken 
+For the purposes of this analysis, the nearest neighbor method was 
+selected. This algorithm allows observations to be exactly 
+matched based on theoretical underpinnings of the model 
+estimated. The models use demographic, institutional and 
+workload variables. The demographic variables used are gender, 
+age, age squared and Aboriginal or Torres Strait Islander (ATSI) 
+status. Previous research has shown that demographic variables 
+have a significant effect on retention and therefore need to be 
+included in the model. The institutional variables used include fee 
+type, prior studies, course type and school of study. The fee type 
+of the students is important as the fee schedule varies between 
+these groups, while course type and school of study also reflect 
+varying fee structures. The workload variable is the average 
+number of units studied per teaching period. Workload is included 
+to ensure that students undertaking similar number of units for 
+each teaching period are compared. For determining financial 
+effects in this study, it is important to exactly match students in 
+the treatment group to the control group, on categorical variables; 
+these include gender, ATSI status, domestic fee, international fee, 
+course type, and school of study. The data set used for the analysis 
+was a pooled data set containing data across multiple teaching 
+periods with students commencing at various times.  
+
+A potential source of bias with the model is students who started 
+in 2011 and identified by the EAS are matched and compared to 
+students who started in 2013 and not identified by the EAS. To 
+address this issue, an additional variable was included in the 
+model, teaching period of commencement. This codes the 
+students’ commencement date as a categorical variable, allowing 
+exact matching of students based on when they first started 
+classes. This prevents temporal mismatching to occur and ensures 
+
+Not EAS 
+Identified 
+
+EAS 
+Identified 
+
+S3 
+
+S2 
+
+S9 
+
+S5 
+
+S3 
+
+S3 
+
+S2 
+
+S5 
+
+
+
+robust estimation of the effect. Additionally, students are matched 
+“with replacement” with a minimum of 4 matches per student. 
+The result is the “average quality of matching will increase and 
+the bias will decrease” [5]. 
+
+This study used five models to estimate varying effects on 
+revenue. The objective of each model in order was (1) estimate 
+the revenue effect of discontinuing study; (2) estimate the revenue 
+effect of being identified by the EAS; (3) estimate the revenue 
+effects of discontinuing under the condition of EAS 
+identification; (4) estimate the effects of being identified by the 
+EAS within schools of the case study institution; and (5) estimate 
+the effects of being identified by the EAS at times of 
+identification. 
+
+The first model used the students’ enrolment status as the 
+treatment variable, with revenue as the dependent variable, 
+estimating the financial effects associated with discontinuing. By 
+comparing discontinued students to all other students, it is 
+possible to estimate the cost to the institution when a student 
+discontinues. Comparing discontinued students to completed 
+students estimates the cost to the institution of a discontinuing 
+student not completing their qualification. These two measures 
+indicate the magnitude of financial loss associated when students 
+decide to discontinue. Diagrammatically, the relationship 
+between revenue and the discontinuation is depicted in Figure 3.2. 
+
+ 
+ 
+
+The relationship between revenue and the EAS is depicted in 
+Figure 3.3. When estimating the effect of a given treatment, it is 
+important to not include variables which can be affected by the 
+treatment itself [5]. It is plausible and expected that student 
+performance will change as a result of the EAS identification and 
+resulting support. As such, its exclusion from the model is 
+justified. 
+
+The treatment effects approach has two parameters of interest in 
+identifying the causal relationship. The first parameter is the 
+average treatment effects (ATE), which compares the effect to the 
+entire population. This provides a broad estimate of overall causal 
+effect of the EAS. The second parameter is the average treatment 
+effects on the treated (ATET), which only captures the effect on 
+those people affected by a particular treatment. This provides a 
+more specific estimate of what the causal effect would be under 
+the condition of being identified by the EAS. These two 
+parameters of interest are estimated for all models.  
+
+ 
+
+ 
+Figure 3.3: EAS Treatment Effects Model 
+
+4. RESULTS 
+To make valid inferences from the estimated models, analysis of 
+the matching process verified that the estimated models were 
+valid. The results of the post estimation analysis for the first 
+model are presented in Table 4.1. This is representative of the 
+matching results for all models. Two measures indicate the 
+validity of the matching process, standardized differences in 
+means between the control and treatment effects groups, and the 
+variance ratios. It is expected that under perfect matching of 
+observations, the standardized differences after matching should 
+approach zero, while the variance ratios after matching should 
+approach one.  
+
+Table 4.1: Post estimation check for valid matching 
+
+  
+Standardized 
+Differences Variance Ratios 
+
+Raw Matched Raw Matched 
+
+Age -0.0085 0.0405 1.0063 1.1000 
+
+Age2 -0.0060 0.0477 0.9910 1.1469 
+Units 
+
+Enrolled 0.1695 0.0577 0.6756 0.8593 
+
+ 
+
+The results show that age and age squared variables were similar 
+before and after the matching process. This is supported by the 
+matching density plot in Figure 4.1.  
+
+The density graphs for age show that the matching process 
+improved the distribution of observations on age in the peak at 
+around age 20. However, the matching process didn’t match quite 
+as well at the age of 30. This difference is only minor and overall 
+this indicates that the matching process on age is valid.  
+
+The matching process on the basis of the workload was also 
+successful. Workload was measure by the average number of 
+units a student undertakes during their study. The standardized 
+difference in means improved from 0.1695 to 0.0577, with the 
+variance ratios increasing after matching to be closer to one. The 
+density plot in Figure 4.2 shows the matching process aligns the 
+distribution of the control and treatment groups.  
+
+ 
+
+EAS Identification EAS Results 
+
+Course 
+Institution 
+
+Student 
+
+Enroll 
+Revenue 
+
+Early alert system and 
+targeted student support 
+
+Course 
+Institution 
+
+Student 
+
+Enroll 
+
+Revenue paid by 
+enrolled or 
+
+completing students 
+
+Revenue/fees paid by 
+discontinuing 
+
+Figure 3.1: Discontinuation treatment effects model 
+
+
+
+ 
+Figure 4.1: Balance plot for matching on age 
+
+ 
+Figure 4.2: Balance density plot for matching on workload 
+
+This indicates valid matching on workload, indicating that the 
+model overall is statistically valid. Given that the remaining 
+variables in the model are categorical in nature and exactly 
+matched, only the continuous variables needed to be verified. It 
+can be concluded that the matching process is valid for all models. 
+
+4.1 Financial implications of discontinuing 
+The first model estimated analyzed the effect on revenue resulting 
+from the decision to discontinue. One approach to quantifying this 
+effect compared discontinued students to the entire student 
+cohort, consisting of enrolled and completed students. This 
+captured the loss of revenue at the moment when a student 
+discontinues. Another approach compared discontinued students 
+only to those who have completed their qualifications. This 
+provided an estimate of the overall loss of revenue when a student 
+doesn’t complete their course of study. The results for the two 
+approaches are presented in Table 4.2. 
+
+The results for both models are significant at the 1% level. The 
+cost of discontinuing indicates that for each student discontinued, 
+the university on average loses $4687 overall, with the decision 
+for an individual student costing $4231 on average. Comparing 
+discontinued and completed students, the institution loses $7170 
+overall when a student discontinues instead of completing. In any 
+particular case, the cost is higher at around $7307. 
+
+Table 4.2: Estimated costs of discontinuing 
+
+  
+Cost of discontinuing Cost of not completing 
+
+ATE ATET ATE ATET 
+
+Coefficient 
+($) 4,687
+
+a 4,231a 7,170a 7,307a 
+
+Robust 
+Standard 
+Error ($) 
+
+65.60 70.06 255.66 339.99 
+
+Sample 
+Size 13,690 13,690 2,460 2,460 
+
+a,b,c significant at 1%, 5% and 10% levels of significance, 
+respectively. 
+
+Table 4.3 indicates the retention rates at the case study university 
+over the period captured by the data set [8]. It includes the number 
+of students who would be retained from a 1% increase in the 
+retention rate. Combining the ATE estimated from Table 4.2 with 
+the retention rates in Table 4.3, the financial implications of 
+improving retention by 1% are presented in Table 4.4. 
+
+Table 4.3: Retention rates 
+
+Year 
+Dept. 
+
+Education 
+Retention Rate 
+
+Number of 
+students retained 
+from 1% increase 
+
+in retention 
+2011 73.47% 121.20 
+
+2012 73.26% 128.57 
+
+2013 71.61% 135.04 
+ 
+
+The benefit of a 1% increase in retention is calculated by the 
+number of students affected by a 1% increase multiplied by the 
+ATE. 
+
+Table 4.4: Financial implications of improving retention 
+
+Year 
+
+Discontinued 
+v Enrolled 
+
+Discontinued 
+v Completed 
+
+Benefit of 1% 
+Retention 
+
+Increase ($) 
+
+Benefit of 
+1% Retention 
+Increase ($) 
+
+2011 568,100 868,947 
+
+2012 602,646 921,786 
+
+2013 632,972 968,173 
+ 
+
+Comparing discontinued students to both enrolled and completed 
+students, the benefits of increasing student retention by 1% range 
+from $568,100 in 2011 to $632,972 in 2013. The benefits of 
+increasing student retention and seeing these students through to 
+graduation results in a financial benefit of between $868,947 in 
+2011 to $968,173 in 2013. Given that student numbers have been 
+increasing over time, this means that the financial benefits of 
+increasing retention will also increase over time. 
+
+In summary, the results show there is a significant financial effect 
+associated with students discontinuing. This is not a surprising 
+outcome, however what is important is the magnitude of the 
+problem. Being able to accurately estimate the size of the 
+financial implications associated with retention yields important 
+
+
+
+information on potential benefits that can be gained from 
+increasing student retention. Furthermore, this provides an 
+important benchmark to measure from should new programs be 
+introduced to affect student retention. 
+
+4.2 The effect of an EAS on revenue 
+Measuring the effects of an EAS is an important process all 
+institutions need to undertake to validate the efficacy of the 
+system. Using treatment effects models, students were divided 
+into two groups, identified by the EAS and not identified by the 
+EAS. Ideally, having more information on the student support 
+process post identification would allow more detailed analysis of 
+the individual aspects of the program and their contribution to the 
+revenue function.  
+
+In lieu of this detailed data no being present, it is still applicable 
+to treat the EAS as a black box process and estimate meaningful 
+effects resulting from the EAS. The estimated ATE and ATET are 
+presented in Table 4.5.  
+
+The effect of the EAS on revenue is significant at the 1% level for 
+both the ATE and ATET estimates. The EAS is estimated to 
+increase overall student tuition fee spending by around $4004 per 
+student. 
+
+Table 4.5: Overall financial effect of the EAS on revenue 
+
+  ATE ATET 
+
+Coefficient 
+($) 4,004
+
+a 5,058a 
+
+Robust 
+Standard 
+Error ($) 
+
+80.87 102.56 
+
+Sample 
+Size 14,012 14,012 
+
+a,b,c significant at 1%, 5% and 10% levels of significance, 
+respectively. 
+
+Individual students identified by the program on average 
+continued to spend an extra $5058 in fees than students not 
+identified by the program. This is a significant finding which 
+highlights the financial benefits of the EAS. This positive result 
+corroborates the results found from earlier models, that there is a 
+significant positive effect associated from the program. 
+
+The estimate however does not come without limitations and 
+issue. No similar benchmark estimate of student support system 
+is available prior to the introduction of the EAS. As such, it is not 
+possible to estimate the benefits of changing from the prior 
+support system to the EAS. This is an important measure in 
+determining the benefit/cost ratio of installing the EAS and would 
+help validate the EAS further. On the positive side, however, the 
+estimate provided can be used to benchmark future changes to the 
+system. If the system is enhanced or changed in any manner, then 
+the same process can be repeated to allow comparisons of the 
+program valuations and estimation of benefit/cost ratios can be 
+calculated for the program revision. 
+
+4.3 Discontinuing and EAS identification 
+The previous two sections estimated the cost of students 
+discontinuing and the benefit of the EAS overall. Another way to 
+analyze the financial effect of the EAS is to estimate the 
+additional tuition fees a continuing or completing student spends 
+versus a discontinuing student, under the condition they were 
+identified or not identified by the EAS. Only the ATE is shown 
+
+for simplicity, however the ATET estimates only varied slightly 
+from the ATE estimates.  
+
+The results for each groups is significant at the 1% level. The 
+results show if a student is not identified by the EAS and 
+continues, they will spend approximately $2263 more than a 
+student who discontinues. If however the student is identified by 
+the EAS, the student will spend $5138 additional tuition fees 
+compared to a student who discontinues. A t-test for the 
+difference of two means results in a t-test statistic of 25.36. This 
+means the difference between the two groups is significantly 
+different at the 1% level. The additional $2875 in student tuition 
+fees associated with EAS identification further supports the 
+benefits of the EAS system. 
+
+Table 4.6: Cost of discontinuing given EAS identification 
+
+ Discontinue vs Continue 
+Discontinue 
+vs Complete 
+
+Not 
+Identified 
+
+ATE 
+Coefficient 
+
+($) 
+2,263a 4,960a 
+
+Robust 
+Standard 
+Error ($) 
+
+69.77 112.37 
+
+Sample 
+Size 3,142 183 
+
+Identified 
+
+ATE 
+Coefficient 
+
+($) 
+5,138a 7,528a 
+
+Robust 
+Standard 
+Error ($) 
+
+89.33 321.97 
+
+Sample 
+Size 9,099 1,623 
+
+a,b,c significant at 1%, 5% and 10% levels of significance, 
+respectively. 
+
+In the second model, if a student was not identified by the EAS 
+and completed, on average the students would spend an additional 
+$4960 compared to a discontinuing student. If a student was 
+identified and completed, then the additional amount of revenue 
+spent compared to a discontinuing student was $7528. A t-test for 
+differences in means attains a test statistic of 7.53, indicating that 
+the difference is significant at the 1% level. Again, the statistical 
+difference between these two groups suggests the financial 
+benefit of the EAS.  
+
+4.4 EAS effects within schools 
+Variation between schools yields important information about 
+level of identification within each school and can assist with areas 
+of targeted resource allocation. For this section, the data set of 
+students is divided into individual schools. The treatment effects 
+model estimates the effect of the EAS on revenue within each 
+school. The results are presented in Table 4.7. 
+
+The results show significant effects in all schools at the 1% level. 
+The estimated treatment effects on identified students range from 
+school 2, the smallest identification effect of $2,263, through to 
+school 3 with an identification effect of $6,507. The range of 
+variation between schools indicates that the program has a larger 
+benefit in some school versus others. This supports the case that 
+the differences between schools need to be factored into EAS 
+design. 
+
+
+
+Table 4.7: EAS financial effects within schools 
+
+School 
+(Sample 
+
+Size) 
+
+ATE 
+Coefficient 
+
+($) 
+
+ATE 
+Standard 
+Error ($) 
+
+ATET 
+Coefficient 
+
+($) 
+
+ATET 
+Standard 
+Error ($) 
+
+Base (1001) 5112a 307 6098a 377 
+
+1 (1409) 2881a 206 3771a 265 
+
+2 (2086) 2263a 134 2992a 180 
+
+3 (1320) 6507a 304 7685a 359 
+
+4 (1677) 4446a 251 5143a 305 
+
+5 (1753) 4931a 296 6017a 366 
+
+6 (2940) 3394a 145 4363a 186 
+
+7  - - - - 
+
+8 (807) 5627a 460 6816a 543 
+
+9 (919) 2269a 196 3189a 288 
+a,b,c significant at 1%, 5% and 10% levels of significance, 
+respectively. 
+
+The most important conclusion that can be drawn from the results 
+is that all schools have a significant positive effect associated with 
+the EAS. This supports the case of EAS being implemented at an 
+institutional level where a unified approach is taken to offering 
+support. 
+
+4.5 Timing of EAS identification 
+The final method of analyzing the EAS effect was to introduce 
+the temporal effect. It is expected that students identified earlier 
+in their studies will have a greater revenue effect than students 
+identified later in their studies. Students can be divided into four 
+categories, those never identified by the EAS, and those identified 
+by the EAS in either the first, second or third year of study. Table 
+4.8 shows that the majority of students are first identified by the 
+EAS in their first year.  
+
+Table 4.8: Timing of student identification 
+
+Year Identified Number of Students 
+Not Identified 4,830 
+
+1 10,619 
+
+2 596 
+
+3 79 
+
+Total 16,124 
+ 
+
+Using the treatment effects model, students identified in years 1, 
+2 and 3 are compared to the base group of students not identified. 
+The results are presented in Table 4.9.  
+
+The results for the ATET show that students identified by the EAS 
+in their first year contributed $4000 more in revenue than students 
+not identified by the EAS. By the second year, this had reduced 
+to $2675 but in the third year it increased to $3479. All results are 
+significant at the 1% level which indicates that the EAS maintains 
+significant value for all students, regardless of when they were 
+identified. This is an important finding as it shows that there is 
+value of an EAS beyond the first year of enrolment. 
+
+ 
+
+Table 4.9: EAS effects by year of identification 
+
+Year 1 2 3 
+
+Estimate ATE ATET ATE ATET ATE ATET 
+Coefficient 
+
+($) 4,000
+a 5,151a 2,675a 3,911a 3,479a 3,256a 
+
+Robust 
+Standard 
+Error ($) 
+
+83 106 214 260 546 675 
+
+Sample 
+Size 13343 13343 1755 1755 187 187 
+
+a,b,c significant at 1%, 5% and 10% levels of significance, 
+respectively. 
+
+5. DISCUSSION 
+Revenue from student tuition fees is a fundamental source of 
+income for institutions. The size of the retention problem was 
+estimated using revenue from tuition fees as a baseline metric. 
+The treatment effects method of estimating the benefits of the 
+EAS yielded statistically significant results in all models 
+estimated. Using demographic, institutional and workload 
+variables to match observations, valid comparisons were made 
+between students when a control group is not possible. This 
+supports the use of treatment effects modelling as an appropriate 
+method of analysis and evaluation for EAS. 
+
+Comparing discontinued students to the general student 
+population, the first model indicated that the cost of students not 
+being retained was approximately $4,687 per student. If 
+discontinued students are compared to graduating students, the 
+estimate is significantly higher, costing the institution 
+approximately $7,170 per student. These estimates show the 
+magnitude of financial loss associated with current student 
+discontinuation. A modest 1% increase in the undergraduate 
+student retention rate can yield significant financial benefits. With 
+a 1% increase in student retention, the university could have 
+gained an additional $568,000 in 2011, up to $633,000 in 2013. 
+If the 1% of undergraduate students retained continues onto 
+graduation, this increases further to a benefit of $868,000 in 2011 
+to $968,000 in 2013. The estimated cost of discontinuation is an 
+important measure for any institution. For the case study 
+institution, since approximately $4,700 is lost per student who 
+discontinues, then theoretically this also acts as an upper estimate 
+of the additional amount of funds that can be spent per student to 
+improve retention. This forms an important baseline measurement 
+for funding student support initiatives for the case study 
+institution. 
+
+Estimating the effect of the EAS overall showed that students 
+identified by the EAS end up paying more tuition fees on average 
+than students not identified by the system. This correlates to being 
+enrolled longer and undertaking more units. The revenue linked 
+to the EAS was quantified, with students identified by the EAS. 
+This is an important significant finding. Given that the majority 
+of student support services at the institutional level function 
+through the EAS, this provides an overall estimate of the value of 
+student support at the case study institution. For administrators, 
+having this information can greatly enhance understanding and 
+the importance of adequately funded student support services. 
+Furthermore, this estimated value allows a benchmark to be taken. 
+Future changes and enhancements to the EAS can be quantified 
+allowing benefit/cost estimates to be calculated, allowing 
+administrators to make evidence based decisions. 
+
+
+
+Analyzing students under the condition of EAS identification, the 
+results supported the previous estimates. Within the identified 
+group of students, the revenue from continuing students was on 
+average $5,138 more than discontinuing students, whereas in the 
+not identified group, the revenue from continuing students was 
+only on average $2,263 more than discontinuing students. The 
+difference between these two amounts was statistically 
+significant, indicating that there is a significant increase in 
+revenue associated with EAS identification. When comparing 
+discontinuing students to graduating students not identified by the 
+EAS, the revenue from graduating students was on average 
+$4,960 more than discontinuing students. When students were 
+identified by the EAS, the revenue from graduating students was 
+$7,528 more than those discontinuing students. The difference 
+between the two estimated effects was statistically significant at 
+the 1% level, further supporting the conclusion that the EAS has 
+significant financial benefits in terms of revenue, which translates 
+to increased student enrolment and improved retention. 
+
+Analyzing within schools, the results showed an amount of 
+variation of EAS effects on revenue. School 9 had the smallest 
+ATE estimate of $2207 with school 3 having the largest ATE of 
+$6617. Overall, all schools (where possible to estimate) had a 
+benefit from the EAS, supporting an institution wide approach to 
+EAS design. This is an important significant finding, as it shows 
+that a demonstrated institution wide approach to EAS design can 
+have benefits for all schools within the institution. This will vary 
+depending on institutions; however the results here indicate that 
+for the case study institution, the EAS is a benefit to all schools. 
+The results indicate that some schools may also benefit from 
+additional support programs within schools, and that funding 
+allocated to these programs should reflect both the benefits and 
+the need for programs based on retention rates. 
+
+The final model analyzed the value of the EAS based on when 
+students were first identified. It shows that students identified in 
+their first year of study corresponded to an additional $4,000 in 
+revenue. If the student was identified in their second or third year 
+of study, the additional amount of revenue was $2,675 and 
+$3,479, respectively.  
+
+All of these estimates were significant at the 1% level, indicating 
+that the EAS has significant value for all students, independent of 
+course progression. This is a significant finding in the context of 
+student retention, given that the major focus in the past has been 
+on first year student retention. The results show that EAS can 
+have significant value to students at later stages of study. This 
+further supports that EASs should not only be implemented at the 
+school level, but capture all students within the institution. 
+Overall, the results show that there is significant financial benefit 
+to implementing an institution wide EAS which captures all 
+students irrespective of course progression. This lays the 
+foundation for future studies where a full economic analysis, 
+including the costs of implementation and maintenance of EAS, 
+can be conducted. 
+
+6. ACKNOWLEDGMENTS 
+The authors acknowledge the support of the staff at the case study 
+institution in making an expansive data set available for analysis. 
+
+ 
+
+ 
+
+ 
+
+ 
+
+7. REFERENCES 
+[1]  Arnold, K.E. and Pistilli, M.D., 2012. Course Signals at 
+
+Purdue: Using learning analytics to increase student success. 
+In Proceedings of the 2nd International Conference on 
+Learning Analytics and Knowledge ACM, 267-270. DOI= 
+http://dx.doi.org/10.1145/2330601.2330666 
+
+[2]  Brand, J.E. and Halaby, C.N., 2006. Regression and 
+matching estimates of the effects of elite college attendance 
+on educational and career achievement. Social Science 
+Research 35, 3, 749-770. DOI= 
+http://dx.doi.org/10.1016/j.ssresearch.2005.06.006 
+
+[3] Bryson, A., 2002. The union membership wage premium: an 
+analysis using propensity score matching. Accessed from 
+https://ideas.repec.org/s/cep/cepdps.html 
+
+[4]  Caliendo, M., Hujer, R., and Thomsen, S., 2008. The 
+Employment Effects of Job Creation Schemes in Germany-A 
+Microeconometric Evaluation. Advances in econometrics 21, 
+383-430. DOI= 
+http://www.emeraldinsight.com/doi/abs/10.1016/S0731-
+9053(07)00013-8 
+
+[5]  Caliendo, M. and Kopeinig, S., 2008. Some practical 
+guidance for the implementation of propensity score 
+matching. Journal of economic surveys 22, 1, 31-72. DOI= 
+http://onlinelibrary.wiley.com/doi/10.1111/j.1467-
+6419.2007.00527.x/full 
+
+[6]  Caufield, M., 2013. A simple, less mathematical wat to 
+understand the course signals issue. Accessed from 
+http://hapgood.us/2013/09/26/a-simple-less-mathematical-
+way-to-understand-the-course-signals-issue/ 
+
+[7]  Caufield, M., 2013. Why the Course Signals Math Does Not 
+Add Up. In Hapgood. Accessed from 
+http://hapgood.us/2013/09/26/why-the-course-signals-math-
+does-not-add-up/ 
+
+[8]  Department Of Education, 2014. 2013 Student Summary, 
+Department Of Education Ed., Canberra. Accessed from 
+https://education.gov.au/selected-higher-education-statistics-
+2013-student-data 
+
+[9]  Marrington, A.D., Nelson, K.J., and Clarke, J.A., 2010. An 
+economic case for systematic student monitoring and 
+intervention in the first year in higher education. In 
+Proceedings of 13th Pacific Rim First Year in Higher 
+Education Conference QUT, Adelaide. Accessed from 
+http://www.fyhe.com.au/past_papers/papers10/content/pdf/6
+D.pdf 
+
+[10]  Simons, J.M., 2011. A National Study of Student Early 
+Alert Models at Four-Year Institutions of Higher Education. 
+In ProQuest LLC. Accessed from 
+http://eric.ed.gov/?id=ED535792 
+
+[11]  University Of New England, 2013. International 
+Prospectus, University of New England. 
+
+ 
+
+ 
+
+
+

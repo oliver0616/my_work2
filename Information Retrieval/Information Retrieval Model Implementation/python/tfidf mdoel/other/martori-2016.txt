@@ -1,0 +1,509 @@
+
+Studying the relationship between BKT fitting error and 
+the skill difficulty index 
+
+ 
+Francesc Martori  
+
+ASISTEMBE 
+IQS Universitat Ramon Llull 
+
+Via Augusta 390 
+Barcelona, Spain 
+
+francesc.martori@iqs.edu  
+
+Jordi Cuadros 
+ASISTEMBE 
+
+IQS Universitat Ramon Llull 
+Via Augusta 390 
+Barcelona, Spain 
+
+jordi.cuadros@iqs.edu  
+
+Lucinio González-Sabaté 
+ASISTEMBE 
+
+IQS Universitat Ramon Llull 
+Via Augusta 390 
+Barcelona, Spain 
+
+lucinio.gonzalez@iqs.edu  
+ 
+ 
+
+ABSTRACT 
+Bayesian Knowledge Tracing (BKT) is one of the most popular 
+knowledge inference models due to its interpretability and ability 
+to infer student knowledge. A proper student modeling can help 
+guide the behavior of a cognitive tutor system and provide insight 
+to researchers on understanding how students learn. Using four 
+different datasets we study the relationship between the error 
+coming from fitting the parameters and the difficulty index of the 
+skills and the effect of the size of the dataset in this relationship. 
+The relationship between the fitting error and the difficulty index 
+can be very easy modeled and might be indicating some problems 
+with BKTs performance. However, large datasets are required to 
+clearly see this connection as there is an important sample size 
+effect. 
+
+CCS Concepts 
+• Mathematics of computing~Probabilistic representations 
+
+Keywords 
+BKT, BKT-BF, RMSE modeling, difficulty index, educational data 
+mining 
+
+1. INTRODUCTION 
+1.1 Bayesian Knowledge Tracing 
+Bayesian Knowledge Tracing (BKT) [1] is a student model used to 
+infer a student’s knowledge given their history of responses to 
+problems, which it can use to predict future performance. Using 
+students’ responses to questions, which are tagged with the skills 
+that the instructor wants the students to learn, the model tells the 
+probability a student has mastered a skill.  
+
+BKT is a two state Hidden Markov Model, these states being the 
+one in which the student knows a given skill, and the one where the 
+student does not. The “knowledge” state is absorbent, implying that 
+the student will not forget the skill once it is learned. To calculate 
+the probability that a student knows the skill given their 
+performance history, BKT uses four probabilities:  
+
+L0, the probability a student knows the skill before attempting 
+the first problem,  
+
+T, the probability a student, who does not currently know the 
+skill, will know it after the next practice opportunity, that is 
+the transition probability at each practice opportunity,  
+
+G, the probability a student will answer a question correctly 
+despite not knowing the skill,  
+
+S, the probability a student will answer a question incorrectly 
+despite knowing the skill.  
+
+According to this model, knowledge affects performance (mediated 
+by the guess and slip rates), and knowledge at one time step affects 
+knowledge at the next time step, but no further. Then, if a student 
+is in the “no knowledge” state at time t, then the probability he will 
+be in the “knowledge” state at time t+1 is T.  
+
+Usually, a separate BKT model is fit for each skill and only the first 
+attempt at each question is taken for each student, as it is the attempt 
+containing the most information about the student’s knowledge. 
+
+1.2 Bayesian Knowledge Tracing – Brute 
+Force  
+Bayesian Knowledge Tracing – Brute Force [2] (BKT-BF) is an 
+algorithm to estimate the values for the BKT parameters. It is a 
+simple brute force algorithm, where a grid of possible values is set 
+so that for each combination of parameters, a RSS value is obtained. 
+At the end, the combination of values resulting in the lowest 
+Residual Sum of Squares (RSS) value for a skill is the one that will 
+be used in BKT. 
+ 
+In BKT-BF, the RSS is calculated as follows: 
+??? = ? ? (??,?  ?  ??,?)
+
+2???
+?=1
+
+????????
+?   eq. 1 
+
+Where: 
+
+Oi,t is {0,1} depending on the student’s answer to a given 
+question,  
+
+students is the number of different students who faced any 
+question of a given skill, 
+
+Permission to make digital or hard copies of all or part of this work for 
+personal or classroom use is granted without fee provided that copies 
+are not made or distributed for profit or commercial advantage and 
+that copies bear this notice and the full citation on the first page. 
+Copyrights for components of this work owned by others than the 
+author(s) must be honored. Abstracting with credit is permitted. To 
+copy otherwise, or republish, to post on servers or to redistribute to 
+lists, requires prior specific permission and/or a fee. Request 
+permissions from Permissions@acm.org. 
+LAK '16, April 25 - 29, 2016, Edinburgh, United Kingdom 
+Copyright is held by the owner/author(s). Publication rights licensed to 
+ACM. 
+ACM 978-1-4503-4190-5/16/04…$15.00 
+
+DOI: http://dx.doi.org/10.1145/2883851.2883901 
+
+ 
+
+ 
+
+mailto:francesc.martori@iqs.edu
+mailto:jordi.cuadros@iqs.edu
+mailto:lucinio.gonzalez@iqs.edu
+
+
+dim is the number of different questions that are tagged with a 
+given skill  
+
+Ci,j is the likelihood to produce a correct answer to a question. 
+This calculation is derived from the BKT formulas, and it is 
+done, for the student i, as follows:  
+
+??,? = ???1 ? (1 ? ?) + (1 ? ???1) ? ?       eq. 2 
+
+ 
+
+BKT-BF is, however, is very expensive in computational cost, as 
+all brute force algorithms are, and does not help the identifiability 
+[3] problem from BKT; identifiability results in different 
+combinations of parameter values, some of which make no 
+theoretical sense, giving similar RSS values. Other used algorithms 
+to train BKT are EM [4], which is not as computationally 
+demanding but suffers from local minima issues.  
+
+It is noteworthy that BKT parameters are defined in a sense where 
+the modelling is centered on the student as an individual, but 
+parameters tend to be trained treating students as a whole, and as a 
+result not having personalized parameters. Of course this latter 
+approach might easily result in overfitting although some efforts to 
+solve this problems have been done lately. [5] [6] 
+
+In Martori et al. [7] a very high relationship between the RMSE 
+from the BKT parameter tuning and a second degree polynomial of 
+the skill’s difficulty index was found. The objective of this paper is 
+to continue that work by looking for the same relationship in other 
+datasets, checking if there is any sample size effect involved in the 
+relationship between RMSE and difficulty index, and at the same 
+time study the local minima problems when fitting the parameters 
+for the skill modelling. 
+
+ 
+
+2. DATA AND METHODS 
+Four different datasets have been used in this research. OLI MOOC 
+Psychology was the dataset used in Martori et al. [7]. We have also 
+included OLI Psychology. These two datasets are private datasets 
+from PSLC [8] and they use the same knowledge component model 
+but students and delivery type are different as OLI Psychology was 
+delivered in the usual OLI context in 2012-13, while OLI MOOC 
+Psychology was a MOOC that was done in spring 2013. The other 
+two datasets are public datasets, also from PSLC [8]. The dataset 
+WPI Assistments, is a Math dataset part of the ASSISTments 
+project. This dataset was created in 2004-05, and has generated 11 
+papers, so far. Lastly, the dataset Physics, was collected by the The 
+Andes Physics Tutoring System in 2008 and was used with students 
+from the United States Naval Academy.  
+
+All four datasets have substantially different number of skills, 
+students (both in number and profile) and number of records, as it 
+is summarized in table 1.  
+
+ 
+
+ 
+
+                                                                 
+1 The number of skills between brackets corresponds to the number 
+of skills tagged with more than 4 different questions, as these are 
+the skills that will be used in the general regression model.  
+
+Table 1: Summary of the datasets used 
+
+Datasets Skills1 Number of 
+
+students 
+
+Records in 
+
+dataset2 
+
+OLI MOOC 
+Psychology 226 (96) 5564 1 970 401 
+
+OLI 
+Psychology 265 (103) 1088 1 009 255 
+
+WPI 
+Assistments 75 (44) 907 267 407 
+
+Physics 244 (93) 97 81 433 
+ 
+
+To calculate the fitted parameters for BKT we have used BKT-BF 
+with the following specifications to create the parameter grid, the 
+bounded approach has been taken in order to avoid model 
+degeneracy [9] for parameters S and G: 
+
+ L0 has ranged from 0.05 to 0.95 with a 0.10 step 
+
+ T  has ranged from 0.05 to 0.95 with a 0.10 step 
+
+ S  has ranged from 0.05 to 0.30 with a 0.05 step 
+
+ G has ranged from 0.05 to 0.30 with a 0.05 step 
+
+This has resulted in 3600 models fitted per skill to determine the 
+optimal BKT parameters.  
+
+Even though BKT-BF calculates the RSS, in this paper we will 
+usually refer to the RMSE. This is an advantage as the RMSE is a 
+standardized version of the RSS error that ranges from 0 to 1. 
+
+The skill difficulty index is the percentage of correct answers in 
+questions tagged with a single skill. In order to simplify the 
+discussion we will not consider whether the skill is difficult to learn 
+or if the difficulty is coming from one or more questions included 
+in the skill. It must be noted that due to the way the difficulty index 
+is usually calculated, although it is not intuitive, the higher the 
+difficulty index, the easier the question is. 
+
+In order to study the effect of the dataset size, in terms of number 
+of students and number of questions per skill, we will take random 
+subsamples of one datasets and rerun the analysis of the RMSE 
+versus de difficulty index. The samples will range from 100 000 
+data points to 1 million. It needs to be noted that to we will include 
+all skills in the analysis, that is, we will not exclude skills tagged 
+with less than four questions. This especially sensitive with the 
+smaller subsamples, as lots of data are being left aside. 
+
+ 
+
+3. RESULTS 
+We have fitted the BKT parameters for the total 810 skills from all 
+four datasets, however, we will only present results of the dataset 
+OLI Psychology when we refer to individual dataset results.  
+In general no local minima problems were found when fitting the 
+parameters of the skills. In some cases, however, the optimal fitting 
+areas were moderately large. Figure 1 shows the different contour 
+plots from one skill, where we can see the minimum RSS area 
+shaded in the darkest grey, as well as interactions among some of 
+
+ 
+2 Of the cleaned dataset as it only accounts for first answers to 
+
+questions tagged to skills with known knowledge components. 
+
+
+
+the parameters. Contour plots have been calculated using the mean 
+RSS value for each pair of parameters. 
+ 
+ 
+ 
+
+S vs L0 G vs L0 
+
+  
+S vs T T vs L0 
+
+  
+S vs G G vs T 
+
+  
+
+Figure 2 shows the histograms for the distributions of the fitted 
+BKT parameters of the OLI Psychology dataset. It is noticeable that 
+the parameters are settled close to the edges of the studied domain, 
+especially for the parameters G and T. In fact the parameter G 
+seems to behave almost as constant across all the skills of the 
+dataset. 
+ 
+
+ 
+
+ 
+ 
+
+ 
+Figure 2: Histograms of the distributions for all parameters of 
+
+the dataset “OLI Psychology”. 
+ 
+
+ 
+Figure 3: Difficulty index vs BKT-BF error for all skills. 
+
+ 
+ 
+
+Figure 1: Contour plots of the RSS fitting error of the skill 
+
+“Recognize physical contributions to psychology” for the 
+pairs of parameters. 
+
+
+
+Figure 3 presents a scatterplot displaying the RMSE and its 
+corresponding difficulty index of the 336 skills, of all four datasets, 
+that have more than four different questions tagged to it.  
+All four datasets seem to follow a parabolic trend line, in fact, if we 
+fit a 2nd degree polynomial to the data, an adjusted R2 of 0.83 is 
+obtained. If we look at the data the parabolic behavior is especially 
+consistent in the largest datasets, in terms of number of records, as 
+the Physics skills seem to fall off the line. As a matter of fact the 
+Physics dataset is the one with the fewest number of students and 
+records.  
+As said in methods, we will perform the same analysis taking 
+random subsamples from the OLI Psychology dataset. We have 
+used the results to run a regression model using a second degree 
+polynomial of the difficulty index as predictor for each subsample 
+taken from the dataset OLI Psychology.  
+
+ 
+
+ 
+Figure 4: Adjusted R2 vs Sample sizes. 
+
+ 
+
+Figure 5 shows the same scatterplots displayed in figure 3 for the 
+sample of 100 000, 400 000, 700 000 and 1 000 000 data points. 
+We can see how variability disappears as we increase the number 
+of data points and in fact the adjusted R2 for the regression goes up 
+from 0.815, when we are using 100 000 data points, to 0.994 with 
+1 000 000 data points. The estimated parameters for the regression 
+line do not have a big variability, as could be expected, along the 
+different sample sizes. 
+
+ 
+
+ 
+Figure 5: BKT-BF error vs Difficulty index with different 
+
+sample size. 
+
+ 
+
+4. DISCUSSION 
+The parabolic relationship between the difficulty index of the skills 
+and the corresponding RMSE error of the fitted BKT model that 
+was observed in Martori et al. [7] has been extended to three more 
+datasets. We are aware that the step size we are using in BKT-BF 
+is pretty large but we are fitting the parameters to study the behavior 
+of the error, so we consider that this has no impact on the results 
+we obtained and the conclusions we reached. On the other hand, 
+and in accordance to van De Sande’s findings [10] on 
+identifiability, the contour plots are a clear example that no 
+problems of local minima were found. It needs to be noted, 
+however, that the optimal areas are very wide, which could be a 
+confounder for identifiability. Further research around this area is 
+needed to clarify this. 
+The parabolic behavior of the difficulty index is indicates that the 
+BKT performance highly depends on the difficulty index of the 
+skill. That being said, BKT performs at its best when it is dealing 
+with either easy or difficult skills. In the worst scenario, when skills 
+have difficulty indexes around 0.5, the performance of BKT is not 
+good, in terms of estimating the student’s likelihood to provide a 
+correct answer, given that the corresponding RMSEs are also close 
+to 0.5. This is a problem because the intermediate difficulty index 
+area should be the one in which students happen to be working 
+more often, as we expect them to start the learning process without 
+knowing the skill and, eventually finish having mastered it.  
+The second degree polynomial of the difficulty index, di*(1-di), 
+could be thought as the interaction of mastery and S for the first 
+piece, and the one between the probability of not knowing and the 
+G parameter. However, further research to see how the four BKT 
+parameters are related to these findings is very much needed. It 
+might be indicating, as well, that one or more parameters should be 
+moved from the skill level, where they are now, to a finer grained 
+student-skill level. This would be consistent with the work done in 
+[5] and [6]. Another approach seeking for individualization would 
+follow the work done by Galyardt and Goldin [11]. 
+There is an important sample size effect, probably related to the 
+central limit theorem, in the quality of the fit between the RMSE 
+and the difficulty index. This effect, however, is better noticed 
+when dealing with large datasets, which involve an important 
+number of students and difficulty indexes spanning around wide 
+domain. This situation might not be the usual situation in which 
+BKT is being used. It is noteworthy that the fact that we cannot 
+observe the described effect, due to the reasons we just said, does 
+not exclude that it is indeed happening. 
+Future research lines should involve using these same methodology 
+on different knowledge inference models, especially those looking 
+for in individualization, in order to see if similar behaviors are 
+observed.  
+
+REFERENCES 
+[1] Corbett, A. T. and Anderson, J. R. 1995. Knowledge tracing: 
+
+Modeling the acquisition of procedural knowledge. User 
+Modeling and User-Adapted Interaction, 4(4), 253-278. 
+http://dx.doi.org/10.1007/BF01099821  
+
+[2] Baker, Corbett, Gowda, Wagner, MacLaren, Kauffman, 
+Mitchell, & Giguere, 2010. Bayesian Knowledge Tracing 
+Brute Force model fitting code. 
+http://users.wpi.edu/~rsbaker/edmtools.html  
+
+[3] Beck, J. E., Chang, K. M. 2007 Identifiability: A 
+fundamental problem of student modeling. In: Conati, C., 
+McCoy, K., Paliouras, G. (Eds.) UM 2007. LNCS, vol. 
+
+http://dx.doi.org/10.1007/BF01099821
+http://users.wpi.edu/~rsbaker/edmtools.html
+
+
+4511/2007, pp. 137- 146. http://dx.doi.org/10.1007/978-3-
+540-73078-1_17 
+
+[4] Moon, T. K. 1996. The expectation–maximization algorithm. 
+IEEE Signal Process. Mag., 13, 47–60 
+
+[5] Pardos, Z. A. and Heffernan, N. T. 2010. Modeling 
+Individualization in a Bayesian Networks Implementation of 
+Knowledge Tracing. In: Paul De Bra, Alfred Kobsa, David 
+N. Chin (eds.) Proceedings of the 18th International 
+Conference on User Modeling, Adaptation, and 
+Personalization (UMAP 2010), LNCS vol. 6075 pp. 255- 
+266. Springer (2010) http://dx.doi.org/10.1007/978-3-642-
+13470-8_24  
+
+[6] Yudelson, M., Koedinger, K. and Gordon, G. 2013 
+Individualized bayesian knowledge tracing models. In 
+Artificial Intelligence in Education, pages 171–180. 
+Springer, 2013. 
+
+[7] Martori, F., Cuadros, J. and González-Sabaté, L. 2015 Direct 
+estimation of the minimum RSS value for training Bayesian 
+Knowledge Tracing parameters. Proceedings of the 8th 
+International Conference on Educational Data Mining, pp. 
+364-367  
+
+[8] Koedinger, K.R., Baker, R.S.J.d., Cunningham, K., 
+Skogsholm, A., Leber, B., Stamper, J. 2010. A Data 
+Repository for the EDM community: The PSLC DataShop. 
+In Romero, C., Ventura, S., Pechenizkiy, M., Baker, R.S.J.d. 
+(Eds.) Handbook of Educational Data Mining. Boca Raton, 
+FL: CRC Press. http://dx.doi.org/10.1201/b10274-6  
+
+[9] Baker, R.S.J.d., Corbett, A. T., Aleven, V.: More Accurate 
+Student Modeling through Contextual Estimation of Slip and 
+Guess Probabilities in Bayesian Knowledge Tracing. In: 
+Woolf, B., Aimeur, E., Nkambou, R., Lajoie, S. (Eds.) ITS 
+2008. LNCS, vol. 5091/2008, pp. 406-415. Springer, Berlin 
+Heidelberg (2008) http://dx.doi.org/10.1007/978-3-540-
+69132-7_44  
+
+[10] van De Sande, B. (2013). Properties of the Bayesian 
+Knowledge Tracing model. JEDM-Journal of Educational 
+Data Mining, 5(2), 1-10. 
+
+[11] Galyardt, A. and Goldin, I. 2015 Move your lamp post: 
+Recent data reflects learner knowledge better than older data. 
+Journal of Educational Data Mining. Vol 7, No 2, pp 83-111
+
+ 
+
+http://dx.doi.org/10.1007/978-3-540-73078-1_17
+http://dx.doi.org/10.1007/978-3-540-73078-1_17
+http://dx.doi.org/10.1007/978-3-642-13470-8_24
+http://dx.doi.org/10.1007/978-3-642-13470-8_24
+http://dx.doi.org/10.1201/b10274-6
+http://dx.doi.org/10.1007/978-3-540-69132-7_44
+http://dx.doi.org/10.1007/978-3-540-69132-7_44
+
+

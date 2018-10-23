@@ -1,0 +1,1172 @@
+
+Estimation of Ability from Homework Items When There
+Are Missing and/or Multiple Attempts
+
+Yoav Bergner
+Educational Testing Service
+
+Princeton, NJ 08541
+ybergner@ets.org
+
+Kimberly Colvin
+University at Albany–SUNY
+
+Albany, NY 12222
+
+David E. Pritchard
+M.I.T.
+
+Cambridge, MA 02139
+
+ABSTRACT
+
+Scoring of student item response data from online courses
+and especially massively open online courses (MOOCs) is
+complicated by two challenges, potentially large amounts
+of missing data and allowances for multiple attempts to
+answer. Approaches to ability estimation with respect to
+both of these issues are considered using data from a large-
+enrollment electrical engineering MOOC. The allowance of
+unlimited multiple attempts sets up a range of observed
+score and latent-variable approaches to scoring the constructed
+response homework. With respect to missing data, two clas-
+sical approaches are discussed, treating omitted items as
+incorrect or missing at random (MAR). These treatments
+turn out to have slightly different interpretations depend-
+ing on the scoring model. In all, twelve different homework
+scores are proposed based on combinations of scoring model
+and missing data handling. The scores are computed and
+correlations between each score and the final exam score are
+compared, with attention to different populations of course
+participants.
+
+Categories and Subject Descriptors
+
+H.2.8 [Database Applications]: Data Mining; I.2.6 [Learning]:
+Parameter Learning; K.3.1 [Computers and Education]:
+Computer Uses in Education
+
+General Terms
+
+Algorithms, Measurement, Human Factors
+
+Keywords
+
+Ability Estimation, Psychometrics, Missing Data, MOOCs
+
+1. INTRODUCTION
+Homework serves an important role for learning, and mak-
+
+ing it count is of course an incentive for students to do the
+assignments. As digital learning environments have become
+
+Permission to make digital or hard copies of all or part of this work for personal or
+
+classroom use is granted without fee provided that copies are not made or distributed
+
+for profit or commercial advantage and that copies bear this notice and the full cita-
+
+tion on the first page. Copyrights for components of this work owned by others than
+
+ACM must be honored. Abstracting with credit is permitted. To copy otherwise, or re-
+
+publish, to post on servers or to redistribute to lists, requires prior specific permission
+
+and/or a fee. Request permissions from Permissions@acm.org.
+
+LAK ’15 March 16 - 20, 2015, Poughkeepsie, NY, USA
+
+Copyright is held by the owner/author(s). Publication rights licensed to ACM.
+
+ACM 978-1-4503-3417-4/15/03 ...$15.00.
+
+http://dx.doi.org/10.1145/2723576.2723582.
+
+widespread, correctness feedback and an affordance of mul-
+tiple attempts to answer, especially for constructed response
+items, have become a prevalent feature in computer-based
+homework and even some online exams. In formative con-
+texts, such as student homework, feedback and repeated at-
+tempts are naturally seen as contributing to learning op-
+portunity [21]. But multiple attempt allowance has justifi-
+cations in the context of testing as well, for reducing test
+anxiety [2], increasing score reliability [1], and even for long
+term learning [8]. It should be noted that mechanical forms
+for similar affordances with multiple choice questions have
+existed for a long time [15].
+
+When unpenalized multiple attempts are allowed in an on-
+line course, the grade book typically records an item score
+based only on whether the response was eventually correct
+(EC). Yet, under the reasonable assumption that higher abil-
+ity students are more likely to answer correctly on an ear-
+lier attempt than lower ability students, there should be
+construct-relevant information in the number of attempts
+observed. We will offer some empirical support for this as-
+sumption below.
+
+For the purpose of ability estimation, or for ranking, a
+more discriminating dichotomous scoring rule (EC is also
+a dichotomy) could be correct on the first attempt (CFA).
+Observed scores based on partial credit schemes [2] or latent-
+variable methods using Samejima’s Graded Response Model
+[19, 1] and Tutz’s Rasch-type sequential IRT (SIRT) model
+[24, 5] have also been used to estimate ability when multiple
+attempts were allowed.
+
+In this study we frame the choice of the best homework
+ability estimate as the one that has the highest correlation
+with the final exam score. We are cognizant that homework
+serves different purposes than those of summative exams.
+But seeing as the homework grade is part of the cumula-
+tive course grade, and with a nod towards assessment for
+learning [22, 9], we seek the best ability estimate we can
+obtain on-the-fly from homework observations. One may al-
+ternately think of the goal in terms of predicting final perfor-
+mance, although we will not explicitly construct a predictive
+model here.
+
+The scoring/ability estimation problem seems well-defined
+until one is confronted by non-negligible amounts of miss-
+ing data in student responses. This is a well documented
+problem, dating from both before [11] and after [13] Ru-
+bin’s conceptual formulation of the missing data problem
+[18]. Model-based approaches to non-ignorable missing data
+were discussed in [17]. Recent analyses from large-scale test-
+ing programs consider 10% of items omitted on average to
+
+118
+
+
+
+be non-negligible [14]. In MOOCs, where often huge num-
+bers of students are participating only casually, the numbers
+are of course much larger than this. Even after screening for
+students who attempted at least 50% of the homework prob-
+lems, the average proportion of omitted homework items in
+our data set is 16%.
+
+We restrict our attention here to three classical approaches
+to the missing data problem in student responses, namely:
+we can exclude students from our analysis, we can treat miss-
+ing values as incorrect responses, or we can ignore the miss-
+ing data. As we shall discuss, treating missing responses as
+either incorrect or as missing at random (MAR) lead to dif-
+ferent consequences, depending further on the scoring model
+that is used for the observed data.
+
+The organization of this paper is as follows. In Section 2
+we describe properties of our MOOC data set, including the
+distribution in the number of items attempted and of certain
+observed scores. A baseline for the predictive gain in using
+the number of attempts is established by comparing even-
+tually correct and correct on first attempt sum scores. In
+Section 3 we provide some qualitative background on item
+response theory (IRT). We begin by distinguishing latent-
+variable models of ability from observed scores and then
+consider dichotomous and polytomous IRT models. We de-
+scribe the effect of missing data handling on each of these
+scoring approaches and present the master framework for
+scores we will calculate from the homework data. Results
+are presented in Section 4, followed by a discussion.
+
+2. MOOC DATA
+Our data set comes from the first administration of an
+
+electrical engineering massive open online course on Circuits
+and Electronics offered on the MITx platform (now part of
+edX.org) in the spring of 2012. Registered enrollment for
+this course was very large (over 100,000) given the excite-
+ment for this new platform at the time, but the fraction of
+active participants was more modest. About 8,400 students
+attempted 50% or more of the homework, and 7,157 earned
+certificates of completion [20]. Scored items included ques-
+tions embedded within video lectures, twelve weekly home-
+work sets, virtual labs, and two exams. We consider here
+the 197 homework items. Homework problems typically in-
+cluded several subparts, scored separately, so this total refers
+to the number of subparts, all of which were short-answer
+constructed response (no multiple choice). Students were
+allowed unlimited and unpenalized attempts on homework
+(answer until correct), receiving a red X or a green check-
+mark for each submitted response. There was a due-date
+each week, but items were otherwise un-speeded.
+
+The final exam consisted of 47 unique items, also con-
+structed response, however only three submissions were al-
+lowed on exams. Students were given 24 hours to complete
+exams and a five day window in which to start them.
+
+The MOOC population was very diverse, including inter-
+national students from 194 countries; students with educa-
+tional attainment levels ranging from high school to doc-
+torate; and students of highly varying commitment to the
+course, from casual auditors to certificate-seekers [7]. The
+homework problems were open-book, such that before or af-
+ter wrong-answer feedback, students had opportunities to
+consult relevant material including notes, videos, a discus-
+sion forum, and an online textbook. Finally, the data were
+collected over a 14-week period. Homework points earned
+
+were weighted as 15% of the final course grade, whereas the
+final exam was weighted 40%.
+
+For a number of reasons, including differing levels of abil-
+ity but also engagement and motivation with respect to com-
+pleting homework assignments or the final exam, the number
+of omitted responses was highly variable. The distributions
+for the proportion of homework and final exam items at-
+tempted are shown in Figure 1 for students who attempted
+at least 50% of either (total counts shown in legend).
+
+Proportion of items attempted
+
+F
+re
+
+q
+u
+e
+n
+c
+y
+
+0.5 0.6 0.7 0.8 0.9 1.0
+
+0
+5
+0
+0
+
+1
+0
+0
+0
+
+1
+5
+0
+0
+
+2
+0
+0
+0
+
+2
+5
+0
+0 Final exam (N=6566)
+
+Homework (N=8357)
+
+Figure 1: Number of students attempting a given
+proportion of final exam and homework items.
+Two distinct distributions are shown with diagonal
+hatches to disambiguate the overlaps.
+
+As might be expected, the proportion of items attempted
+drops off more quickly and regularly on the final exam, which
+counted as 40% of the course grade. For homework items,
+the principal mode still occurs at 100% of items attempted,
+but a second mode is seen near 85%. Item omission rates
+tended to increase over the subparts of each problem and
+the length of each weekly assignment, possibly because the
+later questions were more difficult, and the overall omission
+rate was higher in the last two homework assignments.
+
+In Figure 2, histograms of observed scores on the home-
+work are plotted in two ways, using eventually correct (EC)
+scoring (the official score of the grade-book) and summing
+over all of the items scored correct on first attempt (CFA),
+i.e. no credit if correct response was on attempt number two
+or greater.
+
+Given an unlimited number or attempts, it is not sur-
+prising that the distribution of points earned on homework
+shows a significant ceiling effect. Moreover, the second mode
+in the EC score appears to be connected to the second mode
+in the proportion of homework items attempted (Figure 1);
+thus a great many students still earned the maximum score
+possible on homework, given the number of items they at-
+tempted. With its diminished variance, the homework EC
+score may not be the best predictor, and indeed its corre-
+
+119
+
+
+
+Observed score on homework
+
+F
+re
+
+q
+u
+e
+n
+c
+y
+
+0 50 100 150 200
+
+0
+2
+0
+0
+
+4
+0
+0
+
+6
+0
+0
+
+8
+0
+0
+
+1
+0
+0
+0
+
+CFA score
+
+EC score
+
+Figure 2: Distribution of observed homework
+score (197 items) using eventually correct (EC, as
+recorded in the grade book) scoring and correct on
+first attempt (CFA) scoring
+
+lation with the final exam score is 0.28. All correlations in
+this paper refer to Pearson’s r.
+
+On the other hand, the CFA score shown in Figure 2 has
+an almost ideal normal distribution. Its correlation with
+the final exam score is 0.47, which is comparable to the
+correlation between the final and the midterm exams (r =
+0.46). This is the first indicator that ignoring number of
+attempts comes at a significant loss in predictive power for
+final exam performance. In the remainder of this paper, we
+explore whether the correlation with final exam of ability
+estimates based on homework can be increased further using
+item response models.
+
+It should be said that the distribution of scores on the final
+exam is also skewed and shows a ceiling effect, although the
+skew and the effect of CFA scoring are not as pronounced
+as with the homework data in Figure 2. In this paper, we
+will not promote alternate scoring rules for the final exam,
+which allowed three attempts, not unlimited attempts like
+the homework. Given the design and weight of the final
+exam, we take it as an assumption that the observed sum
+score on the final is a suitable performance outcome measure.
+To sidestep the issue of committed responses on the final
+exam—an issue that we confront head-on with regards to
+homework—we will furthermore exclude students who did
+not attempt at least 90% of the items on the final. Our goal
+is to identify from homework performance a single measure
+that correlates best with this outcome.
+
+Before describing the scoring models, we offer an empirical
+test of the underlying assumption proposed in the Introduc-
+tion that the number of attempts used is negatively corre-
+lated with ability. For this purpose, we consider the CFA
+score (Figure 2) as a proxy for ability and then examine the
+correlation between this score and the average number of
+
+attempts used across all items. Average attempts used is so
+highly skewed and has such a long tail (the range for aver-
+age attempts was [1, 42]) that we chose a negative reciprocal
+transformation for this variable. We plot the results in Fig-
+ure 3. The correlation between the transformed variables is
+r = ?0.87. In essence, the lower the likelihood of a student’s
+answering correctly the first time, the higher the number of
+attempts can be expected on average.
+
+?1.0 ?0.8 ?0.6 ?0.4 ?0.2 0.0
+
+0
+5
+0
+
+1
+0
+0
+
+1
+5
+0
+
+2
+0
+0
+
+Negative reciprocal of average attempts per item
+
+C
+o
+rr
+
+e
+c
+t 
+o
+n
+ f
+ir
+s
+t 
+a
+tt
+e
+m
+
+p
+t 
+s
+u
+m
+
+ s
+c
+o
+re
+
+Figure 3: Relationship between average number of
+attempts used and proportion correct on first at-
+tempt
+
+Finally, for a sense of how number of attempts was dis-
+tributed by item, Table 1 shows the counts of items by the
+observed median attempt to correct within our sample pop-
+ulation.
+
+Table 1: Median attempts observed for HW items
+median 1 2 3 4
+count 140 41 14 2
+
+Over two-thirds of all homework items were solved cor-
+rectly the first time by at least half of respondents, and thus
+have a median attempt number of one. As we prepare to
+consider models for multiple attempts in the next section,
+we will want to focus our attention on those items for which
+multiple attempts were realized by a large number of stu-
+dents. We refer to items with median attempts of one as
+Group I and the remainder of the items as Group II.
+
+3. BACKGROUND ON IRT
+
+3.1 Observed scores and latent ability models
+A thorough treatment of item response theory may be
+
+found in [10, 3], among other references. We review only
+some general principles here, especially aimed at those with
+
+120
+
+
+
+limited or no exposure to IRT and with an eye to the con-
+sequences for the application at hand.
+
+Classical test theory proposes that an examinee’s observed
+score, often the total number of items correct or the total
+points earned, is equal to the examinee’s true score plus
+an error score, with the assumptions that the average error
+score on a test is 0 and the true scores and error scores
+are uncorrelated [12]. With some additional work reliability
+coefficients can be estimated.
+
+In contrast to considering only the total score on a set of
+items is item response theory, which models each interaction
+between student i and test/homework item j as a proba-
+bilistic trial. Each outcome Xij ? {0, 1}, depends on the
+(latent) ability of the student, usually denoted ?i, and some
+characteristics of the item (at minimum, say, difficulty), rep-
+resented by a vector ?j . To use IRT thus means to adopt
+a model for this probability, expressed as a functional rela-
+tionship,
+
+P (Xij = x|?i, ?j) = f(?i, ?j), x ? {0, 1}, (1)
+
+and to estimate the latent ability. The link function f
+should be a monotonically increasing function of ?, with an
+appropriate range in [0, 1]. An example is the logistic func-
+tion. The argument of f is typically a linear function of
+?. For example, a standard IRT model which includes both
+intercept (difficulty) and slope (discrimination) parameters
+for each item is the two-parameter logistic (2PL) model.
+Completing the conceptual framework for IRT, individual
+responses are assumed to be conditionally independent of
+each other, given the person and item parameters. This al-
+lows the likelihood of the vector of responses to factor into
+a product of individual probabilities, a key part of the es-
+timation paradigm. In addition, IRT has stronger assump-
+tions than classical test theory, such as unidimensionality
+and, typically, normality of the latent variable. The use of
+a parametric model may be seen by some as a liability, or
+at least it may force the issue of demonstrating model-data
+fit [23], though a full treatment is beyond the scope of this
+paper. We do note that all items were positively correlated
+with both the total score on the homework items and the
+final exam score. There were no items whose proportion
+correct was close to 0 or 1 on the first attempt. Eventually
+correct scoring (EC), as we have already noted, suffers from
+pronounced ceiling effects on easy items.
+
+There are two aspects of online homework data that might
+compromise the use of observed scores for ability estima-
+tion: omitted responses and multiple attempts. We now
+take these two issues in turn and compare observed score
+and latent variable approaches.
+
+An omitted response does not contribute to a sum score
+S, and thus, in that sense, it is automatically counted as
+an incorrect response. This has some logic, but it may be
+inappropriate for estimating ability when homework counts
+for very little (low-stakes, in our case 15% of course grade).
+In that case, a student might elect to skip some home-
+work problems that would have been answered correctly if
+attempted. (Note that this counterfactual has the ring of an
+IRT mindset.) Still within the framework of observed scores,
+one can choose to ignore missing responses (the MAR as-
+sumption) by reporting a mean score M rather than a sum
+score. That is, compute the proportion of attempted items
+that were answered correctly. It should become clear that
+
+if such scores are then compared across students, the result
+is akin to imputing the mean value of proportion correct
+for unobserved responses. The MAR assumption should not
+be taken lightly. If a student responds only to easy items
+and omits all of the difficult ones, this assumption would be
+highly suspect. But neither observed sum scores nor mean
+scores are necessarily sensitive to different item difficulties
+in the presence of missing data.
+
+When using IRT for ability estimation, omitted responses
+may again be modeled as incorrect or treated as missing
+at random (MAR), in which case ability estimates will be
+based only on the observed responses. However, since IRT
+takes into account variable item difficulty (and possibly also
+discrimination) in modeling student-item level interactions,
+the consequences of the MAR assumption may be different
+than in the observed score case. For example, if one stu-
+dent preferentially omits difficult items and another omits
+only easy ones, IRT ability estimates for these two cases
+will differ even if both students answer the same number
+and proportion of items correctly. Some price still has to
+be paid, of course, for missing data; standard errors of the
+estimates are larger when fewer responses are observed. The
+appropriateness of modeling missing responses as incorrect
+or MAR is not solved by IRT, and it still requires judgments.
+
+As was suggested in the introduction, the allowance of
+multiple attempts, while not ruling out observed scores, at
+least opens the door to different observed scores based on
+the same data. One may compute a sum score by summing
+up items that were eventually correct, Sec, or only correct
+on first attempt, Scfa, and these scores have different distri-
+butions. (While after-the-fact partial credit scores are also
+possible, we do not consider those approaches here.) The
+same dichotomization schemes can be pre-processing steps
+in observed mean scores (Mec,Mcfa) or in an IRT estimation
+using, for example, a 2PL model. But multiple attempts can
+also be modeled directly in IRT without dichotomization or
+assumptions about partial credit, by invoking polytomous
+probability models.
+
+3.2 Polytomous Models
+There is a veritable zoo of polytomous IRT models, but as
+
+long as response categories are ordered, these fall into three
+classes [25]: adjacent category models (ACM), which are also
+known as generalized partial credit models; cumulative prob-
+ability models (CPM), which are sometimes called graded
+response models (GRM); and sequential models (SM), also
+known as continuation ratio models or CRMs.
+
+The names ACM, CPM, and CRM refer to how the log-
+odds between different levels of response are modeled. If
+the possible levels on item response X are denoted by x =
+1, 2, . . . ,m, then graded response models, including the canon-
+ical GRM [19], model the cumulative probability of passing
+each level, given the latent ability ? as,
+
+Gx(?) = P (X ? x|?) (2)
+
+Continuation ratio models (CRMs) condition each cumu-
+lative probability first on having reached the previous level:
+
+Mx(?) = P (X ? x|X ? x? 1; ?) =
+P (X ? x|?)
+
+P (X ? x? 1|?)
+(3)
+
+For completeness, although we do not consider them in
+this study, adjacent category models, as the name suggests,
+
+121
+
+
+
+consider the relative probabilities between adjacent levels,
+
+Mx(?) =
+P (X ? x|?)
+
+P (X = x? 1 ?X = x|?)
+(4)
+
+In the ordinal polytomous IRT models described above,
+higher levels on responses are usually associated with more
+of the latent trait. For example, higher ability students earn
+a higher score in a partial-credit item. When these models
+are used for multiple attempts, the coding is reversed, as
+higher ability students are expected to use a lower number
+of attempts.
+
+CRMs were originally conceived of as sequential models
+[24]. The intuitive connection to a sequence of steps taken
+to solve a problem is manifest in the tree representation of
+[6]. The specific linear tree shown in Figure 4 illustrates
+a sequence of student attempts—each blue circular node is
+an attempt opportunity—and the reverse-coded graded re-
+sponse score (orange boxes) corresponding to a homework
+item where three attempts are allowed. Although unlim-
+ited attempts were allowed in our data, we must in practice
+terminate the sequence at some finite value. Based on the
+observed medians in Table 1, three attempts seemed like a
+reasonable choice.
+
+a1
+
+3
+
+correct
+
+a2
+
+incorrect
+
+2a3
+
+incorrect
+
+10
+
+incorrect
+
+Figure 4: A linear tree representation of a sequen-
+tial IRT model for multiple attempts. Round nodes
+represent sequential attempts on the same item (in
+this case, a maximum of three). Observed scores
+(orange boxes) correspond to reverse-coding for a
+graded response model.
+
+It should be noted that by treating a student’s repeated
+attempts on the same item as separate item-trials in an IRT
+framework, the sequential model clearly violates the condi-
+tional independence assumption mentioned earlier. The SM
+does not however ignore the between-trials dependence or
+treat each trial as identical; it specifically models the depen-
+dence by means of a sequence of difficulty thresholds, which
+should be non-increasing for subsequent attempts. (An item
+which becomes more difficult on repeated attempts is pro-
+viding evidence of something other than student ability).
+
+The interpretation of missing data in the context of poly-
+tomous IRT models gets thorny. To begin with, treating
+a completely missing response as incorrect goes beyond the
+single imputation in a dichotomous model. If the incorrect
+code corresponds to the lowest level in a polytomous model,
+then the imputation is that the maximum number of incor-
+rect attempts was observed.
+
+However, even if some number of incorrect attempts is ob-
+served, it may not exhaust the available categories. Say, for
+example, three attempts are allowed, and a student responds
+
+incorrectly once but does not attempt the item again. From
+the point of view of a graded response model, the only option
+is to code the lowest level, since the item was never correctly
+answered. The response is thus coded identically to that of
+a student who attempted two or more times, all incorrectly.
+Using the sequential model, on the other hand, it is possible
+either to impute incorrect steps for the whole sequence or to
+ignore subsequent steps which were not observed.
+
+Thus for sequential models, a middle ground exists, which
+is to treat subsequent missing attempts (after the last incor-
+rect attempt) as incorrect but to treat all missing attempts
+as MAR when the item was never attempted. This is remi-
+niscent of the distinction between omitted and not-reached
+items in [11]. For simplicity, however, we will not go down
+this third path in this study. We retain the following conven-
+tions: completely missing items are either coded as observed
+incorrect an infinite number of times or MAR. Partially ob-
+served incorrect sequences are coded as the lowest level for
+the GRM and as partially observed for the SM.
+
+3.3 Summary of Models
+In Table 2 we summarize all of the scoring options consid-
+
+ered in this study. On the vertical dimension of the table are
+variations in observed score, latent dichotomous 2PL mod-
+els, and latent polytomous models. On the horizontal di-
+mension are two approaches for handling missing responses,
+either by treating them as incorrect or as MAR.
+
+Table 2: Summary of homework scoring approaches
+
+Missingness Handling
+
+Incorrect MAR
+
+A
+tt
+em
+
+p
+ts
+
+M
+o
+d
+el observed score
+
+EC Sec Mec
+
+CFA Scfa Mcfa
+
+latent
+trait
+model
+
+dichotomous
+2PL|EC ?ec,0 ?ec,NA
+
+2PL|CFA ?cfa,0 ?cfa,NA
+
+polytomous
+GRM ?G,?? ?G,NA
+
+SM ?S,?? ?S,NA
+
+3.4 Estimation
+2PL and GRM parameter estimates were derived using
+
+marginal maximum likelihood estimation (MMLE) with the
+R package ltm [16]. No issues of algorithm convergence or
+unusual parameters were encountered. It is possible to esti-
+mate the sequential model using the irtrees package [6] by
+converting the data to the form of a generalized linear mixed
+effects model and using lme4 [4]. This method was also de-
+scribed in [5]. For the size of our data sets, we found this
+approach extremely slow and/or unreliable, so we devised
+an alternate trick. The idea is to expand the polytomous
+matrix into a binary matrix representing item-trials and use
+the rasch function on the derived matrix. This approach
+worked without issue.
+
+4. RESULTS
+Having laid out the models and estimation methods in
+
+Section 3, we now present results in the form of correla-
+tions between homework scores, obtained various ways (see
+in Table 2), and final exam scores. Overall results using all
+
+122
+
+
+
+students in our sample and all homework items are presented
+first. Following this, we examine the same homework-final
+score correlations when broken out by sub-groups of students
+and items separately.
+
+4.1 Overall Results
+
+Table 3: Correlations of homework scores with final
+exam using all homework items (Ni = 197) and all
+students who attempted at least 50% of the home-
+work and 90% of the final exam (Ns = 4290)
+
+Missing as incorrect Missing as MAR
+score corr (r) score corr (r)
+Sec 0.28 Mec 0.40
+Scfa 0.47 Mcfa 0.47
+?ec,0 0.26 ?ec,NA 0.38
+?cfa,0 0.45 ?cfa,NA 0.48
+?G,?? 0.45 ?G,NA 0.50
+?S,?? 0.45 ?S,NA 0.49
+
+The correlation between each homework scoring approach
+and the final exam score are shown in Table 3. The general
+conclusions are as follows: correct on first attempt (CFA)
+dichotomization of the observed response matrix is more in-
+formative than eventually correct (EC) dichotomization of
+same. Treating missing responses as MAR is more infor-
+mative than treating them as incorrect. And polytomous
+IRT models do have a slight edge overall, presumably due
+to the information available from subsequent attempts af-
+ter the first. In the following, we unpack these results by
+partitioning the observed data along student and item lines,
+described below.
+
+4.2 Student Subgroups
+The purpose of partitioning the students is to test hy-
+
+potheses about the optimal way to handle missing data for
+different populations. As shown in Figure 1, the proportion
+of missing items varies considerably on the homework and
+less so for the final exam. Our hypothesis was that for stu-
+dents who attempted almost all of the items on homework,
+say more than 90%, the omitted items were likely the ones
+they found difficult. In that case, treating missing responses
+as incorrect would probably be more informative than treat-
+ing them as MAR. Conversely, for students who attempted
+only 50-80% of the homework items, omission would not im-
+ply difficulty and treating omitted responses as MAR should
+be more informative. For students in the middle, those who
+attempted 80-90% of homework items, we were agnostic.
+In all cases, we wanted to correlate homework scores with
+a meaningful sum score on the final exam, and so we in-
+cluded only students who attempted at least 90% of the
+final (N = 4290). The breakdown of sub-population counts
+is shown in Table 4.
+
+Table 4: Subpopulation counts
+% of HW attempted 90+ 80-90 50-80
+counts 2418 1385 487
+
+Results broken out by the sub-groups above are presented
+In Table 5.
+
+As we anticipated, for the students completing between
+50-80% of the problems, treating the omitted items as miss-
+
+Table 5: Correlations with final exam broken out
+into groups by percentage of homework attempted
+
+Missing as incorrect Missing as MAR
+
+score
+Pct. attempted
+
+score
+Pct. attempted
+
+90+ 80-90 50-80 90+ 80-90 50-80
+
+Sec 0.34 0.30 0.33 Mec 0.37 0.37 0.49
+Scfa 0.51 0.43 0.40 Mcfa 0.50 0.44 0.43
+?ec,0 0.29 0.17 0.28 ?ec,NA 0.37 0.35 0.41
+?cfa,0 0.49 0.40 0.40 ?cfa,NA 0.50 0.43 0.46
+?G,?? 0.50 0.42 0.41 ?G,NA 0.52 0.45 0.50
+?S,?? 0.51 0.43 0.39 ?S,NA 0.51 0.45 0.47
+
+ing at random was more informative, as it was for those who
+completed 80-90% of the problems. Contrary to our hypoth-
+esis, however, for students who attempted more than 90%
+of the homework problems, there was no practical difference
+between the resulting correlations when missing items were
+treated as incorrect or missing at random.
+
+An unanticipated result is that Mec, which underperforms
+Mcfa for students who attempted at least 80% of the home-
+work items, seems to outperform Mcfa with the 50-80%
+group. Thus, among students who really omitted a lot of
+homework responses, getting the items that they did try cor-
+rect eventually proved to be more informative than getting
+them right the first time. But for the majority of students
+who participated more fully, the opposite was true.
+
+4.3 Item Subgroups
+The purpose of partitioning items is to focus on the differ-
+
+ence between polytomous and dichotomous models where it
+counts the most, i.e. when multiple attempts are manifest
+in the data. As shown in Table 1, for 140 items which we
+labeled as Group I, at least half of respondents answered
+correctly on the first attempt. Since most students answer
+correctly the first time, most of the information about abil-
+ity should be available at this threshold. We anticipated
+that the advantage of polytomous models would be more
+apparent in the Group II items, although there were only 57
+of them.
+
+Table 6: Correlations of homework scores with final
+exam broken out by item groups
+
+Missing as incorrect Missing as MAR
+
+score
+Item group
+
+score
+Item group
+
+Group I Group II Group I Group II
+
+Sec 0.22 0.33 Mec 0.35 0.40
+Scfa 0.44 0.44 Mcfa 0.47 0.42
+?ec,0 0.37 0.37 ?ec,NA 0.29 0.23
+?cfa,0 0.45 0.47 ?cfa,NA 0.46 0.42
+?G,?? 0.49 0.41 ?G,NA 0.49 0.48
+?S,?? 0.46 0.45 ?S,NA 0.49 0.49
+
+Results are collected in Table 6. For Group I, the CFA ob-
+served scores are much more informative than the EC scores,
+which is expected. In fact, as was the case when all of the
+items were pooled, Mcfa was a pretty good score by our
+outcome measure. We did not expect much gain from poly-
+tomous item response models in Group I, but there were
+modest gains here.
+
+For Group II items, a couple of results stand out. With
+
+123
+
+
+
+missing responses as MAR, the polytomous models clearly
+do the best job. It should be noted that for polytomous
+models, the missing-as-incorrect option meant imputing that
+three incorrect attempts were observed, which could explain
+why this option degraded the correlations. Importantly, the
+GRM and SM produced homework scores with comparably
+good final exam correlations using only 57 items as with 140
+Group I items.
+
+When homework scores were extracted from item sub-
+groups, it was still mostly the case that treating missing
+items as MAR resulted in equal or better correlations than
+treating them as incorrect. One exception was for the 2PL
+model applied to EC dichotomized items. This model gener-
+ally did poorly because of low variance in the response ma-
+trix, so limiting the number of items to Group II seemed to
+only make matters worse. The other exceptions were Scfa
+, the observed sum score, and ?cfa, the 2PL model with
+CFA dichotomization in the Group II items. Because they
+elicited more attempts, Group II items would stand out as
+more difficult items when scored CFA. If a student prefer-
+entially omits difficult items, the MAR assumption should
+indeed be false. The polytomous IRT models did not seem
+susceptible to this bias, possibly because enough informa-
+tion was available from the number of attempts observed on
+other items.
+
+5. DISCUSSION AND FUTURE WORK
+One of the advantages of digital learning environments is a
+
+the ability to provide correctness feedback and an affordance
+of multiple attempts to answer. From a formative assess-
+ment viewpoint, we have sought in this study to identify the
+issues that arise in ability estimation from homework as a
+result of both missing responses and multiple attempts. We
+have shown that item response models can offer improved
+estimates, defined in terms correlation between homework
+and final exam scores. Furthermore, we found that polyto-
+mous IRT models can yield estimates from a smaller number
+of items, given multiple attempts, that are equally or better
+correlated with final exams than estimates based on more
+than twice as many easy items or estimates based on the
+midterm exam.
+
+To be sure, the correlations between assessment compo-
+nents that we have observed here are low compared with
+more traditionals courses. But this appears to be a fact on
+the ground in the analysis of MOOC data. MOOC student
+populations are extremely diverse—in background, partici-
+pation, and motivation—and assessment data are noisy. In
+this study, we did not have the benefit of covariate data,
+such as from student entry or exit surveys. These are now
+more routine in MOOCs, and a similar analysis factoring in
+these indicators might find stronger signals.
+
+From an instructor or learning analyst’s point of view, the
+takeaways are as follows. If unpenalized multiple attempts
+are allowed, one should not expect the grade-book home-
+work scores to predict the final exam scores particularly
+well. Even CFA mean scores, however, do a pretty good
+job if students attempted at least 50% of the homework. To
+get the most for the least, asking difficult questions, pro-
+viding multiple attempts, and estimating abilities using the
+graded response model or the sequential model is the best
+choice among the options considered.
+
+Given that GRM and SM were fairly neck and neck in
+our comparison, it is worth probing these models further.
+
+For example, it is straightforward to extend the sequential
+model to include variable item discriminations (which the
+GRM has). Also, as was mentioned above, it is possible to
+handle partially observed sequences differently from fully un-
+observed sequences. Perhaps with such improvements, the
+sequential model will capture even more evidence of student
+mastery.
+
+Attempt-based scoring appears to provide more informa-
+tion than EC scores in the estimation of homework ability,
+so it is natural to consider using such an approach for the fi-
+nal exam score. For clarity and simplicity, we chose to leave
+such variations to follow-up work. For now, we emphasize
+that the stakes on the final exam were higher than on home-
+work, and the number of allowed attempts was limited to
+three. Student behavior may have differed if an attempt-
+based scoring system had been specified in advance, so infer-
+ences based on correlations with alternative outcome scores
+would need considerably more justification.
+
+Absent from this analysis has been either a model for
+growth (learning) between attempts within an item, as was
+explored in [5], or long-term growth between items in the
+course. From an item response model perspective, it is chal-
+lenging to disambiguate growth when item parameters are
+not calibrated in advance. But a sliding-window approach
+may help to identify students whose level of engagement with
+the homework changes systematically over the semester.
+
+Finally, there are alternatives to handling missing data
+than were presented in this study. IRT-based approaches
+may be used to model missingness differently depending on
+a latent class description of the student [17]. Omitted items
+may be handled depending on item difficulty, as hinted at
+in our separate analysis of the Group II items. Multidimen-
+sional and/or tree-based IRT models can also treat tendency
+to omit responses as a separate ability dimension [6].
+
+6. ACKNOWLEDGMENTS
+We are grateful to edX for providing the raw data for this
+
+analysis, to Daniel Seaton for critical contributions to the
+processing of these data, and to helpful suggestions from
+reviewers. DEP would like to acknowledge support from a
+Google faculty award and from MIT.
+
+7. REFERENCES
+
+[1] Y. Attali. Immediate Feedback and Opportunity to
+Revise Answers: Application of a Graded Response
+IRT Model. Applied Psychological Measurement,
+35(6):472–479, Oct. 2010.
+
+[2] Y. Attali and D. Powers. Immediate Feedback and
+Opportunity to Revise Answers to Open-Ended
+Questions. Educational and Psychological
+Measurement, 70(1):22–35, Mar. 2009.
+
+[3] F. B. Baker and S.-H. Kim. Item Response Theory:
+Parameter Estimation Techniques, volume 176 of
+Statistics. Marcel Dekker, 2004.
+
+[4] D. Bates, M. Maechler, B. M. Bolker, and S. Walker.
+{lme4}: Linear mixed-effects models using Eigen and
+S4, 2014.
+
+[5] S. Culpepper. If at First You Don’t Succeed, Try, Try
+Again: Applications of Sequential IRT Models to
+Cognitive Assessments. Applied Psychological
+Measurement, June 2014.
+
+124
+
+
+
+[6] P. de Boeck and I. Partchev. IRTrees: Tree-Based
+Item Response Models of the GLMM family. Journal
+of Statistical Software, VV(Ii), 2012.
+
+[7] J. DeBoer, A. D. Ho, G. Stump, and L. Breslow.
+Changing “Course”: Reconceptualizing Educational
+Variables for Massive Open Online Courses. 2013.
+
+[8] M. Epstein, B. Epstein, and G. Brosvic. immediate
+feedback during academic testing. Psychological
+reports, 88:889–894, 2001.
+
+[9] E. W. Gordon. To Assess, To Teach, To Learn: A
+Vision for the Future of Assessment. Technical Report
+of the Gordon Commission on the Future of
+
+Assessment in Education, 2013.
+
+[10] W. J. Linden and R. K. Hambleton, editors. Handbook
+of Modern Item Response Theory. Springer New York,
+New York, NY, 1997.
+
+[11] F. M. Lord. Estimation of latent ability and item
+parameters when there are omitted responses.
+Psychometrika, 39(2):247–264, 1974.
+
+[12] F. M. Lord and M. R. Novick. Statistical theories of
+mental test scores. Addison-Wesley, 1968.
+
+[13] R. Mislevy and P. Wu. Missing Responses and IRT
+ability estimation: omits, choice, time limits, and
+adaptive testing. ETS Reseach Report RR-96-30, 1996.
+
+[14] S. Pohl, L. Grafe, and N. Rose. Dealing With Omitted
+and Not-Reached Items in Competence Tests:
+Evaluating Approaches Accounting for Missing
+Responses in Item Response Theory Models.
+Educational and Psychological Measurement,
+74(3):423–452, Oct. 2013.
+
+[15] S. Pressey. A simple apparatus which gives tests and
+scores—and teaches. School and Society, 23:373–376,
+1926.
+
+[16] D. Rizopoulos. ltm: An R Package for Latent Variable
+Modeling. Journal Of Statistical Software, 17(5):1–25,
+2006.
+
+[17] N. Rose, M. von Davier, and X. Xu. Modeling
+Nonignorable Missing Data With Item Response
+Theory ( IRT ). ETS Reseach Report RR-10-11,
+(April), 2010.
+
+[18] D. B. Rubin. Inference and Missing Data. Biometrika,
+63(3):581–592, 1976.
+
+[19] F. Samejima. Estimation of latent ability using a
+response pattern of graded scores. Psychometrika
+Monograph, (17), 1969.
+
+[20] D. T. Seaton, Y. Bergner, I. Chuang, P. Mitros, and
+D. E. Pritchard. Who Does What in a Massive Open
+Online Course? Communications of the ACM, 2014.
+
+[21] V. J. Shute. Focus on Formative Feedback. ETS
+Reseach Report RR-07-11, (March), 2007.
+
+[22] V. J. Shute, E. G. Hansen, and R. G. Almond. You
+Can’t Fatten A Hog by Weighing It – Or Can You ?
+Evaluating an Assessment for Learning System Called
+ACED. International Journal of Artifical Intelligence
+in Education, 18:289–316, 2008.
+
+[23] H. Swaminathan, R. K. Hambleton, and H. J. Rogers.
+Psychometrics, volume 26 of Handbook of Statistics.
+Elsevier, 2006.
+
+[24] G. Tutz. Sequential item response models with an
+ordered response. British Journal of Mathematical and
+Statistical Psychology, 43(1):39–55, May 1990.
+
+[25] L. van der Ark. Relationships and Properties of
+Polytomous Item Response Theory Models. Applied
+
+Psychological Measurement, 25(3):273–282, 2001.
+
+125
+
+
+
+
+

@@ -1,0 +1,311 @@
+
+Increasing the Accessibility of Learning Objects by
+Automatic Tagging
+
+Katja Niemann
+Fraunhofer Institute for Applied Information Technology FIT
+
+Schloss Birlinghoven
+Sankt Augustin, Germany
+
+katja.niemann@fit.fraunhofer.de
+
+ABSTRACT
+Data sets coming from the educational domain often suffer
+from sparsity. Hence, they might comprise potentially use-
+ful learning objects that are not findable by the users. In
+order to address this problem, we present a new way to auto-
+matically assign tags and classifications to learning objects
+offered by educational web portals that is solely based on
+the objects’ usage.
+
+Categories and Subject Descriptors
+H.2.8 [Database Management]: Database Applications—
+data mining ; J.1.3 [Computer Applications]: Adminis-
+trative data processing—education
+
+General Terms
+Algorithms, Experimentation.
+
+1. INTRODUCTION
+Many educational web portals allow users and domain ex-
+perts to manually enrich the learning resources with social
+metadata like free-text tags or classifications from a con-
+trolled vocabulary. This social metadata provides power-
+ful knowledge that can be used to improve the quality of
+searching and recommendations [2]. Nevertheless, data sets
+coming from the domain of technology enhanced learning
+often suffer from sparsity in respect to semantic and social
+metadata describing the learning objects which hinders their
+accessibility and impedes their recommendation [4].
+
+In order to deal with this problem, we propose to automati-
+cally exchange tags and classifications between similar learn-
+ing objects. Here, the similarity of two objects is calculated
+by comparing their usage contexts, i.e. the objects they were
+most often used with. This way, our approach is different
+from well-known approaches for automatic tagging that base
+on the object’s content or on tag co-occurrences [1, 2].
+
+Permission to make digital or hard copies of part or all of this work for personal or
+classroom use is granted without fee provided that copies are not made or distributed
+for profit or commercial advantage and that copies bear this notice and the full citation
+on the first page. Copyrights for third-party components of this work must be honored.
+For all other uses, contact the Owner/Author.
+LAK ’15 Mar 16 - 20 2015, Poughkeepsie, NY, USA
+Copyright is held by the owner/author(s).
+ACM 978-1-4503-3417-4/15/03.
+http://dx.doi.org/10.1145/2723576.2723660
+
+The paper is structured as follows. Chapter 2 presents our
+proposed approach. Chapter 3 introduces the data set that
+is used for the evaluation which results are discussed in chap-
+ter 4. Finally, chapter 5 gives a conclusion.
+
+2. APPROACH
+2.1 Usage Context-based Object Similarity
+We assume two learning objects to hold a semantic rela-
+tion if they are often used in the same usage contexts, i.e.
+together with the same co-occurrences. Figure 1 shows two
+exemplary user sessions from two different users. Both users
+access a text documents describing the Grand Palais and a
+picture showing the Centre Pompidou. Thereafter, the first
+user accesses a video about Renzo Piano while the second
+user opens a text document having Richard Rogers as topic.
+This means that the learning objects about Renzo Piano
+and Richard Rogers are not used together but they are used
+in similar usage contexts, i.e. together with the same learn-
+ing objects. Hence, the learning objects about Renzo Piano
+and Richard Rogers are assumed to hold a semantic rela-
+tion. This is in fact true, as they denote those two architects
+who designed the Centre Pompidou together. This example
+shows how the knowledge of the users is implicitly given by
+their activities and can be exploited without asking them to
+explicitly share it. A detailed description of this approach
+can be found in [3].
+
+Figure 1: Exemplary user sessions
+
+2.2 Automatic Tagging
+The automatic tagging is a process that is conducted in three
+steps. First, all pair-wise similarities between the learning
+objects are calculated based on their usage. Second, for each
+object all tags and classifications that are assigned to a sim-
+ilar object are selected as candidate tags. In order for two
+objects to be assumed to be similar their similarity must ex-
+ceed a pre-defined threshold. Third, the candidate tags are
+weight and only the most promising ones are selected. The
+weight of a tag or classification in respect to a learning object
+is calculated by accumulating and normalising the similarity
+values of all objects that hold this tag or classification and
+are similar to the selected learning object.
+
+414
+
+
+
+3. DATA SET
+The MACE (Metadata for Architectural Contents in Eu-
+rope) portal enables users to search for learning objects
+across repository boundaries and filter the results, e.g. ac-
+cording to their language, the original repository, and the
+classification terms they hold. 78.69% of the 12,442 learning
+resources accessed so far hold semantic metadata, i.e. 70.8%
+hold tags, 14.83% hold classifications, and 8.82% hold both
+in which each tagged learning resource holds on average 6.59
+tags and each classified learning resource holds on average
+2.27 classifications. As the tags are free text, about 73% of
+the 13,291 distinct tags are only used once and only about
+4% of the tags are added to more than 10 objects. This
+shows the speciality of the tags which impedes the discov-
+ery of the objects they describe. The classification values
+are slightly more equally distributed with about 39% of the
+classifications being only used once and about 77% of the
+classifications being used at maximum 5 times.
+
+4. EVALUATION
+In the conducted experiment we assumed two objects to be
+similar as soon as their usage-based similarity is higher than
+zero while the threshold t, i.e. the weight a tag or classifi-
+cation must exceed in order to be added to a new learning
+object, is varied from 0.1 to 1.0. This way, the number
+of tagged learning objects (i.e. 8,620) raises by at least 8%
+(9,309 tagged objects with t=1.0) up to 25% (10,783 tagged
+objects with t=0.1). Additionally, the number of tags an
+object holds on average increases drastically. When setting
+the threshold t to its maximum, a tagged object holds on
+average 34.72 tags while with a lower threshold, the number
+of tags per object raises up to 680.06 (with t=0.1). Further-
+more, the number of classified objects (i.e. 1,806) increases
+by 19% (2,144 classified objects with t=1.0, each holding
+on average 2.72 classifications) up to 245% (6,229 classified
+objects with t=0.1, each holding on average 7.59 classifica-
+tions).
+
+The number of tags that were only assigned to one ob-
+ject halve through the automatic tagging process, i.e. from
+73.33% (9,746) to 37.1% (4,930). In turn, the percentage
+of the tags that are used 2-100 times increases from 26.24%
+(3,487) to 56.65% (7,530). Though, the percentage of tags
+that are assigned to more than 100 objects only increases
+from 0.44% (58) to 6.25% (831). This shows that indeed the
+rarely used tags are assigned more often to learning objects
+and not (only) the already frequently used ones. The same
+effect can be observed for the classifications. The percent-
+age of classifications that are only used once decreases from
+38.59% (336) to 19.06% (166) in the MACE data set. The
+percentage of classifications used 2-5 times only increases
+slightly from 38% (331) to 44.55% (368). Finally, 36.62% of
+the classifications are assigned to 10-100 objects after the au-
+tomatic tagging while the number of classifications assigned
+to more than 100 objects stays the same.
+
+In order to evaluate the quality of the automatic added tags
+and classifications we use them to calculate rating predic-
+tions. Figure 2 shows the mean average error (MAE) and
+the coverage (i.e. number of user-item pairs in the test set
+for which a rating can be predicted) of the content-based
+recommender systems for the MACE data set and varying
+thresholds. It can be seen that the coverage increases with
+
+a decreasing threshold. This is due to the fact that more
+tags and classifications can be assigned to the learning ob-
+jects which leads to more content-based object relations.
+The MAE increases as well with an increasing threshold.
+However, the MAE can even be improved compared to the
+baseline if the threshold is high enough. Finally, the classifi-
+cations neither increase the MAE nor the coverage as much
+as the tags. This can be motivated by the fact that less
+classifications than tags are added.
+
+baseline tags + classifications added tags added classifications added
+
+0.5
+
+0.52
+
+0.54
+
+0.56
+
+0.58
+
+0.6
+
+0.62
+
+0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1
+
+m
+e
+
+a
+n
+
+ a
+v
+
+e
+ra
+
+g
+e
+
+ e
+rr
+
+o
+r
+
+threshold
+
+(a) Mean average error
+
+50
+
+55
+
+60
+
+65
+
+70
+
+75
+
+80
+
+85
+
+90
+
+95
+
+100
+
+0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1
+
+co
+v
+e
+ra
+g
+e
+
+threshold
+
+(b) Coverage
+
+Figure 2: Performance of the content-based recommender
+
+5. CONCLUSION
+We proposed a new way to automatically enhance the se-
+mantic metadata representations of learning objects offered
+by educational web portals to enhance their accessibility.
+This is done by exchanging tags and classifications between
+the objects based on the objects’ usage context-based simi-
+larities. Thus, no content information about the objects is
+needed to detect similarities. We found that this way even
+learning objects that previously did not hold any tags or
+classifications could be automatically tagged and classified.
+Furthermore, we found that especially the rarely used tags
+and classifications were assigned to new objects.
+
+6. ACKNOWLEDGMENTS
+The work presented in this paper has been partly supported
+by the project Open Discovery Space project that is funded
+by the European Commission’s CIP-ICT Policy Support
+Program (Project Number: 297229).
+
+7. REFERENCES
+[1] E. Diaz-Aviles, M. Fisichella, R. Kawase, and
+
+W. Nejdl. Unsupervised Auto-tagging for Learning
+Object Enrichment. In Proc. of the 6th European
+Conference on Technology Enhanced Learning
+(EC-TEL ’11), pages 83–96. Springer, 2011.
+
+[2] S. Lohmann, S. Thalmann, A. Harrer, and R. Maier.
+Learner-Generated Annotation of Learning Resources
+- Lessons from Experiments on Tagging. In Proc. of
+the International Conference on Knowledge
+Management (I-KNOW 2008), pages 304–312, 2008.
+
+[3] K. Niemann and M. Wolpers. Usage Context-Boosted
+Filtering for Recommender Systems in TEL. In Proc.
+of the 8th European Conference on Technology
+Enhanced Learning (EC-TEL ’13), pages 246–259,
+Berlin Heidelberg, 2013. Springer.
+
+[4] K. Verbert, N. Manouselis, X. Ochoa, M. Wolpers,
+H. Drachsler, I. Bosnic, S. Member, and E. Duval.
+Context-aware Recommender Systems for Learning: a
+Survey and Future Challenges. IEEE Transactions on
+Learning Technologies, 5(4):318–335, 2012.
+
+415
+
+
+
+
+

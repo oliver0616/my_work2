@@ -1,0 +1,701 @@
+
+Perceptions and Use of an Early Warning System During a 
+Higher Education Transition Program 
+
+ 
+Stephen Aguilar 
+
+University of Michigan 
+School of Education & USE Lab 
+Suite 4215, 610 E University Ave  
+Ann Arbor, MI 48109-1259 USA 
+
++1 (734) 764-8416 
+aguilars@umich.edu  
+
+ Steven Lonn 
+University of Michigan 
+
+USE Lab, Digital Media Commons 
+1401B Duderstadt Ctr, 2281 Bonisteel  
+
+Ann Arbor, MI 48109-2094 USA 
++1 (734) 615-4333 
+
+slonn@umich.edu 
+ 
+
+Stephanie D. Teasley 
+University of Michigan 
+
+School of Information & USE Lab 
+4384 North Quad, 105 S. State St.   
+Ann Arbor, MI 48109-1285 USA 
+
++1 (734) 763-8124 
+steasley@umich.edu
+
+ABSTRACT 
+This paper reports findings from the implementation of a learning 
+analytics-powered Early Warning System (EWS) by academic 
+advisors who were novice users of data-driven learning analytics 
+tools. The information collected from these users sheds new light 
+on how student analytic data might be incorporated into the work 
+practices of advisors working with university students. Our results 
+indicate that advisors predominantly used the EWS during their 
+meetings with students—despite it being designed as a tool to 
+provide information to prepare for meetings and identify students 
+who are struggling academically. This introduction of an 
+unintended audience brings significant design implications to bear 
+that are relevant for learning analytics innovations. 
+
+Categories and Subject Descriptors 
+J.1 [Administrative Data Processing] Education; K.3 
+[Computer Uses in Education] - General 
+
+General Terms 
+Measurement, Performance, Design, Human Factors. 
+
+Keywords 
+Learning Analytics, Design-Research, Academic Advising, 
+Higher Education. 
+
+1. INTRODUCTION 
+Many technological innovations are specified, developed, piloted, 
+and honed through partnerships with user communities who have 
+expressed interest in adding an innovation into their existing 
+workflow [1]. When learning technology innovations are 
+introduced to a new audience, the affordances of those 
+innovations may be understandably unclear at first, leading to 
+unintended uses of the innovation [2]. In fact, the innovation may 
+disrupt existing practices while new users learn to adapt new tools 
+into their workflow [3]. This process of appropriation [4] can 
+occur even if the new user community has expressed interest in 
+the tool. 
+
+ 
+
+One way to understand appropriation is by leveraging the 
+Technology Acceptance Model [5], which states that the two 
+factors that determine whether or not a piece of technology is 
+actually used are 1) the perceived usefulness of it, and 2) its 
+perceived ease of use. These two perceptions necessarily differ by 
+user, and also differ by collections of users groups (e.g., advisors, 
+teachers, etc.) who are considering adopting a new piece of 
+technology together. Since the users’ perceptions and experiences 
+ultimately determine the uptake of a technology within any given 
+community, it is imperative that designers introduce technology 
+innovations to new users carefully, while allowing room for 
+unintended uses of that technology; ideally, this will, encourage 
+successful adoption.  
+
+Learning analytics tools are especially susceptible to pushback 
+and unintended uses from new users because they are very new 
+and not well understood by those outside of the learning analytics 
+community [6]. As developers of these learning analytics tools, 
+we feel obligated to confront these challenges, particularly if the 
+rich and massive data sets are to be generalizable and actionable 
+for a broad set of educational audiences.  
+Our approach to building a learning analytics tool has been to 
+work closely with the target audience and help them during the 
+implementation process. We have previously reported on our 
+initial design of Student Explorer, an Early Warning System 
+(EWS) intended to support just-in-time decision-making around 
+students' academic performance for use by academic advisors 
+within two specific Science, Technology, Engineering, and 
+Mathematics (STEM) learning communities [7], as well as lessons 
+learned when scaling Student Explorer to support automated data 
+extraction and transformation processes within an online 
+environment [8]. The STEM advisors' use of Student Explorer in 
+these targeted learning communities has been shown to be 
+positively related to improvements in students' overall grade point 
+average (GPA) [9]. While each iteration of Student Explorer was 
+designed with input from academic advisors, they still had to learn 
+how to incorporate the EWS into their work routines—making 
+decisions based on their perceptions of the system and their 
+overall intrinsic motivation to use a new technology in the process 
+[10]. 
+
+In this paper we report on the expansion of Student Explorer to a 
+new learning community; this deployment incorporated new data 
+sources and focused on academic advisors in a program designed 
+to help non-traditional students transition from high school to 
+college. Specifically, we rebuilt the system to extract and 
+incorporate quantitative and qualitative data that had been 
+
+Permission to make digital or hard copies of all or part of this work for 
+personal or classroom use is granted without fee provided that copies are 
+not made or distributed for profit or commercial advantage and that 
+copies bear this notice and the full citation on the first page. To copy 
+otherwise, or republish, to post on servers or to redistribute to lists, 
+requires prior specific permission and/or a fee. Request permissions 
+from Permissions@acm.org. 
+LAK '14, March 24 - 28 2014, Indianapolis, IN, USA 
+Copyright is held by the owner/author(s). Publication rights licensed to 
+ACM. ACM 978-1-4503-2664-3/14/03…$15.00. 
+http://dx.doi.org/10.1145/2567574.2567625  
+
+ 
+
+113
+
+
+
+previously inaccessible to the advisors, and updated the user 
+interface.  
+
+We present our findings on how the new academic advisor user 
+group perceived and used Student Explorer over the course of a 7-
+week intensive summer term. Our findings suggest that learning 
+analytics interventions implemented in an advising context will 
+likely be viewed by students—regardless of whether or not the 
+intervention was designed with guided student use in mind. We 
+believe these findings can inform the development of future 
+learning analytics interventions designed to support intermediary 
+audiences like academic advisors. 
+
+2. BACKGROUND 
+2.1 STEM Advisors: Student Explorer's First 
+Users 
+Student Explorer was initially designed to track student effort and 
+performance, and to provide support for the advisors in an 
+integrated student development program for at-risk students who 
+were in their first- and second-year in undergraduate STEM 
+programs [7]. The goal was to provide the necessary information 
+about student engagement and performance to advisors to 
+facilitate timely interventions with their students during the 
+semester. Students’ weekly updates were presented through 
+dashboards that provided interpretable presentations of data that 
+allowed the advisors to readily identify students who were in need 
+of immediate support.  For any given course students were 
+designated with an “E3” status of “Encourage” (green), “Explore” 
+(yellow), or “Engage” (red). These designations served to quickly 
+distinguish between students who were succeeding in any given 
+course, students beginning to show signs of falling behind, or 
+students struggling with their coursework, respectively. Our long-
+term goal with Student Explorer is to scale its functionality 
+broadly so that the "feedback loops" between learners, teachers, 
+and academic advisors can be reduced in time and effort [10]. 
+
+When we interviewed the STEM advisors about their use of 
+Student Explorer, they stated that their primary goal for using the 
+tool was to provide timely prescriptive guidance for students.  In 
+addition to discussions about grades, prescriptive advising tasks 
+can include assistance with course selection, schedule planning 
+and registration, referrals to other student support services, 
+explanation of degree requirements and review of student’s status 
+in relation to them [11]. Juxtaposed to this pragmatic prescriptive 
+guidance are developmental advising topics that include students’ 
+personal problems, self-esteem, interpersonal skills, and study 
+skills, student values, beliefs, and attitudes and the conflicts 
+between them [12, 13]. While recent advising research [14] 
+indicates that advisors frequently switch between prescriptive and 
+developmental approaches depending on the students' specific 
+situation, the use cases that defined the initial development of 
+Student Explorer were squarely in the prescriptive frame. 
+
+3. METHODS 
+Our design-based research project is a collaborative effort 
+between the researchers and the new group of academic advisors 
+who are our target users [15]. Design-based research involves “a 
+series of approaches, with the intent of producing new theories, 
+artifacts, and practices that account for and potentially impact 
+learning and teaching in naturalistic settings” [16, p. 2]. By 
+developing and deploying Student Explorer across multiple 
+contexts, our primary objective has been to ensure that our target 
+users are able to assist in Student Explorer’s development. We 
+continued to include advisors in our practice of iterative design in 
+
+order to increase the likelihood of producing a tool that is nimble 
+enough to be used in numerous academic advising contexts.  
+
+3.1 Setting 
+The Summer Bridge Program (referred to simply as “Bridge,” by 
+both advisors and students) began in 1975 as an effort to assist 
+nontraditional students' transition from high school to college by 
+providing highly structured introductory coursework. Today, 
+Bridge offers intensive academic preparation, individualized 
+academic advising, and a community-building living environment 
+to an incoming cohort of hundreds of students. Students are 
+expected to attend all of their classes and additional workshops, 
+while also meeting with their academic advisor on a regular basis.  
+
+Bridge students are enrolled in three courses: a mathematics 
+course (intermediate algebra or mathematical reasoning), an 
+English or Writing course, and a freshman introduction to social 
+science seminar. Of these, both advisors and Bridge leadership 
+have stated that the mathematics courses are the most "high 
+stakes" because they are designed to the specifications of the math 
+department, including grading students on a curve. 
+
+Since Bridge is only seven weeks long, it is very important that 
+academic advisors maintain awareness of students' progress, 
+particularly in the strictly-curved mathematics courses. In the past, 
+advisors periodically communicated with instructors via email to 
+discuss student progress, and they also received mid-term 
+progress reports from the instructors for any student who was 
+struggling academically. This proved to be too infrequent, 
+however, so the Bridge leadership team sought to utilize Student 
+Explorer to increase the frequency of feedback between 
+instructors and advisors.  
+
+3.2 Participants 
+Nine academic advisors (5 female, 4 male) served the 219 Bridge 
+students. These are experienced advisors who also serve nearly 
+2,500 students during the fall and winter terms. Seven of the 
+advisors have Masters degrees in educational leadership, 
+engineering, guidance and counseling, student affairs, and 
+psychology and two advisors have Doctoral degrees in higher 
+education student development and higher educational leadership.  
+
+3.3 Data Sources 
+Over the course of Bridge we collected data on advisors’ use of 
+the system as well as their attitudes towards Student Explorer 
+from three sources:  
+
+1) User log data was captured from academic advisors' use of 
+Student Explorer, capturing specific user actions (e.g., 
+viewing the summary page for a student), the corresponding 
+date and time, the selected student ID, and the advisor's user 
+ID.  
+
+2) Log data aggregated from a calendar application used to 
+schedule advisors’ meetings. Data collected included the 
+time their appointments occurred with students, which 
+students they met with, and whether a student failed to show 
+for the meetings. 
+
+3) A pre-Bridge survey (16 items) asked advisors about their 
+background, perceptions of student academic orientation, and 
+general technology use. A post-Bridge survey (16 items) 
+asked advisors about the frequency of advising topics and 
+overall perceptions of Student Explorer's functionality. 
+
+3.4 System Features 
+As part of our expanded design experiment with the Bridge 
+leadership and advisors, several user interface and technical 
+
+114
+
+
+
+enhancements were made. Below is a list of current features and 
+an explanation of them. 
+
+ 
+Figure 1. Student Explorer Student Summary (Top) and 
+
+Student Class Detail Screens (Bottom) 
+The four major features of the Student Explorer summary screen 
+(Figure 1, top) are:  
+A) "Alerts" boxes hat indicate which students, and for how 
+
+many current courses, are categorized in each E3 status. 
+B) A graphical display of the most recent students' and class 
+
+average percentage of total available points for all courses.  
+C) A checkbox that toggles the “full summary” view: a vertical 
+
+listing of the students' percentage of available points and 
+corresponding E3 value per week. 
+
+D) The most current student and class percentage of total 
+available points and corresponding E3 value. Users click on a 
+course listing in feature D to proceed to the student class 
+detail pop-up screen. 
+
+The four major features of the Student Explorer class detail screen 
+(Figure 1, bottom) are:  
+E) Graph of the student’s percentage points earned vs. class 
+
+average over time. 
+F) Graph of the student’s weekly LMS site visits percentile. 
+G) A listing of the student’s individual course assignments and 
+
+performance. 
+H) A mouse-over view of the text of qualitative gradebook 
+
+comments for a particular course assignment.  
+
+3.5 Implementation 
+Before the beginning of the term, Bridge advisors attended a 1-
+hour training session. The goals of this session were to introduce 
+Student Explorer to each advisor while also collecting feedback 
+that our programmer would use to make any necessary changes 
+before the Bridge students arrived and the system went live.  
+
+4. RESULTS 
+4.1 Pre-Bridge Survey  
+To determine which courses advisors anticipated discussing most 
+often during meetings with students, advisors were asked: “Please 
+rank the following courses by how often you think you will raise 
+issues related to them.” Results indicated that the majority of 
+advisors (4) ranked math first, while the orientation course 
+
+(“CSP”) and English were ranked first twice and once, 
+respectively.  
+
+Advisors also rated their agreement with the following 
+statements: “I think [using Student Explorer] will be a valuable 
+use of my time (before/during/after) meetings with students” 
+using a 1-5 Likert scale from Strongly Disagree-Strongly Agree. 
+Results indicate that, on average, advisors perceived Student 
+Explorer as a valuable tool regardless of their usage. 
+
+4.2 Student Explorer Use During Bridge 
+Usage data generated by Student Explorer was collected for each 
+advisor throughout the seven weeks that Bridge took place. We 
+also mined data from advisors’ calendar files, which allowed us to 
+compare when Student Explorer use coincided with scheduled 
+meetings with each student. Due to the relatively small number of 
+advisors (N = 9), we present their aggregated usage data to 
+preserve their anonymity.  
+
+4.2.1 Average Number of Meetings and Average Use 
+of Student Explorer  
+On average, advisors used Student Explorer most during the 
+weeks that lead up to the math midterm, and they used it more 
+often than they met with students by almost a factor of two—
+especially during the middle and most intensive part of the Bridge 
+program (Figure 2).  
+
+ 
+Figure 2. Average Weekly Student Explorer Recorded Events 
+
+Compared to Average Advisor Meetings with Students 
+ 
+
+Usage peaked four days before the math midterm exam, which is 
+consistent with anecdotal reports from both advisors and the 
+Bridge leadership who reported that the math midterm (taken by 
+all Bridge students) is the only high stakes exam students take 
+before the final, so it serves as a benchmark for the term. 
+
+4.2.2 Advisors' Use of Student Explorer  
+Aggregate counts of which Student Explorer pages advisors 
+accessed are presented in Table 1. Advisors “passed through” an 
+already established tool known as the “Advising File” which 
+contains student demographic and enrollment information over 
+300 times, suggesting that the Advising File was used as a 
+gateway fairly often. Advisors also frequently used the "Alerts" 
+boxes, clicking on the "Engage" box, which automatically opens 
+upon term selection, the most. The low numbers of "Explore" and 
+"Encourage" clicks suggests that few advisors scrutinized those 
+categories. Also, very few advisors viewed the "Full Summary" of 
+week-to-week student performance progress, suggesting that 
+
+0 
+
+10 
+
+20 
+
+30 
+
+40 
+
+50 
+
+Week 1 Week 2 Week 3 Week 4 Week 5 Week 6 Week 7 
+
+Student Explorer Activity 1-on-1 Meetings  
+
+Math Midterm	
+
+
+115
+
+
+
+advisors may be more interested in the students' current status as 
+opposed to their progression over the course of the term. 
+
+Table 1. Student Explorer Access Counts, by Page Accessed 
+Page Accessed CSP Math Eng Pass Th. N/A Total 
+
+Page_Load -- -- -- 361 1585 1946 
+
+Student Changed -- -- -- -- 376 376 
+Encourage Alerts -- -- -- -- 4 4 
+Engage Alerts -- -- -- -- 177 177 
+Explore Alerts -- -- -- -- 4 4 
+
+Full Summary -- -- -- -- 28 28 
+Small Summary -- -- -- -- 11 11 
+Student Class 
+Details by Term 128 156 200 -- -- 484 
+
+Student Class 
+Details by Week 1 0 4 -- -- 5 
+
+Grand Total 129 156 204 361 2185 3035 
+
+ 
+
+4.2.3 When Advisors Used Student Explorer 
+Over the course of Bridge, advisors periodically met with students 
+in 1-on-1 sessions. The majority of coinciding face-to-face 
+meeting / Student Explorer use occurred during weeks 3-5. This 
+finding makes sense because it is the window after students are 
+settled into the program but before Bridge is winding down for the 
+summer. Both Student Explorer use and the frequency of meetings 
+with students understandably drop off during the final week, when 
+students have completed the majority of work.  
+Figure 3 represents unique usage and meeting events that are 
+matched by the date of event, the student, and the advisor, for a 
+total of a total of 297 unique matches. These matches were further 
+parsed to designate whether or not advisors checked the student’s 
+Student Explorer data before, during, or after their meeting with 
+them. Over the course of Bridge, for example, the advisors viewed 
+the summary page of the student while they were meeting with 
+them 100 times in total. The Math courses had the fewest 
+instances of student class detail page hits among the three Bridge 
+courses, despite its designated "high stakes" status.  
+
+ 
+Figure 3. Student Explore Used Before, During, or After 
+
+Advisors Met with Advisees  
+
+4.3 Post-Bridge Advisor Survey 
+A post-Bridge survey was administered to compare advisors’ Pre-
+Bridge perceptions of which courses would be discussed most 
+often during Bridge, with their assessment of which courses were 
+actually discussed more often. Advisors were asked, “please rank 
+the following courses by how often you raised issues related to 
+them” to determine which courses advisors reported discussing 
+the most during their meetings with students. Results indicated 
+
+that there was a shift from pre-Bridge attitudes: math and English 
+both dominated the first position. 
+
+Advisors also identified when they felt Student Explorer would be 
+most valuable: before, during, or after meetings with students. 
+Advisors rated their agreement with the following statements: 
+“This activity [Student Explorer use] was a valuable use of my 
+time during Bridge (before/during,/after) meetings with students” 
+using a 1-5 Likert scale from Strongly Disagree-Strongly Agree. 
+While the post-Bridge survey shows slight changes in advisors’ 
+perceived usefulness, these changes were not significant, 
+suggesting that advisors were able to consistently gauge when the 
+tool would be most useful them before and after they actually 
+used it. 
+
+5. DISCUSSION 
+Student Explorer was designed as an advisor-facing tool intended 
+to provide academic advisors access to the achievement and 
+engagement data of students, and to represent that data in a way 
+that is informative and easily actionable. Before the 
+implementation of Student Explore during Bridge, this 
+information was traditionally collected via methods that have 
+reliability issues (i.e., student self-reports), or other mechanisms 
+that may contain information that is not timely enough to act on 
+(i.e., midterm reports submitted by instructors).  
+
+These concerns regarding reliability and timeliness were 
+amplified for advisors in the accelerated Bridge program where 
+the term was much shorted that in the STEM program. Examining 
+advisor perceptions as well as their actual use patterns, however, 
+surprised us in several important ways that impact design and has 
+use implications for other learning analytics-powered 
+interventions.   
+
+5.1 Advisor Use Patterns 
+We were surprised to learn that advisors used Student Explorer 
+during their meetings with students. Figure 3 shows that advisors 
+used Student Explorer during meetings nearly twice as often as 
+they did before they met with them (advisors seldom used Student 
+Explorer after student meetings). This unintended use is an 
+important lesson because Student Explorer was designed to be an 
+advisor-facing application, not student-facing. Once we learned 
+that advisors would show their students the screen, we quickly 
+added a button to hide the E3 status of other students so that 
+students cannot inadvertently see the names of their peers' in the 
+"Alerts" boxes (Figure 1 top, A).  
+
+It is also interesting that advisors’ opinions about when Student 
+Explorer would be most valuable for them to use did not change 
+significantly over the course of the Bridge term; especially since 
+advisors predominately used of Student Explorer during meetings 
+with students. We are unable, however, to determine if advisors 
+referred to the data during the meeting or actually shared the 
+display with students. Anecdotal evidence suggests that both of 
+these possibilities occurred, but we lack the data that would tell us 
+which was more common.   
+
+The elements of the application (e.g., the graphs comparing one 
+student to the class average) were not designed to be viewed by 
+students, however, so we will be advised to take the potential for 
+student access into account, even when learning analytics 
+interventions are not designed for them. In effect, this may 
+simplify our long-term plans for creating a student-facing version 
+of Student Explorer, including appropriate interface scaffolds for 
+both advisor and student users. 
+
+0 
+
+50 
+
+100 
+
+150 
+
+CSP100 
+Page 
+
+Engligh 
+Page 
+
+Math Page Summary 
+Page 
+
+Before Meeting During Meeting After Meeting 
+
+116
+
+
+
+5.2 Further Research 
+The unintended uses of Student Explorer witnessed in this phase 
+of our research indicate that we need to better understand the 
+nature of the information exchange between advisors and their 
+students. To this end, our research agenda includes interviews 
+with students that will focus on understanding how students 
+viewed their own data (when it was shown to them), and their 
+related anticipated and unanticipated uses of that data [2]. In 
+particular, which strategies do advisors suggest during or after 
+meetings with students. This latter line of inquiry is designed to 
+better understand the how students respond to advisors’ 
+suggestions, and if those strategies affected students’ performance 
+and/or effort. If so, we would like to know which of the advisor’s 
+recommended strategies were effective so that we can A) report 
+that information back to advisors and B) consider implementing 
+suggested strategies into the Student Explorer framework, similar 
+to the approach adopted by Course Signals using the external 
+Passnote application (itap.purdue.edu/studio/passnote). This work 
+will occur in parallel with our continued conversations with 
+advisors in order to ensure that Student Explorer's user interface 
+and technical infrastructure can continue to be refined so that it is 
+easier to use and displays relevant and actionable information. 
+
+6. CONCLUSION 
+We expected Student Explorer to aid advisors by providing them 
+with student achievement information that has been otherwise 
+unavailable to them. We learned that advisors predominantly used 
+Student Explores during their meetings with students. This is 
+telling, and suggests that any learning analytics intervention may 
+be used by an unintended user group, albeit indirectly. 
+Consequently, those interested in designing learning analytics 
+interventions should be mindful of designing user interfaces with 
+maximum flexibility and privacy options, particularly where 
+student data is concerned.   
+
+7.  ACKNOWLEDGMENTS 
+Funding for this work was provided by the University of 
+Michigan Learning Analytics Taskforce. We would like to 
+acknowledge our gratitude for Richard Richter's work on the 
+updated Student Explorer user interface and integration with the 
+institutional advising system and the support of his colleagues in 
+LSA. We also thank Margaret Noori, Dwight Fontenot, Demond 
+Davenport, and Ralph Williams for their support for this project 
+within the Bridge and CSP programs. Also thanks to members of 
+the USE Lab for their continued feedback. Finally, many thanks to 
+our partners in ITS and the M-STEM Academies. 
+
+8. REFERENCES 
+[1] Beyer, H., and Holtzblatt, K. (1998). Contextual design: 
+
+Defining customer-centered systems. San Francisco: Morgan 
+Kaufmann. 
+
+[2] Quinones, P., Teasley, S. D., & Lonn, S.  (2013). 
+Appropriation by Unanticipated Users: Looking Beyond 
+Design Intent and Expected Use.  Proceedings of the ACM 
+Conference on Computer-Supported Cooperative Work (pp. 
+1515-1526).  San Antonio, TX: ACM. 
+
+[3] Dourish, P. (2003). The appropriation of interactive 
+technologies: Some lessons from placeless documents. 
+Computer Supported Cooperative Work, 12, 465-490. 
+
+ 
+
+ 
+
+ 
+
+[4] Orlikowski, W.J. (1992b). Learning from Notes: 
+Organizational Issues in Groupware Implementation. CSCW 
+Proceedings ‘92, 237-250. 
+
+[5] Davis, F. D., Bagozzi, R. P., & Warshaw, P. R. (1989). User 
+acceptance of computer technology: A comparison of two 
+theoretical models. Management Science, 35, 982-1002. 
+
+[6] Drachsler, H. & Greller, W. (2012). The pulse of learning 
+analytics understandings and expectations from the 
+stakeholders. Paper presented at The 2nd International 
+Conference on Learning Analytics and Knowledge. 
+Vancouver, BC, Canada. 
+
+[7] Lonn, S., Krumm, A. E., Waddington, R. J., and Teasley, S. 
+D. (2012). Bridging the gap from knowledge to action: 
+Putting analytics in the hands of academic advisors. Paper 
+presented at The 2nd International Conference on Learning 
+Analytics and Knowledge. Vancouver, BC, Canada. 
+
+[8] Lonn, S., Aguilar, S., & Teasley, S.D. (2013). Issues, 
+challenges, and lessons learned when scaling up a learning 
+analytics intervention. Proceedings of the Third International 
+Conference on Learning Analytics and Knowledge (pp. 235-
+239). Leuven, Belgium: ACM. 
+
+[9] Krumm, A.  E.,  Waddington,  R.  J., Lonn, S., & Teasley, S. 
+D. (In Press). A learning management  system-based  early  
+warning  system  for  academic  advising  in undergraduate  
+engineering.  In  (J.  Larusson  &  B.  White,  Eds.)  
+Handbook  of  Learning Analytics: Methods, Tools and 
+Approaches. New York: Springer-Verlag. 
+
+[10] Venkatesh, V., Speier, C., & Morris, M. G. (2002). User 
+acceptance enablers in individual decision making about 
+technology: Toward an integrated model. Decision Sciences, 
+33(2), 297-316. 
+
+ [11] Fielstein, L. L., Scoles, M. T., & Webb, K. J. (1992). 
+Differences in traditional and nontraditional students’ 
+preferences for advising services and perceptions of services 
+received. NACADA Journal, 12(2), 5–12. 
+
+[12] Creamer, D. G., & Creamer, E. G. (1994). Practicing 
+developmental advising: Theoretical contexts and functional 
+applications. NACADA Journal, 14(2), 17–24. 
+
+[13] Frost, S. H. (1991). Academic Advising for Student Success: 
+A System of Shared Responsibility. ASHE-ERIC Higher 
+Education Report No. 3, 1991. ASHE-ERIC Higher 
+Education Reports, The George Washington University, One 
+Dupont Circle, Suite 630, Washington, DC 20036. 
+
+[14] Mottarella, K. E., Fritzsche, B. A., & Cerabino, K. C. (2004). 
+What do students want in advising? A policy capturing study. 
+NACADA Journal, 24(1), 48-61. 
+
+[15] Cobb, P., Confrey, J., diSessa, A., Lehrer, R., & Schauble, L. 
+(2003). Design experiments in educational research. 
+Educational Researcher, 32(1), 9-13, 35-37. 
+
+[16] Barab, S. A. & Squire, K. D. (2004). Design-based research: 
+Putting a stake in the ground. Journal of the Learning 
+Sciences, 13(1), 1-14. 
+
+  
+
+ 
+
+117
+
+
+
+
+

@@ -1,0 +1,1035 @@
+
+Goal-oriented visualizations of activity tracking: a case
+study with engineering students
+
+Jose Luis Santos, Sten Govaerts, Katrien Verbert, Erik Duval
+Departement Computerwetenschappen, K.U.Leuven
+
+Celestijnenlaan 200A
+B-3001 Leuven, Belgium
+
+{joseluis.santos, sten.govaerts, katrien.verbert,erik.duval} at cs.kuleuven.be
+
+ABSTRACT
+Increasing motivation of students and helping them to reflect
+on their learning processes is an important driver for learn-
+ing analytics research. This paper presents our research on
+the development of a dashboard that enables self-reflection
+on activities and comparison with peers. We describe eval-
+uation results of four iterations of a design based research
+methodology that assess the usability, use and usefulness of
+different visualizations. Lessons learned from the different
+evaluations performed during each iteration are described.
+In addition, these evaluations illustrate that the dashboard
+is a useful tool for students. However, further research is
+needed to assess the impact on the learning process.
+
+Categories and Subject Descriptors
+H.5.2 [Information interfaces and presentation ]: User
+interfaces; K.3.2 [Computers and Education]: Computer
+Science Education
+
+General Terms
+Design, Experimentation, Human Factors
+
+Keywords
+Learning analytics, Visualization, Reflection
+
+1. INTRODUCTION
+Increasing student motivation and assisting students with
+
+self-reflection on their learning processes is an important
+driver for learning analytics research. Student motivation
+can improve when students can define their own goals [30].
+Visualizations of time spent and resource use can improve
+awareness and self-reflection [15]. Learning management
+systems (LMS) track most of the user interaction that can
+be used for learning analytics. However, many of the activ-
+ities take place outside of the LMS, such as brainstorming
+or programming activities.
+
+Permission to make digital or hard copies of all or part of this work for
+personal or classroom use is granted without fee provided that copies are
+not made or distributed for profit or commercial advantage and that copies
+bear this notice and the full citation on the first page. To copy otherwise, to
+republish, to post on servers or to redistribute to lists, requires prior specific
+permission and/or a fee.
+LAK’12 29 April - 2 May 2012, Vancouver, BC, Canada.
+Copyright 2012 ACM 978-1-4503-1111-3/12/04 ...$10.00.
+
+This paper presents the first results of a case study in a
+“problem solving and design” course for second year engi-
+neering students at the Katholieke Universiteit Leuven. In
+this course, the students have to develop software and go
+through the different phases of software development pro-
+cess, such as design, programming and reporting. To this
+end, they use tools such as LibreOffice1, the Eclipse IDE2
+
+and Mozilla Firefox3. They have to share tasks and respon-
+sibilities between group members. Controlling the risks and
+evolution of such tasks is part of the assignment.
+
+We developed a dashboard with visualizations of activity
+data. The overall goal of this dashboard is to enable stu-
+dents to reflect on their own activity and compare it with
+their peers. The time spent with different tools, websites
+and Eclipse IDE documents are tracked by RescueTime4
+
+and the Rabbit Eclipse plug-in5. The collected information
+is displayed in a dashboard containing goal-oriented visu-
+alizations. In the visualizations, the students can filter by
+different criteria, such as course goals and dates. Such filters
+allow contextualization of the visualized data for the user.
+Linking the visualizations with the learning goals can help
+students and teachers to assess whether the goal has been
+achieved [12].
+
+The dashboard is developed using the design-based re-
+search methodology, which relies on rapid prototyping, de-
+ployment of artifacts and observation in iterative cycles.
+
+The paper is organized as follows: in the next section,
+we present related work. Section 3 presents the research
+methodology. The four iterations of the design process are
+discussed in sections 4, 5, 6 and 7. Future work and conclu-
+sions are presented in Section 8 and 9.
+
+2. RELATED WORK
+Learning analytics considers the analysis of communica-
+
+tion logs [33, 6], learning resources [25], learning manage-
+ment system logs and existing learning designs [21, 32], and
+the activity outside of the learning management systems [29,
+9]. The result of this analysis can be used to improve the
+creation of predictive models [37, 13], recommendations [42]
+and reflection [15].
+
+This paper focuses on activity outside learning manage-
+ment systems using existing tracking tools. Self-tracking
+
+1LibreOffice, http://www.libreoffice.org/
+2IDE Eclipse, http://eclipse.org
+3Mozilla Firefox, http://www.mozilla.org/
+4RescueTime, http://rescuetime.com/
+5Rabbit Eclipse plug-in, http://code.google.com/p/rabbit-
+eclipse/
+
+143
+
+
+
+tools can be used for capturing activities of students with
+different tools. The goal is to help students learn how they
+and other students are using their applications to achieve
+concrete goals.
+
+Self-tracking is becoming popular in many domains, in-
+cluding Personal Informatics [20]. Applications in these do-
+mains help people understand their habits and behavior,
+through tracking and visualization, e.g. for sleep tracking
+and email communication patterns. Tracking of health data
+can motivate users with fitness exercises [31, 4] and enable
+early diagnosis of illness [39, 2, 1, 16]. Within companies,
+tracking and visualizations are used to analyze business and
+manufacturing processes [35], as well as productivity [3]. Be-
+hind these tools are communities where users can share ex-
+periences, publish their tracking data in social networks or
+compare the data with others. In a learning context, stu-
+dents and teachers are part of a community. These tools can
+play an important role to share and learn from their behav-
+ior with applications to achieve the goals of the course.
+
+Khan Academy enables tutors to check progress of stu-
+dents [8]. A dashboard is used where a table provides a
+goal status overview per student. For every student, a time-
+line shows the distribution of achieved goals and a bar chart
+visualizes the time spent with different kinds of resources.
+
+Other learning dashboards use pie charts to describe the
+access distribution of different user roles, simple plots to ex-
+press time spent and tables to indicate the success rate for
+assignments [23]. In adaptive learning environments, dash-
+boards contain box plots to compare grades and averages
+of users who have followed different paths [5]. In mashup
+learning environments, pie charts have been used to repre-
+sent knowledge in different areas [24]. Tree visualizations
+are useful to express learning paths and to describe prereq-
+uisites. Each path can represent a knowledge area or subarea
+in a domain [26, 27]. In addition, there are models explor-
+ing ways to analyze electronic traces to create group models
+that can operate as mirrors which enable the individuals and
+teams to reflect on their progress through visualizations [41,
+18].
+
+The work presented in this paper focuses on tracking ac-
+tivity from different applications. Our dashboard uses dif-
+ferent trackers that generate different kinds of data and ap-
+plies different visualization techniques. The overall goal of
+this mashup of visualizations is to enable students to learn
+how they are using the tools and how much progress they
+make towards goals in comparison with peers.
+
+3. RESEARCH METHODOLOGY
+The design-based research methodology has been applied
+
+to conduct this research. This methodology relies on rapid
+prototyping to evaluate ideas in frequent short iteration cy-
+cles [43]. The approach enables to collect both qualitative
+and quantitative evaluation data during the whole software
+design process [28].
+
+In the two first iterations, we developed a paper-based
+and a digital prototype. The evaluation of those iterations
+collected qualitative data from interviews and user observa-
+tions of 15-30 minutes using the think-aloud protocol [19].
+Six teachers and teaching assistants participated in the first
+iteration and 5 in the second iteration. Evaluations with
+these participants are useful to collect requirements and to
+identify potential usability issues with the interaction tech-
+niques.
+
+The third and fourth iteration are conducted by a mixed
+research evaluation methodology with questionnaires and
+open ended questions. In these iterations, we conducted
+the evaluations with 36 and 10 students, respectively. These
+questionnaires focused on concrete aspects of the application
+and allowed statistical analysis of the evaluation data.
+
+4. PAPER PROTOTYPE
+Paper prototyping is an important first step in user inter-
+
+face design to get quick feedback [28] and minimize costs in
+the software design process [11].
+
+4.1 Design and implementation
+User activities and their visualization need to be related
+
+to learning goals in order for teachers or students to be able
+to reflect and make decisions. Linking these visualizations
+to the intended goals allows to assess whether these goals
+have been achieved [12].
+
+The design of the paper prototype focuses on the above-
+mentioned use cases: (a) Students can reflect on different
+visualizations contextualized by the learning goals of the
+course and (b) enable social support through communica-
+tion between students and teachers.
+
+The first use case is addressed by using visualizations of
+user activities. More specifically, we visualize the behavior
+of students with different tools they are using for course ac-
+tivities (e.g. Eclipse IDE for programming and Microsoft
+Word for writing) to gain insight into what students have
+done to achieve a goal. To this end, the students and status
+of the goals are visualized as a table (visualization 1 Figure
+1), as such visualization is one of the simplest ways to get
+an overview of the course [36]. Students are listed in the
+first column and the rest of columns represent the goals of
+the course and their status. A timeline [17] with bubbles
+(visualization 3) represents the number goals over time. Vi-
+sualization 5 is a timeline that shows the number of events
+or time (depending of the tracked source of information)
+per tool that the user has used along the time to achieve the
+goal. Finally, visualization 5, 7 and 8 display time spent or
+number of events per weekday, actions and different items.
+
+All visualizations together in the dashboard enable filter-
+ing information from a generic perspective (table with goals
+and students) to a more detailed description (type of doc-
+uments and activity used), following the visual information
+seeking mantra [38]. This prototype enables users to interact
+with the visualizations, i.e. if a user clicks on the Monday
+bar (visualization 6), then visualization 7 and 8 displays re-
+lated information to the clicked day.
+
+The second use case is addressed by providing chat func-
+tionalities for communication between teachers and students
+(number 2 and 4 in Figure 1). To enable social support,
+communication between users and sharing experiences can
+help users to achieve their goals. We provide two widgets
+intended for this purpose. One widget shows publicly the
+message and the other is reserved for private communica-
+tion. The communication is always related to a specific goal
+contextualizing the scope of the conversation.
+
+4.2 Evaluation
+
+4.2.1 Demographics and Evaluation Setup
+Users were interviewed and observed during 15-30 min-
+
+utes. They had to perform different predefined tasks such
+
+144
+
+
+
+Figure 1: Paper prototype
+
+as filtering goals of this week. The think-aloud protocol was
+applied.
+
+The paper prototype was evaluated with six people (1 fe-
+male and 5 males computer science teachers and assistants).
+Three participants were between 25-30 years old and two
+participants between 40-50.
+
+4.2.2 Evaluation results and discussion
+In this subsection, we introduce first the more remark-
+
+able problems and suggestions of the users, and finally the
+proposed solutions.
+
+Three issues were highlighted with visualization 1. First,
+the headers in the table are the titles of the goals. The size
+of the table increases proportionally to the number of goals.
+If the number of goals is high, the user will not be able to get
+easily an overview due to the size of the table. Although the
+user can filter the goals on the table restricting the period
+of time, it requires additional steps for the user and affects
+the usability of the application. Second, the filtering feature
+is defined by drop-down lists for the day, month and year
+and requires too much clicks. Third, the table is showing
+a pop-up with static information when the mouse hovers
+over a cell. Pop-ups showing always the same information
+were identified as redundant by the users. In addition, users
+requested more sorting options for the table.
+
+There were several problems to understand visualization
+3. The visualization shows redundant information compared
+with the table. The table also includes goals and users can
+filter by time, so they can obtain the same information with
+this visualization. Users expected some additional informa-
+tion that they did find in the table. Although the problem of
+this visualization is the redundant information, from previ-
+ous evaluations [34] we also know that visualizations can be
+difficult to understand depending on the user background.
+
+Users proposed to replace chat functionality with activ-
+
+ity streams such as Facebook or Twitter. In addition, there
+were disagreements about merging communication and vi-
+sualization in the same use case.
+
+In general, there is a lack of information about what the
+visualizations are showing.
+
+We propose several solutions to address these problems.
+The headers of the table will be replaced by goal identifiers
+(used approach in Khan academy to represent goals). Addi-
+tional information such as goal title, description and filters
+can be displayed in a different place. The drop-down lists
+can be replaced by a calendar feature that is more intuitive.
+The pop-ups can be replaced by legends.
+
+Regarding visualization 3, we propose to replace it by a
+motion chart visualization. Such a visualization allows to
+show the evolution of the user activity and to compare it
+with the average of a group over time. In this way, we
+provide additional information as requested by the users.
+
+Personalization of dashboards can be a solution for differ-
+ent user backgrounds, as users can choose the visualization
+that they want to see. However, we have to keep in mind
+that personalization is an additional option. Users need to
+have a starting point to work with the application at the
+beginning. We can not offer the users a white screen and
+rely on the user for the whole configuration.
+
+Chat functionality is discarded because the focus of this
+research is visualization of learning analytics.
+
+Finally, we centralize the filter information in one place to
+fix the lack of information. Similar to chart legends do with
+charts, we try to provide a place that helps to understand
+the visualizations. In addition, we include extra information
+in every visualization to explain what it shows.
+
+5. DIGITAL PROTOTYPE
+This iteration focuses on addressing usability issues de-
+
+145
+
+
+
+Figure 2: Distribution of technologies
+
+tected in the previous iteration.
+
+5.1 Design and implementation
+Dashboard personalization is provided by using widget
+
+technology. Such technology enables easy addition and dele-
+tion of widgets with different visualizations (see figure 2 to
+see the different technologies). We use the OpenSocial speci-
+fication6 to enable deployment in OpenSocial compliant wid-
+get containers, e.g. iGoogle7 or Apache Shindig8.
+
+OpenSocial enables inter-widget communication via Ope-
+nApp [14] that allows to send information from one widget
+to another. User interactions with one widget are broad-
+casted to other widgets. These widgets can then also act
+upon these events, i.e. to filter data. Furthermore, iGoogle
+supports the concept of spaces. These spaces can be used to
+support different organizations of widgets.
+
+Regarding visualization libraries, we chose the Google Chart
+library9, as it provides a convenient event system and it has
+a large support community. New visualizations are contin-
+uously being added.
+
+In this iteration, we deploy seven widgets based on the
+visualizations from the previous iteration in iGoogle (see vi-
+sualizations 1,3,5,6,7 and 8 in figure 1) . Second, we changed
+the timeline (visualization 3 in Figure1) by a motion chart
+(widget 2 in Figure 3). In the motion chart, x-axis is the ac-
+tivity of the user and y-axis is the peers average activity. A
+timeline chart can also be used to represent this data. How-
+ever, when several goals overlap and are represented over the
+same time period, the user could be confused with too much
+lines and colors. A motion chart simplifies the representa-
+tion. Third, widget 3 in Figure 3 is added to the dashboard
+and centralizes filter information.
+
+5.2 Evaluation
+
+5.2.1 Evaluation data
+Users were interviewed and observed during 15-30 min-
+
+utes. They had to perform different predefined tasks such
+as filtering goals of this week following the think-aloud pro-
+tocol.
+
+6Open Social api, http://code.google.com/apis/opensocial/
+7iGoogle, http://www.google.com/ig
+8Apache Shindig, http://shindig.apache.org/
+9Google Chart library, http://code.google.com/apis/chart/
+
+In this iteration, we use hardcoded dummy data for the
+goal table and motion chart and data from a previous evalua-
+tion [34]. This allows us to emulate more realistic dashboard
+behavior.
+
+5.2.2 Demographics and Evaluation setup
+The digital prototype was evaluated with five male com-
+
+puter science teachers and assistants. Four of them are be-
+tween 25 and 30 years old and one between 40 and 50. All
+of them know what a widget is. Three of them participated
+in the previous evaluation.
+
+5.2.3 Evaluation results and discussion
+One remark on this iteration is about our rationale (see
+
+Subsection 4.2.2) to create widget 3. The idea is to centralize
+all information in one place. However, the user perception
+is that every widget is independent from others, so they do
+not want to look up this information in another widget. In
+addition, depending on the screen resolution they have to
+scroll up to see the widget information and scroll down for
+the widget with the visualization. This dependency affects
+to the usability of the application.
+
+In this iteration, the selection of the table visualization re-
+ceives good feedback due to the sorting functionality. How-
+ever, regarding the calendar feature, users suggested to have
+different possibilities, such as a slider. In addition, function-
+alities to organize the goals by weeks and buttons for next
+and previous weeks were requested.
+
+The motion chart was more complex than expected. Users
+spent quite some time using the different configuration op-
+tions such as color and size. Although users consider it diffi-
+cult to understand at the beginning, they indicated that the
+motion chart can provide useful information. However, all
+users remarked that they would like to see the dashboard in
+a real use case in order to assess its usefulness.
+
+There are also minor remarks such as letter font and data
+inconsistency, small size of the text boxes and table filtering
+style.
+
+We focus on solving the first issue. We propose to elim-
+inate widget 3 and adding titles to the visualizations that
+can be updated based on filters. Removing this widgets also
+provides more space for bigger visualizations. For the next
+iteration, we eliminate calendar features because we do not
+need this kind of functionality in the use case study.
+
+6. FIRST WORKING RELEASE
+This iteration focuses on the real deployment of the dash-
+
+board. We selected an existing tracking system and adapted
+the existing widgets for this new scenario.
+
+6.1 Design and implementation
+We considered two tracking systems: RescueTime and
+
+Wakoopa10. They categorize tools and websites based on a
+functionality taxonomy such as Development, Browsers and
+Design. We selected RescueTime because it offers better
+security to access user data. As the next iteration with stu-
+dents involves real student data, such security and privacy
+considerations are very important.
+
+We use the Rabbit Eclipse plug-in to track IDE Eclipse
+interaction. Students are developing software in Java and
+the Rabbit Eclipse plug-in allows tracking who is working
+
+10http://www.wakoopa.com
+
+146
+
+
+
+Figure 3: Digital prototype
+
+Figure 4: Source data aggregation
+
+on which part of the project. The plug-in is open source
+and also tracks the time spent on documents (see figure 4).
+
+The tracked information is collected via web services and
+exposed to the widgets via JSON. The dataset describes the
+time spent per application, document and website. This
+information is displayed in 8 different widgets as described
+in previous iterations.
+
+In this iteration, we modify some widgets, because the
+RescueTime taxonomy enables us to categorize the tools by
+intended activity. This information can be useful for the
+students.
+
+Widget 1 and 2 in Figure 5 are the same as described
+in Subection 5.1. Widget 3 shows the time per day spent
+by activity based on the taxonomy classification of Rescue-
+Time. The information is visualized using an annotated time
+line. Widget 4 is a bar chart that compares the global time
+spent per activity compared with the average time. Widget
+
+5 shows the time spent per application. Widget 6 compares
+the time spent per application with other members of the
+group. Widget 7 shows the time spent on Eclipse projects
+files and, finally, widget 8 shows the time spent on websites
+compared with the average of the group.
+
+The widgets use inter-widget communication for dataset
+filtering. Table 1 presents the connection details. This ta-
+ble explains which information is sent by every widget, and
+which widgets listen to events to filter their visualizations.
+For instance, when users click on a user in widget 1, this
+widget broadcasts the identifier of the user. Other widgets
+listen to this event and can show the information related to
+the user identifier.
+
+Table 1: Overview of events
+Widget Event Listening widget
+
+1 user identifier 2,3,4,5,6,7 and8
+2 goal identifier, 3,4,5,6,7 and 8
+
+start date and
+end date
+
+4 selected range of time 3,5,6,7 and 8
+5 type of activity 4 and 6
+6 range of time 5 and 7
+
+147
+
+
+
+Figure 5: First release implementation
+
+148
+
+
+
+6.2 Evaluation
+
+6.2.1 Evaluation data
+In this iteration, we evaluated the dashboard with stu-
+
+dents. The data is tracked with RescueTime and the Rabbit
+Eclipse plug-in. As this evaluation took place at the start
+of the course, we did not have data from students, so two
+users (a developer and a project manger of our team) offered
+their RescueTime and Eclipse data for the experiment. The
+approach might influence the perceived usefulness, because
+students can not relate to their real data yet. However, the
+evaluation enabled us to obtain first feedback from students
+before the data collection started.
+
+6.2.2 Demographics and Evaluation setup
+This experiment ran with 36 students between 18 and 20
+
+years old (30 males and 6 females) in an engineering bach-
+elor course. We presented the dashboard the first day of
+the course. The privacy constraints and the data tracking
+characteristics of the experiment were explained. Students
+were also informed that they can stop RescueTime when
+they think it can affect their privacy. A questionnaire was
+used to collect quantitative data regarding first perceived
+usefulness, effectiveness, usability, satisfaction and privacy
+concerns. The questionnaire also has two open-ended ques-
+tions about privacy considerations and general positive and
+negative aspects.
+
+We wanted to evaluate whether students consider the dash-
+board useful and whether specific changes were needed to
+deploy the dashboard in this course. In the first question of
+the evaluation, the students get 80 points that they have to
+divide over the widgets to rank them. This question was in-
+tended to get insight into which visualizations are considered
+more valuable by the students. The next seven questions are
+extracted from the USE questionnaire [22]. The full ques-
+tionnaire was not used due to time restrictions. Three ques-
+tions are related to usefulness and effectiveness and the next
+four questions to usability and user satisfaction. Finally, the
+three last questions are related to privacy concerns. Ques-
+tion number 10 inquires whether students would be receptive
+to include tracking activity out of the lab.
+
+6.2.3 Evaluation results and discussion
+Results of the widget scoring question indicate that there
+
+is no clear winner (Figure 6), as we expected. Widget 3 and
+4 have slightly higher scores. Both are related to activity
+type. Widgets 5 and 6 score the lowest. These widgets
+show the tools instead of activity type and can be found
+redundant.
+
+Widget 8 provides information about what web sites have
+been visited and also scores high. In the open questions, 12
+users find it useful to see what websites other students are
+visiting.
+
+Widget 2, the motion chat, scores the lowest. Our percep-
+tion is that the motion chart is more difficult to understand.
+In the next iterations, we pay special attention to the learn-
+ability of this visualization.
+
+The questionnaire results are summarized in figure 7. The
+results indicate that students consider the dashboard useful
+(question 1 and 2) and that they think that the dashboard
+can help them to achieve goals (question 3). However, us-
+ability (question 4 and 5) and satisfaction (question 6 and 7)
+are scored neutral. As the students could not play yet with
+
+Figure 6: Widget scores box plot
+
+Figure 7: Questionnaire results
+
+the dashboard, the scoring of these two factors was difficult.
+From question 8 (see Figure 7), ‘I like to see what other
+
+members do during the course’, we learn that the students
+like to be aware of what their peers are doing. We can
+conclude from ‘I feel confident using the tracking system
+in the lab during the course’ (question 9), that the lab is
+a suitable context to track their activity. Question 10 (‘I
+would feel confident using the tracking system outside of
+the lab’) is rated the lowest. This outcome suggests that
+the students would feel uncomfortable if they were tracked
+outside the lab.
+
+The open questions provide us with useful details. One
+of the most common remarks is that they like to see how
+students and their peers behave. 12 students like to compare
+their activity with others. However, 3 students indicate that
+they are disappointed that others can see their activity.
+
+One student suggests that tracking can cause stress and
+consequently decrease productivity [40]. Most students men-
+tion that the feeling of being observed is a negative aspect.
+
+149
+
+
+
+Another student argues that our visualizations can possi-
+bly modify their working style because they may want to
+behave similar to other students. We have to consider all
+these factors in future evaluations.
+
+One student suggested to add support for detecting user
+distraction. Three users suggested to also enable access to
+the raw tracked data. These students were interested to see
+how RescueTime tracks data. Another proposal is to store
+the tracking information locally and ask for user permission
+before sending the information. This is an important sug-
+gestion to deal with potential privacy concerns.
+
+7. SECOND WORKING RELEASE
+The evaluation in the previous iteration is based on non-
+
+course data and a demo of the application. In this iteration,
+we focus on first results of the dashboard evaluation with
+real student data in a real course setting. As we describe
+in Section 8, more evaluations will be performed during the
+course in the following months.
+
+7.1 Design and implementation
+In this iteration, we analyzed the generated data to see
+
+how the students behave during the lab sessions.
+The dashboard was made available to 36 students. We
+
+created anonymous email and RescueTime accounts for each
+student. Students had to configure RescueTime and the
+Rabbit Eclipse plugin with their credentials.
+
+7.2 Evaluation
+
+7.2.1 Evaluation data
+In this iteration, we evaluate the dashboard with student
+
+data. Students carried out different tasks, such as elabora-
+tion of scenarios, use cases and an implementation of a small
+web application during four lab sessions. As these tasks are
+partially performed without the computer, the tracked data
+is still limited in this phase.
+
+7.2.2 Demographics and Evaluation setup
+This experiment ran with 10 students between 18 and 20
+
+years old (8 males and 1 females), a subgroup from the pre-
+vious iteration. A subgroup was used to be able to better
+assist the students if problems would show up.
+
+Students were encouraged to reflect on the dashboard vi-
+sualizations during 10 minutes. They filled in a SUS ques-
+tionnaire [10] afterwards. Such a questionnaire allows us
+to compare our application with more than 200 studies [7].
+We added questions to score widgets (as used in the previ-
+ous iteration), evaluate usefulness and satisfaction, and open
+ended questions.
+
+During the evaluation, we removed widget 7 (see figure
+5) because the only activity in Eclipse was the development
+during a tutorial, which would not provide useful informa-
+tion.
+
+7.2.3 Evaluation results and discussion
+The final SUS score is 72 points out of 100. Based on [7],
+
+this score rates the dashboard as good regarding usability.
+The widget scoring question results are summarized in
+
+Figure 8. Widgets 4, 6 and 8 are rated highest. We think
+that this is due to the limited data because we are in the
+initial period of the course. While bar charts display abso-
+lute information and are valuable even with limited data,
+
+Figure 8: Widget scores box plot
+
+timelines loose meaning because the user cannot see much
+evolution over the different sessions.
+
+The 5-item likert scale, ‘I would feel confident using it in
+another course’, inquires about the usefulness and was rated
+on average 2.9. Users are not used to reflection on their own
+work using these tools. If the reflection task is mandatory
+during the course, they perform the task. However, they
+seem to prefer avoiding such tasks. The users do not find
+the dashboard beneficial enough to use it regularly. Part of
+this research is intended to increase the user’s interest for
+these kind of tools.
+
+We asked the students about what they learnt. Three
+students highlighted the fact that there is not much data
+because they have not been working with the computers all
+the time. For instance, the dashboard does not represent
+the time students spent on the scenarios. Three other stu-
+dents found patterns in their Internet use. For instance, one
+student pointed out that his peers did not visit the course
+wiki as often as he did and realized that he was the person
+in charge to check this information. Five students indicated
+that visualizations are nice or even fun to use.
+
+8. FUTURE WORK
+The experiment runs during the whole semester and two
+
+more evaluations are scheduled. The essence of our future
+work is to actually evaluate the dashboard with the students
+as the course evolves and collects more real data. Such more
+elaborate data is required to assess in more detail the added
+value of these tools.
+
+The current version of the dashboard enables students to
+compare their progress with peers on tasks that are defined
+by the teacher. In the next phase, we will add support to
+enable students to define their own goals. For instance, they
+could define how much time they want to spend every day
+on concrete tasks. Self-definition of goals is an important
+part of Personal Informatics.
+
+In addition, the dashboard technology allows easy cus-
+tomization. We can easily develop more visualization wid-
+gets that users can set up based on the context and their
+visualization background. We need to evaluate the influence
+of such customization factors in additional experiments.
+
+150
+
+
+
+9. CONCLUSION
+In this paper, we presented the first results of a case study
+
+with second year engineering students.
+We conclude that students consider the dashboard useful
+
+to learn how they are using the tools. However, users are
+not motivated to use the dashboard.
+
+Visualization enables exploration of large datasets, but
+different visualization backgrounds can influence on the un-
+derstanding of the data. Implementing the dashboard as
+a mash-up of widgets is our proposal to address this issue.
+The aproach allows us to offer the users different visualiza-
+tion configurations.
+
+The dashboard can be useful to support self-reflection and
+progress in comparison with peers. Students are interested
+to be aware of what their peers are doing. However, pri-
+vacy concerns are involved in this process. The students are
+receptive to be tracked during their lab sessions. However,
+they do not like to be tracked outside a course environment
+due to privacy concerns. As additional work out of the lab
+sessions is not required for the course, this does not have
+implications on the current evaluation setup. However, the
+issue needs to be researched in order to generalize these kinds
+of experiments beyond the current course setting.
+
+10. ACKNOWLEDGMENTS
+The research leading to these results has received fund-
+
+ing from the European Community Seventh Framework Pro-
+gramme (FP7/2007-2013) under grant agreement no 231396
+(ROLE). Katrien Verbert is a Postdoctoral Fellow of the
+Research Foundation – Flanders (FWO).
+
+11. REFERENCES
+[1] Health engage - http://www.healthengage.com/ - last
+
+checked on october 2011.
+
+[2] Health tracking - http://www.healthtracking.net/ -
+last checked on october 2011.
+
+[3] Rescuetime - http://www.rescuetime.com - last
+checked on october 2011.
+
+[4] Run keeper - http://runkeeper.com/ - last checked on
+october 2011.
+
+[5] D. Albert and A. Nussbaumer. Towards generic
+visualisation tools and techniques for adaptive
+e-learning. Proceedings of the 18th International
+Conference on Computers in Education ICCE 2010,
+2010.
+
+[6] S. D. Aneesha Bakharia1. Snapp: A bird’s-eye view of
+temporal participant interaction. In Proceedings of the
+Learning Analytics and Knowledge conferencd
+(LAK11), 2011.
+
+[7] A. Bangor, P. Kortum, and J. Miller. An empirical
+evaluation of the system usability scale. International
+Journal of Human-Computer Interaction,
+24(6):574–594, 2008.
+
+[8] C. Bingham. Two educational ideas for 2011 and
+beyond. Studies in Philosophy and Education,
+30:513–519, 2011. 10.1007/s11217-011-9253-8.
+
+[9] P. Blikstein. Using learning analytics to assess
+students’ behavior in open-ended programming tasks.
+In Proceedings of the Learning Analytics and
+Knowledge conferencd (LAK11), 2011.
+
+[10] J. Brooke. Sus-a quick and dirty usability scale.
+Usability evaluation in industry, dustry:189–194, 1996.
+
+[11] F. D. Davis and V. Venkatesh. Toward preprototype
+user acceptance testing of new information systems:
+implications for software project management.
+Engineering Management, IEEE Transactions on,
+51(1):31–46, 2004.
+
+[12] E. Duval. Attention please! Learning analytics for
+visualization and recommendation. In Proceedings of
+LAK11: 1st International Conference on Learning
+Analytics and Knowledge,. ACM, 2011. Accepted.
+
+[13] S. E. Fancsali. Variable construction for predictive and
+causal modeling of online education data. In
+Proceedings of the Learning Analytics and Knowledge
+conferencd (LAK11), 2011.
+
+[14] S. Govaerts, K. Verbert, D. Dahrendorf, C. Ullrich,
+S. Manuel, M. Werkle, A. Chatterjee, A. Nussbaumer,
+D. Renzel, M. Scheffel, and et al. Towards Responsive
+Open Learning Environments : the ROLE
+Interoperability Framework. CEUR workshop
+proceedings, 2011.
+
+[15] S. Govaerts, K. Verbert, J. Klerkx, and E. Duval.
+Visualizing activities for self-reflection and awareness.
+In Lecture Notes in Computer Science, pages 91–100.
+Springer, Dec. 2010.
+
+[16] N. Kamal, S. Fels, and K. Ho. Online social networks
+for personal informatics to promote positive health
+behavior. In Proceedings of second ACM SIGMM
+workshop on Social media, WSM ’10, pages 47–52,
+New York, NY, USA, 2010. ACM.
+
+[17] G. M. Karam. Visualization using timelines. In
+Proceedings of the 1994 ACM SIGSOFT international
+symposium on Software testing and analysis, ISSTA
+’94, pages 125–137, New York, NY, USA, 1994. ACM.
+
+[18] J. Kay, J. Kay, N. Maisonneuve, N. Maisonneuve,
+K. Yacef, K. Yacef, P. Reimann, and P. Reimann. The
+big five and visualisations of team work activity. In
+Proceedings of Intelligent Tutoring Systems, 2006.
+
+[19] C. Lewis and J. Rieman. Task-centered user interface
+design: a practical introduction. University of
+Colorado, Boulder, Dept. of Computer Science, 1993.
+
+[20] I. Li, A. Dey, and J. Forlizzi. A stage-based model of
+personal informatics systems. In Proceedings of the
+28th international conference on Human factors in
+computing systems, CHI ’10, pages 557–566, New
+York, NY, USA, 2010. ACM.
+
+[21] L. Lockyer and S. Dawson. Learning designs and
+learning analytics. In Proceedings of the Learning
+Analytics and Knowledge conferencd (LAK11), 2011.
+
+[22] A. M. Lund. Measuring usability with the use
+questionnaire. Usability Interface, 8(2), 2001.
+
+[23] R. Mazza and C. MILANI. Exploring usage analysis in
+learning systems: Gaining insights from visualisations.
+In In AIED Workshops (AIED’05), juillet, 2005.
+
+[24] L. Mazzola and R. Mazza. Gvis: a facility for
+adaptively mashing up and representing open learner
+models. In Proceedings of the 5th European conference
+on Technology enhanced learning conference on
+Sustaining TEL: from innovation to learning and
+practice, EC-TEL’10, pages 554–559, Berlin,
+Heidelberg, 2010. Springer-Verlag.
+
+[25] K. Niemann, H.-C. Schmitz, M. Scheffel, and
+M. Wolpers. Usage contexts for object similarity:
+Exploratory investigations. In Proceedings of the
+
+151
+
+
+
+Learning Analytics and Knowledge conferencd
+(LAK11), 2011.
+
+[26] A. Nussbaumer. Supporting Self-Reflection through
+Presenting Visual Feedback of Adaptive Assessment
+and Self-Evaluation Tools, volume 1. 2008.
+
+[27] A. Nussbaumer, C. Steiner, and D. Albert.
+Visualisation Tools for Supporting Self-Regulated
+Learning through Exploiting Competence Structures,
+pages 3–5. Number September. Citeseer, 2008.
+
+[28] C. H. Orrill, M. J. Hannafin, and E. M. Glazer.
+Disciplined inquiry and the study of emerging
+technology. Framework, pages 335–354, 1998.
+
+[29] A. Pardo and C. D. Kloos. Stepping out of the box.
+towards analytics outside the learning management
+system. In Proceedings of the Learning Analytics and
+Knowledge conferencd (LAK11), 2011.
+
+[30] P. R. Pintrich. A motivational science perspective on
+the role of student motivation in learning and teaching
+contexts. Journal of Educational Psychology, Vol
+95(4):667–686, December 2003.
+
+[31] S. Purpura, V. Schwanda, K. Williams, W. Stubler,
+and P. Sengers. Fit4life: the design of a persuasive
+technology promoting healthy behavior and ideal
+weight. In Proceedings of the 2011 annual conference
+on Human factors in computing systems, CHI ’11,
+pages 423–432, New York, NY, USA, 2011. ACM.
+
+[32] G. Richards and I. DeVries. Revisiting formative
+evaluation: Dynamic monitoring for the improvement
+of learning activity design and delivery. In Proceedings
+of the Learning Analytics and Knowledge conferencd
+(LAK11), 2011.
+
+[33] D. Rosen, V. Miagkikh, and D. Suthers. Social and
+semantic network analysis of chat logs. In Proceedings
+of the Learning Analytics and Knowledge conferencd
+(LAK11), 2011.
+
+[34] J. L. Santos, K. Verbert, S. Govaerts, and E. Duval.
+Visualizing PLE Usage, volume 773, pages 34–38.
+CEUR workshop proceedings, 2011.
+
+[35] M. Sedlmair, P. Isenberg, D. Baur, M. Mauerer,
+C. Pigorsch, and A. Butz. Cardiogram: visual
+analytics for automotive engineers. In CHI ’11, pages
+1727–1736. ACM, 2011.
+
+[36] T. Selker. New paradigms for using computers.
+Commun. ACM, 39:60–69, August 1996.
+
+[37] M. Sharkey. Academic analytics landscape at the
+university of phoenix. In Proceedings of the Learning
+Analytics and Knowledge conferencd (LAK11), 2011.
+
+[38] B. Shneiderman. The eyes have it: A task by data
+type taxonomy for information visualizations. In Proc.
+of the IEEE Symp. on Visual Languages, page 336.
+IEEE, 1996.
+
+[39] M. Swan. Emerging patient-driven health care models:
+An examination of health social networks, consumer
+personalized medicine and quantified self-tracking.
+International Journal of Environmental Research and
+Public Health, 6(2):492–525, 2009.
+
+[40] M. Tarafdar, Q. Tu, B. S. Ragu-Nathan, and T. S.
+Ragu-Nathan. The impact of technostress on role
+stress and productivity. Journal of Management
+Information Systems, 24(1):301–328, 2007.
+
+[41] K. Upton and J. Kay. Narcissus: Group and
+
+individual models to support small group work. In
+Proceedings of the 17th International Conference on
+User Modeling, Adaptation, and Personalization:
+formerly UM and AH, UMAP ’09, pages 54–65,
+Berlin, Heidelberg, 2009. Springer-Verlag.
+
+[42] K. Verbert, H. Drachsler, N. Manouselis, M. Wolpers,
+R. Vuorikari, and E. Duval. Dataset-driven research
+for improving recommender systems for learning. In
+Proceedings of the Learning Analytics and Knowledge
+conferencd (LAK11), 2011.
+
+[43] F. Wang and M. Hannafin. Design-based research and
+technology-enhanced learning environments.
+Educational Technology Research and Development,
+53:5–23, 2005. 10.1007/BF02504682.
+
+152
+
+
+
+
+

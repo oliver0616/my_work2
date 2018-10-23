@@ -1,0 +1,30 @@
+# Cluster Health Check
+
+## Overall Cluster Health
+GET /_cat/health?v
+
+## Node Health
+GET /_cat/nodes?v
+
+## List Indices
+GET /_cat/indices?v
+
+## Create 'sales' Index
+PUT /sales
+
+## Add 'order' to 'sales' index
+PUT /sales/order/123
+{
+  "orderID":"123",
+  "orderAmount":"500"
+}
+
+## Retrieve document
+GET /sales/order/123
+
+
+## Delete index
+DELETE /sales
+
+## List indices
+GET /_cat/indices?v

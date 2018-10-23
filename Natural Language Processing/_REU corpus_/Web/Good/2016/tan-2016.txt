@@ -1,0 +1,590 @@
+
+Fostering 21st century literacies through a collaborative 
+critical reading and learning analytics environment: User-
+
+perceived benefits and problematics
+Jennifer Pei-Ling Tan, Simon Yang, Elizabeth Koh, Christin Jonathan 
+
+National Institute of Education, Nanyang Technological University, Singapore 
+jen.tan@nie.edu.sg
+
+ABSTRACT 
+The affordances of learning analytics (LA) are being increasingly 
+harnessed to enhance 21st century (21C) pedagogy and learning. 
+Relatively rare, however, are use cases and empirically based 
+understandings of students’ actual experiences with LA tools and 
+environments at fostering 21C literacies, especially in secondary 
+schooling and Asian education contexts. This paper addresses this 
+knowledge gap by 1) presenting a first iteration design of a 
+computer-supported collaborative critical reading and LA 
+environment and its 16-week implementation in a Singapore high 
+school; and 2) foregrounding students’ quantitative and qualitative 
+accounts of the benefits and problematics associated with this 
+learning innovation. We focus the analytic lens on the LA 
+dashboard components that provided visualizations of students’ 
+reading achievement, 21C learning dispositions, critical literacy 
+competencies and social learning network positioning within the 
+class. The paper aims to provide insights into the potentialities, 
+paradoxes and pathways forward for designing LA that take into 
+consideration the voices of learners as critical stakeholders.   
+
+CCS Concepts 
+• Human-centered computing~User centered design   • 
+Applied computing~Collaborative learning 
+
+Keywords 
+Learning analytics, CSCL, critical literacy, 21st century skills. 
+
+1. INTRODUCTION 
+Critical reading development is an essential component of strong 
+language and literacy skills, and thus fundamental to young 
+people’s productive participation in the 21C global knowledge 
+economy. But students commonly struggle with relating and 
+responding to English language (EL) texts on a personal level, 
+thereby failing to engage deeply and critically in reading tasks [1].  
+This has been attributed to two key reasons. First, texts used in EL 
+lessons are still predominantly print-based even though students 
+now interact largely with multimodal texts. Further, in 
+conventional EL curriculum and pedagogy, students have limited 
+opportunities to extend their reading practices in socially, 
+cognitively and technologically engaging ways, even though they 
+engage continually with rich and fluid social media platforms in 
+
+their personal time [2].  Second, students currently have limited 
+access to meaningful and timely formative feedback regarding 
+their reading engagement and their broader literacy development 
+[3], thereby significantly constraining their capacity to self-
+evaluate and positively modify their learning behaviors. Until 
+these issues are effectively addressed, students’ low levels of EL 
+engagement and weak critical reading skills are likely to persist, 
+with adverse effects on their language proficiencies, and 21C 
+capacities—critical thinking, collaboration and communication. 
+This challenge is the impetus for our design, implementation and 
+evaluation of WiREAD, a web-based collaborative critical reading 
+and LA environment aimed at deepening critical reading 
+engagement levels, promoting self-regulated and collaborative 
+knowledge construction in EL among Singapore Secondary 3 
+(Grade 9) students, during and beyond formal class time. 
+
+2. TECHNO-PEDAGOGICAL DESIGN 
+WiREAD was designed with the primary objective of motivating 
+and helping students to develop richer dialogue and quality 
+interactions with peers around multimodal texts, thereby 
+deepening their appreciation of and connection to collaborative 
+and critical reading as a generative social practice. So, the techno-
+pedagogical design of WiREAD focused on 2 key learning 
+affordances: online peer interactions around reading, and the LA 
+dashboard. 
+
+2.1 Online Social Reading and Discussion 
+Space 
+In its pedagogical and curricular design, the web-based social 
+reading and discussion tool is underpinned by Vygotskian socio-
+constructivist theories, informed by a Multiliteracies pedagogical 
+framework, which foregrounds 4 essential dimensions of effective 
+contemporary literacy enculturation in learners: 1) situated 
+practice, 2) overt instruction, 3) critical framing, and 4) 
+transformed practice [4; 2]. The micro-level of pedagogical 
+scaffolding scripts drew from Paul-Elder’s ‘wheel of critical 
+reasoning’ [5] and our own work on dialogic indicators of 
+collective creativity and criticality [6] to develop 7 critical lenses 
+(message, purpose, audience, assumption, point of view, 
+inference, impact of language/visuals) and 5 critical talk types (I 
+think that, I think so because, I agree, I disagree, I need to ask).  
+Together, these served as a schema for guiding students’ 
+collaborative critique of texts on WiREAD in that students are 
+required to tag each of their comments/replies with 1 critical lens 
+and 1 critical talk type (Figure 1). Furthermore, each critical lens 
+and critical talk type tag contained a ‘popover’ that provided 
+students with question prompts and sentence starters. These 
+served as a constant referential resource reminding students how 
+each tag could be used to critique texts more deeply. A new 
+teacher-nominated multimodal text was uploaded each week over 
+a 16-week term. Students had a weekly 30-minute reading period 
+in school and personal time beyond curriculum time to read, 
+comment and reply to others’ posts on the texts.  
+
+Permission to make digital or hard copies of all or part of this work for 
+personal or classroom use is granted without fee provided that copies are 
+not made or distributed for profit or commercial advantage and that copies 
+bear this notice and the full citation on the first page. Copyrights for 
+components of this work owned by others than the author(s) must be 
+honored. Abstracting with credit is permitted. To copy otherwise, or 
+republish, to post on servers or to redistribute to lists, requires prior 
+specific permission and/or a fee. Request permissions from 
+Permissions@acm.org. 
+LAK '16, April 25 - 29, 2016, Edinburgh, United Kingdom. 
+Copyright is held by the owner/author(s). Publication rights licensed to 
+ACM. ACM 978-1-4503-4190-5/16/04...$15.00 
+DOI: http://dx.doi.org/10.1145/2883851.2883965 
+
+
+
+ 
+Figure 1: Texts, critical lenses, talk types, and popovers 
+
+Architecturally, WiREAD is built on WordPress, an open-source 
+PHP website creation tool, with additional plugins and in-house 
+programming codes to customize the functionalities for our 
+purposes. A major plugin, BuddyPress, enhanced the social 
+learning aspect where users can join singular or multiple groups, 
+and utilize interactive features including activities feed, personal 
+messaging and friendship system. As depicted in Figure 2, all data 
+are stored in a mysql database, with structural modifications made 
+to capture additional data required for the LA dashboard 
+component of the learning platform (see Section 2.2.). 
+
+Figure 2: WiREAD system architecture 
+
+2.2 Learning Analytics Dashboard 
+The LA affordance of WiREAD was designed with the aspiration 
+of providing rich, meaningful and timely formative feedback to 
+students and teachers throughout the term to help monitor reading 
+engagement and progress, and modify learning strategies and 
+pedagogical practices to improve outcomes. We focus here on the 
+student dashboard, which consisted of 4 separate components/tabs 
+visualizing a blend of EL achievement, dispositional, discourse, 
+content and social network analytics [7]: 
+(i) My Reading Achievement: data on students’ reading grades 
+
+on school-based assessments throughout the term captured in 
+teachers’ centralized information portal; 
+
+(ii) My Learning Attitudes and 21C Skills: data from student 
+self-report questionnaires administered at the start and end of 
+each term, using pre-validated measures of productive 21C 
+learning dispositions [8], including mastery/performance goal 
+orientations, deep/surface learning, task value, self-efficacy 
+and engagement, student-teacher relatedness, cognitive 
+playfulness (curiosity and creativity), criticality, collaboration 
+and communication; 
+
+(iii)  My WiREAD Critique & Discussion Profile: data on 
+students’ online engagement based on the frequency and 
+
+length of comments and replies, and frequency of each 
+critical lens and critical talk type across texts; 
+
+(iv) My Social Learning Network Map: sociograms reflecting 
+students’ position and influence within the WiREAD 
+learning network (ties based on students’ online discussion of 
+texts with others) and the class’ learning network (ties based 
+on students’ nomination of who and how often they 
+approached classmates to discuss texts critically). 
+
+These data indicators and corpuses were retrieved using PHP 
+functions integrated into the WordPress framework. In this 
+process, data was checked and sorted. Application algorithms 
+were applied to the data, with processed data parsed to the 
+visualization handler where the final data is presented to the end 
+user in interactive visualized models (Figure 3). 
+
+ 
+Figure 3: Learning dashboard visualizations (selected only) 
+
+3. STUDENTS’ EVALUATIVE ACCOUNTS 
+OF LA DASHBOARD 
+To develop more nuanced insights into the potentialities, 
+paradoxes and pathways forward for designing LA, we ask ‘how 
+do students describe the benefits of and problems with the various 
+LA dashboard components and visualizations’? 
+
+3.1 Methods and Measures 
+In this study, we used a design-based research approach 
+supplemented by a quasi-experimental design. Pre/post-tests and 
+self-reported questionnaires, and qualitative feedback forms and 
+focus groups conducted at the start and end of the 16-week 
+innovation term together formed the impact evaluation of 
+WiREAD relating to its online social reading and discussion 
+space, and its LA dashboard. The Secondary 3 (Grade 9, 15-year 
+old) student participants comprised 3 WiREAD classes (N=116) 
+and 3 control classes (N=92). Here, we report and discuss the 
+WiREAD classes’ mixed methods evaluative accounts of the 
+student LA dashboard component.  
+Evaluative measures in the quantitative questionnaire included 
+(but were not limited to) a perceived ease of use scale (4 items), a 
+perceived usefulness scale (16 items measuring 4 key productive 
+
+
+
+learning dimensions [9]: i) socialization, (ii) expression of identity 
+& opinions, (iii) development of 21C skills & dispositions, (iv) 
+academic learning & performance), and a 4-item scale of how 
+helpful each of the four LA dashboard components were for 
+students’ learning and growth. All scales reported strong internal 
+consistency and confirmatory factor analysis scores (available 
+upon request). Student focus groups were conducted with 30 
+students (10 from each of the 3 WiREAD classes), purposively 
+selected to reflect diverse users with a range of low to high levels 
+of WiREAD usage, reading achievement, and vocality in class. 
+Remaining students (N=86) completed a qualitative feedback 
+form on the aspects of WiREAD they found to be useful or 
+otherwise for their learning and why. 
+
+4. RESULTS AND DISCUSSION 
+4.1 Quantitative Evaluative Findings 
+Descriptive analysis of questionnaire responses showed that 
+students found the LA dashboard easy to use, navigate and 
+understand (M=5.54 on a scale of 1-very difficult to 7-very easy, 
+SD=1.02). In general, they were moderately positive regarding 
+each dashboard component’s helpfulness to their learning and 
+growth (Figure 4), and regarding the overall dashboard’s 
+usefulness for enhancing our identified key 21C productive 
+learning dimensions (Figure 5).  
+
+ 
+Figure 4: Dashboard components helpful for learning/growth? 
+
+  
+Figure 5: Dashboard useful for enhancing 21C learning? 
+
+4.2 Qualitative Evaluative Accounts & Insights 
+Students’ qualitative accounts of the LA dashboard provide 
+deeper insights into the ‘experienced realities’, promises and 
+problematics of such contemporary learning affordances. 
+
+4.2.1 User-perceived benefits of LA dashboard 
+We elaborate here on the 3 overarching themes that emerged from 
+students’ qualitative accounts of the LA dashboard’s perceived 
+learning benefits, namely, 1) generating greater awareness and 
+
+reflection of learning profile and progress, 2) enhancing learning 
+motivation and engagement (cognitive, affective and behavioral), 
+and 3) cultivating reciprocal social citizenry in learning.  
+Students repeatedly described the LA dashboard and its various 
+components as most informative in terms of making visible their 
+learning progress, dispositions and behaviors, which they implied 
+were usually vague or invisible to them: “The [WiREAD 
+Critique/Discussion Profile] section shows how much comments 
+and replies we have done each week. This is very useful as it 
+serves as a reminder to write comments on texts we have not 
+done. It also encourages me to be more active as I often visit this 
+section to see my progress and effort” (St8, 3R7). Similarly, St22 
+(3R6) stated, “My WiRead Discussion Data and My Social 
+Learning Network Profile were also useful in monitoring my 
+progress and to encourage me to post and comment more and 
+have better quality comments. They also help to show which skills 
+and [critical] lenses I have not used, which allows me to know 
+which skills I should practice more on”, and for Reading 
+Achievement dashboard, “I found the EL achievement data most 
+useful…as I was able to gauge how much progress for EL I have 
+made as well as how I fair against other students. Through this, I 
+know what I can work on in order to improve” (St19, 3R1).  
+Students frequently converged on the Learning Attitudes and 21C 
+Skills dashboard as the most “eye-opening” in helping them 
+“discover” and “find out strengths and weaknesses” that they did 
+not previously know about themselves: “I found that My Learning 
+Attitudes and 21C Skills were the most useful. This dashboard 
+allowed me to realize what type of attitude I had towards learning 
+English and the way that I was trying to achieve my EL goals. I've 
+come to realize that my attitude towards EL was not the best as I 
+only learnt for the sake of doing well in exams not for the sake of 
+understanding the language. Thus looking at it, I am trying to 
+change my learning habits and attitude towards English in a 
+better and more positive direction” (St1, 3R7). This reinforces the 
+need for schools to place more overt emphasis on developing 
+students’ 21C literacies and dispositions, given their salience in 
+predicting academic, employment and life outcomes [10, 11].  
+In all of the accounts, frequently heard among the participant 
+cohort were students’ attributions of strong links between greater 
+learner awareness as a precursor for enhanced learning motivation 
+and engagement—cognitive, affective and behavioral [12]: 
+“shows me where I stand…motivates me to work harder”, 
+“…motivate me to help or get help from my friends”, “…force me 
+to think deeper”, and “makes me more motivated to comment so 
+that my [social network] dot can be bigger and brighter, and I 
+will know who to look to for help”. This concurs with much LA 
+research on the potential of ‘visible learning’ for promoting self-
+regulated learning [13], providing further empirical confirmation 
+that learner autonomy, competence and relatedness are vital to 
+intrinsic motivation and sustained behavioral change [14]. 
+Also noteworthy was the recognition among students that the LA 
+dashboard, especially its social network analytics, bore much 
+value for nurturing a disposition we term reciprocal social 
+citizenry. This refers to a capacity to shift one’s focus away from 
+self-interest and self-sufficiency to engage in productive help-
+giving and help-seeking learning behaviors: “the spider web, some 
+of our names, the bubbles were bigger, right? So it showed us like 
+who can we find like if we ever need any help in English. And 
+some of the people, whose bubbles are like smaller, they are out of 
+the web thing, so we can like we can just ask them whether they 
+need any help.” But such insights on the value of the social 
+network map in promoting social responsibility and peer support 
+
+
+
+in learning were not common among students. We elaborate on 
+this problematic in Section 4.2.2.2. 
+
+4.2.2 Two corresponding problematics 
+Students’ qualitative accounts of the benefits gained from the LA 
+dashboard, however, drew opposing counterpoints from other 
+peers, thus providing insights into the ambivalence reflected in 
+responses on the usefulness of the dashboard for their learning and 
+growth. 2 key problematics were gleaned from the student talk: 1) 
+the ironic nature of norm-referenced vs. criterion-referenced 
+visualizations for motivating learning, and 2) the inherently low 
+levels of ‘connective literacy’ among students. 
+4.2.2.1 LA visualizations a double-edged sword 
+Students were polarized in their views of norm-referenced visual 
+analytics as indicators of academic and social standing among 
+peers, and thus as a motivating mechanism for learning. For 
+many, knowing “where they stand in class”, if they are “below 
+the average” or “at the edge of the network” made them more 
+“determined… to increase [their] level of participation”, to “work 
+harder”, “be more active” and “improve” their learning behaviors 
+online. Further, students often alluded to the inherent “fun” and 
+“interesting” nature of the visualizations as stimulating a form of 
+“healthy peer pressure” and informal “competition” that drives 
+them to engage with learning in more substantive ways: “the 
+spider web would like, for me, it looks like a mini game, so that 
+it’s a race to get to the center and to get as big as you can” (St12, 
+3R7). Higher-performing students in the classes even called for a 
+more formalized “ranking system” or “hall of fame”, asserting that 
+this “leads to advancement and constant usage of WiREAD” 
+(St25, 3R7).  
+There were, however, opposing views, and some pointed to the 
+adverse affective effects of “clearly seeing” oneself in relation to 
+others in the class, especially if one is “at the bottom” (My 
+Reading Achievement), or “at the outside” (My Social Learning 
+Network Profile): “It was demoralizing… sometimes. You look 
+like you are below average on the chart… then the class average 
+is so high, and the maximum mark you are supposed to get is so 
+high, then you are below average…it was demoralizing… 
+depressing to see that classmates are better at commenting or 
+thinking skills” (St5, 3R7), and “after several classes, I have 
+found out that working to a brighter and larger spot has turned 
+into a competition…this provides added stress that we do not 
+need, as people have their own pace of learning and may be 
+slower. The slow pace of learning may be laughed at by 
+classmates and thus it is not as useful for learning as it may 
+emotionally affect others” (St14, 3R6).  
+Students holding this view often asserted that learning 
+visualizations are most helpful when they are criterion-based and 
+self-referenced, rather than norm-referenced to peers: “seriously, I 
+think what matters most is actually yourself instead of other 
+people… it actually has some psychology effect. You shouldn't 
+compare with anybody else cause even though this is 
+collaborative learning, it’s really more of self-learning in the end” 
+(Stu3, 3R1); and “the purpose of comparing with others is to make 
+you improve to so-called match other people’s level, but 
+comparing with yourself would, can actually have the same effect 
+cause you are trying to improve based on your past. Comparing 
+with yourself will be more suitable. If like for example, the week 
+before you commented less, then you think like “Oh yes, I actually 
+commented more [this week], I feel better”, instead of comparing 
+with others like “What? I’m last, what is this? Not fair” then you 
+cry” (St8, 3R1).  
+
+This reinforces the use of intrinsic motivation mechanisms in the 
+design of LA to foster a mastery-oriented mindset that has been 
+shown to result in more adaptive outcomes relative to a 
+performance-oriented mindset [15]. It also foregrounds recent 
+positive psychology understandings that emphasize ‘personal 
+best’ achievement goals as a highly salient predictor of students’ 
+academic motivation and engagement [16]. Moreover, it reminds 
+LA designers to be cognizant of the restrictive effects of one-
+sized-fits-all approaches to assessment and pedagogy in 
+conventional schooling [17], and the need to develop richer, more 
+nuanced and proximal multi-dimensional analytics [18], such that 
+differentiated instruction can become an experienced reality for 
+students, with purposefully-designed LA serving to compress, 
+rather than exacerbate, the learning and achievement gap between 
+thriving and struggling students. 
+
+4.2.2.2 Fostering ‘connective literacy’ an imperative 
+for adolescent learners 
+A second issue became apparent from students’ talk around their 
+experiences with the dashboard—low levels of ‘connective 
+literacy’ amongst adolescent learners. This has implications for 
+not only LA designers and pedagogues, but for a wider 
+educational community committed to helping students become 
+productive and engaged citizens beyond school. We conceptualise 
+and define ‘connective literacy’ as the capacity to see learning as 
+an adaptive and fluid networked activity, where social positioning 
+is seen as constituting a form of learning capital requiring active 
+nurturing and reciprocal transactivity with significant others.  
+In other words, ‘connectively-literate’ students recognize that the 
+opportunity to “see” their individual positioning within the larger 
+class network can prompt them to 1) “find out the people that 
+[they] can actually approach for English”, to seek help from 
+“prominent others” so as “to improve and learn from them”; 2) to 
+“diversify” and “expand the circle of people whom [they] discuss 
+English texts with… to take part in more conversations with the 
+whole class, instead of just the people [they] know better as 
+friends”, thereby “mak[ing them] think more”, and also 3) to show 
+consideration to “others at the side with hardly any connection… 
+[to] try to see their comments more, and reply to their comments”.  
+But this view was relatively nascent and yet to emerge among 
+many student participants. Most students consistently privileged 
+individual learning outcomes and skill acquisition as way more 
+important than social learning connections: “To me, it doesn’t 
+matter who I’m connected to. As long as I can approach the text 
+with different critical lenses, it is useful and helpful. My Social 
+Learning Network Profile does not help me learn anything” (St8, 
+3R1); others referred to social learning network profile as a 
+“redundant system”, because “all it really did was show who 
+worked with who more. It had no real significant purpose to help 
+with my learning” (St29, 3R1), with yet others stating that “all I’m 
+interested in is the content of the comments” (St1, 3R6). To many 
+of these students, social networks have little bearing for learning 
+and growth, with network centrality or prominence being 
+trivialized as promoting a superfluous “social butterfly” 
+syndrome, at the expense of more “serious learners… those who 
+truly like to comment and learn” (St10, 3R6).  
+So, we acknowledge the need for a critical evaluation of 
+WiREAD’s social learning network dashboard design and 
+pedagogical value. Nevertheless, these students’ accounts reflect a 
+highly naïve, scientifically erroneous view of the power of social 
+networks and how these extensively influence ideas, emotions, 
+behaviors, learning and more [19]. This in turn brings to our 
+attention an often-overlooked imperative—that educators of 
+
+
+
+young leaners today need to be much more intentional and 
+purposeful in efforts to develop an empirically-informed 
+appreciation for the power of adaptive and reciprocal social 
+networked capital—as a form of new fundamental literacy 
+essential to successful learning, living and earning in 
+contemporary societies. 
+
+5. LIMITATIONS & WAYS FORWARD 
+To conclude, we highlight some limitations and ways forward. 
+WiREAD is only in its first design iteration, and we are conscious 
+of the LA dashboard’s rudimentary visualizations. There is room 
+for further enhancements to its user interface and aesthetic 
+features. Second, we are consulting with colleagues to incorporate 
+richer and more proximal indicators and analytics, and in 
+particular automated semantic and discourse analytics [7] that can 
+better assess the quality of critical reading and thinking reflected 
+in students’ discursive practices. Relying on students’ self-tagging 
+of critical lenses and critical talk types leads to large variations 
+and may be of limited validity. We are also working on 
+developing the teacher dashboard, to improve the adaptability of 
+pedagogical strategies with regard to learners’ needs and interests. 
+We aim to improve the pedagogical sensitivity and responsiveness 
+of both the LA dashboard and the teacher-pedagogue, in 
+recognition of the tight coupling between extrinsic pedagogical 
+scaffolding and intrinsic self-regulated learning [20].  
+The preliminary findings reported in this paper relate only to the 
+first of three design, implementation and evaluation cycles to be 
+conducted over the next 18 months. We hope, however, that the 
+data and discussion presented here fill some gaps in LA 
+research—by foregrounding secondary student-users’ perceptions 
+and experiences associated with the design and impact of LA for 
+their overall learning and growth, while shedding some light on 
+relevant aspects of Asian edu-cultural contexts. We have also 
+attempted to underscore some less discernible educational 
+problematics that underlie LA design, relating to both 
+instrumental and conceptual debates that are featured in the field’s 
+scholarly discourse. It is in the collective deliberation of these 
+problematics that the transformative power of LA can be further 
+realized for more meaningful, equitable and future-relevant 
+educational outcomes and social life trajectories for learners. 
+
+6. ACKNOWLEDGMENTS 
+This paper draws from project NRF2013-EDU001-EL019, funded 
+by the edulab Research Program, Singapore National Research 
+Foundation. The views expressed in this paper are the authors’ 
+and do not necessarily represent the views of NIE Singapore. 
+
+7. REFERENCES 
+[1] Garcia, A., Mirra, N., Morrell, E., Martinez, A. and Scorza, D. 
+
+2015. The Council of Youth Research: Critical Literacy and 
+Civic Agency in the Digital Age. Reading & Writing 
+Quarterly, 31, 2, 151-167. 
+
+[2] Tan, J.P-L., and McWilliam, E. 2009. From Literacy to 
+Multiliteracies: Diverse Learners and Pedagogical 
+Practice. Pedagogies: An International Journal, 4, 3, 213-225.  
+
+[3] Davison, C. 2013. Innovation in assessment: Common 
+misconceptions and problems. Innovation and change in 
+English language education, 263-275. 
+
+[4] Cope, B. and Kalantzis, M. 2015. A Pedagogy of 
+Multiliteracies: Learning by Design. Palgrave Macmillan 
+
+[5] Paul, R. and Elder, L. 2001. Critical Thinking: Tools for 
+taking charge of your learning and your life. Prentice Hall, 
+Upper Saddle River, NJ. 
+
+[6] Tan, J.P-L., Caleon, I.S., Jonathan, C.R., and Koh, E. 2014. A 
+dialogic framework for assessing collective creativity in 
+computer-supported collaborative problem-solving tasks. 
+Research and Practice in Technology Enhanced Learning, 9, 
+3, 411-437. 
+
+[7] Ferguson, R. and Buckingham Shum, S. 2012. Social 
+learning analytics: five approaches. In Proceedings of the 
+2nd International Conference on Learning Analytics & 
+Knowledge, 23–33. 
+
+[8] Tan, J.P-L. and Nie, Y.Y. 2015. The role of authentic tasks in 
+promoting 21st century learning dispositions in Mathematics. 
+In Authentic Problem Solving and Learning in the 21st 
+Century, Y. H. Cho, I. S. Caleon and M. Kapur, Eds. 
+Springer Science+Business Media Singapore Pte Ltd, 
+Singapore, 19-39. 
+
+[9] Tan, J. P. L. 2009. Digital kids, analogue students: a mixed 
+methods study of students' engagement with a school-based 
+Web 2.0 learning innovation. Doctoral thesis. ID Code:  
+30396, Queensland University of Technology. 
+
+[10] Tempelaar, D. T., Rienties, B., and Giesbers, B. 2015. In 
+search for the most informative data for feedback generation: 
+Learning Analytics in a data-rich context. Computers in 
+Human Behavior, 47, 157-167. 
+
+[11] Levin, H. M. 2012. More than just test scores. Prospects, 42, 
+3, 269-284. 
+
+[12] Wang, M. T. and Eccles, J. S. 2012. Adolescent behavioral, 
+emotional, and cognitive engagement trajectories in school 
+and their differential relations to educational success. 
+Journal of Research on Adolescence, 22, 1, 31-39. 
+
+[13] Lockyer, L., Heathcote, E. and Dawson, S. 2013. Informing 
+pedagogical action: Aligning learning analytics with learning 
+design. American Behavioral Scientist, 0002764213479367. 
+
+[14] Wise, A. F. 2014. Designing pedagogical interventions to 
+support student use of learning analytics. In Proceedings of 
+the 4th International Conference on Learning Analytics And 
+Knowledge, 203-211. 
+
+[15] Dweck, C. 2012. Mindset: How you can fulfil your potential. 
+Hachette UK. 
+
+[16] Martin, A. J. and Elliot, A. J. 2015. The role of personal best 
+(PB) and dichotomous achievement goals in students’ 
+academic motivation and engagement: a longitudinal 
+investigation. Educational Psychology, 1-18. 
+
+[17] Gaševi?, D., Dawson, S., Rogers, T. and Gasevic, D. 2015. 
+Learning analytics should not promote one size fits all: The 
+effects of instructional conditions in predicating academic 
+success. The Internet and Higher Education, 28, 68-84. 
+
+[18] Dawson, S. and Siemens, G. 2014. Analytics to literacies: 
+The development of a learning analytics framework for 
+multiliteracies assessment. The International Review of 
+Research in Open and Distributed Learning, 15, 4. 
+
+[19] Christakis, N. A. and Fowler, J. H. 2009. Connected: The 
+surprising power of our social networks and how they shape 
+our lives. Little, Brown. 
+
+[20] Azevedo, R., Moos, D. C., Greene, J. A., Winters, F. I. and 
+Cromley, J. G. 2008. Why is externally-facilitated regulated 
+learning more effective than self-regulated learning with 
+hypermedia? Educational Technology Research and 
+Development, 56, 1, 45-
+
+ 
+
+
+

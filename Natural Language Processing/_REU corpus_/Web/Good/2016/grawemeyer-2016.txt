@@ -1,0 +1,1278 @@
+
+Affecting Off-Task Behaviour: How Affect-aware Feedback
+Can Improve Student Learning
+
+Beate Grawemeyer
+London Knowledge Lab
+
+Birkbeck, University of London
+London, UK
+
+beate@dcs.bbk.ac.uk
+
+Manolis Mavrikis
+London Knowledge Lab
+
+UCL Institute of Education
+University College London, UK
+
+m.mavrikis@ioe.ac.uk
+
+Wayne Holmes
+London Knowledge Lab
+
+UCL Institute of Education
+University College London, UK
+
+w.holmes@ioe.ac.uk
+Sergio Gutierrez-Santos
+
+London Knowledge Lab
+Birkbeck, University of London
+
+London, UK
+sergut@dcs.bbk.ac.uk
+
+Michael Wiedmann
+Institute of Educational
+
+Research
+Ruhr-Universität Bochum, DE
+michael.wiedmann@rub.de
+
+Nikol Rummel
+Institute of Educational
+
+Research
+Ruhr-Universität Bochum, DE
+
+nikol.rummel@rub.de
+
+ABSTRACT
+This paper describes the development and evaluation of an
+a?ect-aware intelligent support component that is part of a
+learning environment known as iTalk2Learn. The intelligent
+support component is able to tailor feedback according to a
+student’s a?ective state, which is deduced both from speech
+and interaction. The a?ect prediction is used to determine
+which type of feedback is provided and how that feedback
+is presented (interruptive or non-interruptive). The system
+includes two Bayesian networks that were trained with data
+gathered in a series of ecologically-valid Wizard-of-Oz stud-
+ies, where the e?ect of the type of feedback and the presen-
+tation of feedback on students’ a?ective states was investi-
+gated. This paper reports results from an experiment that
+compared a version that provided a?ect-aware feedback (af-
+fect condition) with one that provided feedback based on
+performance only (non-a?ect condition). Results show that
+students who were in the a?ect condition were less bored and
+less o?-task, with the latter being statically significant. Im-
+portantly, students in both conditions made learning gains
+that were statistically significant, while students in the af-
+fect condition had higher learning gains than those in the
+non-a?ect condition, although this result was not statisti-
+cally significant in this study’s sample. Taken all together,
+the results point to the potential and positive impact of
+a?ect-aware intelligent support.
+
+Categories and Subject Descriptors
+J.1 [Administrative Data Processing]: Education; K.3.1
+[Computer Uses in Education]: Computer-assisted in-
+struction
+
+Permission to make digital or hard copies of all or part of this work for personal or
+classroom use is granted without fee provided that copies are not made or distributed
+for profit or commercial advantage and that copies bear this notice and the full cita-
+tion on the first page. Copyrights for components of this work owned by others than
+ACM must be honored. Abstracting with credit is permitted. To copy otherwise, or re-
+publish, to post on servers or to redistribute to lists, requires prior specific permission
+and/or a fee. Request permissions from permissions@acm.org.
+LAK ’16, April 25-29, 2016, Edinburgh, United Kingdom
+
+c? 2016 ACM. ISBN 978-1-4503-4190-5/16/04. . . $15.00
+DOI: http://dx.doi.org/10.1145/2883851.2883936
+
+Keywords
+A?ect, Feedback, Exploratory Learning Environments
+
+1. INTRODUCTION
+The aim of our research is to provide intelligent support to
+
+students, taking into account their a?ective states in order
+to enhance their learning experience and performance.
+
+It is well understood that a?ect interacts with and in-
+fluences the learning process [19, 10, 3]. While positive
+a?ective states (such as surprise, satisfaction or curiosity)
+contribute towards learning, negative ones (including frus-
+tration or disillusionment at realising misconceptions) can
+undermine learning. Any learning experience is typically full
+of transitions between positive and negative a?ective states.
+For example, while a student may be interested in a partic-
+ular learning task, any misconceptions that they have might
+lead to frustration or disillusionment as they are forced to
+reconsider their existing understanding. However, if this
+negative a?ective state is reconciled, the student might be-
+come deeply engaged with the task once again. D’Mello et
+al., for example, elaborate on how confusion, which superfi-
+cially might be considered a negative a?ective state, is likely
+to promote learning under appropriate conditions [10].
+
+It is important therefore, to deepen our understanding of
+the role of a?ective states for learning, and to be able to
+move students out of states that inhibit learning. Pekrun
+[24] discusses achievement emotions or a?ective states that
+arise in a learning situation. Achievement emotions are
+states that are linked to learning, instruction, and achieve-
+ment. We focus on a subset of a?ective states identified
+by Pekrun: flow/enjoyment, surprise, frustration, and bore-
+dom. We also add confusion, which has been identified else-
+where as an important a?ective state during learning [25],
+for tutor support and for learning in general [10].
+
+As described in Woolf et al. [32], students can become
+overwhelmed (very confused or frustrated) during learning,
+which may increase cognitive load [30]. However, appropri-
+ate feedback might help to overcome such problems. Carenini
+et al. [4] describe how e?ective support or feedback needs to
+answer three main questions: (i) when the support should
+be provided during learning; (ii) what the support should
+contain; and (iii) how it should be presented.
+
+http://dx.doi.org/10.1145/2883851.2883936
+
+
+In this paper we focus on the latter two questions: what
+and how support or feedback should be provided based on
+the student’s a?ective state.
+
+We report on the development of intelligent feedback that
+is able to tailor the type of feedback as well as the presen-
+tation of the feedback in order to enhance a student’s learn-
+ing experience. It includes a Bayesian network for deter-
+mine the most e?ective feedback type, as well as a Bayesian
+network for detecting the most e?ective presentation of the
+feedback. Both networks are trained with data from Wizard-
+of-Oz studies where the impact of a student’s a?ective state
+on the e?ectiveness of the feedback type and on the presen-
+tation of feedback was investigated (c.f. [15, 13]).
+
+In those studies, we learned that a student’s a?ective state
+can be enhanced when the feedback type is matched to the
+a?ective state of the student. For example, when students
+were confused, a?ect boosts and specific instructive feedback
+were more e?ective in helping students [15]. Additionally,
+adapting the presentation of the feedback according to the
+student’s a?ective state is also important, especially when
+they are confused or frustrated. For these particular af-
+fective states, high-interruptive feedback is more e?ective,
+especially as the cost of not viewing the feedback is likely to
+be a negative a?ective state [13]. However, when students
+are in flow, low-interruptive feedback is preferred [21].
+
+In the next section an overview of related literature is
+provided. Section 3 describes the development of the a?ect-
+aware intelligent support. Section 4 outlines the evaluation
+of the support. Results of the evaluation are reported in
+section 5. A detailed discussion that highlights the impor-
+tance of including a?ect in learner modelling is provided in
+section 6; while section 7 concludes the paper.
+
+2. RELATED WORK
+Most of the related work in the field focuses on detecting
+
+a?ect in di?erent input stimuli, ranging from spoken dia-
+logue (e.g. [31]) to keyboard and mouse interactions [27],
+including a combination of di?erent stimuli such as conver-
+sational cues, body language and facial expression [8].
+
+Only a limited amount of research has been undertaken
+to investigate how a student’s a?ect or motivation can been
+taken into account to provide learning material or motiva-
+tional feedback. One early example is del Soldato & du
+Boulay [7] who use a student’s motivation to decide whether
+to provide the next task or to provide hints. Another exam-
+ple is Santos et al. [28] who show that a?ect as well as mo-
+tivation and self-e?cacy impact the e?ectiveness of motiva-
+tional feedback and recommendations. Additionally, Woolf
+et al. [32] developed an a?ective pedagogical agent which
+is able to mirror a student’s a?ective state, or acknowledge
+a student’s a?ective state if it is negative. Another exam-
+ple is Conati & MacLaren [6], who developed a pedagogical
+agent to provide support according to the a?ective state of
+the student and their personal goal. Also, Shen et al. [29]
+recommend learning material to the student based on their
+a?ective state. D’Mello et al. [9] developed a system that
+is able to respond to students via a conversation that takes
+into account the a?ective state of the student.
+
+A limited number of researchers have looked at how the
+presentation of information or feedback could be adapted
+according to certain user characteristics. For example, in
+the area of information visualisation, Carenini et al. [4] de-
+scribe a study that looks at tailoring visual prompts, based
+
+on task complexity, user characteristics (such as perceptual
+speed, visual working memory, and verbal working memory)
+and delivery times. Also, Grawemeyer & Cox [12] describe
+a system that is able to recommend a particular represen-
+tation (bar chart, plot chart, pie chart, sector graph, eulers
+diagram, or table) based on the user’s expertise with repre-
+sentations, their preferences for particular representations,
+the task, the information to be presented and the repre-
+sentation’s semantics. In the slightly di?erent, but related,
+use case of exploratory visual data analysis, researchers have
+looked at inferring the user’s intended task and recommend-
+ing alternative visualisations that may help in their analy-
+sis [11]. Further, Ahn & Brusilovsky [1] describe a system
+which adapts the visualisation of search results dynamically,
+based on a user’s emerging interests.
+
+In this paper we describe how we add to this literature
+by developing and evaluating intelligent support within a
+learning environment that is able to adapt the type of feed-
+back as well as the presentation (high- or low-interruptive)
+of feedback according to a student’s a?ective state in order
+to enhance their learning experience and learning gains.
+
+3. THE ITALK2LEARN PLATFORM
+iTalk2Learn is a learning platform for children aged 8-12
+
+years old who are learning fractions. It combines structured
+practice with more open-ended activities in an exploratory
+learning environment called Fractions Lab [22]. The over-
+all aim is to foster robust learning through providing ex-
+ploratory exercises that help develop conceptual knowledge
+interleaved with structured practice activities that foster
+procedural knowledge. In this paper, we focus on the sup-
+port provided while students are undertaking these learning
+activities (i.e. not the sequencing of those activities).
+
+Figure 1: Exploratory learning environment (Frac-
+tions Lab).
+
+Figure 1 shows the Fractions Lab interface. The learning
+task is displayed at the top of the screen. Students are asked
+to solve the task by choosing fraction representations (from
+the right-hand side menu) which they manipulate in order to
+construct an answer to the given task. Adaptive support is
+provided to the students based on their screen interactions
+and their speech. The platform is designed to detect and
+
+
+
+analyse children’s speech in near real time (c.f. [17]).
+Figure 2 shows the components of the adaptive support.
+
+Drawing on our previous work [16] the support consists of
+three main layers: the analysis or evidence detection layer,
+the reasoning layer, and the feedback generation layer.
+
+Figure 2: Components of the adaptive support.
+
+The input to the analysis layer includes the interaction
+with Fractions Lab (e.g. what fraction was generated or
+changed), the result of the perceived task di?culty classifier
+(PTDC), which is based on the student’s speech (e.g. over-,
+appropriately or under-challenged), and the data from the
+speech recognition software (spoken words).
+
+In the analysis layer, the student’s interactions with the
+platform are identified. This layer includes the a?ective
+state detector, where a student’s a?ective state is detected
+from their speech (results from PTDC and speech recogni-
+tion software) and their interaction with Fractions Lab.
+
+Based on the evidence detection component, the reason-
+ing layer decides if and what feedback should be provided.
+This layer contains a student model and an a?ective state
+reasoner. The student model includes the a?ective state
+of the student and information about actions the student
+has performed, such as representation selected, as well as
+information about what feedback has been provided to the
+student and if that feedback was followed. The a?ective
+state reasoner uses the information from the student model
+to decide what type of feedback should be provided.
+
+The feedback generation layer receives the output from
+the reasoning layer. It includes an a?ective state presenta-
+tion model, which is used to decide how the feedback should
+be presented to the student. The feedback can either be pre-
+sented in a low-interruptive way (a light bulb glows, indicat-
+ing that feedback is available, which can then be accessed or
+ignored by the student) or in a high-interruptive way (the
+students are interrupted by a pop-up window which has to
+be dismissed before the student can continue).
+
+Detailed information about the di?erent components are
+provided below.
+
+3.1 Learner model
+The learner model spans all three main components and
+
+can be seen as the heart of the intelligent support. It in-
+cludes the following information about the current student:
+
+• The a?ective state of the student (that has been cal-
+culated by the a?ective state detector, based on the
+student’s interaction and speech).
+
+• Reasoning stage of the student (beginning, middle or
+end of the task).
+
+• Interactions with the learning environment (e.g. rep-
+resentation selected or fraction changed).
+
+• The type of feedback that has been provided to the
+student in the past.
+
+• If the feedback was viewed by the student or not.
+
+• If the feedback provided was followed or not.
+
+This information is used by the di?erent components to de-
+termine what type of support should be provided to the stu-
+dent, and how that support should be provided.
+
+3.2 Analysis layer (affect detection)
+The detection of the student’s a?ective state is based on
+
+their interaction with the exploratory learning environment
+(Fractions Lab) as well as on their speech as follows:
+
+• The student’s interaction with the platform is used to
+provide a probability about their a?ective state. The
+data used for this calculation is based on whether or
+not they viewed the feedback and whether or not they
+followed the advice provided by the feedback. It is a
+Bayesian network that is trained with data from for-
+mative evaluations in Wizard-of-Oz studies [20].
+
+• A perceived task di?culty classifier (PTDC) extracts
+prosodic features from the student’s speech, in order
+to determine if the student is over-, appropriately or
+under-challenged [17]. Speech and pause histograms
+are used by the perceived task di?culty recognition
+[18].
+
+• The speech recognition software [26] detects whether
+students are speaking or not and produces an array
+of spoken words. This array is used to detect certain
+keywords that are associated with a particular a?ective
+state. We apply a naive Bayes classifier for classifying
+the a?ective state from those words [14].
+
+The a?ective state detector determines the overall a?ective
+state of the student, based on weightings of the di?erent
+input components. For example, a higher weight is given to
+detecting keywords from the speech that are associated with
+a particular a?ective state, followed by the interaction data.
+
+3.3 Reasoning layer (affective state reasoner)
+The a?ective state reasoner uses the information from the
+
+student model to decide what type of feedback should be pro-
+vided. We explore di?erent types of feedback that are known
+from the literature to support students’ in their learning and
+that fit our context. The following di?erent feedback types
+were provided:
+
+• AFFECT BOOSTS - a?ect boosts. As described
+in [32], a?ect boosts can help to enhance student’s mo-
+tivation in solving a particular learning task. These in-
+cluded prompts that acknowledged, for example, that
+a task is di?cult or that the student may be confused
+and encourages them to keep trying.
+
+
+
+• AFFIRMATION PROMPTS - task completion
+prompts. This feedback is provided when students
+have completed the task successfully, in order to give
+them an indication that they have finished the task
+and should start working on the next task.
+
+• INSTRUCTIVE FEEDBACK - instructive task-
+dependent feedback. This feedback provided de-
+tailed instructions, what subtask or action to perform
+in order to solve the task.
+
+• OTHER PROBLEM SOLVING FEEDBACK -
+task-dependent feedback. This support was cen-
+tred on helping students to solve a particular problem
+that they are facing during their interaction by pro-
+viding either questions to challenge their thinking or
+specific hints designed to help them identify the next
+step themselves.
+
+• REFLECTIVE PROMPTS - reflecting on task
+performance and learning. Self-explanation can
+be viewed as a tool to help a student address mis-
+understandings [5] and as a ‘window’ into a student’s
+thinking.
+
+• TALK ALOUD PROMPTS - talking aloud. With
+respect to learning in particular, the hypothesis that
+automatic speech recognition (ASR) can facilitate learn-
+ing is based on educational research that has shown
+benefits of verbalization for learning (e.g., [2]).
+
+• TASK SEQUENCE PROMPTS - completing
+the task. This feedback is centred on providing sup-
+port when students try to go to the next task when
+they have not completed the current task.
+
+Table 1 shows examples of the di?erent feedback types. Based
+on the information from the learner model, the a?ective
+state reasoner decides what type of feedback should be pre-
+sented to the student. The a?ective state reasoner is a
+Bayesian network based on data gathered in Wizard-of-Oz
+studies [15] that investigated the impact of the di?erent feed-
+back types on the a?ective state of students. In those stud-
+ies, students were given a series of fractions tasks and were
+provided with feedback, of the types described above, by
+the researchers (the ’wizards’) as if it was being provided by
+the system. The decision about what type of feedback to
+provide was based on a script. For more information, the
+reader is referred to [20].
+
+During those studies, the student’s a?ective states were
+annotated by using the Baker-Rodrigo Ocumpaugh Method
+Protocol (BROMP) and the HART mobile app that facili-
+tates coding in the classroom [23]. Two researchers also in-
+dependently annotated the a?ective states after the Wizard-
+of-Oz studies using screen and voice recordings. This was
+then compared against the field annotations. Kappa be-
+tween the consolidated annotation and the HART data was
+.71, p<.05.
+
+Figure 3 shows the Bayesian network of the a?ective state
+reasoner. We trained the network with the data from the
+Wizard-of-Oz studies (265 data points). For the trained
+network we employed a 10-fold cross-validation that showed
+promising results (accuracy = 79.25%; Kappa = 0.50; re-
+call true = 0.62; recall false = 0.87) and that encouraged
+us to proceed to the implementation of the system proper.
+
+Figure 3: Bayesian network of the a?ective state
+reasoner.
+
+The a?ective state reasoner receives the a?ective state of the
+student (based on speech and interaction) as well as infor-
+mation about whether the previous feedback was followed.
+For each feedback type, the enhanced a?ective state is pre-
+dicted. This is used to determine which feedback type will be
+most e?ective at enhancing the a?ective state at any given
+time.
+
+3.4 Feedback layer (affective state presenta-
+tion model)
+
+The aim of the a?ective state presentation model is to
+present the feedback in a way that enhances the student’s
+a?ective state. In our learning environment, the feedback
+can be presented in a low-interruptive way by highlighting
+a light bulb, which indicates feedback available (see Fig-
+ure 4). Additionally, the feedback can be presented in a
+high-interruptive way by providing a pop-up window that
+includes the relevant feedback (See Figure 5).
+
+Figure 4: Low-interruptive feedback: the light bulb
+graphic (at the top of the screen) glows, indicating
+that feedback is available.
+
+We conducted a second Wizard-of-Oz study that investi-
+gated if there was a di?erence in a student’s a?ective state
+when the feedback was either presented in a low-interruptive
+way through the light bulb, or in the high-interruptive way
+through the pop-up window [13]. Similar to the Wizard-
+of-Oz studies described earlier, di?erent types of feedback
+were provided to the students. However, in this study this
+feedback was either presented in a low-interruptive or in a
+high-interruptive way. We annotated the students’ a?ec-
+tive states after the studies based on video and speech data
+(Kappa = .52, p<.001).
+
+The data from the study was used to train a Bayesian
+network that is able to predict an enhanced a?ective state
+
+
+
+Feedback type Example
+AFFECT BOOSTS Well done. You’re working really hard!
+AFFIRMATION PROMPTS The way that you worked that out was excellent. Now go to
+
+the next task.
+INSTRUCTIVE FEEDBACK Use the comparison box to compare your fractions.
+OTHER PROBLEM SOLVING
+FEEDBACK
+
+Good. What do you need to do now, to complete the fraction?
+
+REFLECTIVE PROMPTS What do you notice about the two fractions?
+TALK ALOUD PROMPTS Please explain what are you doing.
+TASK SEQUENCE PROMPTS Are you sure that you have answered the task fully? Please
+
+read the task again.
+
+Table 1: Examples of feedback types
+
+Figure 5: High-interruptive feedback: pop-up win-
+dow that includes a feedback message.
+
+Figure 6: Bayesian network of the a?ective state
+presentation model.
+
+by adapting the presentation of the feedback. Figure 6
+shows the Bayesian network of the a?ective state presen-
+tation model.
+
+The dataset contained 266 cases of a?ective states that
+occurred before and after feedback was presented (either
+high- or non-interruptive) as well as student interaction data
+(whether or not previous feedback had been followed). Using
+this data set and employing a 10-fold cross-validation gives
+encouraging results (accuracy = 82.38%; Kappa = 0.53; re-
+call true= 0.65; false= 0.87).
+
+The Bayesian network of the a?ective state presentation
+model is similar to the Bayesian network of the a?ective
+state reasoner, but di?ers in adapting the presentation of
+the feedback rather than the feedback type.
+
+The a?ective state presentation model receives the af-
+fective state of the student as well as information about
+
+whether previous feedback was followed. Based on this, the
+most e?ective presentation of the feedback is detected - one
+that aims to enhance the a?ective state of the student.
+
+4. EVALUATION
+As mentioned, we were interested in investigating the po-
+
+tential of the learner model and, as an extension, the adap-
+tive support to student learning. The iTalk2learn project
+ran a series of formative and summative evaluation stud-
+ies that considered a range of questions. Of relevance here,
+was a study looking particularly into whether feedback tai-
+lored to the a?ective state of the students enhanced their
+learning experience and performance. We were particularly
+interested in the following sub-questions:
+
+• Can speech and interaction be used e?ectively as in-
+puts to detect a student’s a?ective states?
+
+• Can a student’s learning experience be enhanced when
+the feedback is tailored to their a?ective state?
+
+• Can a student’s behaviour towards the task be en-
+hanced when the feedback is tailored to their a?ective
+state?
+
+• Do students have higher learning gains when feedback
+is adapted to their a?ective state?
+
+To address these questions, we evaluated the system and
+intelligent support by comparing one version that included
+the a?ect-aware support with a version where the a?ect-
+aware support was switched o?.
+
+4.1 Participants
+77 participants took part in the evaluation. They were
+
+all primary school students, aged between 8 and 10 years
+old. Parental consent, for their involvement in the study,
+was obtained for all students.
+
+4.2 Procedure
+The participating students were roughly stratified, accord-
+
+ing to previous teacher assessments of the children’s math-
+ematical ability, and then randomly allocated to two sub-
+groups (approximately equal in size, with each group hav-
+ing approximately the same number of high, middle and low
+achieving students). The first group (N = 41) was assigned
+to the a?ect condition: the students were given access to the
+full iTalk2Learn system, which uses the student’s a?ective
+
+
+
+state and their performance to determine the appropriate
+feedback and its presentation. The second group of students
+(N = 36) was assigned to the non-a?ect condition: they were
+given access to a version of the iTalk2Learn system in which
+feedback is based on the student’s performance only.
+
+Two sessions, one for each condition, were undertaken in
+each school. At the beginning of each session, students com-
+pleted an online questionnaire that assessed their knowledge
+of fractions (the pre-test). This was followed by 40 minutes
+during which the students engaged with fractions tasks in
+a version of the iTalk2Learn system that, according to the
+experimental condition, included either the a?ect-aware or
+the non-a?ect-aware support.
+
+Based on results from our Wizard-of-Oz studies [20], two
+sets of support were identified that di?er in their impact
+for enhancing a student’s learning experience by adapting
+feedback based on their a?ective states:
+
+• No impact for adaptation based on a?ect:
+
+– TALK ALOUD PROMPTS were based on inter-
+action only and were provided in the a?ect con-
+dition only, when students did not say anything
+for 30 seconds.
+
+– TASK SEQUENCE PROMPTS were based on in-
+teraction only and were provided when students
+try to go to the next task when they have not
+completed the current task.
+
+– AFFIRMATION PROMPTS were based on per-
+formance and were provided when students suc-
+cessfully completed the task.
+
+All of these feedback types were provided in both con-
+ditions in a high-interruptive way (pop-up window).
+
+• High impact for adaptation based on a?ect:
+
+– AFFECT BOOSTS were based on a student’s af-
+fective state and were provided in the a?ect con-
+dition only.
+
+– INSTRUCTIVE FEEDBACK, OTHER PROB-
+LEM SOLVING FEEDBACK and REFLECTIVE
+PROMPTS were tailored based on a?ect within
+the a?ect condition, and based on performance
+within the non-a?ect condition.
+
+In the a?ect condition the presentation of the feed-
+back (high-interruptive (pop-up) or low-interruptive
+(light bulb)) was based on the student’s a?ective state.
+In contrast, in the non-a?ect condition these feedback
+types were presented in a low-interruptive way (light
+bulb). An exception to this was the REFLECTIVE
+prompts, which were provided in a high-interruptive
+way at the end of the task in the non-a?ect group.
+
+While the students engaged with the system, the a?ective
+states of a subset of the students’ (a?ect condition: N = 26;
+non-a?ect condition: N = 22) were monitored and noted
+using the Baker-Rodrigo Ocumpaugh Monitoring Protocol
+(BROMP) and the Human A?ect Recording Tool (HART)
+Android mobile app. BROMP gives strict guidelines on how
+the a?ective states of students are detected (by e.g. body
+posture, facial expression and engagement with the learning
+environment). The HART mobile app was then used to note
+the a?ective states detected with the BROMP protocol.
+
+After the 40 minutes, the students completed a second
+online questionnaire that again assessed their knowledge of
+fractions (a post-test similar to the pre-test).
+
+5. RESULTS
+
+5.1 Affect detection
+In the a?ect condition, the students’ a?ective states were
+
+detected automatically by the system, as it analysed their
+speech and their interaction as described earlier. Addition-
+ally, the a?ective states were annotated by a researcher us-
+ing the HART mobile app with the BROMP method, also
+as described earlier. The a?ective states that were detected
+automatically include flow, confusion, frustration, boredom,
+and surprise. With the BROMP method the a?ective states
+that the researchers detected included the automatically de-
+tected ones and two additional a?ective state: delight and
+eureka.
+
+Both of those data sources include time stamps, identi-
+fying when the particular a?ective state occurred. The af-
+fective state from the automatic detection and the HART
+annotations were matched according to their time stamp
+(with a 30 seconds window).
+
+There was a moderate agreement between the automatic
+detection and the HART annotations, Kappa = .53, p<.001
+(74.07% agreement). The di?erence is partly due to the two
+a?ective states that were detected with the HART tool but
+that were not included in the automatic detection (i.e. de-
+light and eureka). Additionally, we knew from our formative
+phase that surprise and boredom are di?cult to detect au-
+tomatically and/or rare. Excluding those a?ective states,
+a high agreement between the automatic detection and the
+HART annotations is achieved, Kappa = .62, p<.001 (80.00%
+agreement). However, this result should be read with cau-
+tion. We ignore the human annotation that the system can-
+not detect and assume that the annotated states either side
+of the ignored states are less transient, which together prob-
+ably suggest a higher agreement than is really the case. Nev-
+ertheless, the result is acceptable, especially given that the
+e?ect of a misclassification is an intervention that in the
+best case can help the student and in the worst case can be
+ignored.
+
+5.2 Adapting feedback message types
+In order to investigate di?erences between the conditions
+
+in respect to the adaptations, we outline di?erences in adapt-
+ing the types of feedback messages below. In the a?ect con-
+dition, 1971 feedback messages were provided to students.
+In the non-a?ect condition students received 2007 messages.
+Figure 7 shows how these messages were distributed across
+the di?erent feedback types.
+
+In order to investigate di?erences between the two con-
+ditions (a?ect and non-a?ect), a multivariate ANOVA was
+conducted for the di?erent feedback types. Using Pillai’s
+trace, there was a significant e?ect of the condition on the
+number of di?erent types of feedback messages received, V
+= .929, F(5,71) = 187.045, p < .001. Separate t-tests on
+each feedback type revealed significant e?ects of adapting
+message type based on a?ect. There was a di?erence in how
+often AFFIRMATION prompts were provided between the
+a?ect (M = 2.51, SD = 2.09) and the non-a?ect (M = 5.33,
+SD = 2.41) group (t(75) = -5.50, p < .001, d = -1.25). There
+was also a large di?erence in how much INSTRUCTIVE
+
+
+
+Figure 7: Feedback types provided in the a?ect and
+non-a?ect condition.
+
+feedback was provided between the a?ect (M = 10.32, SD
+= 7.04) and the non-a?ect (M = 37.14, SD = 11.75) group
+(t(55.703) = -11.94, p < .001, d = -2.769). There were also
+large di?erences between conditions for OTHER PROBLEM
+SOLVING support (a?ect: M = 6.05 , SD = 2.55 ; non-
+a?ect: M = 0.97 , SD = 2.21; t(74.991) = 9.36, p < .001, d
+= 2.129), REFLECTIVE prompts (a?ect: M = 7.80, SD =
+3.49 ; non-a?ect: M = 5.53 , SD = 2.21; t(68.501) = 3.46,
+p < .001, d = 0.846), and TASK SEQUENCE prompts (af-
+fect: M = 3.12 , SD = 2.60 ; non-a?ect: M = 6.78 , SD =
+4.22; t(56.679) = -4.50, p < .001, d = 1.044). All of these
+results were statistically significant.
+
+As described earlier, AFFECT BOOSTS and TALK ALOUD
+prompts were only provided in the a?ect condition (a?ect
+boosts: M = 0.80, SD = 1.40; talk aloud prompts: M =
+17.46, SD = 5.92) and thus could not be compared with the
+non-a?ect condition.
+
+5.3 Adapting presentation of feedback
+As described earlier, the feedback message was either dis-
+
+played in a low-interruptive (light bulb) or in a high-interruptive
+way (pop-up). The way in which the feedback was displayed
+depended on the impact for adapting feedback based on af-
+fective states and, if they were in the a?ect condition, on
+the student’s a?ective state.
+
+When feedback was low-interruptive (a glowing light bulb),
+students could either click on the light bulb and receive the
+feedback or they could ignore the light bulb and not receive
+the feedback. In the a?ect condition, 955 feedback messages
+were ignored (M = 23.00, SD = 7.54). In the non-a?ect con-
+dition, students ignored 1044 feedback messages (M = 29.00,
+SD = 11.05). An independent t-test showed that students
+ignored fewer messages in the a?ect condition than in the
+non-a?ect condition (t(60.624) = -2.61, p < .05, d = -0.634),
+a result that was statistically significant.
+
+5.4 Affective states and task behaviour
+We were particular interested in identifying if a student’s
+
+a?ect and their task behaviour can be enhanced through
+adapting the feedback (type and presentation) according to
+their a?ective states.
+
+As described earlier, for a subset of students (a?ect con-
+
+dition: N = 26; non-a?ect condition: N = 22) the a?ec-
+tive states and task behaviour were monitored by using the
+Baker-Rodrigo Ocumpaugh Monitoring Protocol (BROMP)
+and the Human A?ect Recording Tool (HART) Android mo-
+bile app [23]. For each student, a set of a?ective states and
+task behaviour was annotated. Based on these annotations,
+the percentage of time that a student was in a particular af-
+fective state and their task behaviour were calculated. This
+was used for further analysis as described below.
+
+5.4.1 Affect
+
+Figure 8 shows the di?erent types of a?ective states that
+were detected in the a?ect and non-a?ect condition.
+
+Figure 8: Students’ a?ective states during the main
+evaluation session in the a?ect and non-a?ect con-
+dition.
+
+In both conditions students were mainly in flow (a?ect:
+M = 58.12, SD = 22.23; non-a?ect: M = 52.98, SD = 17.41;
+d = 0.257). This was followed by confusion (a?ect: M =
+28.77, SD = 23.28; non-a?ect: M = 27.36, SD = 18.21; d
+= 0.067) and boredom (a?ect: M = 9.54, SD = 13.33; non-
+a?ect: M = 16.08, SD = 7.45, d = -0.606). Only a few were
+frustrated (a?ect: M = 2.01, SD = 3.15; non-a?ect: M =
+1.54, SD = 2.36; d = 0.169), surprised (a?ect: M = 1.03,
+SD = 1.83; non-a?ect: M = 0.74, SD = 2.07; d = 0.148),
+or delighted (a?ect: M = 0.53, SD = 1.33; non-a?ect: M =
+1.19, SD = 2.50; d = -0.33).
+
+In order to investigate di?erences between the two con-
+ditions (a?ect and non-a?ect), a multivariate ANOVA was
+conducted for the di?erent a?ective states. Using Pillai’s
+trace, no significant e?ect of the condition on the a?ective
+states could be detected, V = .188, F(6,41) = 1.586, p > .05.
+However, the medium e?ect size in boredom (d = 0.606) can
+be seen as an indicator that students were indeed less bored
+within the a?ect condition, just not significantly so in this
+sample. The medium e?ect can be seen as an indicator that
+we might find this e?ect in other samples. Adapting feed-
+back based on a?ect can decrease boredom.
+
+5.4.2 Task behaviour
+
+Figure 9 shows the di?erent types of behaviour that oc-
+curred during the evaluation.
+
+In both conditions, students were mainly on task (a?ect:
+M = 83.58, SD = 13.33; non-a?ect: M = 82.42, SD = 8.29,
+
+
+
+Figure 9: Students’ task behaviour during the main
+evaluation session in the a?ect and non-a?ect con-
+dition.
+
+d = 0.105). Fewer students did have an on task conversation
+(a?ect: M = 7.24, SD = 7.86; non-a?ect: M = 7.36, SD =
+6.02, d = -0.017), were o?-task (a?ect: M = 5.39, SD = 6.48;
+non-a?ect: M = 9.87, SD=6.03, d = -0.716), or reflecting on
+the task (a?ect: M = 3.38, SD = 9.86; non-a?ect: M = 0.23,
+SD = 0.75, d = 0.451). Very few were gaming the system
+(a?ect: M = 0.41, SD = 1.45; non-a?ect: M = 0.12, SD =
+0.55, d = 0.264).
+
+In order to investigate di?erences between the two condi-
+tions (a?ect and non-a?ect), two multivariate ANOVAs were
+conducted: one for o?-task, and one for on-task behaviours.
+Using Pillai’s trace, no significant e?ect of the condition on
+on-task behaviours could be detected, V = .125, F(3,44) =
+2.094, p > .05. However, there was a significant e?ect of
+condition on o?-task behaviours, V = .135, F(2,45) = 3.519,
+p < .05. Follow-up t-tests revealed a large di?erence on stu-
+dents’ o?-task behaviour. Students in the a?ect condition
+were less o?-task than students’ in the non-a?ect condition,
+t(46) = -2.46, p<.05, d = -.716, a result that was statisti-
+cally significant.
+
+5.5 Learning gains
+Figure 10 shows the students’ performance when answer-
+
+ing fractions tasks before and after they had used the learn-
+ing environment in the di?erent conditions.
+
+In the a?ect condition students increased their knowledge
+of fractions from M = 2.49 (SD = 1.65) to M = 3.83 (SD =
+1.46). In the non-a?ect condition students increased their
+knowledge from M = 2.44 (SD = 1.58) to M = 3.33 (SD =
+1.71). An ANOVA repeated measures showed an increase of
+knowledge in both groups (F(1,75) = 43.94, p<.001, ÷2p =
+.369), a result that was statistically significant.
+
+Although, the di?erence in learning gains between the
+groups was not significant (F(1,75) = 1.81, p>.05), the over-
+all tendency of the a?ect condition showing higher learning
+gains warrants further investigation.
+
+6. DISCUSSION
+The results of our evaluation will be discussed in respect
+
+to our main research questions.
+
+Figure 10: Student’s learning gains in the a?ect and
+non-a?ect condition.
+
+6.1 Can speech and interaction be used as in-
+put to detect a student’s affective states?
+
+In our system, the automatic detection of a student’s a?ec-
+tive states is based on their speech and their interaction with
+the learning environment. This automatic detection was
+compared to the a?ective states that were annotated with
+the HART mobile app using the BROMP method (where the
+a?ective states are detected by looking at a student’s facial
+expression, body posture and engagement with the learning
+environment). The comparison revealed a medium agree-
+ment when taken into account all a?ective states (flow, con-
+fusion, frustration, boredom, surprise, delight and eureka).
+
+Out of those a?ective states delight and eureka were not
+included in the automatic a?ect detection. Additionally, we
+knew from our formative phase that surprise and boredom
+are di?cult to detect automatically and are rare. Other
+researchers (e.g. [3]) also reported on the low frequency
+of some a?ective states, such as surprise. Excluding these
+a?ective states a high agreement between the human anno-
+tation and automatic detection was indicative of the quality
+of the latter.
+
+Nevertheless, our analysis shows that the detection of af-
+fective states using information from speech and interaction
+data is very promising and warrants further research.
+
+6.2 Can a student’s learning experience be en-
+hanced when the feedback is tailored to
+their affective state?
+
+In both conditions, students were mainly in flow, followed
+by confusion. This is similar to results from other research,
+such as [3]. Flow and confusion contribute towards learning
+and can be seen as positive a?ective states.
+
+Students in the a?ect condition were less bored than stu-
+dents in the non-a?ect condition. While this e?ect was not
+significant, given the exploratory nature of this work, we see
+this as a first indicator that tailoring feedback to a?ective
+states can enhance students’ learning experience. Future
+analyses will investigate how tailoring feedback could en-
+hance the students’ learning experience. For example: was
+
+
+
+tailoring of feedback able to transfer students from a nega-
+tive a?ective state (such as it boredom) into a positive af-
+fective state (such as flow)?
+
+The adaptation of the presentation of the feedback might
+also have been important, as students in the non-a?ect con-
+dition might have ignored feedback presented in the low-
+interruptive way and therefore might have moved from e.g.
+confusion state to a negative a?ective state, e.g. boredom.
+This needs further investigation.
+
+6.3 Can a student’s behaviour towards the task
+be enhanced when the feedback is tailored
+to their affective state?
+
+Students in both conditions were mainly on task. This
+might be due to the nature of the exploratory learning en-
+vironment, which appeared to engage the students.
+
+However, there was a di?erence between the groups in o?-
+task behaviour. Students in the non-a?ect group were more
+o?-task than students in the a?ect condition, a result that
+was statistically significant. Here, the adaptations of the
+feedback types as well as the presentation of the feedback
+based on the student’s a?ective state seem to have had an
+e?ect on their engagement with the task. Students that are
+bored or frustrated might show o?-task behaviour. It looks
+as if the adaptations based on a student’s a?ect are able to
+reduce such negative a?ective states, which reduce o?-task
+behaviour.
+
+Anecdotal evidence from class observations and discus-
+sions among and with students suggests that students might
+have found the task more interesting when feedback was
+adapted according to their a?ective states.
+
+6.4 Do students have higher learning gains when
+feedback is adapted to their affective state?
+
+In both groups, student knowledge of fractions was en-
+hanced. This is a positive result that demonstrates the qual-
+ity of the tasks and the overall level of support even with-
+out a?ect-aware feedback. However, looking at the result
+in terms of the impact of the a?ect detection, the di?erence
+between the groups in how much knowledge they gained was
+not statistically significant but the higher-learning gains in
+combination with the rest of our results and particularly the
+significantly higher self-reported interest are encouraging.
+
+As described earlier, the adaptation of the presentation
+of the feedback might have been important for an increase
+in learning gains, as students in the non-a?ect condition
+might have ignored feedback that was presented in the low-
+interruptive way.
+
+Also, the range of di?erent types of feedback was spread
+more evenly in the a?ect condition than in the non-a?ect
+condition. In the non-a?ect condition mainly INSTRUC-
+TIVE FEEDBACK was provided, based on the students’
+performance. Meanwhile, in the a?ect condition the feed-
+back types were tailored according to the students’ a?ect,
+and much more OTHER PROBLEM SOLVING FEEDBACK
+and REFLECTIVE PROMPTS were provided. Also inter-
+esting to see is that there were fewer TASK SEQUENCE
+PROMPTS in the a?ect condition than in the non-a?ect
+condition, which indicates that fewer students attempted to
+skip the task in the a?ect condition than in the non-a?ect
+condition.
+
+This indicates that the a?ect aware support is able to lead
+students into positive a?ective states, such as flow where
+
+they tend to benefit from reflective or non-instructive more
+open-ended problem solving feedback.
+
+Because of the di?erent types of feedback, students might
+have gained di?erent types of knowledge in the di?erent con-
+ditions. More INSTRUCTIVE FEEDBACK was provided
+to students in the non-a?ect condition, which might have
+led to an emphasis on procedural knowledge gains. Mean-
+while, more OTHER PROBLEM SOLVING FEEDBACK
+and REFLECTIVE PROMPTS were provided to students
+in the a?ect condition, which might have led to conceptual
+knowledge gains. This again warrants further investigation.
+
+7. CONCLUSION
+We have developed an adaptive environment that provides
+
+intelligent support according to a student’s a?ective states.
+It includes two Bayesian networks, which are able to predict
+an enhancement in a student’s a?ective state by adapting
+the type of feedback and the presentation of the feedback
+according to their a?ective states.
+
+The intelligent a?ect-aware support is included in a learn-
+ing platform, where it can be switched on or o?. This fea-
+ture was used to evaluate the a?ect-aware support (a?ect
+condition), by comparing it to support that was based on
+performance only (non-a?ect condition). During our evalua-
+tion the students’ a?ective states were annotated while they
+were using the system in either conditions. The results show
+that students in the a?ect condition showed less o?-task be-
+haviour then students in the non-a?ect condition, a result
+that was statistically significant. Additionally, the results
+indicate that in the a?ect-aware condition students were less
+bored than students in the non-a?ect condition. These are
+important findings as o?-task behaviour and boredom can
+have a negative impact on learning.
+
+The results also underpin the e?ectiveness of the perfor-
+mance of the training data of the Bayesian networks, as stu-
+dents in the a?ect condition were more engaged (less o?-task
+and less bored) than students in the non-a?ect condition.
+
+Future work includes the refinement of the Bayesian net-
+works with the newly collected data. Additionally, we plan
+to analyse our data further by looking at a student’s a?ective
+states and their interactions with the learning environment.
+
+8. ACKNOWLEDGMENTS
+This research has been funded by the European Union in
+
+the Seventh Framework Programme (FP7/2007-2013) in the
+iTalk2Learn project (318051).
+
+9. REFERENCES
+[1] J. Ahn and P. Brusilovsky. Adaptive visualization for
+
+exploratory information retrieval. Information
+Processing and Management, 49:1139–1164, 2013.
+
+[2] M. Askeland. Sound-based strategy training in
+multiplication. European Journal of Special Needs
+Education, 27(2):201–217, 2012.
+
+[3] R. S. J. d. Baker, S. K. D’Mello, M. T. Rodrigo, and
+A. C. Graesser. Better to be frustrated than bored:
+The incidence, persistence, and impact of learners’
+cognitive-a?ective states during interactions with
+three di?erent computer-based learning environments.
+Int. J. Hum.-Comput. Stud., 68(4):223–241, apr 2010.
+
+[4] G. Carenini, C. Conati, E. Hoque, B. Steichen,
+D. Toker, and J. Enns. Highlighting interventions and
+
+
+
+user di?erences: Informing adaptive information
+visualization support. In CHI ’14 Proceedings of the
+SIGCHI Conference on Human Factors in Computing
+Systems, pages 1835–1844, 2014.
+
+[5] M. Chi. Self-explaining expository texts: The dual
+processes of generating inferences and repairing
+mental models. In R. Glaser, editor, Advances in
+instructional psychology, pages 161–238. Mahwah, NJ:
+Lawrence Erbaum Associates, 2000.
+
+[6] C. Conati and H. MacLaren. Empirically building and
+evaluating a probabilistic model of user a?ect. User
+Modeling and User-Adapted Interaction, 2009.
+
+[7] T. del Soldato and B. du Boulay. Implementation of
+motivational tactics in tutoring systems. Journal of
+Artificial Intelligence in Education, 6(4), 1996.
+
+[8] S. D’Mello and A. Graesser. Multimodal
+semi-automated a?ect detection from conversational
+cues, gross body language, and facial features. User
+Modeling and User-adapted Interaction, 20:147–187,
+2010.
+
+[9] S. D’Mello and A. Graesser. Autotutor and a?ective
+autotutor: Learning by talking with cognitively and
+emotionally intelligent computers that talk back.
+ACM Transactions on Interactive Intelligent Systems,
+2(4):1–38, 2013.
+
+[10] S. K. D’Mello, B. Lehman, R. Pekrun, and A. C.
+Graesser. Confusion can be beneficial for learning.
+Learning & Instruction, 29(1):153–170, 2014.
+
+[11] D. Gotz and Z. Wen. Behaviour driven visualization
+recommendation. In Intelligent User Interfaces, IUI
+’09, pages 315–324, 2009.
+
+[12] B. Grawemeyer and R. Cox. Graphical data displays
+and database queries: Helping users select the right
+display for the task. In Smart Graphics, 5th
+International Symposium, pages 53–64, 2005.
+
+[13] B. Grawemeyer, W. Holmes, S. Gutiérrez-Santos,
+A. Hansen, K. Loibl, and M. Mavrikis. Light-bulb
+moment? towards adaptive presentation of feedback
+based on students’ a?ective state. In IUI 2015, 2015.
+
+[14] B. Grawemeyer, M. Mavrikis, A. Hansen,
+C. Mazziotti, and S. Gutiérrez-Santos. Employing
+speech to contribute to modelling and adapting to
+students’ a?ective states. In EC-TEL 2014, 2014.
+
+[15] B. Grawemeyer, M. Mavrikis, W. Holmes, A. Hansen,
+K. Loibl, and S. Gutiérrez-Santos. A?ect matters:
+Exploring the impact of feedback during mathematical
+tasks in an exploratory environmen. In AIED 2015,
+2015.
+
+[16] S. Gutiérrez-Santos, M. Mavrikis, and G. Magoulas. A
+separation of concerns for engineering intelligent
+support for exploratory learning environments.
+Journal of Research and Practice in Information
+Technology, 44(3):347–360, 2012.
+
+[17] R. Janning, C. Schatten, and L. Schmidt-Thieme.
+Feature analysis for a?ect recognition supporting task
+sequencing in adaptive intelligent tutoring systems. In
+EC-TEL 2014, 2014.
+
+[18] R. Janning, C. Schatten, and L. Schmidt-Thieme.
+Perceived task-di?culty recognition from log-file
+information for the use in adaptive intelligent tutoring
+systems. International Journal of Artificial
+Intelligence in Education, in press.
+
+[19] B. Kort, R. Reilly, and R. Picard. An a?ective model
+of the interplay between emotions and learning. In
+IEEE International Conference on Advanced Learning
+Technologies, number 43-46, 2001.
+
+[20] M. Mavrikis, B. Grawemeyer, A. Hansen, and
+S. Gutiérrez-Santos. Exploring the potential of speech
+recognition to support problem solving and reflection -
+wizards go to school in the elementary maths
+classroom. In EC-TEL 2014, pages 263–276, 2014.
+
+[21] M. Mavrikis, S. Gutiérrez-Santos, E. Geraniou, and
+R. Noss. Design requirements, student perception
+indicators and validation metrics for intelligent
+exploratory learning environments. Personal and
+Ubiquitous Computing, 17(8):1605–1620, 2013.
+
+[22] C. Mazziotti, W. Holmes, M. Wiedmann, K. Loibl,
+N. Rummel, M. Mavrikis, A. Hansen, and
+B. Grawemeyer. Robust student knowledge: Adapting
+to individual student needs as they explore the
+concepts and practice the procedures of fractions. In
+Workshop on Intelligent Support in Exploratory and
+Open-ended Learning Environments Learning
+Analytics for Project Based and Experiential Learning
+Scenarios at AIED 2015, 2015.
+
+[23] J. Ocumpaugh, R. Baker, and M. Rodrigo.
+Baker-rodrigo observation method protocol (bromp)
+1.0. training manual version 1.0. Technical report,
+New York, NY: EdLab. Manila, Philippines: Ateneo
+Laboratory for the Learning Sciences., 2012.
+
+[24] R. Pekrun. The control-value theory of achievement
+emotions: Assumptions, corollaries, and implications
+for educational research and practice. J. Edu. Psych.
+Rev., pages 315–341, 2006.
+
+[25] K. Porayska-Pomsta, M. Mavrikis, and H. Pain.
+Diagnosing and acting on student a?ect: the tutor’s
+perspective. User Modeling and User-Adapted
+Interaction, 18(1):125–173, 2008.
+
+[26] Sail-Labs. http://www.sail-labs.com.
+[27] S. Salmeron-Majadas, O. Santos, and J. Boticario.
+
+Exploring indicators from keyboard and mouse
+interactions to predict the user a?ective state. In
+EDM 2014, 2014.
+
+[28] O. Santos, M. Saneiro, S. Salmeron-Majadas, and
+B. J.G. A methodological approach to elicit a?ective
+educational recommendataions. In IEEE 14th
+International Conference on Advanced Learning
+Technologies, 2014.
+
+[29] L. Shen, M. Wang, and R. Shen. A?ective e-learning:
+Using “emotional” data to improve learning in
+pervasive learning environment. Educational
+Technology & Society, 12(2):176–189, 2009.
+
+[30] J. Sweller, J. G. van Merrienboer, and G. W. Paas.
+Cognitive Architecture and Instructional Design.
+Educational Psychology Review, 10:251 – 296+, 1998.
+
+[31] T. Vogt and E. André. Comparing feature sets for
+acted and spontaneous speech in view of automatic
+emotion recognition. In Multimedia and Expo
+(ICME05), pages 474–477, 2005.
+
+[32] B. Woolf, W. Burleson, I. Arroyo, T. Dragon,
+D. Cooper, and R. Picard. A?ect-aware tutors:
+recognising and responding to student a?ect. Int. J.
+Learning Technology, 4(3-4):129–164, 2009.
+
+
+	Introduction
+	Related work
+	The iTalk2Learn platform
+	Learner model
+	Analysis layer (affect detection)
+	Reasoning layer (affective state reasoner)
+	Feedback layer (affective state presentation model)
+
+	Evaluation
+	Participants
+	Procedure
+
+	Results
+	Affect detection
+	Adapting feedback message types
+	Adapting presentation of feedback
+	Affective states and task behaviour
+	Affect
+	Task behaviour
+
+	Learning gains
+
+	Discussion
+	Can speech and interaction be used as input to detect a student's affective states?
+	Can a student's learning experience be enhanced when the feedback is tailored to their affective state?
+	Can a student's behaviour towards the task be enhanced when the feedback is tailored to their affective state?
+	Do students have higher learning gains when feedback is adapted to their affective state?
+
+	Conclusion
+	Acknowledgments
+	References
+
+

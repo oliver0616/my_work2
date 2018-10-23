@@ -1,0 +1,720 @@
+
+ DOP8: Merging both data and analysis operators life 
+cycles for Technology Enhanced Learning  
+
+Nadine Mandran, Michael Ortega, Vanda Luengo, Denis Bouhineau 
+LIG, University of Grenoble 1. Domaine universitaire, BP 46 - 38402 Grenoble Cedex (France)  
+
+first.last@imag.fr 
+
+ 
+ABSTRACT 
+This paper presents DOP8: a Data Mining Iterative Cycle that 
+improves the classical data life cycle. While the latter only 
+combines the data production and data analysis phases, DOP8 also 
+integrates the analysis operators life cycle. In this cycle, data life 
+cycle and operators life cycle processing meet in the data analysis 
+step. This paper also presents a reification of DOP8 in a new 
+computing platform: UnderTracks. The latter provides a flexibility 
+on storing and sharing data, operators and analysis processes. 
+Undertracks is compared with three types of platform ’Storage 
+platform’, ’Analysis platform’ and ’Storage and Analysis 
+platform’. Several real TEL analysis scenarios are present into the 
+platform, (1) to test Undertracks flexibility on storing data and 
+operators and (2) to test Undertracks flexibility on designing 
+analysis processes. 
+
+Categories and Subject Descriptors 
+J1 [ADMINISTRATIVE DATA PROCESSING/Education], 
+H.2.8 [DATA APPLICATIONS/Datamining, statistical 
+databases], K3 [COMPUTER AND EDUCATION], D.2.9 
+[MANAGEMENT/Life cycle]. 
+
+General Terms 
+Design, Management, Human Factors, Experimentation 
+
+Keywords 
+process analysis, data life cycle, operators life cycle, flexibility, 
+sharing, computing platform.  
+
+1. INTRODUCTION.  
+Baker and Siemens [9] underline the importance of increasing the 
+opportunities for collaborative research and sharing of research 
+findings between both Educational Data Mining (EDM) and 
+Learning Analytics Knowledge (LAK) communities. One center 
+of interest for both communities is the production and the analysis 
+of data. The two communities have to cope with the data volume 
+increase, which is becoming an issue for data production. 
+Moreover, the two communities produce data and operators in 
+different ways: EDM produces analysis operators that focus on 
+"automated adaptation, by computer with no human in the loop", 
+while LAK focuses on "informing and empowering instructors 
+and learners" [1]. Currently, data and operators are produced in 
+separate ways, by different communities. The two data life cycles 
+are then also separated. This separation increases the difficulty in 
+sharing them, and in providing efficient analysis and relevant 
+results. One solution to improve collaboration between both 
+communities is to provide a structure for sharing data as well as 
+operators and analysis processes. Combining production and data 
+
+analysis in the same structure means taking into account the two 
+data life cycles. Roughly speaking, the resulting data life cycle 
+must consist of three major steps: the design of the study protocol, 
+the data production and the data analysis 
+
+In this paper, we address this issue by providing a new data 
+mining iterative cycle: DOP8, which combines both data’ life 
+cycle and operators’ life cycle. This new cycle is reified on a 
+platform called UnderTracks (UT).  
+
+The next section describes related work. The core of our 
+contribution: respectively the DOP8 cycle and the UT platform 
+are presented in section 3 and 4. In section 5, the UT platform is 
+compared to five other platforms, and section 6 discusses about 
+our proposition. 
+
+2. RELATED WORK.  
+2.1 Data processing schemes 
+Many data processing are available, and their terminology and 
+organization are specific to both the activity sector and the 
+business process they are used for. We focus on three of them, 
+two of which are designed for educational data mining and one 
+which is designed for social sciences.  
+
+The cycle for applying data mining in educational systems 
+presented by Romero and Baker [8] proposes two main steps: a 
+data production step, closely linked to educational systems, and a 
+data mining step, which combines data mining operators for 
+showing discovered knowledge to the academics responsible or 
+the educator, and recommendations to the students.  
+The processing proposed by Stamper et al. [10] consists of six 
+steps: Data design, Data collection, Data Analysis, Publish results, 
+Data archiving, Secondary Analysis (see Figure 1). The latter step 
+clearly identifies the need for data reuse. However, we consider 
+that secondary analysis is not a step in a data life cycle, but rather 
+another goal. Moreover, Stamper et al. indicate a difficulty of 
+reusing data especially if the metadata are not sufficient. In their 
+cycle the Data Archiving takes place after the Data Analysis step. 
+We consider that to ensure efficient data sharing and reuse 
+metadata should be created at each step of the data life cycle. This 
+is a mean of keeping all information about data process. 
+Furthermore, in this cycle the pre-processing step recommended 
+by Romero et al. [7] is not presented.  
+
+ 
+Figure 1: Data life cycle described by Stamper et al [10] 
+
+© 2015 Association for Computing Machinery. ACM acknowledges that this 
+contribution was authored or co-authored by an employee, contractor or 
+affiliate of a national government. As such, the Government retains a 
+nonexclusive, royalty-free right to publish or reproduce this article, or to allow 
+others to do so, for Government purposes only. 
+ 
+LAK '15, March 16 - 20, 2015, Poughkeepsie, NY, USA 
+Copyright 2015 ACM 978-1-4503-3417-4/15/03…$15.00 
+http://dx.doi.org/10.1145/2723576.2723580. 
+
+213
+
+
+
+Regarding social sciences and humanities, the UK.DATA 
+ARCHIVE proposes data processing in the form of a data “life” 
+cycle [2]. This cycle includes six steps: Creating, Processing, 
+Analyzing, Preserving, Giving access, Reusing. As with the 
+Romero and Baker cycle [8], the idea of a cycle is interesting 
+since analysis results can lead to other new issues.  This cycle can 
+be described from a higher level (lower granularity), by grouping 
+steps: three steps correspond to the data process itself (creating, 
+processing and analyzing), while the other three steps correspond 
+to dissemination issues (preserving, accessing and reusing). It can 
+also be described from a lower level (higher granularity).  
+
+Compared to the latter processing, the first two do not include or 
+do not detail the pre-processing step, although this step is 
+important for controlling and enriching the data. These three 
+processing only focus on data, although the data analysis step also 
+involves analysis operators. As these operators are usually 
+developed through three main steps: Design, Development and 
+Validation, we consider that operators have their own life cycle, 
+not identified in these three schemes.  
+
+2.2 Educational Data and DataMining 
+Platforms 
+We classify existing datamining platforms into three categories: 
+(1) ‘Storage platform’: built to store data and metadata. (2) 
+‘Analysis platform’: built to analyze data with statistics or data 
+mining operators. (3) ‘Storage and Analysis platform’: Mixed 
+platform allow data and operators to be combined.  
+
+Verbert et al. analyse three platforms: dataTEL [12], DataShop 
+[5] and Mulce [6]. While dataTEL and Mulce are ‘Storage 
+platforms’, PSLC DataShop1 is a ‘Storage and Analysis platform’. 
+They highlight the strong relationship between the reviewed 
+platforms and the research questions. DataShop defines a 
+specification for describing datasets that are derived from 
+intelligent tutoring systems. This platform then strongly orients 
+the research questions around “prediction of learner performance 
+and discovering learner models”. In Mulce, the main research 
+topic is “Enhancing social learning environments”. With these 
+platforms it is then difficult to use the same dataset for other 
+research questions.  
+Tin Can [15], 'Storage platform', allows flexibility thanks to their 
+basic format. This approach proposes collecting a Learning 
+Record Store (LRS) in RDF Format. However, the analysis 
+operators are not collected or diffused, and the research questions 
+are not considered. Regarding the ‘Analysis platform‘, platforms 
+like RapidMiner [13] or Orange [3] are dedicated platforms to 
+specialists. EDM contains a wide range of specific data mining 
+algorithms [8] that are not shared in an easy way in these  
+platforms and they are not dedicated to TEL researches.  
+
+DataShop, the only existing ‘Storage and Analysis platform’ 
+proposes operators linked to a specific data type: ITS data. This 
+platform is mainly dedicated to research works on students’ 
+knowledge and their relation to other domains like collaboration. 
+For other research questions, DataShop proposes two solutions: 
+(1) a web-services approach for accessing data, and (2) a storage 
+space to disseminate externally developed operators. In relation to 
+the second point, these solutions are “external” solutions, i.e. it is 
+not possible to associate both, data and external analysis operators 
+in an easy way.  
+
+                                                                    
+1 https://pslcdatashop.web.cmu.edu/ResearchGoals?typeId=all 
+
+After this review, we identify two shortcomings: (1) The 
+combination between the data processing and the operators 
+processing is not planned, (2) The platforms are not flexible 
+enough to integrate and disseminate data, operators and analysis 
+processes. To address these shortcomings, we propose DOP8 and 
+we design a structure that enhances the flexibility. Both points are 
+described in next sections.  
+
+3. DOP8 
+
+  
+Figure 2: DOP8: Data life cycle and operators life cycle processing 
+
+meet in the data analysis step.  
+
+The name ‘DOP8’ means: 'Data, Operators and Processes’ 
+combined into a double cycle. Two sub-cycles make up the 
+DOP8: a cycle describes the data processing and one other 
+describes the operators processing. Each cycle is split into several 
+steps. A step is defined with a verb that describes the main actions 
+of the step. At each step, metadata are generated and stored to 
+describe the tasks and their results. The metadata can also include 
+the balance sheet of the task, which describes the weakness and 
+the strength of each task. Table 1 and 2 presents the goals and the 
+expected results of both data cycle and operators cycle steps. 
+
+Table 1. Goals and expected results for each step of the data cycle. 
+Step Goals Expected results  
+Prepare  Design the study to address 
+
+the research question. 
+Study protocol and 
+description of raw 
+data and metadata 
+for storage 
+
+Collect Collect the raw data with or 
+without computer artefacts. 
+Store them with metadata.  
+
+Raw data, metadata 
+and balance sheet of 
+study. 
+
+Validate  Validate the raw data to 
+ensure the coherence and 
+relevance of data. Store it 
+with metadata. 
+
+Validated data and 
+metadata on 
+validation 
+
+Enrich  Convert validated data to 
+enriched data. Store them 
+with metadata. 
+
+Enriched data and 
+metadata on 
+enrichment 
+
+Table 2. Goals and expected results for operators’ cycle. 
+Step Goals Expected results  
+Design Explore and specify the new 
+
+operators for analysing data  
+Specifications  
+
+Develop  
+ 
+
+Develop the operators from 
+specifications 
+
+Operational 
+operators  
+
+Validate  Validate and store the 
+operators for dissemination 
+
+Validated operators 
+and metadata on 
+operators 
+
+ 
+
+214
+
+
+
+As presented in Figure 2, the DOP8 cycle proposes to intersect the 
+two cycles at one step: ‘Analyse’. It combines data and operators 
+for creating analysis processes, and each cycle benefits from 
+execution and results of this step. The expected results can be: (1) 
+interpretation of the results analysis in relation to the research 
+questions, (2) processes analysis, (3) balance sheet of the study, 
+and possibly new research questions, (4) balance sheet of the used 
+operators, and if applicable improvement of them or creation of a 
+new one.  
+
+DOP8 provides a framework to guide the data analysis and 
+operators development by considering and combining both data 
+and operators life cycles. To instantiate this framework, we 
+developed a platform, which allows users (1) to store data, 
+operators and analysis processes consistently in the same 
+environment, and (2) to combine the two cycles for providing 
+flexible data analysis. This platform is described in the next 
+section. 
+
+4. UNDERTRACKS (UT) 
+UT is an instantiation of DOP8 and is dedicated to TEL 
+researchers. It proposes two main pieces of software: UTP, 
+dedicated to the Production of data and operators, and UTA, 
+dedicated to the Analysis step. UTA allows visual construction of 
+the analysis processes.  UTP and UTA are independent, they 
+interoperate. 
+
+4.1 Definitions  
+An experiment that sets up a DOP8, linked with one or more TEL 
+systems, is called a “study”. A study involves raw data that is 
+based on “event” logs: temporally located information. An event 
+log usually contains the entity responsible for the log, called an 
+“agent”, that could be a TEL user or the TEL system itself. The 
+event log also contains an “action” To resume, an event log is a 
+temporally located information that describes an action from or 
+between agents. Each algorithm that could be applied on data is 
+called an “operator”. An operator is an entity that takes input 
+execution and the results and can provide output data. Operators 
+can be chained from a raw data to a final result, and this 
+“workflow” is called an analysis “process”.  
+
+4.2 Mandatory Metadata and Fields on UT  
+Into a ‘Storage platform’, global descriptions of data at a high 
+level are essential for reusing and sharing data. These descriptions 
+are usually called ”metadata”. To create useful metadata for 
+which the time for creation time is not time-consuming [4], we 
+define a set of mandatory metadata and a set of mandatory fields 
+(in the sense of a database table). The mandatory metadata 
+describe the study (see 4.3). The mandatory fields are the 
+minimum requirements for storing data, operators and processes 
+into UT to ensure dissemination. Several interviews conducted 
+with researchers and computer engineers, and based on TEL 
+researchers’ expertise, have defined these sets. They have been 
+tested with several studies. Consequently, UT is designed with a 
+limited number of mandatory metadata and fields.  
+
+4.3 UT Production (UTP)  
+UTP is dedicated to the data and operator production. It allows 
+UT users to store data, operators and processes and to document 
+them with metadata. For storing data, five tables are available: 1- 
+Description table: for storing the study description, 2- Events 
+table: for storing the events, 3- Agents table: for describing the 
+TEL agents, 4- Context table: for describing the context of the 
+study, 5 - Actions table: for describing the actions.  
+
+Taking into account our work on mandatory metadata, only two 
+tables are mandatory: “Description” and “Events”. Some data are 
+mandatory for describing the features of study and events.  
+In the Description table, the mandatory fields are:  
+
+Fields Description  
+Name of study  The name of the study.  
+Period of study  E.g. a date, a year, a semester, …  
+Authors  Names and emails 
+Countries of study  Country in which the study is conducted 
+Agent types Agents can be of different types (e.g. 
+
+student, tutor, group, system, simulator).  
+Numbers of agents The number of agents involved 
+Domain topics  E.g. Chemistry, Mathematics 
+Production mode: 
+with or without 
+study protocol  
+
+Data are designed with a precise protocol 
+for addressing a research question or data 
+are produced on the field by the students 
+or teachers. 
+
+In the Events table the mandatory fields are:  
+
+Fields Description 
+Timestamp  Date of the event or an ordered value.  
+Agent Agent that produces events (usually anonymized). 
+Action The action produced by the corresponding agent. 
+
+4.4 Two ways to import data  
+UTP provides two ways for storing raw data into its database: (1) 
+online method, the TEL system is directly connected to UTP; and 
+(2) offline method, the TEL system saves data into files that are 
+downloaded into the UTP database afterwards.  
+
+4.4.1 Operators 
+UTP provides an interface for storing operators. Each operator has 
+two kinds of descriptions:  
+1. A technical description. This allows both the UTA interface 
+
+and the UTA users to know how the operator works and 
+how it has to be connected with data or other operators,  
+
+2. A usage description (operator documentation). This allows 
+UTA users to know how and why to use it. 
+
+In the technical description, all the fields are mandatory. They 
+mainly describe (1) the input and output data format, and (2) the 
+parameters that modify the operator’s behavior. In order to ensure 
+that operators can be used on UT data, the technical description is 
+closely linked to the data format previously described. In the 
+current version of UT, the source code of an operator can be in 
+Java, C++ or Python. 
+In the ‘Operators table’ the mandatory fields are:  
+
+Fields Description 
+Name  Name of the operators  
+Category  Data management, Data mining, Visualization, 
+
+Statistics, or Others.  
+Description Description of the operator’s functionalities  
+Owner Names and mails of process’s owners  
+
+4.4.2 Processes 
+Analysis processes are created from UTA (see 4.5). Two kinds of 
+data are then stored: (1) The process itself: the process file 
+consists of a list of operators and data names, with the description 
+of their links, (2) A process description: created using four 
+mandatory fields.  
+In the ‘Processes table’ mandatory fields are:  
+Fields Description 
+Name  Name of the process  
+Description The description of the process goals 
+
+215
+
+
+
+Owners Names and mails of process’s owners  
+TEL_specific Whether or not the process is specific for the 
+
+TEL researches/data.  
+4.5 UT Analysis (UTA) 
+It is a Java application, executed on the client side. This 
+application is connected to UTP, where it accesses to the current 
+state of the data, operators and processes description bases. A 
+UTA user can then graphically connect data and operators to 
+create a visual workflow (see Figure 4). Once the user decides to 
+“run” the workflow, UTP sends a textual description of the 
+process to an engine on the UT server that executes the workflow, 
+and stores the intermediate. Once the execution is complete, the 
+user can consult the final and intermediate results. According to 
+user changes on the workflow description, such as for instance the 
+raw starting data or simply a parameter that influences the 
+behavior of one operator’s algorithm, the workflow is 
+respectively, completely or partially re-executed. 
+As UT is designed to share and reuse data and processes, UTA 
+provides a tool for describing and storing new processes into the 
+UT database. Users can also download existing processes from 
+UTP in order to execute or modify them.  
+
+5. UnderTracks vs OTHER PLATFORMS 
+
+ 
+Figure 3: Black boxes represent the steps the platform proposes. 
+
+To compare UnderTracks with the Datamining platforms 
+presented in the related work, we use the DOP8 cycle. In Figure 3, 
+we then reduce DOP8 to its silhouette, and we blacken the boxes, 
+which symbolize the steps that the relevant platforms propose.  
+
+Mulce and TinCan are specialized in collecting and storing the 
+data. In Mulce the metadata descriptions are detailed, in particular 
+for metadata about the study context. However, neither platform 
+provides guidelines for the ‘Design’ step, in the sense that there is 
+no online form to guide the design of a study. Neither platform 
+integrates any step from the operators life cycle. RapidMiner and 
+Orange are specialized in the operators storing and in data 
+analysis. They provide a visual programming tool for processes. 
+Neither platform integrates any step from the data life cycle. 
+DataShop and UnderTracks store data and operators. Both 
+platforms provide a space to analyze data. But, there are 
+differences between the two platforms, the most important of 
+which are presented in Table 3.  
+Among the existing platforms, Undertracks is a mixed platform, 
+such as Datashop.  The major difference is the ability of 
+UnderTracks to integrate data and operators with a degree of 
+flexibility and to allow UT users to build their own analysis 
+processes by combining data and operators. 
+
+6. UNDERTRACKS FLEXIBILITY 
+6.1 Diversity of data stored in UTP  
+The UT data format is flexible enough to store datasets from 
+different learning domains (already 5 domains: Biology, Maths, 
+Physics, Medicine and Computer sciences) and different type of 
+agents (already 4 agent types: students, Tutors, groups of students, 
+system). UTP stores activity logs, but also heterogeneous data 
+from specific systems (already 5 data types: Logs, Annotations, 
+Scores, Eye tracker, Simulator). Additional files, such as papers, 
+
+articles or any additional data describing a study, can be stored 
+too. The large diversity of these studies illustrates the flexibility of 
+the UT data structure. Except for the mandatory fields, UT users 
+create their own structure, in terms of number and name of fields. 
+The ability to store data from different research domains, different 
+type of agents, and different sources of data is then possible in the 
+same database. Moreover, UT currently stores datasets from 8 
+TEL systems developed in our team TEL systems, as well as from 
+2 external TEL systems: Tamago cours from Lyon research 
+TEAM EducTice and Moodle. Data from 14 studies have been 
+uploaded from text files and 6 systems are directly connected to 
+UTP. 
+
+Table 3. Major differences between DataShop and UnderTracks.  
+ DataShop UnderTracks 
+
+D
+at
+
+a 
+
+Specific educational 
+data, produced by 
+students interactions 
+especially with ITS 
+systems  
+
+All kind of TEL data, (e.g. 
+experimental annotations, 
+tracks, haptic and eye tracker) 
+from several actors: students, 
+teachers, and systems (e.g. 
+simulator, ITS, LMS) 
+
+O
+pe
+
+ra
+to
+
+rs
+ 
+
+Database generic 
+operators (filter, select), 
+and specific operators 
+(e.g. learning curve 
+[11]) linked with data 
+stored with DataShop 
+data structure. 
+Store external operators 
+but cannot use them 
+into the analysis part of 
+the platform 
+
+Database generic operators 
+(filter, select), and specific 
+operators, such as pattern 
+visualization showed in Figure 
+8 
+But also any kind of operators, 
+Data Mining (e.g. Weka 
+clustering), statistical (e.g. 
+crosstab and chi square test) 
+
+Pr
+oc
+
+es
+s Use the pre-designed 
+
+processes. 
+Use of pre-designed processes 
+and ability to design new ones 
+by combining data, operators 
+and existing processes 
+
+ 
+Figure 4: Screenshot of a process created and displayed by UTA. The 
+blue box is the starting data, while the green and the yellow boxes are 
+algorithmic and visualization operators respectively. The numbers in 
+the blacken box indicates the different steps in this analysis process. 
+
+6.2 Flexibility of the analysis processes  
+UTA combines data and operators to design a process. A user can 
+combine different operators in the same process, either once or 
+several times. He can also combine different data tables, once or 
+several times each tabl;e. UT is then flexible in that each element 
+of the process can be replaced. This kind of flexibility can be 
+equated with the reuse of operator and analysis processes on 
+several datasets (see 2.2). For instance, we first tested the process 
+on a dataset from the Copex-Chimie TEL system (agents are 
+students, actions are chemical manipulations and lessons readings) 
+and then on a dataset from the PSLC DataShop platform: 
+Geometry Area 96 [14] 
+
+RapidMinerTin CanMULCE DATAShop UnderTracksOrange
+Storing Analysis Mixed
+
+216
+
+
+
+The goal of this analysis process is to reveal the agent strategy by 
+visualizing specific action sequences from each agent. The 
+analysis is split into 4 steps: (1) Visualization of action to explore 
+the raw data; (2) Computation of the action frequencies to select 
+the relevant actions addressing the research question; (3) Creation 
+of patterns with relevant actions, computation of frequencies, 
+selection and renaming the relevant patterns ; (4) Visualization of 
+the relevant patterns sequence for visually analyzing the agents’ 
+strategies. This analysis process (see Figure 4) combines one 
+event data table and seven operators from UnderTracks. Only five 
+different operators are used: three visualization operators and two 
+pure algorithmic operators. The visualization operators are used as 
+leaves of the process workflow, but interactive visualization could 
+allow these operators to be used also as roots.  
+
+ 
+
+ 
+Figure 5: Visual results of the same analysis process applied to two 
+different studies. 
+
+The visual results of both analyses are presented in figure 5. Each 
+line shows the action sequence of one student. Each color bar 
+shows an action, where the colors distinguish the different types 
+of actions. For each study, the first graph shows the action 
+sequences, the second graph shows the sequence of the patterns 
+built with relevant actions. They can compare the differences 
+between student behaviors, in relation to the sequences of actions 
+or patterns. This process was first co-designed for the Copex-
+Chimie TEL system, with TEL researchers and a statistician. The 
+first designs and tests were conducted using Microsoft Excel, and 
+took several months. The corresponding operators were developed 
+and stored into UT. Once this integration was complete, it took 
+only a few minutes to create the process with UTA. All the efforts 
+made in constructing the process for the first dataset were quickly 
+reused for the second dataset (about 20min). In this case, the 
+research question was similar for both studies, meaning that the 
+process can be reused on different data. Furthermore, for a 
+different research question, the operators of this process can be 
+reused separately, in another order or combined with other ones. 
+
+7. CONCLUSION 
+DOP8 integrates both data and operators life cycles in the same 
+double loop cycle. It has been implemented in a new platform: 
+UnderTracks. Based on the integration of a wide panel of TEL 
+studies in UT, we illustrated the positive properties offered: 
+flexibility and sharing of data, operators and analysis processes. 
+The flexibility of UT is also evaluated by using the same analysis 
+process on two different datasets.  
+
+Today, as UnderTracks is used by an increasing number of 
+researchers (in our team but also by one external team), its 
+number of studies and operators grows fast. Given this situation, 
+we are currently working on integrating quality indicators for data 
+sharing. Another challenge is to increase the number of DOP8 
+steps integrated by UnderTracks, and more precisely the 
+“prepare” step.  One way to simplify and shorten this work is to 
+guide the TEL researcher. Guiding could start when the researcher 
+elaborates the study protocol, and could be designed in relation to 
+the researchers' analysis practices, needs and expectations. To 
+investigate this subject, an analysis is conducted with researchers 
+and data analysis experts. Also, we are currently improving UTA 
+by interoperating with Orange [3] an existing datamining 
+platform.  
+
+8. AKNOWLEDGMENTS 
+This research has been partially supported by HUBBLE ANR GRANT 
+number ANR-14-CE24-0015-01, and MOCA ANR, UPMF-9522000392. 
+
+9. REFERENCES 
+[1] Baker, R.S., Corbett, A.T., Koedinger, K.R. and Wagner, A.Z. 
+2004. Off-Task Behavior in the Cognitive Tutor Classroom: When 
+Students “Game The System”. Proceedings of ACM CHI (2004), 383–390. 
+
+[2] Bishop, L. 2011. UK Data Archive Resources for Studying 
+Older People and Ageing. (2011). 
+
+[3] Demsar, J., Curk, T. and Erjavec, A. 2013. Orange: Data 
+Mining Toolbox in Python. Journal of Machine Learning Research. 14, 
+(2013), 2349–2353. 
+
+[4] Duval, E. 2001. Metadata standards: What, who & why. 
+Journal of Universal Computer Science. 7, 7 (2001), 591–601. 
+
+[5] Koedinger, K.R., Baker, Rsj., Cunningham, K., Skogsholm, A., 
+Leber, B. and Stamper, J. 2010. A data repository for the EDM 
+community: The PSLC DataShop. Handbook of educational data mining. 
+43, (2010). 
+
+[6] Reffay, C., Betbeder, M.-L. and Chanier, T. 2012. Multimodal 
+learning and teaching corpora exchange: lessons learned in five years by 
+the Mulce project. International Journal of Technology Enhanced 
+Learning. 4, 1 (2012), 11–30. 
+
+[7] Romero, C., Romero, J.R. and Ventura, S. 2014. A Survey on 
+Pre-Processing Educational Data. Educational Data Mining. Springer. 29–
+64. 
+
+[8] Romero, C. and Ventura, S. 2007. Educational data mining: A 
+survey from 1995 to 2005. Expert Systems with Applications. 33, 1 (2007), 
+135–146. 
+
+[9] Siemens, G. and Baker, R.S. 2012. Learning analytics and 
+educational data mining: towards communication and collaboration. 
+Proceedings of the 2nd international conference on learning analytics and 
+knowledge (2012), 252–254. 
+
+[10] Stamper, J.C., Koedinger, K.R., Baker, R.S.J. d, Skogsholm, 
+A., Leber, B., Demi, S., Yu, S. and Spencer, D. 2011. Managing the 
+Educational Dataset Lifecycle with DataShop. Artificial Intelligence in 
+Education. G. Biswas, S. Bull, J. Kay, and A. Mitrovic, eds. Springer 
+Berlin Heidelberg. 557–559. 
+
+[11] Stamper, J. and Koedinger, K.R. 2011. Human-machine 
+student model discovery and improvement using data. Proceedings of the 
+15th International Conference on Artificial Intelligence in Education. 
+(2011). 
+
+[12] Verbert, K., Drachsler, H., Manouselis, N., Wolpers, M., 
+Vuorikari, R. and Duval, E. 2011. Dataset-driven research for improving 
+recommender systems for learning. Proceedings of the 1st International 
+Conference on Learning Analytics and Knowledge (2011), 44–53. 
+
+[13] http://rapidminer.com/. 
+
+[14] https://pslcdatashop.web.cmu.edu/DatasetInfo?datasetId=76. 
+
+[15] http://tincanapi.com/overview/. 
+
+217
+
+
+
+
+

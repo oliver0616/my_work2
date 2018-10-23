@@ -1,0 +1,399 @@
+
+Discourse Analysis to Improve the Effective Engagement 
+of MOOC Videos 
+
+Thushari Atapattu 
+School of Computer Science 
+The University of Adelaide 
+
+Adelaide, Australia 
+(+61)883139077 
+
+thushari.atapattu@adelaide.edu.au 
+
+Katrina Falkner 
+School of Computer Science 
+The University of Adelaide 
+
+Adelaide, Australia 
+(+61)883136178 
+
+katrina.falkner@adelaide.edu.au
+
+   
+
+ABSTRACT 
+Lecture videos are amongst the most commonly used 
+
+instructional methods in present Massive Open Online Courses 
+
+(MOOCs).  As the main form of instruction, students’ 
+
+engagement behaviour with MOOC videos directly impacts the 
+
+students’ success or failure. This research focuses on an in-depth 
+
+analysis of 1.5 million video interactions (e.g. pause, seek video) 
+
+of a Programming MOOC. Our video-by-video analysis 
+
+explores the rationale behind the time-wise variation of video 
+
+interactions. We aim to analyse discourse features (e.g. syntactic 
+
+simplicity of text, and speaking rate) and their correlation with 
+
+the video interaction patterns. This paper presents preliminary 
+
+results and educational video design implications. 
+
+Categories and Subject Descriptors 
+• Applied computing~Distance learning 
+
+Keywords 
+MOOCs; video analytics; discourse; linguistic; Coh-Metrix. 
+
+1. INTRODUCTION 
+Despite the significant usage of assessments, discussion forums 
+
+and collaborative activities, lecture videos remain the most 
+
+widely used instructional methods throughout the course span of 
+
+many Massive Open Online Courses (MOOCs) [1]. Therefore, 
+
+students’ engagement with lecture videos is likely to associate 
+
+with students’ success or failure in the MOOCs. However, 
+
+limited research studies have focused on in-depth video 
+
+analytics apart from exploring the video watching behaviour [2-
+
+4]. Li et al. [2] found that replays and frequent pauses 
+
+significantly correlate with the perceived video difficulty (e.g. 
+
+easy, neutral, difficult). Kim et al. [3] explored the aspects of 
+
+video interaction patterns and in-video drop-outs and found that 
+
+61% of video drop-outs are associated with the visual transition 
+
+(e.g. changing from whiteboard explanation to a talking head). 
+
+Our work is building on the existing research by Kim et al. [3] to 
+
+explore the association between video interactions and non-
+
+visual (i.e. verbal) transition. Another preliminary study by Kim 
+
+et al. [4] found that video interaction peaks occur during ‘topic 
+
+transition’. We extend this approach to conduct an in-depth 
+
+video-by-video analysis to measure the effect of discourse 
+
+features for the variation of video interactions events (e.g. pause, 
+
+seek video).  Our analysis explores whether the underlying 
+
+pedagogical and discourse processing theories are considered 
+
+when creating MOOC videos.  
+
+2. METHODOLOGY 
+2.1 Data 
+We analyse the AdelaideX Programming MOOC (code101x) 
+
+offered during 2015. During the initial offering, 26,129 
+
+participants were registered (active – 13,930, received verified 
+
+certificate – 831). The course covers introductory programming 
+
+concepts and creating artwork, animations with ProcessingJS. 
+
+The course lasts for 6 weeks with an average of 8 videos per 
+
+week. The average length of a video is 3.63 minutes. The course 
+
+was taught by 3 lecturers, each sharing approximately one-third 
+
+of the syllabus. The 3 lecturers share similar presentation style 
+
+(e.g. talking head, programming screens). We extracted de-
+
+identifiable 1.5 million records of video interaction events (e.g. 
+
+play/pause, seek video)1. Our text corpus for discourse analysis 
+
+contains 51 video transcript files (SubRip Text) with a total of 
+
+1631 sentences and associated time.  
+
+2.2 Method 
+Our study aims to answer the following research question; 
+
+Do the discourse features correlate with interaction patterns of 
+
+MOOC videos? If so, what specific features are they? 
+
+2.2.1 Video data processing 
+The cleaning of the dataset mainly focuses on removing records 
+
+without a video id. We eliminate first and last few seconds (5-10 
+
+seconds) of each video due to auto-load/stop. We extracted the 
+
+amount of video interactions per second in each video. From 
+
+this, we eliminate the records when students do not return to the 
+
+video after a reasonable timeframe, assuming that the particular 
+
+pause is not related to curiosity or confusion. Likewise, we 
+
+analyse seek event (e.g. skip interval), speed change, show 
+
+closed captions/transcripts which could potentially associate 
+
+with the issues of discourse processing. We exclude load and 
+
+stop events from our analysis. 
+
+2.2.2 Discourse analysis 
+Discourse analysis involves extracting sentences from 
+
+transcripts to measure discourse and linguistic features. We 
+
+utilise Coh-Metrix 3.0 [5] to identify features (see Table 1). 
+
+However, we re-implement many of the features since the tool 
+
+does not provide an API for sentence-by-sentence analysis and 
+
+the manual use of web tool2 is a time-consuming task.  
+
+                                                                 
+
+1 http://edx.readthedocs.io/projects/devdata/en/latest/internal_data_formats/tracking_logs.html 
+
+2 http://tool.cohmetrix.com/ 
+
+Permission to make digital or hard copies of part or all of this work for 
+
+personal or classroom use is granted without fee provided that copies are 
+not made or distributed for profit or commercial advantage and that copies 
+
+bear this notice and the full citation on the first page. Copyrights for third-
+
+party components of this work must be honored. For all other uses, contact 
+the Owner/Author. Copyright is held by the owner/author(s). 
+LAK '17, March 13-17, 2017, Vancouver, BC, Canada 
+
+ACM 978-1-4503-4870-6/17/03. 
+
+http://dx.doi.org/10.1145/3027385.3029470 
+
+
+
+3. RESULTS 
+Figure 1 shows all video interactions (n = 73,257) of a sample 
+
+video. A manual inspection suggests that non-visual transitions 
+
+are motives for some interaction peaks. For instance, introducing 
+
+the new concept ‘function’ causes for the highlighted peak 
+
+(Figure 1). Note: Analysis of individual events (e.g. pause) is 
+
+not presented in this paper due to space limitations. 
+
+ 
+
+Fig. 1: Video interaction-time of a sample video 
+
+We measure the correlation between discourse features and 
+
+video interactions using Pearson Correlation Coefficient (r).  
+
+Table 1. Correlation between discourse features and video 
+
+interactions 
+
+Feature Sub-feature (correlation) 
+
+Descriptive Word count (0.558*), Syllable count (0.556*) 
+
+Text Easability 
+
+PC 
+
+Narrativity (-0.347), syntactic simplicity (-0.247), word 
+
+concreteness (-0.156), referential cohesion (-0.103), 
+
+deep cohesion (-0.005), connectivity (-0.514*) 
+
+Lexical 
+diversity 
+
+Type-token ratio (-0.47*), MLTD (0.487*) 
+
+Connectives Causal (-0.56*), logical (0.022), contrastive (0.03),  
+
+Word 
+information 
+
+Pronoun (-0.115) , content word frequency (-0.317*), 
+familiarity (0.193) , concreteness (0.186),  
+
+Speaking rate Time per sentence (0.562*) 
+
+*p<0.001 
+
+According to the Table 1, descriptive features (e.g. word count) 
+
+demonstrate a strong positive correlation with video interactions 
+
+(Figure 2). This denotes that the longer the sentence, it is likely 
+
+that the students highly interact with the video (e.g. pause) 
+
+which is an indicator for confusion or curiosity [3]. Text 
+
+Easability features (e.g. narrativity) are mostly supportive for 
+
+discourse processing [5], demonstrating a negative correlation 
+
+with the video interactions. However, these correlations are not 
+
+significant except connectivity. We obtained a contradictory 
+
+result for ‘lexical diversity’. Lexical diversity measures the ratio 
+
+between unique words and the total number of tokens in a 
+
+sentence. Lexically diverse texts are difficult to process, and 
+
+hence expected to correlate positively with video interactions. 
+
+However, type-token ratio demonstrates a strong negative 
+
+correlation. A manual inspection of a random sample of the 
+
+corpus suggests that lexical diversity negatively correlates with 
+
+the sentence length. To overcome this, an estimation algorithm 
+
+is proposed to measure lexical diversity (i.e. MLTD) [5], which 
+
+provides our expected outcome. An interesting finding is 
+
+observed on causal connectives. Sentences with causal 
+
+connectives (e.g. because, so) demonstrate a strong negative 
+
+correlation (r= -0.56) with video interactions. Causal 
+
+relationships present a consequence, allowing learners to 
+
+understand the ‘reason-why’ relation. Our results claim that 
+
+inclusion of causal connectives in the video discourse will 
+
+improve the students’ discourse processing. In contrast, other 
+
+connectives such as logical (e.g. and, or), contrastive (e.g. 
+
+however) do not correlate with video interactions. However, 
+
+these claims are not conclusive as the study presented here is 
+
+preliminary. We also analyse the impact of pronouns (e.g. I, 
+
+you, them) in text for the video engagement and obtained no 
+
+correlation. However, frequent content words supported for 
+
+discourse processing (r= -0.316). Moreover, spoken discourse 
+
+features like speaking rate positively correlated with video 
+
+interactions, demonstrating that the lecturer’s time spent on each 
+
+sentence will impact on students’ engagement with the video. 
+
+ 
+
+Fig. 2: Correlation between video interactions and word 
+
+count of a sample video; video interactions = frequency*50 
+
+4. IMPLICATIONS 
+This preliminary work establishes a step towards the 
+
+consideration of discourse to construct educational videos for 
+
+MOOCs. Our results highlight the importance of avoiding 
+
+lengthy sentences, reducing lexical diversity and speaking rate, 
+
+increasing the use of causal connectives, and frequent use of 
+
+content words. MOOC educators/video designers could consider 
+
+the data-driven implications of this research to improve video 
+
+engagement. In future, we intend to expand this research using 
+
+larger text corpora and few more MOOCs to measure the effect 
+
+of features like cohesion, semantic analysis, and situation model.  
+
+5. ACKNOWLEDGEMENT 
+Authors would like to acknowledge the AdelaideX team for 
+
+providing data for conducting this research. 
+
+6. REFERENCES 
+[1] Breslow, L. B. et al. 2013. Studying Learning in the 
+
+Worldwide Classroom: Research into edX’s First MOOC. 
+
+Research & Practice in Assessment. 8, 13-25. 
+
+[2] Li, N., ?. Kidzi?ski, P. Jermann and P. Dillenbourg. 2015. 
+MOOC Video Interaction Patterns: What Do They Tell Us? 
+
+Design for Teaching and Learning in a Networked World. 
+
+Lecture Notes in Computer Science, 9307  
+
+[3] Kim, J., P. J. Guo, D. T. Seaton, P. Mitros, K. Z. Gajos and 
+R. C. Miller. 2014a. Understanding in-video dropouts and 
+
+interaction peaks in online lecture videos. In Proceedings 
+
+of the First ACM Conference on Learning @ Scale.  
+
+[4] Kim, J., K. Z. Gajos, S. Li, R. C. Miller and C. J. Cai. 
+2014b. Leveraging video interaction data and content 
+
+analysis to improve video learning. In CHI 2014 Workshop 
+
+on Learning Innovation at Scale. 
+
+[5] McNamara, D. S. A. C. Graesser, P. M. McCarthy and Z. 
+Cai. 2014. Automated Evaluation of Text and Discourse 
+
+with Coh-Metrix. Cambridge University Press, Cambridge, 
+
+M.A. 
+
+ 
+
+
+

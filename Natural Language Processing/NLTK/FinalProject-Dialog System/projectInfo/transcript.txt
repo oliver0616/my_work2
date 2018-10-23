@@ -1,0 +1,1362 @@
+Session: data/Mar13_S1A0/voip-03c2655d43-20130327_193528
+
+Turn 0
+SYS  > Hello , welcome to the Cambridge restaurant system? You can ask for restaurants by area , price range or food type . How may I help you?
+DAct > welcomemsg()
+SLU  > inform(food=welsh)|inform(pricerange=expensive) [0.90]
+SLU  > inform(pricerange=expensive) [0.07]
+SLU  > inform(food=welsh)   [0.02]
+ASR  > expensive restaurant welsh food
+Tran > expensive restaurant welsh food
+inform(food=welsh)|inform(pricerange=expensive) FOR inform(pricerange=expensive,type=restaurant,food=welsh)
+OK
+goal-labels > {u'food': u'welsh', u'pricerange': u'expensive'}
+ 
+Turn 1
+SYS  > I'm sorry but there is no restaurant serving welsh food
+DAct > canthelp(food=welsh)
+SLU  > inform(food=polish)  [0.89]
+SLU  > NULL()               [0.06]
+SLU  > reqalts()|inform(food=polish) [0.02]
+SLU  > reqalts()            [0.01]
+SLU  > affirm()|inform(food=polish) [0.01]
+ASR  > polish
+Tran > british
+inform(food=polish) FOR inform(food=british)
+ERROR
+goal-labels > {u'food': u'british', u'pricerange': u'expensive'}
+ 
+Turn 2
+SYS  > You are looking for a polish restaurant right?
+DAct > expl-conf(food=polish)
+SLU  > inform(food=british) [0.89]
+SLU  > affirm()|inform(food=british) [0.10]
+SLU  > hello()|inform(food=british) [0.01]
+ASR  > british food
+Tran > british food
+inform(food=british) FOR inform(food=british)
+OK
+goal-labels > {u'food': u'british', u'pricerange': u'expensive'}
+ 
+Turn 3
+SYS  > What part of town do you have in mind?
+DAct > request(slot=area)
+SLU  > inform(pricerange=expensive) [0.90]
+SLU  > inform(pricerange=expensive)|inform(area=west) [0.04]
+SLU  > NULL()               [0.02]
+SLU  > inform(pricerange=expensive)|inform(area=north) [0.01]
+SLU  > inform(pricerange=expensive)|inform(area=south) [0.01]
+SLU  > inform(pricerange=expensive)|inform(area=east) [0.01]
+ASR  > expensive restaurant
+Tran > expensive restaurant
+inform(pricerange=expensive) FOR inform(pricerange=expensive,type=restaurant)
+OK
+goal-labels > {u'food': u'british', u'pricerange': u'expensive'}
+ 
+Turn 4
+SYS  > grafton hotel restaurant serves british food in the expensive price range
+DAct > offer(name=grafton hotel restaurant)|inform(food=british)|inform(pricerange=expensive)
+SLU  > request(slot=phone)  [0.81]
+SLU  > NULL()               [0.15]
+SLU  > ack()                [0.02]
+SLU  > affirm()             [0.01]
+SLU  > repeat()             [0.01]
+ASR  > phone number
+Tran > phone number
+request(phone) FOR request(phone)
+OK
+goal-labels > {u'food': u'british', u'pricerange': u'expensive'}
+ 
+Turn 5
+SYS  > grafton hotel restaurant is a great restaurant
+DAct > offer(name=grafton hotel restaurant)
+SLU  > request(slot=phone)  [0.73]
+SLU  > NULL()               [0.19]
+SLU  > reqalts()            [0.03]
+SLU  > ack()                [0.02]
+SLU  > affirm()             [0.02]
+SLU  > repeat()             [0.01]
+ASR  > phone number
+Tran > phone number
+request(phone) FOR request(phone)
+OK
+goal-labels > {u'food': u'british', u'pricerange': u'expensive'}
+ 
+Turn 6
+SYS  > The phone number of grafton hotel restaurant is 01223 241387 .
+DAct > offer(name=grafton hotel restaurant)|inform(phone=01223 241387)
+SLU  > bye()                [1.00]
+ASR  > thank you good bye
+Tran > thank you good bye
+bye() FOR thankyou()|bye()
+ERROR: PARTIAL MATCH
+goal-labels > {u'food': u'british', u'pricerange': u'expensive'}
+ 
+Session: data/Mar13_S1A0/voip-03c2655d43-20130327_200522
+
+Turn 0
+SYS  > Hello , welcome to the Cambridge restaurant system? You can ask for restaurants by area , price range or food type . How may I help you?
+DAct > welcomemsg()
+SLU  > inform(pricerange=expensive)|inform(area=east) [0.78]
+SLU  > inform(pricerange=expensive) [0.20]
+SLU  > inform(area=east)    [0.03]
+ASR  > expensive restaurant east part of town
+Tran > expensive restaurant east part of town
+inform(pricerange=expensive)|inform(area=east) FOR inform(pricerange=expensive,type=restaurant,area=east)
+OK
+goal-labels > {u'pricerange': u'expensive', u'area': u'east'}
+ 
+Turn 1
+SYS  > What kind of food would you like?
+DAct > request(slot=food)
+SLU  > inform(this=dontcare) [0.97]
+SLU  > inform(this=dontcare)|inform(food=dontcare) [0.03]
+ASR  > any
+Tran > any
+inform(dontcare) FOR inform(dontcare)
+OK
+goal-labels > {u'food': u'dontcare', u'pricerange': u'expensive', u'area': u'east'}
+ 
+Turn 2
+SYS  > royal standard is a nice place in the east of town and the prices are expensive
+DAct > offer(name=royal standard)|inform(pricerange=expensive)|inform(area=east)
+SLU  > request(slot=phone)  [0.43]
+SLU  > request(slot=addr)   [0.32]
+SLU  > request(slot=phone)|request(slot=addr) [0.19]
+SLU  >                      [0.03]
+SLU  > reqalts()            [0.01]
+SLU  > affirm()             [0.01]
+ASR  > phone number and address
+Tran > phone number address
+request(phone) FOR request(phone,addr)
+ERROR: PARTIAL MATCH
+goal-labels > {u'food': u'dontcare', u'pricerange': u'expensive', u'area': u'east'}
+ 
+Turn 3
+SYS  > The phone number of royal standard is 01223 247877 .
+DAct > offer(name=royal standard)|inform(phone=01223 247877)
+SLU  > bye()                [0.96]
+SLU  > thankyou()           [0.04]
+ASR  > thank you ok
+Tran > thank you good bye
+bye() FOR thankyou()|bye()
+ERROR: PARTIAL MATCH
+goal-labels > {u'food': u'dontcare', u'pricerange': u'expensive', u'area': u'east'}
+ 
+Session: data/Mar13_S1A0/voip-03c2655d43-20130327_195308
+
+Turn 0
+SYS  > Hello , welcome to the Cambridge restaurant system? You can ask for restaurants by area , price range or food type . How may I help you?
+DAct > welcomemsg()
+SLU  > NULL()               [0.72]
+SLU  > affirm()             [0.14]
+SLU  > hello()              [0.05]
+SLU  > inform(area=west)    [0.05]
+SLU  > repeat()             [0.02]
+SLU  > ack()                [0.02]
+ASR  > or part all
+Tran > north part of town
+NULL() FOR inform(area=north)
+ERROR
+goal-labels > {u'area': u'north'}
+ 
+Turn 1
+SYS  > What part of town do you have in mind?
+DAct > request(slot=area)
+SLU  > inform(food=scandinavian) [0.99]
+SLU  > inform(food=scandinavian)|inform(area=east) [0.01]
+ASR  > scandinavian food
+Tran > scandinavian food
+inform(food=scandinavian) FOR inform(food=scandinavian)
+OK
+goal-labels > {u'food': u'scandinavian', u'area': u'north'}
+ 
+Turn 2
+SYS  > I'm sorry but there is no restaurant serving scandinavian food
+DAct > canthelp(food=scandinavian)
+SLU  > inform(food=asian oriental) [1.00]
+ASR  > asian oriental
+Tran > asian oriental
+inform(food=asian oriental) FOR inform(food="asian oriental")
+OK
+goal-labels > {u'food': u'asian oriental', u'area': u'north'}
+ 
+Turn 3
+SYS  > saigon city serves asian oriental food
+DAct > offer(name=saigon city)|inform(food=asian oriental)
+SLU  > request(slot=phone)  [0.39]
+SLU  > request(slot=phone)|request(slot=addr) [0.37]
+SLU  > request(slot=addr)   [0.24]
+ASR  > address phone number
+Tran > address phone number
+request(phone) FOR request(addr,phone)
+ERROR: PARTIAL MATCH
+goal-labels > {u'food': u'asian oriental', u'area': u'north'}
+ 
+Turn 4
+SYS  > The phone number of saigon city is 01223 356555 and it is on 169 High Street Chesterton Chesterton .
+DAct > offer(name=saigon city)|inform(phone=01223 356555)|inform(addr=169 high street chesterton chesterton)
+SLU  > bye()                [1.00]
+ASR  > thank you good bye
+Tran > thank you good bye
+bye() FOR thankyou()|bye()
+ERROR: PARTIAL MATCH
+goal-labels > {u'food': u'asian oriental', u'area': u'north'}
+ 
+Session: data/Mar13_S1A1/voip-03c2655d43-20130327_195546
+
+Turn 0
+SYS  > Hello , welcome to the Cambridge restaurant system? You can ask for restaurants by area , price range or food type . How may I help you?
+DAct > welcomemsg()
+SLU  > inform(food=creative) [0.70]
+SLU  > inform(food=creative)|inform(area=west) [0.29]
+SLU  > inform(area=west)    [0.01]
+ASR  > what part of town creative food
+Tran > west part of town creative food
+inform(food=creative) FOR inform(area=west,food=creative)
+ERROR: PARTIAL MATCH
+goal-labels > {u'food': u'creative', u'area': u'west'}
+ 
+Turn 1
+SYS  > Did you say you are looking for a restaurant in the west of town?
+DAct > expl-conf(area=west)
+SLU  > affirm()|inform(food=creative) [0.90]
+SLU  > affirm()             [0.10]
+ASR  > yes creative food
+Tran > yes creative food
+affirm()|inform(food=creative) FOR affirm(food=creative)
+OK
+goal-labels > {u'food': u'creative', u'area': u'west'}
+ 
+Turn 2
+SYS  > I'm sorry but there is no restaurant serving creative food
+DAct > canthelp(food=creative)
+SLU  > inform(food=italian) [0.94]
+SLU  > NULL()               [0.02]
+SLU  > reqalts()|inform(food=italian) [0.02]
+SLU  > affirm()|inform(food=italian) [0.01]
+ASR  > italian
+Tran > italian
+inform(food=italian) FOR inform(food=italian)
+OK
+goal-labels > {u'food': u'italian', u'area': u'west'}
+ 
+Turn 3
+SYS  > You are looking for a italian restaurant right?
+DAct > expl-conf(food=italian)
+SLU  > affirm()             [0.79]
+SLU  > affirm()|inform(area=west) [0.20]
+SLU  > hello()              [0.01]
+ASR  > yes what part of town
+Tran > yes west part of town
+affirm() FOR affirm(area=west)
+ERROR: PARTIAL MATCH
+goal-labels > {u'food': u'italian', u'area': u'west'}
+ 
+Turn 4
+SYS  > Would you like something in the cheap , moderate , or expensive price range?
+DAct > request(slot=pricerange)
+SLU  > inform(this=dontcare) [0.95]
+SLU  > inform(this=dontcare)|inform(area=dontcare) [0.02]
+SLU  > inform(this=dontcare)|inform(area=east) [0.01]
+SLU  > inform(this=dontcare)|inform(food=dontcare) [0.01]
+ASR  > any
+Tran > any
+inform(dontcare) FOR inform(dontcare)
+OK
+goal-labels > {u'food': u'italian', u'pricerange': u'dontcare', u'area': u'west'}
+ 
+Turn 5
+SYS  > la margherita is a nice place in the west of town serving tasty italian food
+DAct > offer(name=la margherita)|inform(food=italian)|inform(area=west)
+SLU  > request(slot=phone)  [0.62]
+SLU  > NULL()               [0.26]
+SLU  > reqalts()            [0.04]
+SLU  > ack()                [0.03]
+SLU  > affirm()             [0.03]
+SLU  > repeat()             [0.02]
+SLU  > hello()              [0.01]
+ASR  > phone number
+Tran > phone number
+request(phone) FOR request(phone)
+OK
+goal-labels > {u'food': u'italian', u'pricerange': u'dontcare', u'area': u'west'}
+ 
+Turn 6
+SYS  > la margherita is a great restaurant
+DAct > offer(name=la margherita)
+SLU  > bye()                [1.00]
+ASR  > thank you goodbye
+Tran > thank you good bye
+bye() FOR thankyou()|bye()
+ERROR: PARTIAL MATCH
+goal-labels > {u'food': u'italian', u'pricerange': u'dontcare', u'area': u'west'}
+ 
+Session: data/Mar13_S1A1/voip-03c2655d43-20130327_194616
+
+Turn 0
+SYS  > Hello , welcome to the Cambridge restaurant system? You can ask for restaurants by area , price range or food type . How may I help you?
+DAct > welcomemsg()
+SLU  > inform(food=korean)  [0.94]
+SLU  > affirm()|inform(food=korean) [0.03]
+SLU  > inform(food=korean)|inform(area=south) [0.01]
+SLU  > hello()|inform(food=korean) [0.01]
+ASR  > korean
+Tran > korean food
+inform(food=korean) FOR inform(food=korean)
+OK
+goal-labels > {u'food': u'korean'}
+ 
+Turn 1
+SYS  > little seoul serves korean food
+DAct > offer(name=little seoul)|inform(food=korean)
+SLU  > request(slot=addr)   [0.43]
+SLU  > request(slot=phone)|request(slot=addr) [0.29]
+SLU  > request(slot=phone)  [0.26]
+SLU  > request(slot=area)|request(slot=addr) [0.01]
+SLU  > request(slot=area)   [0.01]
+ASR  > address phone number area
+Tran > address phone number area
+request(addr) FOR request(addr,phone,area)
+ERROR: PARTIAL MATCH
+goal-labels > {u'food': u'korean'}
+ 
+Turn 2
+SYS  > The phone number of little seoul is 01223 308681 and it is on 108 Regent Street City Centre .
+DAct > offer(name=little seoul)|inform(phone=01223 308681)|inform(addr=108 regent street city centre)
+SLU  > bye()                [1.00]
+ASR  > thank you goodbye
+Tran > thank you good bye
+bye() FOR thankyou()|bye()
+ERROR: PARTIAL MATCH
+goal-labels > {u'food': u'korean'}
+ 
+Session: data/Mar13_S1A1/voip-03c2655d43-20130327_192312
+
+Turn 0
+SYS  > Hello , welcome to the Cambridge restaurant system? You can ask for restaurants by area , price range or food type . How may I help you?
+DAct > welcomemsg()
+SLU  > inform(area=west)    [1.00]
+ASR  > restaurant in west part of town
+Tran > restaurant in west part of town
+inform(area=west) FOR inform(type=restaurant,area=west)
+OK
+goal-labels > {u'area': u'west'}
+ 
+Turn 1
+SYS  > What kind of food would you like?
+DAct > request(slot=food)
+SLU  > inform(food=swiss)   [1.00]
+ASR  > should serve swiss food
+Tran > shit served swiss food
+inform(food=swiss) FOR inform(food=swiss)
+OK
+goal-labels > {u'food': u'swiss', u'area': u'west'}
+ 
+Turn 2
+SYS  > I'm sorry but there is no restaurant serving swiss food
+DAct > canthelp(food=swiss)
+SLU  > inform(food=dontcare) [0.42]
+SLU  > inform(this=dontcare) [0.17]
+SLU  > NULL()               [0.14]
+SLU  > reqalts()            [0.08]
+SLU  > inform(this=dontcare)|inform(food=dontcare) [0.06]
+SLU  > ack()                [0.04]
+SLU  > reqalts()|inform(food=dontcare) [0.03]
+SLU  > negate()             [0.03]
+SLU  > repeat()             [0.02]
+SLU  > affirm()             [0.02]
+ASR  > in any food
+Tran > vietnamese food
+inform(food=dontcare) FOR inform(food=vietnamese)
+ERROR
+goal-labels > {u'food': u'vietnamese', u'area': u'west'}
+ 
+Turn 3
+SYS  > I'm sorry but there is no restaurant serving swiss food
+DAct > canthelp(food=swiss)
+SLU  > NULL()               [0.50]
+SLU  > inform(food=vietnamese) [0.24]
+SLU  > reqalts()            [0.08]
+SLU  > affirm()             [0.04]
+SLU  > repeat()             [0.04]
+SLU  > hello()              [0.04]
+SLU  > ack()                [0.03]
+SLU  > thankyou()           [0.03]
+SLU  > reqalts()|inform(food=vietnamese) [0.01]
+ASR  > vietnamese
+Tran > vietnamese
+NULL() FOR inform(food=vietnamese)
+ERROR
+goal-labels > {u'food': u'vietnamese', u'area': u'west'}
+ 
+Turn 4
+SYS  > maharajah tandoori restaurant is a nice place in the west of town
+DAct > offer(name=maharajah tandoori restaurant)|inform(area=west)
+SLU  > NULL()               [0.61]
+SLU  > affirm()             [0.10]
+SLU  > ack()                [0.08]
+SLU  > reqalts()            [0.08]
+SLU  > negate()             [0.04]
+SLU  > hello()              [0.04]
+SLU  > repeat()             [0.03]
+SLU  > request(slot=addr)   [0.01]
+ASR  > yeah
+Tran > viet
+NULL() FOR null()
+OK
+goal-labels > {u'food': u'vietnamese', u'area': u'west'}
+ 
+Turn 5
+SYS  > maharajah tandoori restaurant is a great restaurant
+DAct > offer(name=maharajah tandoori restaurant)
+SLU  > request(slot=addr)   [0.97]
+SLU  > request(slot=postcode)|request(slot=addr) [0.03]
+ASR  > address then
+Tran > address and
+request(addr) FOR request(addr)
+OK
+goal-labels > {u'food': u'vietnamese', u'area': u'west'}
+ 
+Turn 6
+SYS  > Sure , maharajah tandoori restaurant is on 41518 Castle Street City Centre
+DAct > offer(name=maharajah tandoori restaurant)|inform(addr=41518 castle street city centre)
+SLU  > request(slot=postcode) [0.94]
+SLU  > NULL()               [0.06]
+ASR  > post code
+Tran > post code
+request(postcode) FOR request(postcode)
+OK
+goal-labels > {u'food': u'vietnamese', u'area': u'west'}
+ 
+Turn 7
+SYS  > The post code of maharajah tandoori restaurant is C.B 3, 0 A.H
+DAct > offer(name=maharajah tandoori restaurant)|inform(postcode=c.b 3)
+SLU  > request(slot=phone)  [0.70]
+SLU  > NULL()               [0.20]
+SLU  > ack()                [0.03]
+SLU  > affirm()             [0.02]
+SLU  > repeat()             [0.02]
+SLU  > thankyou()           [0.02]
+SLU  > reqalts()            [0.01]
+ASR  > phone number
+Tran > phone number
+request(phone) FOR request(phone)
+OK
+goal-labels > {u'food': u'vietnamese', u'area': u'west'}
+ 
+Turn 8
+SYS  > The phone number of maharajah tandoori restaurant is 01223 358399 .
+DAct > offer(name=maharajah tandoori restaurant)|inform(phone=01223 358399)
+SLU  > bye()                [1.00]
+ASR  > thank you goodbye
+Tran > thank you good bye
+bye() FOR thankyou()|bye()
+ERROR: PARTIAL MATCH
+goal-labels > {u'food': u'vietnamese', u'area': u'west'}
+ 
+Session: data/Mar13_S0A1/voip-03c2655d43-20130327_194746
+
+Turn 0
+SYS  > Hello , welcome to the Cambridge restaurant system? You can ask for restaurants by area , price range or food type . How may I help you?
+DAct > welcomemsg()
+SLU  > inform(food=international)|inform(pricerange=moderate) [0.88]
+SLU  > inform(food=international) [0.09]
+SLU  > inform(pricerange=moderate) [0.03]
+ASR  > moderately priced international food
+Tran > moderately priced international food
+inform(food=international)|inform(pricerange=moderate) FOR inform(pricerange=moderate,food=international)
+OK
+goal-labels > {u'food': u'international', u'pricerange': u'moderate'}
+ 
+Turn 1
+SYS  > bloomsbury restaurant is a great restaurant serving international food and it is in the moderate price range
+DAct > offer(name=bloomsbury restaurant)|inform(food=international)|inform(pricerange=moderate)
+SLU  > reqalts()            [0.37]
+SLU  > NULL()               [0.35]
+SLU  > ack()                [0.11]
+SLU  > negate()             [0.06]
+SLU  > repeat()             [0.04]
+SLU  > affirm()             [0.03]
+SLU  > hello()              [0.02]
+SLU  > request(slot=addr)   [0.01]
+ASR  > anything else
+Tran > anything else
+reqalts() FOR reqalts()
+OK
+goal-labels > {u'food': u'international', u'pricerange': u'moderate'}
+ 
+Turn 2
+SYS  > You are looking for a restaurant is that right?
+DAct > confirm-domain()
+SLU  > affirm()             [0.52]
+SLU  > NULL()               [0.30]
+SLU  > affirm()|inform(pricerange=moderate) [0.06]
+SLU  > negate()             [0.03]
+SLU  > inform(pricerange=moderate) [0.03]
+SLU  > ack()                [0.03]
+SLU  > repeat()             [0.01]
+SLU  > hello()              [0.01]
+ASR  > moderately
+Tran > moderately
+affirm() FOR inform(pricerange=moderate)
+ERROR
+goal-labels > {u'food': u'international', u'pricerange': u'moderate'}
+ 
+Turn 3
+SYS  > bloomsbury restaurant is a great restaurant serving international food and it is in the moderate price range
+DAct > offer(name=bloomsbury restaurant)|inform(food=international)|inform(pricerange=moderate)
+SLU  > NULL()               [0.38]
+SLU  > reqalts()            [0.25]
+SLU  > ack()                [0.16]
+SLU  > repeat()             [0.05]
+SLU  > inform(this=dontcare) [0.05]
+SLU  > negate()             [0.04]
+SLU  > affirm()             [0.03]
+SLU  > thankyou()           [0.03]
+ASR  > anything else
+Tran > any thing else
+NULL() FOR null()
+OK
+goal-labels > {u'food': u'international', u'pricerange': u'moderate'}
+ 
+Turn 4
+SYS  > bloomsbury restaurant is a great restaurant serving international food and it is in the moderate price range
+DAct > offer(name=bloomsbury restaurant)|inform(food=international)|inform(pricerange=moderate)
+SLU  > request(slot=phone)  [0.75]
+SLU  > NULL()               [0.11]
+SLU  > ack()                [0.06]
+SLU  > reqalts()            [0.05]
+SLU  > repeat()             [0.02]
+SLU  > affirm()             [0.02]
+ASR  > phone number
+Tran > phone number
+request(phone) FOR request(phone)
+OK
+goal-labels > {u'food': u'international', u'pricerange': u'moderate'}
+ 
+Turn 5
+SYS  > The phone number of bloomsbury restaurant is 0871 942 9180 .
+DAct > offer(name=bloomsbury restaurant)|inform(phone=0871 942 9180)
+SLU  > bye()                [1.00]
+ASR  > thank you good bye
+Tran > thank you good bye
+bye() FOR thankyou()|bye()
+ERROR: PARTIAL MATCH
+goal-labels > {u'food': u'international', u'pricerange': u'moderate'}
+ 
+Session: data/Mar13_S0A1/voip-03c2655d43-20130327_195421
+
+Turn 0
+SYS  > Hello , welcome to the Cambridge restaurant system? You can ask for restaurants by area , price range or food type . How may I help you?
+DAct > welcomemsg()
+SLU  > inform(food=basque)|inform(area=west) [0.52]
+SLU  > inform(food=basque)  [0.38]
+SLU  > inform(area=west)    [0.10]
+ASR  > west part of town basque food
+Tran > west part of town basque food
+inform(food=basque)|inform(area=west) FOR inform(area=west,food=basque)
+OK
+goal-labels > {u'food': u'basque', u'area': u'west'}
+ 
+Turn 1
+SYS  > Sorry there is no basque restaurant in the west of town
+DAct > canthelp(area=west,food=basque)
+SLU  > inform(food=italian) [0.98]
+SLU  > reqalts()|inform(food=italian) [0.02]
+ASR  > italian
+Tran > italian
+inform(food=italian) FOR inform(food=italian)
+OK
+goal-labels > {u'food': u'italian', u'area': u'west'}
+ 
+Turn 2
+SYS  > prezzo is a nice restaurant in the west of town serving italian food
+DAct > offer(name=prezzo)|inform(food=italian)|inform(area=west)
+SLU  > NULL()               [0.42]
+SLU  > request(slot=phone)  [0.32]
+SLU  > reqalts()            [0.10]
+SLU  > ack()                [0.05]
+SLU  > negate()             [0.05]
+SLU  > repeat()             [0.04]
+SLU  > affirm()             [0.03]
+ASR  > phone number
+Tran > phone number
+NULL() FOR request(phone)
+ERROR
+goal-labels > {u'food': u'italian', u'area': u'west'}
+ 
+Turn 3
+SYS  > You are looking for a restaurant is that right?
+DAct > confirm-domain()
+SLU  > inform(food=italian) [0.62]
+SLU  > affirm()|inform(food=italian) [0.24]
+SLU  > affirm()             [0.09]
+SLU  >                      [0.03]
+SLU  > negate()|inform(food=italian) [0.01]
+SLU  > hello()|inform(food=italian) [0.01]
+ASR  > italian
+Tran > italian
+inform(food=italian) FOR inform(food=italian)
+OK
+goal-labels > {u'food': u'italian', u'area': u'west'}
+ 
+Turn 4
+SYS  > prezzo is a nice restaurant in the west of town serving italian food
+DAct > offer(name=prezzo)|inform(food=italian)|inform(area=west)
+SLU  > NULL()               [0.70]
+SLU  > request(slot=phone)  [0.19]
+SLU  > reqalts()            [0.03]
+SLU  > affirm()             [0.02]
+SLU  > repeat()             [0.02]
+SLU  > ack()                [0.02]
+SLU  > negate()             [0.01]
+ASR  > phone number
+Tran > phone number
+NULL() FOR request(phone)
+ERROR
+goal-labels > {u'food': u'italian', u'area': u'west'}
+ 
+Turn 5
+SYS  > prezzo is a nice restaurant in the west of town serving italian food
+DAct > offer(name=prezzo)|inform(food=italian)|inform(area=west)
+SLU  > request(slot=phone)  [0.54]
+SLU  > NULL()               [0.34]
+SLU  > reqalts()            [0.05]
+SLU  > ack()                [0.04]
+SLU  > affirm()             [0.02]
+SLU  > repeat()             [0.01]
+SLU  > negate()             [0.01]
+ASR  > phone number
+Tran > phone number
+request(phone) FOR request(phone)
+OK
+goal-labels > {u'food': u'italian', u'area': u'west'}
+ 
+Turn 6
+SYS  > The phone number of prezzo is 01799 521260 .
+DAct > offer(name=prezzo)|inform(phone=01799 521260)
+SLU  > bye()                [1.00]
+ASR  > thank you goodbye
+Tran > thank you goodbye
+bye() FOR thankyou()|bye()
+ERROR: PARTIAL MATCH
+goal-labels > {u'food': u'italian', u'area': u'west'}
+ 
+Session: data/Mar13_S0A1/voip-03c2655d43-20130327_191742
+
+Turn 0
+SYS  > Hello , welcome to the Cambridge restaurant system? You can ask for restaurants by area , price range or food type . How may I help you?
+DAct > welcomemsg()
+SLU  > inform(food=european)|inform(pricerange=expensive) [0.83]
+SLU  > inform(food=european) [0.10]
+SLU  > inform(pricerange=expensive) [0.05]
+SLU  > affirm()|inform(food=european)|inform(pricerange=expensive) [0.03]
+ASR  > european expensive restaurant
+Tran > european food expensive restaurant
+inform(food=european)|inform(pricerange=expensive) FOR inform(food=european,pricerange=expensive,type=restaurant)
+OK
+goal-labels > {u'food': u'european', u'pricerange': u'expensive'}
+ 
+Turn 1
+SYS  > michaelhouse cafe is a great restaurant serving european food and it is in the expensive price range
+DAct > offer(name=michaelhouse cafe)|inform(food=european)|inform(pricerange=expensive)
+SLU  > request(slot=postcode)|request(slot=addr) [0.97]
+SLU  > request(slot=addr)   [0.03]
+ASR  > um what's the address and post code
+Tran > um whats the address and post code
+request(postcode)|request(addr) FOR request(addr,postcode)
+ERROR: PARTIAL MATCH
+goal-labels > {u'food': u'european', u'pricerange': u'expensive'}
+ 
+Turn 2
+SYS  > michaelhouse cafe is on St. Michael's Church Trinity Street City Centre , C.B 2, 1 S.U
+DAct > offer(name=michaelhouse cafe)|inform(addr=st. michael's church trinity street city centre)|inform(postcode=c.b 2)
+SLU  > request(slot=phone)  [0.32]
+SLU  > request(slot=postcode) [0.23]
+SLU  > reqalts()            [0.19]
+SLU  > request(slot=signature) [0.17]
+SLU  > request(slot=addr)   [0.08]
+SLU  > request(slot=postcode)|request(slot=phone) [0.01]
+ASR  > what is the
+Tran > what is the
+request(phone) FOR null()
+ERROR
+goal-labels > {u'food': u'european', u'pricerange': u'expensive'}
+ 
+Turn 3
+SYS  > The phone number of michaelhouse cafe is 01223 309147 .
+DAct > offer(name=michaelhouse cafe)|inform(phone=01223 309147)
+SLU  > thankyou()           [0.68]
+SLU  > NULL()               [0.21]
+SLU  > ack()                [0.05]
+SLU  > affirm()             [0.03]
+SLU  > repeat()             [0.02]
+SLU  > reqalts()            [0.01]
+ASR  > great thank you that's the
+Tran > alright thank you thats it
+thankyou() FOR thankyou()
+OK
+goal-labels > {u'food': u'european', u'pricerange': u'expensive'}
+ 
+Turn 4
+SYS  > michaelhouse cafe is a great restaurant serving european food and it is in the expensive price range
+DAct > offer(name=michaelhouse cafe)|inform(food=european)|inform(pricerange=expensive)
+SLU  > NULL()               [0.32]
+SLU  > request(slot=addr)   [0.20]
+SLU  > request(slot=postcode) [0.20]
+SLU  > request(slot=phone)  [0.17]
+SLU  > reqalts()            [0.11]
+ASR  > what's the mall code
+Tran > whats the promo code
+NULL() FOR null()
+OK
+goal-labels > {u'food': u'european', u'pricerange': u'expensive'}
+ 
+Turn 5
+SYS  > michaelhouse cafe is a great restaurant serving european food and it is in the expensive price range
+DAct > offer(name=michaelhouse cafe)|inform(food=european)|inform(pricerange=expensive)
+SLU  > reqalts()            [0.35]
+SLU  > NULL()               [0.26]
+SLU  > inform(this=dontcare) [0.17]
+SLU  > ack()                [0.06]
+SLU  > affirm()|inform(this=dontcare) [0.05]
+SLU  > affirm()             [0.04]
+SLU  > negate()             [0.03]
+SLU  > repeat()             [0.02]
+SLU  > thankyou()           [0.02]
+ASR  > is there anything else
+Tran > is there anything else
+reqalts() FOR reqalts()
+OK
+goal-labels > {u'food': u'european', u'pricerange': u'expensive'}
+ 
+Turn 6
+SYS  > eraina is a great restaurant serving european food and it is in the expensive price range
+DAct > offer(name=eraina)|inform(food=european)|inform(pricerange=expensive)
+SLU  > reqalts()            [0.36]
+SLU  > NULL()               [0.32]
+SLU  > ack()                [0.12]
+SLU  > negate()             [0.05]
+SLU  > inform(this=dontcare) [0.04]
+SLU  > repeat()             [0.04]
+SLU  > affirm()             [0.03]
+SLU  > thankyou()           [0.03]
+SLU  > hello()              [0.02]
+ASR  > is there anything else
+Tran > is there anything else
+reqalts() FOR reqalts()
+OK
+goal-labels > {u'food': u'european', u'pricerange': u'expensive'}
+ 
+Turn 7
+SYS  > cambridge lodge restaurant is a great restaurant serving european food and it is in the expensive price range
+DAct > offer(name=cambridge lodge restaurant)|inform(food=european)|inform(pricerange=expensive)
+SLU  > request(slot=postcode)|request(slot=addr) [0.93]
+SLU  > request(slot=postcode) [0.06]
+SLU  > request(slot=addr)   [0.02]
+ASR  > address and post code
+Tran > address and post code
+request(postcode)|request(addr) FOR request(addr,postcode)
+ERROR: PARTIAL MATCH
+goal-labels > {u'food': u'european', u'pricerange': u'expensive'}
+ 
+Turn 8
+SYS  > cambridge lodge restaurant is on Cambridge Lodge Hotel 139 Huntingdon Road City Centre , C.B 3, 0 D.Q
+DAct > offer(name=cambridge lodge restaurant)|inform(addr=cambridge lodge hotel 139 huntingdon road city centre)|inform(postcode=c.b 3)
+SLU  > reqalts()            [0.34]
+SLU  > NULL()               [0.32]
+SLU  > ack()                [0.08]
+SLU  > repeat()             [0.07]
+SLU  > hello()              [0.05]
+SLU  > thankyou()           [0.05]
+SLU  > affirm()             [0.04]
+SLU  > negate()             [0.02]
+SLU  > inform(this=dontcare) [0.02]
+ASR  > is there anything else
+Tran > is there anything else
+reqalts() FOR reqalts()
+OK
+goal-labels > {u'food': u'european', u'pricerange': u'expensive'}
+ 
+Turn 9
+SYS  > hotel du vin and bistro is a great restaurant serving european food and it is in the moderate price range
+DAct > offer(name=hotel du vin and bistro)|inform(food=european)|inform(pricerange=moderate)
+SLU  > request(slot=pricerange)|inform(pricerange=expensive) [0.99]
+SLU  > request(slot=pricerange) [0.01]
+ASR  > expensive price range
+Tran > expensive price range
+request(pricerange)|inform(pricerange=expensive) FOR request(pricerange=expensive)
+ERROR: PARTIAL MATCH
+goal-labels > {u'food': u'european', u'pricerange': u'expensive'}
+ 
+Turn 10
+SYS  > hotel du vin and bistro is in the moderate price range
+DAct > offer(name=hotel du vin and bistro)|inform(pricerange=moderate)
+SLU  > inform(pricerange=expensive) [0.97]
+SLU  > confirm(pricerange=expensive) [0.02]
+SLU  > affirm()|inform(pricerange=expensive) [0.01]
+ASR  > expensive restaurant
+Tran > expensive restaurant
+inform(pricerange=expensive) FOR inform(pricerange=expensive,type=restaurant)
+OK
+goal-labels > {u'food': u'european', u'pricerange': u'expensive'}
+ 
+Turn 11
+SYS  > cambridge lodge restaurant is a great restaurant serving european food and it is in the expensive price range
+DAct > offer(name=cambridge lodge restaurant)|inform(food=european)|inform(pricerange=expensive)
+SLU  > NULL()               [0.35]
+SLU  > request(slot=postcode) [0.30]
+SLU  > request(slot=addr)   [0.14]
+SLU  > reqalts()            [0.08]
+SLU  > ack()                [0.06]
+SLU  > affirm()             [0.06]
+SLU  > request(slot=postcode)|request(slot=addr) [0.01]
+ASR  > what's the code
+Tran > whats the code
+NULL() FOR null()
+OK
+goal-labels > {u'food': u'european', u'pricerange': u'expensive'}
+ 
+Turn 12
+SYS  > cambridge lodge restaurant is a great restaurant serving european food and it is in the expensive price range
+DAct > offer(name=cambridge lodge restaurant)|inform(food=european)|inform(pricerange=expensive)
+SLU  > request(slot=postcode) [0.45]
+SLU  > NULL()               [0.21]
+SLU  > request(slot=addr)   [0.20]
+SLU  > reqalts()            [0.09]
+SLU  > request(slot=phone)  [0.04]
+SLU  > request(slot=postcode)|request(slot=addr) [0.02]
+ASR  > what's the code
+Tran > whats the code
+request(postcode) FOR null()
+ERROR
+goal-labels > {u'food': u'european', u'pricerange': u'expensive'}
+ 
+Turn 13
+SYS  > The post code of cambridge lodge restaurant is C.B 3, 0 D.Q
+DAct > offer(name=cambridge lodge restaurant)|inform(postcode=c.b 3)
+SLU  > thankyou()           [0.80]
+SLU  > NULL()               [0.16]
+SLU  > ack()                [0.02]
+SLU  > reqalts()            [0.01]
+ASR  > okay thank you
+Tran > alright thank you good
+thankyou() FOR thankyou()
+OK
+goal-labels > {u'food': u'european', u'pricerange': u'expensive'}
+ 
+Turn 14
+SYS  > cambridge lodge restaurant is a great restaurant serving european food and it is in the expensive price range
+DAct > offer(name=cambridge lodge restaurant)|inform(food=european)|inform(pricerange=expensive)
+SLU  > thankyou()           [0.60]
+SLU  > NULL()               [0.28]
+SLU  > reqalts()            [0.04]
+SLU  > affirm()             [0.03]
+SLU  > repeat()             [0.03]
+SLU  > ack()                [0.02]
+ASR  > thank you
+Tran > thank you
+thankyou() FOR thankyou()
+OK
+goal-labels > {u'food': u'european', u'pricerange': u'expensive'}
+ 
+Turn 15
+SYS  > cambridge lodge restaurant is a great restaurant serving european food and it is in the expensive price range
+DAct > offer(name=cambridge lodge restaurant)|inform(food=european)|inform(pricerange=expensive)
+SLU  > bye()                [0.70]
+SLU  > NULL()               [0.10]
+SLU  > ack()                [0.06]
+SLU  > reqalts()            [0.06]
+SLU  > repeat()             [0.04]
+SLU  > negate()             [0.01]
+SLU  > affirm()             [0.01]
+SLU  > thankyou()           [0.01]
+ASR  > good bye
+Tran > good bye
+bye() FOR bye()
+OK
+goal-labels > {u'food': u'european', u'pricerange': u'expensive'}
+ 
+Session: data/Mar13_S0A0/voip-03c2655d43-20130327_193309
+
+Turn 0
+SYS  > Hello , welcome to the Cambridge restaurant system? You can ask for restaurants by area , price range or food type . How may I help you?
+DAct > welcomemsg()
+SLU  > inform(food=persian)|inform(pricerange=expensive) [0.80]
+SLU  > inform(food=persian) [0.17]
+SLU  > inform(pricerange=expensive) [0.03]
+ASR  > expensive restaurant it should serve persian food
+Tran > expensive restaurant it should serve persian food
+inform(food=persian)|inform(pricerange=expensive) FOR inform(pricerange=expensive,type=restaurant,food=persian)
+OK
+goal-labels > {u'food': u'persian', u'pricerange': u'expensive'}
+ 
+Turn 1
+SYS  > Sorry there is no persian restaurant in the expensive price range
+DAct > canthelp(pricerange=expensive,food=persian)
+SLU  > inform(food=european) [0.97]
+SLU  > NULL()               [0.03]
+ASR  > european type of food
+Tran > european type of food
+inform(food=european) FOR inform(food=european)
+OK
+goal-labels > {u'food': u'european', u'pricerange': u'expensive'}
+ 
+Turn 2
+SYS  > eraina is a great restaurant serving european food and it is in the expensive price range
+DAct > offer(name=eraina)|inform(food=european)|inform(pricerange=expensive)
+SLU  > request(slot=addr)   [0.99]
+SLU  > NULL()               [0.01]
+ASR  > address
+Tran > address
+request(addr) FOR request(addr)
+OK
+goal-labels > {u'food': u'european', u'pricerange': u'expensive'}
+ 
+Turn 3
+SYS  > Sure , eraina is on Free School Lane City Centre
+DAct > offer(name=eraina)|inform(addr=free school lane city centre)
+SLU  > request(slot=phone)  [0.85]
+SLU  > NULL()               [0.12]
+SLU  > ack()                [0.02]
+SLU  > affirm()             [0.01]
+ASR  > phone number
+Tran > phone number
+request(phone) FOR request(phone)
+OK
+goal-labels > {u'food': u'european', u'pricerange': u'expensive'}
+ 
+Turn 4
+SYS  > The phone number of eraina is 01223 368786 .
+DAct > offer(name=eraina)|inform(phone=01223 368786)
+SLU  > NULL()               [0.42]
+SLU  > request(slot=area)   [0.26]
+SLU  > affirm()             [0.12]
+SLU  > ack()                [0.05]
+SLU  > reqalts()            [0.05]
+SLU  > repeat()             [0.04]
+SLU  > hello()              [0.03]
+SLU  > thankyou()           [0.03]
+ASR  > area
+Tran > area
+NULL() FOR request(area)
+ERROR
+goal-labels > {u'food': u'european', u'pricerange': u'expensive'}
+ 
+Turn 5
+SYS  > eraina is a great restaurant serving european food and it is in the expensive price range
+DAct > offer(name=eraina)|inform(food=european)|inform(pricerange=expensive)
+SLU  > NULL()               [0.44]
+SLU  > ack()                [0.16]
+SLU  > reqalts()            [0.13]
+SLU  > affirm()             [0.10]
+SLU  > request(slot=addr)   [0.08]
+SLU  > negate()             [0.06]
+SLU  > inform(name=venue)   [0.03]
+ASR  > every the menu
+Tran > area of venue
+NULL() FOR request(area)
+ERROR
+goal-labels > {u'food': u'european', u'pricerange': u'expensive'}
+ 
+Turn 6
+SYS  > eraina is a great restaurant serving european food and it is in the expensive price range
+DAct > offer(name=eraina)|inform(food=european)|inform(pricerange=expensive)
+SLU  > bye()                [1.00]
+ASR  > thank you good bye
+Tran > thank you good bye
+bye() FOR thankyou()|bye()
+ERROR: PARTIAL MATCH
+goal-labels > {u'food': u'european', u'pricerange': u'expensive'}
+ 
+Session: data/Mar13_S0A0/voip-03c2655d43-20130327_201323
+
+Turn 0
+SYS  > Hello , welcome to the Cambridge restaurant system? You can ask for restaurants by area , price range or food type . How may I help you?
+DAct > welcomemsg()
+SLU  > NULL()               [0.83]
+SLU  > affirm()             [0.10]
+SLU  > hello()              [0.03]
+SLU  > ack()                [0.02]
+SLU  > repeat()             [0.02]
+ASR  > could see curry
+Tran > sea food
+NULL() FOR inform(food=seafood)
+ERROR
+goal-labels > {u'food': u'seafood'}
+ 
+Turn 1
+SYS  > What part of town do you have in mind?
+DAct > request(slot=area)
+SLU  > inform(this=dontcare) [0.60]
+SLU  > inform(area=dontcare) [0.19]
+SLU  > inform(this=dontcare)|inform(area=dontcare) [0.19]
+SLU  >                      [0.02]
+ASR  > any
+Tran > any
+inform(dontcare) FOR inform(dontcare)
+OK
+goal-labels > {u'food': u'seafood', u'area': u'dontcare'}
+ 
+Turn 2
+SYS  > ask is in the centre part of town .
+DAct > offer(name=ask)|inform(area=centre)
+SLU  > request(slot=addr)   [0.89]
+SLU  > NULL()               [0.06]
+SLU  > reqalts()            [0.01]
+SLU  > request(slot=postcode)|request(slot=addr) [0.01]
+SLU  > ack()                [0.01]
+SLU  > affirm()             [0.01]
+ASR  > address
+Tran > address
+request(addr) FOR request(addr)
+OK
+goal-labels > {u'food': u'seafood', u'area': u'dontcare'}
+ 
+Turn 3
+SYS  > Sure , ask is on 12 Bridge Street City Centre
+DAct > offer(name=ask)|inform(addr=12 bridge street city centre)
+SLU  > bye()                [1.00]
+ASR  > thank you goodbye
+Tran > thank you good bye
+bye() FOR thankyou()|bye()
+ERROR: PARTIAL MATCH
+goal-labels > {u'food': u'seafood', u'area': u'dontcare'}
+ 
+Session: data/Mar13_S0A0/voip-03c2655d43-20130327_194221
+
+Turn 0
+SYS  > Hello , welcome to the Cambridge restaurant system? You can ask for restaurants by area , price range or food type . How may I help you?
+DAct > welcomemsg()
+SLU  > inform(food=international)|inform(area=east) [0.62]
+SLU  > inform(food=international) [0.32]
+SLU  > inform(area=east)    [0.05]
+ASR  > what shop east part of town that international food
+Tran > restaurant in the east part of town international food
+inform(food=international)|inform(area=east) FOR inform(type=restaurant,area=east,food=international)
+OK
+goal-labels > {u'food': u'international', u'area': u'east'}
+ 
+Turn 1
+SYS  > the missing sock is a nice restaurant in the east of town serving international food
+DAct > offer(name=the missing sock)|inform(food=international)|inform(area=east)
+SLU  > request(slot=phone)  [0.45]
+SLU  > NULL()               [0.25]
+SLU  > reqalts()            [0.09]
+SLU  > ack()                [0.09]
+SLU  > negate()             [0.05]
+SLU  > repeat()             [0.03]
+SLU  > affirm()             [0.02]
+SLU  > thankyou()           [0.02]
+ASR  > phone number
+Tran > phone number
+request(phone) FOR request(phone)
+OK
+goal-labels > {u'food': u'international', u'area': u'east'}
+ 
+Turn 2
+SYS  > The phone number of the missing sock is 01223 812660 .
+DAct > offer(name=the missing sock)|inform(phone=01223 812660)
+SLU  > bye()                [1.00]
+ASR  > thank you good bye
+Tran > thank you good bye
+bye() FOR thankyou()|bye()
+ERROR: PARTIAL MATCH
+goal-labels > {u'food': u'international', u'area': u'east'}
+ 
+Session: data/Mar13_S0A0/voip-03c2655d43-20130327_200023
+
+Turn 0
+SYS  > Hello , welcome to the Cambridge restaurant system? You can ask for restaurants by area , price range or food type . How may I help you?
+DAct > welcomemsg()
+SLU  > inform(food=chinese)|inform(pricerange=moderate) [0.94]
+SLU  > inform(pricerange=moderate) [0.04]
+SLU  > inform(food=chinese) [0.02]
+ASR  > moderately priced restaurant chinese food
+Tran > moderately priced priced restaurant chinese food
+inform(food=chinese)|inform(pricerange=moderate) FOR inform(pricerange=moderate,type=restaurant,food=chinese)
+OK
+goal-labels > {u'food': u'chinese', u'pricerange': u'moderate'}
+ 
+Turn 1
+SYS  > golden wok is a great restaurant serving chinese food and it is in the moderate price range
+DAct > offer(name=golden wok)|inform(food=chinese)|inform(pricerange=moderate)
+SLU  > request(slot=postcode)|request(slot=addr) [0.91]
+SLU  > request(slot=postcode) [0.09]
+ASR  > address and post code
+Tran > address and postcode
+request(postcode)|request(addr) FOR request(addr,postcode)
+ERROR: PARTIAL MATCH
+goal-labels > {u'food': u'chinese', u'pricerange': u'moderate'}
+ 
+Turn 2
+SYS  > golden wok is on 191 Histon Road Chesterton , C.B 4, 3 H.L
+DAct > offer(name=golden wok)|inform(postcode=c.b 4)|inform(addr=191 histon road chesterton)
+SLU  > bye()                [1.00]
+ASR  > thank you good bye
+Tran > thank you goodbye
+bye() FOR thankyou()|bye()
+ERROR: PARTIAL MATCH
+goal-labels > {u'food': u'chinese', u'pricerange': u'moderate'}
+ 
+Session: data/Mar13_S2A1/voip-03c2655d43-20130327_194017
+
+Turn 0
+SYS  > Hello , welcome to the Cambridge restaurant system? You can ask for restaurants by area , price range or food type . How may I help you?
+DAct > welcomemsg()
+SLU  > inform(pricerange=moderate) [0.93]
+SLU  > affirm()|inform(pricerange=moderate) [0.05]
+SLU  > hello()|inform(pricerange=moderate) [0.02]
+ASR  > moderately priced
+Tran > moderately priced
+inform(pricerange=moderate) FOR inform(pricerange=moderate)
+OK
+goal-labels > {u'pricerange': u'moderate'}
+ 
+Turn 1
+SYS  > There are 31 restaurants in the moderate price range . What type of food do you want?
+DAct > request(slot=food)|inform(count=31)|impl-conf(pricerange=moderate)
+SLU  > inform(area=east)    [1.00]
+ASR  > east part of town
+Tran > east part of town
+inform(area=east) FOR inform(area=east)
+OK
+goal-labels > {u'pricerange': u'moderate', u'area': u'east'}
+ 
+Turn 2
+SYS  > There are 3 restaurants in the moderate price range and the east of town . What type of food would you like?
+DAct > request(slot=food)|inform(count=3)|impl-conf(pricerange=moderate)|impl-conf(area=east)
+SLU  > inform(this=dontcare) [0.91]
+SLU  > inform(this=dontcare)|inform(area=east) [0.03]
+SLU  > inform(this=dontcare)|inform(area=dontcare) [0.03]
+SLU  > inform(this=dontcare)|inform(food=dontcare) [0.02]
+SLU  > inform(this=dontcare)|inform(food=danish) [0.01]
+ASR  > any
+Tran > any
+inform(dontcare) FOR inform(dontcare)
+OK
+goal-labels > {u'food': u'dontcare', u'pricerange': u'moderate', u'area': u'east'}
+ 
+Turn 3
+SYS  > rajmahal is a nice place in the east of town and the prices are moderate
+DAct > offer(name=rajmahal)|inform(pricerange=moderate)|inform(area=east)
+SLU  > request(slot=addr)   [0.98]
+SLU  > request(slot=addr)|inform(area=south) [0.01]
+SLU  > request(slot=addr)|inform(area=east) [0.01]
+ASR  > address
+Tran > address
+request(addr) FOR request(addr)
+OK
+goal-labels > {u'food': u'dontcare', u'pricerange': u'moderate', u'area': u'east'}
+ 
+Turn 4
+SYS  > Sure , rajmahal is on 7 Barnwell Road Fen Ditton
+DAct > offer(name=rajmahal)|inform(addr=7 barnwell road fen ditton)
+SLU  > bye()                [1.00]
+ASR  > thank you goodbye
+Tran > thank you goodbye
+bye() FOR thankyou()|bye()
+ERROR: PARTIAL MATCH
+goal-labels > {u'food': u'dontcare', u'pricerange': u'moderate', u'area': u'east'}
+ 
+Session: data/Mar13_S2A1/voip-03c2655d43-20130327_194409
+
+Turn 0
+SYS  > Hello , welcome to the Cambridge restaurant system? You can ask for restaurants by area , price range or food type . How may I help you?
+DAct > welcomemsg()
+SLU  > inform(pricerange=cheap)|inform(area=east) [0.96]
+SLU  > inform(pricerange=cheap) [0.04]
+ASR  > cheap restaurant east part of town
+Tran > cheap restaurant east part of town
+inform(pricerange=cheap)|inform(area=east) FOR inform(pricerange=cheap,type=restaurant,area=east)
+OK
+goal-labels > {u'pricerange': u'cheap', u'area': u'east'}
+ 
+Turn 1
+SYS  > the missing sock is a nice place in the east of town and the prices are cheap
+DAct > offer(name=the missing sock)|inform(pricerange=cheap)|inform(area=east)
+SLU  > request(slot=postcode)|request(slot=addr) [0.86]
+SLU  > request(slot=postcode) [0.11]
+SLU  > request(slot=addr)   [0.03]
+ASR  > address and post code
+Tran > address and post code
+request(postcode)|request(addr) FOR request(addr,postcode)
+ERROR: PARTIAL MATCH
+goal-labels > {u'pricerange': u'cheap', u'area': u'east'}
+ 
+Turn 2
+SYS  > the missing sock is on Finders Corner Newmarket Road , C.B 25, 9 A.Q
+DAct > offer(name=the missing sock)|inform(addr=finders corner newmarket road)|inform(postcode=c.b 25)
+SLU  > bye()                [1.00]
+ASR  > thank you goodbye
+Tran > thank you good bye
+bye() FOR thankyou()|bye()
+ERROR: PARTIAL MATCH
+goal-labels > {u'pricerange': u'cheap', u'area': u'east'}
+ 
+Session: data/Mar13_S2A1/voip-03c2655d43-20130327_195040
+
+Turn 0
+SYS  > Hello , welcome to the Cambridge restaurant system? You can ask for restaurants by area , price range or food type . How may I help you?
+DAct > welcomemsg()
+SLU  > inform(pricerange=expensive)|inform(area=east) [0.80]
+SLU  > inform(area=east)    [0.14]
+SLU  > inform(pricerange=expensive) [0.06]
+SLU  >                      [0.01]
+ASR  > expensive restaurant east part of town
+Tran > expensive restaurant east part of town
+inform(pricerange=expensive)|inform(area=east) FOR inform(pricerange=expensive,type=restaurant,area=east)
+OK
+goal-labels > {u'pricerange': u'expensive', u'area': u'east'}
+ 
+Turn 1
+SYS  > There are 5 restaurants in the expensive price range and the east of town . What type of food would you like?
+DAct > request(slot=food)|inform(count=5)|impl-conf(pricerange=expensive)|impl-conf(area=east)
+SLU  > inform(this=dontcare) [0.89]
+SLU  > inform(this=dontcare)|inform(area=dontcare) [0.06]
+SLU  > inform(this=dontcare)|inform(food=dontcare) [0.03]
+SLU  > inform(area=dontcare) [0.02]
+ASR  > any
+Tran > any
+inform(dontcare) FOR inform(dontcare)
+OK
+goal-labels > {u'food': u'dontcare', u'pricerange': u'expensive', u'area': u'east'}
+ 
+Turn 2
+SYS  > pipasha restaurant is a nice place in the east of town and the prices are expensive
+DAct > offer(name=pipasha restaurant)|inform(pricerange=expensive)|inform(area=east)
+SLU  > NULL()               [0.48]
+SLU  > request(slot=phone)  [0.24]
+SLU  > reqalts()            [0.13]
+SLU  > affirm()             [0.05]
+SLU  > ack()                [0.03]
+SLU  > inform(this=dontcare) [0.03]
+SLU  > negate()             [0.02]
+SLU  > hello()              [0.02]
+ASR  > phone number
+Tran > phone number
+NULL() FOR request(phone)
+ERROR
+goal-labels > {u'food': u'dontcare', u'pricerange': u'expensive', u'area': u'east'}
+ 
+Turn 3
+SYS  > pipasha restaurant is a great restaurant
+DAct > offer(name=pipasha restaurant)
+SLU  > request(slot=phone)  [0.72]
+SLU  > NULL()               [0.17]
+SLU  > ack()                [0.05]
+SLU  > reqalts()            [0.02]
+SLU  > repeat()             [0.02]
+SLU  > affirm()             [0.02]
+SLU  > thankyou()           [0.01]
+ASR  > phone number
+Tran > phone number
+request(phone) FOR request(phone)
+OK
+goal-labels > {u'food': u'dontcare', u'pricerange': u'expensive', u'area': u'east'}
+ 
+Turn 4
+SYS  > The phone number of pipasha restaurant is 01223 577786 .
+DAct > offer(name=pipasha restaurant)|inform(phone=01223 577786)
+SLU  > bye()                [1.00]
+ASR  > thank you goodbye
+Tran > thank you good bye
+bye() FOR thankyou()|bye()
+ERROR: PARTIAL MATCH
+goal-labels > {u'food': u'dontcare', u'pricerange': u'expensive', u'area': u'east'}
+ 
+Session: data/Mar13_S2A0/voip-03c2655d43-20130327_200228
+
+Turn 0
+SYS  > Hello , welcome to the Cambridge restaurant system? You can ask for restaurants by area , price range or food type . How may I help you?
+DAct > welcomemsg()
+SLU  > inform(food=basque)  [0.97]
+SLU  > affirm()|inform(food=basque) [0.02]
+SLU  > hello()|inform(food=basque) [0.01]
+ASR  > well or tell basque food
+Tran > north part of town fast food
+inform(food=basque) FOR inform(area=north,type=restaurant)
+ERROR
+goal-labels > {u'area': u'north'}
+ 
+Turn 1
+SYS  > I'm sorry but there is no restaurant serving basque food
+DAct > canthelp(food=basque)
+SLU  > inform(food=asian oriental) [0.97]
+SLU  > affirm()|inform(food=asian oriental) [0.02]
+SLU  > reqalts()|inform(food=asian oriental) [0.01]
+ASR  > asian oriental
+Tran > asian oriental food
+inform(food=asian oriental) FOR inform(food="asian oriental")
+OK
+goal-labels > {u'food': u'asian oriental', u'area': u'north'}
+ 
+Turn 2
+SYS  > There are 5 restaurants serving asian oriental food . What area do you want?
+DAct > request(slot=area)|inform(count=5)|impl-conf(food=asian oriental)
+SLU  > inform(this=dontcare) [0.66]
+SLU  > inform(area=dontcare) [0.12]
+SLU  > inform(this=dontcare)|inform(area=dontcare) [0.10]
+SLU  >                      [0.04]
+SLU  > inform(area=east)    [0.03]
+SLU  > inform(this=dontcare)|inform(area=east) [0.02]
+SLU  > inform(area=south)   [0.01]
+SLU  > inform(this=dontcare)|inform(area=south) [0.01]
+ASR  > any
+Tran > any
+inform(dontcare) FOR inform(dontcare)
+OK
+goal-labels > {u'food': u'asian oriental', u'area': u'dontcare'}
+ 
+Turn 3
+SYS  > Ok , a restaurant in any part of town is that right?
+DAct > expl-conf(area=dontcare)
+SLU  > affirm()             [0.35]
+SLU  > NULL()               [0.29]
+SLU  > inform(this=dontcare) [0.20]
+SLU  > affirm()|inform(this=dontcare) [0.11]
+SLU  > negate()             [0.02]
+SLU  > ack()                [0.02]
+SLU  > hello()              [0.02]
+ASR  > it doesn't matter
+Tran > no north
+affirm() FOR negate(area=north)
+ERROR
+goal-labels > {u'food': u'asian oriental', u'area': u'north'}
+ 
+Turn 4
+SYS  > Would you like something in the cheap , moderate , or expensive price range?
+DAct > request(slot=pricerange)
+SLU  > inform(this=dontcare) [0.87]
+SLU  > inform(this=dontcare)|inform(area=dontcare) [0.09]
+SLU  > NULL()               [0.02]
+SLU  > inform(area=dontcare) [0.02]
+ASR  > any
+Tran > any
+inform(dontcare) FOR inform(dontcare)
+OK
+goal-labels > {u'food': u'asian oriental', u'pricerange': u'dontcare', u'area': u'north'}
+ 
+Turn 5
+SYS  > dojo noodle bar serves asian oriental food
+DAct > offer(name=dojo noodle bar)|inform(food=asian oriental)
+SLU  > request(slot=phone)  [0.51]
+SLU  > request(slot=phone)|request(slot=addr) [0.45]
+SLU  > request(slot=addr)   [0.04]
+ASR  > address phone number
+Tran > address phone number
+request(phone) FOR request(addr,phone)
+ERROR: PARTIAL MATCH
+goal-labels > {u'food': u'asian oriental', u'pricerange': u'dontcare', u'area': u'north'}
+ 
+Turn 6
+SYS  > The phone number of dojo noodle bar is 01223 363471 .
+DAct > offer(name=dojo noodle bar)|inform(phone=01223 363471)
+SLU  > bye()                [1.00]
+ASR  > thank you good bye
+Tran > thank you good bye
+bye() FOR thankyou()|bye()
+ERROR: PARTIAL MATCH
+goal-labels > {u'food': u'asian oriental', u'pricerange': u'dontcare', u'area': u'north'}
+ 

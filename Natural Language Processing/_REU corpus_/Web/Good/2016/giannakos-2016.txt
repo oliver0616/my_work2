@@ -1,0 +1,274 @@
+
+Smart Environments and Analytics on Video-Based Learning 
+Michail N. Giannakos 
+Norwegian University of 
+Science and Technology 
+
+Trondheim, Norway 
+michailg@idi.ntnu.no 
+
+Demetrios G. Sampson 
+Curtin University 
+Perth, Australia 
+
+demetrios.sampson@curt
+in.edu.au 
+
+?ukasz Kidzi?ski 
+Ecole Polytechnique 
+
+Fédérale de Lausanne, 
+Lausanne, Switzerland 
+
+lukasz.kidzinski@epfl.ch 
+
+Abelardo Pardo 
+The University of Sydney 
+
+Sydney, Australia 
+abelardo.pardo@sydn
+
+ey.edu.au 
+ 
+
+ABSTRACT 
+The International Workshop of Smart Environments and 
+Analytics on Video-Based Learning (SE@VBL) aims to connect 
+research efforts on Video-Based Learning with Smart 
+Environments and Analytics to create synergies between these 
+fields. The main objective is to build a research community 
+around the intersection of these topical areas. In particular, 
+SE@VBL aims to develop a critical discussion about the next 
+generation of video-based learning environments and their 
+analytics, the form of these analytics and the way they can be 
+analyzed in order to help us to better understand and improve the 
+value of educational videos to support teaching and learning. 
+SE@VBL is based on the rationale that combining and analyzing 
+learners' interactions with other available data obtained from 
+learners, new avenues for research on video-based learning have 
+emerged. This can have a significant impact in current educational 
+trends such as Massive Open Online Courses (MOOCs) and 
+Flipped Classroom. 
+
+Categories and Subject Descriptors 
+K.3.1 [Computer Uses in Education] Computer-assisted 
+instruction (CAI), Distance learning; J.1 [Administrative Data 
+Processing] Education 
+
+General Terms 
+Measurement, Design, Experimentation, Human Factors, 
+
+Keywords 
+Video-Based Learning, Learning Analytics, Smart Environments, 
+Visual Analytics, Interaction Design. 
+
+1. BACKGROUND 
+With the widespread adoption of video-based learning systems 
+such as Khan Academy and edX, new research in the area of 
+Learning Analytics and Smart Learning Environments has 
+emerged. Even new for-profit companies, such as Coursera and 
+Udacity, have started offering forms of instruction that are 
+primarily video-based. Most universities are implementing video 
+lectures in a variety of ways, such as delivering lecture recordings 
+before class to conserve class time or to flip the day for hands-on 
+activities. Video-based learning environments (such as Massive 
+Open Online Courses MOOCs) are becoming widely popular, 
+
+sometimes with unjustified promises. Yet, the educational added-
+value of video-based learning environments, is lacking strong 
+evidences, as learners do not always use them as expected and in 
+an effective way [1]. 
+
+As a step toward improving learners’ experience and engagement 
+with video-based learning systems; students’ activity might be 
+converted via analytics into useful information and benefit smart 
+environments efficiency and ultimately learners experience and 
+performance. Capturing, sharing and analyzing these learners’ 
+interactions can clearly provide scholars and educators with 
+valuable information [2]. In addition, the combination of other 
+information of the individual learner and/or groups of learners can 
+provide opportunities for adding value to learning analytics and 
+smart video environments. 
+
+To explore the future of video-based technologies for teaching 
+and learning, we aim to build a research community around this 
+topical area, to brainstorm about what the next generation of 
+video-based learning environments might look like, what kind of 
+data can be collected, and how these data can help us to better 
+understand and improve the value of video-based learning. 
+
+2. OBJECTIVES 
+The advances of technology-supported open access to education 
+indicate an increased use of video but only when pedagogically 
+appropriate and designed purposely to facilitate teaching and 
+learning. From current research, it is difficult to tell what aspects 
+of the video-lectures and video-based learning systems can have a 
+positive impact. In order to employ videos that serve as powerful 
+pedagogical tools, care should be taken to examine their impact 
+on the overall learner experience. As such, the purpose of this 
+workshop is to explore how smart environments and analytics can 
+improve video-systems learning potential. 
+
+In particular, we seek to answer the following two questions: 
+
+RQ1. How smart environments and analytics can 
+improve video-based learning experience, adoption and 
+learning outcome? 
+
+RQ2. How video based learning environments can be 
+better developed for taking full advantage of the 
+opportunities and challenges they provide? 
+
+One of our main objectives is to bring together researchers who 
+are interested on Smart Environments, Learning Analytics and 
+their application on Video-based Learning. Specifically, 
+SE@VBL aims to provide an environment where participants will 
+get opportunities to: develop their research skills; increase their 
+knowledge base; collaborate with others in their own and 
+complementary research areas; and discuss their own work. In 
+particular, guiding questions and themes include: 
+
+O1. What might next generation of smart environments 
+and analytics enhanced video learning tools look like? 
+
+Permission to make digital or hard copies of part or all of this work for 
+personal or classroom use is granted without fee provided that copies are 
+not made or distributed for profit or commercial advantage and that 
+copies bear this notice and the full citation on the first page. Copyrights 
+for third-party components of this work must be honored. For all other 
+uses, contact the Owner/Author.  
+Copyright is held by the owner/author(s). 
+LAK '16, April 25-29, 2016, Edinburgh, United Kingdom 
+ACM 978-1-4503-4190-5/16/04. 
+http://dx.doi.org/10.1145/2883851.2883898  
+
+
+
+O2. What kind of data can be collected from video-
+based learning environments?  
+
+O3. How these data can help us to better understand and 
+improve the educational value of video-based learning? 
+
+O4. How emerging data analyses techniques (e.g., 
+machine learning) as well as data visualizations can help 
+us to provide reflection and insights to learner, teacher, 
+manager, researcher, etc? 
+
+O5. How can the affordances of video-based learning 
+coupled with learning analytics and help instructors to 
+redesign their teaching materials and practices? 
+
+3. LEVERAGING VIDEO INTERACTION 
+DATA 
+The phenomenon of MOOCs introduced irreversible changes to 
+education. Lecture videos, which constitute the main part of an 
+online course, allow us to analyze students’ interaction from a 
+different perspective at a large scale - unimaginable in educational 
+science few years ago. This analysis is beneficial for all MOOC 
+stakeholders: Practitioners, can design their classes in a more 
+engaging way, service providers can build platforms which, for 
+example, simplify access to the most demanded content, and 
+educational researchers can understand incentives of a student 
+participating in a lecture.  
+
+We gather large amounts of data in the form of log files, database 
+entries, cookies etc., distributed among MOOC providers, clouds 
+and personal devices of students. Although this provides us a 
+great opportunity to understand the learning processes, it also 
+poses new technological and research challenges, which can only 
+be addressed by joint efforts of data science and educational 
+communities. 
+
+Classical statistical frameworks are now often reassessed. On one 
+hand, the notion of statistical significance is blurred – the 
+detection of an effect is simpler and we are more likely to discover 
+small effects, irrelevant in practice. Conversely, recent 
+advancements in machine learning allow us to discover new types 
+of patterns in data, useful in practice but difficult to prove 
+formally. 
+
+The process of addressing research questions became more 
+complex and involves more technical expertise. Instead of the 
+classical path “hypothesis" ? "experiment design" ? "testing”, 
+we now often need to take additional, nontrivial step of an 
+adequate representation of the data, as presented in Figure 1. 
+
+ 
+
+Fig. 1. The flow of data-driven educational research is now 
+altered by information retrieval step, where we find an adequate 
+representation of a vast dataset. 
+
+It is clear that we have reached into a significant turning point, a 
+new era of educational research. Not only we significantly 
+improve the quality of global education but also we have the 
+capacity to answer questions which were not even addressable few 
+years ago. 
+
+4. CONCLUSIONS AND THE WAY 
+AHEAD 
+The roles of 1) analytics on helping individuals to make sense of 
+the learning procedures and the 2) smart environments on 
+providing feedback and diverse “smart” functionalities have 
+drawn the interest of many scholars and practitioners in the last 
+years. In particular, analytics have proven their ability to help us 
+to understand (make sense) many complex learning phenomena in 
+the past [3]. However, comparing with research on text and 
+discourse analytics, the research on video analytics is still on an 
+early stage. Video analytics have an enormous potential, 
+especially given what is currently happening around the explosion 
+of MOOCs. As most of the MOOCs are using videos as their 
+primary content delivery mechanism, research on MOOCs will 
+heavily influence video-based learning research. So we believe 
+that the topic of SE@VBL is very timely with great potential. 
+This potential will grow as MOOC platforms, like Coursera and 
+Edx make their data publicly available to the research community. 
+
+Although research on video based learning has been increased in 
+the last years [1], a number of questions remain unexplored 
+regarding the use and design of videos for learning. In particular, 
+little research has been conducted on the functionalities and the 
+characteristics of learning videos and video based learning 
+systems. Characteristics like quality of feedback, cognitive load, 
+engagement and tone of voice, pace, length , and segmentation 
+need to be examined in more detail in order to improve the 
+effectiveness of video as learning medium [1, 4]. 
+
+With respect to the viewing patterns of learners, some interesting 
+preliminary work was noted [4] including when and where 
+students watch learning videos as well as how they view materials 
+(e.g., in small chunks). Future research can focus on a more 
+detailed analysis of viewing patterns and its impact on learning 
+outcomes. For example, students who skip or re-watch segment 
+may integrate less knowledge than students who view videos more 
+systematically. To this end, sophisticated video analytic systems 
+as well as smart video-based environments can be used and help 
+us to make sense and improve how students learn with the 
+assistance of videos. 
+
+5. ACKNOWLEDGMENTS 
+Our thanks to thank the Research Council of Norway for the 
+financial support (project number: 248523/H20). 
+
+6. REFERENCES 
+[1] Giannakos, M. N. Exploring the video-based learning 
+
+research: A review of the literature. British Journal of 
+Educational Technology, 44(6), 191-195 (2013) 
+
+[2] Giannakos, M. N. et al. (2013). Analytics on video-based 
+learning. In Proceedings of LAK, ACM Press, 283-284. 
+
+[3] Siemens. G. (2012). Learning analytics: envisioning a 
+research discipline and a domain of practice. In Proceedings 
+of LAK, ACM Press, 4-8. 
+
+
+
+[4] Guo, P. J., Kim, J., & Rubin, R. (2014). How video 
+production affects student engagement: An empirical study 
+of mooc videos. In Proceedings of Learning@ scale, 41-50. 
+
+
+

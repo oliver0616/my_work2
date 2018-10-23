@@ -1,0 +1,58 @@
+NLTK
+
+@inproceedings{Loper:2002:NNL:1118108.1118117,
+ author = {Loper, Edward and Bird, Steven},
+ title = {NLTK: The Natural Language Toolkit},
+ booktitle = {Proceedings of the ACL-02 Workshop on Effective Tools and Methodologies for Teaching Natural Language Processing    and Computational Linguistics - Volume 1},
+ series = {ETMTNLP '02},
+ year = {2002},
+ location = {Philadelphia, Pennsylvania},
+ pages = {63--70},
+ numpages = {8},
+ url = {https://doi.org/10.3115/1118108.1118117},
+ doi = {10.3115/1118108.1118117},
+ acmid = {1118117},
+ publisher = {Association for Computational Linguistics},
+ address = {Stroudsburg, PA, USA},
+}
+
+Perceptron Algorithm
+
+@inproceedings{hajivc2009semi, <br>
+  title={Semi-supervised training for the averaged perceptron POS tagger},
+  author={Haji{\v{c}}, Jan and Raab, Jan and Spousta, Miroslav and others},
+  booktitle={Proceedings of the 12th Conference of the European Chapter of the Association for Computational Linguistics},
+  pages={763--771},
+  year={2009},
+  organization={Association for Computational Linguistics}
+  abstract= {This paper describes POS tagging experiments with semi-supervised training as an extension to the (supervised) averaged perceptron algorithm, ?rst introduced for this task by (Collins, 2002). Experiments withaniterativetrainingonstandard-sized supervised (manually annotated) dataset (106 tokens) combined with a relatively modest (in the order of 108 tokens) unsupervised (plain) data in a bagging-like fashion showed signi?cant improvement of the POS classi?cation task on typologicallydifferentlanguages,yieldingbetter than state-of-the-art results for English and Czech (4.12 % and 4.86 % relative error reduction, respectively; absolute accuracies being 97.44 % and 95.89 %).
+}
+}
+
+n-gram
+@article{Brown:1992:CNG:176313.176316,
+ author = {Brown, Peter F. and deSouza, Peter V. and Mercer, Robert L. and Pietra, Vincent J. Della and Lai, Jenifer C.},
+ title = {Class-based N-gram Models of Natural Language},
+ journal = {Comput. Linguist.},
+ issue_date = {December 1992},
+ volume = {18},
+ number = {4},
+ month = dec,
+ year = {1992},
+ issn = {0891-2017},
+ pages = {467--479},
+ numpages = {13},
+ url = {http://dl.acm.org/citation.cfm?id=176313.176316},
+ acmid = {176316},
+ publisher = {MIT Press},
+ address = {Cambridge, MA, USA},
+ abstract={We address the problem of predicting a word from previous words in a sample of text. In particular, we discuss n-gram models based on classes of words. We also discuss several statistical algorithms for assigning words to classes based on the frequency of their co-occurrence with other words. We find that we are able to extract classes that have the flavor of either syntactically based groupings or semantically based groupings, depending on the nature of the underlying statistics.}
+}
+
+@inproceedings{schmid2013probabilistic,
+  title={Probabilistic part-ofispeech tagging using decision trees},
+  author={Schmid, Helmut},
+  booktitle={New methods in language processing},
+  pages={154},
+  year={2013}
+}

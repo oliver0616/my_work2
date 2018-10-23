@@ -1,0 +1,588 @@
+
+Considering Formal Assessment in Learning Analytics 
+within a PLE: The HOU2LEARN Case
+
+Eleni Koulocheri 
+Hellenic Open University 
+Parodos Aristotelous 18 
+26 335 Patra, Greece 
+(0030) 2610 367617 
+
+ekoulocheri@eap.gr
+
+ Michalis Xenos 
+Hellenic Open University 
+Parodos Aristotelous 18 
+26 335 Patra, Greece 
+(0030) 2610 367695 
+xenos@eap.gr 
+
+ABSTRACT 
+Personal Learning Environments are used more and more by the 
+academic community. They can coexist with formal courses as a 
+communication and collaboration channel. In this paper, an 
+application of learning analytics into HOU2LEARN, a Personal 
+Learning Environment set by Hellenic Open University is 
+discussed. The present part of research focuses on the social 
+network analysis as a branch of learning analytics, along with 
+formal grading system. Since it is an ongoing research, this paper 
+presents the preliminary results of the study of the correlation 
+between the social network metrics and the formal grades, through 
+a test case course, the PLH42. 
+
+Categories and Subject Descriptors 
+D.3.3 [Programming Languages]: Measurement, Documentation, 
+Design, Verification. 
+
+General Terms 
+Measurement, Documentation, Design, Verification. 
+
+Keywords 
+Learning Analytics, Social Network Analysis, Graphs, Metrics, 
+Betweeness Centrality, Indegree Centrality, Outdegree Centrality, 
+Centrality, Grades. 
+
+1. INTRODUCTION 
+It is commonly accepted that analytics can influence the digital 
+activities, since they measure and monitor the digital routine, 
+contributing to the enhancement of a user experience in terms of 
+cost, quality and personalisation. However, they are also ready to 
+play a key role in the educational digital life, with the specific term 
+“learning analytics”, according the conference proceedings of both 
+1st and 2nd Learning Analytics and Knowledge Conference [2, 3]. 
+This paper presents the application of learning analytics 
+(hereinafter, LA), in a personal learning environment, 
+HOU2LEARN, set by the Hellenic Open University (HOU). More 
+specifically, this paper discusses the Social Network Analysis 
+(hereinafter, SNA) aspect of LA in course level in an informal 
+environment, and investigates it along with the formal grading 
+system results that HOU applies in its courses. 
+
+Section 2 presents the bibliography that supports LA and focuses 
+in SNA as aspect of one of five axes that describe LA lifecycle. 
+
+Furthermore, it outlines the research concept of this paper. 
+
+Section 3 presents briefly HOU2LEARN, the PLE under research, 
+its major functionalities and the way it is applied by HOU in the 
+“PLH42” which is our test case. 
+
+Section 4 involves the research part of this paper. Its first part 
+presents the SNA tool that was used, describes the components of a 
+typical SNA graph and outlines some standard SNA metrics. 
+Furthermore, for completeness reasons, it presents briefly a set of 
+additional metrics that measure the users activity and are part of 
+ongoing research. It also presents the algorithm of formal grading 
+that HOU applies in all courses. The second part presents four 
+SNA graphs: in the first one, nodes’ size is proportional to final 
+grade of each student, while in the three other graphs, nodes’ size 
+is proportional to an SNA metric (outdegree, indegree and 
+betweeness centrality respectively). Short discussion after each 
+graph is also included. 
+
+Section 5 includes some first remarks on the analysis of these four 
+graphs and it also presents some steps of future work that aims to 
+take into consideration the aforementioned metrics of activities, in 
+order to complete the analytics concept, both formally and 
+informally.  
+
+2. TYPES OF LEARNING ANALYTICS 
+The term Learning Analytics was initiated and officially defined 
+during the 1st International Conference on Learning Analytics and 
+Knowledge of 2011 as “the measurement, collection, analysis and 
+reporting of data about learners and their contexts, for purposes of 
+understanding and optimizing learning and the environments in 
+which it occurs” [1, 2, 3]. Fournier et al. [5] advocate that learning-
+related data collection and analysis would be related to both the 
+increase of the effectiveness of learning, and possible changes in 
+the learning process. According to Downes [9], most of the tools 
+that measure learning engagement, measure trivial variables such 
+as page access, geographical origin etc. considering these tools 
+useful for a basic level of assessment, he believes that future 
+analytic systems that will analyze even the learners’ contributions 
+quality will arise. For other researchers [4, 10, 11], both learning 
+improvement and provision of recommendations based on earlier 
+learning activity could be covered by providing learners and 
+moderators with information derived from analytics. 
+Siemens and Long [1] propose five axes that define LA: 
+
+• Course level: social network analysis, discourse analysis, 
+learning trails. 
+
+• Educational data mining: pattern recognition and 
+predictive modeling.  
+
+• Intelligent curriculum: development of semantically 
+defined curriculum resources 
+
+• Adaptive content: provision of adaptive content using 
+recommendation procedures, based on learner behaviour  
+
+Permission to make digital or hard copies of part or all of this work for 
+personal or classroom use is granted without fee provided that copies are 
+not made or distributed for profit or commercial advantage and that 
+copies bear this notice and the full citation on the first page. Copyrights 
+for components of this work owned by others than ACM must be 
+honored. Abstracting with credit is permitted. To copy otherwise, to 
+republish, to post on servers or to redistribute to lists, requires prior 
+specific permission and/or a fee. 
+ 
+LAK '13, April 08 - 12 2013, Leuven, Belgium. 
+Copyright 2013 ACM 978-1-4503-1785-6/13/04 $15.00. 
+
+28
+
+
+
+• Adaptive learning: social interaction and learner support 
+as an adaptive learner process. 
+
+This paper focuses on analytics derived from learning networks in 
+the context of Personal Learning Environments (PLEs) through the 
+H2L Open Educational Platform. It investigates the first axis which 
+refers to course level and relates the research with SNA, learning 
+trails and discourse measurement using activity metrics. In 
+addition to that, formal assessment through grades has been taken 
+into consideration for those H2L members that were also students 
+of the Hellenic Open University and had to prepare six formal 
+written essays and to participate to exams. 
+SNA acts as a quantitative method of LA. Through network 
+graphs, SNA aims to depict connections, by creating a connection 
+graph. It also aims to reveal the central nodes of the connections’ 
+grid and thus, the people on the network who created impact to 
+their connections (neighbors) [5]. It consists of two basic building 
+components: Nodes (or vertices or agents) and edges (or 
+connections). Nodes usually represent physical members of a 
+network, such as learners and instructors in case of an educational 
+social network. They can also represent other social structures such 
+as communities, groups, institutions, states or even countries, if 
+necessary [12, 17]. Edges represent the connection between two 
+nodes and consist of lines that point from one node to another. 
+Edges may be directed or undirected; directed edges, represented 
+as arrows, have an origin and a destination and may represent 
+“who is following who”, ”who sends a message to whom” [12, 17] 
+“who tells the secret to whom”, “who affects with a virus who”, 
+etc, in general.  
+Furthermore, in the context of a personal learning environment, 
+users have a wide range of activities that occur from the 
+engagement and involvement in a course. All these activities are 
+involved in the term “discourse” according to Downes’ five axes 
+[9]. Metrics can quantize in more detail the activity of the learners 
+(or members in case of an educational social network) producing 
+measurable results for questions like the following: Who 
+comments on every type of content and how much?  Who does 
+product more content? Who launches his/her own discussion topic?  
+What content is produced per learner? Who feeds the most the 
+public discussion of the course? This set of metrics is an additional 
+tool towards the measurement of the learning activity using PLE 
+produced data [17]. 
+Both aforementioned aspects of a PLE (i.e. Connectedness and 
+activities) refer to informal learning: The PLE under research, 
+H2L, aims to facilitate this informal  communication among the 
+learners of a formal course in which, at the same time, a formal 
+grading system is applied. By formal communication, it is meant 
+that, users communicate in loose and spontaneous way, without 
+following a specified curriculum or strict rules. Communication 
+takes place outside the official educational e-environments that are 
+IBM Lotus Quickr and Moodle, in case of HOU. 
+The research question is if there is a correlation between grades 
+and activity within a (informal) PLE that is used in the context of a 
+(formal) M.Sc course and this papers outlines the preliminary 
+results from  
+
+3. HOU2LEARN 
+Learning environments come from a period of establishment of 
+Learning Management Systems (LMSs) that give low 
+opportunities for interaction, content-creation and collaboration. 
+The emergence of Web 2.0 influenced also these environments 
+which became more social, collaborative and provide great vital 
+
+opportunities to create, maintain and redistribute content. They 
+also incorporate strong social networking characteristics as well as 
+a loosely structured collection of various widely used Web 2.0 
+tools such as fora, wikis, blogs, fora, glossaries, etc  [13,  14, 15, 
+17]. 
+The Hellenic Open University (HOU) in order to let its students 
+experience a PLE, has set up HOU2LEARN (H2L). It supports and 
+in some cases, replaces the e-Learning process that takes place 
+through the officially and formally established channels of 
+traditional LMS environments and conferencing tools. It initially 
+launched in September 2010 as part of an ongoing research within 
+the Software Quality Research Group that studies the correlation 
+between Learning 2.0 challenges, social networking activities and 
+informal learning. The environment is based on the Elgg 
+framework (http://www.elgg.org) and provides useful widgets such 
+as file uploading and sharing, blogs, social bookmarks, personal 
+pages, polls and status updates. User customization is also 
+provided. H2L supports the creation of Groups with private or 
+public access in order to allow uses with common interests to meet, 
+collaborate and share content [17]. It was HOU’s research interest 
+to use an informal environment such as HOU as a replacement of a 
+formal e-learning environment e.g. IBM Lotus Quickr and Moodle, 
+that HOU usually uses in order to support its (formal) classes. 
+The most essential feature of H2L is the social networking 
+component. Users are connected each other with the “Follower” 
+connection; each user that “follows” another, receives notifications 
+about content added or manipulated by the user or his/her activity 
+in general. This feature allows user to create a network of interest 
+with focus on his/her own personal needs, abilities and 
+requirements without the noisy environment of an open social 
+network platform [17]. 
+In September 2011, the professors responsible for the postgraduate 
+course “Special Issues on Software Engineering” (PLH42) of 
+HOU, promoted H2L as the main environment of use for the 
+objectives of this course. A special group named PLH42 has been 
+established in order to allow students to have a common reference 
+point for content strongly related to this specific course. Professors 
+or other members of H2L could also be accepted as group 
+members under request. All PLH42 members were encouraged to 
+exploit the full potential of the environment and actively 
+collaborate with each other, professors and other users. All 
+questions were expressed an replied through H2L and all 
+communication was accomplished though H2L. Other activities 
+that H2L permitted were launching a new group discussion topic, 
+uploading a blogpost on the group blog, or a file on the group files 
+page, or a bookmark on the group bookmark page and all these 
+items can be commented by other group members [17].  
+
+4. RESEARCH AND TOOLS 
+During the academic year 2011-2012, the course PLH42 ran 
+completely through H2L instead of other well-established learning 
+environments such as Moodle. Students and instructors were 
+encouraged to register as members to H2L and then to follow the 
+Members Group dedicated to the course PLH42 named “PLH42”. 
+Behind that, the HOU learning analytics research team had set up 
+direct access to the H2L Database using Navicat Premium and then 
+Toad for MySQL 6.0.1. Database queries that extract all PLH42 
+members (nodes) along with the connections (edges) lead to tables 
+that had to be in format compatible with the SNA software. 
+For SNA, a notable number of tools (such as Gephi, Sentinel, 
+NodeXL, GraphViz, Ucinet, Touchgraph, GraphInsight) were 
+
+29
+
+
+
+tested and based on their capabilities, user friendliness and the 
+requirements of the present study, NodeXL (1.0.1.209) was finally 
+used.  
+
+4.1 Learning Analytics 
+4.1.1 Social Network Analysis 
+Since H2L is an open educational social network, social 
+connections have been developed among the members 
+(learners/student, instructors/moderators and others). This is 
+initially depicted with a SNA diagram that presents the 
+connections of members of H2L that follow the Group “PLH42”, 
+the presented case study course. Every PLH42 member is 
+represented with a node and the member ID is also displayed. 
+Directed edges (arrows) have been used and the arrow from 
+member A to member B means that A follows B. Along with the 
+basis of SNA that is Connectedness, there is a number of metrics 
+that allow researchers to systematically slice up the social world, 
+creating a basis on which to compare networks, track changes in a 
+network over time and determine the relative position of 
+individuals and groups within a network [12, 18, 19].  
+The initial metrics just count the numbers of connections, while 
+some others become more complex and count centrality, density 
+transitivity, etc. In this paper, we focus on three SNA metrics [12, 
+18, 19]: 
+Indegree Centrality: Degree centrality counts the number of the 
+total number of connections linked to a node. It presents the 
+number of co-members a member is followed by. In case of 
+directed graphs, indegree centrality counts the number of edges 
+(arrows) that point inward at a node. This metric, in fact, measures 
+the popularity of the node since it measures the number of other 
+nodes that follow the node under measurement, and that want to be 
+aware of its activity. 
+Outdegree Centrality: This metric counts the number of edges 
+(arrows) that point outward to other nodes. Outdegree centrality 
+depicts the number of members, a member follows. It counts the 
+tension of the node to be connected to other nodes and to be aware 
+of their activities. 
+Betweeness Centrality: This is a more sophisticated SNA metric 
+that measures the brokering capability of a node. Although 
+popularity is important, it is vital to measure if a node facilitates 
+the transfer of an information (or content, or a virus, or a new, etc) 
+to its neighbors. According to Hansen et al. betweeness centrality 
+is a kind of “bridge” score and measures how much removing a 
+person would disrupt the connections between other nodes in the 
+network. Typically, it is a measure of how often a given node lies 
+on the shortest path between two nodes. Hence, nodes that are 
+included in many of the shortest paths between other nodes have a 
+higher betweeness centrality than those that are not included on 
+such paths. 
+
+4.1.2 Metrics 
+Aiming to permit learning trails and discoursing and content 
+trafficking to be measurable, all members’ activity is planned to be 
+quantified and operationalized using metrics [17]. These discourse 
+metrics aim to quantitatively analyze data from activities that take 
+place during the course lifecycle [6, 7, 8, 17] in order to be used 
+potentially for the improvement of the learning procedure. For 
+completeness reasons, this paper includes a set of metrics that aims 
+to measure the traffic and activity within the pages of the course 
+“PLH42”. These metrics which are part of ongoing research, are a 
+
+first step towards the setting of a stable baseline implementation 
+with which learning activity related metrics can be used for 
+customized and personalized tracking of the quality of learning 
+effects and the enhancement of the learning procedure [17]. 
+According the aforementioned possibilities that H2L provides to 
+the members of course PLH42, the metrics intend to quantize the 
+‘trafficking’ content that is uploaded, commented and created. In 
+this case the term “content” includes files, bookmarks, comments, 
+blogposts, group discussion topics and wire posts. Considering that 
+the set of metrics is not closed yet, at this phase of our research the 
+proposed metrics follow: 
+Number of:  
+
+• new bookmarks in Group 
+• new blogposts in Group Blog 
+• topics that each user has uploaded on Group Discussion. 
+• uploads of new files on Group Files page 
+• new bookmarks in Group 
+• comments on bookmarks uploaded by other Group 
+
+members 
+• comments on blogposts in Group Blog 
+• comments on topics of Group Discussion 
+• comments on files uploaded by other Group members 
+• comments on wireposts of other Group Members 
+
+Of course this list can be modified, along with the course design, 
+i.e. in case a twitter widget is added after moderator’s request, 
+another metric could be number of twitter with #plh42 hashtag. 
+These metrics are included in this paper in order to outline the 
+general idea of the ongoing research, however they are planned to 
+be further elaborated in the next step of the research. This paper 
+focuses on the measurements of the SNA metrics along with the 
+formal grades in a M.Sc. class, in a preliminary level. 
+
+4.1.3 Formal Assessment: Grades 
+In PLH42, formal assessment was conducted using the grade ai, 
+i=1,..,6 of six formal written essays that were due during the 
+academic year along with the grade of the final exams e at the end 
+of the year. Essays and exams were graded using the 0-10 scale. 
+Students are allowed to participate in the exams if: > 30 
+The final grade g is calculated as following:  = 0.7 ? + 0.3 ?  
+For academic year 2011-12, the minimum grade was 5.05 and the 
+maximum 9.76. 
+
+4.2 Grades as attribute of nodes 
+The initial concept was to take final grades (hereinafter, grades) 
+into consideration in order to illustrate the formal assessment into 
+social network analysis. This was conducted through the nodes’ 
+size: although nodes’ size is used to SNA metrics such as 
+betweeness centrality or degree, in this research, it illustrates the 
+grade of each learner. Considering that in NodeXL, nodes’ size is 
+between 1 and 100 and that it was intended all grades to be visible 
+but proportional to each other, the grades were normalized and 
+classified into 12 classes using statistics. For all 75 students, their 
+grade corresponds to the central value of a class (which is the 
+
+30
+
+
+
+average value of the class boundaries), normalized to a scale from 
+1 to 50. For PLH42 H2L members, but not PLH42 students (i.e. 
+Tutors, other members), a unified size of 25 was applied. Tutors 
+were illustrated with a red solid square and other users with a blue 
+solid triangle (see Figure 1). For all graphs of this paper, the Harel-
+Koren Fast Multiscale layout arrangement algorithm was applied 
+[16]. With respect to privacy issues, all 83 members were denoted 
+with an internal ID and no names or usernames were used. The 
+student with the highest grade is marked with a black circle. For all 
+graphs of this paper, the Harel-Koren Fast Multiscale layout 
+arrangement algorithm was applied [25]. 
+
+4.3 Centrality as attribute of nodes 
+In order to compare the performance and the centrality of the users, 
+two additional graphs were generated: Keeping the nodes position 
+as is, Figure 2 presents the SNA graph where the size node is 
+proportional to the indegree centrality normalized to a scale from 1 
+to 50. It appears that all tutors have high indegree centrality since 
+are “popular” in the student community. From the PLH42 students, 
+the member with the highest indegree centrality didn’t have 
+significantly high final grade; his grade was lower than the average 
+grade of the course. His node is highlighted with a black circle. 
+In Figure 3, the nodes’ size is proportional to oudegree centratility 
+normalized to a scale from 1 to 50. Here, another user (in blue 
+solid triangle) appears to be the member with the highest degree; 
+This user was in charge with administrative duties. From the 
+PLH42 students, the member with the highest outdegree centrality 
+had also high final grade (her grade belonged to the highest class, 
+see 4.2) and her node is marked with a black circle. 
+
+Figure 1. H2L: Nodes’ size depicts the final grade. 
+
+Figure 4 illustrates the connections where the size node is 
+proportional to betweeness centrality; it appears that the node with 
+the highest “brokering” power is not a student of PLH and has 
+administrative duties. From the PLH42 students, the member with 
+the highest betweeness centrality had also high final grade (her 
+grade belonged to the highest class, see 4.2) and she was the same 
+person as in outdegree centrality. Her node is highlighted with a 
+black circle. 
+
+Figure 2. H2L: Nodes’ size depicts the  
+indegree centrality. 
+
+Figure 3. H2L: Nodes’ size depicts the  
+outdegree centrality. 
+
+ 
+
+5. DISCUSSION – FUTURE WORK 
+Since this paper presents a research context, there is a lot of 
+research interest beyond the presented graphs. It appears that high 
+grade of a member doesn’t mean for sure high betweeness 
+centrality which expresses his/her brokering capabilities. This 
+means that in case of content by a given student with high grade, it 
+is not ensured that it would create significant impact to the others, 
+if his betweeness centrality of the given student was low. 
+Furthermore, it appears that the most “popular” members are the 
+tutors. However, this requires statistical elaboration in order to 
+investigate the correlation between grades and SNA metrics and 
+vital outcomes are expected to occur.  The correspondent data of 
+
+31
+
+
+
+the next academic year 2012-13 will be also be captured and taken 
+into consideration. 
+Furthermore, in parallel, metrics presented in 4.1.2 are planned to 
+be elaborated and translated into SQL queries and to calculate the 
+values per member. This will be also combined with the SNA 
+metrics and the formal assessment measurements, in order to 
+measure both formal and informal parameters in the context of 
+application of learning analytics in a personal learning 
+environment. For example, measuring the activity of a member 
+through the SQL queries, it will be identified if the member with 
+the higher betweeness centrality (i.e. capability of brokerage) has 
+also high levels of content creation; if so, it is possible that he/she 
+has a vital role in the content distribution and then it could be 
+identified if he influences his/her contacts accordingly. 
+Finally, the measurement of formal and informal parameters are 
+planned to be used in a smart recommendation algorithm so as the 
+environment to provide more personalized and customized content 
+to each user according to the needs and weaknesses. 
+
+ 
+Figure 4. H2L: Nodes’ size depicts the  
+
+betweeness centrality. 
+
+6. REFERENCES 
+[1] Siemens, G., and Long, P. 2011. Penetrating the Fog: 
+
+Analytics in Learning and Education, EDUCAUSE Review 
+Archive, 46, 5 (Sept.-Oct. 2011), 31-40. Available at: 
+http://net.educause.edu/ir/library/pdf/ERM1151.pdf 
+(Retrieved: 15/04/2012). 
+
+[2] 1st International Conference on Learning Analytics and 
+Knowledge 2011, February 27-March 1, 2011 in Banff, 
+Alberta. Available at: https://tekri.athabascau.ca/analytics/ 
+(Retrieved: 15/04/2012). 
+
+[3] 2nd International Conference on Learning Analytics and 
+Knowledge 2012, April 29 – May 2, 2012 in Vancouver, 
+British Columbia, Canada, Available at:  
+http://lak12.sites.olt.ubc.ca// (Retrieved: 11/10/2012). 
+
+[4] Dawson, S. Heathcote, L., and Poole, G. 2010. Harnessing 
+ICT potential: The adaptation and analysis of ICT systems for 
+enhancing the student learning experience, In Proceedings of 
+International Journal of Educational Management, 24, 2, 
+116-128, DOI=10.1108/09513541011020936. 
+
+[5] Fournier, H., Kop, R., and Sitlia, H. 2011. The Value of 
+learning analytics to networked learning on a personal 
+learning environment. In Proceedings of the 1st International 
+Conference on Learning Analytics and Knowledge (Banff, 
+Alberta, Canada, February 27-March 1, 2011) LAK’11 
+in Banff, Alberta, ACM, 104-109. ISBN: 978-1-4503-0944-8. 
+
+[6] Christakis, N., and Fowler, J. H., 2009. Connected: The 
+surprising power of our social networks and how they shape 
+our lives. Little, Brown and Company; First Edition edition 
+(Sept. 28, 2009). ISBN-10: 0316036145. 
+
+[7] Ochoa, X. and Duval, E., 2008. Relevance ranking metrics for 
+learning objetcs, IEEE Transactions on Learning 
+Technologies, 1, 1 (Jan.-Mar. 2008) 34-48. 
+
+[8] Ochoa, X. 2001. Learnometrics: Metrics for Learning 
+Objects, LAK’11, In Proceedings of the 1st International 
+Conference on Learning Analytics and Knowledge (Banff, 
+Alberta, Canada, February 27-March 1, 2011) LAK’11 
+in Banff, Alberta, ACM, 1-8. ISBN: 978-1-4503-0944-8. 
+
+[9] Downes, S. 2010. Collaboration, Analytics, and the LMS: A 
+Conversation with Stephen Downes, Campus Technology, 
+Oct. 14, 2010. Available at: 
+http://campustechnology.com/newsletters/ctfocus/2010/10/col
+laboration_analytics_and-the-lms_a-conversation-with-
+stephen-downes.aspx (Retrieved: 15/04/2012). 
+
+[10] Parry, M. 2010. Like Netflix, New College Software Seeks to 
+Personalize Recommendations. The Chronicle of Higher 
+Education, October 2010. Available at: 
+http://chronicle.com/blogs/wiredcampus/like-netflix-new-
+college-software-aims-to-personalize-
+recommendations/27642 (Retrieved: 15/04/2012). 
+
+[11] Kop, R. 2010. The Design of a Personal Learning 
+Environment: Researching the Learning Experience. 
+European Distance and E-Learning Network Annual 
+Conference 2010, June 2010, Valencia, Spain, Paper H4 32, 
+2010.  
+
+[12] Hansen, D. L, Schneiderman, B., and Smith, M. A. 2011. 
+Analyzing Social Media Networks with NodeXL, Insighits 
+from a Connected World. Morgan Kaufmann, imprint of 
+Elsevier, ISBN: 978-0-12-382229-1, 2011. 
+
+[13] Davis, I. 2005. Talis, Web 2.0 and All That, Internet Alchemy 
+blog, 4 July 2005. Available at: 
+http://blog.iandavis.com/2005/07/04/talis-web-2-0-and-all-
+that/ (Retrieved: 15/04/2012). 
+
+[14] Van Harmelen, M. 2006. Personal Learning Environments. In 
+Proceedings of the Sixth IEEE International Conference on 
+Advanced Learning Technologies, IEEE Computer Society, 
+2006, 815-816. 
+
+[15] Brown, J. S. and Adler, R. P. 2008. Minds on fire: Open 
+education, the long tail, and learning 2.0, Educause Review, 
+43, 1 (Jan.-Feb. 2008), 16-32.  
+
+[16] Harel, D. and Koren, Y.  2001. A Fast Multi-scale Method for 
+Drawing Large Graphs. In Proceedings of the 8th 
+International Symposium on Graph Drawing (Banff, Alberta, 
+Canada, May 08-12, 2007), GD '00. Springer-Verlag London, 
+UK, 2001, 183 - 196. 
+
+[17] Koulocheri, E., Soumplis, A., Xenos, M., 2012. Applying 
+Learning Analytics in an Open Personal Learning 
+Environment: A quantitative approach. In Proceedings of the 
+16th Pan-hellenic Conference on Informatics (Pireaus, 
+Greece, Oct 5-7, 2012) PCI 2012, 290-295. doi: 
+10.1109/PCi.2012.38. 
+
+[18] Scott, J., 2000. SNA: A handbook. Second Edition, SAGE 
+publications, ISBN0-7619-6339-1, UK.  
+
+[19] Wasserman, S., Faust, 1994. Social Network Analysis: 
+Methods and application, Cambridge University Press, ISBN 
+0-521-38707-8,UK. 
+
+32
+
+
+
+
+

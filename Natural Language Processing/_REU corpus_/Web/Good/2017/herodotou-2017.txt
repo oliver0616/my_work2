@@ -1,0 +1,647 @@
+
+Implementing Predictive Learning Analytics on a Large 
+Scale: The Teacher's Perspective 
+
+Christothea Herodotou 
+The Open University 
+
+Walton Hall, Milton Keynes, UK 
+christothea.herodotou@open.a
+
+c.uk 
+Zdenek Zdrahal  
+
+The Open University 
+Walton Hall, Milton Keynes, UK 
+
+zdenek.zdrahal@open.ac.uk
+
+Bart Rienties 
+The Open University 
+
+Walton Hall, Milton Keynes, UK 
+bart.rienties@open.ac.uk 
+
+ 
+Martin Hlosta 
+
+The Open University 
+Walton Hall, Milton Keynes, UK 
+martin.hlosta@open.ac.uk
+
+Avinash.Boroowa 
+The Open University 
+
+Walton Hall, Milton Keynes, UK 
+avinash.boroowa@open.ac.uk 
+
+ 
+Galina Naydenova 
+The Open University 
+
+Walton Hall, Milton Keynes, UK 
+galina.naydenova@open.ac.uk 
+
+ 
+ABSTRACT 
+In this paper, we describe a large-scale study about the use of 
+predictive learning analytics data with 240 teachers in 10 modules 
+at a distance learning higher education institution. The aim of the 
+study was to illuminate teachers' uses and practices of predictive 
+data, in particular identify how predictive data was used to 
+support students at risk of not completing or failing a module. 
+Data were collected from statistical analysis of 17,033 students' 
+performance by the end of the intervention, teacher usage 
+statistics, and five individual semi-structured interviews with 
+teachers. Findings revealed that teachers endorse the use of 
+predictive data to support their practice yet in diverse ways and 
+raised the need for devising appropriate intervention strategies to 
+support students at risk.   
+
+CCS Concepts 
+• Applied computing??Education??DDistance learning . 
+
+Keywords 
+Predictive analytics; teachers; perceptions; retention; higher 
+education. 
+
+1. INTRODUCTION 
+Large datasets, powerful analytics engines [1], and skillfully 
+designed visualisations of analytics results [2, 3] are becoming 
+increasingly available. Higher education institutions may be able 
+to use the experience of the past to create supportive models of 
+primary (and perhaps real-time) learning processes [4-6]. Several 
+institutions have already started to adopt predictive learning 
+analytics models to identify which students are going to pass a 
+course, and which are at risk [7-10]. 
+
+By collecting longitudinal data from a range of sources the 
+accuracy in predicting learning performance is increasing. In one 
+of the first learning analytics studies, [11] found that some Virtual 
+Learning Environment (VLE) variables but not all (e.g., time 
+spent in the VLE) were useful predictors of student retention and 
+
+academic performance for 118 biology students. Similarly, in a 
+longitudinal comparison of 29 modules Joksimovi? et al. [8] 
+found that time spent specifically on student-system interaction 
+was significantly predicting learning outcomes, while student-
+content interactions were negatively influencing performance. At 
+a distance learning higher education institution, engagement in the 
+VLE, in particular with assessment activities was found to 
+positively predict performance [9], while recent fine-grained 
+analyses using Bayesian modelling indicated that learning paths of 
+successful students are significantly different from “failing” 
+students [12, 13]. 
+
+Predictive learning analytics data can be a powerful tool for 
+teachers. Yet, several researchers [7, 10, 14] indicate that most 
+institutions and teachers may not be ready to adopt predictive 
+learning analytics data. Indeed, recently several researchers have 
+reported mixed effects of providing predictive learning analytics 
+data and visualisations to teachers [15-17]. For example, in a 
+study amongst 11 modules [17] found that most teachers initially 
+struggled to understand the results of the various predictive 
+models. In addition, even when module teams were able to unpack 
+the underlying predictive learning analytics results, most teachers 
+found it difficult to identify specific actions or interventions. 
+
+To gain an evidence-based understanding of teachers' uses and 
+perceptions about the use of predictive analytics data and to 
+devise recommendations for future practice, we conducted a 
+large-scale study with 240 teachers facilitating 10 modules in a 
+distance learning higher education institution. We aimed to 
+answer the following research questions (RQs): a) How did 
+teachers use predictive analytics data? b) What was the impact of 
+using predictive data on students' performance and retention, and 
+c) What factors may explain teachers' uses of predictive data? 
+
+2. RETENTION AND PREDICTIVE DATA 
+Academic retention is a key concern of many institutions. In some 
+EU countries between 20% and 54% of students fail to complete 
+their degrees [18]. In distance education, the percentage of 
+students who fail to complete their degree is about 78% and in 
+MOOCs it is more than 93% [19]. Learning and institutional 
+factors are among the six main reasons significantly explaining 
+students' failure. 
+
+Given this picture, efforts are systematically made to design 
+predictive learning analytics models that will predict students at 
+risk in order to provide timely and appropriate interventions that 
+will support students and scaffold successful module or degree 
+
+Permission to make digital or hard copies of all or part of this work for 
+personal or classroom use is granted without fee provided that copies are 
+not made or distributed for profit or commercial advantage and that 
+copies bear this notice and the full citation on the first page. Copyrights 
+for components of this work owned by others than ACM must be 
+honored. Abstracting with credit is permitted. To copy otherwise, or 
+republish, to post on servers or to redistribute to lists, requires prior 
+specific permission and/or a fee. Request permissions from 
+Permissions@acm.org. LAK '17, March 13-17, 2017, Vancouver, BC, 
+Canada © 2017 ACM. ISBN 978-1-4503-4870-6/17/03…$15.00  
+DOI: http://dx.doi.org/10.1145/3027385.3027397 
+
+
+
+completion. One such model is the OU Analyse (OUA) which 
+uses a range of advanced statistical and machine learning 
+approaches to predict students at-risk so that cost effective 
+interventions can be made [12, 13]. The aim is the early 
+identification of students who might fail to submit their next 
+teacher marked assessment (TMA). Predictions of students at risk 
+of not submitting their next TMA are constructed by machine 
+learning algorithms that make use of two types of data: a) static 
+data: demographics, such as age, gender, geographic region, 
+previous education, number of previous attempts on the module, 
+and b) fluid data: the students' interactions within the VLE hosting 
+a module. 
+
+The quality of predictions is measured by precision, recall and F-
+measure. Precision is the ratio between correctly identified at-risk 
+students and all students identified as at-risk, i.e. it says what is 
+the percentage of correctly identified students in the prediction. 
+Recall is the ratio between correctly identified at-risk students and 
+all students who are at-risk, i.e. the percentage of students who are 
+at-risk the prediction identified. F-measure is the harmonic mean 
+of precision and recall and it’s usually used to provide 
+performance of the classification model using one measure. For a 
+typical module, the precision of OUA predictions grows from 
+about 30% at the very beginning of the presentation to about 90% 
+at the end of the module presentation. Recall is stable at around 
+50%. The F-measure usually starts around 0.4 and increases to 0.7 
+at the end of the presentation. OUA predictions have been used in 
+this study to examine teachers' uses and perceptions about 
+predictive data.  
+
+3. METHODOLOGY 
+3.1 Sample 
+Participants were 240 teachers from 10 modules (Arts, Education, 
+Engineering, Law, Technology (x2), Maths, Health care (x2), 
+Social science). The ways in which OUA was introduced, 
+supported and endorsed by module teams and Faculties were 
+subtly different. The number of students enrolled in these modules 
+was 17,033 of which 4320 were supported by teachers who had 
+access to the OUA predictions. Seventy (N=70) teachers received 
+a weekly reminder (email) notifying them that the OUA 
+predictions were available through the dashboard (see 3.2) and 
+170 received them via email in excel sheets. Teachers with no 
+remote virtual private network (VPN) connection to access to 
+dashboard received predictions via excel sheets. In this early stage 
+of predictive analytics at the OU, teachers were volunteering to 
+participate, with obvious (self-selecting) biases [20, 21]. The 
+
+ 
+Figure 1. A section of the OUA dashboard showing the 
+students' possibility of submitting their next assignment 
+
+students' performance of teachers who had access to predictive 
+data was compared to students whose teachers did not have access 
+to this data.  
+
+3.2 Predictive data 
+The OUA dashboard provided teachers with information about 
+their students' performance (see Figure 1), including the average 
+performance of the whole cohort of students, the list of all 
+students and the predictions of their performance in the next 
+TMA, and information about an individual student such as 
+similarity between the selected student and his/her nearest 
+neighbours measured in terms of VLE activities and demographic 
+parameters. 
+
+3.3 Statistical analysis 
+The performance of the overall cohort of students was compared 
+to identify differences in formal withdrawal rates by the end of the 
+module and completion and pass rates by contrasting teachers 
+who had access to OUA or not. Also, the teachers logging in 
+activity in the OUA dashboard was examined to identify how 
+often and when teachers accessed the system. 
+
+3.4 Interviews 
+Five individual semi-structured interviews with teachers who 
+made use of OUA were conducted. Emails were sent to 10 module 
+team chairs participating in the study requesting for teachers 
+volunteers who could take part in the interviews. Volunteers were 
+also sought verbally during the catch up sessions about OUA that 
+were run by selected teachers who used the system in the past and 
+could provide guidance and support. This request reached a total 
+of 240 teachers who had access to OUA predictions. Teachers 
+were invited to individual semi-structured interviews expected to 
+last approximately 45 minutes. Interview participants were self-
+selected. Sample interview questions are: What are your first 
+impressions of using the OUA? Did it help in any ways your 
+teaching practice? Has the data from the OUA enabled you to gain 
+a better insight into your students? What additional insight? Did 
+you take action? What action? 
+
+4. RESULTS 
+4.1 Retention and OUA usage by teachers 
+The differences in students' formal withdrawal rates between the 
+two groups at the end of the module were compared. The chi-
+square analysis revealed statistically significant differences in 
+three of the participating modules yet with mixed outcomes. In the 
+case of the Technology (X² (1, N = 2048) = 5.59, p <.05) and Arts 
+modules (X² (1, N = 1783) = 6.65, p <.01), the OU Analyse 
+teacher groups had higher formal withdrawal rates, while in the 
+case of the Law module (X² (1, N = 2066) = 5.61, p <.05) 
+significantly lower formal withdrawal rates were observed for the 
+OUA group. 
+
+The group comparison of students completing each of the 
+participating modules showed statistically significant differences 
+in only two modules, the Education (X² (1, N = 3101) = 4.23, p 
+<.05) and the Law modules (X² (1, N = 2060) = 5.91, p <.01). The 
+OUA teacher groups had a higher module completion rate 
+compared to the non-OUA groups in both modules. In terms of 
+pass rates, significant differences were observed in the Law 
+module only with the OUA group having a higher pass rate (X² (1, 
+N = 2066) = 6.9, p <.01). 
+
+Seventy (N=70) teachers from Arts, Education, Engineering, Law, 
+Maths, Social sciences and Technology (x2), accessed the OUA 
+predictions through the dashboard. Reviewing the logging history 
+
+
+
+of the OUA dashboard, we identified that the majority of teachers 
+(N=60) logged into the system. Figure 2 shows the percentage of 
+teachers who accessed the dashboard per week per module. The 
+two modules with the highest frequencies were Technology 
+(2015) and Education, yet during the first weeks of the module 
+presentation with an average percentage around 80% (8 out of 10 
+teachers who had access to dashboard). Accessing the dashboard 
+was substantially lower in the rest of the modules including Law, 
+Maths, Social sciences, Technology (2016), Engineering (week 12 
+onwards), and Education (week 16 onwards) presenting rather 
+limited number of teachers accessing the dashboard. This 
+indicates that although teachers had access to predictive analytics 
+data, they did not access OUA predictions systematically. As 
+indicated in Figure 2, in some modules at least some of the 
+teachers logged in on a weekly basis, while in others there were 
+substantial engagement gaps over time.    
+
+ 
+
+Figure 2. Percentage of teachers accessing OUA dashboard 
+per week per module 
+
+4.2 Qualitative interviews with teachers 
+The semi-structured interviews with teachers were analyzed as 
+five individual case studies explaining uses, perceptions and 
+impact of predictive data on students' performance (See RQs). 
+Interviewee 1 (female): Interviewee 1 explained her teaching role 
+in a technology module as one involving marking of assignments, 
+offering feedback to students, helping their learning and 
+supporting students when they had inquiries. Her students were 
+described as being out of learning for a while. She was very keen 
+to use OUA to find out about students flagged as not being 
+engaged in the module. She explained about the use of OUA: "I 
+am very very on top of what each of the students is doing". The 
+value of OUA was found on the fact that it made her more aware 
+of what students were doing in between TMAs. As she explained: 
+"The OUA made me more proactive in sending messages in 
+between the assignments".  
+
+OUA helped her to understand when students were not engaging. 
+However, being already aware of what students were doing she 
+did not find it that useful as at the beginning. Rather, OUA added 
+extra work and took her time from looking at other students not 
+signposted by the system but at the risk of dropping out. The 
+impact of OUA would have been greater if the system was more 
+sensitive in terms of informing her about what students are doing 
+in terms of literacy and numeracy, as these aspects are core in the 
+module she teaches. This could have influenced her teaching and 
+practice. She has the intention to try it again in the future, given 
+that VPN difficulties are resolved, there are changes in the type of 
+information ALs can input, and accounts for students that 
+suddenly disappear. She believes that OUA could be used to 
+inform accessibility studies and support students with disabilities.   
+
+Interviewee 2 (female): This participating teacher was teaching an 
+introductory module in engineering. Her students were mostly 
+new to university studies, which made the module quite difficult 
+for a lot of them. OUA helped her to gain insights about what was 
+happening between the TMAs, a period during which a lot of 
+students were going quiet. She gave the example of a student who 
+did well in the first two TMAs and then he was flagged as amber 
+and his activity in the VLE showed to be low. OUA highlighted 
+that there was a problem between TMAs. This resulted in 
+emailing the student, asking whether things were going well and 
+updating actions in the system, a feature she found quite useful. 
+She was already aware of students at risk from her interaction 
+with them. What OUA provided was valuable insights in between 
+the TMAs by flagging those at risk of not submitting the next 
+assignment. She referred those to Student Support Services. This 
+insight made her think of why students became less engaged 
+between the second and third assignment, or the third and fourth, 
+and motivated her to think of ways that might engage students 
+better, such as a semi-assignment that they would have to engage 
+with. Yet, it was hard for her to think what she could do to engage 
+students at risk beyond encouraging them. When she tried to 
+contact students, the majority of them did not reply to their emails 
+or answered her follow-up phone calls.   
+
+Two features of OUA dashboard were perceived as most useful: 
+the predictions which she sorted out based on the number of votes 
+(i.e., OUA provides data in form of votes on which of the four 
+engines flag a student at risk: 0 = no risk, 4 = all engines predict 
+student at risk). However, the system would be better if it gave her 
+information about what students were doing when, for example, 
+there is little activity (are they looking at forums? the weekly 
+study planner?); and the trends compared to the average and the 
+level of activity. She would be willing to use the system in the 
+future if changes were made to reduce workload, including the 
+integration of all information about students in one place (link 
+OUA with the OU teacher forum). Furthermore, it would be 
+useful if the system flagged up teachers' outstanding actions, such 
+as to follow up a student who did not reply to their teachers' email 
+or call, highlight students who dropped out so as teachers do not 
+check on them, add information from the automated marked 
+assignments as these could be good indicators of engagement, and 
+send email notifications to teachers flagging ups changes in 
+predictions and students' engagement.  
+
+Interview 3 (male): This teacher was teaching an engineering 
+module. He described his students as diverse in terms of previous 
+qualifications and age, some of whom have special needs and 
+struggle to balance learning and other life obligations. Overall, 
+most students coped well with the module from the start. He is a 
+teacher who likes to make use of all sorts of tools. OUA was 
+perceived to be a good tool to use, especially when someone gets 
+more experience with it and more in-depth understanding. He 
+found the VLE trends data particularly useful as he made use of it 
+to intervene when the learning activity tailed off. He characterized 
+the tool as a "proactive one" that complemented existing teaching 
+practices, such as emailing students, and participating in forums 
+by giving an indication of how much work students were doing. 
+He found it of most help after the submission of the first TMA as 
+students were much more settled then. Also, OUA informed him 
+of students who suddenly showed as not engaging, which 
+encouraged him to contact them. In addition, he looked at students 
+who were doing well and sent them emails to encourage them to 
+keep it up. As he explains "it is a good tool to use at both ends of 
+the spectrum". It would be useful for future module planning in 
+points where students dive in the module. Data from OUA could 
+
+
+
+inform the way he works with a given group. He intends to use it 
+again in the future.  
+
+Interviewee 4 (female): This teacher was teaching an 
+undergraduate module in mathematics in which some of the 
+students often needed motivational support. She perceived the use 
+of OUA very positively, as she said "I love it it's brilliant. It brings 
+together things I already do [...] it's an easy way to find 
+information without researching around such as in the forums and 
+look for students to see what they do when I have no contact with 
+them [...] if they do not answer emails or phones there is not much 
+I can do. OUA tells me whether they are engaged and gives me an 
+early indicator rather than waiting for the day they submit" like 
+Interviewee 3. She found the system particularly useful after the 
+submission of the first TMA. It highlighted to her two students 
+she was not aware of. When she gave them a call, she found out 
+what inhibited their study was lacking motivation and a regional 
+weather condition. Apart from the two students the system 
+correctly flagged to her, it generally confirmed her "suspicions" of 
+who might be at risk. She took action when students were flagged 
+as at risk; she called them saying that she was checking on their 
+progress. Most of the times, it was not easy to contact them as 
+they did not want to talk. She said that she trusted the predictions 
+from OUA, but not 100% as some of the flagged students she 
+knew that they were engaged but studied offline. She would use 
+insights from OUA to make changes to her module. She gave the 
+example of OUA flagging a lot of students before Christmas. An 
+assignment before or after Christmas might be a good change to 
+keep them motivated. For her, OUA is easy to use and she would 
+use it systematically in the future especially before the 
+assignments' submission.   
+
+Interviewee 5 (female): This participating teacher was teaching an 
+undergraduate module on arts. Her first impressions of using 
+OUA were that this was a useful tool, from the overall cohort’s 
+point of view, and at the individual student level. However, OUA 
+does not take into account the non-online parts of the module, and 
+the fact that students might be engaged with printed materials, as 
+also indicated by Interviewee 4. As she said, "OUA flagged to me 
+what I should know anyway". She stressed the role of the teacher 
+and their interaction with students as affecting online engagement 
+and students at risk. For this purpose, she organised three optional 
+f-t-f meetings with students and two teacher groups. She enjoyed 
+having a look at OUA, though from time to time it showed 
+“strange flaggings”, different from her intuition. Her approach 
+was not to chase a student if everything else looks fine. She would 
+use OUA systematically if this was integrated in the teacher's 
+forums and across the university. 
+
+5. DISCUSSION 
+This large-scale study on the use of predictive learning analytics 
+data by 240 teachers at a distance learning higher education 
+institution has provided a mixed perspective on teachers’ uses and 
+practices in relation to the use of predictive data indicating a 
+variation in teachers’ degree and quality of engagement with 
+learning analytics and impact to students' performance and 
+retention. While many early studies of learning analytics [3, 22] 
+had high hopes of powerful visualisations of predictive analytics 
+to teachers, our study is the first to show in a large-scale 
+implementation of predictive analytics to teachers that many 
+teachers struggled with providing actions and support based upon 
+analytics data.  
+
+The comparison between groups of teachers having access to 
+OUA and groups of teachers with no access produced a rather 
+
+blurred picture in terms of the effectiveness of using predictive 
+learning analytics by teachers to support students at risk. In terms 
+of completion and pass rates, significant differences were 
+observed in only three of the modules indicating that OUA groups 
+had higher completion and pass rates. On some modules, an 
+increase in formal withdrawals was observed while in other this 
+was not the case. The lack of positive evidence of OUA might 
+also be explained by the teachers’ lack of adequate and systematic 
+engagement with OUA and actions taken to approach students at 
+risk. While we were unable to collect usage data amongst 170 
+teachers who received weekly predictions via email, most of the 
+70 teachers who were given access to OUA dashboards engaged 
+rather irregular and infrequent with predictive data. As a result, 
+one could question whether the lack of evidence for lowering 
+dropout in 9 out of 11 modules was due to the quality of OUA 
+predictions, or whether teachers were not sufficiently empowered 
+to intervene due to time-resource and organisational constraints 
+[15, 17].  
+
+In order to illuminate further teachers' uses and perceptions about 
+the use of predictive learning analytics data, five semi-structured 
+interviews with teachers-volunteers were conducted. Insights 
+revealed how the system was used and in what degree. Teachers 
+reported to make use of specific features of OUA only, including 
+the colour-coded system and the VLE activity. They were also 
+found to use the system rather rarely usually before the 
+submission of an assignment. Their use of the system was found 
+to relate to their understanding of how the system could be used in 
+their practices. In terms of the use of the ‘risk indicators’, teachers 
+reported that the predictions reaffirmed their suspicions about who 
+might be at risk. Yet, in line with van Leeuwen et al. [15]  in some 
+cases, the predictions provided additional insights a teacher might 
+not have identified without the support from the system. 
+
+The actual use of the system was found to relate to the general 
+teaching strategy a teacher has developed in relation to students 
+being at risk. For teachers who used to check on students and their 
+progress often, it systematised their practices and made it easier to 
+identify what students were doing at certain times. For others, it 
+influenced their practices positively by making them more 
+proactive in contacting students when needed and illuminated 
+students' activity in between the submission of TMAs and 
+especially for students that do not engage with e.g., forums or 
+online activities. It could be argued that, even though the 
+perceived usefulness of the system was subjectively defined, 
+teachers were not reluctant in using OUA; they found value in the 
+use of predictive learning analytics data either as complementing 
+their own existing teaching practices or empowering them to 
+becoming more proactive and engaging with students.  
+
+In line with Rienties et al. [20] a variation was observed in terms 
+of the types of intervention strategy developed to support students 
+at risk. Each teacher devised their own approach including making 
+a phone call, sending an email, or referring the student to support 
+services. Yet, it remained unclear which intervention strategy was 
+the most effective one in order to motivate and support students at 
+risk and potentially help them complete and pass their studies [9, 
+17, 20].  
+
+Overall, teachers expressed interest in using predictive learning 
+analytics data in the future to better support students at risk. In 
+addition, teachers were keen to use insights to improve the design 
+of the modules they are teaching, such as the inclusion of 
+additional activities when engagement between assignments tails 
+off. It could be advocated that the level of “resistance”[20] 
+towards the use of analytics to support teaching activities was 
+
+
+
+minimal as beliefs, feelings and future intentions to use the system 
+were relatively positive. Yet, it should be noted that teachers in 
+this study were self-selected and a large number of teachers 
+seemed to vote with their feet by not engaging with OUA at all, or 
+only close to the assessment deadlines. Previous studies have 
+highlighted that the time window of opportunity to effectively 
+support students-at-risk is relatively short [7, 10], ranging between 
+2-4 weeks. In other words, in addition to effective predictive 
+analytics tools a clear, supportive management and professional 
+development structure needs to be in place to empower teachers to 
+pro-actively help students flagged at risk [6].  
+
+Existing positive attitudes towards teaching innovations might 
+have had an impact on their perceptions. Also, established 
+teaching practices in relation to students at risk might have 
+aligned well with how systems like OUA could be used to support 
+students, thus leading to endorsing its use. To ascertain the 
+effectiveness of predictive data as a tool that enables teachers to 
+support students more proactively, we need to identify how, when 
+and what interventions to trigger to support students adequately. 
+For example, we should have a good understanding of whether we 
+must intervene with a student as soon as they are flagged up as at 
+risk of not submitting an assignment or alternatively wait for the 
+next set of predictions (a week after) before we take any action.  
+
+6. REFERENCES 
+[1] Tobarra, L., Robles-Gómez, A., Ros, S., Hernández, R. and 
+Caminero, A. C. 2014. Analyzing the students’ behavior and 
+relevant topics in virtual learning communities. Computers in 
+Human Behavior, 31, 659-669. 
+[2] Ali, L., Hatala, M., Gaševi?, D. and Jovanovi?, J. 2012. A 
+qualitative evaluation of evolution of a learning analytics tool. 
+Computers & Education, 58, 1, 470-489. 
+[3] Verbert, K., Drachsler, H., Manouselis, N., Wolpers, M., 
+Vuorikari, R. and Duval, E. 2011. Dataset-driven research for 
+improving recommender systems for learning. Proceedings of the 
+1st International Conference on Learning Analytics and 
+Knowledge (Alberta, Canada February 27 - March 01, 2011). 
+ACM: NY. 
+
+[4] Ferguson, R. and Buckingham Shum, S. 2012. Social learning 
+analytics: five approaches. Proc. 2nd International Conference on 
+Learning Analytics & Knowledge, (29 Apr-2 May, Vancouver, 
+BC). ACM Press: New York 
+
+[5] Papamitsiou, Z. and Economides, A. 2014. Learning Analytics 
+and Educational Data Mining in Practice: A Systematic Literature 
+Review of Empirical Evidence. Educational Technology & 
+Society, 17 (4), 49–64. 
+[6] Mor, Y., Ferguson, R. and Wasson, B. 2015. Editorial: 
+Learning design, teacher inquiry into student learning and 
+learning analytics: A call for action. British Journal of 
+Educational Technology, 46 (2), 221-229. 
+[7] Tempelaar, D. T., Rienties, B. and Giesbers, B. 2015. In 
+search for the most informative data for feedback generation: 
+Learning Analytics in a data-rich context. Computers in Human 
+Behavior, 47 (2), 157-167. 
+[8] Joksimovi?, S., Gaševi?, D., Loughin, T. M., Kovanovi?, V. 
+and Hatala, M. 2015. Learning at distance: Effects of interaction 
+traces on academic achievement. Computers & Education, 87(9), 
+204-217. 
+
+[9] Calvert, C. 2014. Developing a model and applications for 
+probabilities of student success: a case study of predictive 
+
+analytics. Open Learning: The Journal of Open, Distance and e-
+Learning, 29 (2), 160-173. 
+[10] Gasevic, D., Dawson, S., Rogers, T. and Gasevic, D. 2016 
+Learning analytics should not promote one size fits all: The 
+effects of instructional conditions in predicating learning success. 
+Internet and Higher Education, 28, 68-84. 
+[11] Macfadyen, L. P. and Dawson, S. 2010. Mining LMS data to 
+develop an “early warning system” for educators: A proof of 
+concept. Computers & Education, 54 (2), 588-599. 
+[12] Hlosta, M., Herrmannova, D., Zdrahal, Z. and Wolff, A. 
+2015. OU Analyse: analysing at-risk students at The Open 
+University. Learning Analytics Review, 1-16. 
+[13] Wolff, A., Zdrahal, Z., Herrmannova, D., Kuzilek, J. and 
+Hlosta, M. 2014. Developing predictive models for early detection 
+of at-risk students on distance learning modules,. In: Machine 
+Learning and Learning Analytics Workshop at The 4th 
+International Conference on Learning Analytics and Knowledge 
+(LAK14), 24-28 March 2014, Indianapolis, Indiana, USA.  
+[14] Greller, W. and Drachsler, H. 2012. Translating Learning 
+into Numbers: A Generic Framework for Learning Analytics. 
+Educational Technology & Society, 15 (3), 42–57. 
+
+[15] van Leeuwen, A., Janssen, J., Erkens, G. and Brekelmans, M. 
+2014. Supporting teachers in guiding collaborating students: 
+Effects of learning analytics in CSCL. Computers & Education, 
+79 (10), 28-39. 
+
+[16] van Leeuwen, A., Janssen, J., Erkens, G. and Brekelmans, M. 
+2015. Teacher regulation of cognitive activities during student 
+collaboration: Effects of learning analytics. Computers & 
+Education, 90, 80-94. 
+[17] Rienties, B., Boroowa, A., Cross, S., Kubiak, C., Mayles, K. 
+and Murphy, S. 2016. Analytics4Action Evaluation Framework: a 
+review of evidence-based learning analytics interventions at Open 
+University UK. Journal of Interactive Media in Education, 1 (2), 
+1-12. 
+
+[18] Quinn, J. 2013. Drop-out and completion in higher education 
+in Europe among students from under-represented groups. 
+European Commission.  
+
+[19] Simpson, O. 2013. Supporting students for success in online 
+and distance education. Routledge, New York, NY. 
+[20] Rienties, B., Cross, S. and Zdrahal, Z. 2016. Implementing a 
+Learning Analytics Intervention and Evaluation Framework: what 
+works? In: Kei Daniel, Ben and Butson, Russell eds. Big Data and 
+Learning Analytics in Higher Education: Current Theory and 
+Practice. Heidelberg: Springer. 
+[21] Torgerson, D. J. and Torgerson, C. 2008. Designing 
+randomised trials in health, education and the social sciences: an 
+introduction. Palgrave Macmillan, London. 
+[22] Dyckhoff, A. L., Zielke, D., Bültmann, M., Chatti, M. A. and 
+Schroeder, U. 2012. Design and Implementation of a Learning 
+Analytics Toolkit for Teachers. Journal of Educational 
+Technology & Society, 15 (3), 58-76. 
+
+ 
+ 
+
+
+

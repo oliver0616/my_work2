@@ -1,0 +1,1370 @@
+
+An elephant in the learning analytics room – the obligation 
+to act 
+
+Paul Prinsloo 
+University of South Africa 
+3-15, Club 1, P O Box 392 
+Unisa, 0003, South Africa 
+
++27 12 433 4719 
+prinsp@unisa.ac.za 
+
+Sharon Slade 
+The Open University 
+
+Walton Hall 
+Milton Keynes, UK 
++44 1865 486250 
+
+sharon.slade@open.ac.uk 
+
+ABSTRACT
+As higher education increasingly moves to online and digital 
+learning spaces, we have access not only to greater volumes of 
+student data, but also to increasingly fine-grained and nuanced 
+data. A significant body of research and existing practice are used 
+to convince key stakeholders within higher education of the 
+potential of the collection, analysis and use of student data to 
+positively impact on student experiences in these environments. 
+Much of the recent focus in learning analytics is around predictive 
+modeling and uses of artificial intelligence to both identify 
+learners at risk, and to personalize interventions to increase the 
+chance of success.  
+
+In this paper we explore the moral and legal basis for the 
+obligation to act on our analyses of student data. The obligation to 
+act entails not only the protection of student privacy and the 
+ethical collection, analysis and use of student data, but also, the 
+effective allocation of resources to ensure appropriate and 
+effective interventions to increase effective teaching and learning.  
+
+The obligation to act is, however tempered by a number of 
+factors, including inter and intra-departmental operational 
+fragmentation and the constraints imposed by changing funding 
+regimes. Increasingly higher education institutions allocate 
+resources in areas that promise the greatest return. Choosing (not) 
+to respond to the needs of specific student populations then raises 
+questions regarding the scope and nature of the moral and legal 
+obligation to act. There is also evidence that students who are at 
+risk of failing often do not respond to institutional interventions to 
+assist them.  
+
+In this paper we build and expand on recent research  by, for 
+example, the LACE and EP4LA workshops to conceptually map 
+the obligation to act which flows from both higher education’s 
+mandate to ensure effective and appropriate teaching and learning 
+and its fiduciary duty to provide an ethical and enabling 
+environment for students to achieve success. We examine how the 
+collection and analysis of student data links to both the 
+availability of resources and the will to act and also to the 
+obligation to act. Further, we examine how that obligation unfolds 
+
+in two open distance education providers from the perspective of a 
+key set of stakeholders – those in immediate contact with students 
+and their learning journeys – the tutors or adjunct faculty. 
+
+CCS Concepts
+• Social and professional topics??Computing profession •
+Applied computing??Education 
+
+Keywords
+Learning analytics; obligation to act ethics 
+
+1. INTRODUCTION
+Recent theoretical, conceptual and empirical research in learning 
+analytics provides glimpses of the immense promise offered by 
+the collection, analyses and use of student data in higher 
+education. As the field continues to evolve, current research and 
+practice attempt to address a host of ethical, legal and logistical 
+issues, challenges and concerns [13, 22, 33, 40, 42, 44, 55].  
+
+Despite advances in the conceptualisation of the ethical and 
+privacy challenges in learning analytics as mapped in the 
+DELICATE framework [13, 22], the potential of learning 
+analytics remains tempered by the scope and practicalities of 
+student privacy as a possible ‘show-stopper’ [22, p. 23]. 
+
+Against a backdrop of growing research on the ethical 
+implications of learning analytics, this paper focuses specifically 
+on the institutional obligation to act. We acknowledge that this 
+may be curtailed and frustrated by students’ own 
+unresponsiveness. Most recently the main emphasis in exploring 
+the institutional obligation to act has been to focus on the 
+obligation to safeguard student privacy [13, 22]. The recently 
+published LACE review of current issues and solutions with 
+regard to student privacy [22] moots the issue of the “role of 
+knowing and obligation to act” as part of the ethical responsibility 
+of the institution and asks “Does the new knowledge gained bring 
+with it a responsibility to act upon it? What the ramifications of 
+action or inaction?” (p.7).  
+
+We attempt here to respond to the question posed by the LACE 
+review [22]. Underpinning the obligation to act is the extent to 
+which higher education institutions have the resources, 
+understanding and the political will to effectively respond to the 
+promise of learning analytics. Learning analytics produces 
+information that can be translated into knowledge and action, but 
+various factors may impact on this translation of data into 
+actionable knowledge and understanding [27]. Although we may 
+‘know more’ about our students, choosing appropriate and 
+effective strategies to respond is entangled in a mess of epistemic, 
+
+Permission to make digital or hard copies of all or part of this work for 
+personal or classroom use is granted without fee provided that copies are 
+not made or distributed for profit or commercial advantage and that 
+copies bear this notice and the full citation on the first page. Copyrights 
+for components of this work owned by others than ACM must be 
+honored. Abstracting with credit is permitted. To copy otherwise, or 
+republish, to post on servers or to redistribute to lists, requires prior 
+specific permission and/or a fee. Request permissions from 
+Permissions@acm.org.
+LAK '17, March 13-17, 2017, Vancouver, BC, Canada
+© 2017 ACM. ISBN 978-1-4503-4870-6/17/03…$15.00
+DOI: http://dx.doi.org/10.1145/3027385.3027406
+
+
+
+philosophical, political, legal, economic, social, technological and 
+environmental assumptions and factors. Responding to what we 
+know and understand is dependent not only on the political and 
+institutional will to respond, but increasingly also on having the 
+necessary resources to respond [39]. The increasing costs in 
+providing an enabling environment to students who are often 
+underprepared means that higher education institutions 
+increasingly need to triage and choose how they allocate 
+resources. As Prinsloo and Slade [39] indicate, this is increasingly 
+leading to a focus on those students who may provide a return on 
+investment as a result of an intervention. The combination of 
+funding constraints with an increasing need to support often 
+underprepared students places institutions in a moral and legal 
+double-bind – even if they want to provide the support students 
+need, they simply cannot.  
+
+Examples of higher education’s obligation to act include 
+providing disabled students’ with equitable access, preventing 
+discrimination, bullying (and increasingly cyber bullying) and 
+responding to students who are at risk of committing suicide.  
+These examples flow from the contractual, moral and fiduciary 
+duties of a higher education institution towards supporting 
+students at risk of physical or emotional harm. Compared to case 
+law which has investigated the institution’s duty to act in these 
+cases, there appears to be no equivalent regarding an institution’s 
+obligation to act in the event of knowing that students are at risk 
+of failing. With the growth in the scope and detail of learning 
+analytics, it is a valid question [22] as to whether students would 
+have recourse to legal or other action if they were identified as 
+more likely to fail, but not warned or supported.  
+
+Acting on what we know about students, especially where this 
+links to behaviors which might imply higher risk of failure, often 
+falls on faculty and a range of support staff who may have access 
+to such information through visualizations provided by learning 
+analytics’ dashboards. In reviewing how learning analytics (LA) 
+has been taken up by various stakeholder groups, Greller & 
+Drachsler [21] refer to data clients (e.g., teachers) as the 
+‘beneficiaries of the LA process who are entitled and meant to act 
+upon the outcome’ (emphasis added). 
+
+In this paper we question the assumption that we will respond by 
+firstly mapping the obligation to act from a series of legal and 
+ethical perspectives. We present two short case studies entailing a 
+directed content analysis of the tutor contracts in two different 
+distance learning institutions. The purpose of the case studies is to 
+determine to what extent tutors are obliged to respond to the 
+analyses and information provided in learning analytics. The 
+paper concludes with some tentative pointers as basis for action.  
+
+2. PREDICTING AND PREVENTING 
+STUDENT FAILURE AND DROPOUT 
+The early theoretical and empirical models developed by Spady 
+[48, 49] and Tinto [51] emphasized the social conditions and the 
+role of “a lack of consistent, intimate interaction with others” [48, 
+p. 78] in influencing students’ decision to drop-out. (Also see 
+[51]). Learning analytics, more than ever before, provides us with 
+information regarding these social conditions and the various 
+nuances, instances and frequency of interaction of students with 
+their peers, resources (whether online or offline) and teaching and 
+support staff in their learning journey [16, 18]. Given the 
+contractual nexus between university and student, it follows then 
+that access to actionable and empirically verifiable data relating to 
+factors that impact on academic success increases the potential for 
+liability.   
+
+In the context of this paper’s exploration of the moral and legal 
+implications that arise from learning analytics, we acknowledge 
+that student success be understood as the result of multiple, often 
+inter-dependent and mutually constitutive factors in the nexus 
+between students and institution in a particular micro and macro 
+context [50]. While we specifically focus on the moral and legal 
+obligations of institutions to respond to students at risk, it is 
+important to note that the responsibility to create an enabling 
+environment for student success does not exonerate students from 
+taking responsibility for their learning. Godor [20] however 
+warns that there is a danger that learning analytics emphasizes 
+“student-related behaviours and student-related characteristics” 
+and “fails to examine institution-related behaviours and 
+institution-related characteristics such as the climate of academia” 
+(p. 2; emphasis added). (Also see [50]). Godor [20] also flags that 
+whilst early warning systems alert teaching staff, they “once again 
+externally manoeuvre the foundations for student success from the 
+institution itself back to the student” (p. 5).  
+
+In the context of this paper, we propose that the knowledge and 
+actionable information provided by learning analytics raises the 
+need to reflect on the rationale, scope and constraints inherent in 
+higher education’s moral and legal obligation to act. Given the 
+relatively recent emergence of learning analytics as one means to 
+support and potentially ‘save’ students from drop-out or failure 
+and a corresponding lack of policy and relevant case law, we 
+deliberately draw upon parallel arguments relating to student 
+(self) harm and the obligation of the institution to act to illustrate 
+comparable points.   
+
+3. MAPPING RESPONSIVENESS 
+Institutional responsiveness entails much more than the protection 
+of student privacy and the ethical collection, analysis and use of 
+student data. The latter has received increasing attention and 
+support in the work of LACE [22] and published research by 
+individual researchers [13, 40, 44]. This paper specifically focuses 
+on the obligation to act as the effective allocation of resources to 
+ensure appropriate and effective interventions to increase effective 
+teaching and learning.  
+
+Given the emphasis in this paper on the institutional obligation to 
+act, there is a danger in that we disregard the many strategic and 
+operational initiatives aimed at improving the learning experience 
+and ultimately the return on investment for both students and the 
+institution. However, there is some evidence that changes in 
+funding regimes and increasing competition raise the need for 
+institutions to (re)consider resource allocation to those students 
+who are deemed high risk [2, 37, 39]. While it is tempting to focus 
+only on the impact of the increasing resource constraints on 
+institutional responsiveness, there are other relevant factors such a 
+lack of understanding,; the role of political will in shaping 
+institutional responsiveness; the lack of integration in institutional 
+sense-making and resource constraints.  
+
+3.1 Lack of understanding or the 
+theory/practice divide 
+With the advent of Massive Open Online Courses (MOOCs) and 
+other advances in educational technologies, a number of authors 
+(e.g., [17, 43]) have pointed to a need for research to take 
+cognisance of educational theory or past educational research. 
+However, there is some evidence that management and policy 
+makers may disregard educational theory and empirical research 
+[36, 37]. This leads to a potential ‘gulf’ between higher education 
+researchers, policy makers and practitioners where much of the 
+current educational research is deemed irrelevant in the context of 
+
+
+
+the need for shorter-term investigations and solutions. El-Khawas 
+[14] highlights management and policy makers who favor 
+positivist and reductionist research modes rather than qualitative 
+modes and critical approaches. In responding to problems, there 
+can be a tendency to seek solutions and just-in-time research that 
+“cut out complexity, turbulence and messiness with an emphasis 
+on simple and uncomplicated findings and proposals that sponsors 
+of the research can use and control” [37, p. 344]. (See also [26]).  
+
+3.2 The role of political will and institutional 
+responsiveness 
+While the duty to respond rests on the institution as a whole, it is 
+the legal duty of management to define and oversee the obligation 
+to act. Research by El-Khawas [14] suggests that institutional 
+policy development tends to focus on research findings or 
+theoretical developments when it is politically convenient to do 
+so. Similarly Kogan and Henkel [28] posit that policy 
+development favors research that fits into the political and 
+technological climate of the time. Institutions respond when “a 
+problem is recognised as serious and requiring a new solution; 
+when the policy community develops a financially and technically 
+workable solution; and when political leaders find it 
+advantageous to approve it” [14, p.5] (emphasis added). This may 
+explain why some initiatives to improve student success and 
+retention go against the grain of research of even conventional 
+wisdom.  
+
+3.3 Lack of integration in institutional sense-
+making 
+While much of the research into improving student success and 
+retention is focused on the integration (or lack of) of students into 
+institutional culture (organizational and epistemic) [7, 48, 49, 51], 
+it is also important to point to the impact of a fragmented systemic 
+institutional response on an institution’s obligation to act [46, 50]. 
+Not only do various stakeholders in the institution work in silos, 
+responding independently of each other and resulting in overlap 
+and inconsistencies, institutional sense-making of students at risk 
+is also fragmented [37]. Institutional sense-making and research 
+are scattered amongst individual and institutional researchers, 
+academic and support departments and management and policy 
+development. Learning analytics may provide insight at a course 
+level to individual faculty and/or support teams that trigger a 
+response which may run contrary to institutional policy, strategic 
+objectives and/or allocation of resources. 
+
+There is then a real danger that the obligation to act and the 
+effectiveness of the institutional response is hampered by non-
+systematic and non-integrated approaches to respond to students 
+at risk.  
+
+3.4 Resource constraints 
+As higher education institutions respond to financial constraints 
+and attempt to re-align initiatives to improve student success, 
+there is increasing emphasis on allocating resources to move the 
+“murky middle” – those students who are currently at medium 
+risk of non-completion and who with some additional intervention 
+and support can actually pass [4, 39, 40, 53]. The support and cost 
+needed to address those considered at higher risk of failure are 
+increasingly considered to be wasted resource. The phenomenon 
+of the increasing resource constraints faced by higher education 
+raises the interesting question on how a lack of resource impacts 
+on the moral and legal duty to act.  
+
+Institutions increasingly find themselves in a double-bind where 
+they may have the political will and expertise to respond, but not 
+the resources.  Responding to students deemed at risk, especially 
+those admitted to higher education but who may need specialized 
+and personalized support to give them a reasonable chance of 
+success, is costly. How do we then respond to the moral and legal 
+necessity to act, when responding in appropriate and effective 
+ways becomes (resource-wise) impossible? 
+
+3.5 Student responsibility and autonomy 
+An ethical approach to learning analytics should acknowledge 
+both the reciprocal nature of the relationship between the 
+institution and students as well as the impact of the asymmetrical 
+power relationship [44, 50]. The institutional obligation to act 
+does not result in students becoming mere recipients of services 
+and support. Students have a co-responsibility to fulfil their part in 
+the learning contract [13]. While students’ unresponsiveness or 
+disregard for their own responsibility does not absolve the 
+institution of its obligation to act, we should acknowledge the 
+reciprocal nature of the responsibility to ensure effective learning.  
+
+4. MAPPING SOME MORAL AND LEGAL 
+CONSIDERATIONS INFORMING THE 
+OBLIGATION TO ACT 
+Having a basic understanding of some of the moral and legal 
+considerations of the obligation to act is crucial to prevent ill-
+considered and hasty reactions. As stated earlier, while national 
+legislation and institutional policies and procedures provide clear 
+pointers with regard to protecting student privacy, the moral and 
+legal ramifications of action or inaction in learning analytics [22] 
+have not yet been fully mapped.  
+
+4.1 Saving the Drowning: Mapping Some of 
+the Moral and Legal Implications on the ‘Duty 
+to Act’ 
+A lawsuit filed by parents of a suicidal student in 2002 [47] and 
+other similar suits form the basis for research by Massie [31] to 
+explore the legal responsibilities of college personnel. Central to 
+this is whether a higher education institution has a ‘duty to rescue’ 
+or a contractual obligation to act once there is awareness of 
+students at risk. Massie [31] states that “As every law student 
+learns in the first year, there is no general ‘duty to rescue’ a 
+person in even the gravest danger if the actor has no control over 
+that person and did not create the danger, regardless of how easy 
+and risk-free it would be for the actor to do so” (p. 637). It is clear 
+though that, even if there is no legal foundation, there are moral 
+and ethical issues to be considered. It is not the purpose of this 
+paper to provide a detailed analysis of the different legal, moral 
+and ethical implications of the question whether the obligation to 
+act once student risk is known. Rather, we map some of the 
+different moral and legal implications before using these to 
+engage with the consequences for learning analytic research. 
+
+4.2 Moral and Ethical Bases for an Obligation 
+to Act 
+The duty to rescue has been embedded in philosophical discourses 
+in various forms such as the ‘trolley problem’ and the ‘drowning 
+person’ (e.g. [1, 32, 45]). Approaches to ‘solving’ these 
+philosophical and ethical problems are often complex and, like the 
+field of law, require specific knowledge and background. Very 
+broadly speaking, one can distinguish between deontological and 
+teleological approaches [30]. A deontological approach to ethics 
+is based on rules and forms the basis for legal and regulatory 
+
+
+
+frameworks, as well as Terms and Conditions (T&Cs) that clarify 
+the nature and scope of the rights and responsibilities of parties to 
+the agreement in a particular context. Deontological approaches 
+are effective in relatively stable environments. Having consensus 
+on following a deontological approach necessitates agreeing on 
+the type and choice of rules (e.g. consent-based or contract-
+based). A deontological approach is also based on the notion that 
+decisions to adhere to the rules arise from an “autonomous, 
+objective and impartial agent” (Edwards as cited in [6, p. 1072]) 
+
+An alternative approach is a teleological approach where ethical 
+norms around the potential for harm, the scope of consent and 
+recourses in cases of unintended harm are negotiated and agreed 
+upon.  A teleological approach focuses on fulfilling “the needs of 
+others and to maintain harmonious relations” [6, p. 1072] and 
+considers potential vulnerabilities of those affected by the 
+intervention or opportunity. 
+
+Velasquez, Andre, Shanks and Meyer [54] distinguish between a 
+number of approaches, such as (1) a utilitarian approach (deciding 
+on an action that “provides the greatest balance of good over 
+evil”); (2) a rights approach (referring to basic, universal rights 
+such as the right to privacy, not to be injured); (3) a fairness or 
+justice approach; (4) the common-good approach (where the 
+welfare of the individual is linked to the welfare of the 
+community); and (5) the virtue approach (based on the aspiration 
+towards certain shared ideals). In an attempt to ensure ethical 
+problem solving, Velasquez et al [54] suggest asking five 
+questions, namely (1) what are the benefits and harms, to whom 
+and what are the alternatives? (2) what are the rights of those 
+affected by a course of action and which course of action respects 
+those rights? (3) which course of action treats everyone the same 
+“except where there is a morally justifiable reason not to”? (4) 
+how will the common good be served by the action taken? and (5) 
+which possible action develops moral virtues? 
+
+It is clear that exploring moral and ethical implications may 
+involve choosing the lesser of two evils (e.g., [1]) and, as 
+illustrated by [32], deal with messy problems such as deciding to 
+terminate, allowing to fail or die and withdrawing aid. Contrasted 
+with the range of ethical approaches, legal frameworks attempt to 
+make such complexities more palatable by reducing them to a 
+series of principles or rules. Botes [6] suggests that an ethics of 
+justice and an ethics of care are often positioned as opposites, but 
+Gilligan [19] contends that both care and justice have a place in 
+ethical decision making and that ‘the two aspects are inextricably 
+linked and in constant interaction’ [6, p. 1073] (emphasis added).  
+
+4.3 An Overview of the some of the Legal 
+Issues in the Obligation to Act 
+When does an obligation to act arise and what recourse does an 
+individual have when an obligation is not fulfilled – whether 
+intentionally or when the fulfillment of the obligation has become 
+impossible? The duty to act is an established principle in different 
+legal frameworks. For the sake of this article we consider an 
+obligation as a legal bond (vinculum iuris) whereby a person, a 
+group of persons or organization is bound to act or refrain from 
+acting based on an agreement between said persons. This legal 
+bond imposes a duty on the obligor to perform or act depending 
+on the agreement, but also creates a corresponding right by which 
+the recipient or oblige can demand a performance or action to be 
+rendered, in fulfillment of the agreement.   
+
+Interestingly, in most Anglophone countries there is no general 
+duty to rescue a person. A duty to rescue arises in two situations 
+
+namely: (1) where a person has created a dangerous situation that 
+causes another person to fall into peril. Under such circumstances 
+the person who created the context has the duty to rescue the 
+endangered person; (2) where a special relationship exists 
+between two persons, e.g., parents and children, and between 
+employers and employees. The principle of ‘reasonable care’ 
+could be questioned in these special relationships where "…what 
+constitutes reasonable care is contextual - the extent and type of 
+supervision required of young elementary school pupils is 
+substantially different from reasonable care for college students” 
+[31, p. 639]. However, do universities not specifically take on this 
+obligation at the point of formal registration?   
+
+A tort or delict, depending on the legal system in a particular 
+context may consist of the following elements: (1) Conduct/action 
+or non-action – where harm may have been caused by the specific 
+action (commission) or omission or failure to act). It is important 
+to note that omission only arises when there was a duty to act; (2) 
+Wrongdoing or wrongfulness – where the act or non-action was in 
+contravention to the specific legal mores in a particular context; 
+(3) Intentionality or fault – where the scope of resource to action 
+or sanction will depend on whether the person acted intentionally 
+or negligently; (4) Loss/damage - the conduct or inaction must 
+have resulted in some form of loss or harm to the claimant in 
+order for them to have a claim such as material loss (e.g. financial 
+loss) or patrimonial loss (a reduction in a person's financial 
+position, such as is the case where a claimant incurred medical 
+expenses) or immaterial loss (e.g. pain and suffering); (5) 
+Causation – an important element for the complainant to prove is 
+that the loss or damages (directly or indirectly) arose because of 
+the action or non-action of the accused - in other words the 
+damage was a sine qua non of the plaintiff’s conduct.  
+
+It is important to note that torts (or delict in the US and South 
+Africa) may result from negligence or criminal actions. 
+Negligence refers to fault which may be negligent or intentional; 
+whereas criminal law requires that the act be intentional. Tort 
+laws have a different burden of proof, such as a balance of 
+probabilities rather than beyond reasonable doubt as in the case of 
+criminal action.  
+
+A specific concept in tort law is the ‘duty to rescue’ relating to 
+circumstances where a party can be held liable for failing to come 
+to the rescue of another party in peril.  Under common law, the 
+duty to rescue is rarely penalized through statutes of law, but this 
+does not erase the implicit moral duty to rescue under a set of 
+separate ethical arguments.  
+
+In general, accountability resulting from the special relationship 
+between an institution of higher learning and a student is 
+determined based on a combination of the following factors 
+existing: “foreseeability of harm to the plaintiff (generally 
+conceded to be the most important consideration); degree of 
+certainty of harm to the plaintiff; burden upon the defendant to 
+take reasonable steps to prevent the injury; some kind of mutual 
+dependence of plaintiff and defendant upon each other, frequently 
+(as in these cases) involving financial benefit to the defendant 
+arising from the relationship; moral blameworthiness of 
+defendant's conduct in failing to act; and social policy 
+considerations involved in placing the economic burden of the 
+loss on the defendant” [31, p. 639]. Even though most colleges no 
+longer act in loco parentis we “still have a reasonable expectation, 
+fostered in part by colleges themselves, that reasonable care will 
+be exercised to protect resident students from foreseeable harm” 
+[31, p. 640]. Massie [31] therefore concludes that while common 
+law is silent on the positive duty to rescue, “both judicial and 
+
+
+
+legislative policies have developed that help to encourage the 
+moral impetus to help one in imminent peril” (p. 668). 
+
+5. (RE)DEFINING RESPONSIVENESS  
+Institutional responsiveness is most often considered in the 
+context of resource constraints, and specifically human resource 
+constraints. We would argue though that this is a somewhat 
+restricted view. Institutional responsiveness includes not only 
+policies, systems and human resources but also increasingly 
+affordances offered by advances in technology such as machine 
+learning and Artificial Intelligence (AI). AI “tools are producing 
+compelling advances in complex tasks, with dramatic 
+improvements” [9, par. 1]. Without disregarding its potential, we 
+are also faced with situations where “AI systems are already 
+making problematic judgements that are producing significant 
+social, cultural, and economic impacts in people’s everyday lives” 
+[9, par. 1].  In the context of learning analytics we have to ask 
+“How can we use algorithmic decision-making in higher 
+education to ensure, on the one hand, caring, appropriate, 
+affordable and effective learning experiences, and on the other, 
+ensure that we do so in a transparent, accountable and ethical 
+way?” [38]. 
+
+Danaher [11] proposes an interesting matrix that maps potential 
+combinations of human-algorithmic decision-making employing 
+the basic actions of seeing; processing; acting; and learning. He 
+proposes that, in each of these four actions, humans can either act 
+on their own; humans can use algorithmic decision-making in any 
+single action or combination of actions; algorithmic decision-
+making can be used in any single action or combination of actions 
+with human oversight; or algorithms can act independent of 
+human oversight in any single action or combination of actions. 
+(See [38] for a discussion on the potential for bias, discrimination 
+and a range of ethical challenges in algorithmic decision-making). 
+
+6. METHODOLOGY 
+This paper is based on a qualitative interpretative or hermeneutic 
+study [5, 10] using a dialogical case study methodology as 
+described by, amongst others, Thomas [52].  In using a dialogical 
+case study we attempted to apply specific theoretical 
+understandings of the notion of the obligation to act to two 
+institutions’ job descriptions of tutors. As an instrumental case 
+study [52] we seek to gain insight into the ways that tutor 
+contracts understand the nature and scope of the obligation to act 
+in response to learning analytics.  
+
+The units of analyses were the tutor contracts of two different 
+distance learning institutions in respect of online courses. We used 
+a deductive, directed content analysis approach that entailed 
+identifying key concepts flowing from the literature review [15, 
+24]. Case studies do not (and should not) aim to produce 
+generalizable theories but rather phronesis or practical wisdom 
+which is “about understanding and behaviour in particular 
+situations” [52, p. 214]. The credibility of this research was 
+ensured by peer debriefing and member checking, and its 
+dependability and confirmability by being transparent regarding 
+choices and the limitations of this study as well as keeping a paper 
+trail of the analysis [15, 29]. 
+
+The limitations to this study include (1) that neither of the two 
+researchers is a legal expert and that case law from differing 
+national contexts may have provided different or more nuanced 
+insights; (2) the study is only based on two institutions’ contracts 
+and job descriptions for tutors; and (3) the field of and 
+responsibilities resulting from learning analytics have yet to be 
+
+incorporated in our understanding of various levels of 
+responsibility and action. The aim of the research was not to 
+generalize but rather use the two case studies as a basis to 
+illustrate the need for further consideration and research. 
+
+7. CASE STUDIES  
+7.1 The Open University (OU) 
+The Open University (OU) in the UK is a large, open entry, 
+distance learning institution supporting around 200,000 students 
+per year. Teaching at the OU is delivered primarily through the 
+embedded teaching and learning design in module materials, 
+learning activities and assessment; and in the direct distance 
+teaching delivered by contracted tutors to their tutor groups 
+(normally around 20 students) mainly through online forums, 
+supported by occasional synchronous tutorial events. The distance 
+learning nature of the university means that learning analytics is 
+playing an increasing role in delivering proactive student support. 
+Approaches include the use of simple tracking systems which 
+identify students matching pre-defined combinations of 
+demographic and study behavior conditions and then trigger 
+interventions from support staff, as well as reviews of student 
+engagement with, for example, assessments, module content and 
+other online materials in order to better understand teaching and 
+learning design. 
+
+7.1.1 OU tutors and engagement with learning 
+analytics 
+The OU has also been developing systems to help identify at-risk 
+students through the development of two predictive analytics 
+models. One approach uses logistic regression to calculate the 
+probabilities of individual students being registered at key 
+milestones during a module presentation and is being used by 
+curriculum focused student support teams to guide targeted 
+intervention at key points [8]. A second approach, known as OU 
+Analyse [56] also aims to predict at-risk students and is being 
+piloted in a format which puts information directly into the hands 
+of students’ own tutors.  
+
+A recent study [23, draft] looked at how OU tutors experienced 
+this predictive tool. A group of 55 self-selecting tutors from a 
+range of subject modules were given access to OU Analyse over a 
+single presentation (around 100 other tutors were told that they 
+must use the information – no records were kept of their 
+engagement). At the end of the pilot, a small sample of tutors 
+were surveyed to establish the extent to which they had engaged 
+with information from the model and whether it led to actionable 
+insight. Some also participated in semi-structured interviews. 
+Weekly tutor engagement with the dashboard varied across the 
+modules and across time with higher usage generally associated 
+with key events (such as assignment deadlines) but was typically 
+25% or less of tutors.  
+
+The levels of engagement by tutors with student data are impacted 
+by a wide range of factors (see for example [40] who refer to the 
+Technology Acceptance Model developed by Davis et al [12] as 
+useful in explaining why teachers use educational technology). 
+However, at the OU at least there seems a possible disconnect 
+between developers who see the value of learning analytics as a 
+key tool to provide insight and greater student support and have 
+greater expectations around both adoption rates and acceptance of 
+the value of these approaches, and tutors who can opt to employ 
+such an approach (or not). 
+
+
+
+Expectations for student support from tutors are set out in several 
+documents and policies. The OU’s Tutor Support Statement [34] 
+for students states that tutors will “Seek to make contact with you 
+if you appear not to be engaging with the module activities, in 
+order to discuss ways of supporting you with your studies and/or 
+options open to you.” The formal Terms and Conditions [35] for 
+OU tutors make no reference to an expectation that a tutor uses 
+learning analytics to provide student support, save for a broad 
+statement outlining their duties which includes that tutors should 
+“monitor the progress of students on their course, including 
+making contact with students who do not submit assignments”. A 
+new contract has been in negotiation for some time, but it is not 
+apparent that this aspect of the Terms and Conditions will 
+fundamentally change. However, revised role guidance is likely to 
+include more reference to the increasing uses of technology. 
+Specifically the draft guidance includes tasks such as carrying out 
+an initial identification of student learning support needs using 
+available student profile data; making proactive contact with 
+students at critical points; monitoring, recording and supporting 
+students’ engagement with learning and their progress on a 
+module and taking appropriate action as necessary to support 
+student progress (emphasis added) and acquiring, developing and 
+updating the necessary skills to work in the OU e-teaching and 
+learning environment. Although it is encouraging that revisions 
+attempt to highlight the potential and need for greater tutor 
+engagement with student data to inform effective support, it seems 
+a shame that such work is labelled as role guidance rather than a 
+necessary part of the normal tutor contract. This also potentially 
+contradicts the University’s own policy regarding the ethical use 
+of student data for learning analytics [33] which has, as one of its 
+main principles, that the University “has a responsibility to all 
+stakeholders to use and extract meaning from student data for the 
+benefit of students”. Although it is fair to say that policy often lags 
+practice, the reluctance to enforce an obligation to act as part of 
+the revised tutor contract perhaps appears a missed opportunity 
+and inconsistent with broader policy.  
+
+7.2 University of South Africa (Unisa) 
+Unisa, with more than 300,000 students, is the largest distance 
+education provider on the African continent [26] and due to the 
+cost and sustainability of access to the Internet [25, 57], offers the 
+majority of their courses in a technology-enabled paradigm.  All 
+courses have an online presence with a range of resources and 
+possibilities for interaction, and data shows that the majority of 
+students access these online resources. Seven of the 8 colleges or 
+schools at Unisa have a fully online Signature Course (SC) that is 
+a compulsory requirement towards the completion of a certificate, 
+diploma or degree. These SCs have a “two-pronged objective: to 
+leverage the interactive potential of the digital technology and to 
+help students to reflect on the role of their discipline in the 
+societal transformation of South Africa” [26, p. 226].   
+
+7.2.1. Unisa tutors and engagement with learning 
+analytics  
+In the context of this paper, we focus on the scope and 
+responsibilities of Unisa e-tutors and on the Teaching Assistants 
+(TAs) providing digital academic support in these SCs.  
+
+In order to reduce the impact of semi-variable costs and to protect 
+“a certain level of economies of scale”, each TA must “support a 
+large class (200 students, in four classes of 50)” [26, p. 227]. 
+Given that TAs have to mark 10 assignment items per student per 
+semester, they spend most of their time marking assignments and 
+dealing with administrative issues, and less time on facilitating 
+
+discussions and learning. Hülsmann & Shabalala [26] indicate that 
+“This suggests a self-defeating trait in the design template of the 
+SCs: In order to increase participation in online discussion the 
+number of assignments had been increased; as a consequence of 
+the high marking load, TAs find little time for the facilitation of 
+online discussions” (p. 228). Appointed TAs are subject to a 
+contract which tasks set out in a formal Task Agreement. 
+Amongst the tasks specified is an expectation that TAs will: 
+“Monitor student online learning.  
+
+Similarly, Unisa’s e-tutors are bound to 4 Key Performance Areas 
+(KPAs). KPA 2 which focuses on management of the student 
+learning experiences online assumes that e-tutors will track 
+student engagement and requires e-tutors to: “Monitor student 
+participation in online activities; follow up with students who are 
+not participating in online discussion to assess the reasons for this; 
+and Monitor and report on the students’ progress”. Although KPA 
+4 focuses on academic and technical support online, the tasks 
+included are very much reactive, that is, there is no explicit 
+reference to the use of a learning analytics approach to make 
+sense of student behaviors, nor to predict or act upon any insight 
+gained.  
+
+Despite the widespread use of technology as a means to deliver 
+teaching and learning, little or no use has been made of an active 
+learning analytics approach. The move toward tracking and alert 
+systems for staff and students has been flagged as a future 
+initiative however [3], and it is hoped that such systems may 
+usefully inform the work of both e-tutors and TAs in the future. 
+
+8. SOME POINTERS FOR REALIZING 
+THE OBLIGATION TO ACT 
+Earlier in the paper we acknowledge that realizing the potential of 
+learning analytics to influence strategic decision making in 
+creating more effective and enabling learning environments, and 
+increasing students’ chances of success, depends on a variety of 
+factors. We alluded to the political will of institutions to respond 
+in appropriate and effective ways. The appropriateness and 
+effectiveness of these responses, however, depend on institutions’ 
+understanding of the complexities of student retention and success 
+as well as having the necessary resources and structures in place 
+to respond accordingly. It is relatively easy to bemoan the 
+negative impact of issues such as funding constraints and 
+increased competition, and forget that resources are but a part of 
+an appropriate and effective response. The scope of an 
+institution’s political will as set out in its policies, appointment 
+contracts and performance criteria depends on its understanding 
+and definition of student success and the potential, limitations and 
+ethical challenges around the collection, analyses and use of 
+student data. 
+
+An often neglected area then is the moral and legal obligation that 
+arise from having access to more data. More than ever before 
+institutions have rich, albeit incomplete or holistic pictures of 
+students’ learning journeys. Having access to data does not, per 
+se, translate into complete or necessarily accurate information or 
+knowledge. But where it does flag a likely outcome which might 
+result in student harm, it does raise the obligation to act, whether 
+on moral and/or legal grounds.  
+
+In this concluding section we map some tentative pointers for 
+considering the moral and legal implications of the obligation to 
+act. 
+
+
+
+8.1 Co-responsibility in an asymmetrical 
+power and contractual relationship 
+It is important to acknowledge that institutions do not bear sole 
+responsibility for ensuring learning and student success. Effective 
+learning is found in the nexus between students’ locus of control 
+and situated agency and the institution’s fiduciary and contractual 
+duty [44, 50]. While learning analytics has the potential to provide 
+students with timely feedback and analysis on how to change their 
+behaviors, we should be careful not to assume this exonerates the 
+institution from its fiduciary and contractual duty [20]. The 
+obligation to act is then a co-responsibility of students and 
+institution, albeit tempered by the asymmetrical power and 
+contractual relationship in which the institution has very specific 
+moral and legal duties to respond. 
+
+8.2 Data, information and knowledge 
+As learning analytics matures, the potential for real-time feedback 
+and personalization of learning becomes an increasing reality. Our 
+expectations and assumptions regarding data collection processes 
+(sample size, context, limitations), as well as our understanding of 
+the collected data itself, should be scrutinized for bias, statistical 
+error and unintended consequences.  Accepting that data does not 
+necessarily translate into information and knowledge [27] raises a 
+number of ethical concerns that should be acknowledged and 
+addressed [44, 55]. As proposed in this paper, the collection and 
+analysis of data increases the necessity and scope of the obligation 
+to act. In responding to the analyses there is a fiduciary and 
+contractual duty to ensure that processes and analyses are rigorous 
+and open for peer review and adaptation.  
+
+8.3 The scope and implications of the moral 
+basis for the obligation to act 
+In approaching the necessity and scope of higher education 
+institutions’ obligation to act from a deontological or rule-based 
+moral position, it is clear that higher education institutions have 
+an obligation to act (see next point). In the current fluid and 
+uncertain higher education context we propose that, despite the 
+stability of a deontological approach, a simple reliance on rules 
+and legal frameworks is not enough, and perhaps not even fair 
+[39]. A teleological approach allows for higher education 
+institutions to create spaces to realize and investigate the potential 
+of accepting the co-responsibility of students and institution 
+towards making sense of the responsibilities arising from both 
+data and analyses and determination of the range and limitations 
+of available resources to enable more effective and responsive 
+learning. A teleological approach allows the possibility to explore 
+the benefits and harms, the responsible actors, and the alternatives 
+available in a particular context [54]. We suggest then the need to 
+engage with the potential of both a deontological and teleological 
+approach in exploring the scope, limitations and reasonableness of 
+the obligation to act in a particular institutional, disciplinary and 
+geopolitical context.  
+
+8.4 The scope and implications of the legal 
+basis for the obligation to act 
+Acknowledging that legal frameworks and case law may differ 
+depending on the geopolitical context of a higher education 
+institution, it seems clear that the collection and analyses of data 
+by higher education is not only part of the mandate of higher 
+education [39], but also implies a vinculum iuris or legal basis to 
+act. There is a contractual obligation that arises between student 
+and institution that stipulates the duties and responsibilities of 
+both parties to the agreement. We accept that learning analytics 
+
+has a case to answer when this leads to information and 
+knowledge that students are potentially at-risk or that students’ 
+behavior at a particular point in time in a course increases the 
+probability of dropout. While acknowledging that students and 
+institution are co-responsible, there is ample research that 
+administrative and operational inefficiencies have a negative 
+impact on student learning, and as such, increases the legal basis 
+for students to demand a performance or action in fulfilment of 
+the agreement.  
+
+It falls outside the scope of this paper to explore the various 
+aspects and implications of intentionality or fault, the proof of 
+damage or loss, and causality. The obligation to act arising from 
+the data, information and knowledge harnessed through learning 
+analytics is also tempered by the notion and definition of 
+reasonable care. However, we suggest that there should be 
+account for the responsibilities that arise in knowing more about 
+our students’ dispositions, contexts and learning journeys.  
+
+8.5 The implications of the obligation to act 
+for policies and performance agreements 
+This paper has mapped a number of issues resulting from the 
+moral and legal bases for the obligation to act. The two cases 
+provide some insight into the need for review of the contractual 
+arrangements of tutors as a result of that obligation (whilst 
+recognizing the differences in maturity in using learning analytics 
+to make informed pedagogical decisions in these two institutions). 
+
+In both cases there is no formal or explicit expectation nor any 
+contractual requirement that tutors will engage with the 
+information and knowledge provided by learning analytics. While 
+the OU case study suggests that tutors are not the only 
+institutional staff responding to data flagging at-risk students, the 
+case makes clear that staff at the forefront of the potential of 
+learning analytics are not (yet) contractually bound to respond.  
+
+The two case studies highlight the importance of an institutional, 
+integrated response to the information and knowledge garnered 
+from learning analytics. Although some applications do address 
+issues across the whole student journey, learning analytics is often 
+focused on effective learning and support at a course level. This 
+suggests not only a certain granularity of information, but also a 
+response typically at course level. The ability of staff (whether 
+tutors or teaching assistants, faculty or support and administrative 
+staff) to respond is muddied and embedded in broader institutional 
+policies and funding arrangements, which impact on departmental 
+and course structures, tutor: student ratios, the growing 
+outsourcing of academic support to contract, and increasingly, 
+zero-hour contract staff, etc. And, in addition, the willingness and 
+availability of resources enabling institutions to respond and fulfil 
+their obligatory and fiduciary duty to care are further impacted by 
+external legal, policy, quality assurance and funding regulatory 
+arrangements and bodies.    
+
+Despite this, the recognition of the impact and constraints of the 
+regulatory and funding contexts does not provide a basis for 
+institutions to ignore the moral and legal implications of their 
+obligation to act. We suggest that an integrated and considered 
+response to the obligation to act arising from learning analytics 
+will involve responding on the following levels: 
+
+8.5.1 Institutional policies and frameworks 
+Institutions must have the political will to act in response to the 
+information and knowledge resulting from learning analytics. The 
+cases presented here illustrate the need for an institutional 
+
+
+
+response to the provision of appropriate policy and operational 
+frameworks. One such example is the OU’s own policy on the 
+ethical use of student data for learning analytics [33]. However, as 
+the OU case illustrates, simply having a policy does not 
+necessarily result in the will or the resources to respond.  
+Realizing and optimizing the potential of learning analytics to 
+enrich institutional and student understanding of the factors that 
+shape students’ learning journeys necessitates (re)considering the 
+different responsibilities flowing from knowing more about our 
+students. The complexities of responding to this knowledge will 
+entail appropriately qualified knowledgeable and resourced staff 
+who not only understand the scope and implications of the 
+obligation to act, but who are held contractually liable for 
+responding.  
+
+8.5.2 Teaching contracts 
+Responding appropriately, ethically and effectively to the 
+information and knowledge resulting from learning analytics 
+implies that the obligation to act should be embedded in the 
+contracts and performance criteria of those at the forefront of 
+teaching, whether as course leaders, faculty or tutors/teaching 
+assistants. Both cases provide some evidence that contracts and 
+performance agreements should be more specific than simply 
+asking teaching staff to ‘monitor’ students’ learning. Although 
+interpretation of ‘monitor’ may include taking cognizance of the 
+information and knowledge provided by learning analytics, 
+contracts and performance agreements should be much more 
+precise in defining expectations.  
+
+8.5.3 Oversight and accountability 
+In the light of the moral and legal obligations to act on the 
+information and knowledge resulting from learning analytics, 
+there is a need to also consider the scope and nature of oversight 
+and accountability. The need to respond to information 
+highlighting individual or groups of students risk of failure or lack 
+of engagement also raises questions around who and how we 
+ensure that those responses are appropriate, ethical and an 
+‘optimum’ use of available resources. The very nature of learning 
+analytics as an increasingly fine-grained (yet partial) picture of 
+students’ learning assumes and possibly necessitates timely and 
+detailed responses. While there is increasing consideration for the 
+ethical dimensions of learning analytics, the exact scope and 
+nature of accountability and oversight are still uncertain [55].  
+
+Also crucial is student agency and their recourse to action. We 
+propose that students are not only co-responsible for their 
+learning, but are also impacted by institutional decisions that may 
+either enable their learning or impact negatively on their learning. 
+In the event of institutions knowing that students’ behaviors put 
+them at risk, we propose that institutions have a moral and legal 
+obligation to act – to involve, inform and enable students to take 
+the necessary steps to alleviate risk. Should institutions fail to act, 
+whether by fault or intentionally, students should have a 
+contractual right to demand redress.  
+
+Case law in different contexts relating to higher education 
+institutions’ moral and legal duty to respond to cases of bullying, 
+discrimination and student suicide provides the rationale for this 
+paper’s exploration of the moral and legal obligation to act arising 
+from learning analytics.  
+
+8.6 The potential and perils of new 
+developments in technology 
+Advances in educational technology provide interesting and 
+promising possibilities in considering the obligation of higher 
+
+education institutions to act. While we cannot ignore the ethical 
+challenges posed by the use of algorithms, machine learning and 
+Artificial Intelligence, we also cannot ignore the potential to make 
+greater sense of student learning, or to respond to students with 
+specific needs. (See [38]).   
+
+9. LIMITATIONS TO THIS STUDY 
+This paper arose from the authors’ involvement in the discourses 
+emanating from the maturation of learning analytics as discipline 
+and field of research in two very different contexts. We 
+acknowledge that though there are differences in pedagogy and 
+educational delivery between distance education and more 
+traditional and/or distributed forms of delivery, the issues raised in 
+this paper, though not conclusive, raise important points for 
+consideration irrespective of educational delivery mode. We 
+further acknowledge that not only does the mode of delivery 
+impact on the maturation and role of learning analytics in our two 
+institutions, but also that the case studies in this paper cannot be 
+used to generalize to all distance or distributed learning contexts. 
+As the evidence from the two case studies presented suggests, 
+knowing more about our students and having the potential to 
+surveil students’ activities and recognize behavior that indicate the 
+probability of the risk of failure, raises important moral and legal 
+issues. 
+
+While we firmly believe that this paper addresses a real issue in 
+the maturation and institutionalization of learning analytics, we 
+acknowledge that the moral and legal issues pertaining to the 
+obligation to act are complex and require expert opinion. As 
+educators and researchers we acknowledge that this paper has but 
+touched the surface of the moral and legal issues in respect of the 
+obligation to act. Despite this limitation, this paper proposes 
+tentative pointers to guide engagement with the duties and 
+responsibilities resulting from knowing more about our students’ 
+dispositions, engagement or lack of, and their relative 
+probabilities of being at risk of failure.  
+
+10. (IN)CONCLUSIONS 
+In the light of the increasing volume, variety, velocity and 
+veracity of student data available to be collected, analyzed and 
+used in learning analytics, this paper raised the responsibilities 
+resulting from knowing more about our students and the resulting 
+moral and legal foundations in the scope and nature of the 
+obligation to act. There is ample and increasing evidence that the 
+insights provided by learning analytics can inform students to 
+adjust their behaviors, and institutions to provide additional or 
+more effective and appropriate support.  As the two case studies in 
+this paper suggests,  knowing more about our students and making 
+this information and knowledge available to a range of 
+stakeholders, does not necessarily result in action.  
+
+Responding to the analyses and insights provided by learning 
+analytics is often constrained by a range of factors, such as lack of 
+political will, gaps in performance contracts and/or a lack of 
+resources.  While these factors are mitigating and sobering factors 
+in considering the moral and legal obligation to act, they do not 
+indemnify or exonerate higher education from considering the 
+moral and legal implications of knowing more about our students.  
+
+This paper proposed that a deontological or rule-based response to 
+the obligation to act may not be sufficient in the light of the 
+instability in the field of higher education. Despite the limitations 
+in a deontological approach, the obligation to act is embedded in a 
+rich and detailed legal framework of thought that raises important 
+issues for learning analytics. Complimenting a deontological 
+
+
+
+approach to considering the scope and nature of the obligation to 
+act, is a teleological approach that determining the scope, 
+timeliness and resources needed to enact the obligation to act 
+should be negotiated between everyone affected.  
+
+We have outlined suggestions for realizing the obligation to act 
+based on an understanding of student and institution co-
+responsibility despite and amidst the asymmetrical power and 
+contractual relationship; reconsidering our assumptions regarding 
+data, information and knowledge; the moral and legal implications 
+pertaining to an obligation to act and lastly, the implications of the 
+obligation to act for policies and performance agreements. 
+
+Despite their limitations, the two short case studies presented 
+provide a basis for our assertion that the time has come to explore 
+the moral and legal obligation to respond to knowing more about 
+our students’ dispositions, learning behaviors and risk profiles. 
+
+11. ACKNOWLEDGEMENTS 
+We would like to acknowledge the input and support for this 
+paper received from key staff at the Open University and Unisa 
+for input and legal opinions. Any shortcomings in this paper are 
+the authors’ own. We appreciate the valuable input received from 
+the three reviewers on the earlier submission of this paper. 
+
+12. REFERENCES 
+[1] Alexander, L. (2005). Lesser evils: A closer look at the 
+
+paradigmatic justification. Law and Philosophy, 24(6), 611-
+643. 
+
+[2] Altbach, P.G., Reisberg, L., & Rumbley, L.E. (2009). Trends 
+in global higher education: Tracking an academic revolution. 
+Retrieved from 
+http://unesdoc.unesco.org/images/0018/001831/183168e.pdf 
+
+[3] Baijnath, N. (2015) Going digital, presented at the Learning 
+Africa Conference, Ethiopia, 21 May 2015. Retrieved from: 
+http://www.unisa.ac.za/news/wp-
+content/uploads/2015/05/eLearning-Africa-2015-Speaking-
+Notes-N-Baijnath-200515.pdf 
+
+[4] Blythe, S., Darabi, R., Kirkwood, B. S., & Baden, W. (2009). 
+Exploring options for students at the boundaries of the" at-
+risk" designation. WPA: Writing Program Administration-
+Journal of the Council of Writing Program Administrators, 
+33, 9-28. 
+
+[5] Bos, W. & Tarnai, C. (1999). Content analysis in empirical 
+social research, International Journal of Educational 
+Research, 31, pp. 659-671.  
+
+[6] Botes, A. (2000). A comparison between the ethics of justice 
+and the ethics of care. Journal of Advanced Nursing, 32, 
+1071–1075. DOI: 10.1046/j.1365-2648.2000.01576.x 
+
+[7] Braxton, J.M. (Ed.). (2000). Reworking the student departure 
+puzzle. Nashville: Vanderbilt University Press.  
+
+[8] Calvert, C. E. (2014). Developing a model and applications 
+for probabilities of student success: a case study of predictive 
+analytics. Open Learning: The Journal of Open, Distance and 
+e-Learning, 29(2), 160-173. doi: 10.1080/02680513.2014. 
+931805 
+
+[9] Crawford, K., & Whittaker, M. (2016, September 12). 
+Artificial intelligence is hard to see. Why we urgently need 
+to measure AI’s societal impacts. [Web log post]. Medium. 
+Retrieved from https://medium.com/@katecrawford/artificial 
+-intelligence-is-hard-to-see-a71e74f386db#.wi7sq5l3a  
+
+[10] Creswell, J.W. (2007). Qualitative inquiry & research design. 
+Choosing among five approaches, 2nd edition, London, UK: 
+SAGE Publications.  
+
+[11] Danaher, J. (2015, June 15). How might algorithms rule our 
+lives? Mapping the logical space of algocracy. [Web log 
+post]. Retrieved from 
+http://philosophicaldisquisitions.blogspot 
+.co.za/2015/06/how-might-algorithms-rule-our-lives.html    
+
+[12] Davis, F. D., Bagozzi, R. P., & Warshaw, P. R. (1989). User 
+acceptance of computer technology: A comparison of two 
+theoretical models. Management Science, 35(8), 982–1002. 
+
+[13] Drachsler, H., & Greller, W. (2016). Privacy and learning 
+analytics – it’s a DELICATE issue. 6th Learning Analytics 
+and Knowledge Conference 2016, April 25-29, 2016, pp. 89-
+98. Edinburgh, UK. DOI: http://dx.doi.org/10.1145/2883851. 
+2883893. 
+
+[14] El-Khawas, E. (2000). Patterns of communication and 
+miscommunication between research and policy. In S. 
+Schwarz & U. Teichler (Eds.), The institutional basis of 
+higher education research. Experiences and perspectives (pp. 
+45-55). London, UK: Kluwer Academic Publishers. 
+
+[15] Elo, S., & Kyngäs, H. (2007). The qualitative content 
+analysis process, Journal of Advanced Nursing, 62, pp. 107-
+115. DOI: 10.1111/j.1365-2648.2007.04569.x. 
+
+[16] Ferguson, R. (2012). Learning analytics: drivers, 
+developments and challenges. International Journal of 
+Technology Enhanced Learning, 4(5-6), 304-317. 
+
+[17] Gasevic, D., Kovanovic, V., Joksimovic, S., & Siemens, G. 
+(2014). Where is research on massive open online courses 
+headed? A data analysis of the MOOC Research Initiative. 
+The International Review of Research in Open and 
+Distributed Learning, 15(5), 134-176 
+
+[18] Gaševi?, D., Dawson, S., & Siemens, G. (2015). Let’s not 
+forget: Learning analytics are about learning. TechTrends, 
+59(1), 64-71. 
+
+[19] Gilligan, C. (1982). In a different voice: Psychological 
+theory and women’s development. Cambridge, Mass: 
+Harvard University Press.  
+
+[20] Godor, B. P. (2016). Academic fatalism: applying 
+Durkheim’s fatalistic suicide typology to student drop-out 
+and the climate of higher education. Interchange, 1-13. DOI: 
+10.1007/s10780-016-9292-8 
+
+[21] Greller, W. & Drachsler, H. (2012). Translating Learning 
+into Numbers: Toward a Generic Framework for Learning 
+Analytics. Educational Technology and Society. 15 (3): 42–
+57 
+
+[22] Griffiths, D., Drachsler, H., Kickmeier-Rust, M., Hoel, T., & 
+Greller, W. (2016). Is privacy a show-stopper for learning 
+analytics? A review of current issues and solutions. Learning 
+Analytics Review 6. LACE. Retrieved from 
+http://www.laceproject.eu/learning-analytics-review/is-
+privacy-a-show-stopper/ 
+
+[23] Herodotou, C., Rienties, B, Boroowa, A., Zdrahal, Z., Hlosta, 
+M., Naydenova, G. (2016) Using Predictive Learning 
+Analytics to Support Just-in-time Interventions: The 
+Teachers' Perspective. To be submitted to Teaching and 
+Teacher Education.   
+
+[24] Hsieh, H-F., & Shannon, S.E. (2005). Three approaches to 
+qualitative content analysis, Qualitative Health Research, 
+15(9), 1277-1288.  DOI: 10.1177/1049732305276687. 
+
+[25] Hülsmann, T. (2016). The impact of ICT on the costs and 
+economics of distance education: A review of the literature. 
+Retrieved from http://oasis.col.org/handle/11599/2047  
+
+[26] Hülsmann, T., & Shabalala, L. (2016). Workload and 
+interaction: Unisa’s signature courses – a design template for 
+transitioning to online DE?. Distance Education, 37(2), 224-
+236. 
+
+
+
+[27] Kitchen, R. (2014). The data revolution. Big data, open data, 
+data infrastructures and their consequences. London, UK: 
+Sage.  
+
+[28] Kogan, M., & Henkel, M. (2000). Future directions for 
+higher education policy research. In S. Schwarz & U. 
+Teichler (Eds.), The institutional basis of higher education 
+research. Experiences and perspectives (pp. 25-43). London, 
+UK: Kluwer Academic Publishers. 
+
+[29] Lincoln, Y. S., & Guba, E. G. (1990). Judging the quality of 
+case study reports. International Journal of Qualitative 
+Studies in Education, 3(1), 53-59. DOI: 
+10.1080/0951839900030105 
+
+[30] Marshall, S., 2014. Exploring the ethical implications of 
+MOOCs. Distance Education, 35(2), pp.250-262. 
+
+[31] Massie, A. M. (2007). Suicide on campus: The appropriate 
+legal responsibility of college personnel. Marq. L. Rev., 91, 
+625. 
+
+[32] McMahan, J. (1993). Killing, letting die, and withdrawing 
+aid. Ethics, 103(2), 250-279. 
+
+[33] Open University. (2014). Policy on ethical use of student 
+data for learning analytics. Retrieved from 
+http://www.open.ac.uk/ 
+students/charter/sites/www.open.ac.uk.students.charter/files/f
+iles/ecms/web-content/ethical-use-of-student-data-policy.pdf  
+
+[34] Open University Tutor (Associate Lecturer) Support 
+Statement (2012). Retrieved from http://www.open.ac.uk/ 
+students/charter/sites/www.open.ac.uk.students.charter/files/f
+iles/ecms/web-content/tutor-support-statement.pdf		
+
+[35] Open University Terms and Conditions of Service for 
+Associate Lecturers (2016). Retrieved from 
+http://intranet6.open.ac.uk/student-services/main/sites/ 
+intranet6.open.ac.uk.student-services.main/files/files/ecms 
+/web-content/associate-lecturers/al-services/AL-Terms-and-
+conditions-April-2016.pdf 
+
+[36] Patton, MC. 2008. Utilization-focused evaluation. [4th 
+edition]. London, UK: Sage. 
+
+[37] Prinsloo (2016a). Evidence-based decision making as séance: 
+implications for learning and student support. In Jan Botha & 
+Nicole Muller (Eds.), Institutional Research in support of 
+evidence-based decision-making in Higher Education in 
+Southern Africa (pp. 331-353). Stellenbosch, South Africa: 
+SUN Media. 
+
+[38] Prinsloo, P. (2016b, October 5). The increasing 
+(im)possibilities of justice and care in open, distance 
+learning. Presentation at EDEN Research Workshop, 
+Oldenburg, Germany. Retrieved from 
+http://www.slideshare.net/ prinsp/the-increasing-
+impossibilities-of-justice-and-care-in-open-distance-learning  
+
+[39] Prinsloo, P., & Slade, S. (2014). Educational triage in higher 
+online education: walking a moral tightrope. International 
+Review of Research in Open Distributed Learning 
+(IRRODL), 14(4), pp. 306-331. 
+http://www.irrodl.org/index.php/ irrodl/ article/view/1881 
+
+[40] Prinsloo, P., & Slade, S. (2016). Here be dragons: Mapping 
+student responsibility in learning analytics, in Mark 
+Anderson and Collette Gavan (eds.), Developing Effective 
+Educational Experiences through Learning Analytics (pp. 
+174-192). Hershey, Pennsylvania: ICI-Global.   
+
+[41] Rienties, B., Giesbers, B., Lygo-Baker, S., Ma, H.W.S & 
+Rees, R. (2016). Why some teachers easily learn to use a new 
+virtual learning environment: a technology acceptance 
+perspective. Interactive Learning Environments, 24(3) pp. 
+
+539–552. Rule, P., & John, V. (2011). Case study research, 
+Pretoria: Van Schaik Publishers. 
+
+[42] Sclater, N. (2015, March 3). Effective learning analytics. A 
+taxonomy of ethical, legal and logistical issues in learning 
+analytics v1.0. JISC. Retrieved from https:// 
+analytics.jiscinvolve.org/wp/2015/03/03/a-taxonomy-of-
+ethical-legal-and-logistical-issues-of-learning-analytics-v1-0/  
+
+[43] Siemens, G., Irvine, V., & Code, J. (2013). Guest editors' 
+preface to the special issue on MOOCs: an academic 
+perspective on an emerging technological and social trend. 
+Journal of Online Learning and Teaching, 9(2), iii-vi. 
+
+[44] Slade, S. & Prinsloo, P. (2013). Learning analytics: ethical 
+issues and dilemmas. American Behavioral Scientist 57(1), 
+1509–1528. 
+
+[45] Schmidtz, D. (2000). Islands in a sea of obligation: limits of 
+the duty to rescue. Law and Philosophy, 19(6), 683-705. 
+
+[46] Simpson, O. (2013). Supporting students in online open and 
+distance learning. London, UK: Routledge. 
+
+[47] Sontag, D. (2002, April 28). Who was responsible for 
+Elizabeth Shin? The New York Times. Retrieved from 
+http://www.nytimes.com/2002/04/28/magazine/who-was-
+responsible-for-elizabeth-shin.html  
+
+[48] Spady, W. G. (1970). Dropouts from higher education: An 
+interdisciplinary review and synthesis. Interchange, 1(1), 64-
+85. DOI: 10.1007/BF02214313 
+
+[49] Spady, W. G. (1971). Dropouts from higher education: 
+Toward an empirical model. Interchange, 2(3), 38-62. DOI: 
+10.1007/BF02282469 
+
+[50] Subotzky, G., & Prinsloo, P. (2011). Turning the tide: a 
+socio-critical model and framework for improving student 
+success in open distance learning at the University of South 
+Africa. Distance Education, 32(2): 177-19.  
+
+[51] Tinto, V. (1975). Dropout from higher education: a 
+theoretical synthesis of recent research. Review of 
+Educational Research, 45(1), 89-125. 
+
+[52] Thomas, G. (2011). How to do your case study. A guide for 
+students and researchers, London, UK: Sage. 
+
+[53] Tyson, C.  (2014, September 10). The ‘murky’ middle. Inside 
+HigherEd. Retrieved from  https://www.insidehighered.com/ 
+news/2014/09/10/maximize-graduation-rates-colleges-
+should-focus-middle-range-students-research-shows  
+
+[54] Velasquez, M., Andre, C., Shanks, T.S.J., & Meyer, M.J. 
+(2015, August 1). Thinking ethically. Retrieved from 
+https://www.scu.edu/ethics/ethics-resources/ethical-decision-
+making/thinking-ethically/  
+
+[55] Willis, J. E., Slade, S., & Prinsloo, P. (2016). Ethical 
+oversight of student data in learning analytics: a typology 
+derived from a cross-continental, cross-institutional 
+perspective. Educational Technology Research and 
+Development, 1-21. 
+
+[56] Wolff, A., Zdrahal, Z., Herrmannova, D., Kuzilek, J., & 
+Hlosta, M. (2014). Developing predictive models for early 
+detection of at-risk students on distance learning modules, 
+Workshop: Machine Learning and Learning. Presented at the 
+Learning Analytics and Knowledge (2014), Indianapolis, 
+Indiana, USA. Retrieved from 
+https://pdfs.semanticscholar.org/3d16/f4008858795b126a351
+354101b9e378c9337.pdf 
+
+[57] World Bank. (2016). Digital dividends. Washington: 
+International Bank for Reconstruction and Development / 
+The World Bank. Retrieved from http://www.worldbank.org 
+/en/publication/wdr2016. 
+
+ 
+
+
+

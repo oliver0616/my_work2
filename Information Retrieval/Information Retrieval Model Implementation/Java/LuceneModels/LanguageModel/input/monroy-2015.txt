@@ -1,0 +1,215 @@
+
+A Learning Analytics Approach to Characterize and 
+Analyze Inquiry-based Pedagogical Processes 
+Carlos Monroy, Virginia Snodgrass Rangel, Elizabeth R. Bell, Reid Whitaker 
+
+Rice University Center for Digital Learning and Scholarship 
+6100 Main St., MS 112 
+
+Houston, TX 77005 
+United States 
+
++1 713 348 5433 
+{carlos.monroy, vsr, erb10, reid}@rice.edu
+
+ 
+ABSTRACT 
+Here we describe the use of learning analytics (LA) for 
+investigating inquiry-based science instruction. We define several 
+variables that quantify curriculum usage and leverage tools from 
+process mining to examine inquiry-based pedagogical processes. 
+These are initial steps toward measuring and modeling fidelity of 
+implementation of a science curriculum. We use data from one 
+school district’s use of an online science curriculum (N=1,021 
+teachers and nearly 330,000 page views).  
+
+Categories and Subject Descriptors 
+K.3.0 [Computers and Education]: General; H.4 [Information 
+Systems Applications]: Miscellaneous. 
+
+General Terms 
+Management, Design, Human Factors. 
+
+Keywords 
+Process mining, inquiry-based pedagogy, learninformatics. 
+
+1. INTRODUCTION 
+In this paper we build on the Learning Analytics infrastructure 
+developed for STEMscopes, an online, inquiry-based science 
+curriculum for grades K-12 in the U.S., and use data from one 
+school district to explain how we currently are using learning 
+analytics data to understand how the curriculum is used. Our goals 
+here are: 1) to define a set of variables for measuring curriculum 
+use, and 2) to briefly describe the application of process-mining 
+methods, using ProM [3], an open source process modeling and 
+mining software to explore patterns of use. We harness ongoing 
+research in Learning Analytics such as the one described in [4]. 
+
+2. MEASURING INQUIRY PROCESSES  
+Inquiry-based science education has its roots in constructivist 
+pedagogies [1]. The basic premise of constructivism is that 
+students learn by constructing knowledge gained from hands-on 
+experiences and social interaction. STEMScopes [2] is based on 
+the 5E instructional model and builds on previous lesson cycles 
+
+meant to help teachers implement inquiry-based instruction in the 
+classroom. The 5E refers to five steps within the cycle: 
+engagement, exploration, explanation, elaboration, and evaluation. 
+We used anonymized event log data from teacher interactions 
+with the STEMscopes website for a mid-size school district for 
+the 2012-2013 school year. Here we adopt a broader notion of 
+“curriculum use,” that is, a visit to a curriculum resource 
+constitutes use. STEMscopes is divided into science standards 
+(called scope). Each scope is divided into steps (from the 5E+I/A 
+model). Steps, in turn contain different elements such as activities 
+designed to fulfill the pedagogical purpose of each step. In the 
+next section, we describe several variables we have created in an 
+effort to characterize teaching practices (see formulas 1 to 4). 
+
+2.1 Activity Level Instruction (ALI) 
+This variable tells us the concentration of use on a pedagogical 
+step, by measuring the contribution of visits to elements within 
+that step in relation to the total number of visits to all steps (V). 
+Formula 1 describes the ALI for the Engage step (En); this 
+formula is replicated for each one of the seven steps. In the test 
+case we present here, mean ALI values for Engage, Explore, and 
+Explain (the steps related to the inquiry process) range from 0.21 
+to 0.26, with Explore having the highest value (0.26), revealing 
+comparable proportions of use among the three (approximately 
+25% of visits to each one of these steps). Average use for 
+Elaborate and Evaluate drops to 0.15 and 0.08, this is expected 
+because they include fewer activities. Finally, mean values for 
+Acceleration and Intervention are the lowest ones. 
+
+2.2 Inquiry Instruction Contribution (IIC) 
+This index measures the proportion of combined visits to elements 
+in Engage, Explore, and Explain in relation to the total number of 
+visits (V) to the seven 5E+I/A steps (see formula 2). It represents 
+the ratio of inquiry instruction to total visits. The average IIC 
+value was 0.70, which indicates a high concentration of access to 
+the inquiry-related steps in relation to total access of the 
+curriculum. Although the IIC index depicted in figure 1 does not 
+indicate a clear trend, it does suggest a large concentration of 
+teachers with IIC values between 0.5 and 0.85 (X-axis) for 
+teachers with mid- and high-levels of visits (Y-axis). Conversely, 
+fewer teachers are found on the lower range (between 0.0 and 
+0.5), suggesting that students likely have more opportunities to 
+explore new concepts and then articulate their new knowledge. 
+
+Permission to make digital or hard copies of part or all of this work for 
+personal or classroom use is granted without fee provided that copies are 
+not made or distributed for profit or commercial advantage and that 
+copies bear this notice and the full citation on the first page. Copyrights 
+for third-party components of this work must be honored. For all other 
+uses, contact the Owner/Author.  
+ 
+Copyright is held by the owner/author(s). 
+LAK '15, Mar 16-20, 2015, Poughkeepsie, NY, USA 
+ACM 978-1-4503-3417-4/15/03. 
+http://dx.doi.org/10.1145/2723576.2723658 
+
+ 
+
+(1) (2) 
+
+(4) (3) 
+
+398
+
+
+
+2.3 Next Step Index (NSI) 
+Activities in the Elaborate step include students creating their 
+own questions and cross-curricular activities addressing areas 
+such as math or reading. The NSI variable (formula 3) therefore 
+measures the proportion of Elaborate usage compared to the 
+average of combined visits to the Engage, Explore, and Explain 
+steps (m=3), which allows us to compare the degree of 
+“broadening instruction” in relation to the inquiry-related steps. 
+The NSI index shows a concentration of teachers in a narrow 
+range (scatterplot labeled NSI in figure 1). This index generally 
+has a low value since it compares activities on one step—
+Elaborate—in relation to usage on three steps. 
+
+2.4 Evaluation Index (EVI) 
+The Evaluation Index variable (formula 4) measures the degree to 
+which teachers access the evaluations embedded in the curriculum 
+in relation to the combined average of the inquiry-related steps, 
+Engage, Explore, and Explain steps (m=3). Similar to the NSI 
+index, the Evaluation index tends to have lower values with a 
+concentration of use between 0.0 and 0.1 (scatterplot labeled EVI 
+in figure 1) and a handful of outliers (teachers with EVI values of 
+0.3 and greater on the X-axis), suggesting a moderate level of 
+access of the assessments, relative to use of the three inquiry-
+related steps (similar to NSI). Although the short assessments are 
+critical for measuring students’ progress, the curriculum offers 
+other more formative ways to assess students [5]. 
+
+2.5 Process Mining 
+Indices described earlier give a glimpse of curriculum use, 
+however, they do not show sequences and completeness of steps. 
+A Petri Net generated by ProM for a random (but non-
+representative) sample of three teachers showed that: 1) Explore 
+and Engage were the steps that teachers tended to access first, 2) 
+Explain step tends to follow Engage, and that 3) Acceleration 
+following Explore was an unexpected sequence. Figure 2 depicts 
+the steps preceding and following Engage activities (red box). For 
+approximately 57% of the cases, the preceding activities are from 
+the same Engage step, 35% from the Evaluate step, and 8% from 
+Intervention. On the other hand, subsequent activities visited after 
+Engage include a different activity in the same step 66% of the 
+time, and activities in Explain 34% of the time. This case 
+illustrates one of the strengths of process modeling, namely to 
+better understand inquiry processes beyond the proportions of 
+usage revealed by the indices defined in section two.  
+
+3. CONCLUSIONS AND FUTURE WORK 
+In general, results discussed in section 2 shed light on ways to 
+measure inquiry instruction. As we refine our analysis with ProM, 
+we expect to conduct fidelity of implementation studies, which 
+can offer insights about path variations for diverse science topics, 
+alignment to “best practices” or “canonical” inquiry-paths, and 
+timespan for covering materials. The indices offer a high level 
+perspective of usage, depicting the influence of the 5E pedagogy 
+based on proportions of use. However, they fall short in terms of 
+the details offered by process modeling. We expect to combine 
+these methods to help us better understand classroom instruction. 
+
+4. REFERENCES 
+[1] Minner, D., Levy, A., and  Century, J. 2010. Inquiry-based 
+
+science instruction—what is it and does it matter? Results 
+from a research synthesis years 1984 to 2002. Journal of 
+Research in Science Teaching. 47(4), 474-496. 
+
+[2] Monroy, C, Snodgrass-Rangel, V. and Whitaker, R. 2013. 
+STEMscopes: Contextualizing Learning Analytics in a K-12 
+Science Curriculum. Proceedings of the 3rd. LAK Conference. 
+210-219.  
+
+[3] Van der Aalst, W. 2010. Process Mining: Discovery, 
+Conformance and Enhancement of Business Processes. 
+Springer, Germany. 
+
+[4] Wise, A., Zhao, Y., and Hausknecht, S. 2013. Learning 
+analytics for online discussions: a pedagogical model for 
+intervention with embedded and extracted analytics. 
+Proceedings of the 3rd. LAK Conference. 48 -56. 
+
+[5] Zuiker, S. and Whitaker, R. 2013. Refining inquiry with 
+multi-form assessment: Formative and summative 
+assessment functions for flexible inquiry. Int. Journal of 
+Science Education. DOI: 10.1080/09500693.2013.83448
+
+Figure 2. Inputs and Outputs for the Engage step (red box), 
+and the rest of the 5E+A/I steps. 
+
+Figure 1. Comparing visits (Y-axis) and indices from section two (X-axis ranging from 0 to 1). NSI and EVI ranges (X-axis) 
+have been normalized between 0 and 1 for displaying purposes. For all graphs, N=143,663 visits and N=1021 teachers. 
+
+399
+
+
+
+
+

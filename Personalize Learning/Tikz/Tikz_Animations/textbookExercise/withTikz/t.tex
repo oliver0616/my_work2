@@ -1,0 +1,25 @@
+\documentclass{article}
+\usepackage{animate}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{animateinline}[
+begin={% header of each frame
+\begin{tikzpicture}
+	[line width=1pt]
+	\path[clip] (0,0) rectangle (8,6);
+	},
+end={\end{tikzpicture}} %also each frame
+]{3}
+
+\multiframe{20}{iAngle=120+-5}
+{
+	%...
+	\fill[fill=yellow] % the sun
+	(\iAngle:8cm) circle (1);
+	%...
+} % end of multiframe
+\end{animateinline}
+
+\end{document}

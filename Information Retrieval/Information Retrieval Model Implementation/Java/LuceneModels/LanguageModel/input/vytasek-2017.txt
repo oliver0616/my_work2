@@ -1,0 +1,275 @@
+
+Topic Models to Support Instructors in MOOC Forums 
+Jovita M. Vytasek 
+
+Simon Fraser University 
+8888 University Drive 
+
+Burnaby, B.C., Canada 
++1 778-782-3111 
+
+jvytasek@sfu.ca
+
+Alyssa F. Wise 
+New York University 
+
+New York, NY 
+10003, USA 
+
++1 212-998-1212 
+alyssa.wise@nyu.edu 
+
+Sonya Woloshen 
+Simon Fraser University 
+
+8888 University Drive 
+Burnaby, B.C., Canada 
+
++1 778-782-3111 
+swoloshe@sfu.ca 
+
+ABSTRACT 
+This paper explores the potential of using naïve topic modeling to 
+support instructors in navigating MOOC discussion forums. 
+Categorizing discussion threads into topics can provide an 
+overview of the discussion, improve navigation of the forum, and 
+support replying to a representative sample of content related 
+posts. We investigate four different approaches to using topic 
+models to organize and present discussion posts, highlighting the 
+strength and weaknesses of each approach to support instructors. 
+
+CCS Concepts 
+• Applied computing ? Education ? E-learning 
+
+Keywords 
+MOOC, discussion forums, topic modeling. 
+
+1. INTRODUCTION 
+Searching and navigating Massive Open Online Course (MOOC) 
+discussion forums, composed of high volumes of participants and 
+posts, is a challenging task for instructors and TAs [8]. To address 
+this, most forums provide searching, discussion thread labeling 
+[4], and some use students’ ‘upvote’ of popular posts to denote 
+their importance [3]. These strategies can be helpful if an 
+instructor is searching for a particular type of question/comment, 
+but in many cases instructors read forum posts to gain a general 
+sense of what their students are discussing. This is an important 
+goal for instructors as they try to address the particular needs and 
+interests of their students. Instructors might want to know if 
+students are struggling with the content, how they are discussing 
+ideas, or provide support to encourage students to work 
+collaboratively. This serves the main intent of forums as a place to 
+discuss ideas, course content, ask questions, answer problems and 
+build networks [4][8][11]. 
+ 
+Currently if an instructor wants to know about forum discussions 
+they need to read large quantities of posts, but this is overly 
+burdensome. Topic modeling offers a novel way to reduce this 
+burden by grouping similar posts together by topic [1] and 
+providing a topic description of their content. Grouping posts by 
+topics for instructors can potentially provide holistic insights into 
+the types of discussions occurring. Prior work using topic models 
+on MOOC forum data has mostly taken a researcher perspective 
+to understand discussions, for example to study: evolution of 
+discussion structures [4], organization of MOOC resources [6], 
+
+topics linked to student attrition [10], or identify MOOC topic 
+discussions in social media [5]. More recently, however, there has 
+been growing interest in developing and presenting topic models 
+to instructors to support their teaching.  Chen and colleagues [2] 
+used topic models to help instructors review large quantities of 
+student reflection papers. Other work [Paepcke, personal 
+communication] focused on the use of word clouds to visualize 
+MOOC discussion topic models for instructor use. The current 
+study expands this work by exploring how different approaches to 
+build naïve topic models highlight different features for MOOC 
+instructors.  
+
+2. STUDY FRAMING 
+This study explores and compares the utility of four different 
+approaches to creating topic models to support instructors in 
+navigating and reviewing MOOC discussion posts. It is the first 
+phase of a project to design visualizations of topic models and 
+assess their use with teachers. This initial work addresses the 
+research question: What potential information is offered to 
+instructors by different variations of topic models? The first model 
+is a baseline using all posts. The second approach generates topic 
+models from pre-sorted posts grouped into content/non-content 
+categories. The third approach uses a second level of topic 
+modeling to further group posts into subtopics. The fourth 
+approach creates models based on weekly course segmentation. 
+
+3. METHODS AND RESULTS 
+Data was all 813 starting posts from the discussion forum of a 
+Medical Statistics MOOC offered in 2014. Starting posts were 
+used for modeling as they are a parsimonious way to examine the 
+range of topics discussed and common way to search through a 
+discussion forum [9][12]. The MALLET toolkit [7] with standard 
+stop word list was used to develop the topic models. Number of 
+topics (k) was varied to optimize comprehension. In each analysis, 
+posts were assigned to their most related topic. Models two 
+through four used posts pre-categorized as content or non-content 
+based on a previously developed and validated classifier [12]. 
+The first model uses a traditional topic modeling approach, 
+including all posts as one corpus. A 20-topic model best 
+differentiated posts but was difficult to navigate given the large 
+number of topics to examine and quantity of posts within. To 
+explore ways of improving ease of navigation and interpretability, 
+the second approach assessed the potential of using topic models 
+on the discussion corpus after dividing it into content/non-content. 
+Ten topics were generated from content and non-content posts in 
+order to compare a total of 20 topics to the prior model. This 
+substantially improved the interpretability of the topics. For 
+instance, the terms ‘quiz’ and ‘explain’ appeared in all models. 
+The content/non-content model provided greater context to 
+understand these terms as ‘quiz’ was contextualized within themes 
+surrounding conceptual questions vs. how to access the quiz. This 
+also improved navigability – instructors could select either content 
+or non-content, then compare 10 topics, as opposed to comparing 
+all 20. Topic contribution to post improved from M=0.33 
+
+Permission to make digital or hard copies of all or part of this work for 
+personal or classroom use is granted without fee provided that copies are 
+not made or distributed for profit or commercial advantage and that 
+copies bear this notice and the full citation on the first page. Copyrights 
+for third-party components of this work must be honored. For all other 
+users, contact the Owner/Author.  
+Copyright is held by the owner/author(s).  
+LAK’17, March 13–17, 2017, Vancouver, BC, Canada. 
+ACM 978-1-4503-4870-6/17/03 
+http://dx.doi.org/10.1145/3027385.3029486 
+
+
+
+SD=0.15 to M=0.36 SD=0.12 and M=0.35 SD=0.13, content/non-
+content respectively. The limitation of this approach is the large 
+number of posts within each topic (M=45). This may be time 
+consuming for an instructor to review and could overlook smaller 
+topics within these broad topics. To address this, the third and 
+fourth models explored different approaches to further classifying 
+posts within a topic. The traditional solution would be to increase 
+k (# of topics) to reduce the number of posts within each topic; 
+however, this puts a cognitive burden on the instructor to compare 
+a greater number of unorganized topics. As an alternative, the 
+third design makes use of nested subtopics within the larger topic 
+to increase k but group related topics. Syphoning topics into 
+subtopics allows instructors to choose from a reduced list of topics 
+that open a list of related subtopics which link to posts. Figure 1 
+provides an example of this navigation using 5 subtopics.  
+
+ 
+ 
+
+The advantage is that instead of viewing 50 discrete topics, 
+nesting provides instructors with a choice among 10 topics with 5 
+related subtopics in each. Posts within the subtopics are ordered 
+by topic contribution providing instructors with easy access to the 
+most representative post from each subtopic. Grouping related 
+subtopics and listing their descriptor words can provide an 
+overview of the discussion without the need to read individual 
+posts. Instructors could use subtopic representative posts to gain 
+insight into the variety of questions asked. If reviewing past 
+courses for future improvements, this overview approach could be 
+beneficial to look at trends in problem areas or compare courses. 
+For example, an instructor could view all topics related to 
+algebraic computation difficulties across course chapters and 
+design an additional lesson to address it. A limitation to this 
+approach is that posts in a topic span a variety of weeks in the 
+course (see figure 1); however, instructors may want to see 
+discussion topics as they relate to their presentation of the 
+material. The fourth approach addresses this issue of temporality 
+by grouping posts according to the course schedule, creating 
+subtopics for each week’s posts (see figure 2). Instructors could 
+use a weekly summary of the discussion with representative posts 
+
+from different topics, or to address unresolved questions before 
+moving on to a new lesson. Additionally, listing posts by topic 
+groups similar questions highlighting repetition. Instructors can 
+quickly link questions to a prior answer post or create an 
+
+announcement that addresses a series of similar questions. 
+Limitations of this model are that the total number of posts change 
+weekly impacting the optimal number of k topics, and it is 
+difficult to view course wide trends.  
+
+4. DISCUSSION 
+This study contributes to the important question of how to make 
+the benefits of topic models useful to a practitioner audience of 
+instructors and their unique needs. Assessing the four different 
+approaches to grouping and classifying discussion posts using 
+topic models highlighted their unique benefits and drawback for 
+different instructional purposes. Results indicate organizing topic 
+models into content/non-content improves topic interpretability 
+with small gains in the relatedness of topic to posts. The creation 
+of subtopics within larger topics improved manageability of 
+interpretation and ease of use by reducing the number of topic 
+comparisons and grouping related subtopics. Model 3 highlights 
+the advantages of seeing topics across the course while model 4 
+highlights the advantages of maintaining the time sequence of the 
+course, representing a tradeoff between the ability to explore 
+either temporal features or broader concept features depending on 
+instructional needs. In the next phase of the project, these findings 
+will be used to design visualizations of the topic model designs 
+and assess their usability with instructors. 
+
+5. REFERENCES 
+[1] Blei, D. 2012. Probabilistic Topic Models. Communications 
+
+of the ACM, 55 (4): 77-84. 
+[2] Chen, Y., Yu, B., Zhang, X., & Yu, Y. 2016. Topic modeling 
+
+for evaluating students' reflective writing: a case study of 
+pre-service teachers' journals. In Proceedings of LAK’16 . 
+ACM.1-5. 
+
+[3] Coetzee, D., Fox, A., Hearst, M. A., & Hartmann, B. 2014. 
+Should your MOOC forum use a reputation system?. In 
+Proceedings of CSCW’14. ACM. 1176-1187. 
+
+[4] Ezen-Can, A., Boyer, K. E., Kellogg, S., & Booth, S. (2015). 
+Unsupervised modeling for understanding MOOC discussion 
+forums: a learning analytics approach. In Proceedings of 
+LAK’15. ACM. 146-150. 
+
+[5] Joksimovic, S, Kovanovic, V, Jovanovic, J, Zouaq, A, 
+Gasevic, D & Hatala, M. 2015. What do cMOOC 
+participants talk about in Social Media?. In Proceedings of 
+LAK’15. ACM. 156-165. 
+
+[6] Khamidoullina, I., Reggers, T., & Zeiliger, R. 2001. 
+NESTOR-integrated tools for active navigation and 
+constructive learning. In Proceedings of EDMEDIA (959). 
+AACE  
+
+[7] McCallum, A. 2002. MALLET: A Machine Learning for 
+Language Toolkit. Retrieve from: http://mallet.cs.umass.edu.  
+
+[8] Ramesh, A., Goldwasser, D., Huang, B., Iii, H. D., & Getoor, 
+L. 2014. Understanding MOOC discussion forums using 
+seeded LDA. In Proceedings of ACL. 29-33. 
+
+[9] Shi, X., Zhu, J., Cai, R., & Zhang, L. (2009, June). User 
+grouping behavior in online forums. In Proceedings of 
+SIGKDD. ACM. 777-786. 
+
+[10] Yang, S. H., Kolcz, A., Schlaikjer, A., & Gupta, P. 2014, 
+August). Large-scale high-precision topic modeling on 
+twitter. In Proceedings SIGKDD. 1907-1916. ACM. 
+
+[11] Yuan, L., Powell, S. 2013. MOOCs and open education: 
+Implications for higher education. CETIS White Paper. 
+
+[12] Wise, A. F., Cui, Y., Jin, W., & Vytasek, J. 2017. Mining for 
+gold: Identifying content-related MOOC discussion threads 
+across domains through linguistic modeling. The Internet and 
+Higher Education, 32, 11-28. 
+
+ 
+
+Figure 1. Topics and subtopics. 
+
+Figure 2. Weekly topic model view. 
+ 
+
+
+

@@ -1,0 +1,657 @@
+
+Transitioning self-regulated learning profiles in 
+hypermedia-learning environments 
+
+Clarissa Lau1, Jeanne Sinclair2, Michelle Taub3, Roger Azevedo3, Eunice Eunhee Jang1 
+ 
+
+1Department of Applied Psychology and Human Development, Toronto, ON, Canada 
+2Department of Curriculum, Teaching and Learning, University of Toronto, Toronto, ON, Canada 
+
+3Department of Psychology, North Carolina State University, Raleigh, NC, USA 
+ 
+
+{clarissa.lau, jeanne.sinclair, eun.jang} @mail.utoronto.ca; {mtaub, razeved} @ncsu.edu 
+ 
+ABSTRACT 
+Self-regulated learning (SRL) is a process that highly fluctuates as 
+students actively deploy their metacognitive and cognitive 
+processes during learning. In this paper, we apply an extension of 
+latent profiling, latent transition analysis (LTA), which 
+investigates the longitudinal development of students’ SRL latent 
+class memberships over time. We will briefly review the 
+theoretical foundations of SRL and discuss the value of using 
+LTA to investigate this multidimensional concept. This study is 
+based on college students (n = 75) learning about the human 
+circulatory system while using MetaTutor, an intelligent tutoring 
+system that adaptively supports SRL and targets specific 
+metacognitive SRL processes including judgment of learning 
+(JOL) and content evaluation (CE). Preliminary results identify 
+transitional probabilities of SRL profiles from four distinct events 
+associated with the use of SRL.  
+
+ 
+CCS Concepts 
+• Applied computing~Interactive learning environments 
+ 
+• Computing methodologies~Latent variable models 
+ 
+Keywords 
+Self-regulated learning; Information-processing theory; 
+Metacognition; Metamemory; Latent transition analysis 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Permission to make digital or hard copies of all or part of this 
+work for personal or classroom use is granted without fee 
+provided that copies are not made or distributed for profit or 
+commercial advantage and that copies bear this notice and the full 
+citation on the first page. Copyrights for components of this work 
+owned by others than ACM must be honored. Abstracting with 
+credit is permitted. To copy otherwise, or republish, to post on 
+servers or to redistribute to lists, requires prior specific permission 
+and/or a fee. Request permissions from 
+Permissions@acm.org. LAK '17, March 13-17, 2017, Vancouver, 
+BC, Canada  © 2017 ACM. ISBN 978-1-4503-4870-
+6/17/03…$15.00  
+DOI: http://dx.doi.org/10.1145/3027385.3027443 
+
+1 INTRODUCTION 
+In dynamic learning environments such as intelligent tutoring 
+systems and other advanced learning technologies, students 
+continuously adapt to internal (e.g., prior knowledge) and external 
+(e.g., effectiveness of systems; feedback and scaffolding) 
+conditions by rapidly changing as they interact with the tasks and 
+the system, based on accurate use of cognitive and metacognitive 
+processes.  
+ 
+This progressive change occurs over multiple stages that require 
+high-degree of regulation; however, previous research has 
+indicated that students do not automatically develop an ability to 
+regulate their SRL knowledge and skills [1, 3]. This warrants a 
+need to clarify how students initially develop regulatory behaviors 
+and how they shift towards more advanced levels of regulation. 
+This paper will investigate the transitional profiles of two aspects 
+of self-regulated learning in the context of an online learning 
+environment, MetaTutor.  
+ 
+
+1.1 Self-regulated learning 
+Over the course of engaging with learning in a technologically 
+rich environment, students are engaged in high complex learning 
+processes. Students are expected to acquire knowledge, respond to 
+feedback, and evaluate progress – processes that require high-
+levels of regulation. In order to achieve success during the 
+complex learning process, students must gain agency in directing 
+their own learning. Self-regulated learning (SRL) describes 
+students’ accurate monitoring and regulation of effective 
+cognitive, metacognitive, and motivational knowledge, skills, and 
+strategies to learn, problem solve, and perform across tasks [12, 
+19]. SRL is a multi-phase process with the following assumptions: 
+(1) students plan, monitor, control, and reflect their learning 
+strategies and progress [12], and (2) this involves a three-stage 
+cyclical process where students engage in orientation and 
+planning phase, monitoring and performance phase, and 
+evaluation and adaptation phase [18]. These theoretical models of 
+SRL collectively suggest that a combination of knowledge, skills, 
+and strategies are essential and occur in a sequential and/or 
+cyclical manner during learning and problem solving. While these 
+models do describe SRL as phases, only one model considers SRL 
+as an event that unfolds over time – information-processing theory 
+(IPT) [16, 17]. Since this study is examining how SRL profiles 
+transition over time, this study will draw specifically from the 
+information-processing theory of SRL. 
+ 
+ 
+ 
+
+
+
+1.2 Information-processing theory of SRL 
+According to the information-processing theory of SRL [16, 17], 
+learning occurs through a series of four cyclical (yet not 
+necessarily sequential) stages, in which information processing 
+and SRL occur. In phase 1, task understanding, students must be 
+able to clearly understand the task they are being asked to 
+complete. In phase 2, goals and plans, students set appropriate 
+goals for accomplishing the given task, along with plans for how 
+they expect to achieve those goals. Phase 3, using learning 
+strategies, involves students using the learning strategies (i.e., 
+cognitive, metacognitive, and motivational SRL processes) they 
+planned in the previous phase. In phase 4, adaptation, students 
+can make changes to their goals, plans, and use of learning 
+strategies to make sure they are using them efficiently. 
+Furthermore, within each phase, information processing occurs as 
+the interaction of one’s conditions, operations, products, 
+evaluations, and standards (COPES). Thus, according to this 
+model, students control and monitor their use of information 
+processing and SRL strategies during each phase of learning. 
+ 
+1.3 Model of metamemory  
+Nelson & Narens’ [10] model of metamemory suggests that 
+metacognition occurs at a meta-level, which involves three phases 
+of memory-related processes. Thus, engaging in these 
+metacognitive processes at the meta-level can influence task 
+performance at the object level. Specifically, at the encoding 
+phase, students engage in ease of learning (EOL) judgments, 
+where they anticipate how easy it will be to accomplish a task. At 
+the retrieval phase, students are making judgments of their 
+understanding of the material (i.e., judgment of learning or JOLs). 
+At the retention phase, students make a retrospective confidence 
+judgment (RCJ), where they judge their confidence in their 
+performance on the task. According to this model, making these 
+metacognitive judgments may impact students’ task performance, 
+via memory processes. 
+ 
+1.4 Latent profiling of SRL  
+A challenge in understanding SRL is capturing the interactive 
+nature of information processing and SRL strategies that students 
+deploy in real time during learning. Constructs such as SRL are 
+often difficult to observe directly, so traditional research methods 
+(e.g., self-reports) will typically infer this behavior after the task is 
+completed. However, these methods can hardly capture the 
+dynamic and progressive stages of SRL. Recent advances have led 
+researchers to use on-line trace methods (e.g., log-files, concurrent 
+think-alouds) to measure the real-time deployment of SRL 
+processes during learning [1, 2]. The primary difference between 
+traditional techniques and latent profiling is: “the common factor 
+model decomposes the covariances to highlight relationships 
+among the variables, whereas the latent profile model decomposes 
+the covariances to highlight relationships among students” [4, p. 
+6]. Latent profiling is a latent variable model that identifies 
+unobserved subgroups in a population. One study established 
+distinct latent profiles of SRL that exist across students and these 
+profiles are associated with varying academic outcomes [3]. 
+Findings from this study suggested that individuals with minimal 
+and disorganized profiles of SRL might demonstrate poorer 
+academic outcomes [3]. This approach is a person-centered 
+analysis that is more appropriate for understanding a multi-phased 
+concept such as SRL. 
+ 
+
+This study is situated to investigate the unique characteristics of 
+students’ self-regulatory learning behaviors at different stages of 
+interaction in the online learning environment, MetaTutor. During 
+MetaTutor, metacognitive judgments during learning are 
+measured by assessing students’ level of confidence in making 
+these judgments. This study aims to elucidate unique student 
+profiles of SRL and describe the changing states across time.  
+ 
+2 METHOD 
+2.1 Participants 
+A total of 194 students are included in the study with 99 in the 
+control group and 95 in the experimental group. From the 
+experimental group, a total of 75 students are included in this 
+ongoing study. Students were recruited from three major 
+universities across North America. Background information was 
+available for only 70 students. Of the 70 students, 53% were 
+males and 47% were females. Mean age was M = 20.11 (SD = 
+.21) and mean GPA was M = 3.31 (SD = .09). 
+ 
+2.2 MetaTutor 
+This study is set in the context of MetaTutor, an intelligent 
+tutoring system that is built upon theoretical models of SRL [1, 
+13, 16, 17, 18]. The system engages students in biological 
+concepts (e.g., the human circulatory system) and provides 
+support through offering various strategies to plan, monitor, and 
+reflect upon their learning. Students are prompted to set goals 
+with respect to their learning and engage in cognitive and 
+metacognitive SRL strategies while the system provides feedback 
+based on student scores on quizzes and responses to making 
+metacognitive judgments, such as JOLs. During the process of 
+reading and inspecting hypermedia materials, students are given 
+an option to select cognitive learning strategies, such as 
+summarizing (SUMM), taking notes (TN), planning (PLAN), 
+prior knowledge activation (PKA), and making inferences (INF), 
+and metacognitive monitoring processes such as monitoring 
+progress towards goals (MPTG), judgment of learning (JOL), 
+feeling of knowing (FOK), and content evaluation (CE) from an 
+SRL palette provided by the system’s interface. These processes 
+include: This study will examine two of these processes: judgment 
+of learning (JOL) and content evaluation (CE). Below is a 
+screenshot of the MetaTutor main interface (See Figure 1). The 
+interface includes elements designed to foster effective SRL, such 
+as a timer (top left), a table of contents (left, below the timer), 
+content (center), overall learning goal and sub-goals (top center), 
+a pedagogical agent (top right), and the SRL palette (right, below 
+the agent). 
+ 
+Participants’ background knowledge of biological concepts 
+ranged from no experience to some experience (i.e., taken 1-5 
+undergraduate science courses). Prior to learning, participants 
+were randomly assigned to one of two experimental conditions: 
+prompt and feedback, or control. In the prompt and feedback 
+condition, participants were prompted to use cognitive and 
+metacognitive SRL strategies, and were provided with immediate 
+feedback on their performance. Additionally, participants could 
+self-initiate the use of these SRL processes, and were still 
+provided feedback on their performance. In the control condition, 
+participants were not prompted to engage in SRL strategies, nor 
+were they provided with feedback if they self-initiated the use of 
+these processes. As such, participants in the control condition 
+were left to work independently without being provided with any 
+guidance from the system. 
+
+
+
+ 
+ 
+ 
+2.3 Metacognitive monitoring process 
+For this analysis, we selected the metacognitive monitoring 
+processes: judgment of learning (JOL) and content evaluation 
+(CE), as research has shown these processes to be influential in 
+learning about complex science topics [1, 5, 7]. 
+ 
+2.3.1 Judgment of learning 
+Judgments of learning (JOLs) require students to assess their 
+understanding of the material they are currently reading [1, 2, 5, 
+7]. This strategy requires learners to monitor their comprehension 
+of the material, which is an effective strategy as it makes them 
+actively aware of their progress during learning. Moreover, once 
+this judgment is made, students can select the appropriate 
+subsequent cognitive learning strategies to use, based on the 
+valence of that judgment (i.e., JOL+: I understand this or JOL-: I 
+do not understand this). For example, a student who does 
+understand the material can go on to take notes on the content 
+(i.e., cognitive strategy of taking notes) compared to a student 
+who does not understand the material, who should re-read the 
+material as the subsequent cognitive learning strategy. It is 
+important to emphasize that valence is associated with the 
+accuracy of a metacognitive judgment and we can therefore 
+assume that a metacognitive-strategy dyad can either be adaptive 
+(e.g., a JOL- followed by re-reading the same materials) or 
+maladaptive (e.g., a JOL- followed by reading additional 
+research).  
+ 
+2.3.2 Content evaluation 
+Content evaluations (CEs) involve students assessing whether the 
+current content is relevant to the sub-goal they are working on [1, 
+2, 6, 7] making them aware of the relevancy of the material they 
+are reading. When making a CE, the student evaluates the 
+relevancy of the text and the diagram on the content page, thereby 
+monitoring the material they are reading to accomplish their sub-
+goals. Similar to JOLs, there is also a valence component 
+associated with making this metacognitive evaluation, such that 
+the content can be relevant to the current sub-goal (i.e., CE+), 
+which should be followed by continuing to read that page, inspect 
+the diagram, and take notes or summarize the material. In 
+contrast, an evaluation of the content as being irrelevant to the 
+current sub-goal (i.e., CE-), would be followed by changing pages 
+to a relevant one.  
+ 
+Many research studies investigating the impact of JOLs on 
+learning have revealed that making these judgments can positively 
+impact learning [1, 5]. One main focus of research on JOLs has 
+
+been on assessing how students’ levels of confidence (i.e., the 
+judgments they make) impact their subsequent learning [5]. 
+Additionally, research investigating the use of CEs has suggested 
+that selecting more relevant content pages obtain higher 
+performance scores [14] Although this research demonstrates the 
+importance of judging one’s understanding of content and 
+selecting relevant pages for completing sub-goals, research is 
+lacking on assessing how the accuracy of these judgments change 
+over time. 
+ 
+2.4 Latent transition analysis 
+Latent transition analysis (LTA) is an extension of latent class 
+analysis (LCA) that identifies underlying traits longitudinally. 
+LCA is a statistical model that groups individuals together based 
+on unobserved traits (i.e. latent traits) that are inferred with 
+categorical variables [6]. LCA outputs latent classes that describe 
+distinct behaviors shared by a group of individuals. Extending 
+from LCA, LTA describes changes in these latent classes across 
+time and transitional probabilities are estimated. These latent 
+classes are not assumed to be static, but rather, individuals may be 
+described with different classes at different times.  
+ 
+The most appropriate LTA model for describing a population of 
+individuals sharing similar behaviors is estimated with three sets 
+of parameters. First, latent status membership probabilities are 
+estimated for subsequent times after the first time point. These 
+probabilities recognize the proportion of individuals that would 
+belong in any given latent class. Second, transition probabilities 
+are calculated to identify the chance of students changing from 
+one latent class from one time point to another latent class at the 
+next time point. Third, model-fit indices are used to determine the 
+relationship between the observed indicates and the latent class. 
+Three model-fit indices are typically used: likelihood-ratio G2 fit 
+statistic, Akaike Information Criteria (AIC), and Bayesian 
+Information Criteria (BIC). For interpretation, larger values of 
+likelihood-ratio G2 value indicate rejection of the null-hypothesis 
+[9] while smaller values of AIC and BIC are indicators of better 
+model fit [3]. For this study, LTA was conducted in SAS with the 
+PROC LTA procedure [8]. 
+ 
+3 RESULTS 
+Latent transition analysis for 2-, 3-, and 4- class solutions was 
+conducted. The two-class model was considered due to low AIC 
+and BIC values, but classes and transitions lacked interpretability. 
+The selected model is the three-class solution, as it was the most 
+parsimonious, had the best goodness of fit statistics of 
+interpretable models, and offered the most useful interpretation. 
+Table 1 indicates the model fit statistics for the 2-, 3-, and 4-class 
+models. 
+ 
+According to this model, all members of Class 1 (n=20) correctly 
+identified content relevant to their sub-goal (CE). Approximately 
+58% of this class judged their learning (JOL) with correct 
+confidence or under-confidence in light of their page quiz results, 
+while 42% were overconfident. Thus this class has strength in CE 
+and emerging skills in JOLs. The members of Class 2 (n=39) have 
+the contrasting profile: all of Class 2 exhibited accurate or under-
+confident JOL, but only approximately 55% of Class 2 correctly 
+identified the relevance of page/image content for their sub-goal. 
+As such, class 2 exhibits strength in JOL and emerging CE. Class 
+3 consists of learners who exhibit challenges in both JOLs and 
+CEs. 100% of Class 3 (n=16) learners exhibited overconfidence in 
+JOL, and 100% also incorrectly identified content relevant to their 
+
+Figure 1. Main interface of MetaTutor tutoring system. 
+
+
+
+current learning sub-goal (CE). Classes are constrained to have 
+the same composition over the two time points. 
+ 
+
+Table 1. Comparison of LTA models. 
+Number 
+of classes G
+
+2 df AIC BIC 
+
+2 6.813 8.000 20.813 37.035 
+
+3 1.833 1.000 29.833 62.278 
+
+4 0.000 -8.000 46.000 99.302 
+Note: Bold font indicates the selected model. 
+ 
+Table 2. Item-response probabilities (probability of item 
+response given latent status), prevalence of latent statuses, and 
+transition probabilities in latent status membership. 
+ Latent Status 
+
+ Class 1 
+(n=20): 
+Strong 
+CE, 
+emerging 
+JOL 
+
+Class 2 
+(n=39): 
+Strong 
+JOL, 
+emerging 
+CE 
+
+Class 3 
+(n=16): 
+Overconfident 
+JOL,  
+incorrect  
+CE 
+
+Item-response 
+probabilities: 
+
+   
+
+JOL    
+
+Under or correct 
+confidence 
+
+0.576 >0.999 <0.001 
+
+Overconfidence 0.424 <0.001 >0.999 
+
+CE    
+
+Incorrect <0.001 0.455 >0.999 
+
+Correct 0.999 0.545 <0.001 
+
+Prevalence of statuses 
+at: 
+
+   
+
+Time 1 0.269 0.517 0.213 
+
+Time 2 0.454 0.478 0.066 
+
+Transitions from Time 
+1 (rows) to  
+Time 2 (columns): 
+
+   
+
+    Class 1: Strong  
+    CE, emerging JOL 
+
+0.370 0.630 <0.001 
+
+Class 2: Strong 
+JOL, emerging CE 
+
+0.617 0.280 0.103 
+
+Class 3: 
+Overconfident JOL 
+and  
+incorrect CE 
+
+0.168 0.769 0.062 
+
+Note: Item-response probabilities are constrained to be equal at 
+time points 1 and 2. Bold font indicates membership in the same 
+latent status at both time points. 
+ 
+According to Table 2, there were more than 75% of students in 
+Class 3 who demonstrated difficulty with both JOL and CE. Of 
+this group, more than 75% improved their judgment of learning, 
+and approximately 17% improved their content evaluation skills. 
+Just 6% of the original Class 3 remained in Class 3. Overall, the 
+probability of being in this class decreased approximately 15% 
+
+from the initial measurement in time point 1 to the final 
+measurement in time point 2. This is a remarkable finding, 
+considering their time with the MetaTutor program was limited to 
+only a few hours at most. 
+ 
+Table 2 also indicates that approximately 63% of students in Class 
+1 (Strong CE/Emerging JOL) transitioned to Class 2 (Strong 
+JOL/Emerging CE) at time point 2, while 61% of students did the 
+reverse. There was less than 0.001 probability that students in 
+Class 1 transitioned to Class 3 (Overconfident JOL/Incorrect CE), 
+but approximately 10% of Class 2 did transition to Class 3, 
+indicating that they were more likely than Class 1 to exhibiting 
+overconfidence and incorrect CE after engaging with the 
+MetaTutor system.  
+ 
+4 DISCUSSION  
+This ongoing research is intended to elucidate the transitioning 
+profiles of SRL in the context of MetaTutor. Extending from 
+previous literature investigating the construct and latent nature of 
+SRL [3, 11, 12], this study investigates the changing latent SRL 
+profiles over two time points.  
+ 
+Preliminary results indicated that a three-class solution best fit the 
+model. It is important to remember that transitioning from Class 1 
+(strong CE, emerging JOL) to 2 (strong JOL, emerging CE), or 
+the reverse, does not indicate that there has been a weakening of 
+the other skill. Students transitioning from one class to another 
+class are now demonstrating a different profile of JOLs and CEs. 
+The findings of this study indicate that students exhibit different 
+combinations of SRL behaviors across short time periods. Further 
+inferential statistics are required to clarify which combinations 
+maximize performance outcomes. 
+Class 3 (i.e., learners who demonstrate challenges in both JOL 
+and CE) is an interesting profile to mention. More than 75% of 
+this class later demonstrated the significant improvements in their 
+JOL and approximately 17% of these students improved their CE. 
+An explanation may be found in the tailored feedback provided by 
+MetaTutor. The feedback given by MetaTutor is tailored 
+specifically to students’ input, with over 20 different feedback 
+responses. The time that students spend engaging in MetaTutor 
+improves their outcomes relative to their area(s) of weakness. For 
+example, of those who were in Class 1 at time point 1 (emerging 
+JOL), more than half made gains in JOL, ending up in Class 2. A 
+similar result is exhibited for Class 2, with over half of the 
+members of Class 2 at time point 1 transitioning to Class 1 at time 
+point 2. This can potentially be attributed to the tailored feedback 
+that students received in their area of weakness as they engaged 
+with MetaTutor. In support of this thought, an earlier study by 
+Thompson [15] found that general feedback did not significantly 
+improve accuracy of students’ confidence-recall, but instead 
+found that students’ confidence-recall improved when feedback 
+was given for specific types of questions.  
+
+We recognize a limitation to this preliminary study. JOL and CE 
+events were only included when feedback was provided. 
+Therefore, students who were in the control condition were not 
+included in the preliminary analysis and the sample size was 
+reduced.  
+ 
+4.1 Next Steps 
+We do intend to continue the analysis by investigating predictive 
+relationships between the transitioning SRL profiles and 
+performance outcomes (e.g., setting sub-goals, time spent on task, 
+
+
+
+and outcome on quiz and post-test scores). Next, the current 
+constructs of JOL and CE have been dichotomized for the 
+preliminary analysis; however, JOL and CE constructs do consist 
+of more than one dimension (e.g., relevancy of text vs. relevancy 
+of diagram). Further investigation would be required to 
+appropriate categorize these constructs so these constructs can be 
+more accurately represented in the analysis. Finally, the nature of 
+feedback is particularly interesting and would require further 
+investigation to understand how different students demonstrating 
+various SRL profiles would respond to tailored feedback. 
+ 
+5 ACKNOWLEDGMENTS 
+The research presented in this paper has been supported by 
+funding from National Science Foundation (DRL1431552) and 
+the Social Sciences and Humanities Research Council of Canada 
+(SSHRC 895-2011-1006). Any opinions, findings, and 
+conclusions or recommendations expressed in this material are 
+those of the author(s) and do not necessarily reflect the views of 
+the National Science Foundation or Social Sciences and 
+Humanities Research Council of Canada. The authors of this 
+study would like to acknowledge Nicholas Mudrick for his 
+involvement with MetaTutor.    
+ 
+6 REFERENCES 
+[1] Azevedo, R., Harley, J., Trevors, G., Duffy, M., Feyzi-
+
+Behnagh, R., Bouchet, F., and Landis, R. S. 2013. Using 
+trace data to examine the complex roles of cognitive, 
+metacognitive, and emotional self-regulatory processes 
+during learning with multi-agent systems. In R. Azevedo & 
+V. Aleven, Eds. International handbook of metacognition 
+and learning technologies, Amsterdam, The Netherlands: 
+Springer 2013, 427-449.  
+
+[2] Azevedo, R., Moos, D. C., Johnson, A. M., and Chauncey, 
+A. D. 2010. Measuring cognitive and metacognitive 
+regulatory processes during hypermedia learning: Issues and 
+challenges. Educational Psychologist, 45, 4, 210-223. 
+
+[3] Barnard-Brak, L., Lan., W. Y., and Paton, V. O. 2010. 
+Profiles in self-regulated learning in the online learning 
+environment. The International Review of Research in Open 
+and Distributed Learning, 11, 1, 61-80. 
+
+[4] Bauer, D. J., and Curran, P. J. 2004. The integration of 
+continuous and discrete latent variable models: Potential 
+problems and promising opportunities. Psychological 
+Methods, 8, 338-363. 
+
+[5] Dunlosky, J., and Lipko, A. 2007. Metacomprehension: A 
+brief history and how to improve its accuracy. Current 
+Directions in Psychological Science, 16, 228–232.  
+
+[6] Goodman, L. A. 1974. Exploratory latent structure analysis 
+using both identifiable and unidentifiable 
+models. Biometrika., 61, 215–231. 
+
+[7] Greene, J. A., and Azevedo, R. 2009. macro-level analysis of 
+SRL processes and their relations to the acquisition of 
+
+sophisticated mental models. Contemporary Educational 
+Psychology, 34, 18–29. 
+
+[8] Lanza, S. T., and Collins, L. M. 2010. A new SAS procedure 
+for latent transition analysis: Transitions in dating and sexual 
+risk behavior. Dev Psychol, 44, 2, 446-456. 
+
+[9] Lanza, S. T., Dziak, J. J., Huang, L., Xu, S., and Collins, L. 
+M. 2011. Proc LCA & Proc LTA users ‘guide (Version 
+1.2.6). University Park, PA: The Methodology Center, Penn 
+State University. Retrieved from http://methodology.psu.edu 
+
+[10] Nelson, T. O., and Narens, L. 1990. Metamemory: A 
+theoretical framework and new findings. The Psychology of 
+Learning and Motivation, 26, 125-173.  
+
+[11] Pintrich, P. R. 2000. The role of goal orientation in self-
+regulated learning. In M. Boekaerts, P. Pintrich, & M. 
+Zeidner, Eds. Handbook of self-regulation, New York, NY: 
+Academic Press, 452-502. 
+
+[12] Pintrich, P. R., and De Groot, E. V. 1990. Motivational and 
+self-regulated learning components of classroom academic 
+performance. Journal of Educational Psychology, 82, 1, 33-
+40. 
+
+[13] Schunk, D. 2005. Self-regulated learning: The educational 
+legacy of Paul R. Pintrich. Educational Psychologist, 40, 85–
+94. 
+
+[14] Taub, M., Azevedo, R., Bouchet, F., Clodfelter, E., and 
+Mudrick, N. 2014. Can scaffolds from pedagogical agents 
+influence effective completion of sub-goals during learning 
+with a multi-agent hypermedia-learning environment? In 
+Proceedings of the 11th International Conference of the 
+Learning Sciences (Boulder, Colorado 2014), 1052-1056. 
+
+[15] Thompson, W. B. 1998. Metamemory accuracy: Effects of 
+feedback and the stability of individual differences. 
+American Journal of Psychology, 111, 1, 33-42. 
+
+[16] Winne, P., and Hadwin, A. 1998. Studying as self-regulated 
+learning. In D. Hacker, J. Dunlosky, & A. Graesser, Eds. 
+Metacognition in educational theory and practice, Mahwah, 
+NJ: Erlbaum, 227-304. 
+
+[17] Winne, P., and Hadwin, A. 2008. The weave of motivation 
+and self-regulated learning. In D. Schunk & B. Zimmerman, 
+Eds. Motivation and self-regulated learning: Theory, 
+research, and applications, Mahwah, NJ: Erlbaum, 297-314. 
+
+[18] Zimmerman, B. J. 1998. Developing self-fulfilling cycles of 
+academic regulation: An analysis of exemplary instructional 
+models. In D. H. Schunk, & B. J. Zimmerman, Eds. Self-
+regulated learning: from teaching to self-reflective practice , 
+New York: Guilford Press, 1-99. 
+
+[19] Zimmerman, B. J. 2008. Investigating self-regulation and 
+motivation: Historical background, methodological 
+developments, and future prospects, American Educational 
+Research Journal, 45, 166-183.
+
+ 
+
+
+

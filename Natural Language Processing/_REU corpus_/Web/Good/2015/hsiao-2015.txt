@@ -1,0 +1,689 @@
+
+Topic Facet Modeling: Semantic Visual Analytics for 
+Online Discussion Forums  
+
+I-Han Hsiao 
+School of Computing, Informatics &  
+
+Decision Systems Engineering, 
+ Arizona State University, Tempe, AZ, USA 
+
++1 480 727 5466 
+Sharon.Hsiao@asu.edu 
+
+Piyush Awasthi 
+School of Computing, Informatics &  
+
+Decision Systems Engineering, 
+ Arizona State University, Tempe, AZ, USA 
+
+pawasth1@asu.edu 
+
+ABSTRACT
+In this paper, we propose a novel Topic Facet Model (TFM), a 
+probabilistic topic model that assumes all words in single sentence 
+are generated from one topic facet. The model is applied to 
+automatically extract forum posts semantics for uncovering the 
+content latent structures. We further prototype a visual analytics 
+interface to present online discussion forum semantics. We 
+hypothesize that the semantic modeling through analytics on open 
+online discussion forums can help users examine the post content 
+by viewing the summarized topic facets. Our preliminary results 
+demonstrated that TFM can be a promising method to extract 
+topic specificity from conversational and relatively short texts in 
+online programming discussion forums. 
+
+Categories and Subject Descriptors
+K.3.2 [Computer and Information Science Education]: 
+Computer Science Education. 
+
+General Terms
+Algorithms, Measurement, Design, Experimentation, 
+Programming. 
+
+Keywords
+Learning Analytics, Automated Assessment, SLDA, LDA, TFM, 
+Topic Modeling, Programming, Discourse Analytics, Discussion 
+Forums. 
+
+1. INTRODUCTION
+Forums or discussion boards are popular trouble-
+shooting/problem-solving technologies for online courses. In 
+current programming language learning, students are exposed to a 
+lot of help in preparing code (readings, intelligent tutorials, 
+worked examples etc.), as well as in-situ support during coding 
+exercises (e.g., debuggers, unit tests, dynamic code examples, 
+dialogue tutor etc.) (Barnes & Stamper, 2008; Boyer et al., 2011; 
+Brandt, Dontcheva, Weskamp, & Klemmer, 2010; Brusilovsky, 
+2001; Pirolli & Anderson, 1985). Free online discussion sites (i.e. 
+stackoverflow (http://stackoverflow.com), Dream.In.Code 
+(http://www.dreamincode.net), etc.) allow programmers and 
+learners to reach out for help so that they can freely discuss 
+
+programming problems, ranging from general to specific and 
+simple to complex topics. These sites therefore not only throw 
+open unbounded topics in the form of questions and answers, but 
+are especially attractive for open-ended problem discussions. In 
+online open corpus discussion forums, the scale and types of posts 
+are often very diverse in terms of user background, coverage of 
+topics, post volumes, post-response turnaround rates, etc. In 
+addition, these platforms are usually not moderated or guided by 
+teachers or teaching assistants, but are essentially governed by the 
+community. There has been considerable research on strategies to 
+filter the quality of content and encourage participation of online 
+communities via crowdsourcing, rating, tagging, badges, etc. 
+(Hsiao & Brusilovsky, 2011; Jeon, Croft, & Lee, 2005; Kittur, 
+Chi, & Suh, 2008; Snow, O'Connor, Jurafsky, & Ng, 2008). Such 
+social mechanisms tend to filter and point out the most possible 
+correct solutions. However, in the context of online learning, the 
+correct solutions may not necessarily be the best next steps for all 
+learners (Graesser, VanLehn, Rose, Jordan, & Harter, 2001; van 
+de Sande & Leinhard, 2007). Without personalized learning 
+support, the voted best solutions can be easily too sophisticated or 
+overly generic. With rapid growth in content and communities, 
+therefore, comes the need for more personalized and intelligent 
+support.  
+
+Currently, most forums or discussion boards lack dynamic and 
+extensive content analysis, mainly due to the discussion content is 
+often open-ended and filled with nebulous semantic structures. It 
+is so-called ill-defined problems, which have usually been within 
+the reach of qualitative human-coded methods, and are typically 
+difficult to scale. Moreover, these methods are challenging to 
+keep persistent traces for estimating students’ current knowledge 
+(Blikstein, 2011). Due to the increasing volume and run-time 
+calculation complexities (i.e. exhaustive linguistic features in 
+natural languages), most of the discourse-centric in-depth analyses 
+were performed offline and the lesson learned could only be 
+applied in the next iteration of system development or suffering 
+from shallow analytics (i.e. participation & contribution). 
+Recently, however, we have begun to see some studies that focus 
+on dynamic support for users, such as Cohere – structured online 
+discourse and summary (Buckingham Shum, 2008); Social 
+learning analytics (Buckingham Shum & Ferguson, 2012); 
+Asynchronous conversation analytics (Hoque, Carenini, & Joty, 
+2014). Yet, there has been no conclusive or comprehensive 
+technological support as well as systematic studies to date on 
+large-scale discussion forums. In addressing the research issues 
+discussed above, this paper focuses on studying viable algorithmic 
+technologies that support large-scale discussion forums 
+dynamically, specifically targeted at programming discussion 
+forums. We propose a novel Topic Facet Model (TFM) to extract 
+forum posts semantics for uncovering the latent structural topics. 
+We further prototype a visual analytics interface to present online 
+
+Permission to make digital or hard copies of all or part of this work for 
+personal or classroom use is granted without fee provided that copies are 
+not made or distributed for profit or commercial advantage and that 
+copies bear this notice and the full citation on the first page. To copy 
+otherwise, or republish, to post on servers or to redistribute to lists, 
+requires prior specific permission and/or a fee. 
+LAK’15, March 16–20, 2015, Poughkeepsie, NY, USA. 
+Copyright 2015 ACM 978-1-4503-3417-4 
+http://dx.doi.org/10.1145/2723576.2723613
+
+231
+
+
+
+discussion forum semantics. We assume users arrive at a 
+programming discussions site to seek help or to offer help, but not 
+all of them are domain experts. Therefore, we hypothesize that an 
+intelligent support through analytics on open online discussion 
+forums can help users examine the post content by viewing the 
+summarized topic facets. 
+The rest of the paper is structured as following: in section 2, we 
+review a series of related work regarding to discourse-centric 
+learning analytics and topic modeling.  In section 3 & 4, we 
+describe the novel generative Topic Facet Model and illustrate a 
+learning analytic prototype. Lastly, we discuss data collection and 
+evaluation results. 
+
+2. LITERATURE REVIEW 
+In order to address learner-centered technology for large-scale 
+online learning, Learning Analytics (Siemens & Baker, 2012) has 
+demonstrated promising results, especially in interdisciplinary 
+convergence. For example, the Signals project at Purdue 
+University is one of the pioneering examples of the successful 
+application of academic analytics that integrate predictive 
+modeling and report significantly higher grades and retention rates 
+than were observed in control groups (Arnold, 2010). 
+Nonetheless, the majority of learning analytics discuss visual 
+representations or the system’s usefulness while the core should 
+be focused on real impact to improve learning or teaching 
+(Verbert, Duval, Klerkx, Govaerts, & Santos, 2013).  
+
+Over the decades, discourse analysis on discussion forums has 
+been carried out through various formats, network analyses, 
+topical analyses, interactive explorers, knowledge extraction, etc. 
+(Dave, Wattenberg, & Muller, 2004; Gretarsson et al., 2012; 
+Indratmo, Vassileva, & Gutwin, 2008; Lee, Kim, Cho, & Woo, 
+2013; Wei et al., 2010). With the rapid growth of free, open, and 
+large user-based online discussion forums, it is essential, 
+therefore, for education researchers to pay more attention to 
+emerging technologies that facilitate learning in cyberspace. For 
+instance, (Sande, 2010) investigated online tutoring forums for 
+homework help, making observations on the participation patterns 
+and the pedagogical quality of the content. (Hanrahan, 
+Convertino, & Nelson, 2012; Posnett, Warburg, Devanbu, & 
+Filkov, 2012) studied expertise modeling in such environment. 
+Cohere (Shum, 2008) investigates semantic connections by 
+identifying the link types to associate negative, positive, neutral 
+interactions among online discourses. (Wise, Zhao, & 
+Hausknecht, 2013) observed the listening behavior, which 
+encapsulates different actions that learners take in relation to 
+other’s posts (attending, reading etc.), to further describe the 
+discussion engagement.  
+
+Latent Dirichlet Allocation (LDA) (Blei, Ng, & Jordan, 2003) is 
+an unsupervised algorithm that uses “bag of words” approach to 
+perform statistical topic modeling, which is a well-established 
+method for uncovering hidden structures in large text corpora. 
+There are several variations of LDA-based topic models that 
+successfully encapsulate large text semantics into topic words, 
+such as online reviews, political opinions, microblog streams, 
+email summaries etc. (Jo & Oh, 2011; Lan, Buntine, & Huidong, 
+2010; Liu et al., 2012; Wang, Agichtein, & Benzi, 2012). In this 
+work, we present a novel Topical Facets Modeling method to 
+capture online forum posts semantics. 
+
+3. TOPIC FACET MODEL  
+In order to automatically detect topics from conversational and 
+relatively short amount of texts in each forum post, we propose a 
+
+probabilistic topic model, Topic Facet Model, extending from 
+LDA (Blei et al., 2003). A topic is a multinomial distribution of 
+words that represents a concept from each forum post. A facet is a 
+multinomial distribution of words that represents a more specific 
+topic in the forum, for instance, extends (a java keyword) is one of 
+the main facets in determining whether a program implemented 
+inheritance concept in Java programming language or not. Thus, 
+Topic Facet Model firstly adopts SLDA (Lan et al., 2010) in the 
+topic model. Essentially, SLDA takes into account the position of 
+each individual word of topic inference. It then forces all words in 
+a sentence are generated from one topic. When a post is topic-
+specific, short-and-sweet, such as “how to write a for loop?”, 
+SLDA is supposed to distinctively generate the corresponding 
+topic word - loops. However, as we discussed earlier, open 
+discussion forums are often mixed with various complexities of 
+posts. For instance, “Can an array of objects be iterated in 
+enhanced for loop?” Given the sentence combines two main 
+concepts, arrays and loops, SLDA will constrain only one topic 
+word to be generated. In this case, the key of the question is about 
+topic arrays (whether one can perform a function with array data 
+structure), however, due to more topic loops-related words 
+represented, the SLDA will misinterpret it. This is where the 
+facets come into play, to take into account specificity of a topic in 
+the model. Following the same example, we can specify “array 
+iteration” as a facet for topic loops. To explain Topic Facet 
+Model algorithmically, Figure 1 shows the plate diagram. The 
+words generative process is explained following.  
+
+ 
+Figure 1. Topic Facet Model  
+
+1. For every pair of topic word t and facet f, draw a word 
+distribution ?ft ~ Dirichlet (?f) 
+
+2. For each document d, 
+a. Draw the document’s topic word distribution ?d ~ 
+
+Dirichlet (?) 
+b. For each topic word t, draw a facet distribution ?df ~ 
+
+Dirichlet (?) 
+c. For each sentence, 
+
+• Choose a topic word j ~ Multinomial (?d) 
+• Given topic word j, choose a facet k ~ Multinomial 
+
+(?dj) 
+• Generate words w ~ Multinomial (?jk) 
+
+Topic Facet Model exploits prior topic-keyword information by 
+using asymmetric ?. For example, we expect “superclass, 
+subclass, inheritance” are not probable in questions and answers 
+on topic loops and similarly the words “for, dowhile, loops” are 
+not synonymous to inheritance. This can be encoded into ? such 
+that elements of ? corresponding to one topic-keyword have small 
+values for the other topic-keywords. The latent variables ?, ? and 
+? are inferred as Gibbs sampling as in original topic model (Blei 
+
+ 
+
+ 
+
+ 
+
+ 
+
+  
+
+ 
+
+  
+
+  
+
+ 
+
+ 
+  
+
+w 
+
+? 
+
+? 
+
+T N M D 
+
+F 
+
+f t 
+
+? 
+
+? ? 
+
+? 
+
+F 
+
+232
+
+
+
+et al., 2003). At each transition step of the Markov chain, the topic 
+keyword and facet of the ith sentence are chosen according to the 
+conditional probability. The notations are described in Table 1. 
+
+ 
+ 
+The approximate probability of keyword j in post d is  
+
+ 
+The approximate probability of facet k for topic-keyword j in post 
+d is 
+
+ 
+The approximate probability of word w in topic-keyword facet {k, 
+j} is 
+
+Table 1. Topic Facet Model notations 
+
+D: number of posts, M: number of sentences, N: number of words, 
+T: number of topic-words, F: number of facets,; 
+
+?: word, t: topic-word, f: facet, ?: multinomial distribution over 
+words, ?: multinomial distribution over topic-words, ?: 
+multinomial distribution over facets, : Dirichlet prior vector for 
+?, ?(w) , ?j(w)  : Dirichlet prior vector for ?(of facet j), ? (j) : 
+Dirichlet prior vector for ? 
+
+4. VISUAL ANALYTICS PROTOTYPE 
+In order to provide dynamic intelligent support for large-scale of 
+online discussion forums, we build a Shiny web application by 
+using statistical computing language, R. The web application 
+(Figure 2) re-structures a discussion forum site into 3 parts:  
+Filters, Analytics Visualizations and Forum Posts. They are 
+represented in the following three UI panels from left to right:  
+
+1) Control panel (Left): data selection filters, such as post time 
+range, post types (questions, accepted, non- accepted, all) 
+etc. It also contains several semantic filters, such as topic 
+models. 
+
+2) Analytics panel (Middle):  
+• a summative forum post scatter plot (top): by configuring the 
+
+x & y axes, it not only can provide the post density of entire 
+discussion site over time, but also can indicate topic 
+evolution. 
+
+• topic facet model bubble chart (center): each bubble shows a 
+facet associated with a topic, and the size of the bubble 
+indicating the probability. For example, on selecting a post as 
+Figure 2 shows, a set of corresponding topic words that 
+represent Topic 2, where inner facet particularly stands out to 
+demonstrate the specificity.  
+
+• learner-topic relation Sankey diagram (bottom): the user and 
+topic relation diagram is purposefully designed to connect 
+semantics and the communities, which can be implemented 
+in social network visualization as well.  
+
+3) Forum posts panel (Right):  discussion posts for mutual 
+referencing content and analytics. 
+
+ 
+Figure 2. Visual Analytics Prototype in Shiny, R 
+
+233
+
+
+
+5. EVALUATION 
+5.1 Data Collection 
+We sampled one year (year 2013) of forum posts in topic Java 
+from stackoverflow site through StackExchange API. The data 
+pool was selected from the top 10 frequent tagged questions, 
+which also contained at least one accepted answer. It will allow us 
+to build a baseline on judging the topic facet model quality by 
+comparing to non-accepted answers. There are total 16,739 posts, 
+including 3,725 questions, 13,014 answers, with 3,718 accepted 
+answers.  
+
+5.2 Automatic Forum Posts Topic Generation 
+Since the statistical language model only estimates the probability 
+of words for natural languages, so we firstly parsed out all the 
+program codes from forum posts. We then generate forum posts’ 
+topics based on the Topic Facet Model. The topic generate 
+process is reported in Figure 3. We found that accepted answers 
+had significantly higher topic coverage than non-accepted answers 
+(Mann-Whitney U(98)=606, Z=4.4362, p<.01), where the topic 
+coverage was computed by entropy. An example from the data set 
+in the topic inheritance, where accepted answers topic facets 
+covered a broader range of relevant concepts (privat, subclass, 
+superclass, inherit, protect, public, class, object  inheritance), 
+but none-accepted answers only covered a minimum subset of the 
+topics (inherit, class, object, extend, subclass, super  
+inheritance). Note: we employed the state of the art Shannon 
+entropy measure among several diversity measures considering a 
+discussion post can cover a maximum unlimited number of topics.  
+
+ 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+
+Figure 3. Topic generation process 
+
+5.3 Topic-Facet Discovery 
+In order to capture the specificity from forum posts, we model 
+content topics and the associated facets. To prove that topic 
+modeling can be applied for conversational and relative short 
+sentences in forum posts, we compare the performance of TFM 
+model with generic LDA. Table 2 demonstrates the discovered 
+facets regarding to topic inheritance, where LDA was performed 
+
+by MALLET1 toolkit with default ?=30/N, ?=0.01. We can see 
+that LDA seemed to generate a set of more sensible terms, but 
+only a few of them are truly related to inheritance. On the other 
+hand, TFM discovered the specificity from forum posts and 
+uncovered the topic related facets.  
+
+Table 2. Discovered facets regarding to topic inheritance 
+TFM: {class, inherit, if, xmlhttprequest, object, will, version, with, alwai, 
+discrimin, cat, can, code, public, privat, gener, often, recommend, must, 
+compon, protect, check persist, join, subclass, superclass, ar, or, contain, 
+prefer} 
+
+LDA: {gener, relation, base, semantic, implicit, kill, standard, signature, 
+fine, superclass, surface, type, book, bound, break, build, trick, total, 
+child, compile, trasnalte, mixin, hotswap, violate, pedantic, section, quote, 
+break, view, perimeters} 
+
+6. DISCUSSIONS AND LIMITATIONS 
+In this paper, we presented Topic Facet Model to extract topic 
+specificity from conversational and relatively short texts from 
+online programming discussion forums. We also presented a 
+functional prototype of visual analytics for discourse-centric 
+content. Our preliminary results demonstrated that TFM could be 
+a promising approach to automatically generate discourse 
+semantics for large-scale dynamic discussions. There are several 
+limitations for current implementation. 1) We recognize that 
+programming discussion forums are places for users to solve or to 
+search for code solutions. It is also essential to include a code 
+parser, to verify the solution quality as well as extract concepts 
+from the codes. However, we argue that for a programming 
+discussion forum, a natural language semantic parser and a 
+program code parser can coexist and compliment each other. In 
+the future study, we will consider both semantic parsers. 2) More 
+exhaustive evaluation: The visual analytics is currently a proof of 
+concept. More rigorous user study to examine the effects of auto-
+extracted semantic analytics on users is required. In addition, we 
+did not discuss the topic facet model performance issues in this 
+paper, however, when the topic numbers grow larger, it can be a 
+serious factor for dynamic online support.  
+
+7. ACKNOWLEDGMENTS 
+The authors would like to thank Professor Denis Parra for helpful 
+discussions. The research is supported by School of Computing, 
+Informatics & Decision Systems Engineering. 
+
+8. REFERENCES 
+[1] Arnold, K. E. (2010). Signals: Applying Academic 
+
+Analytics. EDUCAUSE Quarterly, 33(1).  
+
+[2] Barnes, T., & Stamper, J. (2008). Toward Automatic Hint 
+Generation for Logic Proof Tutoring Using Historical 
+Student Data. In B. Woolf, E. Aïmeur, R. Nkambou & S. 
+Lajoie (Eds.), Intelligent Tutoring Systems (Vol. 5091, pp. 
+373-382): Springer Berlin Heidelberg. 
+
+[3] Blei, D. M., Ng, A. Y., & Jordan, M. I. (2003). Latent 
+dirichlet allocation. J. Mach. Learn. Res., 3, 993-1022.  
+
+[4] Blikstein, P. (2011). Using learning analytics to assess 
+students' behavior in open-ended programming tasks. Paper 
+presented at the Proceedings of the 1st International 
+Conference on Learning Analytics and Knowledge, Banff, 
+Alberta, Canada.  
+
+                                                                    
+1 http://mallet.cs.umass.edu 
+
+Stack Overflow Forum 
+Posts – Java  Stemming & Stop 
+
+Words Removal 
+
+Word List & Bag of 
+Sentences preparation 
+
+java 
+
+class 
+
+inherit 
+
+…. 
+
+1 
+
+258 732 0 78 
+
+1 
+
+10 
+
+…. 
+
+Sentence LDA + 
+Topic Facet 
+Modeling 
+
+topic-facet 
+
+java (0.0045) 
+
+class (0.012) 
+
+arrai (0.006) 
+
+…. 
+
+…. 
+
+…. 
+
+Final Output  Wordlist.txt  
+
+BagOfSentences.txt  
+
+234
+
+
+
+[5] Boyer, K. E., Phillips, R., Ingram, A., Ha, E. Y., Wallis, M., 
+Vouk, M., & Lester, J. (2011). Investigating the Relationship 
+Between Dialogue Structure and Tutoring Effectiveness: A 
+Hidden Markov Modeling Approach. International Journal 
+of Artificial Intelligence in Education, 21(1), 65-81. doi: 
+10.3233/JAI-2011-018 
+
+[6] Brandt, J., Dontcheva, M., Weskamp, M., & Klemmer, S. R. 
+(2010). Example-centric programming: integrating web 
+search into the development environment. Paper presented at 
+the Proceedings of the 28th international conference on 
+Human factors in computing systems, Atlanta, Georgia, 
+USA.  
+
+[7] Brusilovsky, P. (2001, October 23-27, 2001). WebEx: 
+Learning from examples in a programming course. Paper 
+presented at the WebNet'2001, World Conference of the 
+WWW and Internet, Orlando, FL. 
+
+[8] Dave, K., Wattenberg, M., & Muller, M. (2004). Flash 
+forums and forumReader: navigating a new kind of large-
+scale online discussion. Paper presented at the Proceedings 
+of the 2004 ACM conference on Computer supported 
+cooperative work, Chicago, Illinois, USA.  
+
+[9] Graesser, A. C., VanLehn, K., Rose, C. P., Jordan, P. W., & 
+Harter, D. (2001). Intelligent Tutoring Systems with 
+Conversational Dialogue. AI magazine, 22(4), 39. doi:  
+
+[10] Gretarsson, B., O, J., Donovan, Bostandjiev, S., H, T., #246, 
+. . . Smyth, P. (2012). TopicNets: Visual Analysis of Large 
+Text Corpora with Topic Modeling. ACM Trans. Intell. Syst. 
+Technol., 3(2), 1-26. doi: 10.1145/2089094.2089099 
+
+[11] Hanrahan, B. V., Convertino, G., & Nelson, L. (2012). 
+Modeling problem difficulty and expertise in stackoverflow. 
+Paper presented at the Proceedings of the ACM 2012 
+conference on Computer Supported Cooperative Work 
+Companion, Seattle, Washington, USA.  
+
+[12] Hsiao, I.-H., & Brusilovsky, P. (2011). The Role of 
+Community Feedback in the Student Example Authoring 
+Process: an Evaluation of AnnotEx. British Journal of 
+Educational Technology, 42(3), 482-499. doi:  
+
+[13] Indratmo, Vassileva, J., & Gutwin, C. (2008). Exploring blog 
+archives with interactive visualization. Paper presented at the 
+Proceedings of the working conference on Advanced visual 
+interfaces, Napoli, Italy.  
+
+[14] Jeon, J., Croft, W. B., & Lee, J. H. (2005). Finding similar 
+questions in large question and answer archives. Paper 
+presented at the Proceedings of the 14th ACM international 
+conference on Information and knowledge management, 
+Bremen, Germany.  
+
+[15] Jo, Y., & Oh, A. H. (2011). Aspect and sentiment unification 
+model for online review analysis. Paper presented at the 
+Proceedings of the fourth ACM international conference on 
+Web search and data mining, Hong Kong, China.  
+
+[16] Kittur, A., Chi, E. H., & Suh, B. (2008). Crowdsourcing user 
+studies with Mechanical Turk. Paper presented at the 
+Proceedings of the SIGCHI Conference on Human Factors in 
+Computing Systems, Florence, Italy.  
+
+[17] Lan, D., Buntine, W. L., & Huidong, J. (2010, 13-17 Dec. 
+2010). Sequential Latent Dirichlet Allocation: Discover 
+Underlying Topic Structures within a Document. Paper 
+presented at the Data Mining (ICDM), 2010 IEEE 10th 
+International Conference on. 
+
+[18] Lee, Y.-J., Kim, E.-K., Cho, H.-G., & Woo, G. (2013). 
+Detecting and visualizing online dispute dynamics in 
+replying comments. Software: Practice and Experience, 
+43(12), 1395-1413.  
+
+[19] Liu, S., Zhou, M. X., Pan, S., Song, Y., Qian, W., Cai, W., & 
+Lian, X. (2012). TIARA: Interactive, Topic-Based Visual 
+Text Summarization and Analysis. ACM Trans. Intell. Syst. 
+Technol., 3(2), 1-28. doi: 10.1145/2089094.2089101 
+
+[20] Pirolli, P. L., & Anderson, J. R. (1985). The role of learning 
+from examples in the acquisition of recursive programming 
+skills. Canadian Journal of Psychology/Revue Canadienne 
+De Psychologie, 39(2), 240-272.  
+
+[21] Posnett, D., Warburg, E., Devanbu, P., & Filkov, V. (2012). 
+Mining Stack Exchange: Expertise Is Evident from Initial 
+Contributions. Paper presented at the Social Informatics 
+(SocialInformatics), 2012 International Conference on, 
+Lausanne.  
+
+[22] Sande, C. v. d. (2010). Free, open, online, mathematics help 
+forums: the good, the bad, and the ugly. Paper presented at 
+the Proceedings of the 9th International Conference of the 
+Learning Sciences - Volume 1, Chicago, Illinois.  
+
+[23] Buckingham Shum, S.  (2008). Cohere: Towards web 2.0 
+argumentation. COMMA, 8, 97-108.  
+
+[24] Buckingham Shum, S., & Ferguson, R. (2012). Social 
+Learning Analytics. Journal of Educational Technology & 
+Society, 15(3), 3-26.  
+
+[25] Siemens, G., & Baker, R. S. J. d. (2012). Learning analytics 
+and educational data mining: towards communication and 
+collaboration. Paper presented at the Proceedings of the 2nd 
+International Conference on Learning Analytics and 
+Knowledge, Vancouver, British Columbia, Canada.  
+
+[26] Snow, R., O'Connor, B., Jurafsky, D., & Ng, A. Y. (2008). 
+Cheap and fast---but is it good?: evaluating non-expert 
+annotations for natural language tasks. Paper presented at 
+the Proceedings of the Conference on Empirical Methods in 
+Natural Language Processing, Honolulu, Hawaii.  
+
+[27] van de Sande, C., & Leinhard, G. (2007). Online tutoring in 
+the Calculus: Beyond the limit of the limit. education, 1(2), 
+117-160.  
+
+[28] Verbert, K., Duval, E., Klerkx, J., Govaerts, S., & Santos, J. 
+L. (2013). Learning Analytics Dashboard Applications. 
+American Behavioral Scientist. doi: 
+10.1177/0002764213479363 
+
+[29] Wang, Y., Agichtein, E., & Benzi, M. (2012). TM-LDA: 
+efficient online modeling of latent topic transitions in social 
+media. Paper presented at the Proceedings of the 18th ACM 
+SIGKDD international conference on Knowledge discovery 
+and data mining, Beijing, China.  
+
+[30] Wei, F., Liu, S., Song, Y., Pan, S., Zhou, M. X., Qian, W., . . 
+. Zhang, Q. (2010). TIARA: a visual exploratory text analytic 
+system. Paper presented at the Proceedings of the 16th ACM 
+SIGKDD international conference on Knowledge discovery 
+and data mining, Washington, DC, USA.  
+
+[31] Wise, A. F., Zhao, Y., & Hausknecht, S. N. (2013). Learning 
+analytics for online discussions: a pedagogical model for 
+intervention with embedded and extracted analytics. Paper 
+presented at the Proceedings of the Third International 
+Conference on Learning Analytics and Knowledge, Leuven, 
+Belgium
+
+235
+
+
+
+
+

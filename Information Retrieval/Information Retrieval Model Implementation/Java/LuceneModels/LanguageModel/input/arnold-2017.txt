@@ -1,0 +1,441 @@
+
+Student Perceptions of Their Privacy in Leaning Analytics 
+Applications
+
+Kimberly E. Arnold 
+University of Wisconsin-Madison 
+
+1305 Linden Drive 
+Madison, WI 53706 
+
+kimberly.arnold@wisc.edu 
+
+Niall Sclater 
+Jisc 
+
+One Castlepark, Tower Hill 
+Bristol, BS2 0JA, UK 
+
+niall.sclater@jisc.ac.uk 
+
+ABSTRACT 
+Over the past five years, ethics and privacy around student data 
+have become major topics of conversation in the learning analytics 
+field. However, the majority of these have been theoretical in 
+nature. The authors of this paper posit that more direct student 
+engagement needs to be undertaken, and initial data from 
+institutions beginning this process is shared. We find that, while the 
+majority of respondents are accepting of the use of their data by 
+their institutions, approval varies depending on the proposed 
+purpose of the analytics. There also appear to be notable variations 
+between students enrolled at United Kingdom and American 
+institutions. 
+
+CCS Concepts 
+• Applied computing~Education • Applied 
+computing~Interactive learning environments • Applied 
+computing~E-learning   • Security and privacy~Social aspects of 
+security and privacy • Security and privacy~Privacy 
+protections • Human-centered computing~Information 
+visualization
+
+Keywords
+Learning Analytics; Higher Education; Ethics; Privacy 
+
+ACM Reference Format: 
+K.E. Arnold and N. Sclater, 2017. Student Perceptions of Their 
+Privacy in Learning Analytics Applications. In Proceedings of 
+Learning Analytics and Knowledge Conference, Vancouver, BC, 
+Canada, April 2017, (LAK’17), 4 pages. 
+DOI: 10.1145/3027385.3027392 
+
+1.  INTRODUCTION 
+Over the past five years, ethics and privacy around student data 
+have become major topics of conversation in the learning analytics 
+(LA) field.  In fact, the annual Learning Analytics & Knowledge 
+conference has had ethics/privacy as a theme for the past 3 years. 
+Additionally the Journal of Learning Analytics has published an 
+entire issue on the concept [1], and American Behavioral Scientist
+also highlighted the issue [2]. While ethics and privacy have been 
+a notable theme, these discussions have been mainly theoretical in 
+nature. 
+While there is often concern amongst researchers and practitioners 
+about using student data for learning analytics, there has been very 
+little documented engagement with students themselves. [3- 5]  At 
+the date of this writing, the authors can find only three examples.  
+The first was a survey distributed in undergraduate educational data 
+mining courses at six Malaysian universities. [6] The second was 
+an exploration conducted at Manheim University which consisted 
+of 330 responses from students taking a one credit course for the 
+purposes of the study. [7] Finally, in April 2016, Jisc commissioned 
+a study in which 240 students from higher education and 166 from 
+further education were interviewed. [8] 
+The purposes of these studies varied, but there was a main theme: 
+seeking evidence of student acceptance of data about them and their 
+learning processes being used for the purposes of learning 
+analytics. The results of all three studies suggest that students 
+understand that their data has an inherent educational value. Two 
+of the three studies show direct evidence that students exhibit little 
+hesitation in sharing data that is clearly learning related. [6, 7] 
+Ifenthaler and Schumacher claim that students would be willing to 
+share more extensive data if, in return, the learning analytics system 
+“provided rich and meaningful information.”[7] Despite these 
+findings, privacy work in LA is at an early stage of development.  
+2.  ETHICS AND PRIVACY IN LEARNING 
+ANALYTICS  
+Ethical and privacy issues are inevitable when institutions begin to 
+plan LA activities. Concerns are expressed in particular by faculty 
+and staff around the potential misuse of student data. Most of these 
+issues have now been documented in the growing LA literature.  
+There are particular concerns that decisions may be taken on the 
+basis of flawed or inadequate data or that the analytics techniques 
+themselves may result in invalid predictions. Putting blind faith in 
+algorithms, particularly when sold as part of black box solutions, 
+may not be sensible either from an ethical point of view. [9] 
+
+Permission to make digital or hard copies of all or part of this 
+work for personal or classroom use is granted without fee 
+provided that copies are not made or distributed for profit or 
+commercial advantage and that copies bear this notice and the 
+full citation on the first page. Copyrights for components of this 
+work owned by others than the author(s) must be honored. 
+Abstracting with credit is permitted. To copy otherwise, or 
+republish, to post on servers or to redistribute to lists, requires 
+prior specific permission and/or a fee. Request permissions from 
+Permissions@acm.org.
+LAK '17, March 13 - 17, 2017, Vancouver, BC, Canada 
+Copyright is held by the owner/author(s). Publication rights 
+licensed to ACM. 
+ACM 978-1-4503-4870-6/17/03…$15.00 
+DOI: http://dx.doi.org/10.1145/3027385.3027392
+
+
+
+LAK’17, April 2017, Vancouver, BC, Canada  K. Arnold and N. Sclater 
+
+Another commonly expressed fear is that students’ autonomy in 
+decision making may be undermined.  They may even be 
+“infantilized” by spoon-feeding them with automated suggestions, 
+thus failing to facilitate the development of essential research 
+skills.[10] There are also concerns that some students may be 
+demotivated by seeing that they are predicted to fail; predictions 
+that may become self-fulfilling prophecies. However, it can be 
+argued that not telling a student the reality about where they are, 
+and thus allowing them to continue on a likely path of academic 
+failure or withdrawal, is unethical. Early alert systems may enable 
+an intervention to be taken to prevent a student dropping out; it may 
+also be in the student’s interest to withdraw early in order to switch 
+to another course or minimize wasted time and expenditure. This 
+so called “obligation of knowing” on the part of the institution is 
+indeed one of the strongest arguments that LA should be deployed 
+(with adequate safeguards) in order to support students. [11] 
+Other concerns include potential negative impacts of continual 
+monitoring, and even manipulation of the analytics by students 
+wishing to “game the system” to improve their ratings. Prejudicial 
+categorization, and hence treatment of students, based on their 
+ratings, is another potential danger. Meanwhile, reduction of the 
+individual student to a simple metric (e.g. a red, amber, or green 
+traffic signal) while ignoring their personal circumstances, is 
+regarded by some as limiting and potentially harmful. A further 
+ethical issue is that of triage (i.e. deciding which students to devote 
+an institution’s scarce resources to supporting): the ones who are at 
+greatest academic risk or those who could be helped to move from 
+a good to a top grade. [11] 
+Some issues have both a privacy and an ethical dimension. In many 
+countries there is a legal requirement to be upfront with citizens 
+about any data collected about them, and the purposes to which it 
+is being used. Institutions are already subject to a range of legal 
+requirements in the collection and processing of student data, and 
+in many cases LA can simply conform to existing policies and 
+processes. Obtaining consent from students for LA may be 
+necessary however, and a strong argument is made in universities 
+that this should be informed consent. However, while this makes 
+sense in the context of short term research projects, it may not be 
+appropriate as LA becomes part of the normal business of 
+institutions. Opting out of data collection and its use to help a 
+student in their studies may be unwise, may leave gaps in the 
+dataset which negatively impact other students, and may simply be 
+impossible. (e.g. LMSs cannot function without accumulating data 
+about student use). 
+
+3.  LEARNING ANALYTICS AT JISC 
+Jisc is a charitable organization responsible for many aspects of the 
+information technology infrastructure at universities and colleges 
+in the United Kingdom (UK).  Since late 2014 Jisc has invested 
+substantially in building capacity for LA within this sector.  
+Specific activities include developing a community of practitioners 
+through online channels and regular meetings at locations across 
+the UK; “discovery” and “on-boarding” processes where 
+consultants visit institutions to help them develop their LA 
+capacities; and the development of an open architecture for LA, 
+combining open source and commercial products as appropriate for 
+each institution. One of the first areas to be tackled by Jisc was the 
+lack of guidance in meeting the apparent concerns of students and 
+other stakeholders around the ethics of using their data for LA. A 
+taxonomy of ethical, legal, and logistical issues prevalent in the 
+emerging LA literature was compiled, and this formed the basis for 
+a Code of Practice for Learning Analytics. [12] While staff and 
+faculty are often quick to voice their concerns about ethical aspects 
+of LA, it was realised that little was known about student attitudes. 
+
+Jisc therefore employed an external company to interview more 
+than 400 students across the four nations of the UK. 
+
+4.  LEARNING ANALYTICS AT THE 
+UNIVERSITY OF WISCONSIN SYSTEM 
+The University of Wisconsin System (UWS) is comprised of 26 
+campuses: 2 doctoral granting, 11 master granting, and 13 2-year 
+institutions and is located in the Midwestern region of the United 
+States.  In addition to the campuses, UWS has a statewide presence 
+known as UW Extension.  Combined, UWS serves more than 
+150,000 learners annually.   Given the complexity of the learning 
+environment, UWS has spent the last four years piloting a variety 
+of learning analytics tools in diverse contexts.  In that time, 125 
+courses and over 16,400 students have experienced some form of 
+the learning analytics initiative. During this pilot, UWS placed a 
+major focus on technical viability and user experience.   
+At UWS, like at many other institutions, the University has been 
+struggling with how to handle student privacy issues. Certainly, 
+there is no policy (or even best practices) specifically about 
+learning analytics. Data policy provides little guidance and is 
+interpreted differently by different offices and individuals. To 
+address this concern, a student engagement strategy has been 
+undertaken in which student experience was a major focus. 
+Students were asked directly about their perceptions of the 
+institution using their data for learning analytics initiatives.  
+Questions about student privacy were added to an ongoing end-of-
+semester survey about user experience. It is important to note that 
+all students responding to this survey had experienced learning 
+analytics and had actively used a LA tool (at least 3 times a week) 
+designed to help them be more reflective learners. This is a 
+departure from the other studies in that UWS asked about their 
+actual experience with a LA system rather than their perception of 
+an unfamiliar tool.  This, we believe, provides a slightly different 
+perspective.  
+
+5.  METHODOLOGY 
+Basic survey methodology was used for this study with slight 
+variations between Jisc and UWS. However, three specific 
+questions were asked of both Jisc and UWS students, requiring a 
+simple yes/no response.  Therefore, these questions can easily be 
+compared and contrasted.  The three questions are: 
+
+i) Would you be happy for data on your learning activities 
+to be used if it kept you from dropping out or helped you 
+get personalized interventions? 
+
+ii) Would you be happy for your data to be used if it helped 
+improve your grades? 
+
+iii) Would you be happy to have your data visualized 
+through an app where you can look to compare with 
+your classmates?
+
+These student-focused questions were selected because of the 
+prevalence of ethical and privacy issues among institutions 
+deploying LA but the lack of data about the attitudes of students 
+themselves. The questions each highlight a potential benefit to the 
+learner of LA. 
+
+5.1  Methodology at Jisc 
+Jisc commissioned interviews with students from higher (HE) and 
+further education (FE) institutions across the UK. 406 students 
+were interviewed, 59 percent (n=240) from higher education, and 
+41 percent (n=166) from the college sector. The majority of these 
+(88 percent; n=357) were in England, with much smaller numbers 
+in Scotland, Wales, and Northern Ireland. 65 percent of 
+interviewees were female (n=264), and 35 percent male (n=142). 
+
+
+
+LAK’17, April 2017, Vancouver, BC, Canada  K. Arnold and N. Sclater 
+
+17 percent (n=71) were under 18 years old, 29 percent 18 years old 
+(n=119), with lower numbers at each older age group. 
+
+5.2  Methodology at UWS 
+Online survey methodology was also used at UWS.  All students 
+enrolled in one of five pilot courses using a particular learning 
+analytics system were provided a link to complete the survey.  In 
+all cases, a combination of minimal use of the LA system and 
+completion of the survey, qualified the student for a small amount 
+of extra credit.   The courses varied in mode (hybrid and online), 
+subject, level, and enrollment.  The survey was administered at the 
+end of both Spring 2016 (S16) and Fall 2016 (F16) semesters. 
+For S16, 669 students were enrolled in a course using this particular 
+LA tool.  77 percent returned a survey (n=509).   However, 84 
+records were removed do to either i) incomplete surveys or ii) not 
+reaching the threshold of required participation. A total of 425 
+records were maintained for analyses.  98 percent of the 
+respondents were traditional college age students, between 18-24 
+years old. 59 percent of the valid respondents were female (n=249) 
+and 41 percent (n=176) were male.  Freshman comprised 33 
+percent (n=142) of the sample with sophomores representing 25 
+percent (n=105), juniors making up 23 percent (n=96), and seniors 
+representing 19 percent (n=81).  
+For F16, 2,687 students were enrolled in a course using the LA 
+system. Thirty-four percent (n=916) completed a survey and met 
+the threshold for tool usage during the semester. 96 percent of the 
+respondents were between 18-24 years old. 65 percent of the valid 
+respondents were female (n=599) and 34 percent (n=314) were 
+male.  Freshman comprised 42 percent (n=385) of the sample with 
+sophomores representing 27 percent (n=249), juniors making up 14 
+percent (n=129), and seniors representing 13 percent (n=117).  
+
+6.  RESULTS
+Overall, students at UWS seem to be more accepting of their 
+learning activity data being used. The majority of students enrolled 
+at both UK and American institutions do not seem to object to the 
+use of their data for the purposes of helping them improve their 
+grades (see Table 1; Figure 1).   However, when it comes to 
+persistence from semester to semester, Americans are still fairly 
+amenable (76% in S16; 72% in F16) to having their data leveraged 
+while students enrolled in UK institutions seem less agreeable 
+(53% in HE; 54% in FE).  On the final item, having data visualized 
+through an app to facilitate comparison, American students (61% 
+in S16; 60% in F16) appear to be a bit more hesitant in this regard, 
+
+while markedly smaller proportions of the UK students surveyed 
+are interested in having their data used in that way (21% in HE, 
+26% in FE). However, it is possible that when the benefits of a 
+student app for LA are explained to students, or when they 
+experience it for themselves, they may be more positive about using 
+such functionality. Many may find it useful to have a better idea of 
+where they are compared to where they should be, for example. 
+Written comments from the survey suggest that some students 
+answered “no” to having their data used in a comparative fashion 
+because they were unclear of exactly how that would happen 
+(anonymously, in aggregate, or identifiably).  
+
+Table 1: Percent of students responding yes/no to survey 
+questions 
+
+Jisc HE Jisc FE UW S16 UW F16 
+
+Yes No Yes No Yes No Yes No 
+
+Dropping 
+Out 53 23 54 20 76 5 72 5
+
+Improving 
+Grades 71 12 77 8 94 2 91 2
+
+Compared 25 51 26 47 61 7 60 10 
+
+7.  LIMITATIONS
+The authors wish to be very clear that these results alone are not 
+sufficient to claim generalizability.  Nor is the methodology 
+rigorous enough to make any decisions about how learning 
+analytics is applied in educational settings. Neither of these were 
+ever the aim of this paper.   Our intent was to expose a seemingly 
+growing gap between the theoretical and applied perspectives of 
+learning analytics.  This juxtaposition deserves more thorough, and 
+rigorous evaluation. Indeed, it is our hope that this short paper 
+demonstrates the nascent reality of this area of study; and will 
+encourage hearty discussion, as well as spur additional research. 
+
+8.  DISCUSSION
+While the data reported in this short paper is not complex, it is a 
+solid position on which to begin engaging students. To date 
+researchers and ethicists have made strong stands on the use of 
+student data for learning analytics.  There is an inherent value in 
+“user data”, and that is demonstrated regularly in all industries, 
+especially business, retail, and healthcare.  Further work must be 
+
+53
+
+71
+
+25
+
+54
+
+54
+
+26
+
+76
+
+94
+
+61
+
+72
+
+91
+
+91
+
+0 10 20 30 40 50 60 70 80 90 100
+
+Dropping Out
+
+Improving Grades
+
+Comparison
+
+UW F16 UW S16 JISC FE JISC HEFigure 1: Percentage of students answering affirmatively to survey questions. 
+
+
+
+LAK’17, April 2017, Vancouver, BC, Canada  K. Arnold and N. Sclater 
+
+done, directly with students and instructors, to get a clearer, more 
+generalizable idea of how students wish to use their data.  In an 
+increasingly digital age, expectations of learners may be shifting.  
+There may be a true generational shift in the acceptance of using 
+students’ data to directly benefit them in the optimization of their 
+learning.  As educators, it is imperative that we are armed with data 
+from our “users,” rather than building up walls of theory and 
+rhetoric.   
+Our aim is to move the field of learning analytics forward while 
+still respecting the privacy of those we serve.  However, artificial 
+barriers need to deconstructed, and a paradigm of cooperation with 
+students needs to become a central focus. We must work to 
+demonstrate more generalizable results. Context must be examined. 
+“Ownership” of data and the analytics must be considered. Learners 
+must be consulted.  
+
+9.  REFERENCES
+[1] Society for Learning Analytics Research (2016).  Ethics and 
+privacy in learning analytics. Journal of Learning Analytics, 3(1). 
+[2] Haythornthwaite, C., de Laat, M., and Dawson, S. (2013, 
+October).  Learning Analytics. American Behavioral Scientist, 57, 
+(10). 
+[3] Prinsloo, P., & Slade, S. (2015, March). Student privacy self-
+management: implications for learning analytics. In Proceedings of 
+the Fifth International Conference on Learning Analytics & 
+Knowledge (pp. 83-92). ACM. 
+[4] Drachsler, H., & Greller, W. (2016, April). Privacy and 
+analytics: it's a DELICATE issue a checklist for trusted learning 
+analytics. In Proceedings of the Sixth International Conference on 
+Learning Analytics & Knowledge (pp. 89-98). ACM. 
+
+[5] Rubel, A., & Jones, K. M. (2016). Student privacy in learning 
+analytics: An information ethics perspective. The Information 
+Society, 32(2), 143-159. 
+[6] Pardo, A., & Siemens, G. (2014). Ethical and privacy principles 
+for learning analytics. British Journal of Educational 
+Technology, 45(3), 438-450. 
+[6] Wook, M., Yusof, Z.M. & Nazri, M.Z.A. (2016). Educational 
+data mining acceptance among undergraduate students.  In 
+Educational and Information Technologies. doi:10.1007/s10639-
+016-9485-x 
+[7] Ifenthaler, D., & Schumacher, C.  (2016). Student perceptions 
+of privacy principles for learning analytics. Educational 
+Technology Research and Development, 1-16. 
+[8] Sclater, N., Peasgood, A., & Mullan, J. (2016). Learning 
+Analytics in Higher Education. 
+[9] Sclater, Niall. (2017 - forthcoming). Learning Analytics 
+Explained. Routledge. 
+[10] Ellis, C., 2013, Broadening the scope and increasing the 
+usefulness of learning analytics: The case for assessment analytics, 
+British Journal of Educational Technology, 44(4), pp. 662-664. 
+[11] Campbell, J. P., DeBlois, P. B. & Oblinger, D. G., 2007, 
+Academic Analytics: A New Tool for a New Era, EDUCAUSE 
+Review, 42(4), pp. 40-57. 
+[12] Sclater, Niall. (2016). Developing a Code of Practice for 
+Learning Analytics. Journal of Learning Analytics, 3(1), 16-42.
+
+
+

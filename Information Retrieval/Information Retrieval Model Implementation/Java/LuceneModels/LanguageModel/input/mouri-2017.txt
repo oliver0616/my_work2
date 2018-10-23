@@ -1,0 +1,1751 @@
+
+Learning Analytics in a Seamless Learning Environment  
+
+Kousuke Mouri 
+Faculty of Arts and Science 
+
+Kyushu University 
+Japan 
+
+mourikousuke@gmail.com 
+
+Hiroaki Ogata 
+Faculty of Arts and Science 
+
+Kyushu University 
+Japan 
+
+hiroaki.ogata@gmail.com 
+
+Noriko Uosaki 
+Center for International Education and 
+
+Exchange, Osaka University 
+Japan 
+
+n.uosaki@gmail.com 
+
+ABSTRACT 
+
+This paper describes seamless learning analytics methods of 
+
+VASCORLL (Visualization and Analysis System for COnnecting 
+
+Relationships of Learning Logs). VASCORLL is a system for 
+
+visualizing and analyzing the learning logs collected by the 
+
+seamless learning system, which supports language learning in the 
+
+real-world. As far, several studies have been made in the seamless 
+
+learning environments in order to bridge formal learning over 
+
+informal learning. However, their focus was the implementation 
+
+of the seamless learning environment in education. This study 
+
+focuses on visualizing and analyzing learning logs collected in the 
+
+seamless learning environment. This paper describes how our 
+
+analytics could contribute to bridging the gap between formal and 
+
+informal learning. An experiment was conducted to evaluate 1) 
+
+whether our developed VASCORLL is effective in connecting the 
+
+words learned in formal learning to the ones learned in informal 
+
+learning, 2) which social network algorithm is effective to 
+
+enhance learning in the seamless learning environment. Twenty 
+
+international students participated in the evaluation experiment, 
+
+and they were able to increase their learning opportunities by 
+
+using VASCORLL. In addition, it was found that the  
+betweenness centrality is useful in finding central words bridging 
+
+formal and informal learning. 1 
+
+CCS CONCEPTS 
+
+• Human-centered computing ?  Ubiquitous and mobile 
+
+computing ? Ubiquitous and mobile computing systems and 
+
+tools  
+
+KEYWORDS 
+
+Ubiquitous learning, seamless learning, learning analytics 
+
+1 INTRODUCTION 
+
+Seamless learning is defined as an approach “when a person 
+
+experiences a continuity of learning, and consciously bridges the 
+
+multifaceted learning efforts, across a combination of locations, 
+
+times, technologies or social settings” [28].  Several researchers in 
+
+                                                                 
+Permission to make digital or hard copies of all or part of this work for personal or 
+
+classroom use is granted without fee provided that copies are not made or distributed 
+
+for profit or commercial advantage and that copies bear this notice and the full 
+
+citation on the first page. Copyrights for components of this work owned by others 
+
+than ACM must be honored. Abstracting with credit is permitted. To copy otherwise, 
+
+or republish, to post on servers or to redistribute to lists, requires prior specific 
+
+permission and/or a fee. Request permissions from Permissions@acm.org. 
+
+LAK’17, March 13-17, 2017, Vancouver, BC, Canada 
+
+© 2017 ACM. ISBN 978-1-4503-4870-6/17/03…$15.00 
+
+DOI: http://dx.doi.org/10.1145/3027385.3027408 
+
+the seamless learning field have pointed out that mobile and 
+
+ubiquitous technologies have enabled students to learn 
+
+continuously across different contexts [10], [11]. The main 
+
+characteristics of seamless learning are shown as follows: (1) 
+
+Encompassing formal and informal learning, (2) Encompassing 
+
+personalized and social learning, (3) Across time, (4) Across 
+
+locations, (5) Ubiquitous knowledge access, (6) Encompassing 
+
+physical and digital worlds, (7) Combined use of multiple device 
+
+types, (8) Seamless switching between multiple learning tasks, (9) 
+
+Knowledge synthesis, (10) Encompassing multiple pedagogical or 
+
+learning activity models. 
+
+One of its most important issues is how to connect formal learning 
+
+with informal one, because this is inevitable in designing both in-
+
+school and out-of-school activities in order to link what they have 
+
+learned in school with their daily life experiences and vice versa, 
+
+that is to say, to connect what they have learned in their daily lives 
+
+to their experiences in class. In this paper, the term formal 
+
+learning is defined as the learning under intentionally organized 
+
+environments and the term informal learning is defined as the 
+
+learning out of organized environments. For example, inside-of-
+
+class learning is one of the formal learning situations and out-of-
+
+class self-learning is one of the informal learning situations. 
+
+One of the application domains of seamless learning is language 
+
+learning. For example, Wong et al. [27] reported a seamless 
+
+learning system called MyCLOUD (My Chinese UbiquitOUs 
+
+learning Days), which allows students to learn Chinese language 
+
+in both in-school and out-of-school learning spaces. Uosaki et al. 
+
+[25] reported a seamless learning system called SMALL System 
+
+(Seamless Mobile-Assisted Language Learning support system) in 
+
+order to support Japanese students who aim to learn English 
+
+language in a formal and an informal setting. 
+
+Most of these studies focused on realizing a seamless learning 
+
+environment at school or university. Once realized, the students’ 
+
+learning logs have been accumulated into their server. Therefore, 
+
+we contend that learning efficacy can be enhanced by visualizing 
+
+and analyzing their accumulated learning logs. So far, little 
+
+attention has been paid to this aspect. The research issues of 
+
+learning analytics based on seamless learning environments are as 
+
+follows: 
+
+(1) How to visualize and analyze learning logs accumulated in 
+
+formal and informal learning systems.  
+
+(2) How the analytics can bridge the gap between formal learning 
+
+and informal learning. 
+
+(3) How the analytics can enhance and support students’ learning 
+
+experiences.  
+
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+To tackle these issues, this paper proposes a visualization and 
+
+analysis system called VASCORLL (Visualization and Analysis 
+
+System for Connecting Relationships of Learning Logs). 
+
+VASCORLL is to connect logs collected by using e-book system 
+
+with logs collected by using a ubiquitous learning system called 
+
+SCROLL (System for Capturing and Reminding of Learning Log) 
+
+[21]. The rest of this paper is constructed as follows. Section 2 
+
+discusses related works regarding e-book-based learning analytics 
+
+and ubiquitous learning analytics. Section 3 introduces our 
+
+proposed seamless learning design and the system that 
+
+implements with SCROLL. Section 4 describes the methods of 
+
+VASCORLL that works in the seamless learning environments. 
+
+Section 5 and 6 describes the implementation and initial 
+
+evaluation experiment on the VASCORLL. Section 7 summarizes 
+
+the contributions made by the work and future works. 
+
+2 RELATED WORKS 
+
+2.1 E-book-based Learning Analytics 
+
+Nowadays, majority of textbooks are not only published in printed 
+
+format, but are also created as electronic text-book (e-book) 
+
+format available online or on mobile devices [2], [24]. Japanese 
+
+govemment has announced their future policy to introduce 
+
+“instead of” as their policy that they plan to introduce e-books in 
+
+all K12 schools by 2020. Many countries’ e-book policies only 
+
+focus on introducing the technology of e-books into K12 schools 
+
+[22]. However, little attention has been paid to visualizing and 
+
+analyzing important information from the e-book activity logs. 
+
+Therefore, it is necessary to explore various analytics in this 
+
+aspect. 
+
+This paper calls visualizing and analyzing of e-book activity logs 
+
+“E-book-based Learning Analytics (ELA)”. In such analytics, 
+
+some researchers at Kyushu University in Japan reported several 
+
+analytics using a document viewer system called BookLooper 
+
+[22], [23], [29]. The objective of their studies is as follows: (1) 
+
+improving of learning materials, (2) analyzing learning patterns, 
+
+(3) detecting the students’ comprehensive level, (4) predicting 
+
+final grades, and (5) recommending e-books in accordance with 
+
+personalization. On the other hand, Kiyota et al. [8] proposed a 
+
+seamless learning system with EPUB (Electronic PUBlication: 
+
+one of the e-book formats). It is available on various mobile 
+
+devices including general smartphones, and it is easy to obtain 
+
+information, such as location, acceleration and rotation of the 
+
+terminal via their integrated sensors while students read the books. 
+
+The most common idea of those projects is to visualize and 
+
+analyze either logs collected in a formal setting or an informal 
+
+setting, especially, logs collected in a formal setting. However, 
+
+VASCORLL aims to visualize and analyze learning logs 
+
+accumulated in both learning environments (formal and informal 
+
+setting). 
+
+2.2 Ubiquitous Learning Analytics 
+
+In recent years, ubiquitous learning (u-learning) or mobile 
+
+learning (m-learning) has been the focus of attention in 
+
+educational research across the world [14], [19]. U-learning has 
+
+been carried out using ubiquitous technologies such as RFID tags 
+
+and cards, wireless communications, mobile phones, Personal 
+
+Digital Assistants (PDAs), and wearable computers [20]. These 
+
+types of learning include not only in-class learning (formal 
+
+learning), but also a variety of out-of-class learning (informal 
+
+learning) in spaces such as homes, libraries, and museums. In 
+
+such learning approaches, the majority of researchers have been 
+
+constructing a context-aware u-learning system, which integrated 
+
+learning materials and contextual information by using ubiquitous 
+
+technologies. For example, Hwang et al. [6] developed a context-
+
+aware ubiquitous learning system with the attached RFID tag on 
+
+the plants. The application domain of their studies is nature 
+
+science. When a learner arrives in front of a plant with an RFID 
+
+tag, the system asks him or her questions about the plant’s 
+
+features, such as its trunk, shape, and color after they received it 
+
+using an RFID reader. This enables learners to understand deeply 
+
+by connecting knowledge about the plant with the real life 
+
+experience. 
+
+On the other hand, Ogata et al. [21] developed their u-learning 
+
+system called SCROLL, which allows users to share with others 
+
+by recording what learners have learned in their daily lives using a 
+
+web browser and mobile device anytime and anywhere. The 
+
+application domain of their studies is mainly language learning. 
+
+Using SCROLL, international students can learn new knowledge 
+
+through their experiences in their daily life with photos, audios, 
+
+and context such as location and place. 
+
+Aljohani et al. [17] described learning analytics called Ubiquitous 
+
+Learning Analytics (ULA) in order to analyze enormous learning 
+
+data, including contextual information accumulated by using these 
+
+u-learning systems. The value of the ULA is discussed by 
+
+considering two possible kinds of interactions. The first is the 
+
+interaction between learners and their contexts, referred to as 
+
+learners-to-context interaction. The second is the interaction 
+
+between learners and context-based knowledge, referred to as 
+
+learner-to-context-based learning materials interaction. They 
+
+suggested that the use of learner contextual data can enhance the 
+
+interaction between learners and their mobile devices, and 
+
+between learners and objects in their learning environments. In 
+
+addition, analyzing or visualizing contextual data has a potential 
+
+to improve knowledge of the patterns of learners’ interactions 
+
+with their contexts. One of the issues of the ULA is how to 
+
+visualize and analyze two interactions: learners-to-context and 
+
+learner-to-context-based words. 
+
+Mouri et al. [12], [13] tackled the issues and reported innovative 
+
+visualization and analysis methods. However, the focus of their 
+
+studies was to visualize and analyze learning logs accumulated in 
+
+ubiquitous learning environments (informal setting). Our 
+
+VASCORLL enables students to bridge the gap between formal 
+
+and informal learning by visualizing and analyzing what they 
+
+have learned in the classroom using a document viewer system 
+
+and what they have learned outside the classroom using SCROLL. 
+
+By providing the results of visualization and analysis, it is 
+
+expected that students can apply what they have learned in the 
+
+classroom to what they have learned outside the classroom. 
+
+3 SYSTEM DESIGN 
+
+3.1 Scroll 
+
+As described in Section 2.2, this paper utilizes SCROLL to 
+
+support international students in the real-world language learning 
+
+and share their experiences with each other. In the SCROLL 
+
+
+
+ 3 
+
+project, Ubiquitous Learning Log (ULL) is defined as a digital 
+
+record of what learners have learned in their daily lives. To 
+
+simplify the process of capturing learners’ learning experiences, 
+
+SCROLL provides an easy-to-use interface. It adopts an approach 
+
+to share contents with other users based on a LORE (Log-
+
+Organize-Recall-Evaluate) model proposed by Ogata et al. [21]. 
+
+How the model supports each learning process is described as 
+
+below.  
+
+(1) Log: International students are likely to face some problems 
+such as how to read, write and pronounce words in their daily 
+
+life. They can save what they have learned with photo, such 
+
+as location (latitude and longitude), learning place, and date 
+
+and time of creation as a ULL as shown in Figure 1. 
+
+(2) Organize: When an international student adds a new ULL, 
+SCROLL compares it with his past ULL and those of other 
+
+users, categorize it and shows him related ULLs. By showing 
+
+it with information on when and where they learned it, past 
+
+learning and current learning can be linked and their 
+
+knowledge will be reorganized and reinforced [26]. 
+
+(3) Recall: Learners are likely to forget what they have learned 
+before. It is necessary to support re-calling their past ULLs. 
+
+During this learning process, the system support learners to 
+
+recall what they have learned by using quiz. 
+
+(4) Evaluate: It is important to recognize what and how the 
+learner has learned by analyzing the past ULLs, so that he or 
+
+she can improve what and how to learn in the future. Mouri 
+
+et al. [12] developed an innovative visualization system that 
+
+implemented Time-Map [7], network graph based graph 
+
+theory in order to support this learning process. 
+
+3.2 Seamless Learning System based on e-Book 
+
+The above SCROLL is instantiated as the seamless learning 
+
+environment to support formal and informal language learning. 
+
+Figure 2 shows the design framework of our system that 
+
+integrated SCROLL with EPUB. There are two ways of 
+
+supporting learning activities in our framework:  
+
+(1) E-book-based learning activity: The teachers or instructors 
+
+create e-book contents using PowerPoint and Keynote before 
+
+class, and use them in their courses. The uploaded e-book 
+
+contents are converted to EPUB format and it is supported to 
+
+access the contents by using smartphone and PCs. After 
+
+international students choose a target e-book in their course 
+
+in accordance with their language level, they can read those 
+
+learning materials on their web browser using EPUB viewer 
+
+as shown in Figure 3. They can underline, mark unknown 
+
+words in the e-books, and save it using SCROLL (Figure 1). 
+
+In addition, they use the EPUB viewer to prepare before 
+
+class, and to review after class. Therefore, they can read the 
+
+learning materials not only during class but also outside class, 
+
+such as their home or libraries. Students’ action logs such as 
+
+opening a book, zooming, and page turning are collected into 
+
+E-book logs and learning materials database. 
+
+(2) Authentic learning activity: In out-of-class activity, 
+
+international students proactively observe things, grasp the 
+
+meanings and review on their daily encounters, and apply 
+
+their past experiences to other learning situations. For 
+
+example, when international students learn how to read, write 
+
+and create “??(passbook)” in an e-book during class, then 
+
+they can actually apply their experience through the e-book 
+
+to their real-life experience at the bank with the tips from 
+
+SCROLL. 
+
+4 METHOD 
+
+4.1 Visualization in the Seamless Learning 
+
+Environment 
+
+In order to visualize and analyze learning logs accumulated in the 
+
+seamless learning environment, this paper uniquely defines them 
+
+as two types of three-layer structures as shown in Figure 4: 
+
+Formal Learning Structure (FLS) and Informal Learning Structure 
+
+(ILS). FLS includes three layers, which are called “formal 
+
+Figure 1: Interface of adding a ULL. 
+
+ 
+
+. 
+
+ 
+
+ 
+
+Figure 2: Design of the Seamless learning system. 
+
+ 
+
+. 
+
+ 
+
+ 
+
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+learners”, “formal words”, and “learning materials”.  
+
+(1) Formal learners: The upper layer shows learners studying in 
+
+a formal setting, such as lecture room and classroom.  
+
+(2) Formal words: The intermediate layer shows words that they 
+
+have learned in a formal setting using SCROLL with EPUB. 
+
+(3) Learning materials: The Lowest layer shows learning 
+
+materials uploaded by teachers or instructors.  
+
+In order to visualize the relationships among formal learner, 
+
+formal words and learning materials, this paper visualizes the 
+
+relationships using network directed graph. How our visualization 
+
+method connects relationships of each node? For example, if a 
+
+learner learns and saves a newly learned word using SCROLL 
+
+with EPUB interface during class, our visualization method will 
+
+connect the learner’ node in the upper layer in the FLS to the 
+
+word’ node in the intermediate layer in FLS. Besides, the word’ 
+
+node will connect to the learning material nodes in the lowest 
+
+layer in FLS. By visualizing these links, teachers and students can 
+
+grasp which e-book and which page that word appears. 
+
+ILS includes three layers, which is called “Informal learners”, 
+
+“Informal words”, and “Locations” 
+
+(1) Informal Learners: The upper layer shows learners studying 
+in an informal setting such as museums, restaurants and city 
+
+halls. 
+
+(2) Informal words: The intermediate layer shows words that 
+they have learned in an informal setting using SCROLL. 
+
+(3) Locations: The lowest layer shows contextual data such as 
+location and place where they have learned in an informal 
+
+setting. 
+
+According to Mouri et al. [14], [15], how to connect the 
+
+relationships in ILS are as follows: If a learner learns and saves a 
+
+new word in an informal setting using SCROLL, it will connect 
+
+the learner’ node in the upper layer in ILS to the word’ node in the 
+
+intermediate layer in ILS. Then, the word’ node will connect to 
+
+the node of the location where they have learned it. For example, 
+
+if the learner learned “natto” (a traditional Japanese food made 
+
+from fermented soybeans) at the “supermarket”, it will connect 
+
+“natto” in the intermediate layer to “supermarket” in the lowest 
+
+layer.  
+
+In order to bridge the relationships between FLS and ILS, the 
+
+visualization will connect same words which appear in the 
+
+intermediate layers both in the FLS and ILS (e.g. “natto” in the 
+
+intermediate layer in FLS and “natto” in the intermediate layer in 
+
+ILS). The analytics using two types of three-layers have the 
+
+following advantages:  
+
+(1) On the FLS side, the formal words with a large number of 
+links to related learning materials mean students learned it in 
+
+many classes. For example, if a student learns the word 
+
+“passbook” using a learning material during class, the 
+
+Figure 4: Visualization methods in the seamless learning environments: Formal Learning Structure (FLS) and 
+
+Informal Learning Structure (ILS) 
+
+Figure 3: SCROLL with EPUB interface. 
+
+ 
+
+. 
+
+ 
+
+ 
+
+
+
+ 5 
+
+visualization informs them of other learning material context 
+
+where it is used. In addition, the formal words with a large 
+
+number of links to the formal learners mean words which 
+
+were learned by many students during class. 
+
+(2) On the ILS side, the informal words that are related to many 
+places are the words can be learned in various places. When 
+
+a learner experiences tea ceremony of a traditional Japanese 
+
+culture, for instance at the university, they are likely to learn 
+
+such tea ceremony related words as maccha (special tea for 
+
+tea ceremony), seiza (to sit in the correct manner on a 
+
+Japanese tatami mat). They can also be learned in other 
+
+places. Maccha can be learned at the supermarket, and the 
+
+seiza can be learned at the martial arts gym. 
+
+4.2 Seamless Learning System based on e-Book 
+
+Based on the network graph described above, this paper analyzes 
+
+using social network analysis as shown in Table 1. 
+
+Degree, closeness and betweenness centrality are a fundamental 
+
+measurement concept for the social network analysis [3], [9]. 
+
+Especially, we hypothesize that betweenness centrality could be to 
+
+bridge the gap between formal learning and informal learning. For 
+
+example, if an international student learns word “natto” on e-book 
+
+content in a formal setting, it might be able to be applied to 
+
+various learning places such as supermarkets, shopping malls, and 
+
+restaurants in an informal setting. However, it is difficult for 
+
+him/her to know whether it can be learned in other learning 
+
+environments nor where it can be learned. In addition, it is 
+
+difficult to know which word could play the most important role 
+
+to bridge over formal and informal learning to realize the seamless 
+
+learning environments. By using betweenness centrality, this 
+
+analysis could find most important words between FLS and ILS 
+
+side.  
+
+Table 1: Social network analysis 
+
+Algorithm Formula (graph G:=(V,E) with V vertices 
+
+and E edges) 
+
+Details 
+
+Degree ??
+? =
+
+??
+? ? 1
+
+ 
+
+Degree centrality is defined as the number of links incident upon 
+
+a node. That is, it is the sum of each row in the adjacency matrix 
+
+representing the network. N is the number of node and ??is the 
+
+degree of the node i. 
+
+Closeness ??
+? = (??) =
+
+? ? 1
+
+? ??????,???
+ 
+
+Closeness centrality is that the distance of a node to all others in 
+
+the network. ???is the shortest path length between i and j, and  ?? 
+
+is the average distance from I to all the other nodes. 
+
+Betweenness ??
+? =
+
+1
+
+(? ? 1)(? ? 2)
+? ?
+
+???(?)
+
+???
+  ???,??????,???
+
+ 
+
+Betweenness centrality is that the number of shortest paths 
+
+between any two nodes that pass via a given node. ??? is the 
+
+number of the shortest path between j and k, and ???(?) is the 
+
+number of the shortest path between j and k that contains node i. 
+
+ 
+
+Figure 5: Visualization and analysis interface 
+
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+5 IMPLEMENTATION 
+
+5.1 Interface of VASCORLL 
+
+In the field of network graph studies, the majority of them have 
+
+focused on advantages such as good-quality results, flexibility, 
+
+simplicity, and interactivity.  
+
+For example, a network layout called “force-directed” uses the 
+
+force vector algorithm proposed in the Gephi software, 
+
+appreciated for its simplicity and for the readability of the network, 
+
+which helps visualization [4], [18]. A network layout called 
+
+“Yifan Hu multilevel” uses a very fast algorithm to reduce 
+
+complexity [5]. The repulsive forces on one node from a cluster of 
+
+distant nodes are approximated by a Barners-Hut calculation, 
+
+which treats them as one super-node [1]. 
+
+On the other hand, Mouri et al. [16] proposed Ubiquitous 
+
+Learning Graph (ULG), which is divided into four areas: top-left, 
+
+top-right, bottom-left, and bottom-right. In their evaluation 
+
+experiment, they reported it is important to establish their nodes’ 
+
+position on the network graph for readability and ease-of-use 
+
+when visualizing the relationships in the real-world language 
+
+learning. 
+
+With these points in mind, we developed a network layout called 
+
+“Seamless Learning Graph (SLG)”, which is divided into six areas 
+
+as shown in Figure 5: upper-left (Formal learners), center-left 
+
+(Formal words), bottom-left (Learning materials), upper-right 
+
+(Informal learners), center-right (Informal words), and bottom-
+
+right (Locations). These areas represent the layers described in the 
+
+section 4.1. 
+
+As described in Section 4.2, the interface implements three 
+
+centrality based on social network analysis. From the (1) to (3) 
+
+buttons mean each centrality. By clicking them, VASCORLL will 
+
+automatically visualize and analyze all learning logs accumulated 
+
+in SCROLL with EPUB. The node size is based on the numerical 
+
+value of each centrality.  
+
+Figure 6 (left) shows the enlarged graph in both formal and 
+
+informal word areas. There are two learning scenarios by utilizing 
+
+the results of visualization, which are called “Learning via formal 
+
+words” and “Learning via informal words” as shown in Figure 6 
+
+(right). 
+
+(1) Learning via formal words: As shown in Figure 6 (left), the 
+
+word “natto” is the biggest size in the formal words areas. By 
+
+clicking it, the system moves to the page where the word 
+
+“natto” appears. That way, learners can grasp which e-book 
+
+and which page includes it. 
+
+(2) Learning via informal word: After learning “natto” in the e-
+
+book contents, learners can find “natto” in the informal 
+
+words areas. By clicking it, the system moves to the ULLs 
+
+(“natto” pages of SCROLL) learned in the informal setting. 
+
+Unlike the above learning method (1), by utilizing the ULL, 
+
+they can learn other learners’ learning experiences (not only 
+
+words but also time, location and place information) that 
+
+Figure 6: The enlarged graph both formal and informal words area and each hyperlink 
+
+
+
+ 7 
+
+cannot be learned in the formal setting. 
+
+5.2 Color coding of the visualized nodes 
+
+To avoid having learners get confused when they see each node 
+
+since there are many visualized nodes, it is definitely necessary to 
+
+establish some criteria for the distinction of each node. To 
+
+effectively distinguish each node, we created a color coding 
+
+scheme for the nodes as shown in Table 2. 
+
+6 EVALUATION 
+
+6.1 Participants and Design 
+
+Twenty international students who are studying at the University of 
+
+Tokushima in Japan participated in the evaluation experiments. 
+
+They were from China, Malaysia, Thailand and Mongolia aged 
+
+from 21 to 36. Their length of stay in Japan ranged from 1 month to 
+
+5 years.  
+
+The evaluation experiment was designed to evaluate the following 
+
+three points: 
+
+(1) Whether VASCORLL can increase the participants’ learning 
+
+opportunities (“Learning opportunities” means that the number 
+
+of ULLs that the learner uploaded to the system during the 
+
+evaluation period”). 
+
+(2) Whether VASCORLL would be benefit in terms of usability in 
+
+finding important words in the seamless learning environment. 
+
+(3) Which centrality is effective in supporting learning in the 
+
+seamless learning environment? 
+
+6.2 Method 
+
+Figure 7 shows the experimental procedure. 
+
+Before the evaluation experiment began, a Japanese instructor 
+
+uploaded e-book contents to SCROLL server. The uploaded e-book 
+
+contents were created based on the JLPT. Since they had never used 
+
+SCROLL with EPUB before, they practiced using it for one week 
+
+before using VASCORLL. In addition, based on the uploaded ULLs 
+
+during the practice, the students were divided into two groups: 
+
+Group A (experimental group) and Group B (control group). Group 
+
+A consisted of 5 Chinese, 4 Mongolians and 1 Malaysian. Group B 
+
+consisted of 3 Chinese, 5 Mongolians and 2 Thais. Group A learned 
+
+words in their daily lives and words in the ebook contents using 
+
+SCROLL with EPUB and VASCORLL. Group B learned words in 
+
+their daily lives and words in the e-book contents using 
+
+SCROLLL with EPUB. Participants used their own smart-phones 
+
+(iPhone 4s or Android device) to upload their ULLs in a formal 
+
+and an informal setting anytime and anywhere. The mobile 
+
+devices used in the evaluation experiment were three iPhone 4s, 
+
+fourteen iPhone 5s, and three Samsung Galaxy Note 3s. 
+
+In the next phase, both Group A and B students evaluated, during 
+
+u-learning activity, each centrality based on social network 
+
+analysis. Participants learned words using three centrality: degree, 
+
+closeness, and betweenness. They were asked to use the 
+
+prearranged one centrality (e.g. participants firstly had to use 
+
+degree centrality for one day). After the evaluation experiment, 
+
+the participants were asked to complete five-point-scale 
+
+questionnaires to evaluate the system performance and usability, 
+
+as well as the user-friendliness of understanding the contents and 
+
+finding ULLs using each centrality in VASCORLL. 
+
+6.3 Result and Discussion 
+
+6.3.1 Whether VASCROLL can increase the participants’ 
+learning opportunities 
+
+In order to examine the increase of learning opportunities by 
+
+VASCORLL, we compared the number of the uploaded ULLs of 
+
+Group A with that of Group B using F-test. Table 3 shows the 
+
+number of ULLs that the participants uploaded during the 
+
+evaluation. In total, Group A students uploaded 189 ULLs and 
+
+Group B students uploaded 127 ULLs to the system. The means 
+
+and standard deviations were 18.9 and 6.41 for Group A, and 12.7 
+
+and 6.75 for Group B. It was found that the learning opportunities 
+
+of the two groups were significantly different with F = 4.41 (p 
+
+Table 2: Color coding to distinguish the kinds of nodes 
+
+Node Layer Node color 
+
+Formal learners Upper in FLS Red 
+
+Formal words Intermediate in FLS Yellow 
+
+Learning materials Lowest in FLS Blue 
+
+Informal learners Upper in ILS Pink 
+
+Informal words Intermediate in ILS Green 
+
+Locations Lowest in ILS Light blue 
+
+ 
+
+Table 3: Number of The Uploaded ULLs 
+
+Group Number 
+
+of ULLs 
+
+Mean SD Adjusted 
+
+mean 
+
+F 
+
+Group A 189 18.9 6.41 17.83 4.41 
+
+Group B 127 12.7 6.75 12.83  
+
+ 
+
+Figure 7: Experimental procedure 
+
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+< .05), implying that VASCROLL was able to increase their 
+
+learning opportunities. The adjusted mean of Group A (17.83) is 
+
+statistically higher than that of Group B (12.83). That means that 
+
+VASCORLL was a useful tool to increase their learning 
+
+opportunities. 
+
+6.3.2  Whether VASCROLL would be benefit in terms of in 
+finding important words 
+
+The results of a five-point-scale questionnaire are presented in 
+
+Table 4 (Best: 5, Worst: 1).  
+
+Q1 asks about whether the participants were able to find that the 
+
+words that they learned during class were connected to the words 
+
+that other learners learned outside class. Similarly, Q2 asks about 
+
+whether the participants were able to find that the words they have 
+
+learned outside class were connected to the words that others have 
+
+learned in class. The results of Q1 and Q2 revealed that the 
+
+participants found the relationships of words between formal and 
+
+informal learning. For example, some students learned Japanese 
+
+word, “?? (natto)” in e-book contents in class. By uploading 
+“natto” to the system, the system could show them that other 
+
+students had learned it at the shopping mall and supermarkets. 
+
+That way VASCORLL was able to connect the words between 
+
+formal and informal learning. 
+
+Q3 asks about whether the participants were able to learn and find 
+
+the relationships between words and places by using VASCORLL. 
+
+For example, when a participant learned Japanese word, “??
+(Cuisine)” in class, he/she could find it was connected to the 
+
+experiences of others at places such as schools and restaurants. By 
+
+sharing the authentic experiences that are rarely able to acquire in 
+
+formal setting, VASCORLL enabled them to experience indirectly 
+
+what other people experienced thanks to the system, which 
+
+connected their formal learning to the informal one. 
+
+Q4 asks about whether the participants were able to find their 
+
+newly learned words in other e-book contents. For example, when 
+
+a participant learned “?? (Use)” in an e-book material titled 
+
+“Japanese Learning Beginner Vol.1”, the system connected it to 
+
+other e-book materials such as “Japanese Learning Beginner 
+
+Vol.2” and “Onomatopoeia Japanese Learning Vol.1”. That way, 
+
+they could learn that it is a frequently used word in the Japanese 
+
+language. 
+
+Q5 asks about whether VASCORLL was easy to use. They were 
+
+asked to evaluate the usability in terms of the operability and 
+
+readability of the visualized graph. The response shows that many 
+
+participants felt that VASCORLL was not easy to use. We asked 
+
+them to give comments regarding this problem. Examples of the 
+
+negative comments are as follows: 
+
+(1) The speed of visualizing and analyzing logs in the system is 
+
+too slow (It took about 20~30 sec.). 
+
+(2) If visualizing logs using a mobile device, it is hard to read 
+
+the nodes on the device because my screen is very small. 
+
+However, if logs are visualized on a personal computer, they 
+
+become very easy to read. 
+
+(3) It was a little bit difficult to understand how to use the 
+
+system. 
+
+From the comments (1) and (2), the participants would suggest 
+
+that the system developers need to improve functionality in 
+
+accordance with their mobile device and system’ speed in 
+
+visualizing a large mount of logs. The comment (3) shows that 
+
+even though we explained the usage of VASCORLL before the 
+
+evaluation experiment, some participants did not understand fully 
+
+how to use it. Thus, our next evaluation ought to be more 
+
+carefully planned. 
+
+6.3.3  Which centrality is effective in supporting seamless 
+learning 
+
+The results of five-point-scale questionnaire for evaluating each 
+
+centrality (degree, closeness and betweenness) are presented in 
+
+Table 5 (Best: 5, Wrong: 1). In addition, the participants were 
+
+asked questions such as “Which centrality is the easiest in 
+
+understanding or finding central words?” and “Which centrality is 
+
+the most effective for learning” in order to evaluate each centrality 
+
+in the seamless learning environment. 
+
+Q1-Q3 asked about whether the participants were able to 
+
+understand and find central words using fundamental social 
+
+network analysis: degree centrality, closeness centrality, and 
+
+betweenness centrality. From the results of the questionnaire, 
+
+many participants preferred to learn and find central words using 
+
+betweenness centrality because the mean score of the Q3 is the 
+
+most highest.  
+
+In order to find the most effective centrality for them to learn 
+
+central words, we interviewed the participants to compare 
+
+betweenness centrality with other centrality. 
+
+(1) Degree centrality versus Betweenness centrality 
+
+Table 4:  Result of the five-point-scale questionnaire for 
+
+evaluating usability and effectiveness of system (Group A) 
+
+Question Mean SD 
+
+Q1. Were you able to connect words 
+
+inside-class to out-side-class learning by 
+
+using VASCORLL? 
+
+3.7 0.82 
+
+Q2. Were you able to connect words out-
+
+side-class to inside-class learning by using 
+
+VASCORLL? 
+
+3.9 0.99 
+
+Q3. Were you able to learn and find the 
+
+relationship between words and places by 
+
+using VASCORLL? 
+
+3.4 0.96 
+
+Q4. Were you able to learn and find the 
+
+relationships between words and e-book 
+
+contents by using VASCORLL? 
+
+3.5 0.87 
+
+Q5. Was VASCORLL ease of use? 2.6 1.23 
+
+ 
+
+Table 5. Result of the five-point-scale questionnaire for 
+
+evaluating each centrality (N=20) 
+
+Question Mean SD 
+
+Q1. Was the degree centrality easy of 
+
+understanding or finding central words? 
+
+3 0.91 
+
+Q2.  Was the closeness centrality easy of 
+
+understanding or finding central words? 
+
+2.7 1.08 
+
+Q3.  Was the betweenness centrality easy 
+
+of understanding or finding central words? 
+
+3.7 0.86 
+
+ 
+
+
+
+ 9 
+
+Degree centrality enabled the participants to find merely nodes 
+
+that have many links. Two participants selected the centrality in 
+
+terms of usability and effectiveness for learning because it is 
+
+simple and easy to understand the characteristics. However, some 
+
+participants commented that it was difficult to find words bridging 
+
+formal learning over informal learning. When comparing 
+
+betweenness centrality with the degree centrality, the processing 
+
+speed of betweenness centrality was little, but it was very useful 
+
+in finding central words which linked formal and informal 
+
+learning. 
+
+(2) Closeness centrality versus Betweenness centrality 
+
+When comparing closeness centrality with the closeness 
+
+centrality, the closeness centrality was not useful to find central 
+
+words in the seamless learning environment. There was no 
+
+numerical value difference between formal words in FLS and 
+
+informal words in ILS, so that the participants could not find 
+
+central words. Therefore, this paper concluded that the closeness 
+
+centrality was not a useful centrality in finding central words in 
+
+the seamless learning environment if using our visualization and 
+
+analysis method. 
+
+As shown in Figure 8, the majority of the participants preferred to 
+
+use betweenness centrality than other centrality. We asked them 
+
+“why you preferred to the betweenness centrality than other 
+
+algorithms”. Their feedbacks are as follows: 
+
+? “Because it is easy to find words in my e-book content 
+linking to informal words, the betweenness centrality is very 
+
+good.” 
+
+? “It was easy to understand. And I learned some words. 
+Then, it recommended some useful words to me (e.g. the 
+
+size of green or yellow node).”  
+
+The betweenness centrality turned out a very good centrality in 
+
+terms of easiness to find words bridging formal and informal 
+
+learning. In addition, we compared betweenness centrality with 
+
+other centrality. Fifteen answered that the betweenness centrality 
+
+is helpful to find central words in the seamless learning 
+
+environment. Seventeen answered it worked effectively in 
+
+language learning. 
+
+7 CONCLUSION 
+
+This paper described a system called VASCORLL for visualizing 
+
+and analyzing learning logs collected in the seamless learning 
+
+environment in order to bridge the gap between formal and 
+
+informal learning. VASCORLL works on cyber-physical setting 
+
+to link learners in the real world and learning logs that are 
+
+accumulated in the cyber spaces using the ubiquitous learning 
+
+system called SCROLL with EPUB. SCROLL with EPUB 
+
+enabled international students to learn through two learning 
+
+activities: e-book-based learning activity and authentic learning 
+
+activity. 
+
+Through those learning activities, we proposed visualization and 
+
+analysis methods based on graph theory, social network analysis 
+
+and graph drawing algorithms in order to find pivotal words in the 
+
+seamless learning environment. Two types of three-layer 
+
+structures called FLS and ILS were adapted as the visualization 
+
+methods. That way, teachers and students could easily grasp 
+
+words bridging between words in FLS and ILS. In addition, this 
+
+paper evaluated whether they were able to find the most pivotal 
+
+words on the network graph using each centrality based on social 
+
+network analysis. 
+
+The evaluation was conducted after the implementation of 
+
+VASCORLL. A questionnaire with a five-point-scale conducted 
+
+after the evaluation showed that VASCORLL was a useful tool to 
+
+find central words bridging formal and informal learning. The 
+
+result of questionnaires for evaluating each centrality showed the 
+
+most effective centrality for learning was betweenness centrality. 
+
+Therefore, we concluded that the betweenness centrality is the 
+
+most important centrality in the seamless learning environment. 
+
+VASCORLL will be evaluated repeatedly, with the processing 
+
+speed of visualizing and analyzing learning logs improved. In 
+
+addition, our future works include applying VASCORLL to other 
+
+application domains such as math, physics, and science education, 
+
+and long-term evaluations with an enough number of participants. 
+
+8 ACKNOWLEDGMENTS 
+
+This part of this research was supported by the Grant-in-Aid for 
+
+Scientific Research No.25282059, No.26560122, No.25540091, 
+
+No.26350319 and No.16J05548 from the Ministry of Education, 
+
+Culture, Sports, Science and Technology (MEXT) in Japan. The 
+
+research results have been partly achieved by “Research and 
+
+Development on Fundamental and Utilization Technologies for 
+
+Social Big Data” (178A03), the Commissioned Research of 
+
+National Institute of Information and Communications 
+
+Technology (NICT), Japan. 
+
+9 REFERENCES 
+
+[1] Barnes, J. & Hut, P., 1986. A Hierarchical O (n log n) Force-
+
+Calculation Algorithm, Nature 324(4), 446–449. 
+
+[2] Fang, H., Liu, P. & Huang, R., 2011. The Research on E-
+
+book-oriented Mobile Learning System Environment 
+
+Application and Its tendency, International Conference on 
+
+Computer Science and Education, 1333-1338. 
+
+[3] Freeman, l.-C., 1979, Centrality in social networks: 
+
+Conceptual clarification, Social Networks, Vol.1, 215-239. Figure 8: Number of selected centrality by each participant 
+
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+[4] Fruchterman, M.-E.-J. & Reingold, E.M., 1991. Graph 
+
+drawing by force-directed placement, Sofw Pract. Exper. 
+
+21(11), 1129–1164. 
+
+[5] Hu, Y.-F. & Scolt, J.-A., 2001. A Multilevel Algorithm for 
+
+Wavefront Reduction, SIAM J. Sci. Comput., 23(4), 1352–
+
+1375. 
+
+[6] Hwang, G.-J., Chu, H.-C., Liu, Y.-S. & Tsai, C.-C., 2011. A 
+
+knowledge acquisition approach to developing Mindtools for 
+
+organizing and sharing diffetentating knowledge in a 
+
+ubiquitous learning environment, Computer & Education, 
+
+Vol.57, No.1, 1368-1377. 
+
+[7] Johson, I. & Wilson, A., 2009. The Time-Map Project: 
+
+Developing Time-Based GIS Display for Cultural data, 
+
+Journal of GIS in Archaeology 1, 123-135. 
+
+[8] Kiyota, M., Mouri, K. & Ogata, H., 2015. Seamless Learning 
+
+System Based on e-Book, Proc. of the 23nd International 
+
+Conference on Computers in Education (ICCE 2015), 448-
+
+452. 
+
+[9] Latora, V. & Marchiori, M., 2007. A measure of centrality 
+
+based on the network efficiency, Journal of Physics, Vol.9, 1-
+
+12. 
+
+[10] Looi, C.-K., Sun, D. & Xie, W., 2015. Exploring Students’ 
+
+Progression in an Inquiry Science Curriculum Enabled by 
+
+Mobile Learning, IEEE Transactions on Learning 
+
+Technologies, Vol.8, No.1, 43-54. 
+
+[11] Milrad, M., Wong, L.-H., Sharples, M., Hwang, G.-J., Looi, 
+
+C.-K. & Ogata, H., 2013. Seamless learning: An international 
+
+perspective on next generation technology enhanced learning, 
+
+In Z. L. Berge and L. Y. Muilenburg, Handbook of mobile 
+
+learning (Chapter 9), 95-108. 
+
+[12] Mouri, K. & Ogata, H., 2015. Ubiquitous Learning Analytics 
+
+in the Real-world Language Learning, Journal of Smart 
+
+Learning Environment, Vol.2, No.15, 1-18. 
+
+[13] Mouri, K., Ogata, H. & Uosaki, N., 2015. Analysis of 
+
+Ubiquitous Learning Logs Using Social Network Analysis, 
+
+International Journal of Mobile Learning and Organisation 
+
+(IJMLO), Vol.9, No.2, 101-123. 
+
+[14] Mouri, K., Ogata, H. & Uosaki, N., 2015. Ubiquitous learning 
+
+analytics in the context of real-world language learning, Proc. 
+
+of International Conference Learning Analytics and 
+
+Knowledge (LAK 15), 378-382. 
+
+[15] Mouri, K., Ogata, H. & Uosaki, N., 2015. Visualization and 
+
+Analysis System for Connecting Relationships of Learning 
+
+Logs, proc. of the 23nd International Conference on 
+
+Computer in Education (ICCE 2015), 357-366. 
+
+[16] Mouri, K., Ogata, H., Uosaki, N. & Liu, S. Visualization for 
+
+Analyzing Ubiquitous Learning Logs, proc. of the 22nd 
+
+International Conference on Computers in Education (ICCE 
+
+2014), 461-470. 
+
+[17] Aljohani, N.-R. & Davis, H.-C., 2012. Learning analytics in 
+
+mobile and ubiquitous learning environments, In 11th World 
+
+Conference on Mobile and Contextual Learning. 
+
+[18] Noack, A., 2009. Modularity clustering is force-directed 
+
+layout, Physical Reviewe E, Vol.79, No.2, 1-8. 
+
+[19] Ogata, H. & Yano, Y., 2004. Context-aware support for 
+
+computer-supported ubiquitous learning, Proc. of IEEE 
+
+International Workshop on Wireless and Mobile Technologies 
+
+in Education, 27-34. 
+
+[20] Ogata, H., Hou, B., Li, M., Uosaki, N. & Mouri, K. Role of 
+
+Passive Capturing in a Ubiquitous Learning Environment, 
+
+International association for Development of the Information 
+
+Society, 117-124. 
+
+[21] Ogata, H., Hou, B., Li, M., Uosaki, N., Mouri, K. & Liu, S., 
+
+2014. Ubiquitous Learning Project Using Life-logging 
+
+Technology in Japan, Educational Technology and Society 
+
+Journal, Vol.17, No.2, 85-100. 
+
+[22] Ogata, H., Yin, C., Okubo, F., Shimada, A., Kojima, K. & 
+
+Yamada, M., 2015. E-Book-based Learning Analytics in 
+
+University Education, International Conference on Computer 
+
+in Education (ICCE 2015), 401-406. 
+
+[23] Shimada, A., Okubo, K., Yin, C., Kojima, K., Yamada, M. & 
+
+Ogata, H., 2015. Informal learning behavior analysis using 
+
+action logs and slide features in e-textbooks, Proc. of IEEE 
+
+International Conference on Advanced Learning 
+
+Technologies, 116-117. 
+
+[24] Shin, J.-A., 2012. Analysis on the digital textbook’s different 
+
+effectiveness by characteristics of learner, International 
+
+Journal of Education and Learning, Vol.1, No.2, 23-38. 
+
+[25] Uosaki, N., Li, M., Hou, B., Ogata, H. & Yano, Y., 2010. 
+
+Supporting an English Course Using Handhelds in a Seamless 
+
+Learning Environment, Workshop of the 18nd International 
+
+Conference on Computers in Education (ICCE 2010), 185-
+
+192. 
+
+[26] Uosaki, N., Ogata, H. & Mouri, K., 2015. How We Can Boost 
+
+Up Outside-class Learning?: Effectiveness of Ubiquitous 
+
+Learning Log System, International Journal of Mobile 
+
+Learning and Organisation (IJMLO), Vol. 9, No.2, 160-181. 
+
+[27] Wong, L.-H., Chai, C.-S., King, R. & Zhang, X., 2014. 
+
+Unpacking the researcher-teacher co-design process of a 
+
+seamless language environment with the TPACK framework, 
+
+22nd International conference on computer in education 
+
+(ICCE 2014), 886-895. 
+
+[28] Wong, L.-H., Milrad, M. & Specht, M., 2015. Seamless learning in 
+
+the age of mobile connectivity, Singapore: Springer. 
+
+[29] Yin, C., Okubo, F., Shimada, A., Kojima, K., Yamada, M., 
+
+Ogata, H. & Fujimura, N., 2014. Smart Phone based Data 
+
+Collecting System for Analysing Learning Behaviors, 
+
+International Conference on Computer in Education (ICCE 
+
+2014), 575-577. 
+ 
+
+
+

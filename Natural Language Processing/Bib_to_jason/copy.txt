@@ -1,0 +1,186 @@
+import itertools
+import codecs
+import os
+
+def mainFunction():
+    bibFile = open('test.bib','r')
+    bibString=""
+    errorFile =open("errorFile.txt","w")                #error File
+    duplicateCounter =0                                 #duplicate counter
+    categoryCounter =0
+    cwd = os.getcwd()
+    pathName = cwd+"\\result"
+    typesName =""                                       #for each types
+
+    for line in bibFile:
+        if not (line =="\n" or line == "}\n" or line == "}"):
+            line = line.strip()            
+            line=line+'NEWLINE'
+            bibString= bibString+line
+    bibFile.close()
+    category = typeResult(bibString,errorFile)
+
+    for data in category:
+        indexCounter =0                     #index counter
+        successCounter =0                   #success counter
+        if categoryCounter ==0:
+            completeName =os.path.join(pathName,"onlineResult.json")
+            finalFile=codecs.open(completeName,"w","utf-8")
+            typesName="online"
+        elif categoryCounter ==1:
+            completeName =os.path.join(pathName,"inproceedingsResult.json")
+            finalFile=codecs.open(completeName,"w","utf-8")
+            typesName ="inproceeding"
+        elif categoryCounter ==2:
+            completeName =os.path.join(pathName,"articleResult.json")
+            finalFile=codecs.open(completeName,"w","utf-8")
+            typesName ="article"
+        elif categoryCounter ==3:
+            completeName =os.path.join(pathName,"techreportResult.json")
+            finalFile=codecs.open(completeName,"w","utf-8")
+            typesName ="techreport"
+        elif categoryCounter ==4:
+            completeName =os.path.join(pathName,"bookResult.json")
+            finalFile=codecs.open(completeName,"w","utf-8")
+            typesName ="book"
+        elif categoryCounter ==5:
+            completeName =os.path.join(pathName,"phdthesisResult.json")
+            finalFile=codecs.open(completeName,"w","utf-8")
+            typesName ="phdthesis"
+        categoryCounter+=1
+        for eachData in data:
+            result = convertData(eachData,errorFile)
+            if result =="duplicate":
+                duplicateCounter+=1
+            else:
+                indexCounter+=1
+                index = "{\"index\":{\"_id\":\""+str(indexCounter)+"\"}}"
+                finalFile.write(index+"\n")
+                finalFile.write(result+"\n")
+                successCounter+=1
+        finalFile.close()
+        print("Data TransferSuccess for "+typesName+":"+str(successCounter))
+        
+    print("Duplicate Attributes Data:"+str(duplicateCounter))
+    errorFile.close()
+    
+#===============================================================================
+#check class
+
+def typeResult(input,errorFile):
+    dataIn =0
+    errorData =0
+    finalResult=[]
+    types = ["online","inproceedings","article","techreport","book","phdthesis"]
+    online,inproceedings,article,techreport,book,phdthesis=([] for i in range(6))
+
+    data=input.split("@")
+    if data[0]==' ' or data[0]=='\n' or data[0]=='':
+        data.pop(0)
+    for line in data:
+        fewWords = line[0:15]
+        if "online" in fewWords.lower():
+            dataIn +=1
+            online.append(line)
+        elif "inproceedings" in fewWords.lower():
+            dataIn +=1
+            inproceedings.append(line)
+        elif "article" in fewWords.lower():
+            dataIn +=1
+            article.append(line)
+        elif "techreport" in fewWords.lower():
+            dataIn +=1
+            techreport.append(line)
+        elif "book" in fewWords.lower():
+            dataIn +=1
+            book.append(line)
+        elif "phdthesis" in fewWords.lower():
+            dataIn +=1
+            phdthesis.append(line)
+        else:
+            errorData +=1
+            errorLine = line.replace("NEWLINE","\n")
+            errorLine = "This doesn't match the types in the DataBase:\n"+errorLine+"\n"
+            errorReturn(errorLine,errorFile)
+            #print("This doesn't match the types in the DataBase:\n"+errorLine+"\n")
+    finalResult.append(online)
+    finalResult.append(inproceedings)
+    finalResult.append(article)
+    finalResult.append(techreport)
+    finalResult.append(book)
+    finalResult.append(phdthesis)
+    print("Read in Data:"+str(dataIn))
+    print("Type not register:"+str(errorData))
+            
+    return finalResult
+          
+#================================================================================
+def convertData(input,errorFile):
+    attributeArray=[]
+    result=""
+    inside=True
+    splitString = input.split("NEWLINE")
+    for num,eachLine in enumerate(splitString, start=0):
+        if num == 0 and not eachLine == "":
+            firstLine=eachLine.replace(",","")
+            firstLine=firstLine.replace("{","REPLACE")
+            splitData=firstLine.split("REPLACE")
+            firstLine="{\"datatype\":\""+splitData[0]+"\",\"key\":\""+splitData[1]+"\","
+            result=result+firstLine
+        else:
+            if not eachLine=="}" and not eachLine=="":
+                otherLine=eachLine.replace("{","")
+                otherLine=otherLine.replace("}","")
+                if not "=" in otherLine:
+                    if inside:
+                        result=result[:len(result)-1]
+                        result=result[:len(result)-1]
+                        inside = False
+                    otherLine =otherLine.replace("&","")
+                    otherLine =otherLine.replace("\\","")
+                    otherLine =otherLine.replace("\"","")
+                    result = result+" "+otherLine
+                     
+                else:
+                    splitEqual = otherLine.split("=")   #split text to two parts attribute and their data
+                    name = splitEqual[0]    #attribute
+                    name = name.replace(" ","")
+                    for each in attributeArray: #checking duplicate attributes
+                        if name == each:
+                            errorDa = input.replace("NEWLINE","\n")
+                            errorDa = "Duplicate Attributes:\n"+errorDa+"\n"
+                            errorReturn(errorDa,errorFile)
+                            return "duplicate"
+                    attributeArray.append(name)
+                    name ="\""+name+"\":"
+
+                    data=splitEqual[1]  #data
+                    if data[-1:] == ",":
+                        data = data[:len(data)-1] #take out comma at the end
+                    data = data.replace("{","")
+                    data = data.replace("}","")
+                    if data[:1]==" " or data[:1]=="\t":
+                        data = data[1:]           #take out space at front
+                    data = data.replace("\"","")
+                    data = data.replace("&","")
+                    data = data.replace("\\","")
+                    data ="\""+data+"\","
+
+                    finalString =name+data
+                    inside =True
+                    result=result+finalString
+    
+    if inside == False:
+        result = result[:len(result)-1]+"\"}"
+    else:
+        result = result[:len(result)-1]+"}"
+   
+    return result     
+#================================================================================
+def writeData(category,errorFile):
+#================================================================================
+def errorReturn(input,errorFile):
+    errorFile.write(input)
+               
+#================================================================================
+mainFunction()

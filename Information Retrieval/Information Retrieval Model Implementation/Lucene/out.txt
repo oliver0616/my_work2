@@ -1,0 +1,810 @@
+org
+	apache
+		lucene - Top-level package.
+			LucenePackage - Lucene's package information, including version.
+		analysis - Text analysis.
+			Analyzer - An Analyzer builds TokenStreams, which analyze text.
+			ReuseStrategy - Strategy defining how TokenStreamComponents are reused per call to Analyzer.tokenStream(String, java.io.Reader).
+			TokenStreamComponents - This class encapsulates the outer components of a token stream.
+			AnalyzerWrapper - Extension to Analyzer suitable for Analyzers which wrap other Analyzers.
+			CachingTokenFilter - This class can be used if the token attributes of a TokenStream are intended to be consumed more than once.
+			CharacterUtils - Utility class to write tokenizers or token filters.
+			CharacterBuffer - A simple IO buffer to use with CharacterUtils.fill(CharacterBuffer, Reader).
+			CharArrayMap - A simple class that stores key Strings as char[]'s in a hash table.
+			CharArraySet - A simple class that stores Strings as char[]'s in a hash table.
+			CharFilter - Subclasses of CharFilter can be chained to filter a Reader They can be used as Reader with additional offset correction.
+			DelegatingAnalyzerWrapper - An analyzer wrapper, that doesn't allow to wrap components or readers.
+			FilteringTokenFilter - Abstract base class for TokenFilters that may remove tokens.
+			LowerCaseFilter - Normalizes token text to lower case.
+			StopFilter - Removes stop words from a token stream.
+			StopwordAnalyzerBase - Base class for Analyzers that need to make use of stopword sets.
+			TokenFilter - A TokenFilter is a TokenStream whose input is another TokenStream.
+			Tokenizer - A Tokenizer is a TokenStream whose input is a Reader.
+			TokenStream - A TokenStream enumerates the sequence of tokens, either from Fields of a Document or from query text.
+			TokenStreamToAutomaton - Consumes a TokenStream and creates an Automaton  where the transition labels are UTF8 bytes (or Unicode   code points if unicodeArcs is true) from the TermToBytesRefAttribute.
+			WordlistLoader - Loader for text files that represent a list of stopwords.
+		standard - Fast, general-purpose grammar-based tokenizer StandardTokenizer implements the Word Break rules from the Unicode Text Segmentation algorithm, as specified in  Unicode Standard Annex #29.
+			StandardAnalyzer - Filters StandardTokenizer with StandardFilter, LowerCaseFilter and StopFilter, using a list of English stop words.
+			StandardFilter - Normalizes tokens extracted with StandardTokenizer.
+			StandardTokenizer - A grammar-based tokenizer constructed with JFlex.
+			StandardTokenizerImpl - This class implements Word Break rules from the Unicode Text Segmentation  algorithm, as specified in  Unicode Standard Annex #29.
+		tokenattributes - General-purpose attributes for text analysis.
+			BytesTermAttribute - This attribute can be used if you have the raw term bytes to be indexed.
+			CharTermAttribute - The term text of a Token.
+			FlagsAttribute - This attribute can be used to pass different flags down the Tokenizer chain, e.g.
+			KeywordAttribute - This attribute can be used to mark a token as a keyword.
+			OffsetAttribute - The start and end character offset of a Token.
+			PayloadAttribute - The payload of a Token.
+			PositionIncrementAttribute - Determines the position of this token relative to the previous Token in a TokenStream, used in phrase searching.
+			PositionLengthAttribute - Determines how many positions this  token spans.
+			TermFrequencyAttribute - Sets the custom term frequency of a term within one document.
+			TermToBytesRefAttribute - This attribute is requested by TermsHashPerField to index the contents.
+			TypeAttribute - A Token's lexical type.
+			BytesTermAttributeImpl - Implementation class for BytesTermAttribute.
+			CharTermAttributeImpl - Default implementation of CharTermAttribute.
+			FlagsAttributeImpl - Default implementation of FlagsAttribute.
+			KeywordAttributeImpl - Default implementation of KeywordAttribute.
+			OffsetAttributeImpl - Default implementation of OffsetAttribute.
+			PackedTokenAttributeImpl - Default implementation of the common attributes used by Lucene: CharTermAttribute TypeAttribute PositionIncrementAttribute PositionLengthAttribute OffsetAttribute TermFrequencyAttribute 
+			PayloadAttributeImpl - Default implementation of PayloadAttribute.
+			PositionIncrementAttributeImpl - Default implementation of PositionIncrementAttribute.
+			PositionLengthAttributeImpl - Default implementation of PositionLengthAttribute.
+			TermFrequencyAttributeImpl - Default implementation of TermFrequencyAttribute.
+			TypeAttributeImpl - Default implementation of TypeAttribute.
+		codecs - Codecs API: API for customization of the encoding and structure of the index.
+			BlockTermState - Holds all state required for PostingsReaderBase to produce a PostingsEnum without re-seeking the terms dict.
+			Codec - Encodes/decodes an inverted index segment.
+			CodecUtil - Utility class for reading and writing versioned headers.
+			CompoundFormat - Encodes/decodes compound files
+			DocValuesConsumer - Abstract API that consumes numeric, binary and sorted docvalues.
+			DocValuesFormat - Encodes/decodes per-document values.
+			DocValuesProducer - Abstract API that produces numeric, binary, sorted, sortedset,  and sortednumeric docvalues.
+			FieldInfosFormat - Encodes/decodes FieldInfos
+			FieldsConsumer - Abstract API that consumes terms, doc, freq, prox, offset and payloads postings.
+			FieldsProducer - Abstract API that produces terms, doc, freq, prox, offset and  payloads postings.
+			FilterCodec - A codec that forwards all its method calls to another codec.
+			LegacyDocValuesIterables - Bridge helper methods for legacy codecs to map sorted doc values to iterables.
+			LiveDocsFormat - Format for live/deleted documents
+			MultiLevelSkipListReader - This abstract class reads skip lists with multiple levels.
+			MultiLevelSkipListWriter - This abstract class writes skip lists with multiple levels.
+			MutablePointValues - PointValues whose order of points can be changed.
+			NormsConsumer - Abstract API that consumes normalization values.
+			NormsFormat - Encodes/decodes per-document score normalization values.
+			NormsProducer - Abstract API that produces field normalization values
+			PointsFormat - Encodes/decodes indexed points.
+			PointsReader - Abstract API to visit point values.
+			PointsWriter - Abstract API to write points
+			PostingsFormat - Encodes/decodes terms, postings, and proximity data.
+			PostingsReaderBase - The core terms dictionaries (BlockTermsReader,  BlockTreeTermsReader) interact with a single instance  of this class to manage creation of PostingsEnum and  PostingsEnum instances.
+			PostingsWriterBase - Class that plugs into term dictionaries, such as BlockTreeTermsWriter, and handles writing postings.
+			PushPostingsWriterBase - Extension of PostingsWriterBase, adding a push API for writing each element of the postings.
+			SegmentInfoFormat - Expert: Controls the format of the  SegmentInfo (segment metadata file).
+			StoredFieldsFormat - Controls the format of stored fields
+			StoredFieldsReader - Codec API for reading stored fields.
+			StoredFieldsWriter - Codec API for writing stored fields:    For every document, StoredFieldsWriter.startDocument() is called,       informing the Codec that a new document has started.
+			TermStats - Holder for per-term statistics.
+			TermVectorsFormat - Controls the format of term vectors
+			TermVectorsReader - Codec API for reading term vectors:
+			TermVectorsWriter - Codec API for writing term vectors:    For every document, TermVectorsWriter.startDocument(int) is called,       informing the Codec how many fields will be written.
+		blocktree - BlockTree terms dictionary.
+			BlockTreeTermsReader - A block-based terms index and dictionary that assigns  terms to variable length blocks according to how they  share prefixes.
+			BlockTreeTermsWriter - Block-based terms index and dictionary writer.
+			FieldReader - BlockTree's implementation of Terms.
+			Stats - BlockTree statistics for a single field  returned by FieldReader.getStats().
+		compressing - StoredFieldsFormat that allows cross-document and cross-field compression of stored fields.
+			CompressingStoredFieldsFormat - A StoredFieldsFormat that compresses documents in chunks in order to improve the compression ratio.
+			CompressingStoredFieldsIndexReader - Random-access reader for CompressingStoredFieldsIndexWriter.
+			CompressingStoredFieldsIndexWriter - Efficient index format for block-based Codecs.
+			CompressingStoredFieldsReader - StoredFieldsReader impl for CompressingStoredFieldsFormat.
+			CompressingStoredFieldsWriter - StoredFieldsWriter impl for CompressingStoredFieldsFormat.
+			CompressingTermVectorsFormat - A TermVectorsFormat that compresses chunks of documents together in order to improve the compression ratio.
+			CompressingTermVectorsReader - TermVectorsReader for CompressingTermVectorsFormat.
+			CompressingTermVectorsWriter - TermVectorsWriter for CompressingTermVectorsFormat.
+			CompressionMode - A compression mode.
+			Compressor - A data compressor.
+			Decompressor - A decompressor.
+		lucene50 - Components from the Lucene 5.0 index format See org.apache.lucene.codecs.lucene50 for an overview of the index format.
+			Lucene50CompoundFormat - Lucene 5.0 compound file format
+			Lucene50FieldInfosFormat - Lucene 5.0 Field Infos format.
+			Lucene50LiveDocsFormat - Lucene 5.0 live docs format
+			Lucene50PostingsFormat - Lucene 5.0 postings format, which encodes postings in packed integer blocks  for fast decode.
+			Lucene50PostingsReader - Concrete class that reads docId(maybe frq,pos,offset,payloads) list with postings format.
+			Lucene50PostingsWriter - Concrete class that writes docId(maybe frq,pos,offset,payloads) list with postings format.
+			Lucene50StoredFieldsFormat - Lucene 5.0 stored fields format.
+			Lucene50TermVectorsFormat - Lucene 5.0 term vectors format.
+			Mode - Configuration option for stored fields.
+		lucene60 - Components from the Lucene 6.0 index format.
+			Lucene60FieldInfosFormat - Lucene 6.0 Field Infos format.
+			Lucene60PointsFormat - Lucene 6.0 point format, which encodes dimensional values in a block KD-tree structure for fast 1D range and N dimesional shape intersection filtering.
+			Lucene60PointsReader - Reads point values previously written with Lucene60PointsWriter
+			Lucene60PointsWriter - Writes dimensional values
+		lucene62 - Components from the Lucene 6.2 index format See org.apache.lucene.codecs.lucene70 for an overview of the current index format.
+			Lucene62SegmentInfoFormat - Lucene 6.2 Segment info format.
+		lucene70 - Lucene 7.0 file format.
+			Lucene70Codec - Implements the Lucene 7.0 index format, with configurable per-field postings and docvalues formats.
+			Lucene70DocValuesFormat - Lucene 7.0 DocValues format.
+			Lucene70NormsFormat - Lucene 7.0 Score normalization format.
+			Lucene70SegmentInfoFormat - Lucene 7.0 Segment info format.
+		perfield - Postings format that can delegate to different formats per-field.
+			PerFieldDocValuesFormat - Enables per field docvalues support.
+			PerFieldPostingsFormat - Enables per field postings support.
+		document - The logical representation of a Document for indexing and searching.
+			BinaryDocValuesField - Field that stores a per-document BytesRef value.
+			BinaryPoint - An indexed binary field for fast range filters.
+			DateTools - Provides support for converting dates to strings and vice-versa.
+			Document - Documents are the unit of indexing and search.
+			DocumentStoredFieldVisitor - A StoredFieldVisitor that creates a Document from stored fields.
+			DoubleDocValuesField - Syntactic sugar for encoding doubles as NumericDocValues via Double.doubleToRawLongBits(double).
+			DoublePoint - An indexed double field for fast range filters.
+			DoubleRange - An indexed Double Range field.
+			FeatureField - Field that can be used to store static scoring factors into documents.
+			Field - Expert: directly create a field for a document.
+			FieldType - Describes the properties of a field.
+			FloatDocValuesField - Syntactic sugar for encoding floats as NumericDocValues via Float.floatToRawIntBits(float).
+			FloatPoint - An indexed float field for fast range filters.
+			FloatRange - An indexed Float Range field.
+			IntPoint - An indexed int field for fast range filters.
+			IntRange - An indexed Integer Range field.
+			LongPoint - An indexed long field for fast range filters.
+			LongRange - An indexed Long Range field.
+			NumericDocValuesField -  Field that stores a per-document long value for scoring,  sorting or value retrieval.
+			SortedDocValuesField -  Field that stores a per-document BytesRef value, indexed for sorting.
+			SortedNumericDocValuesField -  Field that stores a per-document long values for scoring,  sorting or value retrieval.
+			SortedSetDocValuesField -  Field that stores a set of per-document BytesRef values, indexed for faceting,grouping,joining.
+			StoredField - A field whose value is stored so that IndexSearcher.doc(int) and IndexReader.document() will  return the field and its value.
+			StringField - A field that is indexed but not tokenized: the entire  String value is indexed as a single token.
+			TextField - A field that is indexed and tokenized, without term  vectors.
+			Resolution - Specifies the time granularity.
+			Store - Specifies whether and how a field should be stored.
+		geo - Geospatial Utility Implementations for Lucene Core
+			GeoEncodingUtils - reusable geopoint encoding methods
+			DistancePredicate - A predicate that checks whether a given point is within a distance of another point.
+			PolygonPredicate - A predicate that checks whether a given point is within a polygon.
+			GeoUtils - Basic reusable geo-spatial utility methods
+			Polygon - Represents a closed polygon on the earth's surface.
+			Polygon2D - 2D polygon implementation represented as a balanced interval tree of edges.
+			Rectangle - Represents a lat/lon rectangle.
+		index - Code to maintain and access indices.
+			IndexableField - Represents a single field for indexing.
+			IndexableFieldType - Describes the properties of a field.
+			CacheHelper - A utility class that gives hooks in order to help build a cache based on the data that is contained in this index.
+			ClosedListener - A listener that is called when a resource gets closed.
+			IndexReaderWarmer - If DirectoryReader.open(IndexWriter) has  been called (ie, this writer is in near real-time  mode), then after a merge completes, this class can be  invoked to warm the reader on the newly merged  segment, before the merge commits.
+			MergeContext - This interface represents the current context of the merge selection process.
+			IntersectVisitor - We recurse the BKD tree, using a provided instance of this to guide the recursion.
+			QueryTimeout - Base for query timeout implementations, which will provide a shouldExit() method, used with ExitableDirectoryReader.
+			TwoPhaseCommit - An interface for implementations that support 2-phase commit.
+			AutomatonTermsEnum - A FilteredTermsEnum that enumerates terms based upon what is accepted by a DFA.
+			BaseCompositeReader - Base class for implementing CompositeReaders based on an array of sub-readers.
+			BinaryDocValues - A per-document numeric value.
+			CheckIndex - Basic tool and API to check the health of an index and write a new segments file that removes reference to problematic segments.
+			Options - Run-time configuration options for CheckIndex commands.
+			Status - Returned from CheckIndex.checkIndex() detailing the health and status of the index.
+			DocValuesStatus - Status from testing DocValues
+			FieldInfoStatus - Status from testing field infos.
+			FieldNormStatus - Status from testing field norms.
+			IndexSortStatus - Status from testing index sort
+			LiveDocStatus - Status from testing livedocs
+			PointsStatus - Status from testing PointValues
+			SegmentInfoStatus - Holds the status of each segment in the index.
+			StoredFieldStatus - Status from testing stored fields.
+			TermIndexStatus - Status from testing term index.
+			TermVectorStatus - Status from testing stored fields.
+			VerifyPointsVisitor - Walks the entire N-dimensional points space, verifying that all points fall within the last cell's boundaries.
+			CodecReader - LeafReader implemented by codec APIs.
+			CompositeReader - Instances of this reader type can only be used to get stored fields from the underlying LeafReaders, but it is not possible to directly retrieve postings.
+			CompositeReaderContext - IndexReaderContext for CompositeReader instance.
+			ConcurrentMergeScheduler - A MergeScheduler that runs each merge using a  separate thread.
+			DirectoryReader - DirectoryReader is an implementation of CompositeReader that can read indexes in a Directory.
+			DocIDMerger - Utility class to help merging documents from sub-readers according to either simple  concatenated (unsorted) order, or by a specified index-time sort, skipping  deleted documents and remapping non-deleted documents.
+			Sub - Represents one sub-reader being merged
+			DocValues - This class contains utility methods and constants for DocValues
+			EmptyDocValuesProducer - Abstrast base class implementing a DocValuesProducer that has no doc values.
+			ExitableDirectoryReader - The ExitableDirectoryReader wraps a real index DirectoryReader and allows for a QueryTimeout implementation object to be checked periodically to see if the thread should exit or not.
+			ExitableFilterAtomicReader - Wrapper class for another FilterAtomicReader.
+			ExitableSubReaderWrapper - Wrapper class for a SubReaderWrapper that is used by the ExitableDirectoryReader.
+			ExitableTerms - Wrapper class for another Terms implementation that is used by ExitableFields.
+			ExitableTermsEnum - Wrapper class for TermsEnum that is used by ExitableTerms for implementing an exitable enumeration of terms.
+			FieldInfo - Access to the Field Info file that describes document fields and whether or  not they are indexed.
+			FieldInfos - Collection of FieldInfos (accessible by number or by name).
+			FieldInvertState - This class tracks the number and position / offset parameters of terms being added to the index.
+			Fields - Provides a Terms index for fields that have it, and lists which fields do.
+			FilterBinaryDocValues - Delegates all methods to a wrapped BinaryDocValues.
+			FilterCodecReader - A FilterCodecReader contains another CodecReader, which it uses as its basic source of data, possibly transforming the data along the way or providing additional functionality.
+			FilterDirectoryReader - A FilterDirectoryReader wraps another DirectoryReader, allowing implementations to transform or extend it.
+			SubReaderWrapper - Factory class passed to FilterDirectoryReader constructor that allows subclasses to wrap the filtered DirectoryReader's subreaders.
+			FilteredTermsEnum - Abstract class for enumerating a subset of all terms.
+			FilterLeafReader - A FilterLeafReader contains another LeafReader, which it uses as its basic source of data, possibly transforming the data along the way or providing additional functionality.
+			FilterFields - Base class for filtering Fields  implementations.
+			FilterPostingsEnum - Base class for filtering PostingsEnum implementations.
+			FilterTerms - Base class for filtering Terms implementations.
+			FilterTermsEnum - Base class for filtering TermsEnum implementations.
+			FilterMergePolicy - A wrapper for MergePolicy instances.
+			FilterNumericDocValues - Delegates all methods to a wrapped NumericDocValues.
+			IndexCommit - Expert: represents a single commit into an index as seen by the IndexDeletionPolicy or IndexReader.
+			IndexDeletionPolicy - Expert: policy for deletion of stale index commits.
+			IndexFileNames - This class contains useful constants representing filenames and extensions used by lucene, as well as convenience methods for querying whether a file name matches an extension (matchesExtension), as well as generating file names from a segment name, generation and extension ( fileNameFromGeneration, segmentFileName).
+			IndexReader - IndexReader is an abstract class, providing an interface for accessing a point-in-time view of an index.
+			CacheKey - A cache key identifying a resource that is being cached on.
+			IndexReaderContext - A struct like class that represents a hierarchical relationship between IndexReader instances.
+			IndexUpgrader - This is an easy-to-use tool that upgrades all segments of an index from previous Lucene versions to the current segment file format.
+			IndexWriter - An IndexWriter creates and maintains an index.
+			IndexWriterConfig - Holds all the configuration that is used to create an IndexWriter.
+			KeepOnlyLastCommitDeletionPolicy - This IndexDeletionPolicy implementation that keeps only the most recent commit and immediately removes all prior commits after a new commit is done.
+			LeafMetaData - Provides read-only metadata about a leaf.
+			LeafReader - LeafReader is an abstract class, providing an interface for accessing an index.
+			LeafReaderContext - IndexReaderContext for LeafReader instances.
+			LiveIndexWriterConfig - Holds all the configuration used by IndexWriter with few setters for settings that can be changed on an IndexWriter instance "live".
+			LogByteSizeMergePolicy - This is a LogMergePolicy that measures size of a  segment as the total byte size of the segment's files.
+			LogDocMergePolicy - This is a LogMergePolicy that measures size of a  segment as the number of documents (not taking deletions  into account).
+			LogMergePolicy - This class implements a MergePolicy that tries to merge segments into levels of exponentially increasing size, where each level has fewer segments than the value of the merge factor.
+			MappedMultiFields - A Fields implementation that merges multiple  Fields into one, and maps around deleted documents.
+			MergePolicy - Expert: a MergePolicy determines the sequence of primitive merge operations.
+			MergeSpecification - A MergeSpecification instance provides the information necessary to perform multiple merges.
+			OneMerge - OneMerge provides the information necessary to perform  an individual primitive merge operation, resulting in  a single new segment.
+			OneMergeProgress - Progress and state for an executing merge.
+			MergeRateLimiter - This is the RateLimiter that IndexWriter assigns to each running merge, to   give MergeSchedulers ionice like control.
+			MergeScheduler - Expert: IndexWriter uses an instance  implementing this interface to execute the merges  selected by a MergePolicy.
+			MergeState - Holds common state used during segment merging.
+			DocMap - A map of doc IDs.
+			MultiDocValues - A wrapper for CompositeIndexReader providing access to DocValues.
+			MultiSortedDocValues - Implements SortedDocValues over n subs, using an OrdinalMap
+			MultiSortedSetDocValues - Implements MultiSortedSetDocValues over n subs, using an OrdinalMap
+			MultiFields - Provides a single Fields term index view over an IndexReader.
+			MultiPostingsEnum - Exposes PostingsEnum, merged from PostingsEnum API of sub-segments.
+			EnumWithSlice - Holds a PostingsEnum along with the  corresponding ReaderSlice.
+			MultiReader - A CompositeReader which reads multiple indexes, appending  their content.
+			MultiTerms - Exposes flex API, merged from flex API of sub-segments.
+			MultiTermsEnum - Exposes TermsEnum API, merged from TermsEnum API of sub-segments.
+			NoDeletionPolicy - An IndexDeletionPolicy which keeps all index commits around, never deleting them.
+			NoMergePolicy - A MergePolicy which never returns merges to execute.
+			NoMergeScheduler - A MergeScheduler which never executes any merges.
+			NumericDocValues - A per-document numeric value.
+			OneMergeWrappingMergePolicy - A wrapping merge policy that wraps the MergePolicy.OneMerge objects returned by the wrapped merge policy.
+			OrdinalMap - Maps per-segment ordinals to/from global ordinal space, using a compact packed-ints representation.
+			OrdTermState - An ordinal based TermState
+			ParallelCompositeReader - An CompositeReader which reads multiple, parallel indexes.
+			ParallelLeafReader - An LeafReader which reads multiple, parallel indexes.
+			PersistentSnapshotDeletionPolicy - A SnapshotDeletionPolicy which adds a persistence layer so that snapshots can be maintained across the life of an application.
+			PointValues - Access to indexed numeric values.
+			PostingsEnum - Iterates through the postings.
+			PrefixCodedTerms - Prefix codes term instances (prefixes are shared).
+			Builder - Builds a PrefixCodedTerms: call add repeatedly, then finish.
+			TermIterator - An iterator over the list of terms stored in a PrefixCodedTerms.
+			QueryTimeoutImpl - An implementation of QueryTimeout that can be used by the ExitableDirectoryReader class to time out and exit out when a query takes a long time to rewrite.
+			ReaderManager - Utility class to safely share DirectoryReader instances across multiple threads, while periodically reopening.
+			ReaderSlice - Subreader slice from a parent composite reader.
+			ReaderUtil - Common util methods for dealing with IndexReaders and IndexReaderContexts.
+			SegmentCommitInfo - Embeds a [read-only] SegmentInfo and adds per-commit  fields.
+			SegmentInfo - Information about a segment such as its name, directory, and files related to the segment.
+			SegmentInfos - A collection of segmentInfo objects with methods for operating on those segments in relation to the file system.
+			FindSegmentsFile - Utility class for executing code that needs to do something with the current segments file.
+			SegmentReader - IndexReader implementation over a single segment.
+			SegmentReadState - Holder class for common parameters used during read.
+			SegmentWriteState - Holder class for common parameters used during write.
+			SerialMergeScheduler - A MergeScheduler that simply does each merge  sequentially, using the current thread.
+			SimpleMergedSegmentWarmer - A very simple merged segment warmer that just ensures  data structures are initialized.
+			SingleTermsEnum - Subclass of FilteredTermsEnum for enumerating a single term.
+			SlowCodecReaderWrapper - Wraps arbitrary readers for merging.
+			SnapshotDeletionPolicy - An IndexDeletionPolicy that wraps any other IndexDeletionPolicy and adds the ability to hold and later release snapshots of an index.
+			SoftDeletesDirectoryReaderWrapper - This reader filters out documents that have a doc values value in the given field and treat these documents as soft deleted.
+			SoftDeletesRetentionMergePolicy - This MergePolicy allows to carry over soft deleted documents across merges.
+			SortedDocValues - A per-document byte[] with presorted values.
+			SortedNumericDocValues - A list of per-document numeric values, sorted  according to Long.compare(long, long).
+			SortedSetDocValues - A multi-valued version of SortedDocValues.
+			StandardDirectoryReader - Default implementation of DirectoryReader.
+			StoredFieldVisitor - Expert: provides a low-level means of accessing the stored field values in an index.
+			Term - A Term represents a word from text.
+			TermContext - Maintains a IndexReader TermState view over IndexReader instances containing a single term.
+			Terms - Access to the terms in a specific field.
+			TermsEnum - Iterator to seek (TermsEnum.seekCeil(BytesRef), TermsEnum.seekExact(BytesRef)) or step through (BytesRefIterator.next() terms to obtain frequency information (TermsEnum.docFreq()), PostingsEnum or PostingsEnum for the current term (TermsEnum.postings(org.apache.lucene.index.PostingsEnum).
+			TermState - Encapsulates all required internal state to position the associated TermsEnum without re-seeking.
+			TieredMergePolicy - Merges segments of approximately equal size, subject to  an allowed number of segments per tier.
+			MergeScore - Holds score and explanation for a single candidate  merge.
+			TwoPhaseCommitTool - A utility for executing 2-phase commit on several objects.
+			UpgradeIndexMergePolicy - This MergePolicy is used for upgrading all existing segments of an index when calling IndexWriter.forceMerge(int).
+			DocValuesType - DocValues types.
+			AcceptStatus - Return value, if term should be accepted or the iteration should END.
+			IndexOptions - Controls how much information is stored in the postings lists.
+			OpenMode - Specifies the open mode for IndexWriter.
+			PauseReason - Reason for pausing the merge thread.
+			MergeTrigger - MergeTrigger is passed to MergePolicy.findMerges(MergeTrigger, SegmentInfos, MergePolicy.MergeContext) to indicate the event that triggered the merge.
+			Relation - Used by PointValues.intersect(org.apache.lucene.index.PointValues.IntersectVisitor) to check how each recursive cell corresponds to the query.
+			Status - Enumeration of possible return values for StoredFieldVisitor.needsField(org.apache.lucene.index.FieldInfo).
+			SeekStatus - Represents returned result from TermsEnum.seekCeil(org.apache.lucene.util.BytesRef).
+			CorruptIndexException - This exception is thrown when Lucene detects an inconsistency in the index.
+			ExitingReaderException - Exception that is thrown to prematurely terminate a term enumeration.
+			IndexFormatTooNewException - This exception is thrown when Lucene detects an index that is newer than this Lucene version.
+			IndexFormatTooOldException - This exception is thrown when Lucene detects an index that is too old for this Lucene version
+			IndexNotFoundException - Signals that no index was found in the Directory.
+			MergeAbortedException - Thrown when a merge was explicitly aborted because  IndexWriter.abortMerges() was called.
+			MergeException - Exception thrown if there are any problems while executing a merge.
+			CommitFailException - Thrown by TwoPhaseCommitTool.execute(TwoPhaseCommit...) when an object fails to commit().
+			PrepareCommitFailException - Thrown by TwoPhaseCommitTool.execute(TwoPhaseCommit...) when an object fails to prepareCommit().
+		search - Code to search indices.
+			BoostAttribute - Add this Attribute to a TermsEnum returned by MultiTermQuery.getTermsEnum(Terms,AttributeSource) and update the boost on each returned term.
+			Collector - Expert: Collectors are primarily meant to be used to gather raw results from a search, and implement sorting or custom result filtering, collation, etc.
+			CollectorManager - A manager of collectors.
+			LevenshteinAutomataAttribute - reuses compiled automata across different segments, because they are independent of the index
+			LeafCollector - Collector decouples the score from the collected doc: the score computation is skipped entirely if it's not needed.
+			LeafFieldComparator - Expert: comparator that gets instantiated on each leaf from a top-level FieldComparator instance.
+			Matches - Reports the positions and optionally offsets of all matching terms in a query for a single document To obtain a MatchesIterator for a particular field, call Matches.getMatches(String).
+			MatchesIteratorSupplier - A functional interface that supplies a MatchesIterator
+			MatchesIterator - An iterator over match positions (and optionally offsets) for a single document and field To iterate over the matches, call MatchesIterator.next() until it returns false, retrieving positions and/or offsets after each call.
+			MaxNonCompetitiveBoostAttribute - Add this Attribute to a fresh AttributeSource before calling MultiTermQuery.getTermsEnum(Terms,AttributeSource).
+			QueryCache - A cache for queries.
+			QueryCachingPolicy - A policy defining which filters should be cached.
+			RefreshListener - Use to receive notification when a refresh has  finished.
+			Pruner - See SearcherLifetimeManager.prune(org.apache.lucene.search.SearcherLifetimeManager.Pruner).
+			SegmentCacheable - Interface defining whether or not an object can be cached against a LeafReader Objects that depend only on segment-immutable structures such as Points or postings lists can just return true from SegmentCacheable.isCacheable(LeafReaderContext) Objects that depend on doc values should return DocValues.isCacheable(LeafReaderContext, String...), which will check to see if the doc values fields have been updated.
+			AutomatonQuery - A Query that will match terms against a finite-state machine.
+			BlendedTermQuery - A Query that blends index statistics across multiple terms.
+			Builder - A Builder for BlendedTermQuery.
+			DisjunctionMaxRewrite - A BlendedTermQuery.RewriteMethod that creates a DisjunctionMaxQuery out of the sub queries.
+			RewriteMethod - A BlendedTermQuery.RewriteMethod defines how queries for individual terms should  be merged.
+			BooleanClause - A clause in a BooleanQuery.
+			BooleanQuery - A Query that matches documents matching boolean combinations of other queries, e.g.
+			Builder - A builder for boolean queries.
+			BoostAttributeImpl - Implementation class for BoostAttribute.
+			BoostQuery - A Query wrapper that allows to give a boost to the wrapped query.
+			BulkScorer - This class is used to score a range of documents at  once, and is returned by Weight.bulkScorer(org.apache.lucene.index.LeafReaderContext).
+			CachingCollector - Caches all docs, and optionally also scores, coming from a search, and is then able to replay them to another collector.
+			CollectionStatistics - Contains statistics for a collection (field)
+			ConjunctionDISI - A conjunction of DocIdSetIterators.
+			ConstantScoreQuery - A query that wraps another query and simply returns a constant score equal to 1 for every document that matches the query.
+			ConstantBulkScorer - We return this as our BulkScorer so that if the CSQ  wraps a query with its own optimized top-level  scorer (e.g.
+			ConstantScoreScorer - A constant-scoring Scorer.
+			ConstantScoreWeight - A Weight that has a constant score equal to the boost of the wrapped query.
+			ControlledRealTimeReopenThread - Utility class that runs a thread to manage periodicc  reopens of a ReferenceManager, with methods to wait for a specific  index changes to become visible.
+			DisiPriorityQueue - A priority queue of DocIdSetIterators that orders by current doc ID.
+			DisiWrapper - Wrapper used in DisiPriorityQueue.
+			DisjunctionDISIApproximation - A DocIdSetIterator which is a disjunction of the approximations of the provided iterators.
+			DisjunctionMaxQuery - A query that generates the union of documents produced by its subqueries, and that scores each document with the maximum score for that document as produced by any subquery, plus a tie breaking increment for any additional matching subqueries.
+			DocIdSet - A DocIdSet contains a set of doc ids.
+			DocIdSetIterator - This abstract class defines methods to iterate over a set of non-decreasing doc ids.
+			DocValuesFieldExistsQuery - A Query that matches documents that have a value for a given field as reported by doc values iterators.
+			DocValuesRewriteMethod - Rewrites MultiTermQueries into a filter, using DocValues for term enumeration.
+			DoubleValues - Per-segment, per-document double values, which can be calculated at search-time
+			DoubleValuesSource - Base class for producing DoubleValues To obtain a DoubleValues object for a leaf reader, clients should call DoubleValuesSource.rewrite(IndexSearcher) against the top-level searcher, and then call DoubleValuesSource.getValues(LeafReaderContext, DoubleValues) on the resulting DoubleValuesSource.
+			Explanation - Expert: Describes the score computation for document and query.
+			FieldComparator - Expert: a FieldComparator compares hits so as to determine their sort order when collecting the top results with TopFieldCollector.
+			DocComparator - Sorts by ascending docID
+			DoubleComparator - Parses field's values as double (using LeafReader.getNumericDocValues(java.lang.String) and sorts by ascending value
+			FloatComparator - Parses field's values as float (using LeafReader.getNumericDocValues(String) and sorts by ascending value
+			IntComparator - Parses field's values as int (using LeafReader.getNumericDocValues(String) and sorts by ascending value
+			LongComparator - Parses field's values as long (using LeafReader.getNumericDocValues(String) and sorts by ascending value
+			NumericComparator - Base FieldComparator class for numeric types
+			RelevanceComparator - Sorts by descending relevance.
+			TermOrdValComparator - Sorts by field's natural Term sort order, using  ordinals.
+			TermValComparator - Sorts by field's natural Term sort order.
+			FieldComparatorSource - Provides a FieldComparator for custom field sorting.
+			FieldDoc - Expert: A ScoreDoc which also contains information about how to sort the referenced document.
+			FieldValueHitQueue - Expert: A hit queue for sorting by hits by terms in more than one field.
+			Entry - Extension of ScoreDoc to also store the  FieldComparator slot.
+			FilterCollector - Collector delegator.
+			FilteredDocIdSetIterator - Abstract decorator class of a DocIdSetIterator implementation that provides on-demand filter/validation mechanism on an underlying DocIdSetIterator.
+			FilterLeafCollector - LeafCollector delegator.
+			FilterScorer - A FilterScorer contains another Scorer, which it uses as its basic source of data, possibly transforming the data along the way or providing additional functionality.
+			FilterWeight - A FilterWeight contains another Weight and implements all abstract methods by calling the contained weight's method.
+			FuzzyQuery - Implements the fuzzy search query.
+			FuzzyTermsEnum - Subclass of TermsEnum for enumerating all terms that are similar to the specified filter term.
+			LevenshteinAutomataAttributeImpl - Stores compiled automata as a list (indexed by edit distance)
+			IndexOrDocValuesQuery - A query that uses either an index structure (points or terms) or doc values in order to run a query, depending which one is more efficient.
+			IndexSearcher - Implements search over a single IndexReader.
+			LeafSlice - A class holding a subset of the IndexSearchers leaf contexts to be executed within a single thread.
+			LiveFieldValues - Tracks live field values across NRT reader reopens.
+			LongValues - Per-segment, per-document long values, which can be calculated at search-time
+			LongValuesSource - Base class for producing LongValues To obtain a LongValues object for a leaf reader, clients should call LongValuesSource.rewrite(IndexSearcher) against the top-level searcher, and then LongValuesSource.getValues(LeafReaderContext, DoubleValues).
+			LRUQueryCache - A QueryCache that evicts queries using a LRU (least-recently-used) eviction policy in order to remain under a given maximum size and number of bytes used.
+			MatchAllDocsQuery - A query that matches all documents.
+			MatchNoDocsQuery - A query that matches no documents.
+			MaxNonCompetitiveBoostAttributeImpl - Implementation class for MaxNonCompetitiveBoostAttribute.
+			MultiCollector - A Collector which allows running a search with several Collectors.
+			MultiCollectorManager - A CollectorManager implements which wrap a set of CollectorManager as MultiCollector acts for Collector.
+			MultiPhraseQuery - A generalized version of PhraseQuery, with the possibility of adding more than one term at the same position that are treated as a disjunction (OR).
+			Builder - A builder for multi-phrase queries
+			MultiTermQuery - An abstract Query that matches documents containing a subset of terms provided by a FilteredTermsEnum enumeration.
+			RewriteMethod - Abstract class that defines how the query is rewritten.
+			TopTermsBlendedFreqScoringRewrite - A rewrite method that first translates each term into BooleanClause.Occur.SHOULD clause in a BooleanQuery, but adjusts the frequencies used for scoring to be blended across the terms, otherwise the rarest term typically ranks highest (often not useful eg in the set of expanded terms in a FuzzyQuery).
+			TopTermsBoostOnlyBooleanQueryRewrite - A rewrite method that first translates each term into BooleanClause.Occur.SHOULD clause in a BooleanQuery, but the scores are only computed as the boost.
+			TopTermsScoringBooleanQueryRewrite - A rewrite method that first translates each term into BooleanClause.Occur.SHOULD clause in a BooleanQuery, and keeps the scores as computed by the query.
+			NGramPhraseQuery - This is a PhraseQuery which is optimized for n-gram phrase query.
+			NormsFieldExistsQuery - A Query that matches documents that have a value for a given field as reported by field norms.
+			PhraseQuery - A Query that matches documents containing a particular sequence of terms.
+			Builder - A builder for phrase queries.
+			PointInSetQuery - Abstract query class to find all documents whose single or multi-dimensional point values, previously indexed with e.g.
+			Stream - Iterator of encoded point values.
+			PointRangeQuery - Abstract class for range queries against single or multidimensional points such as IntPoint.
+			PositiveScoresOnlyCollector - A Collector implementation which wraps another Collector and makes sure only documents with scores &gt; 0 are collected.
+			PrefixQuery - A Query that matches documents containing terms with a specified prefix.
+			Query - The abstract base class for queries.
+			QueryRescorer - A Rescorer that uses a provided Query to assign  scores to the first-pass hits.
+			ReferenceManager - Utility class to safely share instances of a certain type across multiple threads, while periodically refreshing them.
+			RegexpQuery - A fast regular expression query based on the org.apache.lucene.util.automaton package.
+			Rescorer - Re-scores the topN results (TopDocs) from an original query.
+			ScoreCachingWrappingScorer - A Scorer which wraps another scorer and caches the score of the current document.
+			ScoreDoc - Holds one hit in TopDocs.
+			Scorer - Expert: Common scoring functionality for different types of queries.
+			ChildScorer - A child Scorer and its relationship to its parent.
+			ScorerSupplier - A supplier of Scorer.
+			ScoringRewrite - Base rewrite method that translates each term into a query, and keeps the scores as computed by the query.
+			SearcherFactory - Factory class used by SearcherManager to create new IndexSearchers.
+			SearcherLifetimeManager - Keeps track of current plus old IndexSearchers, closing the old ones once they have timed out.
+			PruneByAge - Simple pruner that drops any searcher older by  more than the specified seconds, than the newest  searcher.
+			SearcherManager - Utility class to safely share IndexSearcher instances across multiple threads, while periodically reopening.
+			SimpleCollector - Base Collector implementation that is used to collect all contexts.
+			SimpleFieldComparator - Base FieldComparator implementation that is used for all contexts.
+			Sort - Encapsulates sort criteria for returned hits.
+			SortedNumericSelector - Selects a value from the document's list to use as the representative value
+			SortedNumericSortField - SortField for SortedNumericDocValues.
+			SortedSetSelector - Selects a value from the document's set to use as the representative value
+			SortedSetSortField - SortField for SortedSetDocValues.
+			SortField - Stores information about how to sort documents by terms in an individual field.
+			SortRescorer - A Rescorer that re-sorts according to a provided Sort.
+			SynonymQuery - A query that treats multiple terms as synonyms.
+			TermInSetQuery - Specialization for a disjunction over many terms that behaves like a ConstantScoreQuery over a BooleanQuery containing only BooleanClause.Occur.SHOULD clauses.
+			TermQuery - A Query that matches documents containing a term.
+			TermRangeQuery - A Query that matches documents within an range of terms.
+			TermStatistics - Contains statistics for a specific term
+			TimeLimitingCollector - The TimeLimitingCollector is used to timeout search requests that take longer than the maximum allowed search time limit.
+			TimerThread - Thread used to timeout search requests.
+			TopDocs - Represents hits returned by IndexSearcher.search(Query,int).
+			TopDocsCollector - A base class for all collectors that return a TopDocs output.
+			TopFieldCollector - A Collector that sorts by SortField using FieldComparators.
+			TopFieldDocs - Represents hits returned by IndexSearcher.search(Query,int,Sort).
+			TopScoreDocCollector - A Collector implementation that collects the top-scoring hits, returning them as a TopDocs.
+			TopTermsRewrite - Base rewrite method for collecting only the top terms via a priority queue.
+			TotalHitCountCollector - Just counts the total number of hits.
+			TwoPhaseIterator - Returned by Scorer.twoPhaseIterator() to expose an approximation of a DocIdSetIterator.
+			UsageTrackingQueryCachingPolicy - A QueryCachingPolicy that tracks usage statistics of recently-used filters in order to decide on which filters are worth caching.
+			Weight - Expert: Calculate query weights and build query scorers.
+			DefaultBulkScorer - Just wraps a Scorer and performs top scoring using it.
+			WildcardQuery - Implements the wildcard search query.
+			Occur - Specifies how clauses are to occur in matching documents.
+			Type - Type of selection to perform.
+			Type - Type of selection to perform.
+			Type - Specifies the type of the terms to be sorted, or special types such as CUSTOM
+			TooManyClauses - Thrown when an attempt is made to add more than BooleanQuery.getMaxClauseCount() clauses.
+			CollectionTerminatedException - Throw this exception in LeafCollector.collect(int) to prematurely  terminate collection of the current leaf.
+			TimeExceededException - Thrown when elapsed search time exceeds allowed search time.
+		similarities - This package contains the various ranking models that can be used in Lucene.
+			CollectionModel - A strategy for computing the collection language model.
+			AfterEffect - This class acts as the base class for the implementations of the first normalization of the informative content in the DFR framework.
+			NoAfterEffect - Implementation used when there is no aftereffect.
+			AfterEffectB - Model of the information gain based on the ratio of two Bernoulli processes.
+			AfterEffectL - Model of the information gain based on Laplace's law of succession.
+			Axiomatic - Axiomatic approaches for IR.
+			AxiomaticF1EXP - F1EXP is defined as Sum(tf(term_doc_freq)*ln(docLen)*IDF(term)) where IDF(t) = pow((N+1)/df(t), k) N=total num of docs, df=doc freq
+			AxiomaticF1LOG - F1LOG is defined as Sum(tf(term_doc_freq)*ln(docLen)*IDF(term)) where IDF(t) = ln((N+1)/df(t)) N=total num of docs, df=doc freq
+			AxiomaticF2EXP - F2EXP is defined as Sum(tfln(term_doc_freq, docLen)*IDF(term)) where IDF(t) = pow((N+1)/df(t), k) N=total num of docs, df=doc freq
+			AxiomaticF2LOG - F2EXP is defined as Sum(tfln(term_doc_freq, docLen)*IDF(term)) where IDF(t) = ln((N+1)/df(t)) N=total num of docs, df=doc freq
+			AxiomaticF3EXP - F2EXP is defined as Sum(tf(term_doc_freq)*IDF(term)-gamma(docLen, queryLen)) where IDF(t) = pow((N+1)/df(t), k) N=total num of docs, df=doc freq gamma(docLen, queryLen) = (docLen-queryLen)*queryLen*s/avdl
+			AxiomaticF3LOG - F2EXP is defined as Sum(tf(term_doc_freq)*IDF(term)-gamma(docLen, queryLen)) where IDF(t) = ln((N+1)/df(t)) N=total num of docs, df=doc freq gamma(docLen, queryLen) = (docLen-queryLen)*queryLen*s/avdl
+			BasicModel - This class acts as the base class for the specific basic model implementations in the DFR framework.
+			BasicModelBE - Limiting form of the Bose-Einstein model.
+			BasicModelD - Implements the approximation of the binomial model with the divergence for DFR.
+			BasicModelG - Geometric as limiting form of the Bose-Einstein model.
+			BasicModelIF - An approximation of the I(ne) model.
+			BasicModelIn - The basic tf-idf model of randomness.
+			BasicModelIne - Tf-idf model of randomness, based on a mixture of Poisson and inverse document frequency.
+			BasicModelP - Implements the Poisson approximation for the binomial model for DFR.
+			BasicStats - Stores all statistics commonly used ranking methods.
+			BM25Similarity - BM25 Similarity.
+			BooleanSimilarity - Simple similarity that gives terms a score that is equal to their query boost.
+			ClassicSimilarity - Expert: Historical scoring implementation.
+			DFISimilarity - Implements the Divergence from Independence (DFI) model based on Chi-square statistics (i.e., standardized Chi-squared distance from independence in term frequency tf).
+			DFRSimilarity - Implements the divergence from randomness (DFR) framework introduced in Gianni Amati and Cornelis Joost Van Rijsbergen.
+			Distribution - The probabilistic distribution used to model term occurrence in information-based models.
+			DistributionLL - Log-logistic distribution.
+			DistributionSPL - The smoothed power-law (SPL) distribution for the information-based framework that is described in the original paper.
+			IBSimilarity - Provides a framework for the family of information-based models, as described in St&eacute;phane Clinchant and Eric Gaussier.
+			Independence - Computes the measure of divergence from independence for DFI scoring functions.
+			IndependenceChiSquared - Normalized chi-squared measure of distance from independence
+			IndependenceSaturated - Saturated measure of distance from independence
+			IndependenceStandardized - Standardized measure of distance from independence
+			Lambda - The lambda (&lambda;w) parameter in information-based models.
+			LambdaDF - Computes lambda as docFreq+1 / numberOfDocuments+1.
+			LambdaTTF - Computes lambda as totalTermFreq+1 / numberOfDocuments+1.
+			LMDirichletSimilarity - Bayesian smoothing using Dirichlet priors.
+			LMJelinekMercerSimilarity - Language model based on the Jelinek-Mercer smoothing method.
+			LMSimilarity - Abstract superclass for language modeling Similarities.
+			DefaultCollectionModel - Models p(w|C) as the number of occurrences of the term in the collection, divided by the total number of tokens + 1.
+			LMStats - Stores the collection distribution of the current term.
+			MultiSimilarity - Implements the CombSUM method for combining evidence from multiple similarity values described in: Joseph A.
+			Normalization - This class acts as the base class for the implementations of the term frequency normalization methods in the DFR framework.
+			NoNormalization - Implementation used when there is no normalization.
+			NormalizationH1 - Normalization model that assumes a uniform distribution of the term frequency.
+			NormalizationH2 - Normalization model in which the term frequency is inversely related to the length.
+			NormalizationH3 - Dirichlet Priors normalization
+			NormalizationZ - Pareto-Zipf Normalization
+			PerFieldSimilarityWrapper - Provides the ability to use a different Similarity for different fields.
+			Similarity - Similarity defines the components of Lucene scoring.
+			SimScorer - API for scoring "sloppy" queries such as TermQuery, SpanQuery, and PhraseQuery.
+			SimWeight - Stores the weight for a query across the indexed collection.
+			SimilarityBase - A subclass of Similarity that provides a simplified API for its descendants.
+			TFIDFSimilarity - Implementation of Similarity with the Vector Space Model.
+		spans - The calculus of spans.
+			SpanCollector - An interface defining the collection of postings information from the leaves of a Spans
+			FieldMaskingSpanQuery - Wrapper to allow SpanQuery objects participate in composite  single-field SpanQueries by 'lying' about their search field.
+			FilterSpans - A Spans implementation wrapping another spans instance, allowing to filter spans matches easily by implementing FilterSpans.accept(org.apache.lucene.search.spans.Spans)
+			NearSpansOrdered - A Spans that is formed from the ordered subspans of a SpanNearQuery where the subspans do not overlap and have a maximum slop between them.
+			NearSpansUnordered - Similar to NearSpansOrdered, but for the unordered case.
+			SpanBoostQuery - Counterpart of BoostQuery for spans.
+			SpanContainingQuery - Keep matches that contain another SpanScorer.
+			SpanFirstQuery - Matches spans near the beginning of a field.
+			SpanMultiTermQueryWrapper - Wraps any MultiTermQuery as a SpanQuery,  so it can be nested within other SpanQuery classes.
+			SpanRewriteMethod - Abstract class that defines how the query is rewritten.
+			TopTermsSpanBooleanQueryRewrite - A rewrite method that first translates each term into a SpanTermQuery in a BooleanClause.Occur.SHOULD clause in a BooleanQuery, and keeps the scores as computed by the query.
+			SpanNearQuery - Matches spans which are near one another.
+			Builder - A builder for SpanNearQueries
+			SpanNotQuery - Removes matches which overlap with another SpanQuery or which are within x tokens before or y tokens after another SpanQuery.
+			SpanOrQuery - Matches the union of its clauses.
+			SpanPositionCheckQuery - Base class for filtering a SpanQuery based on the position of a match.
+			SpanPositionRangeQuery - Checks to see if the SpanPositionCheckQuery.getMatch() lies between a start and end position See SpanFirstQuery for a derivation that is optimized for the case where start position is 0.
+			SpanQuery - Base class for span-based queries.
+			Spans - Iterates through combinations of start/end positions per-doc.
+			SpanScorer - A basic Scorer over Spans.
+			SpanTermQuery - Matches spans containing a term.
+			SpanWeight - Expert-only.
+			SpanWithinQuery - Keep matches that are contained within another Spans.
+			TermSpans - Expert: Public for extension only.
+			AcceptStatus - Status returned from FilterSpans.accept(Spans) that indicates whether a candidate match should be accepted, rejected, or rejected and move on to the next document.
+			Postings - Enumeration defining what postings information should be retrieved from the index for a given Spans
+		store - Binary i/o API, used for all index data.
+			RandomAccessInput - Random Access Index API.
+			BaseDirectory - Base implementation for a concrete Directory that uses a LockFactory for locking.
+			BufferedChecksum - Wraps another Checksum with an internal buffer to speed up checksum calculations.
+			BufferedChecksumIndexInput - Simple implementation of ChecksumIndexInput that wraps another input and delegates calls.
+			BufferedIndexInput - Base implementation class for buffered IndexInput.
+			ByteArrayDataInput - DataInput backed by a byte array.
+			ByteArrayDataOutput - DataOutput backed by a byte array.
+			ByteArrayIndexInput - DataInput backed by a byte array.
+			ChecksumIndexInput - Extension of IndexInput, computing checksum as it goes.
+			DataInput - Abstract base class for performing read operations of Lucene's low-level data types.
+			DataOutput - Abstract base class for performing write operations of Lucene's low-level data types.
+			Directory - A Directory is a flat list of files.
+			FileSwitchDirectory - Expert: A Directory instance that switches files between two other Directory instances.
+			FilterDirectory - Directory implementation that delegates calls to another directory.
+			FlushInfo - A FlushInfo provides information required for a FLUSH context.
+			FSDirectory - Base class for Directory implementations that store index files in the file system.
+			FSLockFactory - Base class for file system based locking implementation.
+			GrowableByteArrayDataOutput - A DataOutput that can be used to build a byte[].
+			IndexInput - Abstract base class for input from a file in a Directory.
+			IndexOutput - Abstract base class for output to a file in a Directory.
+			InputStreamDataInput - A DataInput wrapping a plain InputStream.
+			IOContext - IOContext holds additional details on the merge/search context.
+			Lock - An interprocess mutex lock.
+			LockFactory - Base class for Locking implementation.
+			LockStressTest - Simple standalone tool that forever acquires and releases a lock using a specific LockFactory.
+			LockValidatingDirectoryWrapper - This class makes a best-effort check that a provided Lock is valid before any destructive filesystem operation.
+			LockVerifyServer - Simple standalone server that must be running when you use VerifyingLockFactory.
+			MergeInfo - A MergeInfo provides information required for a MERGE context.
+			MMapDirectory - File-based Directory implementation that uses  mmap for reading, and FSDirectory.FSIndexOutput for writing.
+			NativeFSLockFactory - Implements LockFactory using native OS file locks.
+			NIOFSDirectory - An FSDirectory implementation that uses java.nio's FileChannel's positional read, which allows multiple threads to read from the same file without synchronizing.
+			NoLockFactory - Use this LockFactory to disable locking entirely.
+			NRTCachingDirectory - Wraps a RAMDirectory around any provided delegate directory, to be used during NRT search.
+			OutputStreamDataOutput - A DataOutput wrapping a plain OutputStream.
+			OutputStreamIndexOutput - Implementation class for buffered IndexOutput that writes to an OutputStream.
+			RAMDirectory - A memory-resident Directory implementation.
+			RAMFile - Represents a file in RAM as a list of byte[] buffers.
+			RAMInputStream - A memory-resident IndexInput implementation.
+			RAMOutputStream - A memory-resident IndexOutput implementation.
+			RateLimitedIndexOutput - A rate limiting IndexOutput
+			RateLimiter - Abstract base class to rate limit IO.
+			SimpleRateLimiter - Simple class to rate limit IO.
+			SimpleFSDirectory - A straightforward implementation of FSDirectory  using Files.newByteChannel(Path, java.nio.file.OpenOption...).
+			SimpleFSLockFactory - Implements LockFactory using Files.createFile(java.nio.file.Path, java.nio.file.attribute.FileAttribute&lt;?&gt;...).
+			SingleInstanceLockFactory - Implements LockFactory for a single in-process instance, meaning all locking will take place through this one instance.
+			SleepingLockWrapper - Directory that wraps another, and that sleeps and retries if obtaining the lock fails.
+			TrackingDirectoryWrapper - A delegating Directory that records which files were  written to and deleted.
+			VerifyingLockFactory - A LockFactory that wraps another LockFactory and verifies that each lock obtain/release is "correct" (never results in two processes holding the lock at the same time).
+			Context - Context is a enumerator which specifies the context in which the Directory is being used for.
+			AlreadyClosedException - This exception is thrown when there is an attempt to access something that has already been closed.
+			LockObtainFailedException - This exception is thrown when the write.lock could not be acquired.
+			LockReleaseFailedException - This exception is thrown when the write.lock could not be released.
+		util - Some utility classes.
+			Accountable - An object whose RAM usage can be computed.
+			Attribute - Base interface for attributes.
+			AttributeReflector - This interface is used to reflect contents of AttributeSource or AttributeImpl.
+			Bits - Interface for Bitset-like structures.
+			BytesRefIterator - A simple iterator interface for BytesRef iteration.
+			IOSupplier - This is a result supplier that is allowed to throw an IOException.
+			IOConsumer - An IO operation with a single input.
+			NamedSPI - Interface to support NamedSPILoader.lookup(String) by name.
+			Resettable - Implement to reset an instance
+			Accountables - Helper methods for constructing nested resource descriptions and debugging RAM usage.
+			ArrayUtil - Methods for manipulating arrays.
+			AttributeFactory - An AttributeFactory creates instances of AttributeImpls.
+			StaticImplementationAttributeFactory - Expert: AttributeFactory returning an instance of the given clazz for the attributes it implements.
+			AttributeImpl - Base class for Attributes that can be added to a  AttributeSource.
+			AttributeSource - An AttributeSource contains a list of different AttributeImpls, and methods to add and get them.
+			State - This class holds the state of an AttributeSource.
+			BitDocIdSet - Implementation of the DocIdSet interface on top of a BitSet.
+			MatchAllBits - Bits impl of the specified length with all bits set.
+			MatchNoBits - Bits impl of the specified length with no bits set.
+			BitSet - Base implementation for a bit set.
+			BitSetIterator - A DocIdSetIterator which iterates over set bits in a bit set.
+			BitUtil - A variety of high efficiency bit twiddling routines.
+			ByteBlockPool - Class that Posting and PostingVector use to write byte streams into shared fixed-size byte[] arrays.
+			Allocator - Abstract class for allocating and freeing byte  blocks.
+			DirectAllocator - A simple ByteBlockPool.Allocator that never recycles.
+			DirectTrackingAllocator - A simple ByteBlockPool.Allocator that never recycles, but  tracks how much total RAM is in use.
+			BytesRef - Represents byte[], as a slice (offset + length) into an  existing byte[].
+			BytesRefArray - A simple append only random-access BytesRef array that stores full copies of the appended bytes in a ByteBlockPool.
+			BytesRefBuilder - A builder for BytesRef instances.
+			BytesRefComparator - Specialized BytesRef comparator that FixedLengthBytesRefArray.iterator(Comparator) has optimizations for.
+			BytesRefHash - BytesRefHash is a special purpose hash-map like data-structure optimized for BytesRef instances.
+			BytesStartArray - Manages allocation of the per-term addresses.
+			DirectBytesStartArray - A simple BytesRefHash.BytesStartArray that tracks  memory allocation using a private Counter  instance.
+			CharsRef - Represents char[], as a slice (offset + length) into an existing char[].
+			CharsRefBuilder - A builder for CharsRef instances.
+			CloseableThreadLocal - Java's builtin ThreadLocal has a serious flaw:  it can take an arbitrarily long amount of time to  dereference the things you had stored in it, even once the  ThreadLocal instance itself is no longer referenced.
+			CollectionUtil - Methods for manipulating (sorting) collections.
+			CommandLineUtil - Class containing some useful methods used by command line tools
+			Constants - Some useful constants.
+			Counter - Simple counter class
+			DocIdSetBuilder - A builder of DocIdSets.
+			BulkAdder - Utility class to efficiently add many docs in one go.
+			FilterIterator - An Iterator implementation that filters elements with a boolean predicate.
+			FixedBitSet - BitSet of fixed length (numBits), backed by accessible (FixedBitSet.getBits()) long[], accessed with an int index, implementing Bits and DocIdSet.
+			FrequencyTrackingRingBuffer - A ring buffer that tracks the frequency of the integers that it contains.
+			FutureArrays - Additional methods from Java 9's  java.util.Arrays.
+			FutureObjects - Additional methods from Java 9's  java.util.Objects.
+			InfoStream - Debugging API for Lucene classes such as IndexWriter  and SegmentInfos.
+			InPlaceMergeSorter - Sorter implementation based on the merge-sort algorithm that merges  in place (no extra memory will be allocated).
+			IntBlockPool - A pool for int blocks similar to ByteBlockPool
+			Allocator - Abstract class for allocating and freeing int  blocks.
+			DirectAllocator - A simple IntBlockPool.Allocator that never recycles.
+			SliceReader - A IntBlockPool.SliceReader that can read int slices written by a IntBlockPool.SliceWriter
+			SliceWriter - A IntBlockPool.SliceWriter that allows to write multiple integer slices into a given IntBlockPool.
+			IntroSelector - Implementation of the quick select algorithm.
+			IntroSorter - Sorter implementation based on a variant of the quicksort algorithm called introsort: when the recursion level exceeds the log of the length of the array to sort, it falls back to heapsort.
+			IntsRef - Represents int[], as a slice (offset + length) into an  existing int[].
+			IntsRefBuilder - A builder for IntsRef instances.
+			IOUtils - This class emulates the new Java 7 "Try-With-Resources" statement.
+			LongBitSet - BitSet of fixed length (numBits), backed by accessible (LongBitSet.getBits()) long[], accessed with a long index.
+			LongsRef - Represents long[], as a slice (offset + length) into an  existing long[].
+			LongValues - Abstraction over an array of longs.
+			LSBRadixSorter - A LSB Radix sorter for unsigned int values.
+			MapOfSets - Helper class for keeping Lists of Objects associated with keys.
+			MathUtil - Math static utility methods.
+			MergedIterator - Provides a merged sorted view from several sorted iterators.
+			MSBRadixSorter - Radix sorter for variable-length strings.
+			NamedSPILoader - Helper class for loading named SPIs from classpath (e.g.
+			NamedThreadFactory - A default ThreadFactory implementation that accepts the name prefix of the created threads as a constructor argument.
+			NotDocIdSet - This DocIdSet encodes the negation of another DocIdSet.
+			NumericUtils - Helper APIs to encode numeric values as sortable bytes and vice-versa.
+			OfflineSorter - On-disk sorting of byte arrays.
+			BufferSize - A bit more descriptive unit for constructors.
+			ByteSequencesReader - Utility class to read length-prefixed byte[] entries from an input.
+			ByteSequencesWriter - Utility class to emit length-prefixed byte[] entries to an output stream for sorting.
+			PagedBytes - Represents a logical byte[] as a series of pages.
+			Reader - Provides methods to read BytesRefs from a frozen  PagedBytes.
+			PrintStreamInfoStream - InfoStream implementation over a PrintStream such as System.out.
+			PriorityQueue - A PriorityQueue maintains a partial ordering of its elements such that the least element can always be found in constant time.
+			QueryBuilder - Creates queries from the Analyzer chain.
+			RadixSelector - Radix selector.
+			RamUsageEstimator - Estimates the size (memory representation) of Java objects.
+			RecyclingByteBlockAllocator - A ByteBlockPool.Allocator implementation that recycles unused byte blocks in a buffer and reuses them in subsequent calls to RecyclingByteBlockAllocator.getByteBlock().
+			RecyclingIntBlockAllocator - A IntBlockPool.Allocator implementation that recycles unused int blocks in a buffer and reuses them in subsequent calls to RecyclingIntBlockAllocator.getIntBlock().
+			RefCount - Manages reference counting for a given object.
+			RoaringDocIdSet - DocIdSet implementation inspired from http://roaringbitmap.org/ The space is divided into blocks of 2^16 bits and each block is encoded independently.
+			Builder - A builder of RoaringDocIdSets.
+			RollingBuffer - Acts like forever growing T[], but internally uses a  circular buffer to reuse instances of T.
+			SameThreadExecutorService - An ExecutorService that executes tasks immediately in the calling thread during submit.
+			Selector - An implementation of a selection algorithm, ie.
+			SentinelIntSet - A native int hash-based set where one value is reserved to mean "EMPTY" internally.
+			SetOnce - A convenient class which offers a semi-immutable object wrapper implementation which allows one to set the value of an object exactly once, and retrieve it many times.
+			SloppyMath - Math functions that trade off accuracy for speed.
+			SmallFloat - Floating point numbers smaller than 32 bits.
+			Sorter - Base class for sorting algorithms implementations.
+			SparseFixedBitSet - A bit set that only stores longs that have at least one bit which is set.
+			SPIClassIterator - Helper class for loading SPI classes from classpath (META-INF files).
+			StringHelper - Methods for manipulating strings.
+			TimSorter - Sorter implementation based on the TimSort algorithm.
+			ToStringUtils - Helper methods to ease implementing Object.toString().
+			UnicodeUtil - Class to encode java's UTF16 char[] into UTF8 byte[] without always allocating a new byte[] as String.getBytes(StandardCharsets.UTF_8) does.
+			Version - Use by certain classes to match version compatibility across releases of Lucene.
+			VirtualMethod - A utility for keeping backwards compatibility on previously abstract methods (or similar replacements).
+			WeakIdentityMap - Implements a combination of WeakHashMap and IdentityHashMap.
+			MaxBytesLengthExceededException - Thrown if a BytesRef exceeds the BytesRefHash limit of ByteBlockPool.BYTE_BLOCK_SIZE-2.
+			AlreadySetException - Thrown when SetOnce.set(Object) is called more than once.
+			ThreadInterruptedException - Thrown by lucene on detecting that Thread.interrupt() had been called.
+			SuppressForbidden - Annotation to suppress forbidden-apis errors inside a whole class, a method, or a field.
+		automaton - Finite-state automaton for regular expressions.
+			AutomatonProvider - Automaton provider for RegExp. RegExp.toAutomaton(AutomatonProvider,int)
+			Automata - Construction of basic automata.
+			Automaton - Represents an automaton and all its states and transitions.
+			Builder - Records new states and transitions and then Automaton.Builder.finish() creates the Automaton.
+			ByteRunAutomaton - Automaton representation for matching UTF-8 byte[].
+			CharacterRunAutomaton - Automaton representation for matching char[].
+			CompiledAutomaton - Immutable class holding compiled details for a given Automaton.
+			DaciukMihovAutomatonBuilder - Builds a minimal, deterministic Automaton that accepts a set of  strings.
+			FiniteStringsIterator - Iterates all accepted strings.
+			LevenshteinAutomata - Class to construct DFAs that match a word within some edit distance.
+			LimitedFiniteStringsIterator - FiniteStringsIterator which limits the number of iterated accepted strings.
+			MinimizationOperations - Operations for minimizing automata.
+			Operations - Automata operations.
+			RegExp - Regular Expression extension to Automaton.
+			RunAutomaton - Finite-state automaton with fast run operation.
+			StatePair - Pair of states.
+			Transition - Holds one transition from an Automaton.
+			UTF32ToUTF8 - Converts UTF-32 automata to the equivalent UTF-8 representation.
+			AUTOMATON_TYPE - Automata are compiled into different internal forms for the most efficient execution depending upon the language they accept.
+			TooComplexToDeterminizeException - This exception is thrown when determinizing an automaton would result in one has too many states.
+		bkd - Block KD-tree, implementing the generic spatial data structure described in this paper.
+			PointWriter - Appends many points, and then at the end provides a PointReader to iterate  those points.
+			BKDReader - Handles intersection of an multi-dimensional shape in byte[] space with a block KD-tree previously written with BKDWriter.
+			IntersectState - Used to track all state for a single call to BKDReader.intersect(org.apache.lucene.index.PointValues.IntersectVisitor).
+			BKDWriter - Recursively builds a block KD-tree to assign all incoming points in N-dim space to smaller  and smaller N-dim rectangles (cells) until the number of points in a given  rectangle is &lt;= maxPointsInLeafNode.
+			HeapPointReader - Utility class to read buffered points from in-heap arrays.
+			HeapPointWriter - Utility class to write new points into in-heap arrays.
+			MutablePointsReaderUtils - Utility APIs for sorting and partitioning buffered points.
+			OfflinePointReader - Reads points from disk in a fixed-with format, previously written with OfflinePointWriter.
+			OfflinePointWriter - Writes points to disk in a fixed-with format.
+			PointReader - One pass iterator through all points previously written with a  PointWriter, abstracting away whether points a read  from (offline) disk or simple arrays in heap.
+		fst - Finite state transducers
+			Builder - Builds a minimal FST (maps an IntsRef term to an arbitrary output) from pre-sorted terms with outputs.
+			Arc - Expert: holds a pending (seen but not yet serialized) arc.
+			UnCompiledNode - Expert: holds a pending (seen but not yet serialized) Node.
+			ByteSequenceOutputs - An FST Outputs implementation where each output is a sequence of bytes.
+			BytesRefFSTEnum - Enumerates all input (BytesRef) + output pairs in an  FST.
+			InputOutput - Holds a single input (BytesRef) + output pair.
+			CharSequenceOutputs - An FST Outputs implementation where each output is a sequence of characters.
+			FST - Represents an finite state machine (FST), using a  compact byte[] format.
+			Arc - Represents a single arc.
+			BytesReader - Reads bytes stored in an FST.
+			IntSequenceOutputs - An FST Outputs implementation where each output is a sequence of ints.
+			IntsRefFSTEnum - Enumerates all input (IntsRef) + output pairs in an  FST.
+			InputOutput - Holds a single input (IntsRef) + output pair.
+			NoOutputs - A null FST Outputs implementation; use this if you just want to build an FSA.
+			Outputs - Represents the outputs for an FST, providing the basic algebra required for building and traversing the FST.
+			PairOutputs - An FST Outputs implementation, holding two other outputs.
+			Pair - Holds a single pair of two outputs.
+			PositiveIntOutputs - An FST Outputs implementation where each output is a non-negative long value.
+			Util - Static helper methods.
+			FSTPath - Represents a path in TopNSearcher.
+			Result - Holds a single input (IntsRef) + output, returned by  shortestPaths().
+			TopNSearcher - Utility class to find top N shortest paths from start  point(s).
+			TopResults - Holds the results for a top N search using Util.TopNSearcher
+			INPUT_TYPE - Specifies allowed range of each int input label for  this FST.
+		graph - Utility classes for working with token streams as graphs.
+			GraphTokenStreamFiniteStrings - Consumes a TokenStream and creates an Automaton where the transition labels are terms from the TermToBytesRefAttribute.
+		mutable - Comparable object wrappers
+			MutableValue - Base class for all mutable values.
+			MutableValueBool - MutableValue implementation of type boolean.
+			MutableValueDate - MutableValue implementation of type Date.
+			MutableValueDouble - MutableValue implementation of type double.
+			MutableValueFloat - MutableValue implementation of type float.
+			MutableValueInt - MutableValue implementation of type int.
+			MutableValueLong - MutableValue implementation of type long.
+			MutableValueStr - MutableValue implementation of type String.
+		packed - Packed integer arrays and streams.
+			Decoder - A decoder for packed integers.
+			Encoder - An encoder for packed integers.
+			ReaderIterator - Run-once iterator interface, to decode previously saved PackedInts.
+			BlockPackedReader - Provides random access to a stream written with BlockPackedWriter.
+			BlockPackedReaderIterator - Reader for sequences of longs written with BlockPackedWriter.
+			BlockPackedWriter - A writer for large sequences of longs.
+			DirectMonotonicReader - Retrieves an instance previously written by DirectMonotonicWriter.
+			Meta - In-memory metadata that needs to be kept around for  DirectMonotonicReader to read data from disk.
+			DirectMonotonicWriter - Write monotonically-increasing sequences of integers.
+			DirectReader - Retrieves an instance previously written by DirectWriter
+			DirectWriter - Class for writing packed integers to be directly read from Directory.
+			GrowableWriter - Implements PackedInts.Mutable, but grows the bit count of the underlying packed ints on-demand.
+			MonotonicBlockPackedReader - Provides random access to a stream written with MonotonicBlockPackedWriter.
+			MonotonicBlockPackedWriter - A writer for large monotonically increasing sequences of positive longs.
+			PackedDataInput - A DataInput wrapper to read unaligned, variable-length packed integers.
+			PackedDataOutput - A DataOutput wrapper to write unaligned, variable-length packed integers.
+			PackedInts - Simplistic compression for array of unsigned long values.
+			FormatAndBits - Simple class that holds a format and a number of bits per value.
+			Mutable - A packed integer array that can be modified.
+			NullReader - A PackedInts.Reader which has all its values equal to 0 (bitsPerValue = 0).
+			Reader - A read-only random access array of positive integers.
+			Writer - A write-once Writer.
+			PackedLongValues - Utility class to compress integers into a LongValues instance.
+			Builder - A Builder for a PackedLongValues instance.
+			PagedGrowableWriter - A PagedGrowableWriter.
+			PagedMutable - A PagedMutable.
+			Format - A format to write packed ints.

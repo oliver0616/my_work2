@@ -1,0 +1,1547 @@
+
+Follow the Successful Crowd: Raising MOOC Completion
+Rates through Social Comparison at Scale?
+
+Dan Davis†
+Delft University of Technology
+
+Delft, the Netherlands
+d.j.davis@tudelft.nl
+
+Ioana Jivet‡
+Open University of the Netherlands
+
+Heerlen, the Netherlands
+ioana.jivet@ou.nl
+
+René F. Kizilcec
+Stanford University
+Stanford, CA, USA
+
+kizilcec@stanford.edu
+Guanliang Chen§
+
+Delft University of Technology
+Delft, the Netherlands
+
+guanliang.chen@tudelft.nl
+
+Claudia Hauff
+Delft University of Technology
+
+Delft, the Netherlands
+c.hauff@tudelft.nl
+
+Geert-Jan Houben
+Delft University of Technology
+
+Delft, the Netherlands
+g.j.p.m.houben@tudelft.nl
+
+ABSTRACT
+Social comparison theory asserts that we establish our so-
+cial and personal worth by comparing ourselves to others.
+In in-person learning environments, social comparison offers
+students critical feedback on how to behave and be success-
+ful. By contrast, online learning environments afford fewer
+social cues to facilitate social comparison. Can increased
+availability of such cues promote effective self-regulatory be-
+havior and achievement in Massive Open Online Courses
+(MOOCs)? We developed a personalized feedback system
+that facilitates social comparison with previously successful
+learners based on an interactive visualization of multiple be-
+havioral indicators. Across four randomized controlled trials
+in MOOCs (overall N = 33, 726), we find: (1) the availabil-
+ity of social comparison cues significantly increases comple-
+tion rates, (2) this type of feedback benefits highly educated
+learners, and (3) learners’ cultural context plays a significant
+role in their course engagement and achievement.
+
+CCS Concepts
+•Applied computing ? Collaborative learning;
+
+Keywords
+Learning Analytics; Massive Open Online Course; Feedback;
+Social Comparison; Framing; Cultural Differences
+
+?This work is co-funded by the Erasmus+ Programme of the
+European Union. Project: STELA 62167-EPP-1-2015-BE-
+EPPKA3-PI-FORWARD.
+†The author’s research is supported by the Leiden-Delft-
+Erasmus Centre for Education and Learning.
+‡Work performed while at Delft University of Technology
+§The author’s research is supported by the Extension School
+of the Delft University of Technology.
+
+Permission to make digital or hard copies of all or part of this work for personal or
+classroom use is granted without fee provided that copies are not made or distributed
+for profit or commercial advantage and that copies bear this notice and the full citation
+on the first page. Copyrights for components of this work owned by others than the
+author(s) must be honored. Abstracting with credit is permitted. To copy otherwise, or
+republish, to post on servers or to redistribute to lists, requires prior specific permission
+and/or a fee. Request permissions from permissions@acm.org.
+
+LAK ’17, March 13 - 17, 2017, Vancouver, BC, Canada
+c© 2017 Copyright held by the owner/author(s). Publication rights licensed to ACM.
+
+ISBN 978-1-4503-4870-6/17/03. . . $15.00
+
+DOI: http://dx.doi.org/10.1145/3027385.3027411
+
+1. INTRODUCTION
+A mechanism for increasing access to higher education
+
+content, Massive Open Online Courses (MOOCs) have af-
+forded millions of people worldwide the opportunity to learn
+for little or no cost. To achieve this unprecedented scale,
+MOOCs provide the same material to all learners, no matter
+what background, motivation, and skill set they possess. Yet
+this approach falls short of leveraging the technical possibil-
+ities of contemporary educational resources to offer learners
+personalized support, such as giving guidance to learners
+who are less adept at regulating their learning process over
+several weeks to achieve mastery. Low course completion
+rates (typically between 5-10%) highlight the need for ad-
+ditional support in MOOCs. While many learners have no
+intention to complete MOOCs and instead use them to fulfill
+alternative needs (e.g., to refresh their memory of a specific
+topic or to meet new people), the majority of learners who
+are motivated and committed to complete the course still
+fail to achieve their goal [25, 26]. Most learners report that
+they could not find the time to keep up with the course, a
+challenge that is related to insufficient self-regulatory abili-
+ties [44, 23]. Self-regulated learning (SRL; i.e., the ability to
+plan, monitor, and actively control one’s learning process)
+is associated with a higher likelihood of achieving personal
+course goals in MOOCs, including course completion [24,
+29]. However, the current design of MOOCs does not sup-
+port learners to engage in SRL [34]. In particular, most
+MOOC platforms do not provide learners with personalized
+feedback beyond grades [7], and thus, learners may not know
+if their engagement in the course is conducive to achieving
+their learning goals.
+
+We propose a technological solution that facilitates social
+comparison to help learners regulate their learning behavior
+to support course completion. According to social compar-
+ison theory [8], people establish their social and personal
+worth by comparing themselves to others. Offering learn-
+ers the opportunity to compare their behavior with that
+of their peers promotes increased student achievement in
+formal learning environments [2, 15, 36]. Students in in-
+person classrooms can easily identify role models and regu-
+larly monitor these role models’ behavior and compare it to
+their own. However, this affordance of social comparison is
+missing in most online “classrooms.” Instead, online learners
+need to be self-directed and regulate their learning process
+
+http://dx.doi.org/10.1145/3027385.3027411
+
+
+independently with sparse social and normative signals.
+In addition to evaluating the impact of providing learners
+
+with personalized feedback, we further examined the po-
+tential of adjusting the framing of the feedback to match
+learners’ cultural context. Framing feedback in a way that
+is consistent with the norms and achievement-based motiva-
+tion of learners’ cultural context is expected to support in-
+ternalization and behavior change. Prior work has observed
+differences in the way learners from different countries and
+cultures interact with MOOCs [11, 23, 30]. We define cul-
+tural context based on two established country-level cultural
+dimensions: individualism by Hofstede et al. [14] and tight-
+ness by Gelfand et al. [9].
+
+We explore the extent to which insights from the social
+comparison and cultural psychology literature can be trans-
+lated to support learners in MOOCs. We evaluate how to
+offer feedback based on social comparison in an online learn-
+ing environment. To this end, we design, develop, and em-
+pirically evaluate a personalized and scalable feedback sys-
+tem that presents MOOC learners with a visual comparison
+of their behavior to that of their ”successful” peers, that is,
+those who completed the course in the past. We deployed the
+system in four edX1 MOOCs offered by the Delft University
+of Technology with a total of N = 33, 726 learners. In each
+deployment we drew on research findings across multiple do-
+mains including learning analytics, educational psychology,
+and social & cultural psychology to inform the design on
+both the feedback we provide (i.e. the behavioural metrics
+shown to the learners) and how the feedback is framed (e.g.,
+individualistic- or collectivist- oriented framing).
+
+Our work extends prior research by testing a theory-informed
+technological solution in a large and diverse population (i.e.,
+MOOC learners) for a prolonged period of time. These are
+our main findings:
+
+• Personalized social-comparison feedback increases course
+completion rates.
+
+• Only highly educated learners benefit from this kind
+of feedback.
+
+• Course engagement and achievement varies by cultural
+context: learners in countries with a ”loose” culture
+outperform those in countries with a ”tight” culture.
+
+2. BACKGROUND
+In this section we provide the theoretical and empirical
+
+underpinnings to our work which facilitates social compar-
+isons with personalized feedback. We discuss (i) previous
+studies on incorporating feedback in online learning, (ii) the
+theory of social comparison and its application to learning,
+and (iii) past research on the impact of learners’ cultural
+context on learning behavior.
+
+Feedback.
+Providing feedback is one of the most effective teaching
+
+strategies to improve student achievement [12]. Given the
+scale of MOOCs it is impossible for a teacher or teaching
+assistant to personally monitor and attend to each learner’s
+unique needs. Therefore, up to this point, the majority of
+feedback solutions developed for MOOCs and other online
+learning environments have been for the course instructor,
+typically in the form of a dashboard representing aggregated
+learner data [27, 33, 43].
+
+1https://www.edx.org/
+
+While teacher-facing feedback systems can provide key in-
+sights for improving the course experience, they are unlikely
+to address the issue that many learners feel lost and isolated
+in MOOCs [21]. Personalized feedback promises to pro-
+mote effective SRL behavior by facilitating self-monitoring
+of learning processes [18]. One of the most important lines
+of research which aims to provide learners with personalized
+feedback is that of Open Learner Models (OLM), an educa-
+tional interface that gives learners insight into their current
+knowledge state and activity patterns, which are typically
+unavailable to them [3]. By allowing learners to visualize and
+reflect on their own learning and achievements, OLMs have
+been proven to work as powerful meta-cognitive feedback
+tools that impact learners’ use of SRL strategies [4, 10]. We
+designed the Feedback System informed by prior work on
+the design of accessible, understandable, and scrutable [20]
+learner models [5, 19].
+
+There has been little progress in developing and deploying
+personalized feedback for large-scale MOOC environments,
+and most work focuses on supporting teachers [40]. In the
+present research, instead of presenting aggregate data for all
+learners in a course, we addresses the challenge of delivering
+individualized, targeted feedback to each learner based on
+her behavior in the course relative to her peers’ behavior
+to facilitate social comparison. The present research con-
+tributes an empirically evaluated scalable and personalized
+feedback intervention to the literature on learning analytics.
+Recent studies have begun to run controlled experiments
+[37], but most feedback system evaluations thus far explain
+the design, development, and implementation considerations
+without rigorously testing whether the added support con-
+tributes to behavior change or learning gains [43].
+
+Social Comparison.
+The feedback learners receive through the Feedback Sys-
+
+tem is grounded in social comparison theory, initially pro-
+posed by Festinger [8]. The theory posits that, guided by a
+drive to continuously improve, people evaluate their abilities
+through comparison to others when they are lacking objec-
+tive means of comparison. It has received empirical valida-
+tion and found application in various domains, including
+marketing, health psychology, interpersonal relationships,
+and also in education [6, 28]. In one study, social com-
+parison was used to improve the Web search behavior of
+novice users [1]. The authors found that showing non-expert
+searchers visual indicators of the search behaviors of expert
+searchers resulted in closer alignment with effective behav-
+ior and, therefore, more successful search task completion
+among novices.
+
+Social comparison is an inherent phenomenon in tradi-
+tional classroom environments because of both the visibility
+and accessibility of similar peers [28]. Multiple studies have
+demonstrated that comparing oneself to self-selected peers
+who perform slightly better has a beneficial effect on mid-
+dle school students’ grades [2, 15]. Forced comparisons also
+have a beneficial effect on performance when the target of
+comparison is performing slightly better than the learner,
+although no effects were found when there was a big perfor-
+mance gap between two sides [16].
+
+In the context of a small online learning platform (N =
+55), Papanikolaou [36] investigated students’ attitudes to-
+wards viewing the learner model of others. Her results showed
+that when learners compare their behavior to that of a “de-
+sired” one, they are then motivated to recognize and adapt
+
+https://www.edx.org/
+
+
+their learning strategies. She suggests that the “desired”
+state should be generated based on real data coming from
+peers who are “worth following.” We build on this insight
+by considering MOOC graduates of previous editions as the
+basis for creating a role model.
+
+Guerra et al. [10] integrated social comparison features in
+the form of peer and class progress in the design of an in-
+telligent interface for a learning management system to pro-
+vide additional motivation and navigation support. This ap-
+proach showed a positive effect on engagement and efficiency
+in two studies (N = 89), but no significant effects on learner
+performance in terms of final grades or learning gains. On
+the other hand, Rogers et al. [38] investigated “discourage-
+ment by peer excellence” in a MOOC setting and concluded
+that learners who are exposed to examples of excellent peer
+achievements risked feeling less capable of performing at the
+level of those peers. The Feedback System is different in
+that it shows the behavior patterns of the average complet-
+ing learner, so as not to risk discouragement.
+
+The present research adds to the literature on social com-
+parison in the online learning environments by investigating
+the effects of forced comparison of learners’ performance and
+engagement in a MOOC setting. With the Feedback Sys-
+tem, MOOC learners can visualize their behavior compared
+to that of successful learners, offering them a model against
+which they can evaluate their own study habits.
+
+Culture.
+MOOC learners come from all over the world and cover
+
+a profoundly wide range of cultural contexts. Prior MOOC
+research has observed a learner’s culture as affecting behav-
+ior within the course. For example, Liu et al. [30] explored
+patterns in MOOC learner behavior in relation to Hofst-
+ede’s cultural dimensions [14]. The authors clustered coun-
+tries based on similarity across four cultural dimensions and
+found significant variation in learner behavior between the
+clusters. Moreover, Kizilcec et al. [22] found in two ran-
+domized experiments in MOOCs that the effect of a self-
+regulation intervention depended on learners’ cultural con-
+text (N = 17, 963): only learners in individualist countries
+benefited from the brief writing activity. Thus, prior work
+supports the hypothesis that cultural factors shape learner
+behavior in MOOCs. We examine two country-level cultural
+dimensions: individualism [14] and tightness [9].
+
+Hofstede’s dimension of individualism-collectivism char-
+acterizes cultural variation around the world. Cultures high
+in individualism are those which emphasize the individual
+as an independent actor with loose social relations. Cul-
+tures high in collectivism are characterized by tightly-knit
+social relations and shared responsibility for the collective
+well-being [14]. Gelfand et al. conceived an index that ranks
+countries by their cultural tightness: tight cultures are those
+with“strong norms and a low tolerance of deviant behavior,”
+and conversely, cultures of low tightness (or loose cultures)
+are those with “weak social norms and a high tolerance of
+deviant behavior” [9]. The present study attempts to adapt
+feedback to learners’ cultural context so that it resonates
+with the learner, facilitates internalization of the feedback,
+and promotes positive behavior change.
+
+Prior work suggests that cultural differences shape peo-
+ple’s regulatory focus, whether they are motivated by push-
+ing for success (promotion) or by avoiding failure (preven-
+tion) [13, 31]. Members of individualist and tight cultures
+focus more on promotion, while members of collectivist and
+
+loose cultures focus more on prevention [31, 35]. We apply
+this insight in the design of our feedback framing messages
+to appeal to learners in different cultural contexts.
+
+3. MOOC OVERVIEW
+For our experiments, we employed our personalized Feed-
+
+back System to learners across four MOOCs—all of them
+re-runs (i.e. not in their first edition)—provided by the Delft
+University of Technology on the edX platform:
+
+WaterX The Drinking Water Treatment MOOC teaches tech-
+nologies for drinking water treatment. Its second edition
+ran between 12 January and 29 March 2016. It is a seven-
+week course with 63 instructional videos and 42 summa-
+tive quiz questions. A total of 10,943 learners registered for
+the course. To complete the course, learners had to gain at
+least 60% of all scores (i.e. passing threshold ?pass = 60%).
+
+UrbanX The Urban Sewage Treatment MOOC learners are
+taught how to design and manage solutions for urban sewage.
+The second edition of the seven-week course ran between
+12 April and 20 June 2016 with 8,137 learners. There are
+272 summative quiz questions (?pass = 60%) and 71 videos.
+
+BusinessX Responsible Innovation: Ethics, Safety and Tech-
+nology teaches learners how to deal with risks and ethi-
+cal questions arising from new technologies. 2,352 learn-
+ers registered to the second edition which ran between 11
+April and 14 June 2016. The course has 79 summative
+quiz questions (?pass = 59%) and 54 videos.
+
+CalcX Pre-university Calculus is the only MOOC in our
+list that targets beginning Bachelor students and was de-
+signed as a refreshment course before entering higher edu-
+cation. The third iteration of this course ran from 28 June
+2016 through 27 September 2016 with 12,294 learners, 85
+videos, and 327 summative quiz questions (?pass = 60%).
+
+We found the WaterX, UrbanX, and BusinessX MOOCs to
+attract a similar population of learners: two thirds of the
+enrolled learners were male, the median age was 28, and the
+majority of learners held a BSc or MSc degree. The learner
+population in the CalcX course was instead targeted at high-
+school students who were about to enter university. While
+the gender balance was consistent with other MOOCs (30%
+female), the median age was only 25, and the most common
+education level was a high school diploma (45%).
+
+For each learner, we collected all available edX log traces
+such as the learners’ clicks, views, dwell time on the edX
+platform, and their provided answers to the quiz questions.
+
+4. APPROACH
+In Section 4.1 we first introduce the research questions
+
+driving our work before detailing the design of our Feedback
+System which was deployed in different instantiations across
+the four MOOCs just described.
+
+4.1 Research Questions
+The first Research Question and Hypotheses are based
+
+primarily on the social comparison literature in the context
+of education and learning environments:
+
+RQ1 Does providing personalized social comparison feed-
+back increase learner achievement and self-regulatory
+behavior in MOOCs?
+
+
+
+H1.1 In line with previous findings [1, 36], we expect that
+providing learners a comparison of their own be-
+havior to that of previously successful peers will in-
+crease learner achievement (measured in terms of
+completing/passing the course) and engagement (ac-
+tivity levels within the course environment).
+
+H1.2 Learners will change the aspects of their behavior
+that the Feedback System makes them aware of.
+
+H1.3 Certain feedback metrics (and combinations of met-
+rics) will be more effective than others in leading to
+desirable changes in student behavior.
+
+Based on prior work which has shown that learners from
+different cultural contexts learn and behave differently in
+MOOCs [11, 23, 24, 30], we explore:
+
+RQ2 Which learners benefit most from the Feedback Sys-
+tem?
+
+We also examine the differences in learning behavior accord-
+ing to learners’ cultural context. We expected the effects of
+the feedback to depend on learners’ cultural context in terms
+of individualism and tightness, and moreover, that matching
+the framing of feedback to learners’ culture to be beneficial:
+
+RQ3 Does feedback framed in line with a learner’s cul-
+tural context lead to increased achievement and self-
+regulatory behavior compared to a culturally mis-
+matched framing?
+
+H3.1 Learners from individualist cultures will show more
+engagement than those from collectivist cultures with
+the individual-promotional framing, while learners
+from collectivist cultures will show more engagement
+with the collectivist-prevention framing.
+
+H3.2 Learners from tight cultures will show more engage-
+ment than those from loose cultures with the collectivist-
+prevention framing, while learners from loose cul-
+tures will show more engagement with the individual-
+promotional framing.
+
+4.2 Feedback System Design
+Recall, that our design rationale of the Feedback Sys-
+
+tem (presented as the “Learning Tracker” to learners in the
+courses, cf. Figure 1) is to provide learners feedback about
+their own behavior that enables them to make well-informed
+decisions about their learning strategies going forward [45]
+as a result of increased self-awareness. The Feedback Sys-
+tem can be thought of as a mirror with which learners can
+view and react to their own, previously-invisible behavior.
+Since SRL skills are generalizable, the design should be ag-
+nostic to the content of each specific MOOC the feedback
+system is deployed in. We identified three key criteria for
+our system design:
+
+• Traceable: we can only provide feedback on behavior
+we can extract and derive from edX’s log traces2;
+
+• Scrutable [20]: afford learners the ability to intuitively
+understand and explore the information presented;
+
+2edX provides fine-grained log traces of each learner’s clicks
+& views, provided answers to assignments, forum interac-
+tions, etc.
+
+• Actionable: learners should be able to take action and
+change their behavior based on what they learn from
+the presented feedback.
+
+After surveying the literature on learner model visualiza-
+tions, we settled on employing a single spider chart to visual-
+ize six metrics of learners’ behavior in relation to that of their
+successful peers, as shown in Figure 1. The spider chart’s
+key benefits include: (i) a single, embodied representation
+of multiple metrics, (ii) numerous indicators displayed in a
+small space, (iii) a simple representation of metrics—data is
+shown as single points along radial straight lines, and (iv)
+easily comparable—information is represented as differently
+colored areas that can be layered [39].
+
+In all four courses, the experimental conditions were not
+made explicitly known to the learners; the Feedback System
+appeared seamlessly integrated with the rest of the course
+materials.
+
+We operationalized previously successful students, or“role
+models”, as learners who earned a passing grade in the previ-
+ous edition of the MOOC (note that this setup requires that
+subsequent editions of the same MOOC have few changes).
+We updated the Feedback System every week (based on the
+learners’ activities on the platform in all weeks leading up
+to the current one) so that the learners could see an up-to-
+date representation of their activities as compared to that
+of the role models. The learners’ behaviors in the courses
+were tracked by the standard edX tracking log system.
+
+Table 1: Overview of feedback metrics and alter-
+ations presented to learners in each MOOC. A • in-
+dicates the presence of the metric/alteration.
+
+W
+a
+t
+e
+r
+X
+
+U
+r
+b
+a
+n
+X
+
+B
+u
+s
+i
+n
+e
+s
+s
+X
+
+C
+a
+l
+c
+X
+
+Feedback metrics
+Quiz submission timeliness (days) • • • •
+Time on the platform (in hours) •
+Time watching videos (in hours) •
+Number of videos accessed •
+Number of quiz questions attempted • • • •
+Proportion of time spent on videos
+while on the platform (in %)
+
+•
+
+Average time on the platform per week
+(in hours)
+
+•
+
+Number of revisited video lectures •
+Number of forum visits •
+Number of forum contributions •
+% of time spent on quizzes •
+Number of sessions per week • •
+Mean session length (in minutes) • •
+Mean time between sessions (in hours) • •
+% of time-on-task - time spent on
+video-lecture, quiz or forum pages
+
+•
+
+Alterations
+Interactive visualization • • •
+Planning ahead • • •
+Feedback framing •
+
+In each MOOC, the Feedback System was placed in the
+Weekly Introduction unit of each course week so that it
+
+
+
+would be readily available and immediately visible to learn-
+ers upon entering the new course week, enabling them to
+reflect on their SRL behavior so far. With the exception of
+the Feedback System, all learners received the same course
+materials, independent of the experimental condition.
+
+Feedback metrics.
+Table 1 shows an overview of the feedback metrics given
+
+to learners in each MOOC. At the end of each week in the
+course, the metrics were computed based on the log traces
+of all weeks prior. These metrics were chosen based on the
+following criteria: relevance to self-regulated learning, clar-
+ity/intuitiveness to the learner, and availability in the log
+data. For each metric, all values of previously successful
+learners were sorted and the top 5% and bottom 5% of values
+were discarded to remove outliers. The mean of the remain-
+ing values was computed, yielding a single value per metric
+— we consider this mean to be indicative of the tendency
+of the whole successful group of learners. We operationalize
+“sessions” as strings of activity with less than an hour gap
+between two events. As shown in Table 1, we used different
+feedback metrics in different MOOCs to explore the impact
+of the choice of metrics (H1.2 and H1.3).
+
+Feedback System Alterations.
+Apart from the different metrics, we also explored three
+
+refinements of the Feedback System:
+
+1. Planning ahead: in WaterX the learners only received feed-
+back about their behavior up to now and how it compares
+to that of successful learners. In this alteration (in UrbanX
+and BusinessX), we also provide the learner with a visual-
+ization of the role models’ behavior (labelled as “Average
+graduate this week” in Figure 1) in the upcoming week,
+enabling learners to plan ahead instead of only reflect.
+
+2. Interactive visualization: instead of a static feedback im-
+age (as provided in WaterX), in this alteration, we provide
+learners with an interactive visualization they can explore,
+i.e. mouse over the metrics to reveal exact numbers and
+comparisons (cf. Figure 1), and toggle on/off the metrics
+of the average successful learner for the upcoming week.
+
+3. Cultural framing : in the first three MOOCs, the Feedback
+System provides no written interpretation of the visualiza-
+tion; instead learners are left to draw their own conclu-
+sions. In CalcX we additionally provide an explanatory
+text (as shown in Figure 1) that offers a clear interpreta-
+tion of the learner’s “on-trackness”.
+
+4.3 Studies
+In each MOOC, we deployed a variation of the Feedback
+
+System. Table 1 summarizes the feedback metrics and varia-
+tions deployed. For random assignment, we used a between-
+subjects design, where learners were assigned to either the
+control or a treatment condition and remained in this con-
+dition throughout the study. Table 2 shows a breakdown of
+the number of learners assigned to each condition for each
+MOOC. To gather baseline data from the first two weeks of
+each course, we released the Feedback System in the treat-
+ment conditions in the third week in each experiment. As
+noted before, the Feedback System is then updated on a
+weekly basis to reflect the updated learner activity data.
+
+In the control condition across all experiments, learners
+did not receive the Feedback System. However, the edX
+platform offers a very basic form of learner feedback: a
+
+Framing
+
+Feedback Metrics
+
+Planning Ahead
+
+Interactive
+
+Figure 1: The Feedback System as shown in the
+individualistic-promotional condition in CalcX, anno-
+tated for clarity.
+
+Table 2: Overview of the number of learners enrolled
+and assigned to the control and treatment groups
+respectively. The number of active learners (having
+spent at least 5 minutes in the course platform) is
+in the parentheses beneath.
+
+WaterX UrbanX BusinessX CalcX
+
+Enrolled
+10,943
+(2,519)
+
+8,137
+(1,517)
+
+2,352
+(324)
+
+12,294
+(3,415)
+
+Control Group
+5,460
+
+(1,268)
+4,038
+(771)
+
+1,184
+(164)
+
+4,142
+(1,150)
+
+Treatment Group 1
+5,483
+
+(1,251)
+4,099
+(746)
+
+1,168
+(160)
+
+4,087
+(1,147)
+
+Treatment Group 2 – – –
+4,065
+
+(1,118)
+
+learner can visit her “progress” page and view the number
+of points scored so far in the course. This progress page is
+available to all learners, independent of their condition as-
+signment. In the treatment condition, learners received the
+Feedback System in addition to edX’s progress page.
+
+In all but one study there is only one treatment condition.
+In CalcX, we had two treatment conditions, one for each
+culture-specific framing of the explanatory feedback text:
+
+• CalcX treatment 1 received text with an individualistic
+promotion-focused framing;
+
+• CalcX treatment 2 received text with a collectivist
+prevention-focused framing.
+
+We determined each learner’s cultural context based on
+the IP address used to access the course relying on Max-
+mind’s GeoIP lookup database3, as not all learners self-
+report their nationality. For learners with more than one
+IP address used, we consider the first one they used to ac-
+cess the course as their country.
+
+3http://www.maxmind.com
+
+http://www.maxmind.com
+
+
+We developed a strong manipulation of the culture-specific
+framing by drawing on the cultural difference in (1) indi-
+vidualistic vs. collectivist appeals (collectivist cultures see
+the self embedded in a relational network, while the self-
+concept is more independent in individualist cultures), and
+(2) prevention- vs. promotion-focus (the prevention of neg-
+ative outcomes is emphasized over the promotion of positive
+outcomes in collectivist cultures, and vice versa for individ-
+ualist cultures) [13, 32, 35]. We designed two texts for each
+treatment group: one for learners who are “on track” (char-
+acterized by exhibiting similar behavior to that of the role
+model learners) and one for learners who are “behind” (char-
+acterized by exhibiting less course engagement compared to
+the role model learners). The texts (four overall) and how
+those texts align with a particular framing are shown in Ta-
+ble 3. The learners were evaluated as “on-track” or “behind”
+based on their on-trackness score, OT . The on-trackness
+score quantifies the similarity between a learner’s behavior
+and that of the previously successful learners: we normalize
+each metric to a value in the range [0, 10] (chosen for con-
+venience to work well in the spider chart setup) and then
+compute the difference, di, between the learner’s score on
+metric mi and the previously successful learners’ average
+score on mi. If di ? ?1 ?mi, i = {1, .., 6} the learner is
+classified as behind, otherwise she is on-track — this is a
+very conservative classification, the learner has to have a
+lower engagement level on every single metric before she is
+considered as being behind.
+
+The study design and all analyses conducted as part of the
+CalcX experiment4 were pre-registered through the Open
+Science Framework, vetted, and approved to meet the re-
+quirements of the Center for Open Science Preregistration
+Challenge5. All manuscripts, data, and scripts used for anal-
+ysis are available at: http://osf.io/ys6au.
+
+4.4 Measures & Method of Analysis
+The primary outcome variable that we targeted with the
+
+design of our Feedback System is course completion, which
+indicates that a learner achieved the required minimum pass-
+ing score on all summative quiz questions and thus earned a
+certificate. Course completion demonstrates sustained com-
+mitment to the course and mastery over the course material.
+The Feedback System is designed to support this type of
+sustained commitment and learning, even if individual stu-
+dent intentions may vary. The secondary outcome is to pro-
+mote SRL and meta-cognitive awareness. While many SRL
+processes are meta-cognitive and remain unobserved, it is
+possible to infer some of them based on learner’s logged ac-
+tions with the course materials [17, 24, 41, 42]; for example,
+goal-setting & planning, time management, self-monitoring,
+and social comparison.
+
+For non-binary measures, to test if differences between
+experimental conditions are statistically significant, we used
+the non-parametric Kruskal-Wallis test, because these mea-
+sures were not normally distributed and exhibited unequal
+variances across conditions. For binary measures, we tested
+differences in proportion using a ?2 test. We present the
+results of each test by each group’s mean and median along
+with the ?2 value, degrees of freedom, and level of statistical
+
+4We pre-registered this experiment because it was the fourth
+and final study of the present research and included an added
+manipulated variable in the cultural framing.
+5https://cos.io/prereg/
+
+significance. Due to the commonly high levels of attrition in
+MOOCs (65%-74% of learners never returned to the course
+after enrolling in one of our four MOOCs), the subsequent
+analyses only consider data generated by active learners. We
+define active learners as those having spent at least five min-
+utes on the course platform. See Table 2 for the breakdown
+of registered vs. active learners per MOOC.
+
+5. RESULTS
+We present our findings for the Research Questions out-
+
+lined in Section 4.1. We discuss the impact of the Feedback
+System on course completion and engagement in Sections
+5.1 & 5.2, heterogeneous treatment effects of the Feedback
+System in Section 5.3, and lastly in Section 5.4, we compare
+the effects for different cultural framings of the feedback.
+
+5.1 Course Completion
+We hypothesized that the Feedback System will increase
+
+learner achievement in terms of course completion (H1.1).
+Table 4 shows the completion rates in all conditions for the
+first three experiments. The completion rate is consistently
+higher in the treatment condition than in the control con-
+dition in all experiments. Pooling across experiments, we
+observed an increase in the completion rate from 15.5% to
+18.9% (?2 = 5.87, p = 0.008). Thus, regarding hypothesis
+H1.1, we conclude:
+
+The Feedback System significantly increases course
+completion rates in MOOCs.
+
+In the fourth experiment, which tested two treatment con-
+ditions with different cultural framings against the control
+of not providing the Feedback System, we also observed
+higher completion rates in the treatment conditions (Ta-
+ble 5). However, this difference was not statistically sig-
+nificant (ps > 0.25). However, the overall completion rate
+in the CalcX course was extremely low (1.7%). This sug-
+gests that the sample is drawn from a population of less
+committed learners and that potential effects could be ob-
+fuscated by high levels of unexplained variance in completion
+outcomes. Another contributing factor to this rift between
+CalcX and the other three courses is the fact that CalcX was
+self-paced (content released all-at-once), whereas the others
+were instructor-paced (content released weekly), thus pro-
+viding less structure/support to the learners.
+
+Moreover, we hypothesized that showing certain combina-
+tions of feedback metrics will better promote positive changes
+in behavior than others (H1.3). We explored this by chang-
+ing the (combination of) metrics in each of the four itera-
+tions of the Feedback System (see Table 1). Given that the
+course completion rates increased across all four iterations
+each with a different combination of feedback metrics (with
+two of the six metrics—quiz submission timeliness (how far
+ahead of the deadline responses were submitted) and quiz
+questions attempted—were present in all four) we conclude:
+
+Each combination of metrics shown to the learners pro-
+duced increases in completion.
+
+5.2 Engagement
+In light of the positive effect of the Feedback System on
+
+course completion, we next evaluated specific changes in
+learner behavior corresponding to the behavioral metrics
+that were visualized in the Feedback System (H1.1). These
+
+http://osf.io/ys6au
+https://cos.io/prereg/
+
+
+Table 3: Overview of the supplementary texts the treatment groups received in CalcX, depending on their
+performance in the course so far (either on track or behind). The alignment of the words and phrases
+with the intended framing is highlighted. Sentences prefixed by ? are directly addressed at the individual
+(individualistic framing). Best viewed in color.
+
+Treatment Group 1 Treatment Group 2
+
+( individualistic promotional framing) ( collectivist prevention framing)
+
+On track Looks like you’re right on track to achieve your
+
+goal! ?Keep taking advantage of the exciting new
+
+topics each week. Always push yourself to
+
+be successful .
+
+Looks like you’re keeping up with the course
+
+for now ! We’re doing our best to introduce you
+
+to exciting new topics each week. Please
+
+don’t let us down now .
+
+Behind Looks like you’re a bit behind in achieving your
+
+goal! ? Work harder to take advantage of the ex-
+
+citing new topics each week. Always push yourself
+
+to be successful .
+
+Looks like you’re a bit behind in the course right
+
+now! We’re doing our best to introduce you
+
+to exciting new topics each week. Please
+
+don’t let us down now .
+
+Table 4: Course completion rates across the first
+three studies among the active learners. Overall, the
+difference in completion rate between the groups is
+statistically significant (p = 0.008).
+
+Condition N # Pass Pass Rate
+
+WaterX
+Control 1,268 160 12.6%
+Treatment 1,251 188 15.0%
+
+UrbanX
+Control 771 136 17.6%
+Treatment 746 165 22.1%
+
+BusinessX
+Control 164 46 28.0%
+Treatment 160 54 33.8%
+
+Overall
+Control 2,203 342 15.5%
+Treatment 2,157 407 18.9%
+
+Table 5: Course completion rates in the CalcX course
+among active learners. A binomial test of indepen-
+dent proportions revealed no statistically significant
+differences between the three conditions.
+
+Condition N # Pass Pass Rate
+
+Control 1,150 45 3.91%
+Indiv.-Promotion 1,147 62 5.41%
+Collect.-Prevention 1,118 51 4.56%
+
+metrics, which varied across experiments, were most likely
+to be directly affected through social comparison. Table 6
+shows the results of Kruskal-Wallis tests6 comparing the var-
+ious feedback metrics between the treatment and control
+groups in study to test H1.2. A common thread across
+the three experiments was that of the Feedback System in-
+creased the number of summative quiz questions that learn-
+ers submitted, which directly promotes course completion.
+
+Looking at each feedback metric individually in Table 6,
+we observe 15 out of 18 times an improvement from control
+
+6While the Kruskal-Wallis test measures the difference be-
+tween rank orders, the median values are often zero, so in
+the table we show the mean for better context.
+
+Table 6: Results of the Kruskal-Wallis tests for
+the behavior metrics (feedback metrics) provided in
+the Feedback System for WaterX, UrbanX, and BusinessX.
+Statistically significant differences are in bold.
+
+Metric Ctrl Treat. ?2 p
+x? x?
+
+W
+a
+t
+e
+r
+X
+
+quiz questions attempted 4.2 4.7 4.46 0.04
+videos accessed 7.0 7.0 0.01 0.94
+time on platform (hours) 4.5 4.6 0.17 0.68
+time watching videos (hours) 0.8 0.8 0.04 0.85
+ratio video/total time (%) 25.0 25.0 0.11 0.75
+submission timeliness (days) 27.9 31.3 4.20 0.04
+
+U
+r
+b
+a
+n
+X
+
+quiz questions attempted 5.7 6.6 3.16 0.08
+sessions per week 3.8 4.0 2.11 0.15
+avg. session length (minutes) 8.1 8.2 0.18 0.67
+time between sessions (hours) 117.0 120.0 0.29 0.59
+forum visits 2.7 3.0 2.88 0.09
+submission timeliness (days) 28.3 32.0 3.27 0.07
+
+B
+u
+s
+i
+n
+e
+s
+s
+X
+
+quiz questions attempted 21.4 25.3 3.97 0.05
+sessions per week 0.5 0.7 4.89 0.02
+avg. session length (minutes) 32.8 46.7 8.42 0.00
+time between sessions (hours) 95.9 92.2 1.17 0.28
+time-on-task (%) 64.3 67.5 0.32 0.57
+submission timeliness (days) 19.9 21.4 1.12 0.29
+
+to treatment condition7; three times no change is observed.
+The treatment condition does not lead to a worse effect in
+any feedback metric. While only a handful of these differ-
+ences are statistically significant, this consistency lends itself
+to some explanatory power over the statistically significant
+increases in course completion rates: while on an individual
+level, only some metrics show significant increases as a re-
+sult of the Feedback System, on a macro level—that which
+accounts for a learner’s overall activity in the course—we
+infer that these small increases in engagement all effectively
+coalesce into a boost in desirable behavior that leads to in-
+creased completion rates. We draw the following conclusion:
+
+The Feedback System causes desirable changes in
+learner engagement.
+
+7A high “time between sessions” score is not better per se,
+but it indicates a desirable high-spacing learning routine
+
+
+
+Table 7 shows the results of the same analysis on the en-
+gagement metrics across the three conditions in CalcX; the
+results are less consistent.
+
+In H1.2, we hypothesize that learners change aspects of
+their behavior that are reflected back to them in the Feed-
+back System. Since there is no consistency among signifi-
+cant increases in the provided behavior metrics, we conclude:
+
+Learners do not change specific behaviors based on what
+metrics are shown in the Feedback System.
+
+5.3 Who benefited from the feedback?
+Going beyond average treatment effects of the Feedback
+
+System, we now evaluate heterogeneous treatment effects,
+that is, how the feedback affects different groups of learn-
+ers (RQ2). Specifically, we focus on heterogeneity by prior
+education level, as this might determine learners’ ability to
+use the information provided in the Feedback System. We
+gather learners prior education levels from their edX user
+profile; learners who do not report their education level are
+omitted from this analysis. We define high prior education
+learners as those with a Bachelors, Masters, or PhD degree,
+and low prior education learners as those with any degree
+below Bachelors. Table 8 compares the average final grades
+in the control and treatment conditions of the first three
+courses separately for high vs. low prior education learners.
+
+In WaterX, UrbanX and BusinessX we observed a consis-
+tent increase in final grades for highly educated learners,
+but not for less educated learners. However, this pattern
+did not replicate in the CalcX course, as education level did
+moderate the effect on grades (p = 0.82)8. Nevertheless,
+the results for CalcX are harder to interpret due to the rel-
+atively low completion rate in this course. Moreover, CalcX
+stands out in that a majority of low prior education learners
+were enrolled in this course, while the WaterX, UrbanX and
+BusinessX courses had a majority of high prior education
+learners. Based on these analyses, we conclude that:
+
+The Feedback System only helps to improve the
+achievement (final grade) of learners who are already
+highly educated.
+
+This finding suggests three possibilities: (i) the Feedback
+System is too complex for people falling in the low prior ed-
+ucation category to understand, (ii) highly educated learn-
+ers are better able to synthesize the information offered by
+the Feedback System and translate it into positive behav-
+ior as they are already experienced learners (with at least
+some SRL skills), and/or (iii) less educated learners are not
+concerned with obtaining a certificate, but rather focus on
+knowledge acquisition.
+
+5.4 Framing Feedback to Cultural Contexts
+In the CalcX course, we tested H3.1 and H3.2 about
+
+supplementing the Feedback System with culture-specific
+feedback. As before, we evaluated each hypothesis both
+in terms of learner achievement and engagement. All pre-
+registered analyses for this experiment are reported in Sec-
+tion 5.4.1. Additional exploratory analyses are reported in
+Sections 5.4.3 and 5.4.2.
+8Once more we report CalcX separately due to the overall
+difference in completion rate compared to WaterX, Busi-
+nessX and UrbanX as shown in Tables 4 & 5.
+
+5.4.1 Pre-registered: Completion & Engagement
+We compared the completion rate and six behavioral mea-
+
+sures (the ones shown in the Feedback System) between
+the treatment and control conditions separately by learners’
+cultural context. To address H3.1, we segmented learners
+into three groups of individualism—high, balanced, and low
+individualism—and compared completion rates of learners
+in high vs. low individualism cultures in each condition.
+There was no significant increase in completion rates for ei-
+ther feedback framing, neither for learners in low individual-
+ism cultures nor for those in high individualism cultures (all
+p > 0.12). Likewise, we tested for treatment effects in con-
+texts defined by cultural tightness (H3.2) and also found
+no significant increase in completion rates (all p > 0.29).
+Results for learner engagement were also not significant (cf
+Table 7). Finally, we tested the moderating role of educa-
+tion level, as in the prior experiments (RQ2), but found no
+evidence in support of moderation (?2 = 0.40, p = 0.82).
+We thus conclude that:
+
+Supplementing the Feedback System with feedback
+framing tailored to cultural tendencies of individualism
+and tightness does not increase learners’ course achieve-
+ment or engagement.
+
+5.4.2 Increased “Active" Threshold
+From the exceptionally low completion rate of CalcX, we
+
+gathered that a high proportion of uncommitted learners
+rendered the data set noisy. Whereas the WaterX, UrbanX,
+and BusinessX experiments yielded a consistent main ef-
+fect on course completion, this effect was not detectable in
+the CalcX experiment. To focus our analysis in CalcX on
+more committed learners, we imposed a stricter threshold
+for“active” learners. Considering only learners who accessed
+the course platform for at least an average of 1hr/week,
+we proceeded by analyzing data for highly active learners
+(n = 658). This threshold is reasonable given the amount of
+course content per week (between 6–8 hours). Moreover, the
+overall completion rate in this sample was 15.65%, a similar
+rate as in the other experiments.
+
+Among highly active learners, we find that the individ-
+ualist framing increased completion rates regardless of a
+learner’s own cultural context from 12.8% in the control con-
+dition to 19.9%, a 7.1 percentage point increase (t = 2.02,
+p = 0.04). Moreover, we find that the effect of the indi-
+vidualistic framing was especially large for learners in tight
+cultures, effectively tripling the completion rate from 12.1%
+in the control condition to 36.3% (t = 2.07, p = 0.04). We
+therefore conclude that:
+
+The individualist framing was most effective in increas-
+ing course completion rates overall, and especially for
+learners in tight cultures.
+
+The effect of the individualist framing is surprising in
+terms of its large magnitude and cultural heterogeneity. We
+expected the individualist framing to resonate in loose rather
+than tight cultures. Perhaps the individualist framing is
+more congruent in an environment where learners tend to be
+anonymous and socially isolated. Learners in tight cultures
+were also more likely to benefit as there course performance
+was generally lower, as discussed next.
+
+
+
+Table 7: Results of the Kruskal-Wallis tests for CalcX. Statistically significant differences indicated in bold.
+
+Metric Ctrl Treat.1 ?2 p Ctrl Treat.2 ?2 p Treat.1 Treat.2 ?2 p
+x? x? x? x? x? x?
+
+avg. time/week (minutes) 31.9 33.4 1.38 0.24 31.9 33.8 0.11 0.74 33.4 33.8 2.16 0.14
+revisited lectures 3.44 3.62 0.59 0.44 3.44 3.42 0.35 0.55 3.62 3.42 1.88 0.17
+forum posts 0.34 0.53 0.03 0.86 0.34 0.36 4.01 0.05 0.53 0.36 3.31 0.06
+quiz questions attempted 31.3 32.4 1.52 0.22 31.3 33.5 0.09 0.77 32.4 33.5 2.24 0.13
+time on quizzes (%) 37.0 34.0 5.08 0.02 37.0 36.4 0.15 0.70 34.0 36.4 3.30 0.07
+submission timeliness (days) 47.48 45.70 1.31 0.25 47.48 46.71 0.84 0.36 45.70 46.71 0.04 0.83
+
+Table 8: Mean final grades (out of a possible 100
+points) grouped by prior education levels. The
+“Prior Education” column indicates the highest de-
+gree the learner has earned; “N” is the sample size;
+and “p” shows the result of a Kruskall-Wallis test.
+Significant values are in bold.
+
+Course Prior N Ctrl Treat. p
+Education x? x?
+
+WaterX
+High 2,006 13.2 15.7 0.15
+Low 788 11.8 11.5 0.16
+
+UrbanX
+High 1,337 17.4 21.3 0.04
+Low 438 16.4 14.0 0.66
+
+BusinessX
+High 299 23.7 29.1 0.04
+Low 92 21.4 22.8 0.78
+
+OVR
+High 3,642 16.3 19.5 <0.01
+Low 1,318 14.4 13.6 0.36
+
+5.4.3 Lower Achievement in Tight Cultures
+In the preceding analyses, we observed a notable cultural
+
+difference along the tightness dimension. Pooling across ex-
+perimental conditions in the CalcX course, we found for ev-
+ery metric (cf. Table 1) with the exception of number of fo-
+rum posts that learners in tight cultures exhibit significantly
+higher levels of achievement and engagement than those in
+loose cultures (ps ?0.02). We repeated the analysis for the
+other three courses and found the same cultural differences.
+We therefore conclude:
+
+Learners from countries with low cultural tightness sig-
+nificantly outperform their peers from countries of high
+cultural tightness in terms of both engagement (all p-
+values p?0.1) and achievement (p?0.02).
+
+This cultural difference in performance could arise from
+the nature of the MOOC learning experience. MOOCs pro-
+vide significant latitude for different levels of commitment
+and engagement; in fact, learners can come and go as they
+please at no cost. This may especially appeal to loose cul-
+tures, where there are few strongly-enforced rules and high
+tolerance for deviation. In contrast, traditional classroom
+environments with strict attendance and performance poli-
+cies would align more with the ideals of tight cultures. Al-
+ternatively, the current finding may reflect structural differ-
+ences that are associated with both tightness and perfor-
+mance, such as infrastructure and education levels.
+
+6. CONCLUSION
+This research tested the effect of providing online learners
+
+with personalized feedback in four large-scale randomized
+
+controlled experiments in MOOCs. The Feedback System
+was designed to promote learners’ awareness of both their
+own SRL behavior and that of their successful peers through
+social comparison. It significantly increased course comple-
+tion rates across different courses. The combination of be-
+havior metrics that was shown to learners in the Feedback
+System did not determine the significance of the effect on
+course completion, highlighting a need for further research
+on the optimal set of metrics to show. Moreover, we discov-
+ered that the Feedback System primarily benefited highly
+educated learners, although the system was envisioned to
+support those who struggle with self-regulation. This sug-
+gests a new challenge for MOOC researchers and designers
+to make targeted interventions that support learners who
+are less educated and need more support.
+
+As online courses can be culturally diverse learning envi-
+ronments, we investigated how the Feedback System could
+be adapted to resonate with learners from different back-
+grounds. Our pre-registered analyses yielded no significant
+effects of changing the cultural framing of the feedback. In
+exploratory analyses, however, we found strong benefits of
+framing feedback with an individualistic and promotion fo-
+cus. This insight warrants further research to establish its
+generalizability. Aside from our intervention, we found that
+learners from loose cultures consistently outperformed learn-
+ers tight cultures in terms of course engagement and final
+grades. In light of the two sources of heterogeneity we iden-
+tified, future MOOC interventions may be strengthened by
+personalization based on learners’ prior education level and
+cultural context.
+
+In future work, we plan test a different feedback interface
+design that presents a set of different personas that learn-
+ers can identify with, such as person who works a bit every
+day and one who works a lot over the weekend. We will
+also evaluate new approaches for feedback messages to bet-
+ter support learners with different cultural and educational
+backgrounds.
+
+7. REFERENCES
+[1] S. Bateman, J. Teevan, and R. W. White. The search
+
+dashboard: how reflection and comparison impact search
+behavior. In CHI ’12, pages 1785–1794, 2012.
+
+[2] H. Blanton, B. P. Buunk, F. X. Gibbons, and H. Kuyper.
+When better-than-others compare upward: Choice of
+comparison and comparative evaluation as independent
+predictors of academic performance. Journal of personality
+and social psychology, 76(3):420, 1999.
+
+[3] S. Bull and J. Kay. Open learner models. In Advances in
+intelligent tutoring systems, pages 301–322. Springer, 2010.
+
+[4] S. Bull and J. Kay. Open learner models as drivers for
+metacognitive processes. In International handbook of
+metacognition and learning technologies, pages 349–365.
+Springer, 2013.
+
+[5] R. Cook and J. Kay. The Justified User Model: A Viewable,
+Explained User Model. In UM ’94, pages 145–150, 1994.
+
+
+
+[6] J. Crabtree and A. Rutland. Self-evaluation and social
+comparison amongst adolescents with learning difficulties.
+Journal of Community & Applied Social Psychology,
+11(5):347–359, 2001.
+
+[7] D. Davis, G. Chen, I. Jivet, C. Hauff, and G. J. Houben.
+Encouraging Metacognition & Self-Regulation in MOOCs
+through Increased Learner Feedback. In Workshop on
+Learning Analytics for Learners, 2016.
+
+[8] L. Festinger. A theory of social comparison processes.
+Human relations, 7(2):117–140, 1954.
+
+[9] M. J. Gelfand, J. L. Raver, L. Nishii, L. M. Leslie, J. Lun,
+B. C. Lim, L. Duan, A. Almaliach, S. Ang, J. Arnadottir,
+et al. Differences between tight and loose cultures: A
+33-nation study. Science, 332(6033):1100–1104, 2011.
+
+[10] J. Guerra, R. Hosseini, S. Somyurek, and P. Brusilovsky.
+An Intelligent Interface for Learning Content: Combining
+an Open Learner Model and Social Comparison to Support
+Self-Regulated Learning and Engagement. In IUI ’16, pages
+152–163, 2016.
+
+[11] P. J. Guo and K. Reinecke. Demographic differences in how
+students navigate through MOOCs. In L@S ’14, pages
+21–30, 2014.
+
+[12] J. Hattie. Visible learning: A synthesis of over 800
+meta-analyses relating to achievement. Routledge, 2008.
+
+[13] E. T. Higgins. Promotion and prevention: Regulatory focus
+as a motivational principle. Advances in experimental social
+psychology, 30:1–46, 1998.
+
+[14] G. Hofstede, G. J. Hofstede, and M. Minkov. Cultures and
+organizations: Software of the mind. 1991.
+
+[15] P. Huguet, F. Dumas, J. M. Monteil, and N. Genestoux.
+Social comparison choices in the classroom: Further
+evidence for students’ upward comparison tendency and its
+beneficial impact on performance. European journal of
+social psychology, 31(5):557–578, 2001.
+
+[16] P. Huguet, M. P. Galvaing, J. M. Monteil, and F. Dumas.
+Social presence effects in the stroop task: further evidence
+for an attentional view of social facilitation. Journal of
+personality and social psychology, 77(5):1011, 1999.
+
+[17] Y. Jo, G. Tomar, O. Ferschke, C. P. Rose?, and D. Gasevic.
+Expediting Support for Social Learning with Behavior
+Modeling. In EDM ’16, pages 400–405, 2016.
+
+[18] D. F. Kauffman. Self-regulated learning in web-based
+environments: Instructional tools designed to facilitate
+cognitive strategy use, metacognitive processing, and
+motivational beliefs. Journal of educational computing
+research, 30(1-2):139–161, 2004.
+
+[19] J. Kay. Learner know thyself: Student models to give
+learner control and responsibility. In ICCE ’97, pages
+17–24, 1997.
+
+[20] J. Kay. Stereotypes, student models and scrutability. In
+International Conference on Intelligent Tutoring Systems,
+pages 19–30, 2000.
+
+[21] H. Khalil and M. Ebner. Moocs completion rates and
+possible methods to improve retention-a literature review.
+In World Conference on Educational Multimedia,
+Hypermedia and Telecommunications, number 1, pages
+1305–1313, 2014.
+
+[22] R. F. Kizilcec and G. L. Cohen. An 8-minute self-regulation
+intervention improves educational attainment at scale in
+individualist but not collectivist cultures. Working Paper,
+2017.
+
+[23] R. F. Kizilcec and S. Halawa. Attrition and achievement
+gaps in online learning. In L@S ’15, pages 57–66, 2015.
+
+[24] R. F. Kizilcec, M. Pe?rez-Sanagust??n, and J. J. Maldonado.
+Self-regulated learning strategies predict learner behavior
+and goal attainment in massive open online courses.
+Computers & Education, pages 18–33, 2016.
+
+[25] R. F. Kizilcec, C. Piech, and E. Schneider. Deconstructing
+disengagement: analyzing learner subpopulations in
+massive open online courses. In LAK ’13, pages 170–179.
+ACM, 2013.
+
+[26] R. F. Kizilcec and E. Schneider. Motivation As a Lens to
+Understand Online Learners: Toward Data-Driven Design
+with the OLEI Scale. TOCHI, 22(2):6:1–6:24, 2015.
+
+[27] M. Leo?n, R. Cobos, K. Dickens, S. White, and H. Davis.
+Visualising the MOOC experience: a dynamic MOOC
+dashboard built through institutional collaboration. In
+EMOOCs ’16, pages 461–470, 2016.
+
+[28] J. M. Levine. Social comparison and education. pages 3–29,
+1983.
+
+[29] A. Littlejohn, N. Hood, C. Milligan, and P. Mustain.
+Learning in moocs: Motivations and self-regulated learning
+in moocs. The Internet and Higher Education, 29:40–48,
+2016.
+
+[30] Z. Liu, R. Brown, C. F. Lynch, T. Barnes, R. Baker,
+Y. Bergner, and D. McNamara. Mooc learner behaviors by
+country and culture; an exploratory analysis. In EDM ’16,
+pages 127–134, 2016.
+
+[31] P. Lockwood, D. Dolderman, P. Sadler, and E. Gerchak.
+Feeling better about doing worse: social comparisons
+within romantic relationships. Journal of personality and
+social psychology, 87(1):80, 2004.
+
+[32] P. Lockwood, T. C. Marshall, and P. Sadler. Promoting
+success or preventing failure: Cultural differences in
+motivation by positive and negative role models.
+Personality and Social Psychology Bulletin, 31(3):379–392,
+2005.
+
+[33] R. M. Maldonado, J. Kay, K. Yacef, and B. Schwendimann.
+An interactive teacher’s dashboard for monitoring groups in
+a multi-tabletop learning environment. In ITS ’12, pages
+482–492, 2012.
+
+[34] A. Margaryan, M. Bianco, and A. Littlejohn. Instructional
+quality of MOOCs. Computers & Education, 80:77–83,
+2015.
+
+[35] H. R. Markus and S. Kitayama. Culture and the self:
+Implications for cognition, emotion, and motivation.
+Psychological review, 98(2):224, 1991.
+
+[36] K. A. Papanikolaou. Constructing interpretative views of
+learners’ interaction behavior in an open learner model.
+IEEE Transactions on Learning Technologies,
+8(2):201–214, 2015.
+
+[37] Y. Park and I.-H. Jo. Development of the learning analytics
+dashboard to support students’ learning performance. J.
+UCS, 21(1):110–133, 2015.
+
+[38] T. Rogers and A. Feller. Discouraged by Peer Excellence:
+Exposure to Exemplary Peer Performance Causes Quitting.
+Psychological Science, 27(3):365–374, 2016.
+
+[39] M. J. Saary. Radar plots: a useful way for presenting
+multivariate health care data. Journal of clinical
+epidemiology, 61(4):311–317, 2008.
+
+[40] B. A. Schwendimann, M. J. Rodr??guez-Triana, A. Vozniuk,
+L. P. Prieto, M. S. Boroujeni, A. Holzer, D. Gillet, and
+P. Dillenbourg. Understanding learning at a glance: An
+overview of learning dashboard studies. In LAK ’16, pages
+532–533, 2016.
+
+[41] M. Siadaty, D. Gas?evic?, and M. Hatala. Measuring the
+impact of technological scaffolding interventions on
+micro-level processes of self-regulated workplace learning.
+Computers in Human Behavior, 59:469–482, 2016.
+
+[42] M. Siadaty, D. Gas?evic?, and M. Hatala. Trace-based
+micro-analytic measurement of self-regulated learning
+processes. Journal of Learning Analytics, 3(1):183–214,
+2016.
+
+[43] K. Verbert, E. Duval, J. Klerkx, S. Govaerts, and J. L.
+Santos. Learning analytics dashboard applications.
+American Behavioral Scientist, 57(10):1500–1509, 2013.
+
+[44] S. Zheng, M. B. Rosson, P. C. Shih, and J. M. Carroll.
+Understanding student motivation, behaviors and
+perceptions in moocs. In CSCW ’15, pages 1882–1895,
+2015.
+
+[45] B. J. Zimmerman. Becoming a self-regulated learner: An
+overview. Theory into practice, 41(2):64–70, 2002.
+
+
+	Introduction
+	Background
+	MOOC Overview
+	Approach
+	Research Questions
+	Feedback System Design
+	Studies
+	Measures & Method of Analysis
+
+	Results
+	Course Completion
+	Engagement
+	Who benefited from the feedback?
+	Framing Feedback to Cultural Contexts
+	Pre-registered: Completion & Engagement
+	Increased ``Active" Threshold
+	Lower Achievement in Tight Cultures
+
+
+	Conclusion
+	References
+
+

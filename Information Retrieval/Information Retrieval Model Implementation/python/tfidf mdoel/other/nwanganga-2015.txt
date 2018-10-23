@@ -1,0 +1,274 @@
+
+Qualitatively Exploring Electronic Portfolios: A Text Mining
+Approach to Measuring Student Emotion as an Early
+
+Warning Indicator?
+
+Frederick Nwanganga
+University of Notre Dame
+
+Notre Dame, Indiana 46556
+fnwangan@nd.edu
+
+Everaldo Aguiar
+University of Notre Dame
+
+Notre Dame, Indiana 46556
+eaguiar@nd.edu
+
+G. Alex Ambrose
+University of Notre Dame
+
+Notre Dame, Indiana 46556
+gambrose@nd.edu
+
+Victoria Goodrich
+University of Notre Dame
+
+Notre Dame, Indiana 46556
+v.goodrich@nd.edu
+
+Nitesh V. Chawla
+University of Notre Dame
+
+Notre Dame, Indiana 46556
+nchawla@nd.edu
+
+ABSTRACT
+The collection and analysis of student-level data is quickly
+becoming the norm across school campuses. More and more
+institutions are starting to use this resource as a window into
+better understanding the needs of their student population.
+In previous work, we described the use of electronic portfo-
+lio data as a proxy to measuring student engagement, and
+showed how it can be predictive of student retention. This
+paper highlights our ongoing efforts to explore and measure
+the valence of positive and negative emotions in student re-
+flections and how they can serve as an early warning indica-
+tor of student disengagement.
+
+Categories and Subject Descriptors
+J.1 [Administrative Data Processing]: Education; K.3.0
+[Computer Uses in Education]: General
+
+General Terms
+Measurement, Performance
+
+Keywords
+Analytic Approaches & Methods, Natural Language Pro-
+cessing, Predictive Analytics, Text Mining, Emotions, Af-
+fect, Reflecting Learning, Quantified Self
+
+1. INTRODUCTION & BACKGROUND
+In previous work [1, 2], we showed that the efficiency of re-
+
+tention prediction systems based on academic performance
+
+?This material is based upon work supported by the Na-
+tional Science Foundation under Grant No. DUE 1161222
+
+Permission to make digital or hard copies of all or part of this work for
+personal or classroom use is granted without fee provided that copies are
+not made or distributed for profit or commercial advantage and that copies
+bear this notice and the full citation on the first page. To copy otherwise, to
+republish, to post on servers or to redistribute to lists, requires prior specific
+permission and/or a fee.
+LAK ’15, March 16 - 20, 2015, Poughkeepsie, NY, USA
+Copyright 2015 ACM 978-1-4503-3417-4/15/03
+http://dx.doi.org/10.1145/2723576.2723651 ...$15.00.
+
+alone can improve significantly when features that serve as
+a proxy to student engagement are incorporated. We used
+data describing student interactions with their electronic
+portfolios (ePortfolios) to quantify the amount of time and
+energy engineering students were allocating to a set of in-
+trospective assignments that invited them to reflect on their
+future careers as engineers. In [2], we paired that infor-
+mation with outcome data to show that the distributions of
+those ePortfolio feature values were statistically significantly
+different across students who were retained after a year, and
+those who did not persist. Further, in [1], we showed that
+these features were also quite predictive.
+
+In this paper, we show how responses provided by stu-
+dents to reflective assignments given half way through, and
+towards the end of their first semester in college, can ex-
+ternalize both positive and negative sentiments, and how
+these sentiments could be used to predict end-of-semester
+outcomes.
+
+By text mining student reflections about their interest in
+majoring in engineering from their ePortfolios, we seek to
+show that both the arousal and valence of student emotion
+can be an early warning indicator that a student is disengag-
+ing over time. In addition, we seek to continue to show the
+predictive potential of electronic portfolios as a rich data
+source for next generation learning analytics. Electronic
+Portfolios are a web space, story, and system that function as
+a workspace and showcase in which to collect, select, reflect,
+publish, link, archive, and demonstrate knowledge, skills,
+reflections, and more as multimedia evidence.
+
+2. CONTEXT
+Our work in this paper is focused on the reflections of 419
+
+first year engineering student to the following two questions
+asked in the middle and at the end of the semester, respec-
+tively: (1)“Engineering is a very broad field of study. What
+is it about engineering that interests you?” (2) “What does it
+mean to be an engineer? How does engineering fit into your
+interests?”
+
+Based on known outcomes of whether a student continued
+in or left the engineering program after the first semester, we
+classified 48 of the students as “Leavers” and 371 of them as
+“Stayers”. Of the students in the “Leavers” class, we selected
+15% of them using a stratified sampling method (without
+
+422
+
+
+
+replacement) for our experiments. Because of the significant
+imbalance in the dataset, we also sampled an equal number
+of students from the “Stayer” class. These two subsets were
+combined and make up our sample set.
+
+3. TEXT MINING
+According to [4], the words people use reveal a great deal
+
+about them. They provide insight into the emotional, social
+and even physical state of a person. A person’s deeper mo-
+tives and fears can sometimes be inferred by the words they
+use even if it is unknown or unacknowledged by the author.
+It is, therefore, within reason to suggest that when applied
+in a limited context, a study of the words used by an author
+(such as a student) while introspectively reflecting on a topic
+can be informative with regards to the degree to which the
+author is interested or disinterested (affective state) about
+the particular topic they are writing about. Building on the
+work previously done by [2, 1], we attempt to discover the
+degree to which first year engineering students (2012 cohort)
+are engaged or disengaged by analyzing the words they use.
+
+3.1 Word Frequency Analysis
+After removing stop words (e.g., a, it, the, an, etc) and
+
+excluding the words “Engineer”, “Engineering” and “Engi-
+neers” (which were disproportionately more frequent than
+any other words across the vast majority of the students’
+writing), we generated a simple word frequency count of the
+mid-semester and end of semester reflections for each class
+of student (“Stayers” and “Leavers”). While the set of words
+used by each class varied, they were not informative in dis-
+criminating between members of each class.
+
+3.2 Measuring Emotion
+Basic approaches to sentiment analysis use machine learn-
+
+ing algorithms to simply identify the polarity of sentiment
+in text: positive, negative or neutral. They do not deal with
+the strength of the sentiment, account for the existence of
+both positive and negative emotions in the same text, or
+identify the discrete emotions that exist within text (fear,
+love, sadness) [6]. While this may be sufficient in some ap-
+plications, in others, it is necessary to not only identify the
+presence of both positive and negative sentiment, but it is
+also important to measure the strength of the sentiment ex-
+pressed. For example, programs that are designed to iden-
+tify at-risk users in online communications would need to be
+sensitive not only to the balance of sentiments expressed by
+a particular user, but also to the strength of the sentiments
+expressed [3].
+
+Alternative approaches to sentiment analysis attempt to
+go beyond the single polarity classification method discussed
+earlier, to the identification of the existence of emotion (pos-
+itive and negative) in unstructured text. One such approach
+is to perform a word frequency analysis on text for the oc-
+currence of words from a dictionary of positive or negative
+words (such as love, hate or like). The Linguistic Inquiry and
+Word Count (LIWC) tool [5], makes use of this approach. It
+uses simple word counting and an extensive and pre-defined
+list of emotion-bearing words to detect positive or negative
+emotion in text. The list of emotion bearing words used by
+LIWC have been compiled and validated by panels of human
+judges and have undergone statistical testing. Rather than
+determining the overall emotion or emotional strength of a
+body of text, LIWC calculates the prevalence of emotion in
+
+the text.
+Applying the LIWC tool to both the mid-semester and
+
+end of semester student reflections shows a skew in positive
+emotions among “Stayers” and a skew in negative emotions
+among “Leavers”. While these results are only those of a
+sample set, we believe that our process when applied to the
+entire data set would produce very similar results. Going
+froward, we intend to do just that, as well as explore other
+methods of sentiment analysis against our data set in order
+to better predict student outcomes.
+
+4. CONCLUSION & FUTURE WORK
+Our preliminary results show that simply using word fre-
+
+quency counts as a predictor of outcome is ineffective or in-
+sufficient at best. While there seemed to be a slight variance
+in the distribution of words used by “Leavers” and “Stayers”,
+the inferred information value of word frequency alone ap-
+pears to be low. However, the measurement of the arousal
+and valence of student emotions as a predictor of outcome,
+as determined by the LIWC tool, shows promise.
+
+Current and future research includes: (1) Applying the
+methods utilized in this research to a larger data set. (2)
+Deploying an early intervention plan based on student dis-
+engagement alerts and predictive metrics provided by the
+quantitative and qualitative data gathered from student ePort-
+folios. (3) Evaluating the predictive value of other text
+mining methodologies (i.e. parts of speech analysis, con-
+cordances, named entity extraction, summarization, classi-
+fication and clustering).
+
+5. REFERENCES
+[1] E. Aguiar, N. V. Chawla, J. Brockman, G. A. Ambrose,
+
+and V. Goodrich. Engagement vs performance: using
+electronic portfolios to predict first semester
+engineering student retention. In Proceedings of the
+Fourth International Conference on Learning Analytics
+And Knowledge, pages 103–112. ACM, 2014.
+
+[2] V. Goodrich, E. Aguiar, G. A. Ambrose,
+L. McWilliams, J. Brockman, and N. V. Chawla.
+Integration of eportfolios into rst-year experience
+engineering course for measuring student engagement.
+In Proceedings of the American Society for Engineering
+Education Conference,, 2014.
+
+[3] Y. Huang, T. Goh, and C. L. Liew. Hunting suicide
+notes in web 2.0 - preliminary findings. pages 517–521,
+Los Alamitos, 2007. IEEE.
+
+[4] J. Pennebaker, M. Mehl, and K. Niederhoffer.
+Psychological aspects of natural language use: Our
+words, our selves. Annual Review of Psychology,
+54:547–577, 2003.
+
+[5] J. W. Pennebaker, C. K. Chung, M. Ireland,
+A. Gonzales, and R. J. Booth. The Development and
+Psychometric Properties of LIWC2007. Austin, Texas,
+2007.
+
+[6] M. Thelwall, K. Buckley, G. Paltoglou, D. Cai, and
+A. Kappas. Sentiment strength detection in short
+informal text. Journal of the American Society for
+Information Science and Technology, 61(12):2544–2558,
+2010.
+
+423
+
+
+
+
+

@@ -1,0 +1,306 @@
+
+Minimum Information Entropy Based
+Q-matrix Learning in DINA Model
+
+Shiwei Ye
+University of China Academy
+
+of Science
+Beijing, China
+
+shiwye@ucas.ac.cn
+
+Yuan Sun
+National Institute of
+
+Informatics
+Tokyo, Japan
+
+yuan@nii.ac.jp
+
+Haobo Wang
+University of China Academy
+
+of Science
+Beijing, China
+
+wanghaobo@ucas.ac.cn
+Yi Sun
+
+University of China Academy
+of Science
+
+Beijing, China
+sunyi@ucas.ac.cn
+
+ABSTRACT
+Cognitive diagnosis models (CDMs) are of growing interest
+in test development and measurement of learners’ perfor-
+mance. The DINA (deterministic input, noisy, and gate)
+model is one of the most widely used models in CDM. In this
+paper, we propose a new method and present an alternating
+recursive algorithm to learn Q-matrix and uncertainty vari-
+ables, slip and guessing parameters, based on Boolean Ma-
+trix Factorization (BMF) and Minimized Information En-
+tropy (MIE) respectively for the DINA model. Simulation
+results show that our algorithm for Q-matrix learning has
+fast convergence to the local optimal solutions for Q-matrix
+and students’ knowledge states A matrix. This is especially
+important and applicable when the method is extended to
+big data.
+
+Categories and Subject Descriptors
+D.2.8 [Metrics]: Performance measures; D.4.8 [Performance]:
+Measurements; F.2.1 [Numerical Algorithms and Prob-
+lems]: Computations on matrices; I.2.6 [Learning]: Con-
+cept learning, Parameter learning
+
+General Terms
+Algorithms, Measurement, Performance, Theory
+
+Keywords
+Rule Space,Q-matrix, Boolean Matrix Factorization, approx-
+imation algorithm
+
+1. INTRODUCTION
+
+Permission to make digital or hard copies of part or all of this work for
+personal or classroom use is granted without fee provided that copies are
+not made or distributed for profit or commercial advantage and that copies
+bear this notice and the full citation on the first page. Copyrights for third-
+party components of this work must be honored. For all other uses, contact
+the Owner/Author.
+LAK’15 Mar 16-20, 2015, Poughkeepsie, NY, USA
+ACM 978-1-4503-3417-4/15/03.
+http://dx.doi.org/10.1145/2723576.2723653.
+
+Cognitive diagnosis has recently gained prominence in e-
+ducational assessment, and other disciplines [1] [2] [3] [4].
+Central to cognitive diagnostic models (CDMs) is the well-
+known Q-matrix, which specifies the item-attribute relation-
+ships. How to specify Q-matrix is without a doubt the most
+important issue to put diagnostic assessment into practice.
+In addition to typical Q-matrix specification by domain ex-
+perts, data-driven Q-matrix learning is attracting more at-
+tentions recently.
+
+Among the CDMs, the DINA (deterministic input, noisy,
+and gate) model is one of the most widely used models and
+considered as the foundation [5] [6]. In this paper we propose
+a new framework for DINA model-based Q-matrix learn-
+ing under the assumption that attribute dimensions are not
+available in real situations. In Section 2, we spontaneously
+transfer the Q-matrix learning problem into Boolean Ma-
+trix Factorization (BMF) problem [7] to obtain attribute
+dimensions. Because BMF is an NP-hard problem [9][10],
+we develop an alternating recursive method to find approx-
+imate solution by adding one dimension in attribute latent
+space in each step. Accordingly we describe that uncertainty
+variables slip and guessing parameters in the DINA model
+can be analytically estimated through the Maximum Infor-
+mation Entropy(MIE). The simulation results are shown in
+Section 3 and finally the conclusion is given in Section 4.
+
+2. CONJUNCTIVE MODEL, BMF AND DI-
+NA MODEL
+
+For conjunctive model, based on the student’s knowledge
+states andQ-matrix for items, an ideal item response matrix,
+denotedR, can be generated , whose elementRij is typically
+represented in the following form.
+
+Rij(A,Q) = ?Ki=1?
+qjk
+ik =
+
+{
+1 ?ik ? qjk, k = 1, . . . ,K
+0 ?ik < qjk),?k ? {1, . . . ,K}
+
+(1)
+
+Here Rij is the latent response variable of the ith student
+with the latent knowledge states ?i to the jth item, while
+qj indicating whether the student i has all the attributes k
+required for item j. It represents a deterministic prediction
+of item response from each student’s knowledge state.
+
+Based on BMF [8], we verified the equation (1) can be
+
+404
+
+
+
+expressed in a Boolean relations of the knowledge states A
+matrix and the Q-matrix as follows (see [7] for details).
+
+R = A??QT =
+(
+?ks=1uisvsj
+
+)m×n
+(2)
+
+where ? represents the Boolean matrix product and ? de-
+notes the maximum (truth function of logical disjunction).
+
+In the DINA model, probability of a student’s correct re-
+sponse to an test item is determined by two error probabil-
+ities, and one latent response variable. The slip probability
+(sj) represents the probability of getting a wrong response
+on the jth item when all required attributes are present,
+while the guessing probability (gj) represents the probabil-
+ity of getting a correct response on the j th item when at
+least one required attribute is lacking. The student’s at-
+tribute patterns ?i = (?i1, ?i2, ..., ?iK), called knowledge
+states, indicate the i th student’s mastery status in terms
+of the K attributes, and A represents students’ knowledge
+states matrix here.
+
+For simplification, we denote B = A,C(i, j) = R(i, j),
+then the DINA model can be defined as the following.
+
+P (R(i, j)|B,Q) =
+m?
+i=1
+
+n?
+j=1
+
+s
+R(i,j)C(i,j)
+j g
+
+R(i,j)C(i,j)
+j (3)
+
+× (1? sj)R(i,j)C(i,j)(1? gj)R(i,j)C(i,j)
+
+where C = B ? QT . The optimization problem can be ex-
+pressed to find the maximum likelihood of conditional prob-
+ability on matrices B and Q
+
+E(B,Q) =
+
+m?
+i=1
+
+n?
+j=1
+
+lnP (R(i, j)|B,Q) (4)
+
+The optimization process for the above equation can be
+done by our iterative algorithm on every column of matri-
+ces B and Q based on equation equation (2) and equation
+(4). After obtaining the matrix B and Q, the slip and guess-
+ing parameters can be obtained analytically. Due to space
+limitations, proofs and details of algorithms are omitted.
+
+3. SIMULATION RESULTS
+The data we used in this study is from the paper [11],
+
+where EM algorithm approach for DINA model-based Q-
+matrix learning have been proposed. Their research mainly
+focuses on statistical validation and hypothesis testing for
+the Q-matrix, and it also indicates sufficient and necessary
+conditions under which the model parameters are identifi-
+able from the response data. However, in their algorithms
+the number of attributes in the to-be-estimated Q-matrix is
+assumed to be known because true and designed Q-matrices
+are needed to be compared. Under the same settings as
+in the paper [11], the estimated Q-matrix and the true Q-
+matrix were compared based on our proposed algorithm.
+Due to lack of space, the detailed descriptions on our simu-
+lation and results cannot be shown here.
+
+As a result, it was shown that our iteration algorithm had
+fast convergent speed. In the simulation, we repeated the
+experiment 100 times, and we also found that if the number
+of students M ? 1000, in every round the Q-matrix can be
+completely restored.
+
+Based on our simulation results, it was revealed that our
+algorithm was immune to initial values of slip and guessing
+parameters as well. Both of them were always convergent to
+
+the values between 0.1 and 0.2 which are normal values in
+general testing environment.
+
+4. CONCLUSIONS
+In this paper, we proposed a new method and present-
+
+ed an alternating recursive algorithm to learn Q-matrix and
+uncertainty variables slip and guessing based on Boolean
+matrix factorization (BMF) and maximum information en-
+tropy (MIE) for the DINA model of CDMs. Simulation re-
+sults show that our algorithm has fast convergence to the
+local optimal solutions for matrices B and Q. Moreover,
+our algorithm is also immune to initial values of slip and
+guessing parameters. The proposed method could be espe-
+cially important and effective when it is applied to big data.
+
+5. ACKNOWLEDGMENTS
+This work was supported by JSPS KAKENHI Grant Num-
+
+bers 26560134 and 25280121.
+
+6. REFERENCES
+[1] Tatsuoka, K. K. 1983. Rule space: an approch for
+
+dealing with misconceptions based on item response
+theory. Journal of Educational Measurement, 20,
+345-354.
+
+[2] Rupp, A., Templin, J. and Henson, R. A. 2010.
+Diagnostic Measurement: Theory, Methods, and
+Applications. Guilford Press.
+
+[3] Barnes, T. 2010. Novel derivation and application of
+skill matrices: The Q-matrix method. Handbook on
+Educational Data Mining. 159-172.
+
+[4] Koedinger, K.R., McLaughlin, E.A., Stamper, J.C.
+2012. Automated student model improvement. In
+Proceedings of the 5th International Conference on
+Educational Data Mining.
+
+[5] de la Torre, J. 2008. An empirically-based method of
+Q-matrix validation for the DINA model: Development
+and applications. Journal of Educational
+Measurement,45, 343-362.
+
+[6] DeCarlo, L. T. 2012. Recognizing uncertainty in the
+Q-matrix via a Bayesian extension of the DINA model.
+Applied Psychological Measurement, 36, 447-468.
+
+[7] Sun, Y., Ye, S.W., Inoue, S., Sun, Y. 2014. Alternating
+Recursive Method for Q-matrix Learning. Proceedings
+of the 7th International Conference on Educational
+Data Mining (EDM 2014), page 14-20.
+
+[8] Vaidya, J. 2012. Boolean Matrix Decomposition
+Problem: Theory, Variations and Applications to Data
+Engineering. IEEE 28th International Conference on
+Data Engineering
+
+[9] Belohlavek, R., Vychodi, V. 2010. Discovery of optimal
+factors in binary data via a novel method of matrix
+decomposition, Journal of Computer and System
+Sciences 76:3-20
+
+[10] Miettinen, P., Mielikainen, T., Gionis, A., Das, G.,
+Mannila, H. 2008. The Discrete Basis Problem. IEEE
+Transactions on Knowledge and Data Engineering,
+20(10), 1348-1362.
+
+[11] Liu, J., Xu, G., Ying, Z. 2012. Data-driven learning of
+q-matrix. Applied Psychological Measurement. 36(7),
+548-564.
+
+405
+
+
+
+
+

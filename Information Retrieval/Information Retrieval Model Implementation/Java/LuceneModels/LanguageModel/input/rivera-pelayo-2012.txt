@@ -1,0 +1,538 @@
+
+Applying Quantified Self Approaches to Support Reflective
+Learning
+
+Verónica Rivera-Pelayo, Valentin Zacharias, Lars Müller, and Simone Braun
+FZI Research Center for Information Technologies
+
+Haid-und-Neu Str. 10-14, Karlsruhe, Germany
+rivera@fzi.de, zach@fzi.de, lmueller@fzi.de, braun@fzi.de
+
+ABSTRACT
+This paper presents a framework for technical support of
+reflective learning, derived from a unification of reflective
+learning theory with a conceptual framework of Quantified
+Self tools – tools for collecting personally relevant informa-
+tion for gaining self-knowledge. Reflective learning means
+returning to and evaluating past experiences in order to pro-
+mote continuous learning and improve future experiences.
+Whilst the reflective learning theories do not sufficiently con-
+sider technical support, Quantified Self (QS) approaches are
+rather experimental and the many emergent tools are dis-
+connected from the goals and benefits of their use. This
+paper brings these two strands into one unified framework
+that shows how QS approaches can support reflective learn-
+ing processes on the one hand and how reflective learning
+can inform the design of new QS tools for informal learning
+purposes on the other hand.
+
+Categories and Subject Descriptors
+J.1 [Administrative Data Processing]: Education; K.3.1
+[Computer Uses in Education]: Collaborative learning,
+Computer-assisted instruction (CAI), Computer-managed in-
+struction (CMI), Distance learning
+
+General Terms
+Theory
+
+Keywords
+Reflective learning, Quantified Self, Learning Analytics,
+Framework, Mobile applications
+
+1. INTRODUCTION
+Reflection is becoming of relevance in the learning commu-
+
+nity and therefore reflective learning is being investigated in
+both educational and work settings. According to Boud et
+al. [1], learning by reflection (or reflective learning) offers the
+
+Permission to make digital or hard copies of all or part of this work for
+personal or classroom use is granted without fee provided that copies are
+not made or distributed for profit or commercial advantage and that copies
+bear this notice and the full citation on the first page. To copy otherwise, to
+republish, to post on servers or to redistribute to lists, requires prior specific
+permission and/or a fee.
+LAK ’12, 29 April - 2 May 2012, Vancouver, BC, Canada.
+Copyright 2012 ACM 978-1-4503-1111-3/12/04 ...$10.00.
+
+chance of learning by returning to and evaluating past work
+and personal experiences in order to improve future experi-
+ences and promote continuous learning. Several approaches
+show initiatives to support reflective learning through tech-
+nology in different settings [13, 8, 6], but we lack an unifying
+framework that describes the role of technology in the reflec-
+tive process.
+
+On the pragmatic side, a new kind of lifelogging approaches
+pursued by a community known as Quantified Self (QS)1
+
+are becoming increasingly popular. QS is a collaboration
+of users and tool makers who share an interest in “self-
+knowledge through numbers”, i.e. self-knowledge through
+self-tracking. This interest results in a variety of tools to
+collect personally relevant information for self-reflection and
+self-monitoring, with the purpose of gaining knowledge about
+one’s own behaviors, habits and thoughts. Hence, QS ap-
+proaches offer a rich source of data for learning analytics
+that has not been available for learning processes before.
+
+This way, whereas QS approaches are pragmatic, having
+as main driver the experimentation; reflective learning is
+driven by theories that are evolving since the beginning of
+the 19th century. In an approach to join these two streams,
+this paper presents a framework that shows how QS ap-
+proaches can support the process of learning by reflection
+and informs the design of new QS tools for informal learning
+purposes. The starting point for the design of the framework
+was the survey of several QS tools, which allowed to analyze
+the characteristics these tools may have in common. More-
+over, the continuous advances in technology can facilitate
+the data gathering and therefore the quality and features of
+the tools. Sensor technologies are being improved, mobile
+technologies and devices are more widespread and Internet
+provides ubiquitous access to information.
+
+In the following, we describe the theoretical and prag-
+matic background of reflective learning and Quantified Self
+in Sec. 2, before we present our framework to apply QS ap-
+proaches to support reflective learning (Sec. 3). Finally, we
+conclude this paper with its discussion in Sec. 4.
+
+2. BACKGROUND OF THE FRAMEWORK
+
+2.1 Theoretical Background
+Decades of research in reflective learning have highlighted
+
+different aspects of reflective learning, leading to multiple
+theories [3, 7, 1, 12]. Hence, it is difficult to define a shared
+understanding about reflection. We were looking for a the-
+ory that provides insights into the cognitive processes and
+
+1http://quantifiedself.com
+
+111
+
+
+
+can be a basis for the integration of technology into the re-
+flection process. We chose the model introduced by Boud et
+al. [1] because it considers the complete cognitive process,
+including affective aspects, but does not define the concrete
+activities around this process or a specific domain.
+
+In the model by Boud et al., reflective learning refers to
+“those intellectual and affective activities in which individ-
+uals engage to explore their experiences in order to lead to
+new understandings and appreciations” [1]. Therefore, the
+reflective process is based on the experiences of the learner,
+i.e. ”the total response of a person to a situation, including
+behavior, ideas and feelings”. The reflection process con-
+sists of three stages, in which the learner re-evaluates past
+experiences by attending to its various aspects, and thereby
+producing outcomes, which can be cognitive, affective or be-
+havioral. The reflection process and its context, experiences
+and outcomes, are depicted in Figure 1. A critical point is
+the start of the reflection process that leads to the initial re-
+turn to an experience, which is not explicitly defined by [1]
+because “most events which precipitate reflection arise out
+of normal occurrences of one’s life.” However, the provided
+examples can be linked to cognitive dissonance theory [5].
+
+Figure 1: The reflection process in context [1].
+
+2.2 Pragmatical Background
+On the pragmatic side, we have a new kind of lifelogging
+
+approaches with the recently emerged QS community, that
+promotes “self-knowledge through numbers”. Their lifel-
+ogging experiments and their tools have the intention of
+gaining knowledge about their own behaviors, habits and
+thoughts by collecting relevant information related to them.
+The starting point of the QS initiative are not scientific the-
+ories, but based on empirical self-experimentation. Apart
+from QS, all these approaches and tools are also known
+as personal informatics, living by numbers, self-surveillance,
+self-tracking and personal analytics [9].
+
+Since the QS community was founded, we have seen a wide
+variety of approaches where people track, e.g., more than 40
+different categories of information about the own health, the
+power usage of a thatched cottage or Vitamin D consump-
+tion [2]. Besides, plenty of tools are already available, which
+facilitate the tracking of different aspects of our lives. Some
+of these tools are web-based applications (e.g. Dopplr2 , day-
+tum3 , moodscope4) others are devices provided with phys-
+iological or environmental sensors (e.g. MIO5 , SenseCam6,
+DirectLife7) and yet others consist of mobile applications
+
+2http://www.dopplr.com/
+3http://daytum.com/
+4http://www.moodscope.com
+5http://www.mioglobal.com/
+6http://research.microsoft.com/en-us/
+um/cambridge/projects/sensecam/
+7http://www.directlife.philips.com/
+
+Figure 2: Role of the three QS potentials in the
+process of reflective learning. c© FZI
+
+(e.g. Sleep Cycle8, oneLog9, My Tracks10).
+
+3. A FRAMEWORK TO APPLY
+QS APPROACHES TO SUPPORT
+REFLECTIVE LEARNING
+
+In the previous section, reflective learning and QS were in-
+troduced and defined for the purpose of this paper. We now
+present a framework that combines these research strands
+into a model for the technical support for reflective learn-
+ing; centered around the model of Boud et al [1].
+
+In our framework, three main support dimensions are iden-
+tified, namely: tracking cues, triggering and, recalling and
+revisiting experiences (see Fig. 2):
+
+(a) Tracking cues: capturing and keeping track of certain
+data as basis for the whole reflective learning process.
+
+(b) Triggering: fostering the initiation of reflective processes
+in the learner, based on the gathered data and the anal-
+ysis performed on it.
+
+(c) Recalling and revisiting experiences: supporting learn-
+ers in recalling and revisiting through the enrichment
+and presentation of data in order to make sense of past
+experiences.
+
+Figure 2 shows these three dimensions in relation to the
+reflective learning model of Boud et al. presented in the
+previous section. Firstly, tracking cues is directly related
+to tracking of behavior, ideas and feelings, which are the
+source of the reflective process on the one hand, and on the
+other hand related to the measurement of outcomes (e.g.
+new perspectives or change in behavior), which are continu-
+ously integrated with the original cues in order to feed future
+iterative reflection processes. Secondly, triggering is related
+to the start of the reflective process. Finally, the recalling
+and revisiting experiences enrich the process of returning to
+and evaluating experiences, as well as that of attending to
+feelings.
+
+In the following we further differentiate the support di-
+mensions based on how these can be instantiated by QS
+tools.
+
+8http://mdlabs.se/sleepcycle/
+9http://www.schmitzware.org/Software/OneLog/index.shtml
+
+10http://mytracks.appspot.com/
+
+112
+
+
+
+3.1 Tracking Cues
+Tracking means the observation of a person and his/her
+
+context in order to aid the reflective process. Tracking strives
+to quantify (aspects of) a person’s life in order to enable
+some objectivity in understanding it. Tracking facilitates
+reflective learning by collecting data on experiences and out-
+comes that can then be used as objective basis in reflec-
+tion and triggering. We further characterize tracking by the
+means that are used, the object that is tracked, and the goal
+that is being strived for.
+
+3.1.1 Tracking means
+Two main ways for tracking exist: self reporting through
+
+often specialized software and hardware sensors that directly
+track behavior.
+
+Software Sensors: Software sensors are applications that
+aid the user in capturing experiences and may be desktop-
+based, web-based or mobile-based. Software sensors are par-
+ticularly important for experiences that cannot (currently)
+be directly measured (such as feelings, ideas) and are of-
+ten much simpler, more flexible and cheaper to realize than
+hardware sensors. Software sensors are currently used in a
+broad variety of QS applications.
+
+Hardware Sensors: Hardware sensors are devices that
+automatically capture data that can be used to deduce ex-
+periences or collect contextual information. Common cate-
+gories of sensors are: environmental sensors (e.g., light sen-
+sors, thermometers or microphone) and physiological sen-
+sors (accelerometers, heart rate sensors, sphygmomanome-
+ters, etc. ).
+
+3.1.2 Tracked Aspects
+Of crucial importance to QS applications is the selection of
+
+data about experiences and outcomes that is being tracked;
+what is tracked is likely to have a large effect on user ac-
+ceptance and efficiency for reflective learning. The tracked
+aspects found in QS applications can be classified in the
+following way:
+
+Emotional Aspects: Emotional aspects such as mood,
+stress, interest, anxiety, etc.
+
+Private and Work Data: Data from work processes
+and our lives such as photographies, the browser’s history,
+digital documents, music, or use of a particular software etc.
+
+Physiological Data: These are physical indicators and
+biological signals that describe a person’s state of health.
+The main approaches comprise the measurement of physi-
+cal activity (for applications focusing on sport) and factors
+indicating health and sickness (e.g. glucose level).
+
+General Activity: Data about a users’ general activity
+such as the number of cigarettes, cups of coffee or hours
+spent in a certain activity.
+
+3.1.3 Purposes
+Another important classification dimension is that of the
+
+purpose of a QS application; the goal which the user tries
+to achieve by using this application. This purpose drives
+and guides which measures are tracked and which means
+are appropriate.
+
+3.2 Triggering
+Within the reflective learning process, triggers are respon-
+
+sible for starting the actual reflection process. The role of
+triggers is to raise awareness and detect discrepancy. We
+
+differentiate between active and passive triggering.
+
+3.2.1 Active Triggering
+Active triggering consists of the tool sending a notification
+
+or catching the attention of the user explicitly. In order to
+support active triggering, an application must perform data
+analysis to detect experiences that are suitable for initiating
+reflection. Such a situation may be a mismatch between a
+user’s goals and current level, comparison to a global thresh-
+old or other persons or a deviation from personal patterns.
+
+3.2.2 Passive Triggering
+A system supporting only passive triggering does not iden-
+
+tify experiences suitable for fostering reflection or it would
+not actively contact the user. This kind of system only dis-
+plays the collected data in a suitable way. It relies on the
+user to be triggered by somethings outside of the system
+or on the user regularly visiting the site and then detecting
+something that starts a reflection process.
+
+3.3 Recalling and Revisiting Experiences
+Different aspects affect the recalling and revisiting of past
+
+experiences, when analyzing the benefits that QS approaches
+could offer. Enrichment and presentation of the data may
+facilitate the revisiting of the data to analyze past expe-
+riences and reflect about them, and therefore enhance the
+learning process of the user.
+
+So support of QS applications can exist along multiple
+dimensions: Contextualization, Data Fusion, Data Analysis,
+and Visualization.
+
+3.3.1 Contextualizing
+The data being tracked can be enriched with other con-
+
+text data. This contextualization of the data with other
+sources of information may be performed by the same tool
+or result from the interaction between tools (e.g. two mobile
+applications or a sensor with a desktop application).
+
+Adapting the context definition from [4] we define context
+within this framework as: Context is any information that
+can be used to characterize the situation of a tracked entity
+and that can aid the reflection process.
+
+Social Context: Data can be augmented with informa-
+tion about the social context of the user. This can be a
+comparison to Facebook friends or a comparison to all users.
+This helps to compare own performance/measures with the
+others and provides additional data to others in expectation
+to retrieve more data in exchange and ultimately see one’s
+own experiences in relation to other’s. An aggregation of
+data over multiple users may provide new perspectives on
+experiences and offer new abstraction levels. Such an ag-
+gregation can be useful for individual reflection but also at
+a collaborative level, e.g. reviewing team performance over
+one month [10].
+
+Spacial Context: The location in terms of city, street
+or even the room. As context this data can aid reflection by
+helping the user to understand the relation between place
+and her behavior - such as understanding the effects of high
+altitude on his or her heart rate or the calming effect of visits
+to specific places.
+
+Historical Context: Comparing current values to his-
+toric ones allows to see upward or downward trends or to
+identify deviations from a historic norm that may indicate
+a problem. It may also help to identify the difference be-
+
+113
+
+
+
+tween periodic fluctuations (such as variations in weight or
+fitness according to the seasons) and other deviations from
+the norm that may indicate progress or a problem.
+
+Item Metadata: Any metadata available about the things
+a user interacts with – such as the information that a par-
+ticular website is not work related but rather distracting, or
+that a food contains a large amount of sugar.
+
+Context From Other Datasets: There are also numer-
+ous datasets (e.g. weather or work schedule) that might can
+also be used in contextualizing.
+
+3.3.2 Data Fusion: Objective, Self, Peer and Group
+Assessment
+
+One important aid to the reflection process can be the fu-
+sion and comparison of objective (i.e. measured by sensors),
+self (i.e. self reported data from the user), peer and group
+assessment (reported data from others about a user). There
+may be differences and discrepancies between these views
+that can foster reflection, can help to bridge the gap from
+subjective to objective experiences and in this way yield new
+insights and lead to learning. This relates to stage two of the
+reflection process – attending to feelings. Negative impres-
+sions can be discharged by comparing the individual per-
+spective to objective measurements. Aggregation of subjec-
+tive articulations over time or over different users can result
+in a more objective view (see also [11]).
+
+3.3.3 Data Analysis: Aggregation, Averages, etc.
+Different forms of data processing help to present the
+
+user useful measurements (e.g. number of cups of tea per
+day/week, average mood of my colleagues, etc.). In [10] we
+suggested formal, graphic and mathematic aggregation, de-
+pending on the data and purpose of the aggregation. For
+instance, aggregation in tag clouds as example of formal ag-
+gregation may need large amounts of data to become valu-
+able but can be applied to semi or unstructured data like
+texts. Further, it might be desirable to hide the source of
+the underlying data through aggregation and in this way to
+create anonymity and privacy.
+
+3.3.4 Visualization
+Attractive and intuitive presentation and visualization forms
+
+for the users should be chosen which, at the same time, fos-
+ter the analysis of the data for reflective learning purposes
+and being otherwise one of the major barriers (see [9]).
+
+4. DISCUSSION AND CONCLUSION
+This paper presented a framework for the application of
+
+QS applications to support reflective learning. In addition
+to ordering this strand of research, this framework is geared
+towards being used to understand the design space this kind
+of applications as well as understanding which parts haven’t
+been addressed by research. In the following we want to
+introduce some of the issues that were identified when re-
+viewing existing research into QS applications within this
+framework.
+
+Assuming that QS tools can be shown to help people
+achieve their desired outcomes, there is also a luck of under-
+standing on how to identify the situations where they are
+likely to work, which are the right measures to track and
+finally how to spread the user beyond the current relatively
+narrow user base.
+
+Currently there is also relatively little work on contextual-
+izing the data to improve the reflective process. Different QS
+applications are islands where data from one application and
+sensor cannot be used to understand that of another people.
+The use of external data sets (such as historic weather data
+in fitness applications) is even less common.
+
+Overall the proposed combination of reflective learning
+and QS applications in the proposed framework concretizes
+the vision of learning analytics for a particular model of
+learning and class of support tools. In doing so it allows to
+identify promising venues for future research. It also shows
+the way how the notion of learning analytics can be applied
+beyond classroom settings in daily life to support all kinds
+of learning and self improvement.
+
+Acknowledgements
+Work presented in this paper was partly conducted within
+the project “MIRROR - Reflective learning at work” funded
+under the FP7 of the European Commission (project num-
+ber 257617).
+
+5. REFERENCES
+[1] D. Boud, R. Keogh, and D. Walker. Reflection:
+
+Turning Experience into Learning, chapter Promoting
+Reflection in Learning: a Model., pages 18–40.
+Routledge Falmer, New York, 1985.
+
+[2] J. Brophy-Warren. The New Examined Life.
+http://online.wsj.com/article/
+
+SB122852285532784401.html, Dec. 2008.
+
+[3] J. Dewey. Experience and Education. Macmillan,
+London & New York, 1938.
+
+[4] A. K. Dey. Understanding and using context. Personal
+and Ubiquitous Computing, 5:4–7, 2001.
+
+[5] L. Festinger. A theory of cognitive dissonance.
+Stanford Univ. Press, 1957.
+
+[6] R. Fleck. Supporting reflection on experience with
+sensecam. In CHI Workshop on Designing for
+Reflection on Experience, 2009.
+
+[7] D. A. Kolb. Experiential Learning: Experience as the
+source of learning and development. Englewood Cliffs,
+N.J.: Prentice Hall, 1984.
+
+[8] B. Krogstie and M. Divitini. Shared timeline and
+individual experience: Supporting retrospective
+reflection in student software engineering teams. In
+Proc. of CESEET 2009, pages 85–92, Washington,
+DC, USA, 2009. IEEE Computer Society.
+
+[9] I. Li, A. Dey, and J. Forlizzi. A stage-based model of
+personal informatics systems. In Proc. of CHI 2010,
+pages 557–566, New York, NY, USA, 2010. ACM.
+
+[10] L. Mu?ller, B. Krogstie, and A. Schmidt. Towards
+capturing learning experiences. In ConTEL: Theory,
+methodology and design, ECTEL 2011, 2011.
+
+[11] L. Mu?ller, V. Rivera-Pelayo, and A. Schmidt.
+MIRROR D3.1 - User studies, requirements, and
+design studies for capturing learning experiences.
+MIRROR project deliverable D3.1, June 2011.
+
+[12] D. A. Scho?n. Educating the Reflective Practitioner.
+Jossey-Bass, San Fransisco, 1 edition, 1987.
+
+[13] K. Strampel and R. Oliver. Using technology to foster
+reflection in higher education. In Proc. of ascilite
+Singapore 2007, 2007.
+
+114
+
+
+
+
+

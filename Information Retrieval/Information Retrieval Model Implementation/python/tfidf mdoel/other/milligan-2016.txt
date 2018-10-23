@@ -1,0 +1,299 @@
+
+Validity: a framework for cross-disciplinary collaboration 
+in mining indicators of learning from MOOC forums 
+
+ 
+
+Sandra Milligan 
+University of Melbourne 
+
+Melbourne, Australia 
+s.milligan@unimelb.edu.au 
+
+Jiazhen He  
+University of Melbourne 
+
+Melbourne, Australia 
+jiazhen@student.unimelb.edu.au 
+
+James Bailey 
+University of Melbourne 
+
+Melbourne, Australia 
+baileyj@unimelb.edu.au 
+
+ 
+Rui Zhang 
+
+University of Melbourne 
+Melbourne, Australia 
+
+rui.zhang@unimelb.edu.au 
+
+Benjamin I.P Rubinstein 
+University of Melbourne 
+
+Melbourne, Australia 
+Benjamin.rubinstein@unimelb.edu.au 
+
+ 
+ABSTRACT 
+Two research teams from the University of Melbourne's 
+Learning Analytics Research Group used validation as applied 
+in educational measurement to provide a framework for 
+collaboration. One team was focussed on defining and building 
+measures of learning capability of MOOCs participants, and 
+the other on using topic modelling to discover topics in MOOC 
+forums. The collaboration explored the suitability of items 
+discovered from MOOC forums using topic modelling as 
+measures of learning capability of participants in MOOCs.   
+
+Categories and Subject Descriptors 
+K.3.1 [Computer Uses in Education]: Computer-assisted 
+learning 
+
+Keywords 
+Validity; MOOC, Topic Modelling, Non-Negative Matrix 
+Factorisation, Measurement Theory, Learning Analytics, Rasch 
+Analysis, Crowd-Sourced Learning, Collaborative Learning, 
+Learning Progression, Learner Performance 
+
+ 
+1. BACKGROUND 
+The University of Melbourne Learning Analytics Research 
+Group (LARG) supports interdisciplinary research using large 
+data sets relating to staff and student interactions in eLearning 
+environments.  
+
+An educational measurement team in LARG was focussed on 
+improving visibility of the learning process in MOOCs, and 
+had defined and measured a 21st-Century skill – the capability 
+to crowd-source higher order learning in MOOCs. It had 
+established empirically verified measures of this capability (the 
+Crowd-sourced Learning Scale, C-SL) [1] to infer the degree to 
+which any MOOC participant possessed it. The items used to 
+construct the assessments were coded from the digital traces of 
+learner behaviour in the log stream, an expensive process. 
+
+ 
+Permission to make digital or hard copies of part or all of this work for 
+personal or classroom use is granted without fee provided that copies 
+are not made or distributed for profit or commercial advantage and that 
+copies bear this notice and the full citation on the first 
+page. Copyrights for third-party components of this work must be 
+honored. For all other uses, contact the Owner/Author.  
+Copyright is held by the owner/author(s). 
+LAK '16, April 25-29, 2016, Edinburgh, United Kingdom 
+ACM 978-1-4503-4190-5/16/04 
+DOI:  http://dx.doi.org/10.1145/2883851.2883956 
+
+ 
+
+ 
+
+Automated item mining was considered preferable, especially 
+in indicating the quality of what is said in forums.  
+
+A computer science team in LARG was working on the 
+automatic discovery of topics from MOOC discussion forums, 
+and seeking to use them as items that indicate educationally 
+meaningful attainment. This was achieved by using machine 
+learning topic modelling algorithms to automatically assess for 
+each student the degree to which the latent topics were 
+represented in their posts and comments in forums. 
+Furthermore, a standard topic modelling algorithm, Non-
+Negative Matrix Factorisation (NMF) [2] was adapted to 
+require the discovered topics to conform to a Guttman scale 
+[3], and the students' final grades were used to model the 
+students' topic response patterns [6].  
+
+Key questions for the collaboration were: is there a quicker, 
+cheaper and easier way than hand-mining to generate reliable, 
+quality items from the log stream of sufficient quality to use in 
+assessment of learning? Could topic analysis provide an 
+option? Are the discovered topics meaningful and useful for 
+teachers or other educators? Could the C-SL project's 
+handcrafted items be used as the benchmarks of utility and 
+meaning for the topic analysis output?  
+
+These questions were explored using posts and comments 
+taken from a Coursera MOOC for practicing teaching run by 
+the University of Melbourne in 2014, entitled Assessment and 
+Teaching of 21st Century Skills (ATC21S MOOC), for which 
+the hand crafted items and measure for each participant on the 
+C-SL scale were also available. Topic modelling was used to 
+generate indicators for each of 1729 participant for each of 10 
+topics. The indicator was the likelihood that the topic had been 
+addressed in the individual’s posts and comments. Each topic 
+was described by its ten most frequent roots. This likelihood 
+was then coded to form items suitable for use in a scale.  
+
+Methodologically, the collaboration was cast as a validity 
+investigation aimed at developing an argument to support a 
+judgment of the degree to which the metrics developed by the 
+topic modelling are plausibly interpreted as measuring the 
+capability of a participant to generate higher order learning in a 
+MOOC.  
+
+2. APPROACH TO VALIDATION  
+Modern day conceptions define ‘validity’ as a judgement of the 
+degree to which empirical and theoretical argument supports 
+the utility and interpretation of a metric [4, 5]. An argument, 
+based on evidence from investigation, is needed which 
+specifies the inferences and supporting assumptions needed to 
+get from data to score-based interpretations and uses. 
+Investigations cannot confirm validity but they can identify 
+areas of weakness in the argument. There is no generally 
+
+mailto:rui.zhang@unimelb.edu.au
+http://dx.doi.org/10.1145/2883851.2883956
+
+
+accepted way to investigate validity or to mount an argument 
+for validity. Validity is a unitary concept, incorporating a range 
+of formerly separate ideas such as those captured in the terms 
+“predictive validity”, “concurrent validity”, “criterion validity” 
+or “reliability” and so on. Nor is validity a yes/no judgement: it 
+is a matter of degree. What is required is an on-balance 
+judgment, based on the evidence and combined with openness 
+to further evidence and improvements over time. Alternatively 
+it should not become a never-ending process of presenting a 
+miscellany of investigations. It should focus on priorities, on 
+what is genuinely in doubt from the perspective of stakeholder 
+audiences, and on investigations that will yield information, for 
+reasonable cost, on the key risks for users.  
+
+3. THE INVESTIGATIONS 
+A series of validity investigations were conducted, and the 
+questions focusing each are described below. 
+
+Questions were asked about rational and need for the measures, 
+including: Is there a plausible theoretically based educational 
+rationale for expecting the automatically derived topic items to 
+have utility and to be interpretable for educators? Is practical 
+educational significance and meaning clear? Evidence drew 
+from the literature in the learning sciences of the relationship 
+between topics discussed by peers in forums and learning 
+outcome in MOOCs.  
+
+Questions were asked about the appropriateness of data use, 
+including: Is the transformation of raw data into measures 
+transparent, meaningful and plausible? Evidence in this 
+investigation included assessments by teaching staff of the 
+degree to which the topics retained meaning from the forum 
+texts through the extensive prepossessing (involving text 
+aggregation, stemming, deletion of stop words and html tags, 
+creation of a word-student matrix), and through application of 
+the statistical modelling and item coding. It included 
+assessment by teaching staff of the meaningfulness of the topic 
+outputs, including the degree to which they were reflective of 
+the discourse in the course, relevant to learning (and not, for 
+example, tapping social rather that educational dimensions of 
+student discussion), and reflective of how a teacher might 
+assess text written by students to improve teaching practice. 
+
+Questions were asked about psychometric strength, including: 
+Were the automatically discovered topic items of sufficient 
+quality, stability, replicability and generalisability to use as 
+indictors of learning capability? Were they biased for 
+participant not fluent in English? Evidence in this investigation 
+included tests of the topic items (when conjoined with hand 
+crafted items within the C-SL scale), using the criterion of fit to 
+a Rasch measurement model [7].  
+
+A question about interpretability explored alternate 
+interpretations of topic item meaning. Evidence for this 
+investigation included investigations of the predicted 
+relationship of the topic modelling items for each participant 
+with other related measures. 
+
+A further question explored whether there were better methods 
+for achieving the same ends. This involved review of alternate 
+way of measuring quality in forum posts, and related questions 
+of coder bias, cost, objectivity and reliability. 
+
+4. THE JUDGEMENT 
+On the basis of these investigations, the details of which it is 
+not possible to report here, a judgment was made that, with 
+some qualifications, the topic modelling supported automatic 
+generation of items that have utility in assessing learner 
+capability to generate higher order learning. The method was 
+found to be efficient and objective, resulting in items slightly 
+less reliable that the hand-coded items, but of sufficient 
+
+psychometric quality, and interpretable and valued by teaching 
+staff. No bias was detectable for MOOC participants with 
+different levels of English language fluency. As a group most  
+of the items worked well in the C-SL scale to standards 
+required by fit to a parsimonious measurement model.  
+
+Some qualifications on interpretation and use were identified. 
+Not all automatically generated topic items demonstrated 
+suitability to purpose: three of the 10 topics using the adapted 
+NMF approach did not fit to measurement modelling and were 
+judged unsuitable for use. None of the topic items were 
+suitable for use on their own: their power to measure learning 
+derives from integration with other items tapping other 
+dimension of forum activity. The topic items fitted into the C-
+SL scale, but did not improve its reliability. Closer examination 
+suggested that the misfit arose from the tight relationship built 
+into the topic modelling between topics discovered, and grade 
+on the course. The CSL scale was crafted to discriminate on 
+people's capability to learn, rather than their participation in 
+grading. The findings suggest how the automatic generation of 
+items can be used in assessment of capability to learn and how 
+the items can be interpreted, and identified further areas for 
+research.  
+
+5. CONCLUSION 
+Methodologically, validation theory provided an appropriate 
+framework for the cross-disciplinary investigations. In the era 
+of big data, when analytics generates a range of metrics, 
+intended for teacher and student consumption, there are risks to 
+student and teachers arising from use of an un-replicable, 
+unreliable, or irrelevant metrics. Educators should retain 
+scepticism about seemingly attractive new metrics: data do not 
+speak for themselves; it is easy to detect patterns, report 
+“findings” and impute meaning to what is found; to conflate 
+complex relationships such as causality or meaningfulness with 
+statistical indictors such as correlations or tests of significance. 
+Unless models and interpretations “found” in data are tested 
+and continue to pass tests of falsification, it is unwise to accept 
+them at face value. Validation theory provides a useful 
+conceptual framework for analytics project that aspire to 
+having utility for learning. 
+
+REFERENCES 
+ [1] Milligan, S. K. 2015. Crowd-sourced learning in MOOCs: 
+
+learning analytics meets measurement theory. In 
+Proceedings of the Learning Analytics and Knowledge 
+Conference (Poughkeepsie, NY, USA, 2015). ACM,. 2015, 
+151-155. 
+
+[2] Lee, D. D. and Seung, H. S. 1999. Learning the parts of 
+objects by non-negative matrix factorization, Nature, 401, 
+788-791. 
+
+[3] L. Guttman, 1950. The basis for scalogram analysis, in 
+measurement and prediction: The American Soldier, S. 
+Stouffer, Ed. Wiley, New York. 
+
+[4] Messick, S. 1993. Foundations of Validity: Meaning and 
+Consequences in Psychological Assessment, Educational 
+Testing Service, Princeton, New Jersey. 
+
+[5] Kane,. M. T. 2013. Validating the interpretations and uses 
+of test scores. Journal of Educational Measurement, 50, 1, 
+1-73. 
+
+[6] J. He, J., Rubinstein, B.I., Bailey, J., Zhang, R.,  Milligan, 
+S., and Chan, J. 2016.  MOOCs meet measurement theory: 
+A topic-modelling approach, Proceedings of the 30th AAAI 
+Conference on Artificial Intelligence, Austin, USA,   
+
+ [7] Masters, G. N. 1982. A Rasch model for partial credit 
+scoring. Psychometrica, 471, 149-174. 
+
+
+

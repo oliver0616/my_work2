@@ -1,0 +1,653 @@
+
+Using Transaction-Level Data to Diagnose Knowledge 
+Gaps and Misconceptions 
+
+ 
+
+Randall Davies, PhD., Rob Nyland, John Chapman, Gove Allen, PhD.  
+Brigham Young University 
+
+150-L MCKB 
+Provo, UT 84602 
+
++1(801) 422-5229 
+Randy.Davies@byu.edu 
+
+ABSTRACT 
+The role of assessment in learning is to evaluate student 
+comprehension and ability.  Assessment instruments often function 
+at the task level. What is rarely considered is the process students 
+go through to reach the final solution. This often allows knowledge 
+component gaps and misconceptions to go undetected. This 
+research identified higher levels of knowledge component gaps and 
+misunderstandings when assessing transaction-level knowledge 
+component data than task-level final solution data.  Final solution 
+data showed little evidence that students had any misunderstanding 
+or knowledge gaps about the use of absolute references.  However, 
+when analyzing these data at the transaction level we found 
+evidence that far more students struggled than the analysis of the 
+final solutions suggested.  
+
+Categories and Subject Descriptors 
+I.2.4 [Artificial Intelligence]: Knowledge Representation 
+Formalisms and Methods – frames and scripts 
+
+General Terms 
+Measurement, Performance, Design. 
+
+Keywords 
+Knowledge components, transaction level data, assessment 
+
+1. INTRODUCTION 
+The role of assessment in education is to evaluate student learning. 
+Students are given a task and their final solution is graded. If the 
+answer is correct it is assumed the student has mastered the 
+intended learning. Unfortunately, educators rarely considered the 
+process students go through to reach a final solution. The practice 
+of only considering the final solution often results in student 
+knowledge gaps and misconceptions going undetected.  These 
+persistent misconceptions can cause problems later in a course 
+when new tasks require synthesis of previous knowledge and 
+understanding to solve more advanced problems. A better way to 
+assess student learning is to look at how students go about solving 
+the problems they are asked to complete. Tracking and examining 
+how students go about solving a problem step-by-step make this 
+
+type of assessment possible.  The type of data needed to do this 
+(i.e., transaction level data) is often difficult to capture but essential 
+if accurate assessment is to be accomplished [1]. The objective of 
+this study was to demonstrate how the use of educational data at the 
+transaction level could be used to diagnose knowledge gaps and 
+student misconceptions often left unidentified by learning systems 
+that rely on final answer assessment data alone. Along with 
+examples, this paper outlines some challenges encountered while 
+attempting to improve the system’s ability to diagnose student 
+learning. 
+
+2. BACKGROUND 
+2.1 Learning Analytics in Assessment 
+The application of data analysis techniques in educational settings 
+has gained increased interest in the past ten years.  Research within 
+both the field of Educational Data Mining and Learning Analytics 
+(EDM/LA) rely on information from each of Chung’s [2] three 
+levels of data: system level, individual level (which we prefer to 
+call assessment level data), and transaction level (or the activity 
+trace level). Most educational systems have access to some system 
+level data and often create and use assessment level data. Research 
+at the transaction level has been less prominent however and has 
+accelerated due to the availability of activity trace data captured by 
+technology enhanced online educational tools and websites. Studies 
+at this level have mined student data in areas such as learning to 
+program [3], [4], working in teams [5], and the use of study tools 
+[6]. Few if any of these studies have focused on diagnosing 
+persistent misconceptions and knowledge gaps using transaction 
+level data.  This is the focus of our study. 
+
+2.2 Knowledge Components  
+Each problem a student is asked to complete will have a specific set 
+of required knowledge components needed to solve that problem.  
+Simple tasks typically require mastery of only a few basic 
+knowledge components, while complex tasks often require mastery 
+of multiple knowledge components. Identifying and remediating 
+student knowledge gaps has been the goal of many researchers 
+working with intelligent tutoring systems (ITS). In ITS, the process 
+of instruction is often that of “knowledge communication,” wherein 
+the knowledge of the expert (via a computer) is transferred to the 
+student [7]. ITSs engage in a process of “knowledge tracing” to 
+determine the current state of the students’ knowledge at each step 
+of the instruction process [8]. In those areas in which the student’s 
+knowledge does not match that of the expert model, hints or 
+opportunities for remediation are presented.  
+In ITS literature, a student must recall and use specific knowledge 
+components when participating in a “learning event” [9]. During 
+the learning process, students at times experience errors in their 
+knowledge. Brown & VanLehn [10] worked to identify the 
+
+Permission to make digital or hard copies of all or part of this work for 
+personal or classroom use is granted without fee provided that copies are 
+not made or distributed for profit or commercial advantage and that 
+copies bear this notice and the full citation on the first page. Copyrights 
+for components of this work owned by others than ACM must be 
+honored. Abstracting with credit is permitted. To copy otherwise, or 
+republish, to post on servers or to redistribute to lists, requires prior 
+specific permission and/or a fee. Request permissions from 
+Permissions@acm.org.  
+ 
+LAK '15, March 16 - 20, 2015, Poughkeepsie, NY, USA 
+Copyright is held by the owner/author(s). Publication rights licensed to 
+ACM.  ACM 978-1-4503-3417-4/15/03…$15.00  
+http://dx.doi.org/10.1145/2723576.2723620 
+
+113
+
+http://dx.doi.org/10.1145/2723576.2723620
+
+
+systematic errors or “bugs” that exist in student knowledge.  They 
+define bugs as “complex, intentional actions reflecting mistaken 
+beliefs about the skill” (p. 380).  In our study, we refer to these 
+systematic student errors as knowledge gaps and misconceptions.  
+We feel that these knowledge gaps are traditionally overlooked 
+when assessing student learning because educators typically only 
+have access to task-level assessment data.  Using assessment data 
+alone, educators know that a student has a knowledge gap but it is 
+through analysis of transaction level data that specific knowledge 
+gaps can be diagnostically identified.  
+
+2.3 Data Logging 
+The first step of the knowledge discovery process involves the 
+analysis of data through data mining [11], [12]. Data analysis 
+requires meaningful data extraction into data logs [13].  Data for 
+this study were gathered using a tool developed in the Microsoft 
+Excel platform.  For each assignment, this system creates a detailed 
+log of each step the students takes to build a solution—not just the 
+final solution graded by the program.  The log is recorded on a 
+hidden worksheet (called the “hidden event log for individual 
+observation system” or HELIOS) within the workbook so that 
+when the student’s solution is submitted the log is submitted as 
+well.  A student is not even aware that this log exists and it takes no 
+additional effort on the students’ part.  The log can then be extracted 
+for analysis of the learning process as well as the final solution.  
+
+3. METHODS 
+3.1 Participants and Data Collection 
+Existing log data for this analysis were collected from three 
+universities in the western United States whose students enrolled in 
+the winter or spring 2014 semester of the online spreadsheet course. 
+Students at one university did not have a midterm exam.  Data from 
+this group was used as a pilot study to determine the basic 
+
+knowledge components required to complete each of the specific 
+problems posed in the exercise and to select the problems to include 
+for the main analysis of this study. Data from 550 students were 
+used in the preparatory phase.   
+Students from two other universities required students to complete 
+both the homework practice exercise and the midterm exam. 
+Initially 1063 individual student submissions were extracted from 
+the data logs.  After the data was cleaned, to include only those 
+students who completed both the homework task and the midterm 
+exam, and excluding those who collaborated by submitting shared 
+solutions, the final analysis included data from 995 students. 
+
+3.2 Problem Selection 
+We identified matching pairs of problems from the homework and 
+midterm exam.  While slightly different, each pair presented a fairly 
+basic problem with a similar set of knowledge components required 
+to solve the problem.  The two problems selected were in adjacent 
+cells of the same worksheet. Both problems required students to 
+create a formula to complete a calculation. The first problem 
+required that an absolute reference be used in order to correctly 
+copy the formula down. The second problem did not need to use an 
+absolute reference; however, our preliminary analysis identified 
+several students using absolute references to solve this problem 
+even though they were not needed. This behavior is an indication 
+of a student’s misunderstanding in the proper use of absolute 
+references and was therefore included in this analysis. 
+Table 1 presents examples of formulas produced by students with 
+the knowledge gap evidenced by each solution in the homework 
+assignment and on the midterm exam. For the homework 
+assignment students were required to place their solution in cell 
+D11 and copy it down from D11 to D20.  On the midterm exam, 
+students were to place their solution in cell D20 and copy it down 
+from D20 to D67.  
+
+ 
+Table 1. Solutions for the First Problem which Contain Evidence of Absolute Reference Knowledge Gaps  
+
+Cell Correctness Sample of Solution  Knowledge Gap Evidenced, severity of error 
+
+D11 Optimal =C11*C$8 None 
+ Satisfactory =$C11*$C$8 Used where not needed, minor issue 
+ Incorrect =C11*C8 Failed to use when needed, major issue 
+ Incorrect =C11*0.0675 Type in value to avoid use, major issue 
+
+D20 Optimal =F19*C$13/12 None 
+ Satisfactory =$C$13*($F19/12) Used when not needed, minor issue 
+ Incorrect =F$19*C13/12 Failed to use and used inappropriately, major issue 
+ Incorrect =(0.065/12)*F19 Type in value to avoid use, major issue 
+
+In the second problem (cells E11 and E20 respectively), since 
+absolute references are not needed, there are only two ways an 
+absolute reference knowledge gap might become apparent.  First, 
+the solution might contain an absolute reference where it is not 
+needed (e.g., on the column label of any cell reference).  Second, 
+the absolute reference might be used in a way that the solution 
+would not copy down the column correctly (e.g., on the row number 
+of any cell reference).  
+
+3.3 Data Cleaning and Coding 
+Data from the logs were cleaned to remove blank or duplicate 
+entries (i.e., cases where the log recorded a revision but no change 
+
+was made). Spaces were removed from the content and the resulting 
+value fields to ensure proper comparisons. Data log records were 
+sorted by individual and then by chronological step. After the data 
+was extracted and cleaned, a master list of unique solutions for each 
+of the problems was obtained.  This list was coded to identify the 
+level of correctness for each solution and any knowledge gaps 
+evidenced by that particular solution (i.e., one of the four ways a 
+knowledge gap might be identified as explained above).  Each step 
+of the solution was compared to the master list of possible solutions 
+and scored (e.g., optimal, satisfactory, partially correct, and 
+incorrect solutions).  This was done for each step in the solution 
+and for the final solution.  
+
+114
+
+
+
+3.4 Data Analysis 
+The level of correctness and the evidence of absolute reference 
+knowledge gaps for both the final solution (i.e., at the assessment-
+level) and the solution process (i.e., the transaction-level) were 
+calculated.  This analysis was separated into two parts.  First, using 
+only critical errors to identify knowledge gaps, then with the 
+inclusion of non-critical errors. These data were compared against 
+each other and across occasion (i.e., homework to midterm) to 
+identify persistent knowledge gaps (i.e., evidence that a student 
+continues to have a knowledge gap in both the homework and 
+midterm), resolved knowledge gaps (i.e., knowledge gaps 
+identified in the homework but not on the midterm), and emergence 
+of a knowledge gap (i.e., situations where the student completed the 
+homework without evidence of any knowledge gap but on the 
+midterm demonstrated a knowledge gap).   
+
+4. RESULTS AND DISCUSSION 
+The results presented in Table 2 depict the scoring of the final 
+solution submitted by students and the percentage of students who 
+completed the task correctly on their first attempt. Based on 
+classical item analysis standards each of these problems would be 
+considered fairly easy (i.e., 90% or more of the students got the 
+correct answer with no evidence of any knowledge gap for absolute 
+references based on the final solution submitted). However, the 
+transaction level data show that far fewer students were able to 
+complete the task without struggling to overcome some lack of 
+understanding.  Students in general were eventually able to 
+complete the task successfully but the transaction level data 
+identifies appreciably higher levels of misunderstanding and 
+specific knowledge gaps regarding student comprehension of 
+absolute references.  Most notably, only 15% of students completed 
+the problem posed in cell D20 on the first attempt while over 88% 
+eventually provided a satisfactory solution.  
+
+4.1 Knowledge Gap Analysis 
+In Table 3 a comparison of final solutions submitted and the 
+solution process is made based on evidence of an absolute reference 
+knowledge gap. As expected the problem posed in E11 and E20 is 
+much easier than the problem in D11 and D20 as it does not require 
+the use of absolute references. Still, 6 to 8% of students attempted 
+to use an absolute reference in the process of solving the second 
+problem, which would have resulted in an incorrect final solution. 
+The analysis for these problems did not include situations where 
+students used an absolute reference when it was not needed but the 
+inclusion of the absolute reference did not affect the capability of 
+the formula to be copied down in a satisfactory manner.  Far more 
+students demonstrated this type of knowledge gap (i.e., not 
+knowing when the absolute reference is needed and when it is not) 
+than any of the other types of knowledge gaps.  For example, 
+including this non-critical error, knowledge gap identification for 
+the first problem increased by 40% (See Table 5). As mentioned, 
+the analysis in Table 3 only includes critical errors that could be 
+used as evidence of an absolute reference knowledge gap.   
+When considering the problem stipulated for cells D11 and D20, a 
+large number of students (35 to 42%) did not initially use an 
+absolute reference in their solution when it was needed but most 
+corrected this mistake for the final submission. Likewise, a 
+considerable number of students (38%) used an absolute reference 
+incorrectly on the midterm before correcting their mistake. In fact 
+there was a significant increase in students from the homework to 
+the midterm (i.e., from 2% on the homework task to 38% on the 
+midterm) who struggle using an absolute reference correctly.  
+Notably, over 8% of the midterm examinees did not correct this 
+mistake on their final answer.  There was an increase in the number 
+of students using absolute references incorrectly on the midterm 
+compared to the homework. When considering student who typed 
+in the value of a cell to avoid using an absolute reference, there was 
+a decrease in this behavior from the homework to the midterm.   
+
+ 
+Table 2. Assessment Results for Final Answer and Correct First Try 
+
+Cell Occasion Problem % Correct % Correct first Try 
+
+D11 Homework Task Create Formula to be copied down, 
+absolute references required 
+
+93.8% 52.1% 
+
+D20 Midterm 88.9% 15.7% 
+
+E11 Homework Task Create Formula to be copied down, no 
+absolute references needed 
+
+96.8% 78.9% 
+
+E20 Midterm 95.2% 82.0% 
+
+n=995 
+ 
+
+Table 3. Results Comparing Absolute Reference Knowledge Gap for Major Issues by Data Level 
+
+ No Knowledge Gap Failed to Use Used Incorrectly Typed in Values 
+
+Cell Solution Process 
+Final 
+
+Answer 
+Solution 
+Process 
+
+Final 
+Answer 
+
+Solution 
+Process 
+
+Final 
+Answer 
+
+Solution 
+Process 
+
+Final 
+Answer 
+
+D11 62.4% 95.0% 35.1% 3.5% 2.1% 0.1% 5.1% 1.5% 
+
+D20 40.3% 90.3% 41.6% 0.7% 38.2% 8.3% 1.6% 0.7% 
+
+E11 94% 99% -- -- 5.9% 1.0% -- -- 
+
+E20 92% 96% -- -- 8.1% 3.7% -- -- 
+
+n=995 
+ 
+
+115
+
+
+
+On the homework task, 5% used this less than satisfactory solution 
+compared to fewer than 2% on the midterm. Most of these students 
+corrected this mistake for their final submission. 
+
+4.2 Knowledge Gap Persistency Analysis 
+Looking at the patterns of error from one occasion to the next (i.e., 
+homework to midterm) three scenarios were identified: a) 
+knowledge gaps that persist, b) knowledge gaps that are resolved, 
+and c) knowledge gaps that emerge (i.e., they were not evidenced 
+on the homework but were present on the midterm).  For each of 
+these categories, failure to use an absolute reference when it was 
+needed constitutes the most prevalent knowledge gap (see Table 4). 
+Most often this (as well as the other errors) was fixed prior to 
+
+submitting the students’ final solution. Somewhat surprisingly 
+however, an analysis of the transaction level data indicates that 
+many students continue to struggle with knowing when and how to 
+use absolute references even after successfully completing similar 
+tasks on the homework. Less than 10% of students attempting the 
+first problem and less than 4% on the second show signs of a 
+knowledge gap based on the final solutions they submit.  However, 
+analysis of the transaction-level data shows that almost 60% of 
+students attempting the first problem on the midterm and 8% on the 
+second continue to struggle with this essential knowledge 
+component.  When including evidence of students using absolute 
+references when they are not needed (see Table 5) these numbers 
+jump to 99% and 13% respectively on the midterm exam. 
+
+ 
+Table 4. Persistence of Absolute Reference Knowledge Gap by Major Issues and Data Level  
+
+Occasion 
+Comparison 
+
+Knowledge Gap 
+Detected  
+
+Failed to Use Used Incorrectly Typed in Values 
+Solution 
+Process 
+
+Final 
+Answer 
+
+Solution 
+Process 
+
+Final 
+Answer 
+
+Solution 
+Process 
+
+Final 
+Answer 
+
+D11 to D20 
+
+Persisted 16.0% 0.2% 1.0% 0.0% 0.1% 0.1% 
+
+Resolved 19.1% 3.3% 1.1% 0.1% 5.0% 1.4% 
+
+Emerged 25.6% 0.5% 37.2% 8.3% 1.5% 0.6% 
+
+E11 to E20 
+
+Persisted   0.8% 0.1%   
+
+Resolved   5.1% 0.9%   
+
+Emerged   7.3% 3.6%   
+
+n=995 
+ 
+
+Table 5. Persistence of Absolute Reference Knowledge Gap From Homework Practice to Midterm by Data 
+Level 
+
+Occasion 
+Comparison Knowledge Gap Detected  
+
+One or More Major Issues  Including Used Not Needed 
+Solution 
+Process 
+
+Final 
+Answer Solution Process Final Answer 
+
+D11 to D20 
+
+Persisted 22.8% 0.5% 51.1% 27.0% 
+
+Resolved 14.8% 4.5% 0.3% 1.6% 
+
+Emerged 36.9% 9.2% 48.2% 67.8% 
+
+One or Both Occasion 74.5% 14.3% 99.6% 96.5% 
+
+% Knowledge Gap 59.7% 9.7% 99.3% 94.9% 
+
+E11 to E20 
+
+Persisted 0.8% 0.1% 1.8% 0.8% 
+
+Resolved 5.1% 0.9% 6.7% 3.3% 
+
+Emerged 7.3% 3.6% 11.3% 7.6% 
+
+One or Both Occasion 13.3% 4.6% 19.8% 11.8% 
+
+% Knowledge Gap 8.1% 3.7% 13.1% 8.4% 
+ 
+These results put into question the adequacy of assessment-level 
+data to correctly assess student comprehension.  It is good that 
+students are able to eventually arrive at a satisfactory solution to 
+problems presented to them.  However, the transaction-level data 
+exposed the degree to which knowledge gaps persist for students.  
+Having unresolved knowledge gaps not only affects student ability 
+to correctly solve a problem, it also has a cost in terms of the time 
+it takes to complete a problem satisfactorily. 
+
+5. CONCLUSIONS 
+This study compared differences in detecting knowledge gaps and 
+misconceptions about the use of absolute references when using 
+assessment-level data (i.e., the final solutions students submit when 
+attempting to solve a problem) to that of using transaction-level or 
+activity-trace data (i.e., the process students take to arrive at their 
+final solution). We hypothesized that using activity-trace data we 
+might better diagnose knowledge gaps often left unidentified in 
+learning systems that rely on assessment-level data alone. Based on 
+the analysis presented above, the results of this study support our 
+
+116
+
+
+
+hypothesis.  The ability to identify critical persistent and emerging 
+knowledge gaps was considerably less effective when using 
+assessment-level data alone.  
+Using the assessment-level data, we found that most students were 
+able to arrive at a satisfactory solution (typically 90% or more). 
+Looking at the final solutions students submitted there was little 
+evidence that students had any misunderstandings or knowledge 
+gaps about the use of absolute references.  However, when 
+analyzing these data at the transaction level we found that far more 
+students struggled using absolute references than the analysis of the 
+final solutions alone might suggest.  Not only did the results show 
+that students struggled to solve the problem requiring the use of 
+absolute references, students also attempted to use absolute 
+references when they were not needed.  When considering the times 
+that students used absolute references when they were not needed 
+(i.e., non-critical misuse), the number of students with some degree 
+of misunderstanding increases considerably. These knowledge 
+gaps (both critical and non-critical) were not identified using just 
+assessment level data.  
+Chung [2] suggests that once data is understood through data 
+mining it can be used to make decisions regarding when and how 
+to intervene in the learning process. Identifying student knowledge 
+gaps is essential for effective feedback and remediation in 
+instruction [14]. Often students appear to understand but still hold 
+crucial misconceptions about the topic that can affect future 
+learning and achievement.  The implications of the findings from 
+this study include the potential for making adaptations to 
+instruction, providing feedback and remediation, as well as 
+improvements in the ability to diagnose knowledge gaps that affect 
+student comprehension.  Using transaction-level data improved the 
+ability of instructional systems to adapt which is the essence of any 
+intelligent tutoring system.  
+
+5.1 Challenges to Overcome 
+Getting the right data is important if it is to provide meaningful 
+information to teachers and instructional designers. In this case that 
+means transaction level data.  While that is possible in our context, 
+collecting data at this level is not always easy. One of the biggest 
+challenges is to establish meaningful data logging procedures [13]. 
+This includes capturing pertinent data that can be linked to other 
+information (e.g., systems level data). At this point data must be 
+extracted and analyzed manually.  We are in the process of 
+improving and automating this process. 
+
+5.2 Future Research 
+While learning analytics is expected to be implemented in an 
+increasing number of institutions over the next five years [15], if 
+the purpose of learning analytics in educational settings is to enable 
+instructional systems to personalize the learning experience for 
+students, much work needs to be done to make practical use of the 
+educational data that can be mined from transaction-level data. 
+Intelligent tutoring systems have a long tradition of research, but 
+our ability to utilize data to automatically adapt the learning 
+experience for individual students is still a ways off [16]. 
+The potential of EDM and LA is only limited by our ability to 
+collect and analyze data in real time. Data collection and analysis 
+in real (or almost real) time is needed to provide feedback and 
+remediation [1].  Once this is done decisions need to be made about 
+how to use these data, and how and when to remediate student 
+knowledge gaps and misconceptions. As Siemens [1] points out, 
+the task of using information obtained through data mining can be 
+
+difficult but is well worth embracing given the large potential 
+benefit. 
+
+6. REFERENCES 
+[1] G. Siemens, “Learning Analytics: Envisioning a 
+
+Research Discipline and a Domain of Practice,” in 
+Proceedings of the 2nd International Conference on 
+Learning Analytics and Knowledge - LAK ’12, 2012, p. 4. 
+
+[2] G. Chung, “Toward the relational management of 
+educational measurement data,” Teach. Coll. Rec., vol. 
+116, no. 11, 2014. 
+
+[3] P. Blikstein, “Using learning analytics to assess students’ 
+behavior in open-ended programming tasks,” in 
+Proceedings of the 1st International Conference on 
+Learning Analytics and Knowledge - LAK ’11, 2011, pp. 
+110–116. 
+
+[4] M. Berland, T. Martin, T. Benton, C. Petrick Smith, and 
+D. Davis, “Using Learning Analytics to Understand the 
+Learning Pathways of Novice Programmers,” J. Learn. 
+Sci., vol. 22, no. 4, pp. 564–599, Oct. 2013. 
+
+[5] D. Perera, J. Kay, I. Koprinska, K. Yacef, and O. R. 
+Zaiane, “Clustering and Sequential Pattern Mining of 
+Online Collaborative Learning Data,” IEEE Trans. 
+Knowl. Data Eng., vol. 21, no. 6, pp. 759–772, Jun. 
+2009. 
+
+[6] J. Nesbit, M. Zhou, Y. Xu, and P. Winne, “Advancing 
+log analysis of student interactions with cognitive tools,” 
+… Res. Learn. insruction …, pp. 1–20, 2007. 
+
+[7] E. Wenger, Artificial Intelligence and Tutoring Systems: 
+Computation and Cognitive Approaches to the 
+Communication of Knowledge. Los Altos, California: 
+Morgan Kaufmann Publishers, 1987. 
+
+[8] A. Corbett and J. Anderson, “Knowledge Tracing: 
+Modeling the Acquisition of Procedural Knowledge,” 
+User Model. User-adapt. Interact., vol. 4, no. 4, pp. 253–
+278, 1994. 
+
+[9] K. R. Koedinger, A. T. Corbett, and C. Perfetti, “The 
+Knowledge-Learning-Instruction ( KLI ) Framework?: 
+Toward Bridging the Science-Practice Chasm to Enhance 
+Robust Student Learning,” Pittsburgh, 2010. 
+
+[10] J. S. Brown and K. VanLehn, “Repair Theory: A 
+Generative Theory of Bugs in Procedural Skills,” Cogn. 
+Sci., vol. 4, pp. 379–426, 1980. 
+
+[11] G. Piatetsky-Shapiro and G. Parker, “Lesson: Data 
+Mining, and Knowledge Discovery: An Introduction,” 
+2011. [Online]. Available: 
+http://www.kdnuggets.com/data_mining_course/x1-intro-
+to-data-mining-notes.html. 
+
+[12] L. a. Kurgan and P. Musilek, “A survey of Knowledge 
+Discovery and Data Mining process models,” Knowl. 
+Eng. Rev., vol. 21, no. 01, pp. 1–24, Jul. 2006. 
+
+[13] G. Chung and D. Kerr, “A Primer on Data Logging to 
+Support Extraction of Meaningful Information from 
+Educational Games: An Example from Save Patch.,” 
+2012. 
+
+[14] A. Sewell, “Constructivism and Student Misconceptions: 
+Why Every Teacher Needs To Know about Them.,” 
+Aust. Sci. Teach. J., vol. 48, no. 4, pp. 24–29, 2002. 
+
+[15] L. Johnson, S. Adams, and M. Cummins, “NMC Horizon 
+Report: 2012 Higher Education Edition,” 2012. 
+
+[16] B. P. Woolf, “A Roadmap for Education Technology,” 
+2010.  
+
+117
+
+
+
+
+

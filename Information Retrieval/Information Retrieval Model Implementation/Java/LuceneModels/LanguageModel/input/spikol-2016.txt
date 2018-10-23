@@ -1,0 +1,267 @@
+
+Exploring the interplay between human and machine
+
+annotated multimodal learning analytics in hands-on
+
+STEM Activities
+
+Daniel Spikol
+
+Malmö University
+
+Malmö, Sweden
+
+daniel.spikol@mah.se
+
+Katerina Avramides
+
+UCL Institute of Education
+
+London, UK
+
+K.Avramides@ioe.ac.uk
+
+Mutlu Cukurova
+
+UCL Institute of Education
+
+London, UK
+
+m.cukurova@ioe.ac.uk
+
+ABSTRACT
+This poster explores how to develop a working framework for
+STEM education that uses both human annotated and ma-
+chine data across a purpose-built learning environment. Our
+dual approach is to develop a robust framework for analysis
+and investigate how to design a learning analytics system to
+support hands-on engineering design tasks. Data from the
+first user tests are presented along with the framework for
+discussion.
+
+Keywords
+Mobile, Learning Analytics, CSCL
+
+1. INTRODUCTION
+There is concern amongst policy makers and employers
+
+that students are not graduating with the required skills
+in STEM subjects (Science, Technology, Engineering, and
+Mathematics). It is argued that learners must go beyond the
+acquisition of discipline-specific facts and skills, to develop
+an integrated understanding of STEM disciplines within an
+authentic context of collaborative problem-solving. This in-
+tegrated approach to STEM teaching is at the heart of in-
+structional practices that centre on collaborative, hands-on,
+engineering design problems [4]. The use of hands-on engi-
+neering design problems, in classroom teaching, is facilitated
+by physical computing kits, such as the Arduino1, and other
+platforms. These kits provide building blocks that make
+technology development more accessible to novices, thus al-
+lowing them to work on more complex problems. A fine-
+grained analysis of the collaborative problem-solving pro-
+cess, using learning analytics tools, can provide insight into
+learning to support both teachers and learners. However, it
+is hard to track and interpret learner activity in engineer-
+ing design problems, due to the hands-on and open-ended
+nature of such tasks [3]. This poster presents work that be-
+
+1www.arduino.cc
+
+Permission to make digital or hard copies of part or all of this work for personal or
+classroom use is granted without fee provided that copies are not made or distributed
+for profit or commercial advantage and that copies bear this notice and the full citation
+on the first page. Copyrights for third-party components of this work must be honored.
+For all other uses, contact the owner/author(s).
+LAK16 April, 25-29, 2016, Endinburgh, UK
+c? 2016 Copyright held by the owner/author(s).
+
+ACM ISBN 123-4567-24-567/08/06. . . $15.00
+DOI: http://dx.doi.org/10.475/123 4
+
+gins to address this challenge. We discuss the development
+of a coding process for exploring hands-on STEM activi-
+ties, using physical computing kits, that uses both hand-
+annotated and machine data across a purpose-built learning
+environment. The research aim is to investigate how we can
+support a combination of realtime hand-annotated data col-
+lected with machine collected data to help understand the
+complexities of collaborative problem solving.
+
+2. BACKGROUND
+This work is part of the PELARS project2, which explores
+
+teaching and learning of STEM using physical computing
+kits and open-ended engineering design tasks. The aim of
+PELARS is to develop learning analytics tools that support
+teachers and students. There is limited research on learn-
+ing analytics within this context, due to the di?culty of
+tracking and interpreting student activity [3]. Researchers,
+in this area, have primarily focused on using learning an-
+alytics tools to gain a more fine-grained understanding of
+patterns of problem-solving between novices and experts,
+generally with a strong focus on individual rather than col-
+laborative learning [1][3]. However, collaborative learning
+has a central role in formal education. There is a wealth
+of research that suggests collaboration, compared with indi-
+vidual work, can foster better problem-solving and greater
+learning outcomes [2]. Collaboration supports learners to ar-
+ticulate their thinking and listen to others, as well as resolve
+conflicts and build on new ideas. Therefore, opportunities
+for new research that combine multimodal learning analytics
+with hands-on collaborative learning are present for further
+investigation.
+
+3. TOOLS AND SETTINGS
+The tools described in the poster consist of a purpose-built
+
+learning environment with multiple sensors to collect data
+during practice-based activities, with added web and mo-
+bile tools for learners to document their learning activities.
+The learning environment is a designed workshop that in-
+cludes a specially designed table connected to a freestanding
+wall with a built-in display. This special work area accom-
+modates a small group up to 4 students. The workstation
+includes a computer vision system with facial and object
+tracking (fiducial marks), log files from the programming of
+physical computing kits, as well as tracking of the di?erent
+physical components that are being used by the students.
+
+2www.pelars-project.eu
+
+http://dx.doi.org/10.475/123_4
+
+
+Table 1: Breakdown of data collection
+
+Data Collection Types of Data Coding
+Computer Vision Arm Tracking, Audio Levels, Motion, Objets Machine
+Visual Electronics Platform Components connected and coding actions Machine
+Sentiment Buttons Frequency A?ective states Machine
+Mobile System Research coding, learner documentation Machine and Human
+
+Audio levels are captured (in the current release), and we
+have created two large buttons that students can push to
+signify sentiment (thunder cloud and sun). These buttons
+trigger the system to capture a screenshot of the program-
+ming activity and photo of the action on the table. Stu-
+dents need to plan, document, and reflect on their solution
+by entering brief text descriptions and capture photographs
+and video through the mobile system. More interestingly
+(for this poster) the mobile system provides a tool for re-
+search observations to be marked (in a temporal sense) ”on
+the fly”, providing a bridge between the data that the sys-
+tem collects. Table 1 illustrates the di?erent type of data
+collected, what sensors, and the split between machine and
+human data collection and coding. The annotation data cre-
+ated by the researchers and the learners serves as a coarse
+temporal breakdown of the activities. These web-based mo-
+bile tools (cross platform) also provide a key tool for re-
+searchers to provide course realtime encoding based on an
+analysis framework for collaborative work. It is our intention
+to explore how this rougher coding done by researchers and
+learners could supply more automatic segmentation between
+the di?erent design activities, thus structuring the machine
+collected data.
+
+Figure 1: Detail of initial visualisation based real-
+
+time coding
+
+4. DATA COLLECTION
+As of writing this poster, the project has conducted its
+
+first full test of the system with two groups of three stu-
+dents with mixed backgrounds. The user trial procedure
+was to set up the test and introduce the students to the
+system. Each of the students wore fiducial tags for the vi-
+sion system on their dominant arm and were shown how
+to use the mobile reporting system. Then the students were
+guided with an hands-on introduction to the visual program-
+ming platform (IDE) that included working with sensors and
+actuator blocks and programming them. The task of proto-
+typing an interactive toy in 30 minutes was introduced and
+
+the learning analytics system started. The research observer
+using the mobile device began the coding of the activity with
+marking events (design stages of project scoping, project re-
+alisation, and reflection) while the students used the tool to
+capture planning, documenting, and reflecting. Figure 1 vi-
+sualises the breakdown of planning, building, and reflecting
+across the di?erent data that generated by the combination
+of research observations and the students input. Our initial
+work with the data has been to generate a rough visualisa-
+tion as a first attempt to reflect on the data. We present
+the sum of all learners hand movements and the gaze at the
+display. We also include the number of times students in-
+teracted with the electronics and the IDE. We generated a
+simple timeline diagram divided into 3 phases illustrating
+the duration of these high-frequency events in the di?erent
+phases.
+
+5. DISCUSSION
+The ability to use both the researcher codes of the di?er-
+
+ent design stages [1][3] and the students own classification of
+their activities suggests a rapid way to break down the data
+collected into appropriate parts for analysis and visualisa-
+tion. Of course, questions and work remain to test further
+this process of using multimodal data and encoded annota-
+tions in comparison to more traditional hand coding of the
+video analysis in the project.
+
+6. ACKNOWLEDGMENTS
+The PELARS Project has received funding from the European
+
+Commission’s Seventh Framework Programme for research, tech-
+
+nological development and demonstration under grant agreement
+
+no. 619738.
+
+7. ADDITIONAL AUTHORS
+Bahtijar Vogel (Malmo? University bahtijar.vogel@mah.se), Rose
+
+Luckin (UCL IOE, R.Luckin@ioe.ac.uk), Emanuele Ru?aldi (Scuola
+Superiore Sant’Anna, e.ruffaldi@sssup.it) and Mavrikis, Manolis
+(UCL IOE, jm.mavrikis@ucl.ac.uk).
+
+References
+[1] C. J. Atman, R. S. Adams, M. E. Cardella, J. Turns, S. Mos-
+
+borg, and J. Saleem. Engineering Design Processes: A Com-
+
+parison of Students and Expert Practitioners. Journal of En-
+
+gineering Education, 96(4):359–379, Jan. 2013.
+
+[2] B. Barron. Achieving coordination in collaborative problem-
+
+solving groups. The Journal of the Learning Sciences,
+
+9(4):403–436, 2000.
+
+[3] M. Worsley and P. Blikstein. Analyzing Engineering Design
+
+through the Lens of Computation. Journal of Learning Ana-
+
+lytics, 1(2):151–186, Aug. 2014.
+
+[4] D. L. Zeidler. Dancing with maggots and saints: Visions for
+
+subject matter knowledge, pedagogical knowledge, and peda-
+
+gogical content knowledge in science teacher education reform.
+
+Journal of Science Teacher Education, 13(1):27–42, 2002.
+
+
+	Introduction
+	Background
+	Tools and Settings
+	Data Collection
+	Discussion
+	Acknowledgments
+	Additional Authors
+
+

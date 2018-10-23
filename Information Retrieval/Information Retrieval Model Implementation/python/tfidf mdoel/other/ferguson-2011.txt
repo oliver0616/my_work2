@@ -1,0 +1,745 @@
+
+Learning Analytics To Identify Exploratory Dialogue within 
+Synchronous Text Chat 
+
+Rebecca Ferguson 
+IET, The Open University 
+
+Walton Hall 
+Milton Keynes 
+
++44 (0)1908 654856 
+
+r.m.ferguson@open.ac.uk 
+
+Simon Buckingham Shum 
+KMi, The Open University 
+
+Walton Hall 
+Milton Keynes 
+
++44 (0)1908 655723 
+
+s.buckingham.shum@gmail.com
+
+ABSTRACT
+While generic web analytics tend to focus on easily harvested 
+quantitative data, Learning Analytics will often seek qualitative 
+understanding of the context and meaning of this information. 
+This is critical in the case of dialogue, which may be employed to 
+share knowledge and jointly construct understandings, but which 
+also involves many superficial exchanges. Previous studies have 
+validated a particular pattern of ‘exploratory dialogue’ in learning 
+environments to signify sharing, challenge, evaluation and careful 
+consideration by participants. This study investigates the use of 
+sociocultural discourse analysis to analyse synchronous text chat 
+during an online conference. Key words and phrases indicative of 
+exploratory dialogue were identified in these exchanges, and 
+peaks of exploratory dialogue were associated with periods set 
+aside for discussion and keynote speakers. Fewer individuals 
+posted at these times, but meaningful discussion outweighed 
+trivial exchanges. If further analysis confirms the validity of these 
+markers as learning analytics, they could be used by 
+recommendation engines to support learners and teachers in 
+locating dialogue exchanges where deeper learning appears to be 
+taking place. 
+
+Categories and Subject Descriptors
+K.3.1 [Computers and Education]: Computer Uses in Education 
+– collaborative learning, distance learning.  
+
+General Terms
+Theory. 
+
+Keywords
+educational dialogue, text chat, instant messaging, exploratory 
+dialogue, learning analytics, synchronous dialogue. 
+
+1. INTRODUCTION
+Learning resources are being uploaded to the Internet at such a 
+rate that is increasingly likely that individuals will find themselves 
+adrift in an ‘ocean of information’ [1, p136]. Resources that 
+extend over time, such as conference recordings, videos and real-
+time dialogue capture are difficult to scan or assess quickly and so 
+learners and teachers must rely on basic, often misleading, cues 
+
+such as title, keyword and producer when deciding whether to 
+make use of a resource. Analytics are therefore needed to 
+distinguish between resources that extend over time, and to 
+identify those that support learning. This paper investigates the 
+use of key words and phrases to identify sections of Elluminate® 
+online conference sessions that have inspired participants to 
+engage in knowledge building through dialogue in the associated 
+synchronous text chat. 
+In other contexts, various approaches have been used to identify 
+and classify forms of learning dialogue and academic dialogue but 
+these are typically dependent on the use of grammatically correct, 
+carefully punctuated and formally structured text [2,3]. 
+Synchronous textual dialogue is likely to be more akin to speech 
+than to formally constructed prose [4]. It is therefore relevant to 
+look at how people build knowledge together through speech. In 
+face-to-face settings, Mercer and his colleagues [5-9] have 
+distinguished three social modes of thinking used by groups of 
+learners: disputational, cumulative and exploratory. Of the three, 
+exploratory dialogue is the type considered most educationally 
+desirable by teachers [10]. Mercer and Littleton [8, p62] provide a 
+clear description of its use in a school environment: 
+Exploratory talk represents a joint, coordinated form of co-
+reasoning in language, with speakers sharing knowledge, 
+challenging ideas, evaluating evidence and considering options in 
+a reasoned and equitable way. The children present their ideas as 
+clearly and as explicitly as necessary for them to become shared 
+and jointly analysed and evaluated. Possible explanations are 
+compared and joint decisions reached. By incorporating both 
+constructive conflict and the open sharing of ideas, exploratory 
+talk constitutes the more visible pursuit of rational consensus 
+through conversation. 
+Exploratory dialogue is a form of discourse that may be found in 
+both online and offline learning environments [4,11], where it can 
+be taken as an indication that learning is taking place and that 
+learners are going beyond a simple accumulation of ideas. The 
+research reported here therefore asks: Could the identification of 
+exploratory dialogue within the synchronous textual chat 
+associated with online resources help to identify resources and 
+sections of resources that support learning? 
+
+2. DATA COLLECTION & PREPARATION 
+In order to investigate these questions, data were collected from 
+Elluminate, a web conferencing tool that supports chat alongside 
+video, slides and presentations. The focus was on the synchronous 
+discussion related to a two-day online teaching and learning 
+conference. The Elluminate text chat in four conference sessions, 
+each between 150 and 180 minutes in length (24,530 words in 
+total) was investigated. During these four sessions, 233 
+participants logged in to the Elluminate sessions at one or more 
+times. The majority of these participants were higher education 
+
+Permission to make digital or hard copies of all or part of this work for 
+personal or classroom use is granted without fee provided that copies are 
+not made or distributed for profit or commercial advantage and that 
+copies bear this notice and the full citation on the first page. To copy 
+otherwise, or republish, to post on servers or to redistribute to lists, 
+requires prior specific permission and/or a fee. 
+LAK’11, February 27-March 1, 2011, Banff, AB, Canada. 
+Copyright 2011 ACM 978-1-4503-1057-4/11/02…$10.00. 
+
+99
+
+
+
+researchers and practitioners from around the world, although 
+most were based in the UK. Analysis presented in this paper 
+focuses mainly on the afternoon session of 22 June, when 120 
+people logged in to the Elluminate discussion and 67 actively 
+participated in the Elluminate synchronous text chat. Of these 
+participants, 47 were female (26 contributed to the text chat), 54 
+were male (34 contributed to the text chat) and the gender of 19 is 
+unknown (7 contributed to text chat). The conference timetable 
+was used to subdivide the four main conference sessions into 
+smaller units, including pre-session chat, post-session chat, 
+conference introduction, groups of short talks, longer talks, 
+moderated discussion and keynotes. 
+
+The four conference sessions were all archived and made public 
+by the organisers. Sociocultural discourse analysis [12] was used 
+to identify words that could be indicative of exploratory dialogue. 
+These included: 
+Challenges eg But if, have to respond, my view 
+Critiques eg However, I’m not sure, maybe 
+Discussion of resources eg Have you read, more links 
+Evaluations eg Good example, good point 
+Explanations eg Means that, our goals 
+Explicit reasoning eg Next step, relates to, that’s why 
+Justifications eg I mean, we learned, we observed 
+Others’ perspectives eg Agree, here is another 
+
+Ninety-four words and phrases were identified in this way. Some 
+words, phrases and punctuation, which initially appeared to be 
+good indicators, were discarded because they were often used for 
+finding out more about the conference, its tools and participants, 
+rather than its content. For example, interrogatives and question 
+marks were often associated with comments such as ‘Can you still 
+hear?’ or ‘what’s everyone doing for coffee???’ Once exploratory 
+markers had been identified, the Elluminate chat was pasted into 
+Microsoft Word, where a simple ‘find and replace’ Apple Script 
+program was used to highlight the key words and phrases. The 
+data was then transferred to Excel for more detailed analysis. 
+Table 1 gives an example of a section of data in which six of nine 
+consecutive postings were coded as exploratory. By way of 
+contrast, Table 2 gives an example of nine consecutive postings in 
+the data, none of which was coded as exploratory. 
+
+Table 1. Dialogue coded as exploratory (real names removed 
+from all data samples). Each row represents one contribution. 
+
+Words in bold have been highlighted by the analysis.
+
+what about quality control? Not all authors are as skilled as 
+[named individual]...
+ie could get some dreadful blunders in public! 
+
+If you’re doing it in public and people are following, that wil 
+help in terms of quality control for egregious errors. However,
+if you’re writing it in a vacuum, then that's not going to work 
+so well, I guess. 
+Also, not everyone’s blog has the traffic [named individual]’s 
+has
+Is it only skills that are needed, is it? There’s something to do 
+with attitude (to criticism, to mistakes, etc) – [named 
+individual]? (sorry, no mic) 
+Shouldn’t, in theory, course authors be writing carefully in the 
+first place, because it’s going to be seen by hundreds or 
+thousands of students? 
+I would just note that a course team of 6 or 7 people can feel 
+plenty public enough when you are trying to form thoughts - 
+this is back to my point about there being stages where its 
+
+good to be quite closed while you evolve an idea and approach 
+
+@[other conference participant] - yes, I think that educators 
+will get a lot more out of this scary paradigm shift if they have 
+set up some peers who also want to learn 
+[Another conference participant] Definitely or even interested 
+“amateurs”. 
+Table 2. Dialogue not coded as exploratory. Each row represents 
+
+one contribution.
+
+like the idea of a virtual poster session 
+
+shame - sadly I can’t make Friday 
+
+>embarrassed<
+@[named participant] – it’ll be asynchronous so drop in 
+any time
+Audio dropped out 
+
+Uhoh
+
+Sound cut out 
+
+We’ve lost you [named participant] 
+
+Once key words had been highlighted, the postings were divided 
+according to the timings on the official conference timetable, and 
+the use of exploratory dialogue in each section was calculated. As 
+postings are short and clearly delineated, the posting was taken as 
+the unit of analysis, and so an entire posting containing one or 
+more markers of exploratory dialogue would be coded as 
+exploratory. 
+
+The conference included two morning sessions and two afternoon 
+sessions. The first phase of analysis focused on identifying the 
+periods containing the greatest concentration of exploratory 
+markers. The four main sessions were first rated on the amount of 
+turns in the conversation rated as exploratory (those containing 
+one or more of the words/phrases indicating exploratory talk). The 
+total number of exploratory turns was divided by the number of 
+people contributing to the posting dialogue, to give an average 
+number of exploratory posts per person. 
+
+Total exploratory turns 
+          in dialogue 
+–––––––––––––––––––––           = Average no. of exploratory 
+No. of people contributing                     posts per person 
+      to posted dialogue 
+
+In addition, the number of words in the turns considered 
+exploratory were totaled and divided by the number of people 
+contributing to the posted dialogue, to give an average number of 
+exploratory words per person. The results are shown in Table 3. 
+
+        Total words in  
+       exploratory turns 
+–––––––––––––––––––––           = Average no. of exploratory 
+No. of people contributing                     words per person 
+      to posted dialogue 
+
+100
+
+
+
+Table 3. Comparing exploratory turns per person in main 
+conference sessions 
+
+22 June 
+am 
+
+22 June 
+pm
+
+23 June 
+am 
+
+23 June 
+pm
+
+Average no. of 
+exploratory 
+turns per 
+
+person
+
+1.6 3.5 2.3 1.9 
+
+Average no. of 
+exploratory 
+words per 
+
+person
+
+32.7 59.1 41.4 39.3 
+
+In both cases the afternoon session of 22 June pm, which 
+contained one of the two keynote sessions, appears to have 
+inspired the most exploratory dialogue. On the other hand, the 
+morning session that day appears to have inspired the least 
+learning dialogue. As the four conference sessions differed in 
+length, it is possible that these differences were related to having 
+more or less time in which to post. 
+
+Table 4 therefore indicates the average number of exploratory 
+turns posted per minute, and the average number of words in 
+exploratory turns posted per minute. 
+
+Table 4. Comparing exploratory turns per person in the main 
+conference sessions 
+
+22 June 
+am
+
+22 June 
+pm
+
+23 June 
+am
+
+23 June 
+pm
+
+Average no. of 
+exploratory turns 
+
+per minute
+0.7 1.1 0.7 0.5 
+
+Average no. of 
+exploratory 
+words per 
+
+minute
+
+14.8 19.2 12.8 11.1 
+
+Once again, the afternoon of 22 June contained the most 
+exploratory dialogue. However, the least exploratory dialogue 
+now appears to have taken place on the afternoon of 23 June. 
+Further analysis is required in order to investigate which of these 
+measures is most relevant. 
+
+As all measures indicate that the afternoon of 22 June contained 
+the highest concentration of exploratory markers, the following 
+analysis concentrates on that session. During that afternoon, the 
+Elluminate session was divided into four sections: a set of short 
+talks, moderated discussion, keynote, and then chat between the 
+scheduled end and the actual close of the Elluminate session. 
+
+Table 5 presents a summary of analysis of that afternoon’s 
+Elluminate chat. As the length of the sessions ranged from 8 to 75 
+minutes, contributions were first classified by time. This showed 
+that the most posts per minute took place during the informal chat 
+session, whereas the most exploratory posts were contributed 
+while the keynote was in progress. The series of short talks at the 
+beginning of the afternoon appeared to be associated with the 
+lowest levels of talk, whether exploratory or not. 
+
+On the basis of markers of exploratory dialogue, it therefore 
+appears that conference participants engaged in the highest levels 
+of knowledge construction on the afternoon of 22 June, and that 
+these levels were highest during the 75-minute keynote 
+discussion. It is not possible to represent the whole Elluminate 
+session here, but Table 7 provides a one-minute extract. If a 
+
+recommendation engine were to use these markers to identify 
+sections of the 12-hour conference where knowledge construction 
+took place, it would recommend sections like those shown in 
+Table 6. 
+
+This minute contains 6 exploratory turns (mean for the keynote 
+was 1.6 per minute), it contains 192 words (mean for the keynote 
+was 67.5 per minute) and it contains 81 words in the exploratory 
+turns (mean for the keynote was 31.1 per minute). Using the 
+markers has clearly not identified all the exploratory turns, but it 
+has successfully identified a section including challenge (line 5), 
+critique (line 7), discussion of resources (lines 2 and 5), evaluation 
+(line 12), explicit reasoning (line 4) and consideration of the 
+perspective of others (line 9, among others). The discussion 
+moves fast, contains contributions from nine different 
+participants, and is grounded by references to two online 
+resources as well as to examples drawn from three separate higher 
+education establishments. It clearly relates to the presentation that 
+is taking place in the audio channel, which is referenced in lines 1 
+and 2, and it moves this discussion on by posing questions and 
+relating the discussion to personal experience. 
+
+Table 5. Comparing contributions to the synchronous 
+Elluminate text chat during one continuous afternoon 
+
+conference session (22 June) 
+Short 
+talks
+
+60 mins 
+
+Discussion 
+45 mins 
+
+Keynote 
+75 mins 
+
+Chat
+8 mins 
+
+Posts per minute
+Mean no. of 
+
+posts per 
+min 
+
+2.4 4.6 5.8 8.8 
+
+Mean 
+wordcount
+
+per min 
+21.3 47.8 67.5 57.6 
+
+Mean no. of 
+exploratory 
+
+posts per 
+min 
+
+0.4 1.2 1.6 0.9 
+
+Mean 
+wordcount
+exploratory 
+
+posts per 
+min 
+
+5.2 18.6 31.1 11.8 
+
+Posts per contributor
+Mean no. of 
+
+posts per 
+contributor 
+
+5.4 5.6 10.1 3.3 
+
+Mean word 
+count per 
+
+contributor 
+47.3 58.2 117.7 22.0 
+
+Mean 
+exploratory 
+
+posts per 
+contributor 
+
+0.9 1.5 2.8 0.3 
+
+Mean word 
+count of 
+
+exploratory 
+posts per 
+
+contributor 
+
+11.4 22.6 54.2 4.5 
+
+101
+
+
+
+As Elluminate identifies who has posted each comment in the text 
+chat, it was also possible to consider the postings of individuals 
+(only the participants who made some contribution to the live chat 
+were included in this analysis). Once again, a large amount of 
+exploratory activity was evident during the keynote on 22 June, 
+whereas the many contributions during the informal chat were 
+found to be short and lacking in exploratory talk. When analysed 
+in this way, participants were seen to be contributing longer, more 
+thoughtful posts during the short talks at the beginning of the 
+afternoon but, once again, the exploratory dialogue was less 
+evident during these short talks than during the moderated 
+discussion or the keynote. 
+
+Table 6. One minute of Elluminate text chat, with exploratory 
+markers highlighted in bold 
+
+1 aaagh the imaginary wife again [speaker]
+
+2
+[The speaker]’s argument is very congruent with John 
+Seely Brown et al’s arguments on the shift from Push to 
+Pull http://en.wikipedia.org/wiki/Pull_Platforms 
+
+3 @[online participant] the value is in what they learn 
+
+4
+
+the problem is there is not one suitable analogy as the 
+role is still very complex – it’s easier to understand it in 
+regards to what we do not do anymore (e.g., 
+supply/provide all content) 
+
+5
+
+“Get rid of the notion of space and place...” -- not sure 
+about that there is a well developed notion in architecture 
+of a Place as a meaningful Space, which has since been 
+translated to collaborative systems – PDF 
+http://bit.ly/bM6Xr2 
+
+6 Who is going to generate the knowledge then? 
+
+7 what about learning goals and learning outcomes? they stay? 
+8 What about the research into teaching agenda? 
+
+9
+I agree that a common lamentation from students asked 
+to construct their own way is “What am I paying for you 
+for”?
+
+10 it;s also about inspiration take this backchannel for example
+
+11 Students come to my institution to spend time with the “great minds” 
+
+12 At the OU, it is the ALs who are the biggest luddites, in my experience.
+
+Table 7 summarises analysis of the activity by individuals during 
+the keynote talk and compares the contributions of the five people 
+who posted the most contributions during this session. The 
+moderator (M) was very active, posting 32 times. 
+
+For all these individuals who posted a large number of posts, more 
+than a fifth of their words were in contributions containing 
+exploratory markers. However, there are notable differences 
+within these groups, and C stands out as a high-volume poster 
+with 75% of her total words in posts containing exploratory 
+markers. 
+
+These figures were typical of those in other sessions – the 
+moderator was consistently one of the most active contributors. 
+Although individuals’ interest and attention clearly fluctuated 
+according to session, C was often among those with the highest 
+percentage of exploratory posts in a session. 
+
+A recommendation engine using markers of exploratory dialogue 
+to search for people engaged in learning would therefore have 
+highlighted C. Her contributions, such as the one below, 
+incorporated important elements of knowledge building, including 
+explanation, explicit reasoning and discussion of resources. In 
+addition, many of her contributions, like this one, were addressed 
+to a named participant in the conference, indicating that she was 
+engaging in dialogue, rather than adding didactic comments or 
+personal reflection. 
+
+Learning should be an active process, [named participant]. 
+Lectures, like television, tend to be more passive. Not all lectures 
+are like that, but most are. Recording them and putting them on 
+the web doesn’t make them any better. That’s why social knowing 
+(John Seely Brown) is so much better, where people come 
+together to construct knowledge through their conversations and 
+interactions with each other. Alternatively, engaging in projects 
+or experiments can be useful. 
+
+Table 7. Analysis of the contributions of the five individuals 
+who contributed the most posts during the keynote session 
+
+Contributor 
+
+A B C D M 
+
+Posts (Mean = 5.6) 16 16 17 27 32 
+
+Wordcount (Mean = 58) 111 183 297 210 253 
+Exploratory posts 
+(Mean = 1.5) 3 3 11 6 7 
+
+Exploratory wordcount 
+(Mean = 22.6) 43 38 224 75 105 
+
+Exploratory posts as % of 
+personal posts 19% 19% 65% 22% 22% 
+
+Exploratory wordcount as 
+% of personal wordcount 39% 21% 75% 36% 42% 
+
+3. DISCUSSION 
+Preliminary analysis of the data suggests that markers of 
+exploratory dialogue can be used to distinguish meaningfully 
+between Elluminate sessions and to support evaluation of those 
+sessions. The markers proved to be a more nuanced tool than 
+generic analytics, such as simply counting the numbers signed in 
+for an Elluminate session, or contributing to the text chat. Peaks 
+of posting activity were associated with the end of Elluminate 
+sessions, when many participants were thanking speakers and 
+saying goodbye, while others were discussing what they had 
+learned. Peaks of exploratory activity, on the other hand, were 
+associated with periods set aside for discussion and keynote 
+speakers. Fewer individuals posted at these times, but meaningful 
+discussion outweighed trivial exchanges. 
+
+Exploratory markers indicate the importance of context when 
+assessing learning dialogue. When several speakers were 
+presenting in close succession, posting activity was relatively low, 
+but increased as the presentations came to an end. However, when 
+speakers had time to engage in discussion as part of their allotted 
+timeslot – as was the case with the keynote speaker – meaningful 
+exchanges peaked. Unscheduled chat at the beginning of 
+Elluminate sessions tended to be primarily social in nature, while 
+unscheduled chat was likely to include many more exploratory 
+exchanges. 
+
+102
+
+
+
+This has implications for those scheduling online conferences – 
+clearly flagged discussion sessions related to presentations will be 
+easier to find in the archives than discussions that overrun into 
+other sessions. Discussion continues after scheduled sessions, so it 
+could prove useful to leave Elluminate sessions open for chat for 
+some time after the end of the scheduled presentation. 
+
+Not all exploratory dialogue related to conference content – there 
+was considerable discussion of online conferences and of social 
+issues. A future set of exploratory markers should identify 
+keywords such as ‘mike’, ‘sound’ and ‘how are you’ that would 
+signal a move away from discussion of content. At this stage, 
+though, analysis suggests that time needs to be set aside for these 
+exchanges, to avoid distraction or cognitive overload when 
+presentations begin. 
+
+4. AREAS FOR INVESTIGATION 
+Data analysis covered two complete days of online conference, 
+and only a representative sample can be presented in a paper of 
+this length. However, the analysis to date is clearly limited in its 
+scope and there is a pressing need for evaluation of the reliability 
+and validity of these presumed markers of exploratory dialogue – 
+both individually, and as a set. If this set, or an amended set, of 
+markers can be shown to be reliable and valid it will be important 
+to attend to both context and practicalities. Exploratory dialogue is 
+not necessarily focused on learning about content – individuals 
+and groups are also likely to be learning about the tools they use 
+(such as Elluminate) and the people with whom they are 
+interacting. This type of learning dialogue is of less interest for 
+people participating after the event, as they are neither using the 
+same tools in the same way nor interacting with the same people. 
+
+From a practical perspective, the current analysis is mainly carried 
+out manually and in future it will be necessary to investigate how 
+this process can be carried out automatically in order to benefit 
+both learners and educators. It will also be useful to investigate 
+the relationship between the text chat and the audio and video 
+channels. 
+
+Compared to other computational linguistics approaches to text 
+analysis, the approach presented in this paper is very simple; we 
+are testing the limits of the simple exploratory dialogue markers 
+described. In parallel, however, we are also beginning to test more 
+complex forms of computational rhetorical analysis as described 
+by Sándor [13,2], as a way to detect linguistic phenomena 
+associated with the making of knowledge-level claims around 
+open educational resources, on which we hope to report in future 
+work. 
+
+5. CONCLUSION 
+Although the conference sessions studied here are freely available 
+as open online resources, they are both difficult and time-
+consuming for users to navigate. The published timetable of the 
+conference gives some guidance, but is limited because a few 
+sessions were reorganized, started late or overran. Some provoked 
+little debate, whereas others inspired discussion which extended 
+far beyond the scheduled time period. The conference also 
+included set-up sessions and breaks, during which talk turned to 
+the practicalities of microphone use, and the absence of virtual 
+biscuits. There is therefore a need for analytics that will allow 
+learners to locate sections of an Elluminate session that clearly 
+support learning. 
+
+At the same time, both learners and educators can benefit from 
+tools that allow them to use Elluminate and other, similar, 
+resources more effectively. Analytics can be used to distinguish 
+different types of contribution to text chat, and to support learners 
+who wish to engage in more fruitful learning discussion. They can 
+be used to help educators schedule events in order to support 
+discussion, and to model exploratory dialogue within that 
+discussion.
+
+6. REFERENCES 
+[1] Roach, S. S. 1988. Technology and the services sector: 
+
+America's hidden competitive challenge. National Academies 
+Press, Washington DC. 
+
+[2] Sándor, Á. and Vorndran, A. 2009. Detecting key sentences 
+for automatic assistance in peer review research articles in 
+educational sciences. In Proceedings of the 2009 Workshop 
+on Text and Citation Analysis for Scholarly Digital 
+Libraries, ACL-IJCNLP 2009 (Suntec, Singapore).  
+
+[3] Whitelock, D. and Watt, S. 2007. Open Mentor: supporting 
+tutors with their feedback to students. In Proceedings of the 
+11th CAA International Computer Assisted Assessment 
+Conference, 10/11 July 2007 (Loughborough). 
+
+[4] Ferguson, R. 2009. The Construction of Shared Knowledge 
+through Asynchronous Dialogue. PhD, The Open University, 
+Milton Keynes. http://oro.open.ac.uk/19908/
+
+[5] Mercer, N. 1995. The Guided Construction of Knowledge: 
+Talk amongst Teachers and Learners. Multilingual Matters 
+Ltd, Clevedon. 
+
+[6] Mercer, N. 2000. Words & Minds. Routledge, London. 
+[7] Mercer, N. 2002. Developing dialogues. Blackwell 
+
+Publishers, Oxford. 
+[8] Mercer, N. and Littleton, K. 2007. Dialogue and the 
+
+Development of Children's Thinking. Routledge, London and 
+New York. 
+
+[9] Mercer, N. and Wegerif, R. 1999. Is 'exploratory talk' 
+productive talk? Routledge, London. 
+
+[10] Wegerif, R. 2008. Reason and dialogue in education.
+Cambridge University Press, Cambridge. 
+
+[11] Ferguson, R., Whitelock, D. and Littleton, K. 2010. 
+Improvable objects and attached dialogue: new literacy 
+practices employed by learners to build knowledge together 
+in asynchronous settings. Digital Culture and Education, 2, 
+1, 116-136. 
+
+[12] Mercer, N. 2004. Sociocultural discourse analysis: analysing 
+classroom talk as a social mode of thinking. Journal of 
+Applied Linguistics, 1, 2, 137-168. 
+
+[13] Sándor, Á., Kaplan, A. and Rondeau, G.  2006. Discourse 
+and citation analysis with concept-matching., Caen, France. 
+Web publication 
+www.unicaen.fr/services/puc/article.php3?id_article=686
+
+103
+
+
+

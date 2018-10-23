@@ -1,0 +1,654 @@
+
+Design and Evaluation of Teacher Assistance Tools for
+
+Exploratory Learning Environments
+
+Manolis Mavrikis
+
+London Knowledge Lab
+
+UCL Institute of Education
+
+m.mavrikis@ucl.ac.uk
+
+Sergio Gutierrez-Santos
+
+London Knowledge Lab
+
+Birkbeck, Univ. of London
+
+sergut@dcs.bbk.ac.uk
+
+Alex Poulovassilis
+
+London Knowledge Lab
+
+Birkbeck, Univ. of London
+
+ap@dcs.bbk.ac.uk
+
+ABSTRACT
+We present our approach to designing and evaluating tools
+that can assist teachers in classroom settings where students
+are using Exploratory Learning Environments (ELEs), us-
+ing as our case study the MiGen system, which targets 11-
+14 year old students’ learning of algebra. We discuss the
+challenging role of teachers in exploratory learning settings
+and motivate the need for visualisation and notification tools
+that can assist teachers in focusing their attention across the
+whole class and inform their interventions. We present the
+design and evaluation approach followed during the develop-
+ment of MiGen’s Teacher Assistance tools, drawing parallels
+with the recently proposed LATUX workflow but also dis-
+cussing how we go beyond this to include a large number
+of teacher participants in our evaluation activities, so as to
+gain the benefit of di?erent view points. We discuss the
+results of the evaluations, which show that participants ap-
+preciated the capabilities of the tools and were mostly able
+to use them quickly and accurately.
+
+Categories and Subject Descriptors
+J.1 [Administrative Data Processing]: Education; K.3
+[Computers and Education]: Computer Uses in Educa-
+tion - Computer assisted instruction, computer managed
+
+Keywords
+teacher assistance tools, exploratory learning
+
+1. INTRODUCTION
+
+Design and evaluation of learning analytics tools targeted
+at the teacher is not an easy task and, as discussed in [9], re-
+quires the adoption of interdisciplinary techniques and meth-
+ods. We present here our approach to designing and evalu-
+ating tools that can assist teachers in a classroom where stu-
+dents are using Exploratory Learning Environments (ELEs).
+Examples of ELEs include simulators, microworlds, virtual
+
+Permission to make digital or hard copies of all or part of this work for personal or
+classroom use is granted without fee provided that copies are not made or distributed
+for profit or commercial advantage and that copies bear this notice and the full citation
+on the first page. Copyrights for components of this work owned by others than the
+author(s) must be honored. Abstracting with credit is permitted. To copy otherwise, or
+republish, to post on servers or to redistribute to lists, requires prior specific permission
+and/or a fee. Request permissions from permissions@acm.org.
+LAK ’16, April 25 - 29, 2016, Edinburgh, United Kingdom
+
+© 2016 Copyright held by the owner/author(s). Publication rights licensed to ACM.
+ISBN 978-1-4503-4190-5/16/04. . . $15.00
+DOI: http://dx.doi.org/10.1145/2883851.2883909
+
+labs, and educational games, all of which give considerable
+freedom to students to learn in a variety of di?erent ways.
+
+The role of teachers in such an exploratory learning set-
+ting is that of a ‘facilitator’, or ‘orchestrator’ [11, 3]. This
+role would be relatively easy in one-to-one student-tutor in-
+teraction, but scaling it up to the number of students present
+in a typical classroom poses several challenges, further com-
+pounded by the use of technology [3]. Given the open-ended
+nature of the tasks that the students are working on, teach-
+ers can only be aware of what a small number of students are
+doing at any one time as they walk around the classroom.
+The computer screens of students who are not in their imme-
+diate vicinity are typically not visible to the teacher, and it is
+therefore hard to know which students are making progress,
+which are o?-task, and which are in di?culty and in need of
+additional support.
+
+Our case study here is the MiGen system (see migen.org),
+which includes an intelligent microworld called eXpresser,
+designed to support 11-14 year old students’ development
+of algebraic ways of thinking. As part of the MiGen sys-
+tem, we have designed a suite of visualisation and notifica-
+tion tools, which we refer to as the Teacher Assistance (TA)
+tools, whose aim is to assist teachers in focusing their at-
+tention across the whole class as students are working with
+eXpresser, and to inform teachers’ own interventions.
+
+Earlier work has described the architectural design and
+implementation of the TA tools, focusing specifically on one
+tool, the Student Tracking (ST) tool [6]. In contrast, the
+present paper presents the design and evaluation approach
+we followed for the whole suite of TA tools. Our evaluation
+approach resembles, retrospectively, the LATUX (Learning
+Awareness Tools User eXperience) workflow recently put
+forward for designing and deploying awareness tools in the
+classroom [9]. LATUX proposes an iterative process of five
+phases common in software engineering and user experience
+approaches — Problem Definition, Low and Higher-fidelity
+Prototyping, Pilot studies and Validation in-the-wild.
+
+In this paper we go beyond the Validation in-the-wild
+stage. We discuss our e?orts to ensure the quality of our
+TA tools and of the user experience, as well as identifying
+metrics that provide us with indicators of the usability of
+the TA tools and of our success in addressing the require-
+ments emerging from earlier stages. Extending the LATUX
+approach, we discuss our e?orts to include a large number
+of teacher participants in our summative evaluation activi-
+ties, so as to gain the benefit of di?erent view points, while
+recognising that this can be a costly and time-consuming
+e?ort.
+
+
+
+The structure of the paper is as follows. Section 1 has
+introduced and motivated the research. Section 2 gives an
+overview of the context and functionalities of the MiGen
+system, and of related work in ELEs and support for the
+teacher. Section 3 discusses the methodology we have adopted
+in designing, developing and evaluating the TA tools. We
+also discuss teachers’ requirements from these tools, in the
+form of a set of usage scenarios. Section 4 describes the TA
+tools themselves, as well as a time-stop functionality that
+we developed specially for facilitating user evaluation with
+large numbers of teacher participants. Sections 5 presents
+our evaluation. Section 6 discusses the results and gives our
+concluding remarks and directions for further research.
+
+2. BACKGROUND AND RELATED WORK
+
+2.1 The MiGen system and eXpresser
+The MiGen project has designed and developed an intel-
+
+ligent, exploratory environment to support 11 to 14-year-
+old students learning of algebraic generalisation. Using the
+eXpresser mathematical microworld, students are asked to
+construct two-dimensional tiled models and associated alge-
+braic rules. In order to build a model, students need to cre-
+ate ‘building blocks’ out of unit-square coloured tiles, based
+on their perception of the model’s structure, and to repeat
+each building block so as to create a ‘pattern’ that forms
+part of their overall model. The algebraic rules they con-
+struct relate to the number of tiles of each colour required
+to paint each pattern and their model overall.
+
+The eXpresser has an ‘animation’ facility which allows
+students to explore the generality of their models and rules.
+This applies automatically di?erent random values to the
+variables used by the student and displays the resulting in-
+stances of the model in a separate pane of their screen. Tasks
+are designed so as to contextualise students’ interaction with
+the eXpresser, and include a set of goals for students to
+achieve, e.g. ‘check that your model is always coloured’.
+
+ELEs such as MiGen’s eXpresser have the potential to
+support students’ exploration while at the same time fos-
+tering progressive building of knowledge. For example, eX-
+presser has been specifically designed to support students
+with some well-known and well-researched challenges on learn-
+ing algebra. In particular, eXpresser has certain ‘epistemic
+a?ordances’ aimed at enhancing students’ understanding of
+algebraic generalisation [12].
+
+As students are undertaking the current task that they
+have been set using the eXpresser, a series of indicators
+are automatically detected by the system and stored in a
+database hosted on the MiGen Server (see [6] for details).
+The indicators that are meaningful and useful for teachers in
+their role in the classroom have been identified through an
+iterative process undertaken collaboratively with our group
+of teacher collaborators (see Section 3). There are two cat-
+egories of indicators: task independent (TI) and task depen-
+dent (TD). TI indicators refer to aspects of the student’s
+interaction that are related to the eXpresser microworld it-
+self and do not depend on the specific task the student is
+working on, e.g. ‘placed a tile on the canvas’, ‘created a
+pattern’. In contrast, the detection of TD indicators uses
+knowledge of the task that the student is working on and
+requires intelligent reasoning by the system, e.g. ‘student
+has made a plausible building block for this task’, ‘student
+has coloured their pattern generally’.
+
+The TA Tools (see Section 4) receive real-time notifica-
+tions from the MiGen Server relating to occurrences of TI
+and TD indicators for each student, and each TA tool visu-
+alises a selection of this information to the teacher.
+
+2.2 Related Work
+To our knowledge, MiGen’s TA tools represent the first
+
+work targeted at providing teachers with information about
+students’ progress and state during exploratory learning ac-
+tivities in the classroom, notifying them of students’ attain-
+ment of key indicators, and aiming to inform the teacher’s
+own interventions in the class. This novelty of our TA tools
+has presented a number of methodological challenges, which
+we discuss in Section 3. In the past few years, several sim-
+ilar initiatives have appeared, including a recent approach
+that built on the work described here and that aimed to
+help teachers working with the Metafora platform and its
+associated tools, which target science and mathematics ed-
+ucation [4]. Most related work investigates students’ collab-
+orative interactions while collaborating at interactive table-
+tops [9] or other multi-touch technology(e.g. [14]). The trend
+towards teacher support is recently growing also in the learn-
+ing analytics community [5, 15] and there is high synergetic
+potential between that work and the work reported here.
+Other earlier initiatives include using Web log data gener-
+ated by course management systems (e.g. WebCT) to help
+instructors become aware of students’ activities in distance
+learning classes [13]; or class-wide collaborative activities
+supported by hand-held devices [2]. However, with the no-
+table exception of a few works, e.g. [1] that visualises stu-
+dents’ inferred plans in an ELE for chemistry, none of this
+work focuses on exploratory learning activities.
+
+3. METHODOLOGY
+In our experience over many years of working with maths
+
+teachers in participatory design and research projects, teach-
+ers are not accustomed to having access to tools such as
+MiGen’s TA tools when teaching. Their typical instinct is
+to walk around the classroom in order to monitor how in-
+dividual students are progressing and to help them. This
+makes it di?cult, from the outset, to elicit from teachers a
+set of requirements for tools to support them. Instead, it was
+necessary to adopt an iterative participatory methodology,
+comprising successive phases of prototyping, requirements
+elicitation, incremental development, and evaluation.
+
+Our earlier work, described in [6], presented the methods
+and outcomes of a first requirements elicitation and design
+phase for the TA tools. During this first phase, mockups and
+prototypes of possible visualisations for the TA tools were
+developed and discussed in several meetings of the project’s
+Teacher Advisory group. As reported in [6], this advisory
+group comprised around 20 maths teachers and mathemat-
+ics educators from a broad spectrum of secondary schools
+in the greater London area, who attended regular project
+team meetings and gave their input throughout the project.
+However, the time that these teachers had available to actu-
+ally use prototypes of the tools in their classrooms was lim-
+ited, and so collaboration with a core group of four teachers
+who trialled the tools played a prominent role in subsequent
+phases. Two teachers in particular piloted successive limited
+prototypes of the tools in classroom sessions.
+
+Given these challenges, to help us get even to a stage
+of meaningful problem identification and elicit teachers’ re-
+
+
+
+quirements for the TA tools, we had to short-circuit the
+LATUX workflow and to perform a rapid iteration of the
+whole cycle with prototype tools that were a little more
+than low-fidely prototypes — they were not paper-based but
+fully functional (albeit limited in their scope). We referred
+to this approach as ‘iterative context engineering’ (see [10])
+because we ‘engineered’ settings that gave teacher partici-
+pants the opportunity to experience first-hand what it would
+mean to have access to such TA tools and, therefore, to o?er
+deeper insights in susbequent one-to-one interviews. Based
+on these interviews, but also through feedback from our gen-
+eral teacher advisory group, a set of Usage Scenarios for the
+whole suite of TA tools were identified and the tools were
+refined accordingly. These Usage Scenarios are as follows:
+
+1. Finding out which students need the teacher’s imme-
+diate help.
+
+2. Finding out which students are progressing satisfacto-
+rily towards completing the task and which students
+may be in di?culty.
+
+3. Finding out which students are currently disengaged
+from the task.
+
+4. Identifying common conceptual and procedural di?-
+culties that students are facing in order to provide
+more explanation to the class as a whole.
+
+5. Finding out which students have finished the task.
+
+6. Finding out which students have achieved which task
+goals.
+
+7. Providing appropriate support and guidance to indi-
+vidual students: (i) during the lesson, and (ii) after
+the lesson.
+
+8. Reflecting on the achievements of the class and plan-
+ning the next lesson.
+
+The establishment of these usage scenarios informed sub-
+sequent development iterations and allowed us to orient the
+evaluation activities around them. In particular, we followed
+a process that resembles Stages 3 (higher-fidelity prototyp-
+ing), 4 (pilot) and 5 (validation-in-the-wild) of the LATUX
+workflow. Having held several focus groups, and undertaken
+small pilots, our challenge was to get input and evaluate the
+potential of the TA tools against these usage scenarios by a
+large number of teachers in a cost-e?ective way. Given the
+constraints of funded research and of the limited time that
+schools have for engaging in a research project, it was not
+possible to undertake a full cycle of using the whole MiGen
+system and the TA tools in the classroom over several hours.
+We therefore needed a methodology that would allow us to
+evaluate the tools on our premises with several people at a
+time but in a way that would provide the participants with
+a realistic experience of using the tools in the classroom. We
+present this approach and its results in Section 5.
+
+4. THE TEACHER ASSISTANCE TOOLS
+MiGen’s suite of TA tools consists of the Student Tracking
+
+(ST), Classroom Dynamics (CD), and Goal Achievements
+(GA) tools. A fourth tool — the Grouping Tool [8] — is not
+discussed here as it does not relate directly to monitoring
+students’ activities and progress.
+
+The ST tool is the most detailed TA tool, and the one
+developed first chronologically. It monitors the occurrence
+
+of task-independent and task-dependent indicators gener-
+ated by each student as they interact with the eXpresser.
+Coloured indicators are displayed in chronological order in a
+top-down ‘timeline’ for each student. Green/red indicators
+show productive/problematic interaction with respect to the
+task set. Yellow indicators show that the student’s interac-
+tion may be positive or negative depending on context. Blue
+indicators relate to feedback provided to the student by the
+system. The teacher can select which indicators should be
+shown and which hidden, depending on her current needs.
+For reasons of space, we refer the reader to [6] for further
+description and screenshots of the ST tool.
+
+The CD tool gives the teacher an at-a-glance overview
+of which students are currently engaged with the task and
+which may be in di?culty and in need of help from the
+teacher (see Figure 1, left-hand side). It represents each
+student present in the classroom by a colour-coded circle,
+containing the student’s initials. Hovering over a circle with
+the cursor displays the student’s full name. Clicking on a
+circle shows the student’s current model and rule (see Fig-
+ure 1, right-hand side).
+
+Figure 1: Class Dynamics tool. On the left, a classroom with
+the students sitting at tables. On the right, a U-shaped
+classroom; in this case, the teacher has clicked on one of
+the students to see their model and rule. The colour of a
+student’s circle reflects the student’s current activity status
+as perceived by the system. Green circles show students
+working productively on the task set. Amber circles show
+students who have not interacted with eXpresser for some
+time (by default, five minutes). Red circles show students
+who may benefit from immediate help.
+
+In the CD tool, the circles representing the students can
+be dragged and moved around on the canvas. This enables
+teachers to set up the display so that the position of the
+circles matches the students’ spatial positions in the class-
+room. This helps the teacher to match the information being
+displayed in the CD tool with her own observations. It also
+helps the teacher to identify situations that may be location-
+dependent. For example, if several students seated at the
+same table show as Amber this may indicate that they are
+distracting each other.
+
+The GA tool shows a tabular display of students and
+task goals (see Figure 2). Each row of the table shows the
+progress of one student (identified by their initials) in com-
+pleting the task goals. Each column shows the completion
+status of one task goal across all students. Hovering over a
+cell with the cursor displays a full description of the goal,
+the name of the student, and the achievement status of that
+goal for that student.
+
+A cross-tool functionality we term ‘time-stop’ is supported
+
+
+
+Figure 2: Goal Achievement tool. Green and white cells
+show whether a goal has been achieved or not. Amber shows
+that the goal has been achieved earlier but the student’s
+current construction is not meeting the goal criteria.
+
+by all the TA tools. It allows the user to select a specific
+point in time, t, with respect to which the ST, CD and GA
+visualisations are generated. The tools ignore all indicator
+occurrences after that time point, allowing analysis of the
+classroom situation at that particular time. If the time point
+t selected is in the future, or if no time point is selected, the
+tools show the current situation by default.
+
+5. EVALUATION
+As mentioned in Section 3, early stages of our design
+
+approach established several usage scenarios through fully
+functional but limited prototypes piloted with a small group
+of teachers. Having undertaken these pilots, and having
+tested the TA tools thoroughly, we engaged first in a ‘higher
+fidelity prototyping’ and focus groups with several teachers.
+After taking into account participants’ feedback, we then
+engaged in a small pilot and subsequently a ’validation in-
+the-wild’ classroom-based trial. This trial involved one of
+our teacher collaborators at her school and aimed at allow-
+ing her to compare the di?erence in the teacher’s experience
+compared to a lesson in which she did have use of the TA
+tools. We present the results in [7].
+
+In order to get input from several teachers and to further
+evaluate the tools we held a 2-hour session with a cohort of
+11 Maths teachers on the PGCE programme at the Institute
+of Education. Each participant had an installation of the
+MiGen system running on their computer. In the first half
+of the session, they were introduced to the MiGen system as
+a whole, the eXpresser, and the TA tools. They were then
+asked to work through several construction examples using
+eXpresser so as to gain familiarity with how students would
+use it in a lesson and the kinds of feedback the system would
+give to students. In the second half of the session, each of the
+TA tools was introduced to the participants, using real data
+drawn from a previous classroom pilot. Participants were
+asked to use the TA tools and the time-stop functionality to
+answer the following questions relating to Usage Scenarios
+1–6 at di?erent time points in the lesson, simulating the use
+of the tools in an actual classroom.
+
+• Q1. The session started 10 minutes ago (10 minutes
+into the lesson). If you chose a student to help imme-
+diately, which student(s) would you choose and why?
+
+• Q2. Based on your experience and previous sessions,
+you would have expected by now (10 min. on) that
+students have achieved at least two goals. With a quick
+glance of the tools would you say that the class is going
+according to plan or would you intervene and why?
+
+• Q3. We are at 30 minutes on. Based on your experi-
+ence and previous sessions, you expected that students
+would have finished by now so that you can progress
+on the next task. With a quick glance of the tools do
+you think that the class is at that stage and why?
+
+• Q4. Sometimes students are o?-task (e.g. play games).
+At 30 minutes on, find two students that are disen-
+gaged/distracted.
+
+• Q5. We are at 30 minutes. Some students need help
+and you are trying to identify others who have finished
+and can help them. Can you give two examples of
+students who have finished?
+
+Participants were also asked how long they thought it
+would take them to answer these questions in an actual les-
+son, our aim being not only to determine if participants were
+able to use the TA tools to answer the questions correctly,
+but also how they perceived the amount of time that it would
+take them to answer the questions in a classroom situation.
+
+All participants provided correct answers to all questions
+without any assistance from the research team. The graph
+in Figure 3 summarises their responses relating to the per-
+ceived length of time required to answer each question. We
+see that for all the questions no participant responded a long
+or a lot of time. The questions regarded as requiring the
+least time to answer were Questions 1, 4 and 5, most proba-
+bly because they pertain to individual students and could be
+answered by consulting just one tool (the CD tool). Ques-
+tions 2 and 3 may have appeared to participants as needing
+more time to answer because they refer to the classroom
+as a whole and because, in order to answer them, partici-
+pants may have consulted the GA too, and also the ST tool
+in Question 2 for a more detailed view of how students are
+progressing with their constructions.
+
+Figure 3: Participants’ perceived time to answer evaluation
+questions
+
+On the whole, we consider these responses as being en-
+couraging, particularly as no question was perceived as re-
+quiring a long or a lot of time, which was a key aim in the
+design of the TA tools.
+
+
+
+6. DISCUSSION AND CONCLUSION
+In this paper, we have described a suite of Teacher Assis-
+
+tance (TA) tools that target an exploratory learning setting,
+and their summative evaluation. Our overall approach re-
+sembles and validates, retrospectively, the LATUX workflow
+but also elaborates on a possible extension of the validation-
+in-wild stage. Our particular methodological contribution
+was to extend the number of teacher participants and the
+type of data that can be gathered to evaluate tools such
+as our TA tools. The provision of time-stop functionality
+across all of the TA tools allowed us to use real interaction
+data from earlier classroom trials and to present these data
+to several participants via the TA tools ‘frozen’ at particu-
+lar moments in time, simulating in this way the experience
+of using the tools in an actual classroom. This approach
+helped us conduct evaluations with a far greater number of
+teachers than those who would ever be able to participate in
+classroom trials either due to their constraints or to limited
+resources on our behalf. As such we consider it a type of
+‘poor man’s evaluation at scale’.
+
+The evaluation results are encouraging. The results show
+that teachers exposed to the TA tools understand the tools’
+capabilities and are able to use them e?ectively in answer-
+ing most of the usage-scenario based questions. Answering
+most of the evaluation questions was relatively speedy, which
+achieves one of our objectives and is a key requirement for
+using the TA tools in a real classroom.
+
+The TA tools presented in this paper are general in their
+design and similar tools could be used to monitor the activ-
+ities of students interacting with other exploratory learning
+environments, provided that the environment detects appro-
+priate interaction indicators. This would need to include, as
+a minimum, indicators relating to students’ current activity
+status, waiting for help from the teacher, and goal achieve-
+ments status: these are the indicators that drive the CD
+and GA tool visualisations which we have found that, in
+practice, teachers consult most often during a lesson.
+
+Having received more feedback on the TA tools from teach-
+ers since they were made more widely available, it is evident
+that tools such as these allow teachers to use ELEs in the
+classroom in ways that were not possible before. Visualisa-
+tion and notification tools that are developed specifically to
+support the teacher in the classroom are better able to pro-
+vide a sense of awareness than other general-purpose screen
+monitoring tools. Moreover, with the increased emphasis
+on evidence-based teaching, such TA tools empower teach-
+ers to provide evidence of learning, even in a context that
+is less subject to formal assessment, and to engage in their
+own inquiry into more conceptual student learning. Our fu-
+ture work involves investigating how the TA tools could be
+adapted to support teachers in even more complex learning
+scenarios, such as blended learning, and in their own profes-
+sional development as teachers.
+
+7. REFERENCES
+[1] O. Amir and K. Gal. Plan recognition and
+
+visualization in exploratory learning environments.
+ACM Transactions on Interactive Intelligent Systems,
+3(3), 2013. DOI: 10.1145/2533670.2533674.
+
+[2] C. Cortez, M. Nussbaum, G. Woywood, and
+R. Aravena. Learning to collaborate by collaborating:
+a face-to-face collaborative activity for measuring and
+
+learning basics about teamwork. Journal of Computer
+Assisted Learning, 25(2):126–142, Apr. 2009.
+
+[3] P. Dillenbourg. Design for classroom orchestration.
+Computers & Education, 69:485 – 492, 2013.
+
+[4] T. Dragon, M. Mavrikis, B. McLaren, A. Harrer,
+C. Kynigos, R. Wegerif, and Y. Yang. Metafora: A
+web-based platform for learning to learn together in
+science and mathematics. IEEE TLT, 6(3), 2013.
+
+[5] R. C. Garcia, A. Pardo, C. D. Kloos, K. Niemann,
+M. Sche?el, and M. Wolpers. Peeking into the black
+box: visualising learning activities. International
+Journal on Technology Enhanced Learning,
+4(1/2):99–120, 2012.
+
+[6] S. Gutierrez-Santos, E. Geraniou, D. Pearce-Lazard,
+and A. Poulovassilis. Design of Teacher Assistance
+Tools in an Exploratory Learning Environment for
+Algebraic Generalization. IEEE Transactions on
+Learning Technologies, 5(4):366–376, 2012.
+
+[7] S. Gutierrez-Santos, M. Mavrikis, G. E., and
+A. Poulovassilis. Usage scenarios and evaluation of
+teacher assistance tools for exploratory learning
+environments (under review). Technical report, 2012.
+Available at http://www.dcs.bbk.ac.uk/research/
+techreps/2012/bbkcs-12-02.pdf.
+
+[8] S. Gutierrez-Santos, M. Mavrikis, E. Geraniou, and
+A. Poulovassilis. Similarity-based grouping to support
+teachers on collaborative activities in exploratory
+learning environments. IEEE Transactions on
+Emerging Topics in Computing, in press.
+
+[9] R. Martinez-Maldonado, A. Pardo, N. Mirriahi,
+K. Yacef, J. Kay, and A. Clayphan. The LATUX
+workflow: Designing and deploying awareness tools in
+technology-enabled learning settings. In Proceedings of
+the Fifth International Conference on Learning
+Analytics And Knowledge, pages 1–10, 2015.
+
+[10] M. Mavrikis et al. Iterative context engineering to
+inform the design of intelligent exploratory learning
+environments for the classroom. In R. Luckin et al.,
+editors, Handbook of Design in Educational
+Technology, pages 80–92. Routledge, 2013.
+
+[11] M. Mavrikis, S. Gutierrez-Santos, E. Geraniou, and
+R. Noss. Design requirements, student perception
+indicators and validation metrics for intelligent
+exploratory learning environments. Personal and
+Ubiquitous Computing, 17:1605–1620, 2013. DOI:
+http://dx.doi.org/10.1007/s00779-012-0524-3.
+
+[12] M. Mavrikis, R. Noss, C. Hoyles, and E. Geraniou.
+Sowing the seeds of algebraic generalization: designing
+epistemic a?ordances for an intelligent microworld.
+Journal of Computer Assisted Learning, 2012.
+
+[13] R. Mazza and V. Dimitrova. CourseVis: A graphical
+student monitoring tool for supporting instructors in
+web-based distance courses. International Journal of
+Man-Machine Studies, 65(2):125–139, 2007.
+
+[14] E. Mercier, G. Vourloumi, and S. Higgins. Student
+interactions and the development of ideas in
+multi-touch and paper-based collaborative
+mathematical problem solving. BJET, 2015.
+
+[15] V. A. R. Zaldivar, A. Pardo, D. Burgos, and C. D.
+Kloos. Monitoring student progress using virtual
+appliances: A case study. Computers & Education,
+58(4):1058–1067, 2012.
+
+
+

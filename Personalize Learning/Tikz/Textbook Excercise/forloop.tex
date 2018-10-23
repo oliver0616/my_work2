@@ -1,0 +1,13 @@
+\documentclass{article}
+\usepackage{tikz}
+\begin{document}
+%we are working on
+\begin{tikzpicture}
+	\foreach \x in {1,2,...,5,7,8,...,12}
+	\foreach \y in {1,...,5}
+	{
+		\draw (\x,\y) +(-.5,-.5) rectangle ++(.5,.5);
+		\draw (\x,\y) node{\x,\y};
+	}
+\end{tikzpicture}
+\end{document}

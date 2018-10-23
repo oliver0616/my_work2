@@ -1,0 +1,1265 @@
+
+Reflective Writing Analytics for Actionable Feedback
+
+Andrew Gibson
+University of Technology Sydney
+
+Sydney, Australia
+Andrew.Gibson@uts.edu.au
+
+Adam Aitken
+University of Technology Sydney
+
+Sydney, Australia
+Adam.Aitken@uts.edu.au
+
+A?gnes Sa?ndor
+Xerox Research Centre Europe
+
+Meylan, France
+agnes.sandor@xrce.xerox.com
+
+Simon Buckingham Shum
+University of Technology Sydney
+
+Sydney, Australia
+Simon.Buckinghamshum@uts.edu.au
+
+Cherie Tsingos-Lucas
+University of Technology Sydney
+
+Sydney, Australia
+Cherie.Tsingos-Lucas@uts.edu.au
+
+Simon Knight
+University of Technology Sydney
+
+Sydney, Australia
+Simon.Knight@uts.edu.au
+
+ABSTRACT
+Re?ective writing can provide a powerful way for students to in-
+tegrate professional experience and academic learning. However,
+writing re?ectively requires high quality actionable feedback, which
+is time-consuming to provide at scale. ?is paper reports progress
+on the design, implementation, and validation of a Re?ective Writ-
+ing Analytics platform to provide actionable feedback within a
+tertiary authentic assessment context. ?e contributions are: (1) a
+new conceptual framework for re?ective writing; (2) a computa-
+tional approach to modelling re?ective writing, deriving analytics,
+and providing feedback; (3) the pedagogical and user experience
+rationale for platform design decisions; and (4) a pilot in a student
+learning context, with preliminary data on educator and student ac-
+ceptance, and the extent to which we can evidence that the so?ware
+provided actionable feedback for re?ective writing.
+
+CCS CONCEPTS
+•Applied computing ? Interactive learning environments;
+•Computingmethodologies? Natural language processing; Lex-
+ical semantics; •Human-centered computing ? User interface
+programming;
+
+KEYWORDS
+Re?ective Writing Analytics, Formative Feedback, Re?ective Writ-
+ing ?eory, Learning Analytics
+
+ACM Reference format:
+Andrew Gibson, Adam Aitken, A?gnes Sa?ndor, Simon Buckingham Shum,
+Cherie Tsingos-Lucas, and Simon Knight. 2017. Re?ective Writing Analytics
+for Actionable Feedback. In Proceedings of ?e 7th International Learning
+Analytics & Knowledge Conference, Vancouver, BC, Canada, March 13-17,
+2017 (LAK ’17), 10 pages.
+DOI: 10.1145/3027385.3027436
+
+Permission to make digital or hard copies of part or all of this work for personal or
+classroom use is granted without fee provided that copies are not made or distributed
+for pro?t or commercial advantage and that copies bear this notice and the full citation
+on the ?rst page. Copyrights for third-party components of this work must be honored.
+For all other uses, contact the owner/author(s).
+LAK ’17, Vancouver, BC, Canada
+© 2017 Copyright held by the owner/author(s). 978-1-4503-4870-6/17/03. . .$15.00
+DOI: 10.1145/3027385.3027436
+
+1 INTRODUCTION
+Tertiary institutions are continuously confronted with the issue of
+assessing students in a way that is authentic, promoting learning for
+the future. It is generally accepted that when used well in education
+se?ings, re?ective tools enhance lifelong learning and professional
+practice [30, 39].
+
+When students engage in re?ection on action [34], they are
+self-critical, identify and analyse their responses to challenging
+issues, and are prompted to re?ect on how this experience reveals
+knowledge that could be applied in future. In this way re?ective
+processes in learning become authentic when they are formative
+and future-oriented [3], and when higher level, meta-cognitive
+thinking about experience is required for students to connect their
+thinking to a wider world [14].
+
+Re?ective writing is promoted by many researchers as a valid
+way to assess re?ective practice in a tertiary context [15, 28]. Re-
+?ective writing allows students to engage with both certainty and
+with what they do not know about a situation [27]. ?is typically
+involves students documenting their experiences, and writing re?ec-
+tive essays, journals and blogs based on their personal re?ections on
+those experiences. ?e challenge is in how actionable feedback can
+be provided at scale when large numbers of students are required to
+write re?ectively. For any feedback to be actionable by the student,
+it needs to be “. . . of su?cient quantity; timely; it should focus on
+learning not marks; it should be related to assessment criteria and
+be understandable, a?ended to and actually used by students to
+make improvements on their work.” [25, p. 337]
+
+Along with actionable feedback teaching students to write re-
+?ectively requires clear de?nitions, instructional instruments and
+rubrics of re?ection. Re?ection is thinking with a purpose about
+complicated or unstructured ideas where there is no obvious so-
+lution. [23]. From a pedagogical perspective re?ective writing is
+directed towards a learning goal [4], and a corrector of distortions
+in thinking [22].
+
+Because re?ection is not necessarily an inherent skill the art
+of writing re?ectively can be challenging [40], in part because
+re?ective writing is di?erent in nature and purpose to analytic
+academic writing, and students can struggle to present a personal
+stance within an academic context.
+
+
+
+LAK ’17, March 13-17, 2017, Vancouver, BC, Canada A. Gibson et. al.
+
+1.1 ?e Project
+?e A3R (Authentic Assessment Analytics for Re?ection) research
+project was established to investigate the extent to which auto-
+mated Re?ective Writing Analytics (RWA) might o?er potential to
+deliver formative feedback on student re?ective writing at scale,
+and whether such feedback might encourage action on the part
+of the student. RWA involves the automated analysis of re?ective
+writing, and the feeding back of analytics to the writer [14]. ?e
+key question motivating this research was to investigate how RWA
+might enable a scalable provision of actionable feedback to students
+on their re?ective writing, and thereby augment existing pedagogi-
+cal approaches to authentic assessment and re?ective practice.
+
+1.2 Participation
+Courses across a range of disciplines at the University of Technology
+Sydney (UTS) use re?ective writing assessment as it has been shown
+to be bene?cial in ?elds as diverse as Engineering [27], Pharmacy
+[40], Business [36], Medicine [32], Psychology [10], Nursing [44],
+and Teaching [24].
+
+For this research, we worked primarily with academics from
+seven subjects across three disciplines (Science, Business, and Engi-
+neering). Our academic partners provided re?ective writing rubrics
+and samples of student re?ective writing, primarily in the form of
+journal entries and re?ective essays.
+
+?e project, which extended over two semesters (March 2016 -
+November 2016), involved meetings with members of the univer-
+sity’s teaching and learning unit (IML), discussions with academic
+language and learning (ALL) experts, and workshops with repre-
+sentatives from all stakeholder groups to discuss the way re?ective
+writing is used across the curriculum. ?e high level of stakeholder
+engagement was key to establishing the pedagogical objective of
+actionable feedback, and grounded the research in the learning and
+teaching of the university.
+
+1.3 Approach
+Despite the diversity of perspectives that came as a result of working
+across di?erent disciplines, the academic partners reported common
+problems with re?ective writing assessment: (1) Large numbers
+of students, many of whom were unfamiliar with re?ection and
+writing re?ectively; (2) Di?culty in clarifying the key features of
+good re?ective writing; (3) ?e need for students to receive timely
+formative feedback on their writing, but a lack of sta? time to meet
+this need; and (4) A need to ensure that any feedback provided is
+actionable by students in a way that maximises the bene?ts of the
+learning task.
+
+?e A3R project redesigned and extended (§4) the AWA (Aca-
+demic Writing Analytics) so?ware platform which was developed
+through previous research [8, 18, 35] .1 A focus on actionable
+feedback for students resulted in AWA being redesigned to accom-
+modate multiple layers of feedback, drawn from a larger set of
+analytics which were derived using multiple Natural Language
+Processing (NLP) techniques. ?e approach to analysing re?ective
+
+1AWA aims to make visible to learners the ways in which they are using (or failing
+to use) language, and to do this in a way that is scalable . Designed to complement
+existing curricula tools AWA does not automate the grading of texts.
+
+writing was also redesigned with the aim of serving actionable
+feedback.
+
+We took a theory ?rst approach to the research, synthesising a
+large body of previous research on re?ection and re?ective writing,
+together with the practical implementation as evidenced by our
+academic partners. We then implemented the resulting framework
+computationally in the AWA platform, and applied the so?ware in a
+learning context. ?is approach yielded a number of contributions
+that we believe advance the ?eld of Learning Analytics (LA): (1) A
+theoretical framework for re?ective writing; (2) a method for using
+the framework computationally to analyse re?ective writing; (3) a
+pedagogically driven design approach to LA; and (4) preliminary
+evidence supporting our approach. Our approach is detailed in the
+sections that follow.
+
+2 THEORETICAL FRAMEWORK
+?e A3R approach is grounded in the theory of re?ection and
+re?ective writing [11, 22] and informs a framework (see ?gure 1)
+which can be used both for human analysis of re?ective writing
+and as a basis for developing methods of computational analysis. A
+key objective was to accommodate the major ?ndings of previous
+research together with the main aspects of the various assessments
+for the subjects that we worked with. ?is approach ensures that it
+is pedagogically useful for the subjects in which it is applied.
+
+2.1 Re?ective Writing
+With a brief to synthesise key ideas and relate them to the cur-
+rent practice of our academic partners, we examined the dominant
+research on re?ective writing [17, 23, 29, 37].
+
+A key pedagogical issue is how feedback can guide students to
+re?ect more deeply and to learn rhetorically purposeful language
+to achieve this [19]. A number of researchers characterise depth of
+re?ection as a shi? from a descriptive style of mere impressionistic
+reporting of events, through to a more critical style that focuses on
+integrating, analysing, and restructuring experience [17, 30], and
+on outcomes [4].
+
+In terms of how feedback can guide learner’s actions, the frame-
+work maps ?ve levels of depth. Students are prompted to re?ect
+on these by considering self-directed questions that correspond to
+these levels. ?is informed the vertical dimension of the framework
+(?gure 1). ?e levels range from the lowest simple impressions
+through to the highest level of an intention to act:
+
+(1) Impression: What is happening around me? What is
+important to me?
+
+(2) Interpretation: How do I make sense of my impressions
+within my current situation?
+
+(3) Internalisation: How does this relate to me, to my knowl-
+edge, my wider context, my learning, my disposition, my
+emotions? How does it make me feel, and what are my
+reactions?
+
+(4) Integration: How does this ?t with other knowledge, ex-
+periences, and di?ering perspectives? Can I learn from
+others?
+
+(5) Intention: Why am I concerned with this, and what do I
+intend to change with regards to myself based on what I
+have come to understand through being re?ective?
+
+
+
+Reflective Writing Analytics for Actionable Feedback LAK ’17, March 13-17, 2017, Vancouver, BC, Canada
+
+Figure 1: ?eRe?ection Frameworkwhich synthesises theories of re?ection and narrative togetherwith discipline approaches
+to assessing re?ection.
+
+?ese levels accommodate theoretical models together with ped-
+agogical descriptions of the actions that might be expected of stu-
+dents when writing. ?ese actions were drawn from a range of
+assessment instruments including rubrics from our academic part-
+ners, and through the analysis of a range of examples of student
+writing from across the disciplines.
+
+2.2 Student Writing Analysis
+For many students re?ective writing in a tertiary se?ing is a novel
+genre, and tutors may be inexperienced in its assessment. While
+subjects provide rubrics for re?ective writing assessments, these
+do not always provide explicit instruction on the language of re-
+?ective writing. UTS academic communications expert Rosalie
+Goldsmith designed a resource that helps engineering academics
+recognise linguistic features of re?ection in student journals [8].
+Goldsmith itemised frequently occurring lexico-grammatical fea-
+tures, e.g. thinking and feeling reporting verbs (I felt, I realised,
+I became aware…), statements of a challenge, a critical incident,
+expressions of learning intentions and more.
+
+Rhetorical analysis methods [38] and genre theory [21] further
+informed our analysis of: (1) ?e lexico-grammatical features of
+student re?ective writing; and (2) the discursive structure and cohe-
+sive pa?erns most o?en found in whole texts. Depth and structural
+dimensions are marked by rhetorical ‘moves’ or recurrent discourse
+elements that characterise wri?en and oral genres and which per-
+form a coherent communicative function [38]. Used with intent
+by writers, moves realize ‘rhetorical action’ [13]. To take an exam-
+ple of analytic writing, a scienti?c research paper will include a
+statement of a research gap in the abstract and introductory stages
+[38]. Structurally, the research paper obeys reader expectations of
+the genre, and requires a sequenced orderly progression of these
+moves.
+
+In re?ective writing rhetorical moves communicate personal
+shi?s in perception, express self-critique and self-doubt, and regis-
+ter changes in belief. Its rhetorical, lexico-grammatical and struc-
+tural features, considered together, suggest that re?ective writing is
+
+a genre, by which we mean formalised writing with a goal-oriented
+communicative purpose, and which is structurally constrained in
+a series of stages suggesting reporting or narrative form [21]. Dif-
+ferent models of moves or stages have captured types of re?ection
+[41, 42] and also depth of re?ection [23, 30, 44]. Of particular
+salience was Birney’s [2] study of teacher trainee re?ection, a ?ne-
+grained systemic-functional mapping of re?ection depth with lin-
+guistic realisation. ?is research concludes that strong re?ective
+writers are able to draw on up to ten linguistic features ranging
+from use of feeling and thinking verbs to adjectives (e.g. ‘a positive
+impact’) and reasoning adverbs (e.g. ‘extremely challenging’), and
+future tense modality (e.g. ‘I intend to bring this into my future
+practice’).
+
+In our framework a horizontal dimension represents a narrative-
+like sequence of rhetorical moves, while a vertical dimension models
+levels of depth. ?e intersection of depth and sequential dimen-
+sions represent the possible stages through which the text moves
+and the linguistic features used to realise these stages - from ‘shal-
+low’ impressionistic description to ‘deep’ future-minded intentional
+statements. To prompt students to improve their re?ection, the
+framework’s prompt questions encourage them to move from ‘shal-
+low’ to ‘deep’ levels of re?ection (see ?gure 1).
+
+Indeed, an analysis that we carried out on student re?ective texts
+con?rms that similar re?ective writing moves occur in di?erent
+disciplines. Our work also con?rms other studies that show strong
+writers utilise a wider range of linguistic features than weaker re-
+?ective writers [19]. Highly rated journal writers a?empt to make
+sense of the relationship between themselves and their situations
+[9], and question their own assumptions that underpin their ac-
+tions [37]. ?ey re?ect on how to proceed in the face of uncertainty
+[27], and re?ect on decisions [26]. We found that the rhetorical
+moves announce a personal response to a learning context (Con-
+text), acknowledge the challenging nature of learning (Challenge),
+and indicate a learning experience is self-transformative (Change)
+(See ?gure 1).
+
+
+
+LAK ’17, March 13-17, 2017, Vancouver, BC, Canada A. Gibson et. al.
+
+For example, one student wrote about how habitual ways of
+thinking lead to problems (’obstacles’), which then lead to a new or
+’rapid’ understanding of the situation:
+
+. . . I rapidly understood that language was not the
+most important barrier. Our ways of thinking,
+acting, and our values became obstacles we needed
+to overcome.
+
+When interpreted as a coherent rhetorically staged text, we
+?nd that the writer emphasises a rapid change in understanding
+(I rapidly understood) as well as the notable challenging element
+in the learning situation (’the barrier’, ’obstacles’). ?ey then note
+that this situation leads to a change in perception, and a departure
+from a previous habitual view (language is the main source of
+misunderstanding). We show how these semantic relations inform
+computational modelling in section 3.
+
+Feedback from academic partners con?rmed that they found
+the framework to be a helpful lens through which to view their
+re?ective writing assessment, and that it would assist in giving
+feedback to students in a way that might encourage them to improve
+their re?ections.
+
+2.3 Simpli?cation
+A?er assessing the extent to which existing technologies available
+to us might enable us to operationalise it computationally, we
+simpli?ed the framework, especially in the way we approached
+the levels of depth. While we could see the potential for using the
+linguistic properties of the sentences to identify key moves such as
+CONTEXT, CHALLENGE, and CHANGE, it was not obvious to us how
+we might detect levels within the depth dimension. ?erefore we
+simpli?ed depth by distilling a dominant common characteristic
+feature in deeper re?ection pertaining to all the three moves: that
+it is applied personally. We identi?ed that this is indicated where
+the student links one of the key moves to themselves. We referred
+to this feature as LINK2ME.
+
+We also noted that the framework might inform feedback to the
+student in ways other than by the rhetorical moves, such as: (1)
+Indicating a?ective elements and emotive expressions in the writ-
+ing; (2) drawing a?ention to how good re?ection links to existing
+knowledge via epistemic expressions; and (3) indicating critique,
+particularly self-critique, as a key feature of depth.
+
+?us, our ?nal simpli?ed framework for feedback purposes com-
+prises three moves (CONTEXT, CHALLENGE, CHANGE), a modi?er
+of these moves to indicate depth (LINK2ME), and three expression
+types (EMOTIVE, EPISTEMIC, CRITIQUE). ?is provided a much
+more accessible version of the re?ective writing framework for stu-
+dents while maintaining its connection to the theory. ?e simpli?ed
+version also assisted with the computational implementation which
+was tackled by two di?erent processes: (1) ?e implementation
+of the modelling of re?ective rhetorical moves. ?is is detailed
+in section 3; and (2) the aggregation of di?erent computational
+analyses, and implementation of multiple layers of feedback. ?is
+is described in section 4.
+
+3 REFLECTIVE RHETORICAL MOVES
+Building on the theoretical and linguistic description of re?ective
+writing moves in Section 2 we have developed a system to compu-
+tationally detect sentences that convey the three primary rhetorical
+moves of re?ective writing determined by the A3R framework:
+Context, Challenge and Change. Each of these can be augmented
+by the Link2Me feature. To detect sentence elements indicating the
+rhetorical moves we used the concept-matching rhetorical analysis
+framework [33]. ?e analysis model is implemented in the natural
+language processing tool Xerox Incremental Parser (XIP) [1].
+
+3.1 ?e concept-matching analysis framework
+?e concept-matching framework models rhetorical moves as pre-
+de?ned pa?erns of abstract elements called constituent concepts.
+Constituent concepts are determined by the de?nitions and de-
+scriptions of the rhetorical moves. For example, the Challenge
+move is de?ned in the A3R framework as ”the challenge of new
+surprising or unfamiliar ideas, problems or learning experiences”.
+?e constituent concepts suggested by this de?nition are CONTRAST
+(cf. challenge, unfamiliar, problem), STANCE (c.f. surprising, expe-
+riences), ANALYSIS (c.f. ideas, learning) and SUBJECT (the author).
+Any combination of these concepts constitutes a possible pa?ern
+for Challenge, as in the following formula:
+
+CHALLENGE =
+(SUBJECT+ANALYSIS) AND (CONTRAST+ANALYSIS)
+
+?e ‘+’ designates grammatical coherence and ‘AND’ co-occurrence
+in the same sentence. ?is formula will match sentences that de-
+scribe contrast in the author’s thinking. ?e following sentences
+are examples that match this pa?ern (constituent concepts in bold):
+
+(1) I re?ected on this and felt decision making was like second
+nature, yes I over-thought my decisions whether it was
+personal or professional but I never thought of the act
+of having to justify my decisions.
+
+(2) I continued to contemplate how I was going to tactfully
+address this questionable behaviour.
+
+While traditional approaches to analysing rhetorical writing rely
+on the detection of lexical and lexico-grammatical features, the
+distinctive advantage of the concept-matching framework lies with
+the grammatical coherence constraint coupled with the pre-de?ned
+pa?erns, which is able to ?lter out noise.
+
+3.2 Implementation in XIP
+XIP is a natural language analysis tool whose basic function is
+to provide deep syntactic analysis of sentences. XIP integrates
+statistical processing and grammar rules, which were developed
+using its dedicated rule writing mechanism. Basic XIP analysis
+incrementally executes a chain of treatments for each sentence of a
+document from segmentation through morpho-syntactic analysis,
+part-of-speech disambiguation and chunking to syntactic depen-
+dency extraction, i.e. the identi?cation of syntactic functions, like
+subject, object, modi?er, etc.
+
+?e concept-matching framework was implemented as an ad-
+ditional XIP module, building on the general dependency output,
+and using the rule writing mechanism. ?e implementation task
+consisted in detecting sentences that contain a rhetorical pa?ern
+
+
+
+Reflective Writing Analytics for Actionable Feedback LAK ’17, March 13-17, 2017, Vancouver, BC, Canada
+
+Figure 2: Example rhetorical patterns of the A3R re?ective
+moves and illustration sentences.
+
+de?ned in the concept-matching framework. ?is involved the fol-
+lowing steps: (1) ?e development of a lexical database where the
+constituent concepts are associated with words and expressions;
+2; (2) creating XIP rules that select out of all the dependencies ex-
+tracted by the general XIP syntactic analysis module those that
+are relevant for the rhetorical pa?erns; and (3) creating XIP rules
+that mark the sentences that contain a set of dependencies of the
+pre-de?ned rhetorical pa?erns. ?e pa?ern matching rules were
+developed using a small development corpus of ten re?ective essays
+of various domains annotated according to the language analysis
+methods our re?ective writing framework.
+
+4 ACTIONABLE FEEDBACK
+Our moves of Context, Challenge, Change and Link2Me were ac-
+commodated by the implementation of re?ective rhetorical moves
+in XIP. However, much of the re?ective writing literature had in-
+dicated that there were other important indicators of re?ective
+writing, such as the three expression types (Emotive, Epistemic,
+and Critique) that we identi?ed in our simpli?ed framework. We
+also noted that some features might present not at the sentence
+level, but rather in the text as a whole, such as the general struc-
+ture of the writing, or the overall sentiment expressed. ?ere was
+also research that the situational context in which the re?ection
+was based was signi?cant, indicating that there may be speci?c
+vocabulary for di?erent writing contexts. ?ese factors indicated
+that we needed more than the sentence level re?ective rhetorical
+move analytics. We needed to incorporate other NLP techniques
+that could provide us with varying levels of analysis, and a way of
+aggregating the resultant analytics.
+
+Further, our objective was to provide actionable feedback to the
+writer, and so we needed a mechanism for creating feedback from
+aggregated results, and a way of evaluating the actionability of this
+feedback.
+
+Responding to these challenges required signi?cant design de-
+cisions in terms of both the architecture of the platform and the
+
+2?e lexical resources have been acquired by various means: importing from existing
+rhetorical analysis modules that use the same constituent concepts, and using (morpho)-
+syntactic and semantic properties and part-of-speech as features, which are provided
+by the general XIP parser. ?e lexicon for the STANCE concept has been imported
+from a sentiment analysis module of XIP [5]
+
+desired user experience. We outline our approach to both of these
+areas in the following sections.
+
+4.1 Platform Architecture
+?roughout the A3R project, AWA evolved from a web application
+calling remote analysis service into a platform with multiple ser-
+vices deployed across a mix of local and cloud infrastructure. ?e
+design was driven by Information Architecture (IA), “the process of
+designing, implementing and evaluating information spaces that are
+humanly and socially acceptable to their intended stakeholders”[12].
+In our case the intended stakeholders were the students and their
+teachers, and the information space was AWA, but conceived as
+learning environment where the students could improve their re-
+?ective writing.
+
+Importantly, this meant a pedagogically driven approach to RWA.
+?at is, architecting the platform in a way that considered action-
+able feedback in the whole of the user experience: starting from
+the way that student writing was conceptualised; including the
+approaches to analysis and the delivery of the feedback; and con-
+cluding with evaluation of the feedback’s e?cacy.
+
+?ese architectural changes were facilitated by introducing a
+Text Analytics Pipeline (TAP), a modular cloud based application.
+TAP allowed the inclusion of analysis services other than XIP to be
+included in the platform, facilitated the aggregation of the resultant
+analytics, and generated multiple levels of feedback. An overview
+of the key elements of TAP can be seen in ?gure 3.3
+
+Figure 3: ?e core modules of the Text Analytics Pipeline
+(TAP) shown within dashed box, and connections to UI (top
+le?) and XIP (top right).
+
+?e design of TAP allowed for the aggregation of multiple sources
+of analysis from both external services such as XIP, third party
+libraries like CoreNLP [20], and internal so?ware. A detailed de-
+scription of TAP is beyond the scope of this paper, however an
+overview of the process of generating feedback highlights the way
+TAP contributes to the AWA platform.
+
+Feedback is provided to the UI in the form of a JSON object
+composed of the di?ering feedback types (expression, sentence,
+paragraph, and document). Sentence level feedback is generated
+by passing the text through a module that connects to the external
+XIP service. ?e resulting analysis is then forma?ed similarly to
+3TAP is wri?en in Scala to run on the JVM. It is designed in a modular reactive style
+with Akka to facilitate ?exibility and scalability as required.
+
+
+
+LAK ’17, March 13-17, 2017, Vancouver, BC, Canada A. Gibson et. al.
+
+the other feedback levels before being packaged up and sent back
+to the UI. Expression level feedback is generated using di?erent
+so?ware modules, the selection of which depend on the feedback
+type. ‘Emotive’ expressions are generated based on lexical com-
+parisons with the Warriner [43] Corpus selecting high valence and
+arousal terms, whereas the ‘Critique’ and ‘Epistemic’ expressions
+are derived using techniques for identifying metacognition in re?ec-
+tive writing [14]. Paragraph and document level feedback involves
+complex rules applied to a range of analyses. For example, some
+document comments are generated based on the ratio of rhetorical
+moves that have been detected across the document. Other para-
+graph level comments combine a third party spell checking library4
+with named entity recognition from CoreNLP [20] and basic para-
+graph metrics to determine if a comment on spelling errors should
+be generated. Further detail on these algorithms can be found by
+examining the so?ware.5
+
+Importantly, the choice of modules, third party services, and
+design of the algorithms, were all driven by the pedagogical imper-
+ative to provide actionable feedback. ?us, the very architecture of
+the platform is shaped by the desired learning outcomes.
+
+4.2 User Experience
+?e objective of actionable feedback based on our conceptual ac-
+count determined that in addition to a sentence-level annotation
+(implemented in previous versions of AWA), feedback should also
+be provided at the sub-sentence (expression), and aggregate lev-
+els (both paragraph and whole document). ?ese features were
+implemented, alongside user support documentation, as outlined
+below.
+
+4.2.1 User Interface Layout. Actionable feedback requires a UI
+that prompts users to turn feedback into feed-forward[16]. To
+prompt re-dra?ing, students are alerted to what is needed in terms
+of re?ective expression. Visual feedback has been shown to be more
+e?ective than verbal feedback which o?en appears complex and
+multidimensional [31].
+
+Less certain is how and if certain UI features contribute in creat-
+ing feed forward. A key design change concerned the accommo-
+dation of feedback to the user other than just sentence labelling
+and highlighting. ?ere was a need to accommodate whole of doc-
+ument textual feedback, feedback associated with paragraphs, and
+feedback associated with groups of words or expressions. With
+the addition of at least three more types of feedback, a signi?cant
+consideration was to ensure that the interface did not become too
+clu?ered. For feedback to be actionable, it ?rst needs to be compre-
+hended. We anticipated that too much visual information would
+result in the user being less certain about which information should
+be acted up.
+
+Because of this, our aim was a clean UI that maintained the
+prominence of the original text, but annotated with both sentence
+and expression level feedback. Paragraph feedback would be pro-
+vided in a right hand margin aligned with the relevant paragraph,
+and whole document feedback would be provided above the text
+as it was intended to provide overall commentary on the writing.
+Taking this approach also had the advantage of being similar to
+4h?ps://github.com/languagetool-org/
+5?e so?ware can be found on the CIC GitHub Page (h?ps://github.com/uts-cic)
+
+what students may expect if they were to receive feedback on a
+printed document, i.e. parts of the text itself underlined and circled
+with comments in the margins and an overall summary comment.
+We hoped that this familiar format might assist with the overall
+usability of the interface. ?is layout can be seen in ?gure 4.
+
+Figure 4: ?e AWA User Interface with a pane (lower right)
+for collecting a feedback response from the user.
+
+To assist the user with understanding sentence and expression
+level annotation, a pop-out pane was provided that defaults to being
+visible when the analysis is displayed, but which can be clicked to
+reduce to a side tab a?er use (?gure 5). To assist with evaluation, we
+also required a way to elicit a response from the user as to whether
+they thought the feedback that was provided on their text was
+useful (see bo?om right of ?gure 4). ?e intention was to compare
+student responses via this mechanism with evidence of changes in
+subsequent dra?s.
+
+Figure 5: ?e UI elements used by sentence and expression
+level feedback
+
+4.2.2 User Interface Elements. A key factor in the UI design was
+how the theoretical foundations and their analytics expressions
+were to be made visible to the user, and the extent to which they
+might be helpful and useable for actionable feedback.
+
+Sentence annotation was impacted to the greatest extent by
+changes to the underlying analytics. ?e framework (§2), was sim-
+pli?ed to ensure that it was easy to comprehend, and the labels
+derived in the process of developing the analytics (Context, Chal-
+lenge, and Change) proved to be very ambiguous when presented
+to users. ?e previous version of AWA used named labels in the
+sentences, and our original intention was to maintain this style.
+However, the ambiguity caused signi?cant problems in terms of our
+di?erent users who might perceive the feedback and take action
+on it. A?er much deliberation, we se?led on removing the names
+altogether from the UI, and se?led on single sentence descriptions
+represented by the blue square, pink circle, and green triangle, as
+shown in ?gure 5. ?e ?nal colour and shapes of the icons were
+chosen to allow for simplicity in the UI while accommodating users
+with colour blindness.
+
+
+
+Reflective Writing Analytics for Actionable Feedback LAK ’17, March 13-17, 2017, Vancouver, BC, Canada
+
+5 STUDENT USE
+Student use of AWA in multiple subjects is an ongoing process with
+each subject having di?erent due dates for their re?ective writing
+assignments. As a result, for a preliminary examination of the data
+we have selected only those students from Pharmacy who have
+used the so?ware at the time of writing this paper (from late August
+to mid October 2016). Although preliminary, this data has provided
+some insights on whether the feedback is actionable for these early
+users of the so?ware. Other subjects involved in the research are
+expected to contribute further to the data during the remainder of
+the spring semester (through to late November).
+
+5.1 ?e Pharmacy Learning Context
+Preparing pharmacy students for the complexities and diversity
+of clinical practice is a consideration with pharmacy educators. A
+possible solution to bridging the theory/practice gap is through re-
+?ective practice [39]. One of the tools utilised to enhance re?ective
+practice is through re?ective writing. Re?ective writing skills are
+paramount for students to think about incidents, their outcomes
+and how this a?ects the health of a patient. In 2016, First year
+Master of Pharmacy students (n=59) were o?ered the use of AWA
+to assist with improving their re?ective writing skills. ?e Masters
+of Pharmacy Course is a 2-year intensive program which embeds
+re?ective activities in the 520 hours of clinical placements. One
+aspect of the weekly re?ective activities involve students writing
+re?ective statements and uploading these to their e-portfolios. ?is
+process is integrated into the course to prepare students to make
+be?er informed decisions and clinical judgements for future prac-
+tice. For example, students are required to: (1) re?ect back on a
+weekly incident; (2) view the incident from di?erent perspectives
+(eg from the perspective of the patient, carer, pharmacist, and/or
+other health professional); (3) write about what was learned, what
+challenges they undertook, what strategies they utilised to over-
+come these challenges; (4) recognise the strengths and skills they
+have, how these could further be developed, how their behaviour or
+approach could be changed to enhance a future similar event; and
+(5) identify shi?s in their beliefs and a?itudes which have resulted.
+
+5.2 Preliminary results
+Data was collected from the student use of AWA in Pharmacy, and
+their responses represent a snapshot at the time of writing the
+paper.
+
+Total students: 59
+AWA users: 30 50.8%
+Total posts: 120
+
+Posts with response: 63 52.5%
+Responses feedback helpful 54 85.7%
+
+Table 1: Usage and feedback data
+
+Early discussions between the students and their teacher about
+their use of AWA anecdotally indicated that it “allowed them to
+use the tool in their own time” . . . “as o?en as they want to further
+critique their re?ective writing, learn from the tags and change
+
+their statements prior to submission”, and “has the potential to
+familiarise us who are new to the area of re?ection and re?ective
+writing skill development.”
+
+More formal responses were collected via the AWA UI. ?e feed-
+back tab in AWA poses the question: “Did you ?nd the feedback
+on your writing helpful?” Students using the so?ware at this early
+stage have generally been positive about its helpfulness with 85.7%
+of feedback responses being ‘yes’ - the feedback on their writing
+was helpful (see table 1 - Note: some students who used AWA
+multiple times provided multiple responses). Of those who gave
+more detailed feedback ratings (see ?gure 6), about half provided a
+neutral rating (some of which could be explained by the fact that
+this was the default in the UI). Of those that made a positive or
+negative choice, the negatives were all just less than neutral (3),
+whereas the positives were an even combination of just positive (5)
+and strongly positive (7).
+
+Figure 6: Pharmacy feedback ratings of AWA. 1 is not help-
+ful and 7 is helpful. 4 is the default.
+
+While we acknowledge that perceptions of helpfulness don’t
+necessarily translate into action, we believe that feedback perceived
+as not helpful would be highly unlikely to result in any action.
+Whereas, positive and neutral feedback leaves the way open for
+action to be taken. ?erefore, we take these results as an early
+promising sign.
+
+5.3 Student comments
+Our cautious optimism was also supported by student comments
+that suggested that it encouraged them to think about action:
+
+I was fascinated by how it works and can see its
+implication in future, to determine which phrases
+need more work/ which can be improved. (Stu-
+dent A)
+It details where I’ve made re?ective statements
+and shows where I can improve as well as add to
+and ?ll in aspects to which I have not con?rmed.
+(Student B)
+Prompted me to follow through with the re?ection
+to the last step of the process - i had wri?en about
+
+
+
+LAK ’17, March 13-17, 2017, Vancouver, BC, Canada A. Gibson et. al.
+
+my thoughts and feelings, discussed challenges,
+but had not followed through with re?ecting on
+how this can lead to change. . . .?e reports also
+direct me to write more personally, using lan-
+guage that evokes emotion, and less descriptively
+(Student C)
+
+A comment by one student indicated that they saw the potential
+for AWA to assist them in improving their grade, and even suggested
+that it should provide a grade:
+
+?is system has allowed me to identify the strengths
+and weaknesses of my re?ection, highlighting on
+what criteria I have addressed and which ones I
+haven’t. I wish there was feedback on how I could
+improve to get full marks and wish this re?ection
+gave a mark at the end. (Student D)
+
+No Pharmacy students le? clearly negative comments. However,
+some early use of the so?ware by students from other subjects
+highlighted a theme in their more negative comments: criticism
+either at what the so?ware did not do, or towards a lack of clarity
+in what needed to change. For example:
+
+Doesn’t elaborate on the features that are lacking
+and o?en they appear there but are not recog-
+nised. Good way of highlighting other points.
+(Student E)
+
+its not clear what needs improving. (Student F)
+and comments are not clear enough (Student G)
+
+I don’t understand what AWA reproach to my
+work. It is said that there isn’t a good balance
+but In the text I can’t see how… not clear (Student
+H)
+
+?is lack of clarity for the student goes to the heart of the ac-
+tionability of the feedback, suggesting that the students want to
+use the feedback to take action, but that it is not clear enough for
+them to do so. However, it is not clear if more data might reveal
+this as a signi?cant issue or whether this was more indicative of
+the immaturity of the platform at the time.
+
+5.4 Evidence of Action
+Of the 30 users who posted text to AWA, 18 users (60%) posted more
+than once. We were interested in whether there was evidence of
+‘action from feedback’ in the writing of these users. We postulated
+that if students were provoked to take action based on the feedback,
+then they would post a new dra? to AWA to check if it addressed
+the feedback.
+
+From those posting more than once, 5 users (27.8%) showed
+evidence of modifying dra?s, and 2 of these users dra?ed more
+than once on the same text. We view this as a positive indicator
+that our objective of actionable feedback can be a?ained. While
+most of the users (13 users, 72.2%) wrote di?erent re?ections for
+their multiple posts, this was not unexpected as the subject requires
+them to write a new re?ection each week. What is di?cult to assess
+with these users is whether feedback on one re?ection was taken
+into account with subsequent re?ections.
+
+With the exception of addition of new information, most dra?
+modi?cations appeared to improve the quality of the re?ection. For
+example:
+
+I made sure to be understanding and not force the
+customer to purchase just for the sake of receiving
+a sale (ethics, social responsibility).
+
+was changed to:
+Initially I was confused as to why this would
+be an issue like isn’t it exactly the same thing?
+But for good pharmacy practice, I decided to be
+understanding and not force the customer to pur-
+chase a product just for the sake of receiving a
+sale (ethics, social responsibility).
+
+?e ?rst of these had no sentence tagging, whereas the second
+was tagged with a pink circle (Challenge). Students also changed
+their writing to introduce how they felt about a situation. For
+example:
+
+?is situation didn’t sit well with me.
+was changed to:
+
+?is situation didn’t sit well with me, I felt as it
+these patients didn’t receive the best care possible.
+
+6 DISCUSSION
+6.1 Actionable Feedback
+Our preliminary results from the use by Pharmacy students sug-
+gested that the feedback provided by AWA was helpful and ac-
+tionable. However, we had also received some input from other
+subjects that suggested that the feedback lacked clarity. Although
+this is likely to be resolved through the collection of more data from
+multiple subjects, it raises questions as to whether it is the AWA
+platform that makes the feedback actionable, or whether there are
+other factors outside of the system that contribute to this. For exam-
+ple, the inclusion of teaching on re?ection, and/or the requirement
+to write regular weekly re?ections may assist the students in recog-
+nising the value of the feedback, and help them understand how to
+use it. A subject that has li?le teaching input and only requires a
+single piece of re?ective writing may provide the students with less
+understanding on how to work with the so?ware. Regardless of
+how a subject approaches re?ective writing, we believe that align-
+ment between the analytics and pedagogy is critical. ?e extent to
+which we can determine if this alignment contributes signi?cantly
+to actionable feedback is yet to be found.
+
+6.2 Contextual Feedback
+?rough the discussions with academic partners and the trial of
+AWA with students, we saw an interesting tension emerge between
+general and speci?c feedback. Early in the project, many stake-
+holders suggested that feedback should be as detailed and speci?c
+as possible. While this notion aligns with the educational litera-
+ture on feedback [16], human feedback is always contextualised
+to some extent. We found that the lack of reference to context
+resulted in the rejection of detailed feedback. For example, when
+the same paragraph feedback was provided for many paragraphs in
+the text, stakeholders were less likely to appreciate the relevance
+of the feedback and more likely to criticise the repetitive nature
+
+
+
+Reflective Writing Analytics for Actionable Feedback LAK ’17, March 13-17, 2017, Vancouver, BC, Canada
+
+of it. A contextual approach would mean that comments for one
+paragraph would be made ‘in the context of’ what is stated with
+other paragraphs.
+
+Similarly, some paragraph feedback is more important in certain
+parts of the text than in others. For example, se?ing the context for
+the re?ection can tend to be more descriptive and therefore emotive
+expressions are less important in these sections. An improved
+system of generating feedback would have an ‘awareness’ of these
+contextual interrelationships, and modify the feedback accordingly.
+
+6.3 Modelling Disciplinary Di?erences
+?e current AWA platform is missing another contextual feature,
+and that is the ability to recognise and work with language and
+re?ection style di?erences across disciplines. While we had hoped
+to include some modelling of disciplinary speci?c features in the
+platform, that has not been implemented to date. ?e lack of this
+ability resulted in some signi?cant disagreement between project
+stakeholders with regards to structure and relating to knowledge.
+
+In particular, the Engineering subject required re?ective writing
+that was highly structured, and a business subject required the use
+of citations to show how the students were relating their re?ection
+to the ?elds of existing knowledge. In both of these cases, the re-
+quirements were considered essential for actionable feedback in the
+subjects concerned, but feedback on these features were problem-
+atic for other subjects. While providing discipline speci?c versions
+of AWA might be a short term solution to this issue, in the long
+term it is intractable as there would need to be as many versions
+as there are subject. Instead, we believe that the ability to model
+di?erences within the subject, and allow AWA to make decisions
+according to combinations of models, might allow a future version
+of AWA to accommodate these needs. What we are certain of, is
+that these pedagogical requirements are important for learning,
+and that allowing them to drive the development of the tool holds
+much greater value for learning than changing the learning to ?t
+the tool.
+
+6.4 Algorithmic Accountability and Integrity
+?e ‘transparency’ and ‘accountability’ of algorithms are impor-
+tant qualities if we are to achieve an acceptable level of ‘analytical
+system integrity’ [6] in our educational tools. In the context of this
+project, this required us to understand the relationship between the
+computational representation of a text, and the human experience
+of giving and receiving feedback on writing. ?e computational
+representation concerns the ?ne-grained textual features, and the
+reasoning behind the algorithms for combining, and acting on, dif-
+ferent pa?erns (§3). ?e default educator and student experience
+deploys a much simpler language, provided by the set of constructs
+in the document-centric display in which feedback wrapped around,
+and overlaid onto, the student’s writing (§4). Our assumption is
+that educators should demand a level of accountability that is less
+rigorous than a researcher might demand, but more rigorous than
+a student may demand. ?at being said, we should also expect and
+encourage students to demand accountability to whatever level of
+detail they require, and technically minded students might indeed
+be more demanding than their tutors as their data literacy grows,
+and they are encouraged to re?ect critically how their activity is
+
+tracked in all spheres of their lives [7]. In the previous design it-
+eration of this project [8] we noted that a key ingredient of any
+discussion of ‘accountability’ among design stakeholders is trust:
+“Trust is built through reciprocity, which in learning analytics de-
+sign means ultimately, that you feel you can in?uence the code.” We
+have continued that co-design process in which stakeholders (the
+UTS academics and Academic Literacies expert, and the Xerox com-
+putational linguist) shaped the performance of AWA until they felt
+that it was good enough to pilot with students as an experimental
+application. ?e fact that the design team involves academics who
+trust the tool, because they had the chance to test and give feedback
+on its performance with their own students’ writing, should be a
+source of assurance for students (and indeed other academics con-
+sidering trialling AWA). Ultimately, however, it comes down to the
+student experience of the tool, since many emergent phenomena
+may arise in authentic use. ?e preliminary feedback from students
+reported here, coupled with results from another deployment [18]
+provide encouraging early evidence that students valued AWA, but
+there remains much more to improve.
+
+7 CONCLUSIONS AND FUTUREWORK
+?rough the A3R project we have created a new conceptual frame-
+work for re?ective writing that synthesises the dominant theory.
+We have used a simpli?ed version of this framework to develop
+computational approaches to re?ective writing analysis and in do-
+ing so have created RWA that can be used for feedback to the writer.
+A signi?cant aspect of the research was allowing the pedagogy to
+drive the design, not just of the framework, but of the platform
+architecture as well. A pilot of the so?ware in the subject of phar-
+macy has shown this pedagogical design approach to be successful,
+with a early signs of the feedback being actionable by students.
+
+Strengths of the project include the strong theoretical founda-
+tions of the work, and the maturity of the genre/narrative analysis
+approach and its instantiation in XIP. We believe that the research
+has also shown signi?cant promise and the approach to incorpo-
+rating multiple analytics for the generation of feedback as imple-
+mented in TAP. ?e centrality of actionable feedback, throughout
+the process has also been a signi?cant aspect of the work.
+
+However, we also uncovered a number of weaknesses. We found
+it di?cult to meet the needs of all stakeholders, and the lack of
+data from all participating subjects means that at this point we
+are unable to ascertain the extent to which this has impacted the
+students. Nevertheless, early feedback from students suggested that
+some feedback lacked clarity, and our own analysis showed that in
+order to improve the quality of the feedback, we need methods for
+using contextual information.
+
+?ese weaknesses set an agenda for future work. Firstly, we plan
+to develop over coming months a subject speci?c version of the
+platform for Engineering. We anticipate that this will test some of
+our hypotheses about the need for more speci?c feedback and the
+use of contextual information in the generation of that feedback.
+Secondly, we need to collect much more data from a greater variety
+of disciplines. ?is would allow us to substantiate our preliminary
+?ndings. Finally, while we have shown the potential of designing
+LA for actionable feedback, there is much more work to be done in
+
+
+
+LAK ’17, March 13-17, 2017, Vancouver, BC, Canada A. Gibson et. al.
+
+this space. We expect that ongoing research in RWA will improve
+our ability to provide actionable feedback to students.
+
+ACKNOWLEDGMENTS
+We acknowledge the input of Natalia Nikolova, Walter Jarvis, Alan
+Parr, Andy Leigh, Peter Jones, Jo McKenzie, Rosalie Goldsmith,
+Susan Hoadley, Isabelle Benne?, Sarab Mansoor, Keenan Wilson,
+and Je? Browi?. We also acknowledge Xiaolong (Shawn) Wang for
+the UI so?ware development, and Xerox Research Centre Europe
+(XRCE) for the Xerox Incremental Parser (XIP).
+
+REFERENCES
+[1] S. A??t-Mokhtar, J.-P. . Chanod, and C. Roux. 2002. Robustness beyond shallowness:
+
+incremental deep parsing. Natural Language Engineering 8, 2-3 (6 2002). DOI:
+h?p://dx.doi.org/10.1017/s1351324902002887
+
+[2] Rosanne Birney. 2012. Re?ective Writing: ?antitative Assessment and Identi?ca-
+tion of Linguistic Features. Ph.D. Dissertation. Waterford Institute of Technology.
+
+[3] David Boud and Nancy Falchikov. 2006. Aligning assessment with long-term
+learning. Assessment & Evaluation in Higher Education 31, 4 (8 2006), 399–413.
+DOI:h?p://dx.doi.org/10.1080/02602930600679050
+
+[4] David Boud, Rosemary Keogh, and David Walker. 1985. What is Re?ection in
+Learning? Routledge.
+
+[5] Caroline Brun. 2011. Detecting Opinions Using Deep Syntactic Analysis.. In
+RANLP. 392–398.
+
+[6] Simon Buckingham Shum. 2016. Algorithmic Accountability for Learning Ana-
+lytics.. In Invited Talk, University College London, Institute of Education & London
+Knowledge Lab. h?p://bit.ly/aala2016. h?p://bit.ly/aala2016
+
+[7] Simon Buckingham Shum. 2016. Envisioning Learning Analytics for 21st Century
+Competencies.. In Keynote Address, LASI-Asia 2016: Learning Analytics Summer
+Institute, Seoul. h?p://lasi-asia.org
+
+[8] Simon Buckingham Shum, A?gnes Sa?ndor, Rosalie Goldsmith, Xiaolong Wang,
+Randall Bass, and Mindy McWilliams. 2016. Re?ecting on re?ective writing
+analytics: Assessment challenges and iterative evaluation of a prototype tool.
+In Proceedings of the Sixth International Conference on Learning Analytics &
+Knowledge. ACM, 213–222.
+
+[9] A. Caetano. 2014. De?ning personal re?exivity: A critical reading of Archer’s
+approach. European Journal of Social ?eory 18, 1 (9 2014), 60–75. DOI:h?p:
+//dx.doi.org/10.1177/1368431014549684
+
+[10] Rudi Dallos and Jacqui Stedmon. 2009. 1 Flying over the swampy lowlands: Re-
+?ective and re?exive Practice. Re?ective practice in psychotherapy and counselling
+(2009), 1–22.
+
+[11] John Dewey. 1916. Democracy and education. Courier Corporation.
+[12] Andrew Dillon. 2002. Information architecture in JASIST: Just where did we
+
+come from? Journal of the American society for information science and technology
+(2002).
+
+[13] John Flowerdew. 2015. John Swales’s approach to pedagogy in Genre Analysis:
+A perspective from 25 years on. Journal of English for Academic Purposes 19
+(2015), 102–112.
+
+[14] Andrew Gibson, Kirsty Ki?o, and Peter Bruza. 2016. Towards the Discovery of
+Learner Metacognition From Re?ective Writing. Journal of Learning Analytics 3,
+2 (2016), 22–36.
+
+[15] James E. Gri?n Jr, Gregory F. Lorenz, and David Mitchell. 2010. A study of
+outcomes-oriented student re?ection during internship: ?e integrated, coordi-
+nated, and re?ection based model of learning and experiential education. (2010).
+
+[16] J. Ha?ie and H. Timperley. 2007. ?e Power of Feedback. Review of Educational
+Research 77, 1 (3 2007), 81–112. DOI:h?p://dx.doi.org/10.3102/003465430298487
+
+[17] Neville Ha?on and David Smith. 1995. Re?ection in teacher education: Towards
+de?nition and implementation. Teaching and teacher education 11, 1 (1995),
+33–49.
+
+[18] Simon Knight, Simon Buckingham Shum, Phillipa Ryan, A?gnes Sa?ndor, and Xi-
+aolong Wang. in press. Academic Writing Analytics for Civil Law: Participatory
+Design ?rough Academic and Student Engagement. International Journal of
+Arti?cial Intelligence in Education (in press).
+
+[19] Jasmine Luk. 2008. Assessing teaching practicum re?ections: Distinguishing
+discourse features of the “high” and “low” grade reports. System 36, 4 (12 2008),
+624–641. DOI:h?p://dx.doi.org/10.1016/j.system.2008.04.001
+
+[20] Christopher D. Manning, Mihai Surdeanu, John Bauer, Jenny Rose Finkel, Steven
+Bethard, and David McClosky. 2014. ?e Stanford CoreNLP Natural Language
+Processing Toolkit.. In ACL (System Demonstrations). 55–60.
+
+[21] James Robert Martin and David Rose. 2003. Working with discourse: Meaning
+beyond the clause. Bloomsbury Publishing.
+
+[22] Jack Mezirow. 1990. How critical re?ection triggers transformative learning.
+Fostering critical re?ection in adulthood 1 (1990), 20.
+
+[23] Jennifer A. Moon. 2013. Re?ection in learning and professional development:
+?eory and practice. Routledge.
+
+[24] Chad Morrison, Jill Willis, Leanne Crosswell, and Andrew Gibson. 2014. Turning
+points in narratives of research design: Research innovation stimulating unique
+responses to existing challenges for beginning rural teachers. ?e Journal of
+Educational Enquiry 13, 1 (2014).
+
+[25] David Nicol. 2009. Assessment for learner self-regulation: enhancing achieve-
+ment in the ?rst year using learning technologies. Assessment & Evaluation
+in Higher Education 34, 3 (6 2009), 335–352. DOI:h?p://dx.doi.org/10.1080/
+02602930802255139
+
+[26] Joseph M. Paxton, Leo Ungar, and Joshua D. Greene. 2012. Re?ection and
+reasoning in moral judgment. Cogn Sci 36, 1 (2012), 163–77. DOI:h?p://dx.doi.
+org/10.1111/j.1551-6709.2011.01210.x
+
+[27] Carl Reidsema, Rosalie Goldsmith, and Pam Mort. 2010. Enabling the re?ective
+practitioner in engineering design courses. In 2nd International Conference on
+Design Education (ConnectED2010). ?e University of New South Wales.
+
+[28] Mary Ryan. 1988. ?e teachable moment: ?e Washington center internship
+program. New Directions for Teaching and Learning 1988, 35 (1988), 39–47.
+
+[29] Mary Ryan. 2014. Re?exive writers: Re-thinking writing development and
+assessment in schools. Assessing Writing 22 (10 2014), 60–74. DOI:h?p://dx.doi.
+org/10.1016/j.asw.2014.08.002
+
+[30] Mary Ryan and Michael Ryan. 2013. ?eorising a model for teaching and as-
+sessing re?ective learning in higher education. Higher Education Research &
+Development 32, 2 (2013), 244–257.
+
+[31] D. Royce Sadler. 1989. Formative assessment and the design of instructional
+systems. Instructional science 18, 2 (1989), 119–144.
+
+[32] John Sandars. 2009. ?e use of re?ection in medical education: AMEE Guide
+No. 44. Medical Teacher 31, 8 (1 2009), 685–695. DOI:h?p://dx.doi.org/10.1080/
+01421590903050374
+
+[33] A?gnes Sa?ndor. 2007. Modeling metadiscourse conveying the author’s rhetorical
+strategy in biomedical research abstracts. Revue franc?aise de linguistique applique?e
+12, 2 (2007), 97–108.
+
+[34] A. Scho?n Donald. 1983. ?e re?ective practitioner: How professionals think in
+action. (1983).
+
+[35] Duygu Simsek, Simon Buckingham Shum, Agnes Sandor, Anna De Liddo, and Re-
+becca Ferguson. 2013. XIP Dashboard: visual analytics from automated rhetorical
+parsing of scienti?c metadiscourse. (2013).
+
+[36] Peter AC Smith. 2001. Action learning and re?ective practice in project environ-
+ments that are related to leadership development. Management Learning 32, 1
+(2001), 31–48.
+
+[37] Frederick Steier. 1991. Re?exivity and Methodology: An Ecological Construc-
+tionism. In Research and re?exivity. London, 257.
+
+[38] John Swales. 1990. Genre analysis: English in academic and research se?ings.
+Cambridge University Press.
+
+[39] Cherie Tsingos, Sinthia Bosnic-Anticevich, John M. Lonie, and Lorraine Smith.
+2015. A Model for Assessing Re?ective Practices in Pharmacy Education. Am J
+Pharm Educ 79, 8 (10 2015), 124. DOI:h?p://dx.doi.org/10.5688/ajpe798124
+
+[40] Cherie Tsingos-Lucas, Sinthia Bosnic-Anticevich, and Lorraine Smith. 2016. A
+Retrospective Study on Students’ and Teachers’ Perceptions of the Re?ective
+Ability Clinical Assessment. Am J Pharm Educ 80, 6 (8 2016), 101. DOI:h?p:
+//dx.doi.org/10.5688/ajpe806101
+
+[41] Linda Valli. 1997. Listening to other voices: A description of teacher re?ection
+in the United States. Peabody Journal of Education 72, 1 (1 1997), 67–88. DOI:
+h?p://dx.doi.org/10.1207/s15327930pje7201 4
+
+[42] Max van Manen. 1995. On the Epistemology of Re?ective Practice. Teachers and
+Teaching 1, 1 (3 1995), 33–50. DOI:h?p://dx.doi.org/10.1080/1354060950010104
+
+[43] Amy Beth Warriner, Victor Kuperman, and Marc Brysbaert. 2013. Norms of
+valence, arousal, and dominance for 13,915 English lemmas. Behavior research
+methods 45, 4 (2013), 1191–1207.
+
+[44] Frances KY Wong, David Kember, Lore?a YF Chung, and Louisa Yan CertEd.
+1995. Assessing the level of student re?ection from re?ective journals. Journal
+of advanced nursing 22, 1 (1995), 48–57.
+
+http://dx.doi.org/10.1017/s1351324902002887
+http://dx.doi.org/10.1080/02602930600679050
+http://bit.ly/aala2016
+http://lasi-asia.org
+http://dx.doi.org/10.1177/1368431014549684
+http://dx.doi.org/10.1177/1368431014549684
+http://dx.doi.org/10.3102/003465430298487
+http://dx.doi.org/10.1016/j.system.2008.04.001
+http://dx.doi.org/10.1080/02602930802255139
+http://dx.doi.org/10.1080/02602930802255139
+http://dx.doi.org/10.1111/j.1551-6709.2011.01210.x
+http://dx.doi.org/10.1111/j.1551-6709.2011.01210.x
+http://dx.doi.org/10.1016/j.asw.2014.08.002
+http://dx.doi.org/10.1016/j.asw.2014.08.002
+http://dx.doi.org/10.1080/01421590903050374
+http://dx.doi.org/10.1080/01421590903050374
+http://dx.doi.org/10.5688/ajpe798124
+http://dx.doi.org/10.5688/ajpe806101
+http://dx.doi.org/10.5688/ajpe806101
+http://dx.doi.org/10.1207/s15327930pje7201_4
+http://dx.doi.org/10.1080/1354060950010104
+
+	Abstract
+	1 Introduction
+	1.1 The Project
+	1.2 Participation
+	1.3 Approach
+
+	2 Theoretical Framework
+	2.1 Reflective Writing
+	2.2 Student Writing Analysis
+	2.3 Simplification
+
+	3 Reflective Rhetorical Moves
+	3.1 The concept-matching analysis framework
+	3.2 Implementation in XIP
+
+	4 Actionable Feedback
+	4.1 Platform Architecture
+	4.2 User Experience
+
+	5 Student Use
+	5.1 The Pharmacy Learning Context
+	5.2 Preliminary results
+	5.3 Student comments
+	5.4 Evidence of Action
+
+	6 Discussion
+	6.1 Actionable Feedback
+	6.2 Contextual Feedback
+	6.3 Modelling Disciplinary Differences
+	6.4 Algorithmic Accountability and Integrity
+
+	7 Conclusions and Future work
+	Acknowledgments
+	References
+
+

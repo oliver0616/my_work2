@@ -1,0 +1,234 @@
+
+Using Item Response Theory to Generate an Item Pool for 
+an E-Learning-System
+
+ 
+M. Schweighart 
+
+Department of Sociology 
+P.O. Box 8010 
+
+Austria 
+markus.schweighart@uni-graz.at 
+
+ 
+
+ABSTRACT 
+This paper1 demonstrates how the application of item response 
+theory yields useful item characteristics, which further can be 
+the foundation of item pools and therefore adaptive educational 
+software to come.   
+
+CCS CONCEPTS 
+• Applied computing ? Interactive learning environ-
+ments; • Applied computing ? E-learning; • Information 
+systems ? Database performance evaluation   
+
+KEYWORDS 
+Learning Analytics; Big Data Analysis; Item Response Theory; 
+Item Pool; Adaptive Learning; Evaluation; 
+
+1 INTRODUCTION 
+In foreign language learning the creation of test items on various 
+levels of difficulty for different domains of language competence 
+(i.e. reading, listening, grammar, etc.) is a constant challenge. 
+The difficulty of learning content is crucial for student motiva-
+tion and efficacy of learning. Student’s performance in tests is 
+associated with test-taking effort and boredom, which on their 
+part strongly depend on the fit of individual ability and test 
+difficulty. If the test difficulty is too high, students tend to put 
+less effort in the task and have a higher chance of getting dis-
+tracted, which further leads to biased test results for these chil-
+dren [1]. If test items are too easy, learners occasionally get 
+bored [5]. To build well-balanced item sets is another challenge. 
+But as students’ personalities are individual, different and con-
+stantly evolving, so are their abilities. Hence, no one-test-fits-all-
+model can meet the numerous needs. Yet, the fit of the individual 
+ability and the difficulty of the presented content still remains 
+the key task. The ability of experts to estimate such item-
+difficulties is contested, particularly when it comes to guessing 
+the proportion of correct answers [4]. Therefore empirical based 
+alternatives are sought. As educational software usage and data 
+
+                                                                 
+1Permission to make digital or hard copies of part or all of this work for personal or 
+classroom use is granted without fee provided that copies are not made or distrib-
+uted for profit or commercial advantage and that copies bear this notice and the full 
+citation on the first page. Copyrights for third-party components of this work must 
+be honored. For all other uses, contact the Owner/Author. 
+Copyright is held by the owner/author(s). 
+LAK '17, March 13-17, 2017, Vancouver, BC, Canada 
+ACM 978-1-4503-4870-6/17/03. 
+http://dx.doi.org/10.1145/3027385.3029466 
+
+storage capacities expand and analyzing methods improve, new 
+possibilities of determining item difficulties in an effective, none-
+theless accurate way arise. Using item response theory is one 
+promising approach in this respect. 
+
+The present study follows this path and applies an item response 
+theory model on data of learning software for foreign English 
+language learning. The goal is to go beyond simple descriptive 
+statistics and get more detailed and elaborated information on 
+items and users via latent trait models, which can serve addi-
+tionally as the basis of an item pool and therefore adaptive soft-
+ware to come. The results will further be compared for different 
+domains of language competence and limitations and prospects 
+will be discussed. 
+
+2 APPROACH 
+The analyzed data stems from the MORE! Cyberhomework 
+software that operates on the e-zone online platform, which 
+itself is provided by the Austrian school book publisher Helbling. 
+The MORE! Cyberhomework data at hand has been restricted to 
+5th grade results for clarity reasons, but will be expanded later 
+on. However, it includes some 40 million results and roughly 350 
+different Items. 
+
+As mentioned above, models based on the item response theory 
+(IRT) are applied to the current data. In contrast to classical test 
+theory in item response theory item characteristics and ability of 
+the users are computed via maximum likelihood equation [2]. 
+One assumption in IRT is that there is a unidimensional trait of a 
+user that defines the ability of this person to solve items of a 
+specific difficulty – IRT is therefore also known as latent trait 
+theory. As there are different domains of competence of lan-
+guage learning covered by the software, separate IRT-models 
+have been applied. Difficulties occur due to the fact that some of 
+the domains are at least partly intertwined. Certain vocabulary 
+knowledge is for example essential for understanding text or 
+audio inputs in reading respectively listening exercises. So in a 
+first step IRT-models have been applied for grammar and vocab-
+ulary items only. 
+
+In the applied two (item-) parameter latent trait model there are 
+two item features – difficulty and discrimination. Additionally, 
+each individual gets an ability-score, depending on not just how 
+many but also which items got solved correctly. Whereas diffi-
+culty informs about the probability that a specific item gets 
+correctly solved by a person with average ability, discrimination 
+tells if higher ability levels consistently result in higher probabil-
+
+mailto:markus.schweighart@uni-graz.at
+http://dx.doi.org/10.1145/3027385.3029466
+
+
+ities of solving the item. If the discrimination parameter is 0, all 
+students have the same chance to get the item right – whatever 
+their individual level of ability is. The higher the discrimination 
+parameter, the better the item discriminates. Difficulty corre-
+sponds with the required ability level for a 50% probability of 
+solving the item correctly. Negative difficulty means easy, posi-
+tive difficulty rather hard items. 
+
+One Parameter IRT models were already utilized as one pillar of 
+adaptive e-learning designs in a few cases [3]. There is less evi-
+dence of more complex IRT models with more than one item 
+parameter in learning analytics. The most frequently reason put 
+forward for the decision against such models is the need of a 
+large number of anchoring cases (users with results for every 
+single item) in order to get valid results. This was a problem for 
+the current data base too. To avoid missing out on the promising 
+discrimination parameter only items with more than 10,000 
+results had been used for the IRT-models, which turned out to be 
+true for approximately 80 % of all items. 
+
+3 RESULTS 
+The results suggest that although there is a strong relationship 
+between mean item scores and the IRT difficulty parameter (r = 
+.710, p < .01) there are deviations. These occur consistently in 
+cases with very low discrimination parameters. A qualitative 
+inspection of these items reveals that most of them indicate 
+item-based problems, such as very strict spelling requirements or 
+a lack of clarity in question design. This holds true for both 
+grammar and vocabulary items. 
+
+ 
+
+Figure 1. IRT Parameter for Grammar Items 
+ 
+Figure 1 shows the distribution of difficulty and discrimination 
+parameters for MORE! 1 grammar items. The average difficulty 
+level is rather easy as most of the items have negative difficulty 
+values. Concerning the discrimination parameter there is a con-
+siderable amount of good discriminating items (> 1.5), ranging 
+from a difficulty of -4 to -1. Those items are particularly interest-
+ing for the design of assessment tests, since they can serve as 
+
+decent classifiers. Descriptive analysis of items for higher levels 
+of education (MORE! 2-4) suggest that those items cover a wider 
+range of difficulty. Further analysis will be employed. 
+
+4 DISCUSSION 
+Two main results can be highlighted. First, a systematic exami-
+nation of the items based on the combined parameters of the 
+latent trait model can be helpful in order to improve the item 
+design. Especially low discrimination parameters indicate prob-
+lematic items that need revision. Second, the collected parameter 
+information can be the foundation of an empirically validated 
+item pool that works as a cornerstone of future adaptive learning 
+systems. The computation of item characteristics will be the 
+basis of a semi-automatized evaluation system. New items with 
+sufficient results will be continuously included in the growing 
+item pool. Those items with low discrimination values can be 
+returned to the authors for inspection and revision. Items that 
+discriminate well can on the other hand be used for efficient 
+assessment tests, which are especially useful for adaptive train-
+ing software and self-directed learning packages. 
+
+The person parameter will further be computed for more lan-
+guage domains which will lead to ability levels for each student 
+in different domains. A student can for example be good at vo-
+cabulary but not as good with grammar and listening tasks. 
+Based on that, a cluster analysis can be applied to identify sever-
+al types of students. Specific sequences of exercises along with 
+proper recommendations can be provided in order to foster 
+successful learning processes. 
+
+5 ACKNOWLEDGEMENT 
+This work was realized in the course of the interdisciplinary 
+project QualiLeso that is funded by the Austrian Research Pro-
+motion Agency (FFG). Thereby the Department of Sociology of the 
+University of Graz cooperates with the business partner Wohlhart 
+Learning Software in order to establish a quality management 
+system that includes learning analytics elements. 
+
+6 REFERENCES 
+[1] 
+ 
+ 
+ 
+[2] 
+ 
+ 
+[3] 
+ 
+ 
+ 
+[4] 
+ 
+ 
+ 
+[5] 
+
+Asseburg, R., and Frey, A. 2013. Too hard, too easy, or just 
+right? The relationship between effort or boredom and  
+ability-difficulty fit. Psychological Test and Assessment 
+Modeling, 55(1), 92-104. 
+Baker, F. B. 2003. The basics of item response theory. Univer-
+sity of Maryland, College Park, MD: ERIC Clearinghouse on 
+Assessment and Evaluation. 1-172. 
+Chen, C. M., and Chung, C. J. 2008. Personalized mobile 
+English vocabulary learning system based on item response 
+theory and learning memory cycle. Computers & Educa-
+tion, 51(2), 624-645. 
+Impara, J. C., and Plake, B. S. 1998. Teachers' ability to esti-
+mate item difficulty: A test of the assumptions in the Angoff 
+standard setting method. Journal of Educational Measure-
+ment, 35(1), 69-81. 
+Keller, J., and Suzuki, K. 2004. Learner motivation and e-
+learning design: A multinationally validated process. Journal 
+of educational Media, 29(3), 229-239. 
+
+
+

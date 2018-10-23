@@ -1,0 +1,170 @@
+-TIT Encoding
+
+@article{potdar2017comparative,
+  title={A Comparative Study of Categorical Variable Encoding Techniques for Neural Network Classifiers},
+  author={Potdar, Kedar and Pardawala, T and Pai, C},
+  journal={International Journal of Computer Applications},
+  volume={175},
+  number={4},
+  pages={7--9},
+  year={2017},
+  abstract={In classification analysis, the dependent variable is frequently influenced not only by ratio scale variables, but also by qualitative (nominal scale) variables. Machine Learning algorithms accept only numerical inputs, hence, it is necessary to encode these categorical variables into numerical values using encoding techniques. This paper presents a comparative study of seven categorical variable encoding techniques to be used for classification using Artificial Neural Networks on a categorical dataset. The Car Evaluation dataset provided by UCI is used for training. Results show that the data encoded with Sum Coding and Backward Difference Coding technique give highest accuracy as compared to the data pre-processed by rest of the techniques.}
+}
+
+-TIT Neural network model, multilayer perceptron
+
+@article{hornik1991approximation,
+  title={Approximation capabilities of multilayer feedforward networks},
+  author={Hornik, Kurt},
+  journal={Neural networks},
+  volume={4},
+  number={2},
+  pages={251--257},
+  year={1991},
+  publisher={Elsevier}
+  abstract={We show that standard multilayer feedforward networks with as few as a single hidden layer and
+arbitrary bounded and nonconstant activation function are universal approximators with respect to V(p.) performance
+criteria, for arbitrary finite input environment measures Jl., provided only that sufficiently many hidden
+units are available. If the activation function is continuous, bounded and nonconstant, then continuous mappings
+can be learned uniformly over compact input sets. We also give very general conditions ensuring that networks
+with sufficiently smooth activation functions are capable of arbitrarily accurate approximation to a function and
+its derivatives.}
+}
+
+@article{hornik1989multilayer,
+  title={Multilayer feedforward networks are universal approximators},
+  author={Hornik, Kurt and Stinchcombe, Maxwell and White, Halbert},
+  journal={Neural networks},
+  volume={2},
+  number={5},
+  pages={359--366},
+  year={1989},
+  publisher={Elsevier},
+  abstract={is paper rigorously establishes thut standard rnultiluyer feedforward networks with as f&v us one hidden layer using arbitrary squashing functions ure capable of upproximating uny Bore1 measurable function from one finite dimensional space to another to any desired degree of uccuracy, provided sujficirntly muny hidden units are available. In this sense, multilayer feedforward networks are u class of universul rlpproximators}
+}
+
+-TIT ReLU
+
+@article{DBLP:journals/corr/abs-1803-08375,
+  author    = {Abien Fred Agarap},
+  title     = {Deep Learning using Rectified Linear Units (ReLU)},
+  journal   = {CoRR},
+  volume    = {abs/1803.08375},
+  year      = {2018},
+  url       = {http://arxiv.org/abs/1803.08375},
+  archivePrefix = {arXiv},
+  eprint    = {1803.08375},
+  timestamp = {Wed, 11 Apr 2018 11:12:46 +0200},
+  biburl    = {https://dblp.org/rec/bib/journals/corr/abs-1803-08375},
+  bibsource = {dblp computer science bibliography, https://dblp.org},
+  abstract = {Weintroducetheuseofrectifiedlinearunits(ReLU)astheclassificationfunctioninadeepneuralnetwork(DNN).Conventionally, ReLU is used as an activation function in DNNs, with Softmax functionastheirclassificationfunction.However,therehavebeen severalstudiesonusingaclassificationfunctionotherthanSoftmax, and this study is an addition to those. We accomplish this by taking the activation of the penultimate layer hn-1 in a neural network, then multiply it by weight parameters ? to get the rawscoresoi.Afterwards,wethresholdtherawscoresoi by0,i.e. f(o) = max(0,oi), where f(o)is the ReLU function. We provide classpredictions ˆ y throughargmaxfunction,i.e.argmax f(x).}
+}
+
+-TIT Cross-Entropy
+
+@inproceedings{Mannor:2005:CEM:1102351.1102422,
+ author = {Mannor, Shie and Peleg, Dori and Rubinstein, Reuven},
+ title = {The Cross Entropy Method for Classification},
+ booktitle = {Proceedings of the 22Nd International Conference on Machine Learning},
+ series = {ICML '05},
+ year = {2005},
+ isbn = {1-59593-180-5},
+ location = {Bonn, Germany},
+ pages = {561--568},
+ numpages = {8},
+ url = {http://doi.acm.org/10.1145/1102351.1102422},
+ doi = {10.1145/1102351.1102422},
+ acmid = {1102422},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+ abstract = {We consider support vector machines for binary classi?cation. As opposed to most approaches we use the number of support vectors (the “L0 norm”) as a regularizing term instead of the L1 or L2 norms. In order to solve the optimization problem we use the cross entropy method to search over the possible sets of support vectors. The algorithm consists of solving a sequence of e?cient linear programs. We report experiments where our method produces generalization errors that are similar to support vector machines, while using a considerably smaller number of support vectors.}
+}
+
+-TIT AdamOptimizer
+
+@article{DBLP:journals/corr/KingmaB14,
+  author    = {Diederik P. Kingma and
+               Jimmy Ba},
+  title     = {Adam: Method for Stochastic Optimization},
+  journal   = {CoRR},
+  volume    = {abs/1412.6980},
+  year      = {2014},
+  url       = {http://arxiv.org/abs/1412.6980},
+  archivePrefix = {arXiv},
+  eprint    = {1412.6980},
+  timestamp = {Wed, 07 Jun 2017 14:40:52 +0200},
+  biburl    = {https://dblp.org/rec/bib/journals/corr/KingmaB14},
+  bibsource = {dblp computer science bibliography, https://dblp.org},
+  abstract = {We introduce Adam, an algorithm for ?rst-order gradient-based optimization of stochastic objective functions, based on adaptive estimates of lower-order moments. The method is straightforward to implement, is computationally ef?cient, haslittlememoryrequirements,isinvarianttodiagonalrescalingofthegradients, and is well suited for problems that are large in terms of data and/or parameters. The method is also appropriate for non-stationary objectives and problems with very noisy and/or sparse gradients. The hyper-parameters have intuitive interpretationsandtypicallyrequirelittletuning. Someconnectionstorelatedalgorithms, on which Adam was inspired, are discussed. We also analyze the theoretical convergence properties of the algorithm and provide a regret bound on the convergence rate that is comparable to the best known results under the online convex optimization framework. Empirical results demonstrate that Adam works well in practiceandcomparesfavorablytootherstochasticoptimizationmethods. Finally, we discuss AdaMax, a variant of Adam based on the in?nity norm.}
+}
+
+-TIT Overfitting
+
+@article{DBLP:journals/corr/abs-1207-0580,
+  author    = {Geoffrey E. Hinton and
+               Nitish Srivastava and
+               Alex Krizhevsky and
+               Ilya Sutskever and
+               Ruslan Salakhutdinov},
+  title     = {Improving neural networks by preventing co-adaptation of feature detectors},
+  journal   = {CoRR},
+  volume    = {abs/1207.0580},
+  year      = {2012},
+  url       = {http://arxiv.org/abs/1207.0580},
+  archivePrefix = {arXiv},
+  eprint    = {1207.0580},
+  timestamp = {Wed, 07 Jun 2017 14:40:12 +0200},
+  biburl    = {https://dblp.org/rec/bib/journals/corr/abs-1207-0580},
+  bibsource = {dblp computer science bibliography, https://dblp.org},
+  abstract = {When a large feedforward neural network is trained on a small training set, ittypicallyperformspoorlyonheld-outtestdata. This“over?tting”isgreatly reduced by randomly omitting half of the feature detectors on each training case. Thispreventscomplexco-adaptationsinwhichafeaturedetectorisonly helpful in the context of several other speci?c feature detectors. Instead, each neuron learns to detect a feature that is generally helpful for producing the correct answer given the combinatorially large variety of internal contexts in which it must operate. Random “dropout” gives big improvements on many benchmarktasksandsetsnewrecordsforspeechandobjectrecognition.}
+}
+
+@article{srivastava2014dropout,
+  title={Dropout: a simple way to prevent neural networks from overfitting},
+  author={Srivastava, Nitish and Hinton, Geoffrey and Krizhevsky, Alex and Sutskever, Ilya and Salakhutdinov, Ruslan},
+  journal={The Journal of Machine Learning Research},
+  volume={15},
+  number={1},
+  pages={1929--1958},
+  year={2014},
+  publisher={JMLR. org},
+  abstract = {Deep neural nets with a large number of parameters are very powerful machine learning systems. However, over?tting is a serious problem in such networks. Large networks are also slow to use, making it di?cult to deal with over?tting by combining the predictions of many di?erent large neural nets at test time. Dropout is a technique for addressing this problem. The key idea is to randomly drop units (along with their connections) from the neural network during training. This prevents units from co-adapting too much. During training, dropout samples from an exponential number of di?erent “thinned” networks. At test time, it is easy to approximate the e?ect of averaging the predictions of all these thinned networks by simply using a single unthinned network that has smaller weights. This signi?cantly reduces over?tting and gives major improvements over other regularization methods. We show that dropout improves the performance of neural networks on supervised learning tasks in vision, speech recognition, document classi?cation and computational biology, obtaining state-of-the-art results on many benchmark data sets.}
+}
+
+-TIT backgrounds
+@inproceedings{Schmid:1994:PTN:991886.991915,
+ author = {Schmid, Helmut},
+ title = {Part-of-speech Tagging with Neural Networks},
+ booktitle = {Proceedings of the 15th Conference on Computational Linguistics - Volume 1},
+ series = {COLING '94},
+ year = {1994},
+ location = {Kyoto, Japan},
+ pages = {172--176},
+ numpages = {5},
+ url = {https://doi.org/10.3115/991886.991915},
+ doi = {10.3115/991886.991915},
+ acmid = {991915},
+ publisher = {Association for Computational Linguistics},
+ address = {Stroudsburg, PA, USA},
+ abstract = {Text corpora which are tagged with part-of-speech in- formation are useful in many areas of linguistic re- search. In this paper, a new part-of-speech tagging method hased on neural networks (Net-Tagger) is pre- sented and its performance is compared to that of a llMM-tagger (Cutting et al., 1992) and a trigram- based tagger (Kempe, 1993). It is shown that the Net-Tagger performs as well as the trigram-based tag- ger and better than the iIMM-tagger.}
+}
+
+@article{DBLP:journals/corr/WangQSHZ15,
+  author    = {Peilu Wang and
+               Yao Qian and
+               Frank K. Soong and
+               Lei He and
+               Hai Zhao},
+  title     = {Part-of-Speech Tagging with Bidirectional Long Short-Term Memory Recurrent
+               Neural Network},
+  journal   = {CoRR},
+  volume    = {abs/1510.06168},
+  year      = {2015},
+  url       = {http://arxiv.org/abs/1510.06168},
+  archivePrefix = {arXiv},
+  eprint    = {1510.06168},
+  timestamp = {Wed, 07 Jun 2017 14:42:12 +0200},
+  biburl    = {https://dblp.org/rec/bib/journals/corr/WangQSHZ15},
+  bibsource = {dblp computer science bibliography, https://dblp.org},
+  abstract  = {Bidirectional Long Short-Term Memory Recurrent Neural Network (BLSTMRNN) has been shown to be very effective for tagging sequential data, e.g. speech utterances or handwritten documents. While word embedding has been demoed as a powerful representation for characterizing the statistical properties of natural language. In this study, we propose to use BLSTM-RNN with word embedding for part-of-speech (POS) tagging task. When tested on Penn Treebank WSJ test set, a state-of-the-art performance of 97.40 tagging accuracy is achieved. Without using morphological features, this approach can also achieve a good performance comparable with the Stanford POS tagger.}
+}

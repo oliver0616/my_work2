@@ -1,0 +1,483 @@
+
+Nanogenetic Learning Analytics: Illuminating Student
+Learning Pathways in an Online Fraction Game
+
+Taylor Martin
+Ani Aghababyan
+
+Jay Pfaffman
+Jenna Olsen
+
+Utah State University
+Department of ITLS
+2830 Old Main Hill
+
+Logan, UT 84322-2830
++1-435-797-0814
+
+taylormartin@usu.edu
+
+Stephanie Baker
+Philip Janisiewicz
+
+University of Texas at Austin
+Department of Curriculum and
+
+Instruction
+1 University Station D570
+
+Austin, TX 78712
++1-956-536-4847
+
+speacock@math.utexas.edu
+pjanisiewicz@gmail.com
+
+Carmen Petrick Smith
+The University of Vermont
+
+College of Education
+411 Waterman
+
+Burlington, VT 05405
++1-802-656-1411
+
+carmen.smith@uvm.edu
+
+Rachel Phillips
+University of Washington
+
+Department of Educational
+Psychology and Learning
+
+Sciences
+Seattle, WA 98105
++1-206-616-4480
+
+rachelsp@uw.edu
+
+ABSTRACT
+A working understanding of fractions is critical to student
+success in high school and college math. Therefore, an un-
+derstanding of the learning pathways that lead students to
+this working understanding is important for educators to
+provide optimal learning environments for their students.
+We propose the use of microgenetic analysis techniques in-
+cluding data mining and visualizations to inform our under-
+standing of the process by which students learn fractions in
+an online game environment. These techniques help identify
+important variables and classification algorithms to group
+students by their learning trajectories.
+
+Categories and Subject Descriptors
+K.3 [Computers and Education]: General
+
+General Terms
+Measurement, Documentation, Performance, Experimenta-
+tion.
+
+Permission to make digital or hard copies of all or part of this work for
+personal or classroom use is granted without fee provided that copies are
+not made or distributed for profit or commercial advantage and that copies
+bear this notice and the full citation on the first page. To copy otherwise, to
+republish, to post on servers or to redistribute to lists, requires prior specific
+permission and/or a fee.
+LAK’13 April 08 - 12 2013, Leuven, Belgium
+Copyright 2013 ACM 978-1-4503-1785-6/13/04 ...$15.00.
+
+Keywords
+Measurement, Documentation, Performance, Experimenta-
+tion. Keywords Microgenetic research, process analysis, math-
+ematics education; rational numbers; fractions; games
+
+1. INTRODUCTION
+Fractions have been described as an extremely challeng-
+
+ing part of mathematics curriculum [5, 2, 10, 15, 12]. An
+understanding of fractions is critical to success in Algebra
+[15], a gatekeeper course to higher education [4, 16, 19].
+
+A variety of models have been suggested to explain how
+students learn fractions. In our analysis, we draw on the
+splitting learning model [12, 3, 13, 16]. In this model, stu-
+dents learn fractions by first using their judgments of rela-
+tive magnitude and their ability to split a whole into equal
+parts. In this way, students develop an understanding of ra-
+tional numbers through creating equal divisions of a whole
+part and considering the numerical values for these dividing
+splits (see figure 1). Splitting is generally considered to be
+the most promising concept for teaching rational numbers
+to students because it draws on children’s intuitive under-
+standing of halving and because it is consistent with more
+advanced rational number concepts [3, 9, 14, 16, 17].
+
+Microgenetic methods allow the discovery of learning pro-
+cesses and examination of how those processes relate to
+learning outcomes (e.g., [8, 18]). In classic microgenetic
+studies, researchers examined how participants’ strategies
+and understanding of tasks changed at the problem level
+over the course of several interviews during critical peri-
+ods of change for learning the specific content under study
+[8, 18]. Rather than relying on pre- and post-test perfor-
+mance to determine student learning, microgenetic analy-
+
+165
+
+
+
+Figure 1: A student splits a rectangle in half, then
+splits each half in half again, shades one of the re-
+sulting pieces, and concludes that it is one fourth of
+the rectangle.
+
+sis has traditionally documented learning processes through
+video recordings and human coding—a time consuming pro-
+cess.
+
+We use learning analytics methods to examine how el-
+ementary students learn in Refraction [1]1, an online game
+designed to teach fractions using the splitting or equal parti-
+tioning model. The use of online game environments like Re-
+fraction simplifies and expands the data collection and anal-
+ysis process. We were able to collect data at the keystroke
+level on students’ play activity. As we analyze this data,
+we can expose patterns in students’ learning processes at a
+much finer grain size that was possible before, giving rise to
+the term nanogenetic analysis [8, 20].
+
+2. METHODS
+In this study, ten and eleven year olds (N = 24; 13 boys,
+
+11 girls) played Refraction over a period of approximately
+seven weeks in their classrooms. Refraction levels require
+users to solve fraction problems using 1/3 and 1/2“splitters”
+to divide a laser beam into the required pieces. Figure 2
+shows an example of a level solution.
+
+3. VISUALIZING STUDENTS’ LEARNING
+PROCESS
+
+As a first step in examining our log data to understand
+learning process, we created visualizations of the pathway
+each student took through each level. Because we wanted
+to understand students’ learning process in regard to frac-
+tions, we focused only on the moves that had a mathemati-
+cal impact on the level (ignoring those moves which merely
+changed the direction of the laser). To illustrate how we vi-
+sualized students’ mathematical progressions, we will use a
+level that asked players to use 1/3 and 1/2 splitters to power
+a 1/6 and a 1/9 ship.
+
+We started by creating representations of the state of the
+game space after each mathematical move. Figure 3 shows
+the initial state for each student; the whole laser beam aimed
+off the screen into space. The yellow circle represents the
+laser source, and the black circle indicates that the laser
+goes out in space without striking either target ship.
+
+Figure 3: The initial state in an individual visual-
+ization.
+
+1http://games.cs.washington.edu/refraction/
+
+Figure 2: Steps for solving a level in Refraction.
+As students moved through the levels, the fractions
+became more difficult to solve.
+
+As the student adds mathematical moves, the visualiza-
+tion became more complicated. In Figure 4, the student has
+now placed a 1/3 splitter on the laser beam.
+
+Figure 4: A player places a 1/3 splitter on the beam.
+
+Figure 5 shows a student’s progress through an entire
+level. The colors of the arrows shade from blue to red to
+indicate the order of the transitions.
+
+166
+
+
+
+Figure 5: A complete visualization for an individual
+student on a single level.
+
+This student started the level as described above. Then,
+she placed a 1/2 splitter on one of her 1/3 laser beams.
+None of the resulting 1/3 or 1/6 beams hit a ship. Then
+she removed and replaced splitters to end up with the same
+resulting state. Next, she used benders to position one of
+her 1/6 beams so that it hit the 1/6 ship with the correct
+amount (the green diamond at the end of the beam shows
+that she hit the 1/6 ship with the correct amount). Next, she
+placed a 1/3 splitter on the other 1/6 beam and used bender
+to direct one of her resulting 1/18 laser beams into the 1/9
+ship (the red square at the end of the 1/18 beam shows
+that she hit the 1/9 ship with an incorrect amount). Next,
+she removed the 1/3 splitter from the 1/6 beam, placed it
+on one of the 1/3 beams and used benders to direct one of
+the resulting 1/9 beams into the 1/9 ship (the green square
+shows this was accurate). The final state of the level has
+a red border. The color of the border only indicates that
+
+this was the final state and not whether the final state was
+a successful solution for the level.
+
+Comparing visualizations demonstrates differences in how
+students progressed through the same level. For example,
+Figures 5 and 6 both show students working on the 1/6, 1/9
+level.
+
+Figure 6: Visualization of a student’s in-game pre-
+level.
+
+First, we can see that Figure 5 shows a successful attempt,
+while Figure 6 does not. Second, it is noticeable that Fig-
+ure 6 has many more repeated states (and therefore less
+states) than Figure 5.
+
+4. CLASSIFYING STUDENTS’ LEARNING
+PROCESSES
+
+Exploratory data analysis comparing and contrasting vi-
+sualizations of students’ pathways through individual levels
+and across levels helps us see aspects that differ across time
+and across students. The next step in our process has been
+to create variables that capture these aspects in ways that
+allow grouping of students in order to generate categories
+of learning pathways. For the dataset reported on here,
+students’ individual process visualizations showed a variety
+of patterns. However, many of these patterns were either
+(1) not repeated frequently enough in our small sample to
+provide a good basis for grouping, or (2) not meaningful.
+However, one pattern we noticed was that students tended
+to explore the space of the game in different ways. Some
+students seemed to avoid exploration and move quickly to
+solutions, while others seemed to experiment more with dif-
+ferent types of moves. This phenomenon captured our in-
+terest because there is significant debate about the role of
+exploration in learning (e.g., [6, 7, 11]). To begin to un-
+derstand these types of exploration better, we developed a
+coding scheme for transitions and a classification scheme for
+patterns of transitions over time.
+
+4.1 Coding Transitions
+First, we identified each unique transition between states
+
+in the students’ individual process visualization data de-
+scribed above. Then we coded each transition based on
+whether the move added or removed a splitter in a way that
+led the resulting game state to be potentially closer to a
+successful solution or not.
+
+The primary coder created the coding scheme and coded
+all of the transitions. A secondary coder independently
+
+167
+
+
+
+coded one-third of the transitions. The two coders reached
+90% agreement on their transition coding.
+
+4.2 Categorizing Pathways
+Next, we developed a scheme to classify students’ trajec-
+
+tories of transitions over the course of their pre- and post-
+levels. We categorized a student as experimenting with fail-
+ure if he made at least three transitions in a row that added
+potential failure. Similarly, we characterized a student as
+experimenting with success if she made at least three transi-
+tions in a row that added potential success. We also noticed
+that some students did not experiment much, but simply
+solved the problem.
+
+Applying these simple criteria resulted in 3 trajectories:
+
+• Rapid success;
+
+• Experimenting primarily with success;
+
+• Experimenting primarily with failure;
+
+Figures 7-9 show examples of these patterns.
+
+Figure 7: Rapid success.
+
+These patterns are intriguing in that they represent dif-
+ferent ways of exploring the space of the game. However, in
+this small dataset, it is difficult to draw conclusions relating
+type of pattern to outcome measures such as success on a
+level or time to complete a level.
+
+5. CONCLUSIONS AND NEXT STEPS
+In this iteration of creating visualizations and categoriz-
+
+ing pathways of learning, we developed our process of work
+and 1) illustrated that students can develop better frac-
+tion understanding using the splitting construct and 2) that
+nanogenetic approaches to data analysis do illuminate fine
+grained patterns showing that students explored the space
+of the game in a variety of ways.
+
+Our small sample size and choice of using human coding
+for this iteration of our work were clear limitations. We are
+currently taking several steps to mitigate these limitations.
+
+Figure 8: Experimenting with success.
+
+Figure 9: Experimenting with failure.
+
+In our exploratory analyses, we are developing visualiza-
+tions that make discovery of important variables easier. For
+example, our new visualization scheme shows the entire state
+space of the level as well as the states in that space that
+an individual student progressed through while solving that
+level. This allows us to compare areas of the state space
+across students and for the same student over time more
+easily.
+
+In our work to develop better classification schemes, as
+we see patterns in learning pathways, we are analyzing these
+patterns to generate potential variables of interest such as
+time in state, number of unique states in a level, number of
+repeat moves, and distance between each state and the goal
+state. Using these variables, we are creating classification
+algorithms to group students based on patterns of behavior
+with a new larger dataset (N > 3000). To better under-
+stand splitting, we plan to characterize the development of
+fraction concepts using the individual trajectories through
+the levels, classify students based on how they do splitting,
+
+168
+
+
+
+and investigate whether different patterns are more or less
+associated with success.
+
+6. ACKNOWLEDGMENTS
+This material is based on work supported by the Bill &
+
+Melinda Gates Foundation, the Defense Advanced Research
+Projects Administration, and the National Science Founda-
+tion (Grant No. EEC 0748186). Any opinions, findings,
+conclusions or recommendations expressed in this material
+are those of the authors and do not necessarily reflect posi-
+tions or policies of these agencies.
+
+7. REFERENCES
+[1] E. Andersen, E. O’Rourke, Y. E. Liu, R. Snider,
+
+J. Lowdermilk, D. Truong, S. Cooper, and Z. Popovic.
+The impact of tutorials on games of varying
+complexity. In Proceedings of the 2012 ACM annual
+conference on Human Factors in Computing Systems,
+pages 59–68. ACM, 2012.
+
+[2] M. Behr, G. Harel, T. Post, and R. Lesh. Rational
+number, ratio, and proportion. In D. Grouws, editor,
+Handbook of research on mathematics teaching and
+learning, page 296a?A?S?333. National Council of
+Teachers of Mathematics, New York, NY, 1992.
+
+[3] J. Confrey. Splitting, similarity, and rate of change: A
+new approach to multiplication and exponential
+functions. The development of multiplicative reasoning
+in the learning of mathematics, pages 293–330, 1994.
+
+[4] J. Confrey and E. Smith. Splitting, covariation, and
+their role in the development of exponential functions.
+Journal for Research in Mathematics Education, pages
+66–86, 1995.
+
+[5] P. Gould, L. Outhred, and M. Mitchelmore. One-third
+is three-quarters of one-half. In Annual meeting of the
+Mathematics Education Research Group of Australia,
+2006.
+
+[6] M. Kapur. Productive failure. Cognition and
+Instruction, 26(3):379–424, 2008.
+
+[7] P. A. Kirschner, J. Sweller, and R. E. Clark. Why
+minimal guidance during instruction does not work:
+An analysis of the failure of constructivist, discovery,
+problem-based, experiential, and inquiry-based
+teaching. Educational psychologist, 41(2):75–86, 2006.
+
+[8] D. Kuhn. Microgenetic study of change: What has it
+told us? Psychological Science, pages 133–139, 1995.
+
+[9] S. J. Lamon. The development of unitizing: Its role in
+children’s partitioning strategies. Journal for Research
+in Mathematics Education, pages 170–193, 1996.
+
+[10] S. J. Lamon. Rational numbers and proportional
+reasoning: Towards a theoretical framework for
+research. In F. Lester, editor, Second Handbook of
+Research on Mathematics Teaching and Learning,
+pages 629–667. Information Age Publishing,
+Charlotte, NC, 2007.
+
+[11] T. Martin and D. L. Schwartz. Physically distributed
+learning: Adapting and reinterpreting physical
+environments in the development of fraction concepts.
+Cognitive Science, 29(4):587–625, 2005.
+
+[12] J. Moss. Pipes, tubes, and beakers: New approaches
+to teaching the rational-number system. In
+S. Donovan and J. Bransford, editors, How students
+
+learn: History, mathematics, and science in the
+classroom, page 309a?A?S?350. National Academies
+Press, Washington, D.C., 2005.
+
+[13] J. Moss and R. Case. Developing children’s
+understanding of the rational numbers: A new model
+and an experimental curriculum. Journal for Research
+in Mathematics Education, pages 122–147, 1999.
+
+[14] M. Myers, J. Confrey, K. Nguyen, and G. Mojica.
+Equipartitioning a continuous whole among three
+people: Students’ attempts to create fair shares. In
+S. L. Swars, D. W. Stinson, and S. Lemons-Smith,
+editors, Proceedings of the 31st annual meeting of the
+North American Chapter of the International Group
+for the Psychology of Mathematics Education, Atlanta,
+GA, 2009. Georgia State University.
+
+[15] National Mathematics Advisory Panel. Foundations
+for success: The final report of the National
+Mathematics Advisory Panel. US Department of
+Education, 2008.
+
+[16] A. Norton and A. J. Hackenberg. Continuing research
+on students’ fraction schemes. LP Steffe & J. Olive,
+Children’s fractional knowledge, pages 341–352, 2010.
+
+[17] J. Olive and L. P. Steffe. The construction of an
+iterative fractional scheme: The case of joe. The
+Journal of Mathematical Behavior, 20(4):413–437,
+2001.
+
+[18] R. Siegler, T. Carpenter, F. Fennell, D. Geary,
+J. Lewis, Y. Okamoto, L. Thompson, and J. Wray.
+Developing effective fractions instruction for
+kindergarten through 8th grade. ies practice guide.
+ncee 2010-4039. What Works Clearinghouse, 2010.
+
+[19] J. W. Stigler, K. B. Givvin, and B. J. Thompson.
+What community college developmental mathematics
+students understand about mathematics. MathAmatyc
+Educator, 1(3):4–16, 2010.
+
+[20] A. Venezia, K. R. Bracco, and T. Nodine. One-shot
+
+deal? Studentsa?A?Z? perceptions of assessment and
+course placement in Californiaa?A?Z?s community
+colleges. WestEd, San Francisco, 2010.
+
+169
+
+
+
+
+

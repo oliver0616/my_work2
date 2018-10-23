@@ -1,0 +1,289 @@
+
+Workshop on Integrated Learning Analytics of MOOC Post-
+Course Development
+
+Yuan Wang 
+Columbia University 
+New York, NY, USA 
+
+elle.wang@columbia.edu 
+ 
+
+Dan Davis 
+Delft University of Technology 
+
+The Netherlands 
+d.j.davis@tudelft.nl 
+
+Luc Paquette 
+University of Illinois Urbana-Champaign 
+
+Champaign, IL, USA 
+lpaq@illinois.edu 
+
+ 
+
+Guanliang Chen 
+Delft University of Technology 
+
+The Netherlands 
+Guanliang.chen@tudelft.nl 
+
+ 
+ 
+
+ABSTRACT 
+MOOC research is typically limited to evaluations of learner 
+behavior in the context of the learning environment. However, some 
+research has begun to recognize that the impact of MOOCs may 
+extend beyond the confines of the course platform or conclusion of 
+the course time limit. This workshop aims to encourage our 
+community of learning analytics researchers to examine the 
+relationship between performance and engagement within the course 
+and learner behavior and development beyond the course. This 
+workshop intends to build awareness in the community regarding 
+the importance of research measuring multi-platform activity and 
+long-term success after taking a MOOC.  We hope to build the 
+community’s understanding of what it takes to operationalize 
+MOOC learner success in a novel context by employing data traces 
+across the social web.  
+
+CCS Concepts 
+• Applied computing ?  Computer – assisted instruction; 
+Interactive learning environments   
+
+Keywords 
+Learning analytics; massive online open courses; long-term learning 
+development; learning outcomes; career development 
+
+1. WORKSHOP BACKGROUND 
+1.1 Challenges in assessing MOOC Learner Success 
+        MOOC learners access course content in an asynchronous and 
+unconstrained fashion [3, 12]. This has resulted in fragmented data 
+scattered outside of the course platform and beyond the course-
+offering window, causing challenges of collecting learner data. As a 
+result, much research in MOOCs focuses on learner achievement and 
+engagement during the course itself, leaving the area of post-course 
+student longitudinal development relatively untouched. This 
+lopsidedness in MOOC research reduces our understanding of the 
+role that MOOCs can play in 21st-century learning.   
+       It is observed that the narrative on MOOCs has shifted from 
+overwhelmingly optimistic from 2011 to 2014 to substantially more 
+critical in 2015 [12]. One concern is that it is not clear how well 
+MOOCs support student learning and career development in 
+response to changing societal needs [6]. The development of 
+
+technology and scale of online education considerably outpace 
+efforts to evaluate and understand how well it is succeeding at 
+improving outcomes. The predominant focus of studying MOOC 
+completion without considering learners’ longitudinal development 
+overlooks the possible role that MOOCs may play in the long-term 
+professional development of many of their users.  
+      Responding to the this challenge, an emerging trend has been 
+seen on identifying and tracking MOOC learner development outside 
+of the course platform and beyond the conclusion of the course [1, 
+13], such as tracking learner activities on relevant social web 
+platforms, measuring learner post-course development on career 
+advancement, and measuring leaner participation in communities of 
+practice related to the MOOCs they engage with. 
+
+ 
+1.2 Post- MOOC Development 
+ 1.2.1 MOOCs and Continued Learning Activities 
+       Currently, the most popular approaches adopted by researchers 
+to evaluate a MOOC's success is to measure its learners course 
+engagement and performance. Although this can provide us with 
+some insights, some researchers argue that students' post-course 
+learning activities should also be tracked and analyzed to gain a 
+better understanding of learner behavior. 
+      One key aspect in these post-course learning activities is to what 
+extent learners apply the knowledge they acquired from a MOOC in 
+practice (i.e., learning transfer). One example of such research comes 
+from Chen et al. [1] which targeted the learners from a MOOC 
+teaching functional programming in edX and analyzed the data they 
+generated in both edX and GitHub, a social repository for 
+programmers to store and share code. They found a small percentage 
+of learners began using the taught language who had never used it 
+before and continued to do so after the course ended.  
+      In addition to measuring learning transfer, another interesting 
+aspect to investigate is whether learners continue to study the MOOC 
+subject or related topics after the end of the course. Just as Chen et 
+al. [1] used GitHub to measure learning transfer, Chen et al. [2] 
+analyzed learners' data left in StackOveflow, a social platform for 
+programmers to ask and answer questions, and observed that some 
+learners continued asking relevant questions after the course 
+finished. Moreover, some of them even changed their role from 
+"learner" to "teacher" by answering these questions. As learners' 
+continued learning activities are greatly diverse, we here identify a 
+need for new approaches to identify and measure such behavior. 
+ 
+1.2.2 MOOCs and Career Development 
+     Instead of pursuing a degree in a traditional school setting, a 
+considerable percentage of MOOC learners are seeking career 
+advancement through taking MOOCs [5]. Some MOOC learners opt 
+to display their MOOC certificates on their Linkedin profiles [2]. 
+
+Permission to make digital or hard copies of part or all of this work for personal or 
+classroom use is granted without fee provided that copies are not made or 
+distributed for profit or commercial advantage and that copies bear this notice and 
+the full citation on the first page. Copyrights for third-party components of this 
+work must be honored. For all other uses, contact the Owner/Author.  
+Copyright is held by the owner/author(s). 
+LAK '17, March 13-17, 2017, Vancouver, BC, Canada 
+ACM 978-1-4503-4870-6/17/03. 
+http://dx.doi.org/10.1145/3027385.3029430 
+
+
+
+     In addition to showing interests in accumulating competency, 
+many MOOC learners have also expressed explicit goals of changing 
+their careers. For instance, recent studies on MOOC learner 
+motivation suggest that a substantial proportion of learners register 
+for a MOOC with an intention of changing their job [9]. Proactively 
+seeking to change one’s current job is correlated with higher 
+perceived employability by employers [7].  
+      More recently, Dillahunt and colleagues [5] conducted a survey 
+and found out that enhancing employability was a key reason why 
+many learners enroll in MOOCs. They categorized desired career 
+advancement for MOOC learners into four types: transition into a 
+new field; promotion in their current fields; obtaining new position 
+in current fields; and improving current job skills. However, while 
+learners have the goal of increasing their employability and many 
+employers are interested in prospective employees’ MOOC 
+experience [9], there is not yet much evidence of post-course career 
+improvement as a result of taking a MOOC.   
+
+ 
+1.2.3 MOOCs and Communities of Practice 
+      In addition to post-course development analyzed on the 
+individual level, development of a community of practice 
+complements the development of individual learners. This can be 
+particularly relevant for a MOOC in an emerging field since the field 
+needs to attract new members in order for it to grow and develop. 
+Communities of practice refer to groups of people who share a 
+common interest and learn how to enrich a shared repertoire of their 
+practice via joint activities [10]. Learning transcends personal 
+knowledge acquisition and becomes a dynamic, interconnected bank 
+of knowledge shared among community members [11]. Becoming a 
+member of a community of practice is also considered beneficial to 
+career advancement on the individual level [4], for example, by 
+moving from being a novice to a full practitioner in the community. 
+The emergence of virtual media further extended the realm of 
+communities of practice [8].  
+       MOOCs, as a virtual learning venue, often connect to a 
+community of practice around the domain of the MOOC’s content. 
+For example, a MOOC teaching methods in the emerging field of 
+educational data mining (EDM) is likely to attract learners who are 
+interested in joining the community of practice composed by the 
+field of EDM. MOOC learners can be perceived as aspiring 
+practitioners in this community of practice. With their lack of 
+entrance restrictions, MOOCs can provide a new space to facilitate 
+legitimate peripheral participation. For an emerging field, fostering 
+development of the community of practice can be crucial, and there 
+is initial evidence that some MOOC participants join relevant 
+scientific societies during or immediately after participating in a 
+MOOC [13].  This development does not stop at the moment when 
+the course concludes. Therefore, studying the development of 
+MOOC participants as members of the community of practice after 
+the MOOC concludes can be a valuable lens for understanding the 
+impact of the MOOC.  
+
+2. WORKSHOP OBJECTIVES 
+      This workshop aims to generate awareness in the community 
+that considering learner data beyond the course platform and course-
+offering window can uncover previously unconsidered learning 
+behaviors.  
+     As such, in adopting and developing this integrated learning 
+analytics approach, the overall goal of the present workshop is to 
+bring together researchers and practitioners from different 
+disciplines and areas of expertise to herald a new MOOC research 
+branch on tracking and analyzing longitudinal MOOC learner 
+development.  
+      Presentations on finished, ongoing, and proposed studies, as 
+well as facilitated discussion sessions are planned to develop a 
+preliminary framework to illustrate the current development of the 
+field and to inspire attendees to come up with exciting new lines of 
+
+research of their own. Toward building this framework, the 
+following guiding questions are included: 
+
+• Data source: Where and how can learner post-
+development data be collected? 
+
+• Tools: What analytical tools are useful in analyzing 
+datasets merged from multiple sources? 
+
+• Methods: What analytical methods have been used? What 
+other methods can be applied? 
+
+• Generalizability: What kind of practices and findings are 
+domain-general or not? 
+
+• Applicability: How can research findings translate into 
+actionable insights for various stakeholders (learners, 
+instructors, administrators, investors, etc.)? 
+
+3. REFERENCES 
+ [1]   Chen, G., Davis, D., Hauff, C., & Houben, G. J. 2016. 
+
+Learning Transfer: Does It Take Place in MOOCs? An 
+Investigation into the Uptake of Functional Programming in 
+Practice. In Proceedings of the Third (2016) ACM Conference 
+on Learning@ Scale (pp. 409-418).  
+
+[2]   Chen, G., Davis, D., Lin, J., Hauff, C., & Houben, G. J. 2016. 
+Beyond the MOOC platform: gaining insights about learners 
+from the social web. In Proceedings of the 8th ACM 
+Conference on Web Science (pp. 15-24). ACM. 
+
+[3]   DeBoer, J., Stump, G. S., Seaton, D., Ho, A., Pritchard, D. E., & 
+Breslow, L. 2013, July. Bringing student backgrounds online: 
+MOOC user demographics, site usage, and online learning. In 
+Educational Data Mining 2013. 
+
+[4]  DeFillippi, R. J., & Arthur, M. B. 1994. The boundaryless 
+career: A competency?based perspective. Journal of 
+organizational behavior, 15(4), 307-324. 
+
+[5]  Dillahunt, T. R., Ng, S., Fiesta, M., & Wang, Z. 2016. Do 
+Massive Open Online Course Platforms Support Employability? 
+In Proceedings of the 19th ACM Conference on Computer 
+Supported Cooperative Work & Social Computing. ACM. 
+
+[6]  Ferguson, R., Sharples, M., &  Beale, R. 2015. MOOCs 2030: a 
+future for massive open online learning. In: C. J. Bonk, M. M. 
+Lee, T.C. Reeves & T. H. Reynolds (Eds.), MOOCs and Open 
+Education around the World (pp. 315–326). Abingdon: 
+Routledge  
+
+[7] Fugate, M., Kinicki, A. J., & Ashforth, B. E. 2004. 
+Employability: A psycho-social construct, its dimensions, and 
+applications. Journal of Vocational behavior, 65(1), 14-38. 
+
+[8]   Johnson, C. M. 2001. A survey of current research on online 
+communities of practice. The internet and higher 
+education, 4(1), 45-60. 
+
+ [9] Kizilcec, R. F., & Schneider, E. 2015. Motivation as a lens to 
+understand online learners: Toward data-driven design with the 
+OLEI scale. ACM Transactions on Computer-Human 
+Interaction (TOCHI), 22(2), 6. 
+
+[10] Lave, J. 1991. Situating learning in communities of  
+practice. Perspectives on socially shared cognition, 2, 63-82. 
+
+ [11] Lave, J., & Wenger, E. 2002. Legitimate peripheral 
+participation in communities of practice. Supporting lifelong 
+learning, 1, 111-126. 
+
+ [12] Siemens, G. 2015. The role of MOOCs in the future of 
+education. MOOCs and Open Education Around the World. C. 
+J. Bonk, M.M. Lee, T. C. Reeves, & T, H, Reynolds. (Eds.). 
+New York, NY: Routledge. 
+
+ [13] Wang, Y., Paquette, L., Baker, R. 2014. A longitudinal study 
+on learner career advancement in MOOCs. Journal of Learning 
+Analytics, 1 (3), 203–206. 
+
+
+

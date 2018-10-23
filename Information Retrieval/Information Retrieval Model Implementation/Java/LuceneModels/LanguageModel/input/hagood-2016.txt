@@ -1,0 +1,255 @@
+
+Integrating Physical Activity Data in Videogames  
+with User-Centered Dashboards 
+
+ 
+Danielle Hagood 
+
+University of California, Davis 
+dhagood@ucdavis.edu 
+
+Cynthia Carter Ching 
+University of California, Davis 
+ccching@ucdavis.edu 
+
+Sara Schaefer 
+University of California, Davis 
+seschaefer@ucdavis.edu 
+
+ 
+ 
+
+ABSTRACT 
+To promote healthy awareness and activity learning, we gave 12- 
+to 14-year-old youth activity monitors (Fitbits) to track their 
+physical activity, which was then integrated into a videogame we 
+created. The players’ real-world steps transform into in-game 
+resources needed for gameplay. In addition to requiring real-world 
+steps for various in-game activities, a dashboard in this game 
+presents visual representations of activity patterns, ostensibly 
+informing students about patterns of their own activity. In this paper 
+and poster, we discuss challenges in initial designs of our 
+dashboard. We present findings and challenges in the process of 
+creating a user-centered dashboard and conclude with our future 
+design goals. 
+
+Categories and Subject Descriptors 
+H.5.2 [User Interfaces]: User Interfaces – User-centered design; 
+K.3.1 [Computer and Education]: Computer Uses in Education – 
+Computer-assisted instruction (CAI); K.8.0 [Personal 
+Computing]: General – Games 
+
+General Terms 
+Design, Human Factors 
+
+Keywords 
+Quantified Self, Dashboards, Activity Monitors (Fitbit), Health, 
+Sociocultural Theory 
+
+1. INTRODUCTION 
+The far-reaching consequences of youth obesity and inactivity 
+compel contemplation of learning analytics’ role in supporting 
+healthier outcomes for youth. Since 1980 the adolescent obesity 
+rate has tripled, growing from 5% to 18% [1]. Youth need access 
+to information and resources to live healthier lives. The emerging 
+Quantified Self (QS) movement offers one approach to tracking 
+health data and exploring personal analytics [2]. 
+A core assumption of quantified self approaches is that information 
+alone is inherently valuable and motivating. But, youth often fail to 
+find their data fascinating or useful [3]. We suggest that, by 
+leveraging the documented success of videogames to motivate 
+change, we can more successfully present health analytics [4]; 
+incorporating dry activity data into a motivating game context to 
+promote behavior and awareness changes. 
+
+2. PROJECT CONTEXT 
+We combine our expertise of in learning analytics, health science, 
+and game development, to explore how game play which integrates 
+players’ own physical activity data can promote healthy awareness 
+and behavior.  
+This study spans multiple iterations of data collection with different 
+groups. For this paper we focus our discussion in the second year 
+of the project. By employing a working example methodology [5] 
+we discuss how our findings and design process—including our 
+initial struggles to incorporate analytics meaningfully. 
+
+2.1 Study Overview 
+We provided youth at two school sites activity monitors—the 
+commercially available Fitbit Zips. The participants wore these 
+activity monitors for 30 days and then played the game Terra while 
+continuing to use the activity monitors for another 63 days. Terra 
+is a tile-turning style game following the narrative of planetary 
+exploration and terraforming created by our research team and a 
+game–design firm. Throughout this time, we collected data from 
+focus groups, individual interviews, observations, activity 
+monitors, game servers, and publically-available site statistics. 
+
+2.2 Participants and Their Communities 
+Two school sites provide the second year case studies in this 
+project. Participants from Capitol Middle School included mainly 
+lower socioeconomic (SES) youth participating in an after school 
+program in a large urban area of Northern California (N = 40, Mage 
+= 12.6). Participants from Greenville Junior High included youth 
+enrolled an educational technology elective course from a well-
+resourced suburban community (N = 61, Mage = 13.7). Table 1 
+compares both school sites to each other and the overall state 
+demography. 
+
+Table 1: Demography of Capitol Middle School and 
+Greenville Junior High (2015) 
+
+ Capitol California Overall Greenville 
+
+English Learner 34.5% 27.7% 7.4% 
+Receiving Free 
+Lunch 92.7% 59.4% 28.2% 
+
+Minority 96.5% 74.4% 50.2% 
+Household 
+Income–Median $53,394 $61,094 $60,114 
+
+ 
+
+3. DASHBOARDS FOR ACTIVITY DATA 
+In addition to leveraging game mechanics to promote behavior and 
+attitude changes relating to activity, our team developed a 
+dashboard that displays the activity history of the player outside of 
+
+Permission to make digital or hard copies of part or all of this work 
+for personal or classroom use is granted without fee provided that 
+copies are not made or distributed for profit or commercial 
+advantage and that copies bear this notice and the full citation on the 
+first page. Copyrights for third-party components of this work must 
+be honored. For all other uses, contact the Owner/Author. 
+Copyright is held by the owner/author(s). 
+LAK '16, April 25-29, 2016, Edinburgh, United Kingdom 
+ACM 978-1-4503-4190-5/16/04. 
+http://dx.doi.org/10.1145/2883851.2883958. 
+ 
+
+
+
+the game. These metrics track the students’ activity, which provides 
+in game bonuses and energy points. Here we discuss what we have 
+learned so far and present our current approach to creating a truly 
+user-centered dashboard. 
+
+3.1 User Experience: “I’m Confused” 
+A main finding regarding the in-game dashboard — see one screen 
+shown in Figure 1 — is that players seemed confused or 
+uninterested in our data representations. The initial dashboard 
+design used simplistic data representations like line graphs. 
+However, we found that students often needed help to decipher the 
+graphs, or did not make connections between what they saw on the 
+graphs and their everyday activities. In contrast when activity data 
+was transmuted and displayed as “energy points” for gameplay, the 
+students made sense of their activity data in the context of the game 
+narrative and considered their overall activity patterns. 
+
+While participants were not motivated to spend much time on their 
+online dashboard, some demonstrated deep reflections using the 
+live data on their fitbits’ displays [6]. For example, in a focus group 
+one student commented: “[The Fitbit] it told me, how much weight, 
+how much calories I burned off every time I take a steps, and, um, 
+the times that I do for my activities.” 
+
+We believe the “school-like” format and dry presentation of the 
+data itself was the problem with our initial dashboard, rather than 
+an unwillingness to engage with aggregate data or use inductive 
+reasoning about patterns. 
+
+3.2 User Context: “I can’t change anything” 
+Further, analyzing the sociocultural contexts of these two sites [7] 
+reveals another design challenge in creating a successful 
+dashboard. The different communities with high and low SES offer 
+disparate affordances for activity in the community. We observed 
+that even when Capitol students in the low-income community 
+were engaging in their data, they reported barriers to changing their 
+activity. While Greenville students with access to parks, safe bike 
+paths, and sports clubs reported more access opportunities to 
+exercise based on learning from their data. 
+
+One goal of learning analytics is to promote individual learning 
+through reflection with personal data. But, our initial one-size 
+dashboard did not accommodate different activity opportunities in 
+different communities. Drawing on interview and focus group data 
+with students we reexamine providing community appropriate 
+feedback. Employing a “standard” framework for data interaction 
+unintentionally foregrounds the designer’s “standard” community 
+rather than the learner’s reality.  
+ 
+
+ 
+
+Figure 1: A Screen in the Terra Dashboard. 
+
+3.3 Design Goals and Future Work 
+First, to address “confusion” in user experience, we are now 
+developing a player dashboard more integrated in the game world 
+and game narrative. Our goal is to more richly frame the player’s 
+personal activity data in terms of game world goals and strategies. 
+This design allows players to set daily, weekly, or cumulative 
+activity goals on their game dashboard such as step count, total 
+mileage, improvement over baseline, intensity of activity, calories 
+burned, and then have those goals directly tied to progress toward 
+game world achievements. Drawing on the data representation 
+approaches already in use like the fitbit.com, integrating the youth-
+produced data into the game narrative makes these activity 
+analytics more accessible to youth. 
+
+Second, to incorporate user context, we continue to study how 
+young people examine and query their aggregate physical activity 
+data in ways that responds to unique community situations and 
+resources. We explore how youth engage with their dashboards and 
+how this engagement is connected to their physical activity. By 
+considering activity analytics through a sociocultural lens we can 
+design dashboards that address the plurality of health needs and 
+physical activity. 
+
+4. ACKNOWLEDGMENTS 
+Thanks to Mary Stewart for her instrumental collaborative writing 
+with me on these topics in other texts. 
+
+REFERENCES 
+[1] Ogden, C. L., Carroll, M. D., Kit. B. K., and Flegal, K. M. 
+
+2012. Prevalence of obesity and trends in body mass index 
+among US children and adolescents, 1999-2010. JAMA, 307, 
+5, 483-490. doi:10.1001/jama.2012.40. 
+
+[2] Swan, M. 2012. Sensor Mania! The Internet of things, 
+wearable computing, objective metrics, and the Quantified 
+Self 2.0. Journal of Sensor and Actuator Networks, 1, 3, 217-
+253 
+
+[3] Lee, V.R. 2013. The Quantified Self (QS) movement and 
+some emerging opportunities for the educational technology 
+field. Educational Technology, 53, 6, 39-42. 
+
+[4] Baranowski, T., Buday, R., Thompson, D. I., and 
+Baranowski, J. (2008). Playing for real: video games and 
+stories for health-related behavior change. American journal 
+of preventive medicine, 34, 74-82. 
+
+[5] Barab, S., Dodge, T., & Gee, J. P. 2009. The worked 
+example: Invitational scholarship in service of an emerging 
+field. In Annual Meeting Online Program of the American 
+Education Research Association (San Diego, California, 
+April 13-16, 2009). 
+
+[6] Ching, C. C. & Schaefer, S. 2014.  Devices, dashboards, 
+games, and reflections: Quantitative data and the subjective 
+experience of fitness technologies.  In Learning and 
+Becoming in Practice: The International Conference of the 
+Learning Sciences (ICLS) 2014 (Boulder, Colorado, June 23-
+27, 2014). 
+
+[7] Hagood, D., Stewart, M, Ching, C. 2015 A tale of two 
+schools: Terrain and resources in virtual games and physical 
+communities. In Proceedings of the 11th Games + Learning 
++ Society conference (Madison, Wisconsin, July 7 – 10, 20 
+
+ 
+
+
+

@@ -1,0 +1,2420 @@
+
+ 
+
+ 
+
+An Exploratory Study Using Social Network Analysis to Model 
+Eye Movements in Mathematics Problem Solving  
+
+Mengxiao Zhu 
+Educational Testing Service 
+
+660 Rosedale Rd 
+Princeton, NJ 
+
+mzhu@ets.org 
+
+Gary Feng 
+Educational Testing Service 
+
+660 Rosedale Rd 
+Princeton, NJ 
+
+gfeng@ets.org 
+
+ABSTRACT 
+Eye tracking is a useful tool to understand students’ cognitive 
+process during problem solving. This paper offers a unique 
+perspective by applying techniques from social network analysis 
+to eye movement patterns in mathematics problem solving. We 
+construct and visualize transition networks using eye-tracking 
+data collected from 37 8th grade students while solving linear 
+function problems. By applying network analysis on the 
+constructed transition networks, we find general transition 
+patterns between areas of interest (AOIs) for all students, and we 
+also compare patterns for high- and low-performing students. Our 
+results show that even though students share general transition 
+patterns during problem solving, high-performing students made 
+more strategic transitions among AOI triples than low-performing 
+students. 
+
+Categories and Subject Descriptors 
+H.5.m. [Information interfaces and presentation (e.g., HCI)]: 
+Miscellaneous; E.1 [Data Structures]: Graphs and networks. 
+
+General Terms 
+Measurement, Experimentation, Performance 
+
+Keywords 
+Eye tracking, network analysis, problem solving 
+
+1. INTRODUCTION 
+One way to study why some students perform better than others 
+while solving problems is to describe how they solve problems 
+differently. However, mental processes during problem-solving 
+are usually not directly observable. Researchers have used various 
+methodologies to measure cognitive processes using techniques 
+such as eye tracking (e.g., [24]), EEG (e.g., [15]), and action logs 
+(e.g., [14]) or keystroke data (e.g., [1]) automatically recorded by 
+the servers for computerized tasks.  
+In this paper, we explore the use of one of these techniques, 
+eyetracking, to study students’ eye-movement patterns during 
+mathematics problem solving. While most previous studies 
+focused on analyzing the length of time that students spent on 
+
+different areas [17, 18] on the paper or the screen, this paper takes 
+a different approach by investigating the dynamic process and the 
+transitions among different areas that students look at during 
+problem solving. While transitions among AOIs have long been 
+studied in eye-tracking research [12], the methods are often task-
+specific and difficult to apply in the analysis of complex tasks. 
+Here we introduce techniques from the field of social network 
+analysis (SNA) [26], adapting them for analyzing transitions of 
+eye movements. Our empirical data come from a mathematics 
+task that assesses middle school students’ understanding of linear 
+functions. In our dataset, eye movement data were collected from 
+37 8th grade students. We analyzed the transition patterns of all 
+students and also compared the differences between high-
+performing and low-performing students. 
+This paper is organized as follows. Section 2 reviews related 
+studies and applications of eyetracking, especially in an education 
+setting. Section 3 describes the dataset and the Moving Sidewalks 
+task used in this study, as well as the general background of the 
+CBAL initiative (Cognitively Based Assessment of, for, and as 
+Learning; [4]) and learning progression. Section 4 introduces the 
+network measures applied for eye-tracking analysis, network 
+visualization, and related results. Section 5 extends the network 
+analysis to compare students from different performing groups. 
+Section 6 includes discussion and future directions for additional 
+studies. In all analyses and comparisons, we focus on general 
+applications of the SNA techniques and give only high-level 
+interpretation of results. Substantive interpretation in terms of the 
+meaning of results for solving the linear functions task is left for 
+future studies. 
+
+2. RELATED WORK 
+Eye movements provide moment-by-moment information on 
+visual attention, which is a close indicator of the information 
+being processed [6, 22]. Many studies have used eye tracking to 
+study human reading behavior. One of the first models of eye 
+movements in reading developed by Just and Carpenter [13] 
+proposed the eye-mind principle, that is, wherever the mind 
+“wants” to see, the eye moves to. It is not surprising that much of 
+their model was a production system simulating cognitive 
+processes in reading. The eye-mind assumption was soon found 
+overly simplistic (see [22]) and more sophisticated models 
+emerged to account for oculomotor factors in eye movements 
+(e.g., [6]). But this does not change the larger picture, that is, that 
+the eye gaze is a proxy of the attention “spotlight” [7, 21]. This 
+explains why eyetracking has attracted increasing attention among 
+assessment researchers [8, 9]. 
+
+In educational research, eye movements have been used to study 
+students’ problem solving processes and performance in various 
+domains. For instance, the study by Tai, Loehr, & Brigham [24] 
+collected eye-tracking data on six preservice science teachers 
+while they solved an 18-item multiple-choice science assessment. 
+
+Permission to make digital or hard copies of all or part of this work for 
+personal or classroom use is granted without fee provided that copies are 
+not made or distributed for profit or commercial advantage and that 
+copies bear this notice and the full citation on the first page. Copyrights 
+for components of this work owned by others than ACM must be 
+honored. Abstracting with credit is permitted. To copy otherwise, or 
+republish, to post on servers or to redistribute to lists, requires prior 
+specific permission and/or a fee. Request permissions from 
+Permissions@acm.org.  
+LAK '15, March 16 - 20, 2015, Poughkeepsie, NY, USA 
+Copyright is held by the owner/author(s). Publication rights licensed to 
+ACM. 
+ACM 978-1-4503-3417-4/15/03…$15.00 
+http://dx.doi.org/10.1145/2723576.2723591 
+
+383
+
+
+
+ 
+
+ 
+
+T
+p
+d
+
+I
+e
+m
+f
+c
+s
+d
+t
+q
+s
+r
+i
+s
+s
+R
+p
+
+B
+p
+d
+d
+t
+t
+i
+d
+A
+c
+a
+t
+t
+s
+t
+b
+s
+
+3
+T
+i
+c
+b
+l
+c
+o
+I
+t
+v
+m
+O
+s
+t
+O
+t
+T
+
+p
+b
+s
+s
+
+The results sho
+participants wit
+different discipl
+
+In several r
+experiments an
+movement patt
+format of rearr
+choice items [1
+shared goal of 
+differences in e
+the questions 
+questions corre
+students who a
+relevant areas m
+incorrectly tend
+studies, variou
+such as ANOV
+Random Forest
+patterns [13] on
+
+Besides analyz
+problems, anot
+data is to loo
+different AOIs
+transition matri
+time and numb
+in the tracking
+density, numbe
+AOIs [12], and
+can then be a
+analysis of tra
+tracking studies
+the education f
+spent looking 
+transitions amo
+by focusing o
+students’ proble
+
+3. THE DA
+The data in this
+initiative at ET
+completing the
+based mathem
+linear functions
+construct analy
+of how students
+In this study, w
+task (as shown 
+visual layout an
+more in-depth a
+On this page, s
+section of the s
+the left section.
+Our dataset inc
+the Moving Si
+Tobii T120 eye
+120Hz and has 
+performance in
+based on a lear
+student spent 2
+solve all subque
+
+owed that the e
+th similar scienc
+lines.  
+
+recent studies 
+nd analyses t
+terns for studen
+ranging simple 
+17, 25], and a 
+these studies w
+
+eye-movement 
+correctly and 
+
+ectly. An impo
+answered the qu
+more, while stu
+ded to focus mo
+us analysis met
+VA [18], and m
+
+t [3], were ado
+n certain areas fr
+
+zing where stu
+ther potential w
+ok at the trans
+s. These trans
+ices [12], whic
+er of transitions
+
+g range. Basic 
+er and proportio
+d advanced mo
+applied to anal
+ansition matrice
+s. Most studies 
+field, focused 
+
+at individual 
+ong these areas. 
+on understandin
+em solving proc
+
+ATASET 
+s study were col
+TS. Eighth-grad
+e Moving Sidew
+
+matics assessme
+s [10]. The ass
+sis of the doma
+s’ understanding
+we focus on Qu
+in Figure 1) be
+
+nd the cognitiv
+analyses, especi
+tudents need to
+
+screen using inf
+  
+
+cludes 37 eighth
+idewalks task. 
+e-tracker, which
+a typical accur
+
+n the assessmen
+rning progressio
+92.23 seconds 
+estions in Quest
+
+eye-gaze pattern
+ce backgrounds
+
+researchers 
+to study the 
+nts while solvi
+algebraic equa
+more complex 
+
+was to assess w
+patterns of stu
+those who d
+
+ortant finding [
+uestions correct
+udents who ans
+ore on irrelevan
+thods including
+achine learning
+opted to comp
+
+from different gr
+
+udents focused
+way to analyze
+sitions that stu
+sitions can be
+ch can be used 
+s between any t
+statistical analy
+
+on of specific s
+dels, such as M
+lyze these mat
+es is not yet w
+reviewed above
+on the direct c
+ AOIs, instea
+In this paper, w
+
+ng the transit
+cesses.  
+
+llected as part o
+de students wer
+walks One-Rid
+
+ent of students
+essment task w
+
+ain and a learnin
+g of linear funct
+uestion 4 in the
+ecause of the co
+ve processes inv
+ially the analysi
+o answer four q
+formation provi
+
+h grade particip
+Eye tracking 
+h samples the 
+racy of 0.5 visu
+nt was rated on 
+on framework [
+(with SD = 149
+tion 4. 
+
+ns are similar a
+s and different a
+
+conducted si
+difference of 
+
+ing problems i
+ations [23], mul
+
+format [3, 18]
+whether there ar
+udents who answ
+did not answe
+[3, 18, 25] wa
+tly tended to lo
+swered the que
+nt areas. In the a
+g statistical m
+g techniques, su
+are the eye fix
+roups.  
+
+d on while so
+e the eye-move
+udents made a
+e represented 
+
+to record the 
+two predefined
+ysis, such as m
+subscans, and u
+Markov models
+trices. However
+widely used in
+e, especially tho
+comparisons of
+ad of studying
+we try to fill thi
+tion patterns d
+
+of the CBAL res
+re eye-tracked 
+der task, a scen
+s’ understandin
+
+was integrated w
+ng progression m
+tions develops [
+e Moving Side
+omplexity in bo
+volved, which a
+is of AOI transi
+
+questions on the
+ided in the figu
+
+pants who comp
+was done usin
+eye gaze locati
+
+ual degrees. Stud
+a 4-level scale
+2]. On average
+9.94) on this pa
+
+among 
+across 
+
+imilar 
+eye-
+
+in the 
+ltiple-
+. One 
+
+re any 
+wered 
+
+er the 
+s that 
+ook at 
+stions 
+above 
+odels, 
+
+uch as 
+xation 
+
+olving 
+ement 
+
+among 
+using 
+dwell 
+areas 
+
+matrix 
+unique 
+ [16], 
+r, the 
+
+n eye-
+ose in 
+f time 
+g the 
+is gap 
+during 
+
+search 
+while 
+nario-
+ng of 
+with a 
+model 
+[2].   
+walks 
+
+oth the 
+allows 
+itions. 
+e right 
+ure on 
+
+pleted 
+ng the 
+ion at 
+dents’ 
+ (0-3) 
+, each 
+age to 
+
+4.
+NE
+In 
+mo
+sta
+and
+
+4.1
+On
+sho
+sho
+on 
+sam
+wh
+of 
+occ
+tho
+
+It 
+stu
+as
+ima
+ans
+be 
+fol
+exc
+in 
+rev
+Qu
+bee
+com
+Wh
+ind
+sta
+poi
+
+4.2
+AO
+We
+cor
+rev
+(i.e
+res
+in 
+item
+ref
+equ
+the
+are
+
+EYE MO
+ETWORK 
+this section, we
+
+ovement pattern
+arted with the m
+d then introduce
+
+1 Visualizi
+ne way to visual
+ows the location
+ow the scan pat
+the image of th
+
+mple recorded 
+hich ranges from
+the sample in t
+curred before th
+ose in blue or bl
+
+Figure 1
+can be seen f
+
+udent paid a lot 
+useful informat
+age on the up
+swering the que
+seen from this
+
+llowed the orde
+ception of a cer
+the midst of gr
+
+visited Question
+uestion D). The
+en less confide
+me back to do
+hile scan path
+dividual studen
+atistical analyses
+ints and study tr
+
+2 Transitio
+OIs 
+e first define 
+rresponding to 
+viewed above i
+e., the screen) th
+search hypothes
+how students s
+m – for examp
+fer to, and other
+uation problem
+e image, graph, 
+eas, as shown 
+
+VEMENT 
+ANALYSI
+
+e explore potent
+ns using the da
+most basic anal
+ed AOI-based tr
+
+ing the Sca
+lize eye movem
+n of the line of
+th of one of the
+he screen that th
+by the eye-tra
+
+m dark red to b
+the recording; f
+hose in yellow,
+lack.  
+
+1. A sample sca
+from this visua
+of attention to 
+
+tion provided in
+pper left provi
+estions and thus
+s visualization t
+er of the questi
+rtain part in Que
+reen and cyan 
+n C at the ver
+e pattern sugge
+ent with the an
+ouble-check afte
+h plots can r
+nts’ problem-so
+s are needed. A
+ransition pattern
+
+on Matrix a
+
+AOIs and the
+the eye movem
+
+in Section 2, A
+hat are a meani
+
+sis or design [12
+witch their atte
+
+ple, the questio
+r part of the scr
+. We defined 1
+questions, and 
+in Figure 2. T
+
+PATTERN
+IS 
+tial ways to ana
+
+ataset described 
+lysis/visualizatio
+ransition pattern
+
+an Paths 
+ments is the scan
+f gaze over tim
+e students in ou
+he student saw.
+
+acker. The colo
+black, indicates 
+for example, ga
+, which in turn
+
+an path from a
+alization that, 
+the questions t
+
+n the graph at th
+ides only little
+ was visited les
+that this specifi
+ons in answeri
+estion C (shown
+ones, indicatin
+
+ry end, after h
+ests that the st
+swer for Quest
+er finishing the
+
+reveal much i
+olving processe
+
+An alternative is 
+ns between area
+
+and Netwo
+
+en discuss the 
+ment patterns b
+AOIs are region
+ingful unit of an
+2]. In this study
+ention among va
+ons, the graph 
+reen – in order 
+1 AOIs on this
+corresponding 
+
+To minimize t
+
+Time 
+
+NS AND 
+
+alyze students’ e
+in Section 3. W
+
+on using raw d
+n analysis. 
+
+n path [12], wh
+me. In Figure 1, 
+
+ur sample overl
+ Each dot show
+
+or of the sampl
+ the relative or
+aze samples in 
+n were earlier th
+
+a student 
+as expected, t
+
+themselves as w
+he bottom left. T
+e information 
+ss often. It can a
+fic student roug
+ng them, with 
+n by the black d
+ng that the stud
+having worked 
+tudent might ha
+tion C and had
+e other questio
+nformation ab
+
+es, more rigoro
+to aggregate th
+
+as in the space.
+
+rk between
+
+transition mat
+between AOIs. 
+ns in the stimu
+nalysis for a giv
+
+y, we are interes
+arious parts of 
+that the questio
+to solve the lin
+
+s screen, includ
+question respon
+
+the effect of e
+
+eye 
+We 
+
+data 
+
+hich 
+we 
+
+laid 
+ws a 
+les, 
+rder 
+red 
+han 
+
+ 
+
+this 
+well 
+The 
+for 
+
+also 
+ghly 
+
+the 
+dots 
+dent 
+
+on 
+ave 
+
+d to 
+ons. 
+bout 
+ous 
+
+hese 
+
+n 
+
+trix 
+As 
+
+ulus 
+ven 
+sted 
+the 
+ons 
+
+near 
+ding 
+nse 
+
+eye-
+
+384
+
+
+
+ 
+
+ 
+
+t
+w
+T
+s
+r
+i
+c
+d
+m
+t
+
+F
+n
+t
+t
+A
+t
+w
+t
+a
+N
+a
+
+4
+N
+
+l
+t
+n
+t
+
+S
+u
+
+tracking noise 
+which the AOI 
+The next step 
+straightforward
+represent the A
+indicate the nu
+column AOI. T
+dwell time on 
+matrices, if we
+then we can eas
+
+Figure 
+Figure 3 shows
+network as in F
+time spent in 
+transitions. If th
+AOIs, the links
+two extra nodes
+whole AOI tran
+transition matri
+across time su
+Next, we introd
+analyze the con
+
+4.3 Netwo
+Networks 
+
+Technique
+limited in eye-
+this paper is to
+network analys
+tracking studies
+
+SNA studies w
+understand the 
+
+on AOI trans
+dwell time was
+
+of creating t
+d. The columns a
+AOIs in the re
+umber of trans
+he diagonal of t
+the correspon
+
+e consider AOIs
+sily visualize th
+
+Figure 2. AO
+
+3. AOI Transit
+s the visualizati
+Figure 1. The si
+
+that AOI and
+here are a larger
+ are darker and
+s to indicate the
+nsition sequenc
+ix and network
+
+uch that the tem
+duce related net
+nstructed transiti
+
+rk Measure
+
+es for modeling 
+-tracking resear
+o introduce som
+sis (SNA) [26] 
+s in the form of 
+
+were initially c
+relationship am
+
+sitions, we rem
+s less than 0.1 se
+the transition m
+and the rows of
+egion and the 
+sitions from th
+this matrix can 
+
+nding AOIs. In
+s as nodes and
+e transition mat
+
+OIs for Questio
+
+tion Network f
+ion of the same
+ize of the node
+d the directed 
+r number of tran
+
+d wider. In this g
+e start point and
+ce. It is worth n
+k represent agg
+mporal order o
+twork measures
+ion matrix and n
+
+es for AOI 
+
+the AOI transit
+rch [12, 16]. A
+
+me of the existin
+to analyze sim
+transition matri
+
+conducted by s
+mong human be
+
+moved transitio
+econd.  
+matrix [12] is
+f the transition m
+
+cells in the m
+he row AOI t
+be used to reco
+
+n the AOI tran
+d transitions as 
+trix using a netw
+
+ 
+on 4 
+
+ 
+for Student 2 
+e student’s tran
+s represents the
+links represen
+
+nsitions betwee
+graph, we also a
+
+d the end point f
+noticing that the
+gregated inform
+of transitions is
+s that can be us
+network. 
+
+Transition
+
+tion matrix are 
+An important go
+ng methods of 
+milar data from
+ices. 
+
+sociologists to 
+ings. The most 
+
+ons in 
+
+ then 
+matrix 
+matrix 
+to the 
+ord the 
+nsition 
+
+links, 
+work.  
+
+nsition 
+e total 
+nt the 
+en two 
+added 
+
+for the 
+e AOI 
+mation 
+s lost. 
+sed to 
+
+n 
+
+rather 
+oal of 
+social 
+
+m eye-
+
+better 
+well-
+
+kno
+wh
+con
+exp
+bey
+and
+me
+wh
+SN
+int
+sim
+
+4.3
+Th
+net
+cal
+the
+wit
+nod
+nod
+cal
+the
+g(g
+of 
+len
+sug
+eye
+Re
+ref
+per
+rec
+B a
+def
+net
+mu
+dya
+no 
+div
+nul
+ma
+two
+con
+tem
+
+4.3
+To
+Le
+pro
+the
+pat
+Ho
+num
+ind
+cha
+the
+and
+tria
+Th
+lett
+“T
+Th
+stru
+det
+For
+
+own early exa
+hich revealed th
+nnected to each
+panded to stud
+yond human ne
+d Internet rou
+ethods are usual
+hich record the 
+NA can be appl
+
+erested in stud
+milar data struct
+
+3.1 Network
+he two most of
+twork density 
+lculated by sum
+en dividing by t
+th g nodes and
+de A to node B 
+de B to node A)
+lculate the dens
+e matrix except
+g-1). The densi
+transitions betw
+
+ngth of an AO
+ggests that the 
+e gaze between 
+
+eciprocity in soc
+flects the extent
+rson as their 
+ciprocity means
+as well as from
+fined by Holla
+twork can be ca
+utual dyads with
+ads with one-w
+links in betwee
+
+viding the numb
+ll dyads. For A
+ay occur if a stu
+o AOIs. The 
+nsecutively, th
+mporal order of
+
+3.2 Triad Ce
+ study pattern
+inhardt [5] in
+ovides informat
+em. Among any
+tterns as shown
+olland and Lein
+mbers and let
+dicates the num
+aracter indicate
+e third character
+d a potential ex
+ad for the case
+
+here are four po
+ter “U” means 
+” means transiti
+
+he triad census
+uctures in the 
+tailed structures
+r instance, man
+
+ample was Mil
+he surprising f
+h other than we
+
+dy the structure
+etworks, such a
+uter networks 
+lly conducted o
+connections am
+
+lied in eye-trac
+dying the AO
+tures to SNA ne
+
+k Density and
+ften used mea
+
+and reciproc
+mming the value
+the total number
+d if links are di
+
+is considered d
+), the total num
+sity of an AOI 
+t the diagonal a
+ty provides inf
+ween any two 
+
+OI transition se
+student has loo
+more AOIs. 
+
+cial science data
+t to which one’
+friend. In th
+
+s whether we ob
+m B to A. Acco
+and and Leinha
+ategorized into 
+h two-way links
+ay links betwee
+
+en. Reciprocity 
+ber of mutual d
+
+AOI transition n
+udent’s attention
+
+back and fo
+hough, because
+the transitions. 
+
+ensus 
+ns extending b
+
+ntroduced the 
+tion on structure
+y three nodes, t
+n in Figure 4. A
+nhardt [11] and
+tters. In the n
+mber of mutual
+es the number o
+r indicates the n
+xtra letter at th
+
+es when the firs
+ossible letters: 
+up, the letter “
+
+ive.  
+ system provid
+graph and ena
+
+s between differ
+ny 030C structu
+
+gram’s small w
+fact that people
+e expected. SN
+
+es of  various t
+as protein netwo
+
+[20]. Related
+on data in the fo
+mong nodes. Ex
+king studies, e
+
+OI transition pa
+etworks. 
+
+d Reciprocity
+sures in the S
+
+city [26]. Net
+es of all links in
+r of possible lin
+irected (i.e., a l
+different than a 
+
+mber of possible 
+transition netw
+
+are summed an
+formation on th
+AOIs and is a
+quence. A hig
+
+oked at more A
+
+a, such as in a fr
+’s friends also 
+
+he context of 
+bserve transitio
+ording to the dy
+ardt [11], all li
+one of the follo
+
+s between two n
+en two nodes, an
+[26] of a netwo
+
+dyads by the tot
+networks, a high
+n switches back 
+orth does not 
+e the recipro
+ 
+
+beyond two n
+system of tria
+es of three node
+there are 16 po
+
+A naming conven
+d Davis and Le
+name string, th
+l dyads in the 
+of asymmetric d
+number of null 
+he end indicates
+st three charact
+the letter “D” 
+“C” means cyc
+
+des statistics o
+ables the resear
+rent students in 
+ures being obser
+
+world study [1
+e are more tigh
+NA has since be
+types of netwo
+orks, power gri
+
+d techniques a
+format of matric
+xisting methods
+specially if one
+atterns that sh
+
+y 
+SNA literature 
+twork density 
+n the network a
+nks. For a netw
+link pointing fr
+link pointing fr
+links is g(g-1). 
+
+work, all values
+nd then divided 
+he average num
+an indicator of 
+gher density va
+OIs and/or shif
+
+riendship netwo
+consider the fo
+AOI transitio
+
+ns from AOI A
+yad census syst
+inks in a direc
+owing three typ
+nodes, asymmet
+nd null dyads w
+
+ork is calculated
+tal number of n
+h reciprocity va
+and forth betwe
+have to happ
+
+ocity ignores 
+
+nodes, Davis a
+ad census, wh
+es and links amo
+ossible isomorp
+ntion is defined
+einhardt [5] us
+he first charac
+triad, the seco
+
+dyads in the tri
+dyads in the tri
+s the shape of 
+ters are the sam
+means down,
+
+clic, and the le
+
+on the three-no
+rchers to comp
+eye-tracking da
+
+rved indicates t
+
+19], 
+htly 
+een 
+
+orks 
+ids, 
+and 
+ces, 
+s in 
+e is 
+hare 
+
+are 
+is 
+
+and 
+ork 
+
+rom 
+rom 
+
+To 
+s in 
+
+by 
+mber 
+
+the 
+alue 
+fted 
+
+ork, 
+ocal 
+ons, 
+A to 
+tem 
+cted 
+pes: 
+tric 
+
+with 
+d by 
+on-
+
+alue 
+een 
+pen 
+the 
+
+and 
+hich 
+ong 
+phic 
+d in 
+sing 
+cter 
+ond 
+iad, 
+iad, 
+the 
+me. 
+the 
+tter 
+
+ode 
+pare 
+ata. 
+that 
+
+385
+
+
+
+ 
+
+ 
+
+t
+f
+e
+v
+
+T
+s
+a
+s
+i
+a
+t
+l
+r
+s
+t
+o
+t
+
+F
+0
+s
+v
+A
+h
+w
+s
+A
+t
+d
+i
+i
+s
+t
+
+the student pre
+fashion. Since 
+exclusive, the 
+visited AOIs. 
+
+To get an overv
+students, we co
+and calculated 
+shown in Tab
+indicates that t
+any two AOIs i
+that this student
+lot of transition
+relatively high v
+student moved 
+the first one ov
+over 80% of th
+the time. 
+
+Table 1. Net
+
+ 
+Density 
+Reciprocity 
+003 
+012 
+102 
+021D 
+021U 
+021C 
+111D 
+111U 
+030T 
+030C 
+201 
+120D 
+120U 
+120C 
+300 
+
+For triad struct
+012, and 102. O
+show that a fai
+visited together
+AOIs in our sa
+have transition
+words, the un
+students are no
+AOIs during pr
+the triad struc
+density and re
+indicates that th
+in the network
+suggest that the
+the missing l
+
+efers to move 
+all 16 patterns
+030C also ind
+
+Figure 4.
+view of the netw
+onstructed the t
+
+the above int
+ble 1). For net
+there is, on ave
+n the space. Th
+t only briefly lo
+
+ns before movin
+value of mean r
+from one AOI 
+
+ver half of the 
+he time and eve
+
+twork Statistics
+
+Mean 
+1.38 
+0.61 
+
+58.32 
+44.08 
+62.89 
+
+2.95 
+2.51 
+6.19 
+
+17.73 
+17.84 
+
+1.35 
+0.78 
+
+17.84 
+2.60 
+2.95 
+7.24 
+
+21.16 
+
+tures, the three
+On the one han
+ir number of c
+r. This makes 
+
+ample. For insta
+ns among only 
+neven number 
+t making rando
+roblem solving
+tures also sup
+eciprocity. The
+here are relative
+ks. And the hig
+e densities of th
+links in these
+
+across differen
+s in the triad 
+
+dicates less revi
+
+. Triad Census 
+work structures
+transition netw
+troduced netwo
+twork density, 
+erage, at least 
+
+he very small mi
+ooked at the spa
+ng to another pa
+reciprocity of 0
+to the next, tha
+time. The max
+
+n the minimum
+
+s for all 37 Tra
+
+SD 
+0.79 
+0.11 
+
+42.02 
+13.49 
+14.81 
+
+1.87 
+2.02 
+3.91 
+5.59 
+5.70 
+1.34 
+1.00 
+8.35 
+2.23 
+2.22 
+4.91 
+
+10.62 
+
+ most observed
+nd, high number
+ombinations of
+sense given t
+
+ance, it is less l
+the five respo
+of triad struc
+
+om decisions on
+g. On the other 
+pport the obser
+e high number
+ely high numbe
+gh numbers of
+
+he networks are 
+e structures. 
+
+nt AOIs in a c
+census are mu
+isiting of previ
+
+ 
+
+s in our dataset 
+works for all of 
+ork statistics (r
+
+the mean of 
+1 transition bet
+inimum (0.03) s
+ace without mak
+age of questions
+.61 shows that 
+at student will r
+ximum reciproc
+
+m is over one th
+
+ansition Netwo
+
+Min Ma
+0.03 4.0
+0.35 0.8
+
+22 24
+20 6
+9 9
+0 
+0 
+0 1
+1 2
+1 2
+0 
+0 
+0 3
+0 
+0 
+0 2
+0 4
+
+d structures are
+rs of these struc
+f three AOIs ar
+the definition o
+likely for stude
+onse areas. In 
+ctures indicates
+n transitions bet
+hand, the coun
+
+rvations on ne
+r of 102 struc
+
+ers of reciprocal
+f all three struc
+
+not very high, 
+Another inter
+
+cyclic 
+utually 
+iously 
+
+of 37 
+f them 
+results 
+f 1.38 
+tween 
+shows 
+king a 
+s. The 
+if one 
+revisit 
+city is 
+hird of 
+
+rks  
+
+ax 
+03 
+81 
+46 
+69 
+98 
+8 
+9 
+
+16 
+29 
+26 
+5 
+4 
+
+37 
+8 
+9 
+
+20 
+40 
+
+e 003, 
+ctures 
+re not 
+of the 
+ents to 
+
+other 
+s that 
+tween 
+nts on 
+twork 
+ctures 
+l links 
+ctures 
+given 
+esting 
+
+obs
+wh
+clo
+lea
+doe
+dif
+eith
+of 
+
+5.
+LE
+Be
+as 
+com
+per
+tran
+sta
+lev
+tas
+the
+fun
+pag
+Am
+sco
+stu
+(LP
+per
+me
+dif
+the
+two
+
+To
+N
+stu
+Lo
+hav
+= 2
+per
+11
+SD
+thr
+ind
+Ch
+be 
+two
+the
+num
+com
+to b
+con
+num
+add
+
+servation on tr
+hich can be ob
+osed loop witho
+ast during the p
+es not require
+fferent AOIs. It 
+her revisit prev
+AOIs.  
+
+EYE MO
+EARNING
+esides providing
+
+in Section 4.3
+mpare students
+rforming versus
+nsition pattern
+
+atistics for stude
+vels. For each q
+k, students in th
+
+e levels of the
+nctions. For Qu
+ge based learnin
+mong the total o
+ores 0 to 3, resp
+udents who got 
+P04 > 0) and l
+rformed indepe
+easures. The r
+fference on netw
+e triad structures
+o groups, includ
+
+Figure
+ be specific, low
+= 29) have m
+
+udents (M = 40.
+w-performing s
+ve more 021D t
+2.13, SD = .99,
+rforming studen
+1U triad structu
+
+D = 3.45, N = 8
+ree triad struct
+dicating standar
+hecking these th
+
+seen that high-
+o AOIs and mo
+e third one from
+mber of 111U
+mparison, low-p
+branch out from
+nnected in the
+mber of 021D
+dition, low-perf
+
+iad structures i
+bserved when t
+out reciprocal li
+problem solving
+ a long chain
+
+t is highly possi
+viously visited A
+
+VEMENT 
+G PROGRE
+
+g overall descri
+3, the network
+s belonging to 
+s low-performin
+
+ns. In this sec
+ents based on th
+question page i
+he sample were
+e learning prog
+uestion 4, we u
+ng progression l
+of 37 students, 
+pectively, for LP
+scores higher th
+low- (LP04 = 
+endent sample 
+results indicate
+work density or
+s, three are foun
+ding 003, 021D
+
+e 5. Differences
+w-performing s
+
+more 003 triad 
+63, SD = 20.25
+students (M = 
+triad structures t
+, N = 8), t(24) 
+nts (M = 16.90,
+ures than high-p
+8), t(20) = -2.6
+tures are plotte
+d errors. 
+
+hree triad struct
+performing stud
+ove back and fo
+m one of these 
+
+U structures fo
+performing stud
+
+m one AOI to tw
+ir gazing patte
+
+D structures fo
+forming student
+
+is the least obs
+the visits to th
+inks. This resul
+g in this curren
+
+n of sequential
+ible that studen
+AOIs or move o
+
+PATTERN
+SSION LE
+iptive informati
+k statistics can
+
+different grou
+ng, to identify d
+ction, we comp
+heir different lea
+in the CBAL M
+
+e evaluated by a
+gression in und
+use variable LP
+level.  
+29, 0, 5, and 3
+P04. Due to the
+han 0, we split s
+0) performing 
+t tests on all 
+e that there 
+r reciprocity. A
+nd significantly
+, and 111U.  
+
+s on Triad Stru
+students (M = 6
+
+structures than
+5, N = 8), t(27)
+3.17, SD = 2.
+
+than high-perfo
+= 2.05, p < 0.0
+, SD = 5.88, N 
+performing stud
+7, p < 0.05. Th
+ed in Figure 5
+
+tures as shown 
+dents tend to fo
+
+forth between th
+two (as indica
+
+r high-perform
+dents have less
+
+wo AOIs, which
+ern (as indicat
+or low-perform
+ts tend to find 
+
+served one, 030
+hree AOIs form
+lt indicates that
+nt case, it usua
+l single visits
+
+nts will be need
+on to other tripl
+
+NS AND 
+VELS 
+
+ion for the sam
+n also be used 
+ups, that is, hi
+differences in th
+pare the netw
+arning progress
+Moving Sidewa
+a content expert
+derstanding lin
+
+P04 to indicate 
+
+ students receiv
+e small number
+students into hi
+groups. Next, 
+available netw
+is no signific
+t the .05 level, 
+
+y different betwe
+
+uctures 
+63.21, SD = 45.
+n high-perform
+ = 2.04, p < 0.
+.00, N = 29) a
+
+orming students
+05. However, lo
+
+N = 29) have few
+dents (M = 21.
+he means for th
+5 with error b
+
+in Figure 4, it c
+ocus on a subset
+hese two and v
+ated by the hig
+
+ming students). 
+ strategy and te
+
+h are never direc
+ted by the hig
+
+ming students). 
+fewer connectio
+
+0C, 
+m a 
+t, at 
+ally 
+
+of 
+d to 
+lets 
+
+mple 
+d to 
+gh-
+heir 
+ork 
+
+sion 
+alks 
+t on 
+near 
+
+the 
+
+ved 
+r of 
+gh- 
+we 
+ork 
+
+cant 
+for 
+een 
+
+ 
+
+31, 
+ming 
+
+05. 
+also 
+(M 
+
+ow-
+wer 
+25, 
+
+hese 
+bars 
+
+can 
+t of 
+
+visit 
+gher 
+
+In 
+end 
+ctly 
+
+gher 
+In 
+
+ons 
+
+386
+
+
+
+ 
+
+ 
+
+between triples of different AOIs (as indicated by the higher 
+number of 003 structures for low-performing students).  
+
+6. DISCUSSION AND FUTURE WORK 
+In this paper, we constructed eye-movement transition networks 
+and conducted related analysis on these networks. The results 
+show that, in general, students did not make random decisions on 
+transition among AOIs and they tend to revisit previously visited 
+ones. Comparing high- and low-performing students in terms of 
+their mastery of linear functions, it was found that low-performing 
+students are more likely to consider information in isolation, 
+whereas high-performing students tend to connect multiple 
+sources of information in solving complex math problems.  
+As in any other methods using transition matrices, the network 
+analyses in this paper share the limitation of partially ignoring the 
+sequential information in the eye-tracking data. For instance, in a 
+triadic structure, the information of which link happened first was 
+not recorded. Despite this limitation, the analysis still provides us 
+useful information on students’ cognitive process during problem 
+solving.  
+The current work can be extended in several directions. First, 
+numerous other network measures can be applied to the AOI 
+network analysis. For example, the network centrality measure 
+[26] can provide information on the preferred AOIs by students. 
+Second, cluster analysis can be conducted on the transition 
+networks and related measures used to discover latent subgroups 
+of students, some of which may shed more light on student 
+cognition than their test scores. Last, the current analysis focuses 
+only on transition structures and not the content of the AOIs. 
+Further analysis with AOI information can provide more detailed 
+information on the transition patterns. 
+
+7. ACKNOWLEDGMENTS 
+Our thanks to our ETS colleagues Dr. James Carlson, Dr. Lei 
+Chen, and Dr. Paul Deane for their suggestions, and the 
+anonymous reviewers for their comments. 
+
+8. REFERENCES 
+[1] Almond, R. et al. 2012. A preliminary analysis of keystroke 
+
+log data from a timed writing task. ETS Reseach Report RR-
+12-23. (2012). 
+
+[2] Arieli-Attali, M. et al. 2012. The use of three learning 
+progressions in supporting formative assessment in middle 
+school mathematics. The annual meeting of the American 
+Educational Research Association (Vancouver, Canada, 
+2012). 
+
+[3] Bayazit, A. et al. 2014. Predicting learner answers 
+correctness through eye movements with random forest. 
+Educational Data Mining: Applications and Trends. A. 
+Peña-Ayala, ed. Springer International Publishing. 203–226. 
+
+[4] Bennett, R.E. 2010. Cognitively based assessment of, for, 
+and as learning (CBAL): A preliminary theory of action for 
+summative and formative assessment. Measurement: 
+Interdisciplinary Research & Perspectives. 8, 2 (2010), 70–
+91. 
+
+[5] Davis, J.A. and Leinhardt, S. 1972. The structure of positive 
+interpersonal relations in small groups. Sociological Theories 
+in Progress. J. Berger, ed. Houghton Mifflin. 218–251. 
+
+[6] Feng, G. 2006. Eye movements as time-series random 
+variables: A stochastic model of eye movement control in 
+reading. Cognitive Systems Research. 7, 1 (2006), 70–95. 
+
+[7] Findlay, J.M. and Walker, R. 1999. A model of saccade 
+generation based on parallel processing and competitive 
+
+inhibition. Behavioral & Brain Sciences. 22, 4 (1999), 661–
+721. 
+
+[8] Gorin, J.S. 2006. Test design with cognition in mind. 
+Educational Measurement: Issues and Practice. 25, 4 (2006), 
+21–35. 
+
+[9] Gorin, J.S. and Embretson, S.E. 2012. Using cognitive 
+psychology to generate items and predict item characteristics. 
+Automatic item generation: Theory and practice. M.J. Gierl 
+and T.M. Haladyna, eds. New York: Routledge. 136 – 156. 
+
+[10] Graf, E.A. et al. 2010. Highlights from the Cognitively Based 
+Assessment of, for, and as Learning (CBAL) Project in 
+Mathematics. ETS Research Spotlight. 3, (2010), 19–30. 
+
+[11] Holland, P.W. and Leinhardt, S. 1970. A method for 
+detecting structure in sociometric data. American Journal of 
+Sociology. 76, 3 (1970), 492–513. 
+
+[12] Holmqvist, K. et al. 2011. Eye tracking: A comprehensive 
+guide to methods and measures. Oxford University Press. 
+
+[13] Just, M.A. and Carpenter, P.A. 1980. A theory of reading: 
+From eye fixations to comprehension. Psychological Review. 
+87, 4 (1980), 329–354. 
+
+[14] Kerr, D. et al. 2011. The feasibility of using cluster analysis 
+to examine log data from educational video games. CRESST 
+Report 790. National Center for Research on Evaluation, 
+Standards, and Student Testing (CRESST). (2011). 
+
+[15] Kolm, J. et al. 2013. How long is the coastline of teamwork?? 
+A neurodynamic model for group and team operation and 
+evolution. 15th International Conference on Human-
+Computer Interaction - Augmented Cognition (2013). 
+
+[16] Van Der Lans, R. et al. 2008. Eye-movement analysis of 
+search effectiveness. Journal of the American Statistical 
+Association. 103, 482 (2008), 452–461. 
+
+[17] Lindner, M.A. et al. 2014. Tracking the decision-making 
+process in multiple-choice assessment: evidence from eye 
+movements. Applied Cognitive Psychology. 28, 5 (2014), 
+738–752. 
+
+[18] Madsen, A.M. et al. 2012. Differences in visual attention 
+between those who correctly and incorrectly answer physics 
+problems. Physical Review Special Topics - Physics 
+Education Research. 8, 1 (2012), 010122. 
+
+[19] Milgram, S. 1967. The small world problem. Psychology 
+today. 2, 1 (1967), 60–67. 
+
+[20] Newman, M.E.J. 2003. The structure and function of 
+complex networks. SIAM Review. 45, (2003), 167–256. 
+
+[21] Posner, M.I. et al. 1980. Attention and the detection of 
+signals. Journal of Experimental Psychology: General. 109, 
+2 (1980), 160–174. 
+
+[22] Rayner, K. 1998. Eye movements in reading and information 
+processing: 20 years of research. Psychological Bulletin. 124, 
+3 (1998), 372–422. 
+
+[23] Susac, A.N.A. et al. 2014. Eye movements reveal students’ 
+strategies in simple equation solving. International Journal 
+of Science and Mathematics Education. 12, 3 (2014), 555–
+577. 
+
+[24] Tai, R.H. et al. 2006. An exploration of the use of eye?gaze 
+tracking to study problem?solving on standardized science 
+assessments. International Journal of Research & Method in 
+Education. 29, 2 (2006), 185–208. 
+
+[25] Tsai, M.-J. et al. 2012. Visual attention for solving multiple-
+choice science problem: An eye-tracking analysis. 
+Computers & Education. 58, 1 (2012), 375–385. 
+
+[26] Wasserman, S. and Faust, K. 1994. Social network analysis: 
+Methods and applications. Cambridge University Press, 
+Cambridge.  
+
+387
+
+
+
+
+

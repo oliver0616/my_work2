@@ -1,0 +1,497 @@
+
+Success, activity and drop-outs in MOOCs
+An exploratory study on the UNED COMA courses
+
+Jose Luis Santos, Joris Klerkx,
+Erik Duval
+
+Computer Science department, KU Leuven
+Celestijnenlaan 200 A
+
+Leuven, Belgium
+{joseluis.santos, joris.klerkx, erik.duval}
+
+at cs.kuleuven.be
+
+David Gago, Luis Rodríguez
+Centro Superior para la Enseñanza Virtual
+
+(CSEV)
+Avda. de Esparta s/n. Edificio UNED
+
+Las Rozas de Madrid, Spain
+{dgago, lrodriguez}@csev.org
+
+ABSTRACT
+This paper presents an exploratory study about two lan-
+guage learning MOOCs deployed in the UNED COMA plat-
+form. The study identifies three research questions: a) How
+does activity evolve in these MOOCs? b) Are all learn-
+ing activities relevant?, and c) Does the use of the target
+language influence?. We conclude that the MOOC activ-
+ity drops not only due to the drop-outs. When students
+skips around 10% of the proposed activities, the percentage
+of passing the course decrease in a 25%. Forum activity is
+a useful indicator for success, however the participation in
+active threads is not. Finally, the use of the target language
+course is not an indicator to predict success.
+
+Categories and Subject Descriptors
+K.3.2 [Computers and Education]: Computer Science
+Education; J.1 [Administrative Data Processing]: Ed-
+ucation
+
+General Terms
+Management, Measurement, Performance, Design, Experi-
+mentation, Human Factors.
+
+Keywords
+Learning analytics, participation, MOOCs, Visualisation
+
+1. INTRODUCTION
+Massive Open Online Courses (MOOCs) give us the op-
+
+portunity to collect unprecedented volumes of data on stu-
+dent interaction with learning systems as well as to study
+how the use of social media impacts on the learner [4]. How-
+ever, student participation in MOOCs is varied. The par-
+ticipation has been categorised in: people who do not even
+start the course, students who did not finish the course or
+
+Permission to make digital or hard copies of all or part of this work for
+personal or classroom use is granted without fee provided that copies are
+not made or distributed for profit or commercial advantage and that copies
+bear this notice and the full citation on the first page. To copy otherwise, to
+republish, to post on servers or to redistribute to lists, requires prior specific
+permission and/or a fee.
+LAK’14 March 24 - 28 2014, Indianapolis, IN, USA
+Copyright 2014 ACM 978-1-4503-2664-3/14/03 $15.00.
+http://dx.doi.org/10.1145/2567574.2567627 ...$15.00.
+
+drop-outs, students who are not interested in passing the
+course but check periodically the learning resources and, fi-
+nally, students who pass the course [6, 7].
+
+Drop-outs are one of the main concerns in MOOC studies
+[1].
+
+This paper selected three of the research questions where
+the analysis of MOOC log data in the UNED platform pro-
+vided useful insights. Other research questions were dis-
+carded because was necessary to track more user interac-
+tions.
+
+The remainder of this text is structured as follows: next
+section presents how the courses are structured in order to
+provide a better understanding of the dataset. Then, we
+present the results of the analysis. The paper ends with a
+summary of the conclusions and future work.
+
+2. UNED COMA
+UNED COMA is the OpenMooc [2] platform of the Span-
+
+ish National Distance Education University (UNED). Par-
+ticipants in UNED COMA have access to learning materi-
+als in the form of short videos recorded by teachers, self-
+assessment activities to check progress, and a forum where
+they can ask questions. ‘Badges’ are automatically awarded
+to participants, recognising their progress and contributions
+to the learning community.
+
+In addition to ‘badges’, two different types of accreditation
+are available, namely: a) credential: validation of having
+successfully finished the course and having passed an online
+test and b) UNED COMA certificate: in collaboration with
+UNED (after formal f2f test in a UNED centre).
+
+The second week of October 2013, there were more than
+141,000 unique registrations in the 21 courses available in the
+platform. So far, more than 5,000 UNED COMA certificates
+have been awarded.
+
+In order to analyse the data in some detail, we focus on
+two of the language courses: ‘Fundamentals of German for
+Spanish speakers’ and ‘Professional English’. The German
+and English language courses had 23065 and 33811 students,
+respectively. The German language course is for beginners
+and relied on peer review and questionnaires, and the En-
+glish language course is for advanced students with student
+progress assessed through questionnaires only. Around 5%
+of the students are likely to pass the language courses. These
+percentages are similar to other non language courses in the
+same platform.
+
+98
+
+
+
+3. RESEARCH QUESTIONS
+Drop-out rates and social interactions are two elements
+
+often discussed in MOOC research [1, 3]. Below, we report
+on our analysis of these two aspects with the UNED COMA
+platform. In this section, we discuss three research ques-
+tions. Every research question contains hypotheses that we
+have explored through the use of visualisations.
+
+Section 3.1 focuses on low completion ratios of MOOCs[1,
+3], from two different points of view. We compare students
+who only access activities with students that also take as-
+sessments. We also compare the discussion forum activity
+of students who passed the course with the total students.
+
+Section 3.1 results drive our research towards the explo-
+ration of how this activity is linked to the learning results.
+We know from previous studies that the lack use of fora has
+a relation with failure [9, 10], therefore Section 3.2 explores
+how activity within the platform may relate with those stu-
+dents who passed the course. Moreover, we also know that
+the use of the target language in language courses [8] can be
+relevant. Section 3.3 explores how the use of the language
+in the fora related to the students.
+
+3.1 RQ1: how does activity evolve?
+MOOC studies point out that the activity in forums drops
+
+considerably as the course progresses [1]. We know from
+previous experiments [11] that there also is a drop in activity
+after the first week in blended learning courses.
+
+In order to analyse this research question, we have created
+two visualisations per course (see Figure 1) and defined three
+hypotheses. The first chart visualises student access to the
+activities of each unit (blue bar chart) and student access to
+the assessments (red line chart). The second chart visualises
+the fora activity per day: in that diagram, the blue line
+represents the total student activity per day and the red
+line represents the activity in the fora considering only those
+students who eventually passed the course.
+
+Hypothesis 1: Drops-outs occur at the beginning of the
+course.
+
+Figure 1 shows that both courses share a characteristic:
+75% of the students drop-out in the first three units of the
+course, so before the students reach the half of the course.
+Roughly, each unit loses 25% of students until unit 4, when
+the number of students becomes more or less stable.
+
+Moreover, Figure 1 shows that the first activity of each
+unit is more visited than the rest of the activities of the
+same unit and more than the last activities of the previous
+units. Access to the activities decreases, but the first activity
+of each unit breaks this pattern. This can be due to many
+students accessing only the first activity of each unit, in
+order to explore course content.
+
+Maybe, here lies a hidden opportunity to reduce the num-
+ber of drop-outs: MOOCs should pay attention to these first
+activities in each unit, in order to motivate and engage stu-
+dents.
+
+Hypothesis 2: The drop activity in the fora is not due only
+to drop-outs.
+
+As we reported at the beginning of this section, some stud-
+ies point out that the reduction of fora activity on fora or
+social media is due to drop-outs leaving the course [1]. Fig-
+ure 1 shows that for those students who passed the course
+(red line), the activity also decreases, following a pattern
+similar the blue line which includes the drop-outs. This ac-
+tivity drop is not so unusual, we already reported it in a case
+
+study of a blended learning course [11].
+Hypothesis 3: The percentage of students who pass the
+
+course when they follow the course till the end is significantly
+higher.
+
+Around 25% (3763 students) and 9% (2489 students) started
+the second activity of the last unit of the German and En-
+glish course (we exclude the first activity of the unit, because
+it breaks the patterns as reported before). So we may as-
+sume that these people remain in the course till the end.
+Considering only these students, the percentage of students
+who pass the course is up to 40% and 41%. Whilst these
+percentages are more acceptable than the initial ratios of 3%
+and 6%.
+
+3.2 RQ2: Are all learning activities relevant?
+Section 3.1 reports that among those students who re-
+
+main active in the course untill the end, the success rate is
+around 40%. In this section, we analyse the data in order
+to find relevant metrics or common characteristics among
+those students who passed the course. For example, a study
+reported that higher social network activity does not im-
+ply better performance, however usually lower activity does
+imply worse performance [9].
+
+Our hypotheses are:
+Hypothesis 1: There is a threshold on activities done.
+
+Above this threshold, students are not more likely to pass
+the course.
+
+In order to explore this hypothesis, we have visualised the
+percentage of students who passed the course based on the
+number of the learning activities that they did (see Figure
+2).The first bin in the x-axis includes those students who
+did less than the total number of activities minus 50. The
+total number of activities are 130 activities for the English
+course and 110 activities for the German course. We chose
+total minus 50 activities as a low threshold because nobody
+in that bin passed any of the courses. The y-axis in Figure 2
+represents the percentages of students who pass the course
+per bin represented in the x-axis. Consecutive bins increase
+by 10 activities, until the maximum number of activities in
+the course.
+
+Figure 2 shows that students who did more course activ-
+ities had higher chances to pass the course. Therefore, we
+do not find the threshold hypothesised in hypothesis 1. The
+more learning activities a student does, the more likely the
+student will complete the course successfully. This evidence
+is also supported by statistical analysis when we perform the
+Spearman’s rank correlation test to the individual activity
+per student. The test result is a significant positive correla-
+tion with p-value<0.001 and ?=0.32. Indeed, skipping only
+10 of the course activities decreases the percentage drasti-
+cally decreased by 25 points. Therefore, doing all learning
+activities was a key factor to pass the course.
+
+Hypothesis 2: There is a threshold on forum participation.
+Above this threshold, students are not more likely to pass
+the course.
+
+In order to validate hypothesis 2, we have visualised the
+percentage of students who passed the course based on their
+fora activity (see Figure 3). We grouped the students in
+bins for students who have between 0 and 10 posts, between
+10 and 20 posts, between 20 and 30 posts, or more than
+30 posts (see x-axis in Figure 3). We then calculated the
+percentages of students who passed the course in each bin
+(see y-axis in Figure 3).
+
+99
+
+
+
+Figure 1: Absolute activity and filtered activity visualized along the course
+
+100
+
+
+
+Figure 2: Relation between learning activities and
+success
+
+Figure 3: Relation between fora activity and success
+
+Figure 3 shows that more activity in the fora correlates
+with higher likelihood of success. This evidence is also sup-
+ported by statistical analysis. The Spearman’s rank corre-
+lation coefficient is significant with p-value<0.001 and ? =
+0.20. However, the increased success ratio flattens out quickly
+which confirms hypothesis 2.
+
+Hypothesis 3: Active threads are key threads.
+If fora activity is a relevant metric for students who passed
+
+the course, we considered the possibility that more active
+threads can have more impact on those students who passed
+the course.
+
+In order to explore this hypothesis, we have visualised in
+Figure 4 the percentages of passed students per bin. These
+bins are based on the number of posts that each thread con-
+tains, therefore we build up bins from 0 to 10 posts, 10 to
+20 post till the 140-150 bin (see x-axis in Figure 4). We
+then calculated the percentages of students who passed the
+course in each bin (see y-axis in Figure 4)
+
+Figure 4 shows that most of the threads in the German
+course have a success rate around 50% and in the case of the
+English course around 30%.
+
+However, Figure 4 shows that there is no apparent cor-
+relation between active threads and percentages of students
+who passed the courses. This evidence is also supported by
+statistical analysis. The Spearman’s rank correlation coef-
+ficients shows a slightly negative correlation significant for
+both courses, with p-value<0.001 and ? = ?0.04 for the
+
+Figure 4: Percentages of passed students per thread
+bins (English and German Course)
+
+English course and p-value<0.001 and ? = ?0.09 for the
+German course. However, we see in Figure 4 that the last
+bins contain an unusual high percentage of students who
+passed the course compared with the previous bins. There-
+fore, we analysed manually the content of these threads.
+The last bin in the English course contains only a thread
+that students used to post solutions to the assignments. In
+a more ‘fair play’ way, the last bin in the German course con-
+tained a thread which students posted external educational
+resources.
+
+Therefore, neither Figure 4 nor the slightly negative cor-
+relation shows that active threads are a relevant metric to
+explore in our courses.
+
+3.3 RQ3: Does the use of the target language
+in fora influence learning outcomes?
+
+The use of social network tools such forum, wiki and blogs
+has been widely researched in language courses [10]. The use
+of the course target language seems to have positive effects
+[8].
+
+Hypothesis 1: The students who passed the course use
+more frequently the target language in the fora.
+
+In order to explore this hypothesis, we have classified all
+the messages with the probability that they are written in
+the target language or Spanish using UClassify [5]. The x-
+axis in Figure 5 shows the probability of writing in the target
+language. The y-axis contains the normalised number of
+students. The red line represents the students who fail and
+the blue line is the students who pass the course.
+
+We can discard the German chart in Figure 5 because a
+very low percentage of students use German in the fora. The
+blue line decreases just behind of the red line. Considering
+the raw data of the German course, only 1% of the users
+wrote in German with higher probability than 10%. 93% of
+users wrote in Spanish with higher probability than 90% .
+Almost, all the students used Spanish as the communication
+language in the fora.
+
+Figure 5 shows that the target language was not used very
+often in the communications. We expected this in the Ger-
+man course because it is a course that does not require pre-
+vious knowledge. However it looks unusual in a Professional
+English course.
+
+The evolution of the English course graph in Figure 5 is
+very similar for the students who pass the courses and those
+who fail. Therefore, we can say that the use of the target
+language in media is not correlated with the probability of
+passing the course.
+
+101
+
+
+
+Figure 5: Comparing success and failure in the En-
+glish and German language course when students
+use the target language
+
+Considering the raw data of the English course, only 10%
+of the students wrote in English with higher probability than
+90%, while 67% were likely to use Spanish with a probability
+higher than 90%. When we perform the Spearman’s rank
+correlation test, we see that the coefficients are not strictly
+significant (p-value<0.05). When we focus on absolute val-
+ues, the results do not change much. Only 13% of the stu-
+dents who used english with a higher possibility than 60%
+passed the course.
+
+4. CONCLUSIONS
+This paper describes an exploratory analysis of two MOOCs
+
+in the UNED COMA platform. We have presented that
+the percentage of students who passed the course exclud-
+ing drop-outs is around 40%. Regarding the drop-outs, the
+study points out that 50% of the students drop out during
+the first two units. Furthermore, whilst drop-outs are one
+of the causes of the drop in the fora activity, this pattern
+is also present when we consider only those students who
+passed the course as well as in other non MOOCs experi-
+ments.
+
+Participating in the learning activities and fora correlates
+with the probabilities of a students passing the course. Around
+70% of the students that perform all the activities pass the
+course. This percentage decreases close to 25% when they
+only skip 10 learning activities. Moreover, our study shows
+that students who are above a threshold in fora activity do
+not gain any additional beneficial influence from extra ac-
+tivities
+
+Finally, we have to highlight our surprise that our analysis
+points out that the use of the target languages does not
+influence the probability of passing these courses.
+
+5. ACKNOWLEDGMENTS
+The research leading to these results has received funding
+
+from the European Community’s Seventh Framework Pro-
+gramme (FP7/2007-2013) under grant agreement No 318499
+- weSPOT project.
+
+6. REFERENCES
+[1] C. Alario-Hoyos, M. Pe?rez-Sanagust??n,
+
+C. Delgado-Kloos, H. Parada G., M. Mun?oz Organero,
+and A. Rodr??guez-de-las Heras. Analysing the Impact
+of Built-In and External Social Tools in a MOOC on
+Educational Technologies. In ECTEL’13, volume 8095
+of Lecture Notes in Computer Science, pages 5–18.
+Springer, 2013.
+
+[2] M. Castro, S. Martin, D. Gago, and D. Torres.
+Building communities of practice & learning through
+moocs exploration. In Proceedings of the EMOOCs
+2014, the Second MOOC European Stakeholders
+Summit. Accepted, 2014.
+
+[3] D. Clow. MOOCs and the funnel of participation. In
+Proceedings of the Third International Conference on
+Learning Analytics and Knowledge, LAK ’13, pages
+185–189. ACM, 2013.
+
+[4] S. Cooper and M. Sahami. Reflections on Stanford’s
+MOOCs. Commun. ACM, 56(2):28–30, Feb. 2013.
+
+[5] W. H. Fletcher. Corpus analysis of the world wide
+web. The Encyclopedia of Applied Linguistics, 2012.
+
+[6] P. Hill. Emerging Student Patterns in MOOCs: A
+Graphical View, 2013.
+
+[7] R. F. Kizilcec, C. Piech, and E. Schneider.
+Deconstructing disengagement: analyzing learner
+subpopulations in massive open online courses. In
+Proceedings of the Third International Conference on
+Learning Analytics and Knowledge, LAK ’13, pages
+170–179, New York, NY, USA, 2013. ACM.
+
+[8] G. S. Levine. Student and Instructor Beliefs and
+Attitudes about Target Language Use, First Language
+Use, and Anxiety: Report of a Questionnaire Study.
+The Modern Language Journal, 87(3):343–364, 2003.
+
+[9] N. Michinov, S. Brunot, O. Le Bohec, J. Juhel, and
+M. Delaval. Procrastination, participation, and
+performance in online learning environments. Comput.
+Educ., 56(1):243–252, Jan. 2011.
+
+[10] T. Miyazoe and T. Anderson. Learning outcomes and
+students’ perceptions of online writing: Simultaneous
+implementation of a forum, blog, and wiki in an efl
+blended learning setting. System, 38(2):185 – 199,
+2010.
+
+[11] J. Santos, S. Charleer, G. Parra, J. Klerkx, E. Duval,
+and K. Verbert. Evaluating the use of open badges in
+an open learning environment. In ECTEL’13, volume
+8095 of Lecture Notes in Computer Science, pages
+314–327. Springer, 2013.
+
+102
+
+
+
+
+

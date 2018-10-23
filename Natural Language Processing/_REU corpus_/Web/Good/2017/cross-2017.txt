@@ -1,0 +1,687 @@
+
+Classifying Help Seeking Behaviour in Online Communities
+Sebastian Cross, Zak Waters, Kirsty Kitto, Guido Zuccon
+
+Queensland University of Technology (QUT)
+Brisbane, Australia
+
+[kirsty.kitto,g.zuccon]@qut.edu.au
+
+ABSTRACT
+While help seeking has been extensively studied using self report
+survey data and models, there is a lack of content analysis techniques
+that can be directly applied to classify help seeking behaviour. In
+this preliminary work we propose a coding scheme which is then
+applied to an open dataset that we have created by carefully se-
+lecting sub groups from two popular discussion sites (Reddit and
+StackExchange). We then explore the possibility for automatically
+classifying help seeking behaviour using machine learning models.
+A preliminary model provides good initial results, suggesting that
+it may indeed be possible to construct student support systems that
+build off of an accurate classifier.
+
+CCS CONCEPTS
+•Computing methodologies ? Supervised learning by classifica-
+tion; •Information systems ? Personalization; •Applied comput-
+ing ? E-learning;
+
+KEYWORDS
+help seeking; content analysis; machine learning; open data
+
+ACM Reference format:
+Sebastian Cross, Zak Waters, Kirsty Kitto, Guido Zuccon. 2016. Classifying
+Help Seeking Behaviour in Online Communities. In Proceedings of LAK
+
+’17,
+, March 13 - 17, 2017, Vancouver, BC, Canada, 5 pages.
+
+DOI: http://dx.doi.org/10.1145/3027385.3027442
+
+1 INTRODUCTION
+Self-regulated learning (SRL) appears to be a key indicator of stu-
+dent success. SRL has been associated with improved academic
+outcomes, engagement and motivation, as well as with constructive
+autonomy [28]. Two decades of research has provided us with a wide
+range of definitions [21, 29] and models [3, 23, 27], which serve to
+highlight the importance of helping people to learn how to initiate a
+wide variety of meta-cognitive, cognitive, affective, and motivational
+behaviours to achieve their learning goals [15]. This has demon-
+strated that self regulated learners have an ability to plan, organize,
+self-instruct, and self-evaluate which is essential to achieving long
+term success [29].
+
+Permission to make digital or hard copies of all or part of this work for personal or
+classroom use is granted without fee provided that copies are not made or distributed
+for profit or commercial advantage and that copies bear this notice and the full citation
+on the first page. Copyrights for components of this work owned by others than the
+author(s) must be honored. Abstracting with credit is permitted. To copy otherwise, or
+republish, to post on servers or to redistribute to lists, requires prior specific permission
+and/or a fee. Request permissions from permissions@acm.org.
+LAK ’17,
+© 2017 Copyright held by the owner/author(s). Publication rights licensed to ACM.
+978-1-4503-4870-6/17/03. . . $$15.00
+DOI: http://dx.doi.org/10.1145/3027385.3027442
+
+SRL is particularly important in online learning environments, es-
+pecially as they scale up to Massive Open Online Courses (MOOCs)
+[15, 16]. Within this overarching context, help seeking forms an
+important part of the SRL process [1, 13]. Here, we briefly discuss
+help seeking before proposing a scheme for content analysis.
+
+Help Seeking behaviour. Richardson et al. [24] defined help
+seeking as the “tendency to seek help from instructors and friends
+when experiencing academic difficulties”, but this definition misses
+an important further possibility; people can seek help from general
+communities of practice where they do not necessarily have an
+instructor or a friend. For example, learners frequently coalesce
+around topics of interest in sites such as StackExchange and Reddit,
+asking for help and often receiving it in a very timely manner. For
+this reason, we will adopt the definition provided by Kizilcec et al.
+[15], which extends this basic definition to include the possibility
+that a help seeker might consult external help and resources.
+
+It becomes critically important that learners develop a sophis-
+ticated approach to seeking help when they are studying in self
+directed online learning environments; they must be able to self-
+diagnose as requiring help, and then understand how to find it. For
+decades collaborative learning environments have been proposed
+as a way to encourage learners to learn from each other, providing
+necessary help along the way [6, 25]. Today, the vast majority of
+Learning Management Systems (LMSs) feature discussion fora and
+other environments (e.g., instant messaging services) that enable
+students to seek help in a variety of ways. However, it is precisely
+the people who most need help who tend not to posses the skills
+necessary to find it in a timely manner. Students can lack under-
+standing of the topic [17, 18], not know how to ask a question [4],
+and some students suffer from help seeking threat. This can translate
+into a lack self-esteem, or a fear of social embarrassment [14], a
+problem that has been shown to disproportionately affect certain
+groups. Similarly, anxiety has been found to anti-correlate with
+appropriate help seeking behaviour [9].
+
+We consider it important that Learning Analytics (LA) starts to
+develop methods for studying help seeking behaviour at scale. It is
+likely that recommendation systems can be built that would help to
+support a subset of students who have not yet learned to seek help
+effectively, or who suffer from help seeking threat. If categories of
+help seeking behaviour could be automatically detected in online
+fora then it would become possible to construct tools that could
+scaffold students towards more SRL patterns of behaviour. Even
+more interestingly, if we can automate the detection of help providing
+behaviour then students could potentially be rewarded for providing
+this invaluable service to their peers. Rewards do not have to relate
+just to summative assessment: sites such as StackExchange work on
+reputation, where the kudos of a help provider is increased as they
+provide more relevant help. (Although Howley has cautioned that
+up voting can be counter productive in an educational context [11].)
+
+
+
+LAK ’17, March 13 - 17, 2017, Vancouver, BC, Canada,
+Sebastian Cross, Zak Waters, Kirsty Kitto, Guido Zuccon
+
+This paper provides an exploratory step towards an overarching goal
+of automating the detection of help seeking and providing behaviour
+in online discussion transcripts.
+
+Models of help seeking. A number of models of help seeking
+have been created but as Howley has observed [11], they tend to be
+very similar. One example was proposed by Gall [20] whose model
+of help seeking focuses on five specific steps: i) Awareness of need
+for help. ii) Decision to seek help. iii) Identification of potential
+helpers. iv) Employment of strategies to elicit help. v) Reaction to
+help seeking attempts. These steps are then implemented by the help
+seeker using different strategies. Non verbal strategies are indirect,
+and consist of the student placing themselves in the proximity of a
+likely help provider. Gall does not discuss the case, but in a modern
+online context, a non verbal strategy would involve lurking in a
+discussion forum, and passively waiting for a post that resolved the
+problem. Verbal strategies can be implemented in a wider range
+of formats. The direct help seeker might simply ask for help with
+a direct question. However, verbal help seekers may also apply
+indirect strategies, perhaps by implying that a task is hard, or that
+they cannot do something. They may also ask for information about
+a problem, rather than directly asking for assistance and expecting
+an answer. Sometimes a power relationship is leveraged, e.g., they
+might remind an instructor of an obligation to provide help.
+
+Models such as these will prove essential in constructing a tool
+that can automate the provisioning of help to students who are
+identified as requiring assistance. However, we first require a way in
+which to understand help seeking behaviour per se.
+
+Qualitative studies of help seeking. A number of different papers
+have studied help seeking using qualitative surveys. Usually a help
+seeking construct is defined and then studied together with other
+educational factors (e.g., there is a help seeking subscale a part of
+the MLSQ [22]). Help seeking behaviour is then often correlated
+with educational outcomes (e.g., GPA [24]). Intriguingly, the recent
+work of Kizilcec et al. [15] demonstrates a negative relation between
+help seeking behaviour and goal attainment in MOOCS, a result
+that appears to contradict the work of Richardson et al., which
+demonstrates a positive correlation for help seeking behaviour and
+GPA [24]. However, as these methods use self-reporting to establish
+their correlations their conclusions are fraught, and can be critically
+questioned [7]. It is important that we start to correlate survey
+data with behavioural data obtained from learning communities —
+are students actually seeking help in the way that they claim in
+surveys? To answer these questions, it will be necessary to develop
+a coding scheme that can be used to classify help seeking behaviour
+in online discussion fora, code a variety of datasets and then attempt
+to correlate survey responses with actual patterns of behaviour.
+
+Coding text for help seeking behaviour. Despite the apparent need
+to cross-correlate self report data with observed student behaviour,
+few content analysis schemes have been developed for the problem
+of classifying help seeking behaviour. One scheme exists for the
+classification of collaborative learning [5]. It is broken up into five
+main behaviour categories and associated sub categories: Planning
+(Group skills, Organising Work, Initiating Activities); Contributing
+(Help Giving, Feedback Giving, Exchanging Resources, Sharing
+Knowledge, Challenging Others and Explaining or Elaborating);
+Seeking Input (Help Seeking, Feedback Seeking and Advocating
+
+Effort); Reflection/Monitoring (Monitoring Group Effort and Re-
+flecting on Medium); and Social Interaction (Social Interaction).
+This is a good first step, however, its roots in a schema for collabora-
+tive learning makes it difficult to apply to our scenario. Many of the
+behaviours in the contributing categories overlap which makes cod-
+ing unnecessarily complex. Furthermore, this scheme does code for
+achieving resolution (when an answer is provided to the help seeker).
+For this reason, we decided to develop a new specific scheme.
+
+Automating the detection of help seeking behaviour. Q&A sys-
+tems are increasingly being used in education [8, 12, 26], but many
+rely on large amounts of curated or structured data. Moreover, they
+cannot tell whether the students require help in advance of a direct
+question, and so miss crucial potential intervention points. We adopt
+a different stance here. If it is possible to hand code a dataset for
+help seeking behaviour, then an obvious question presents; can we
+automate this coding process using Machine Learning? As was
+discussed above, automating the detection of help seeking behaviour
+would enable the construction of tools that could help students to
+become more self directed in their learning.
+
+2 APPROACH
+Rather than generating another closed dataset based upon real stu-
+dent data extracted from a LMS or MOOC, a core contribution of
+this work is the ongoing creation of an open dataset that can be
+used and extended by other research groups. We have started by
+carefully selecting a subset of online discussion fora from two al-
+ready released open datasets. Reddit (www.reddit.com) is a content
+aggregation and discussion website that is split up into a number
+of subsections covering a wide range of topics. These subsections
+are called SubReddits, and hundreds are generated daily by the Red-
+dit user base. The data examined from Reddit was obtained from
+www.kaggle.com and consists of all user generated activity from
+May 2015. The user base of Reddit is a mix between users who have
+made a name for themselves as well as users who make temporary
+accounts to remain anonymous, which potentially allows users to
+post more freely (and sometimes more abusively) than might be ex-
+pected in a more traditional online learning environment. We chose
+to use the /r/askhistorians SubReddit in this study, because it is a
+strong learning community offering a set of free flowing questions
+and answers that appear similar in structure to an inquiry based LMS
+discussion forum. This dataset was released under the API terms of
+Reddit allowing for non-commercial use.
+
+Stack Exchange (www.stackexchange.com) is a question answer-
+ing (QA) platform that covers 160 topics, from coding and mathe-
+matics, to typography, language and science fiction. It is made up of
+many different communities, and these can contain sub communities
+of their own. The site has released a dataset which can be found at
+https://archive.org/details/stackexchange. This dataset consists of all
+user-contributed content (i.e. posts, comments, upvotes, downvotes,
+marked resolved, etc.) for the website. In this study we selected the
+english.stackexchange.com/ topic because (i) most of its members
+are identified and so we expect it to have better behaviour than some
+communities (ii) it contains few ideological arguments or humorous
+posts, and (iii) questions are frequently marked as resolved in this
+community, providing an extra corroborating data point. This dataset
+
+www.stackexchange.com
+https://archive.org/details/stackexchange
+english.stackexchange.com/
+
+
+Classifying Help Seeking Behaviour in Online Communities
+LAK ’17, March 13 - 17, 2017, Vancouver, BC, Canada,
+
+Table 1: The qualitative coding scheme developed for labelling help seeking in online communities.
+
+Main Label Sub-label Code Details
+
+Help Seeking Direct Question DQ Direct question being asked. Indicative features: question marks; five w’s (who, what, where,
+when, why); how; does.
+Example: “Is there a pronoun I can use as a gender-neutral pronoun?”
+
+Implied Help Seeking IS Validation seeking (“I was wondering”, “... am I wrong?”, “... Right?”) and Indirect questions.
+Example: “I’d love to find some area I could investigate on my own over the summer.”
+
+Help Providing Sharing Knowledge SK User sharing their knowledge on the current topic, can be a reply to a help seeking post or the
+elaboration of a previously given help providing post.
+Example: Singular they enjoys a long history of usage in English and can be used here: “Each
+student should save their questions until the end.”
+
+Exchanging Resources ER Providing resources as part of an answer. Linking to websites, references, books...
+Example: “Take a look at The Girls of Atomic City: The Untold Story of the Women Who
+Helped Win World War II.
+
+Feedback or Validation Given FG Providing feedback or validation on a user’s work/response/opinion can be given even when
+validation is not sought.
+Example: “Yes, that is correct.”
+
+Clarification Asking for Clarification AC Asking for clarification in reference to a post.
+Example: “Can you please explain why you have no love for zir?”
+
+Giving Clarification GC Providing clarification or elaboration in relation to a previous post.
+Example: “I like zir but I reserve it (in my idiolect) for known persons of determinate gender
+who are neither male nor female.”
+
+Resolution Help Received HR An explicit textual indication that help was received.
+Example: “Loved your answer :), Thanks”
+
+Social Interaction Unrelated USI Unrelated social interaction, random statement that is not related to a topic.
+Example: “You’re so lucky - imagine, in German there is a female form for every profession
+and such (something like actor and actress), and we fight on the proper gender to use.”
+
+Abusive ASI Abusive, overly critical or inappropriate language and attitude.
+Example: “You are an idiot.”
+
+Trolling TSI Unnecessary and intentionally provocative statements.
+Example: “Hitler did nothing wrong.”
+
+Table 2: A comparison of the category counts of sentences in Stack Exchange and Reddit. Bracketed numbers denote percentages.
+
+DQ IS SK ER FG AC GC HR USI ASI TSI
+
+Reddit 197 (.0905) 35 (.0157) 1408 (.6475) 176 (.0817) 138 (.0642) 4 (.0018) 20 (.0092) 37 (.0175) 139 (.0646) 5 (.0023) 2 (.0009)
+Stack Exchange 474 (.1244) 86 (.0257) 2676 (.7023) 154 (.0404) 110 (.0288) 5 (.0013) 10 (.0026) 54 (.0141) 239 (.0627) 0 29(.0005)
+
+is released under a CC BY-SA 3.0 licence. Only the posts made in
+May 2015 were used to maintain consistency across the datasets.
+
+While not formal LMSs, we consider Reddit and Stack Exchange
+to be excellent proxies for online collaborative learning. Indeed,
+many students in the formal education system make use of one or
+the other of these two sites as a core component of their Personal
+Learning Networks [19] to seek help with formal coursework and
+generally find out information or debate issues. Thus, the decision
+to make use of data from these sites is not just pragmatic, such
+open fora play an increasingly critical role in learning, and it is
+important that we develop solutions for them too. Both datasets
+have different affordances. For example, Stack Exchange provides a
+more structured learning environment driven by direct questions and
+attempts to answer them. Additionally, reputation (in the form of up
+votes and down votes) can be awarded by any registered member for
+both questions and answers, and the original question asker can mark
+a specific answer as having solved their question. These features
+mean that Stack Exchange is very much geared towards high quality
+questions and answers. In contrast, the Reddit dataset provides a
+more untamed structure that lends itself to more social interaction
+and back and forth banter. Although posts can be marked up or down,
+users are not represented on the site with reputation scores, which
+creates a less punishing environment for low quality answers/replies.
+
+The datasets were processed to allow for the labelling and classi-
+fication of the data. Both were split from paragraphs into sentences
+using NLTK’s [2] nltk.tokenize function. No attempt was made
+
+to correct for poor grammar or punctuation in an attempt to keep
+our approach as replicable as possible. After this process, we had
+extracted 2156 sentences from the Reddit dataset and 3810 sentences
+from the Stack Exchange dataset for further processing. This step
+involved removing all XML tags, along with all comments that
+were marked as deleted. For both datasets, all hyperlinks were con-
+verted to a standard indicator (URL) format using regex so that they
+were recognised accordingly during feature extraction. Reddit data
+preprocessing included an extra step where automated comments
+generated by bots, which tend to mimic help providing behaviour,
+were deleted.
+
+2.1 Qualitative Coding
+We have created a coding scheme for help seeking and providing
+behaviour (see Table 1) that combines the initial work of Curtis
+and Lawson [5] and Gall [20], and extends it. Our scheme was
+developed with an underlying intent to code data at a sentence level
+rather than at a paragraph level, in an attempt to provide a more
+accurate representation of the behaviour being expressed. This can
+be very complex, with individual posts expressing many different
+sentiments. In order to encourage replicability between coders,
+our schema assumed no context (i.e. was based on the behaviour
+presented within specific sentences). While the majority of the
+current coding was completed by one person, a test of Inter-Rater
+Reliability (IRR) was carried out. Two coders worked to achieve an
+IRR Cohen’s kappa value of 0.766 on a test set of 200 sentences,
+
+
+
+LAK ’17, March 13 - 17, 2017, Vancouver, BC, Canada,
+Sebastian Cross, Zak Waters, Kirsty Kitto, Guido Zuccon
+
+after working to achieve full agreement on a previous subset of 600
+classifications. Further incremental reliability tests will be performed
+to ensure dataset integrity as the dataset grows.
+
+2.2 Exploratory Automation
+Two classifiers were used in an exploratory study aiming to automate
+the classification of help seeking and help providing behaviours
+within online discussions. We used (i) a Support Vector Machine
+(SVM), and (ii) a Random Forest (RF) model, as both perform
+well on feature rich high dimensional tasks. These models were
+implemented using the http://scikit-learn.org/ Python libraries. The
+features extracted for this classification task were primarily lexical;
+we implemented a basic approach utilising: (i) word N-grams; and
+(ii) simple question counts. We utilised groupings of words due to
+the hypothesis that similar HS behaviours may be associated with
+clusters of words and their contexts. One example of such a case
+could be the words “is this”, which might indicate the poster is
+asking a question or otherwise seeking help. Our second exploratory
+feature seeks to incorporate the amount of inquiry contained in a post
+by counting the usage of questions marks. We used two validation
+methods common for classification tasks: 10-fold cross validation;
+and a training/testing split (of 75% and 25% respectively), which
+was used in the generation of confusion matrices to enable further
+exploration of the results.
+
+2.3 Results
+The breakdown of help seeking behaviour for our two online commu-
+nities is shown in Table 2. We admit to a certain amount of surprise
+that Stack Exchange and Reddit both appear to have a similar help
+seeking profile for the communities chosen. This similarity possibly
+arises from the specific communities chosen for preliminary analy-
+sis, and extending the dataset to other communities will be required
+before any conclusions can be drawn. It is unsurprising that few abu-
+sive and trolling behaviours were found in this dataset; as previously
+mentioned, both communities were chosen for their integrity and
+high moderation. Table 3 provides performance metrics for the two
+classification models, obtained using 10 fold cross validation. When
+we consider the simplicity of the feature set specified in Section 2.2,
+it is surprising that such high values were obtained.
+
+The confusion matrix in Table 4 provides an explanation, showing
+an obvious over classification of SK behaviour and precision losses
+because of false positives. Table 5 shows the Gini importance (GI)
+value (the higher the GI, the more important in reducing classifi-
+cation uncertainty or miss classification ), for the 5 most prevalent
+features in the random forest model, for both the full dataset (FULL)
+and the most common categories. As expected, the most valued
+features are those that relate to under represented behaviours. For
+example, the ‘url’ feature can often co-occur with a request for infor-
+mation (where someone points to a url as an example of something
+they are not sure about). Features such as ‘yes’ often co-occur with
+FG behaviour, where a help provider agrees with a help seeker. Fi-
+nally, features such as ‘does’ can often occur in DQ behaviour, at
+the start of a question. Some features are less obvious, for example
+the feature ‘islam’, which relates to the ER behaviour, and is due to
+a specificity of the dataset, where many of the comments discussed
+religion and users would provide Islamic text as sources.
+
+Table 3: Performance metrics for 3 different datasets.
+
+Precision Recall F-Value Accuracy
+
+Reddit SVM 0.667 0.752 0.665 0.752
+RF 0.728 0.739 0.677 0.742
+
+Stack Exchange SVM 0.622 0.742 0.658 0.742
+RF 0.765 0.787 0.762 0.791
+
+Combined SVM 0.624 0.687 0.595 0.687
+RF 0.725 0.742 0.698 0.751
+
+Table 4: Confusion Matrix for Entire Dataset using RF.
+DQ IS SK ER FG AC GC HR USI ASI TSI Precision
+
+DQ(164) 101 0 59 0 0 0 0 0 4 0 0 61.58
+IS(39) 1 9 29 0 0 0 0 0 0 0 0 23.07
+SK(1130) 16 4 1017 5 29 0 2 3 54 0 0 90
+ER(55) 1 0 29 17 0 0 0 0 8 0 0 30.90
+FG(20) 1 0 14 0 1 0 0 0 4 0 0 5
+AC(2) 0 0 1 0 0 0 0 0 1 0 0 0
+GC(0) 0 0 0 0 0 0 0 0 0 0 0 N/A
+HR(18) 0 0 2 0 0 0 0 15 1 0 0 83.33
+USI(68) 2 0 36 0 1 0 0 0 29 0 0 42.64
+ASI(0) 0 0 0 0 0 0 0 0 0 0 0 N/A
+TSI(0) 0 0 0 0 0 0 0 0 0 0 0 N/A
+
+Recall 82.78 69.23 85.67 77.27 3.22 N/A 0 83.33 28.71 N/A N/A
+
+2.4 Discussion
+At first glance, standard supervised learning techniques appear to
+perform surprisingly well in the identification of key help seeking
+and help providing behaviours using a very simple feature set. How-
+ever, it appears that both SVM and RF classifiers are fixating upon
+the Seeking Knowledge (SK) category. This is to be expected, as SK
+dominates these two datasets, a phenomenon that is to be expected
+given the affordances of the Stack Exchange and Reddit subcom-
+munities that we have chosen; both are very much sites set up for
+those who are seeking knowledge. This means that the precision
+and recall for SK is remarkably high, but only at the expense of low
+recall for many other categories of behaviour in the dataset.
+
+This pattern of behaviour is also reflected in the dominant features
+of FULL vs SK shown in Table 5, which largely overlap. The RF
+appears to be the better performing algorithm with the current feature
+set. This may be attributed to the ability of RF models to withstand
+overfitting, by averaging the results of multiple decision trees.
+
+3 FUTURE WORK
+The schema presented in Table 1 is preliminary and may need to
+be modified as it is applied to a wider range of online educational
+environments. This will be a priority for the future. Within the
+current schema, the distribution of data for both the Reddit and
+Stack Exchange datasets discussed in this paper shows a very di-
+rect approach to help seeking. We anticipate that more implied
+help seeking could be found in other online environments, but
+this remains to be tested in future work. We will also seek to
+compare our results with student survey data, enabling the explo-
+ration of actual help seeking behaviour as exhibited by students
+in an online forum when compared to their self-report data. We
+are surprised to find little work on this topic, and this paper is
+one small step towards that end goal. Our dataset is released un-
+der a CC BY-SA 4.0 license, and is currently available at https:
+//github.com/CognitiveEcosystemsLab/OpenEducationalData. It is
+essential that the LA community develops more open and shareable
+datasets for baseline comparisons between groups, and this work
+is a step in that direction. We will continue to develop and extend
+this dataset. It is currently hand coded for help seeking behaviour
+
+http://scikit-learn.org/
+https://github.com/CognitiveEcosystemsLab/OpenEducationalData
+https://github.com/CognitiveEcosystemsLab/OpenEducationalData
+
+
+Classifying Help Seeking Behaviour in Online Communities
+LAK ’17, March 13 - 17, 2017, Vancouver, BC, Canada,
+
+Table 5: Top 5 features and Gini importance for the full dataset (FULL), as well as the five most dominant categories in the schema.
+
+Class Features (Gini importance)
+
+FULL url (0.0413) thanks (0.0178) deleted (0.0106) thank (0.0096) does (0.0025)
+SK url (0.0385) thanks (0.0157) thank (0.0092) deleted (0.0091) welcome (0.0027)
+DQ does (0.0039) correct (0.0037) express (0.0026) vague (0.0025) enlighten (0.0025)
+ER url (0.1356) islam (0.0058) url did (0.0049) oxford university (0.0049) url url (0.0045)
+FG yes (0.0057) respond (0.0042) haven read (0.0039) didn actually (0.0039) good point (0.0037)
+USI deleted (0.0559) welcome (0.0124) elu (0.0095) congrats (0.0062) hi (0.0052)
+
+according to the scheme discussed in Section 2.1, but will gradu-
+ally be extended with other educationally relevant coding schemas
+applied to the same data (e.g., Cognitive Presence [10]). As it is
+further extended and refined, we anticipate that this dataset could
+emerge as a baseline comparison data source for the LA community.
+We are also interested in more complex features of help seeking and
+providing behaviour, such as cognition indicators derived from text.
+It will be interesting to investigate how platform specific features
+such as post quality can be applied to ML under the lens of our
+framework. For example, what features correlate with meta-data
+such as up/down-votes (in the case of Reddit), and the marking of
+a post as resolving a question (StackExchange) of particular help
+seeking categories? Extracting these features would enable them to
+be used in datasets that do not contain such metadata.
+
+4 CONCLUSION
+While help seeking has attracted much interest over the decades,
+far less work has been completed on the content analysis of help
+seeking transcripts. This paper is a preliminary step in that direction,
+providing a coding scheme and exploring how it can be applied to
+the analysis of online community discourse. Two basic feature sets
+(n-grams and question counting) for automating the detection of this
+behaviour have proven to be of interest. Much work remains to be
+completed, but this paper has provided a proof of concept that help
+seeking behaviour can be automatically detected in online discourse.
+This is a promising development for the provisioning of personalised
+just-in-time solutions to students in online environments.
+
+REFERENCES
+[1] Vincent Aleven, Ido Roll, Bruce M McLaren, and Kenneth R Koedinger. 2010.
+
+Automated, unobtrusive, action-by-action assessment of self-regulation during
+learning with an intelligent tutoring system. Educational Psychologist 45, 4
+(2010), 224–233.
+
+[2] Steven Bird, Ewan Klein, and Edward Loper. 2009. Natural language processing
+with Python. ” O’Reilly Media, Inc.”.
+
+[3] Monique Boekaerts. 1997. Self-regulated learning: A new concept embraced
+by researchers, policy makers, educators, teachers, and students. Learning and
+instruction 7, 2 (1997), 161–186.
+
+[4] Ikseon Choi, Susan M. Land, and Alfred J. Turgeon. 2005. Scaffolding peer-
+questioning strategies to facilitate metacognition during online small group dis-
+cussion. Instructional Science 33 (2005), 483–511. DOI:http://dx.doi.org/10.
+1007/s11251-005-1277-4
+
+[5] David D. Curtis and Michael. J. Lawson. 2001. Exploring collaborative online
+learning. Journal of Asynchronous Learning Networks 5, 1 (2001), 21–34. DOI:
+http://dx.doi.org/10.1016/j.jcss.2007.08.004
+
+[6] Pierre Dillenbourg. 1999. What do you mean by ’collaborative learning’?
+Collaborative-learning: Cognitive and Computational Approaches. 1 (1999),
+1–19. DOI:http://dx.doi.org/10.1.1.167.4896
+
+[7] Stewart I Donaldson and Elisa J Grant-Vallone. 2002. Understanding self-report
+bias in organizational behavior research. Journal of Business and Psychology 17,
+2 (2002), 245–260.
+
+[8] Donghui Feng, Erin Shaw, Jihie Kim, and Eduard Hovy. 2006. An intelligent
+discussion-bot for answering student queries in threaded discussions. In Proceed-
+ings of the 11th international conference on Intelligent user interfaces. ACM,
+171–177.
+
+[9] Adrian Furnham, Tomas Chamorro-Premuzic, and Fiona McDougall. 2002. Per-
+sonality, cognitive ability, and beliefs about intelligence as predictors of academic
+performance. Learning and Individual Differences 14 (2002), 49–66. DOI:
+http://dx.doi.org/10.1016/j.lindif.2003.08.002
+
+[10] D. Randy Garrison, Terry Anderson, and Walter Archer. 2001. Critical thinking,
+cognitive presence, and computer conferencing in distance education. American
+Journal of distance education 15, 1 (2001), 7–23.
+
+[11] Iris Howley. 2015. Leveraging Educational Technology to Overcome Social
+Obstacles to Help Seeking. Ph.D. Dissertation. Carnegie Mellon University.
+
+[12] Jason C Hung, Ching-Sheng Wang, Che-Yu Yang, Mao-Shuen Chiu, and George
+Yee. 2005. Applying word sense disambiguation to question answering system for
+e-learning. In 19th International Conference on Advanced Information Networking
+and Applications (AINA’05) Volume 1 (AINA papers), Vol. 1. IEEE, 157–162.
+
+[13] Stuart Karabenick. 2001. Help seeking in large college classes: Who, why,
+and from whom. The annual meeting of the American Educational Research
+Association (2001).
+
+[14] Stuart Karabenick. 2003. Seeking help in large college classes: A person-centered
+approach. Contemporary Educational Psychology 28 (2003), 37–58. DOI:http:
+//dx.doi.org/10.1016/S0361-476X(02)00012-7 arXiv:S0361-476X(02)00012-7
+
+[15] Rene? Kizilcec, Mar Pe?rez-Sanagust??n, and Jorge Maldonado. 2017. Self-regulated
+learning strategies predict learner behavior and goal attainment in Massive Open
+Online Courses. Computers & Education 104 (2017), 18–33.
+
+[16] Allison Littlejohn, Nina Hood, Colin Milligan, and Paige Mustain. 2016. Learning
+in MOOCs: Motivations and self-regulated learning in MOOCs. The Internet and
+Higher Education 29 (2016), 40–48.
+
+[17] Hans Van Der Meij. 1990. Question Asking : To Know That You Do Not Know
+Is Not Enough. 82, 3 (1990), 505–512.
+
+[18] Naomi Miyake and Donald a. Norman. 1979. To ask a question, one must know
+enough to know what is not known. Journal of Verbal Learning and Verbal
+Behavior 18 (1979), 357–364. DOI:http://dx.doi.org/10.1016/S0022-5371(79)
+90200-7
+
+[19] Jonathan Mott. 2010. Envisioning the post-LMS era: The open learning network.
+Educause Quarterly 33, 1 (2010), 1–9.
+
+[20] Sharon Nelson Le-Gall. 1981. Help-seeking: An understudied problem-solving
+skill in children. Developmental Review 1 (1981), 224–246. DOI:http://dx.doi.
+org/10.1016/0273-2297(81)90019-8 arXiv:0273-2297/81/030224-23
+
+[21] Paul Pintrich. 1999. The role of motivation in promoting and sustaining self-
+regulated learning. International Journal of Educational Research 31, 6 (1999),
+459 – 470. DOI:http://dx.doi.org/10.1016/S0883-0355(99)00015-4
+
+[22] Paul Pintrich and Elisabeth De Groot. 1990. Motivational and self-regulated
+learning components of classroom academic performance. Journal of educational
+psychology 82, 1 (1990), 33.
+
+[23] Minna Puustinen and Lea Pulkkinen. 2001. Models of self-regulated learning: A
+review. Scandinavian Journal of Educational Research 45, 3 (2001), 269–286.
+
+[24] Michelle Richardson, Charles Abraham, and Rod Bond. 2012. Psychological
+correlates of university students’ academic performance: a systematic review and
+meta-analysis. Psychological bulletin 138, 2 (2012), 353.
+
+[25] Piet Van den Bossche, Wim Gijselaers, Mien Segers, and Paul A. Kirschner.
+2006. Social and cognitive factors driving teamwork in collaborative learning
+environments team learning beliefs and behaviors. Small group research 37, 5
+(2006), 490–521.
+
+[26] Chun-Chia Wang, Jason Hung, Che-Yu Yang, and Timothy Shih. 2006. An
+application of question answering system for collaborative learning. In 26th
+IEEE International Conference on Distributed Computing Systems Workshops
+(ICDCSW’06). IEEE, 49–49.
+
+[27] P Hadwin Winne and Allyson F Hadwin. 1998. Studying as self-regulated learning.
+Metacognition in educational theory and practice 93 (1998), 27–30.
+
+[28] Barry J. Zimmerman. 2002. Becoming a Self-Regulated Learner: An Overview.
+Theory Into Practice 41, August (2002), 64–70. DOI:http://dx.doi.org/10.1207/
+s15430421tip4102
+
+[29] Barry J. Zimmerman and Manuel Martinez-Pons. 1988. Construct validation of a
+strategy model of student self-regulated learning. Journal of Educational Psychol-
+ogy 80, January (1988), 284–290. DOI:http://dx.doi.org/10.1037/0022-0663.80.
+3.284
+
+http://dx.doi.org/10.1007/s11251-005-1277-4
+http://dx.doi.org/10.1007/s11251-005-1277-4
+http://dx.doi.org/10.1016/j.jcss.2007.08.004
+http://dx.doi.org/10.1.1.167.4896
+http://dx.doi.org/10.1016/j.lindif.2003.08.002
+http://dx.doi.org/10.1016/S0361-476X(02)00012-7
+http://dx.doi.org/10.1016/S0361-476X(02)00012-7
+http://dx.doi.org/10.1016/S0022-5371(79)90200-7
+http://dx.doi.org/10.1016/S0022-5371(79)90200-7
+http://dx.doi.org/10.1016/0273-2297(81)90019-8
+http://dx.doi.org/10.1016/0273-2297(81)90019-8
+http://dx.doi.org/10.1016/S0883-0355(99)00015-4
+http://dx.doi.org/10.1207/s15430421tip4102
+http://dx.doi.org/10.1207/s15430421tip4102
+http://dx.doi.org/10.1037/0022-0663.80.3.284
+http://dx.doi.org/10.1037/0022-0663.80.3.284
+
+	Abstract
+	1 Introduction
+	2 Approach
+	2.1 Qualitative Coding
+	2.2 Exploratory Automation
+	2.3 Results
+	2.4 Discussion
+
+	3 Future work
+	4 Conclusion
+	References
+
+

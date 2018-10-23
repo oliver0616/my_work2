@@ -1,0 +1,1159 @@
+
+“Scaling up” learning design: impact of learning design 
+activities on LMS behavior and performance 
+
+Bart Rienties 
+Open University,  
+
+Institute of Educational Technology, 
+Milton Keynes, UK. 
+00-44-1908332671 
+
+Bart.Rienties@open.ac.uk 
+
+Lisette Toetenel 
+Open University,  
+
+Institute of Educational Technology, 
+Milton Keynes, UK. 
+00-44-1908332809 
+
+Lisette.Toetenel@open.ac.uk 
+
+Annie Bryan 
+Open University,  
+
+Institute of Educational Technology, 
+Milton Keynes, UK. 
+00-44-1908332696 
+
+Annie.Bryan@open.ac.uk 
+
+ABSTRACT 
+
+While substantial progress has been made in terms of predictive 
+
+modeling in the Learning Analytics Knowledge (LAK) 
+
+community, one element that is often ignored is the role of 
+
+learning design. Learning design establishes the objectives and 
+
+pedagogical plans which can be evaluated against the outcomes 
+
+captured through learning analytics. However, no empirical study 
+
+is available linking learning designs of a substantial number of 
+
+courses with usage of Learning Management Systems (LMS) and 
+
+learning performance. Using cluster- and correlation analyses, in 
+
+this study we compared how 87 modules were designed, and how 
+
+this impacted (static and dynamic) LMS behavior and learning 
+
+performance. Our findings indicate that academics seem to design 
+
+modules with an “invisible” blueprint in their mind. Our cluster 
+
+analyses yielded four distinctive learning design patterns: 
+
+constructivist, assessment-driven, balanced-variety and social 
+
+constructivist modules. More importantly, learning design 
+
+activities strongly influenced how students were engaging online. 
+
+Finally, learning design activities seem to have an impact on 
+
+learning performance, in particular when modules rely on 
+
+assimilative activities. Our findings indicate that learning 
+
+analytics researchers need to be aware of the impact of learning 
+
+design on LMS data over time, and subsequent academic 
+
+performance. 
+
+General Terms 
+Measurement, Performance, Design. 
+
+Keywords           
+Learning design, Learning analytics, Academic retention. 
+
+1. INTRODUCTION 
+Learning analytics provide institutions with opportunities to 
+
+support student progression and to enable personalized, rich 
+
+learning [1-3]. With the increased availability of large datasets, 
+
+powerful analytics engines [2], and skillfully designed 
+
+visualizations of analytics results [4], institutions may be able to 
+
+draw on past experience to create supportive, insightful models of 
+
+primary (and perhaps real-time) learning processes [5].  
+
+ 
+
+While substantial progress has been made in terms of predictive 
+
+modeling in the Learning Analytics Knowledge (LAK) 
+
+community over the last three to four years [2], one element that 
+
+seems to be ignored is learning design.  
+
+Conole [6, p121] describes learning design as “a methodology for 
+
+enabling teachers/designers to make more informed decisions in 
+
+how they go about designing learning activities and interventions, 
+
+which is pedagogically informed and makes effective use of 
+
+appropriate resources and technologies”. Learning design is 
+
+widely studied in the Higher Education sector, but no study has 
+
+yet empirically connected learning designs of a substantial 
+
+number of courses with learning behavior in Learning 
+
+Management Systems (LMSs) and learning performance. This 
+
+study will begin to overcome this gap in learning analytics 
+
+research by combining three different sources of data (i.e., data 
+
+pertaining to learning design, LMS, and learning performance) 
+
+from 40 blended and online modules involving a total of 21,803 
+
+learners. In so doing, it will enable LAK researchers to better 
+
+understand which learning design elements may be important for 
+
+enhancing learning processes and performance. 
+
+1.1 Learning design taxonomy 
+The learning design taxonomy used for this process was 
+
+developed as a result of the Jisc-sponsored Open University 
+
+Learning Design Initiative (OULDI) [7], and was developed over 
+
+five years in consultation with eight Higher Education institutions. 
+
+Learning design as described by Conole [6] is process based: 
+
+practitioners make informed design decisions with a pedagogical 
+
+focus and communicate these to their colleagues and learners. 
+
+This is especially relevant for institutions which deliver distance 
+
+learning, such as the Open University UK (OU). At the OU, 
+
+modules are designed by teams of academics based in a central 
+
+location, but delivered to learners by different tutors in a wide 
+
+range of locations.  
+
+Table 1 shows the learning design taxonomy, which identifies 
+
+seven types of learning activity. Assimilative activities relate to 
+
+tasks in which learners attend to discipline specific information. 
+
+These include reading text (online or offline), watching videos, or 
+
+listening to an audio file. By finding and handling information, for 
+
+example on the internet or in a spreadsheet, learners take 
+
+responsibility for extending their learning, and are therefore 
+
+engaged in active learning [8]. Communicative activities refer to 
+
+any activities in which students communicate with another person 
+
+about module content. Productive activities draw upon 
+
+constructionist models of learning, whereby recent research has 
+
+indicated that learners who build [9] and co-construct new 
+
+artefacts learn effectively [10]. Experimental activities develop 
+
+‘students' intrinsic motivation and industry-relevant skill transfer’ 
+[11, p211] by providing learners with the opportunity to apply 
+
+their learning in a real life setting. Interactive activities endeavor 
+
+to do the same, but in some fields this is not possible: for 
+
+example, in medicine, such activities would have health and 
+
+Permission to make digital or hard copies of all or part of this work for 
+
+personal or classroom use is granted without fee provided that copies are 
+not made or distributed for profit or commercial advantage and that 
+
+copies bear this notice and the full citation on the first page. Copyrights 
+
+for components of this work owned by others than ACM must be 
+honored. Abstracting with credit is permitted. To copy otherwise, or 
+
+republish, to post on servers or to redistribute to lists, requires prior 
+
+specific permission and/or a fee. Request permissions from 
+Permissions@acm.org.  
+
+LAK '15, March 16 - 20, 2015, Poughkeepsie, NY, USA  
+
+Copyright 2015 ACM 978-1-4503-3417-4/15/03…$15.00  
+
+http://dx.doi.org/10.1145/2723576.2723600 
+
+315
+
+
+
+safety implications for either the learner or the person that they 
+
+interact with. In these situations, a simulated environment might 
+
+be appropriate so that learners can apply their learning to a 
+
+realistic setting [12]. Finally, assessment activities encompass all 
+
+learning materials focused on assessment, whether enabling 
+
+teaching staff to monitor progress (formative); ‘traditional 
+
+assessment for measurement purposes’ [13, p182] (summative); or 
+
+activities that allow learners to benchmark against their own or 
+
+fellow learner’s performance (ipsative).  
+
+Table 1. Learning design activities 
+
+ Type of activity Example 
+
+Assimilative Attending to 
+
+information 
+
+Read, Watch, Listen, 
+
+Think about, Access. 
+
+Finding and 
+
+handling 
+
+information 
+
+Searching for and 
+
+processing information 
+
+List, Analyse, Collate, 
+
+Plot, Find, Discover, 
+
+Access, Use, Gather.  
+
+Communication Discussing module 
+
+related content with at 
+
+least one other person 
+
+(student or tutor) 
+
+Communicate, Debate, 
+
+Discuss, Argue, Share, 
+
+Report, Collaborate, 
+
+Present, Describe. 
+
+Productive Actively constructing 
+
+an artefact 
+
+Create, Build, Make, 
+
+Design, Construct, 
+Contribute, Complete,.  
+
+Experiential Applying learning in a 
+
+real-world setting  
+
+Practice, Apply, Mimic, 
+
+Experience, Explore, 
+
+Investigate,. 
+
+Interactive 
+
+/adaptive 
+
+Applying learning in a 
+
+simulated setting  
+
+Explore, Experiment, 
+
+Trial, Improve, Model, 
+Simulate.  
+
+Assessment All forms of 
+
+assessment 
+
+(summarive, formative 
+and self assessment)  
+
+Write, Present, Report, 
+
+Demonstrate, Critique. 
+
+2. Method 
+
+2.1 Setting 
+This study took place at the OU, the largest higher education 
+
+provider of online distance education in Europe. A process of 
+
+“module mapping” (i.e. analyzing and providing visualizations of 
+
+the learning activities and resources involved in a module) was 
+
+introduced as part of a university-wide learning initiative [14] 
+
+which aims to use learning design data for quality enhancement. 
+
+The mapping process is an intensive one, typically taking between 
+
+one and three days for a single module, depending on the 
+
+module’s number of credits, structure, and quantity of learning 
+
+resources. A team of learning design specialists reviewed all the 
+
+available learning materials, classifies the types of activity, and 
+
+quantifies the time that students are expected to spend on each 
+
+activity.  
+
+Classifying learner activity can be subjective, and consistency is 
+
+important when using the data to compare module designs across 
+
+the univeristy. Therefore, the learning design team held regular 
+
+meetings to improve consistency across team members in the 
+
+mapping process. Once the mapping process was complete, the 
+
+learning design team manager reviewed the module before the 
+
+findings were sent to the faculty. Academics had the opportunity 
+
+to comment on the data before the status of the design was 
+
+finalised. In other words, each mapping was at least reviewed by 
+
+three people, which enhanced the reliability and robustness of the 
+
+data relating to each learning design. 
+
+2.2 Instruments 
+
+2.2.1 Learning Design mapping 
+The learning design tool at the Open Universtiy is a combination 
+
+of graphical, text-based tools that are used in conjunction with 
+
+learning design activities, which were mandated at particular 
+
+times in the design process. In total 87 modules were mapped by 
+
+the learning design team in the period January-August 2014. For 
+
+each module, the learning outcomes specified by the module team 
+
+(pertaining to knowledge and understanding; cognitive skills; key 
+
+skills; practical and/of professional skills) were captured by the 
+
+learning design specialist. Each activity within the module’s 
+
+weeks, topics, or blocks was categorised according to the learning 
+
+design taxonomy (see Table 1). These categorisations were 
+
+captured in an “activity planner” (or “blueprint”).  
+
+2.2.2 LMS Data 
+In line with Tempelaar et al. [3], two different types of LMS data 
+
+in Moodle were gathered per module in a static and dynamic 
+
+manner: total number of visits to the LMS; and average time spent 
+
+on LMS. Subsequent derivatives of these two types of data per 
+
+week were recorded for week -2 until week 40 (data streams starts 
+
+two weeks before the actual start of the module). Although more 
+
+fine-grained learning analytics tracking data were available on 
+
+types of content, materials and ICT tools (e.g., wikis, 
+
+videoconference, discussion forums), given the diversity in usage 
+
+and the fact that not all modules used all the ICT tools we 
+
+measured, we focused on aggregate user statistics per week across 
+
+the LMS., Such data was available for 32 modules at the time this 
+
+study was conducted.  
+
+2.2.3 Learning performance 
+Learning performance was calculated by the number of learners 
+
+who completed and passed the module relative to the number of 
+
+learners who registered for each module. The academic retention 
+
+ranged between 28.57% and 100%. These figures do need to be 
+
+read in the context of the OU’s mission to provide education for 
+
+all, regardless of entrance requirements [15].  
+
+2.2.4 Data analysis 
+As a first step, we analyzed the underlying structures and 
+
+collective patterns of the seven learning design activities by using 
+
+cluster analysis of the 87 modules. In line with the 
+
+recommendations of Hair, Tatham, Anderson and Black [16], we 
+
+conducted three different types of cluster analyses (K-means, 
+
+hierarchical ward, hierarchical furthest distance). Given that the 
+
+results were similar in terms of assigned clusters, in the results 
+
+section we will report cluster results using K-means analysis, as 
+
+this method is most commonly used. We then tested solutions for 
+
+2-5 clusters using K-means cluster analyses. The results seemed to 
+
+indicate that four clusters fitted the data best (at 5 clusters, too few 
+
+meaningful clusters were left). We labelled the clusters using 
+
+theoretical concepts [6, 7, 17-19] and in-depth experience of 
+
+learning design team. 
+
+As a second step, we merged the learning design data with the 
+
+LMS and learner retention data based upon module ID and year of 
+
+implementation. A mix of 15, 30 and 60 credit modules was 
+
+present. 32 modules could be linked with LMS learning behavior, 
+
+and 40 with learning performance data. Such data were not yet 
+
+available for 23 running modules, as these are currently being 
+
+undertaken by learners, while 8 modules (primarily MOOCs) 
+
+were not included in standard OU registration processes. For 8 
+
+modules the LMS data was not released yet. Finally, 16 module 
+
+learning designs referred to future designs for the academic year 
+
+316
+
+
+
+2015-2016. Follow-up ANOVA and correlation analyses were 
+
+conducted using SPSS 21.  
+
+3. Results 
+
+3.1 Cluster analysis of learning designs 
+We conducted a K-means cluster analysis to identify common 
+
+patterns in how the 87 module teams designed and balanced the 
+
+seven learning design activities.  
+
+ 
+
+Figure 1 Cluster analysis of learning design 
+
+As illustrated in Figure 1, Cluster 1 modules seemed to have a 
+
+strong emphasis on assimilative activities, as 58% (SD = 11%) of 
+
+learning activities fell into this category, Students undertook 
+
+assimilative activities such as reading module materials, watching 
+
+videos and YouTube materials, reviewing core concepts and 
+
+approaches. In comparison to other modules, Cluster 1 modules 
+
+had a lower focus on the other six learning design activities. 24 
+
+(28%) modules were assigned to Cluster 1, which we label as 
+
+constructivist modules. For example, a first-year science 
+
+introductory module focused on understanding principles and 
+
+concepts in a range of topics, with several online assessments to 
+
+test (individual) learners’ understanding. Please note that not all 
+
+modules in Cluster 1 fit this description, but in comparison to 
+
+other clusters modules in Cluster 1 tended to have a relatively 
+
+stronger focus on cognition and understanding (in terms of the 
+
+taxonomy proposed by [20]). 22 (25%) modules were positioned 
+
+in Cluster 2, with a strong focus on assessment (M = 44.54, SD = 
+
+12.05), such as formative assessment for learning (e.g. write, 
+
+present, report, demonstrate) and summative assessment of 
+
+learning [3, 21]. In comparison to other modules, those in Cluster 
+
+2 had a relatively limited focus on assimilative, communication, 
+
+and interactive learning design activities. For example, an 
+
+introductory history course focused on providing a historical 
+
+perspective of a particular region in the UK, whereby a range of 
+
+assessment tasks were provided focused on culture, society and 
+
+nationhood. We label Cluster 2 as assessment-driven. 
+
+The 24 (28%) modules in Cluster 3 had a more or less equal 
+
+balance between assimilative and assessment learning design 
+
+activities, with a relatively high focus on experiential activities. 
+
+For example, the health and social care module used a mix of 
+
+understanding basic concepts as well as applying these concepts 
+
+using case-studies, self-reflections and collaborative approaches. 
+
+Therefore, we label Cluster 3 modules as balanced-variety, 
+
+whereby a range of different activities were expected from 
+
+learners.  
+
+Finally, the 16 (18%) modules in Cluster 4 seemed to use more a 
+
+learner-centered learning design approach, whereby relatively 
+
+more time was devoted towards communication, productive and 
+
+interactive activities. For example, in a foreign language module, 
+
+a range cognitive, skills-based, reflective and application tasks are 
+
+assessed using a mix of technology tools and blended tuition. 
+
+Therefore, we label these Cluster 4 modules as social 
+
+constructivist. 
+
+3.2 Linking learning design activities 
+Separate Pearson correlation analyses between the seven learning 
+
+design activities, total workload, and level of study indicated that 
+
+several groups of learning design activities were interrelated. 
+
+Workload is ‘the number of hours that students objectively spend 
+
+on studying’ [22, p684]. In this study, workload was calculated by 
+
+the learning design team as part of the module mapping process. 
+
+Workload has ‘been recognized as a major factor in the teaching 
+
+and learning environment’[22, p684] and is of particular 
+
+importance at the OU.  
+
+We found that assimilative activities were negatively related to all 
+
+of the other six learning design activities, indicating that focusing 
+
+more on cognition and content reduces the focus on other 
+
+activities. No other statistically significant correlations were 
+
+found. Similar to assimilative activities, assessment was 
+
+negatively related to five of six learning design activities, which 
+
+may indicate that module teams implicitly or explicitly make a 
+
+trade-off between these learning design activities. Total workload 
+
+was not significantly related to any of the learning design 
+
+activities, indicating that teachers did not reserve any specific 
+
+extra time for a particular learning activity. Finally, the level of 
+
+the module (year 1, 2, 3, post-graduate) was positively correlated 
+
+with communication and total workload. Using ANOVA, no 
+
+significant differences were found with respect to disciplines. In 
+
+other words, most disciplines used a range of learning design 
+
+approaches, which seems contrast with previous findings of 
+
+studies [23] highlighting that disciplinary context strongly 
+
+influences the learning design.  
+
+3.3 Relating learning design with LMS 
+behavior 
+We linked the learning designs of 32 modules followed by 19,322 
+
+learners with their LMS data. On a total of 2,186,246 occasions, 
+
+the LMS was visited by 19,322 students. On average, students 
+
+spent 122.71 minutes per week (SD=92.47, range 14.39-167.94) 
+
+online during each of the first 10 weeks of the module. This wide 
+
+range highlights strong underlying differences in the way modules 
+
+were designed. Some modules primarily relied on traditional 
+
+methods of distance learning and course delivery via books and 
+
+readers, with limited interactions in the LMS [24]. Other modules 
+
+provided most or all of their course materials, tasks and learning 
+
+activities exclusively online and expected students to engage 
+
+actively in the LMS during the week. As a result, LMS activity 
+
+should only be regarded as a proxy for student engagement in 
+
+formal online activities, as at this point in time the OU does not 
+
+systematically collect data about formal or informal offline 
+
+activities. 
+
+We visually analyzed whether the four clusters lead to different 
+
+LMS usage over time. As illustrated in Figure 2, in particular in 
+
+the first ten weeks significant differences (using ANOVAs, not 
+
+illustrated) are present in terms of average time spent per week 
+
+between Cluster 4 social constructivist modules and the other 
+
+modules. Please note that for Cluster 3 LMS data for was only 
+
+available for one module.  
+
+317
+
+
+
+ 
+
+Figure 2 Average LMS usage across four clusters 
+
+LMS visits were positively related to communication activities 
+
+and total (planned) workload, and negatively related to assessment 
+
+activities. Average time spent in the LMS correlated positively 
+
+with finding and handling information activities, communication 
+
+activities, and total workload, whilst, again, a negative relation 
+
+was found with assessment activities. Finally, if we split the 
+
+average time spent in the LMS for week -2 till week 10, only 
+
+communicative activities at week 0 and workload were 
+
+significantly correlated. Average time spent during weeks 1-10 
+
+were strongly related to modules with substantial learning 
+
+activities in terms of finding and handling information, and 
+
+communication. In other words, the learning design decisions of 
+
+teachers seemed to strongly influence how students were engaging 
+
+with the LMS, in particular when more inquiry- or social 
+
+constructivist learning activities were included in the learning 
+
+design. 
+
+3.4 Relating learning design with 
+learning performance 
+As a final step, we linked the learning design metrics with 
+
+learning performance, as illustrated in Table 2. The only 
+
+significant (negative) correlations between the seven learning 
+
+design activities and learning performance were with assimilative 
+
+activities. Modules with a relatively high proportion of 
+
+assimilative learning activities had significantly lower completion 
+
+and pass rates than other modules. Furthermore, positive 
+
+correlations were found between productive and assessment 
+
+activities and pass rates, although these were not 
+
+statistically significant. 
+
+ 
+
+Table 2 Linking learning design with learning performance 
+
+ 
+
+No significant correlations were found between our LMS 
+
+indicators and learning performance (not illustrated). Follow-up 
+
+ANOVA analyses indicated no significant differences in learning 
+
+performance between the four clusters. In other words, although 
+
+there are substantial variations in the 40 module designs, our 
+
+findings indicated that applying one of the four design templates 
+
+did not necessarily disadvantage learners in terms of retention. 
+
+However, extensive reliance on assimilative activities did seem to 
+
+have a negative influence on learning performance, although 
+
+given the relatively small number of modules within the sample 
+
+we caution readers against overgeneralization. 
+
+4. Discussion 
+Pedagogy and learning design have played a key role in computer-
+
+assisted learning in the last two decades [6, 19, 25], but research 
+
+has not extensively linked learning design to learning behavior 
+
+and learner performance [23, 26]. Progress has recently been 
+
+made in how (combinations of) individual learning design 
+
+elements (e.g., task design, feedback, scaffolding, structure) 
+
+influence learning processes and success in experimental and 
+
+natural settings within single modules. However, this study was 
+
+the first to link a large range of learning designs from multiple 
+
+blended and online modules with learning behavior in a Learning 
+
+Management System (LMS) and learning performance data.  
+
+The study’s first important finding is that academics seem to 
+
+design modules with an “invisible” blueprint in their mind. Our 
+
+cluster analyses yielded four distinctive learning design patterns 
+
+as shown in Figure 2, namely constructivist, assessment-driven, 
+
+balanced-variety, and social constructivist modules. This means 
+
+that whilst the learning design process intends to stimulate 
+
+creativity, upon analysis these ‘unique’ designs neatly fitted into 
+
+four broad theoretical perspectives. This finding suggests that 
+
+although creativity is still present in the process (as none of the 
+
+designs are identical), academic staff do employ similar 
+
+combinations of pedagogical underpinnings into their learning 
+
+designs [23, 26].  
+
+Our second and perhaps most important finding is that learning 
+
+design and learning design activities in particular strongly 
+
+influence how students are engaging in our LMS. Particularly in 
+
+social constructivist environments, students actively engage with 
+
+the LMS, while in constructivist and assessment-based modules, 
+
+online activity seems substantially lower. While a vast body of 
+
+research in computer supported collaborative learning (CSCL) 
+
+[25] has found that learning design influences how people learn, 
+
+in learning analytics research learning design seems to be mostly 
+
+ignored, or overlooked. Without mapping and linking the planned 
+
+learning design activities (e.g., assessments, interactive, or 
+
+communication activities) with LMS usage, learning analytics 
+
+researchers might find it difficult to explain why certain peaks and 
+
+troughs occur over time.  
+
+Our third finding is that learning design seems to have an impact 
+
+on learning performance. In particular, modules with a heavy 
+
+reliance on content and cognition (assimilative activities) seemed 
+
+to lead to lower completion and pass rates. The availability of 
+
+learning analytics data means that management and course teams 
+
+often review courses whilst they are still in progress. If this data 
+
+suggests that learners do not perform according to the initial 
+
+learning design, it is tempting to take action. Often this includes 
+
+providing additional material to learners in the form of reading 
+
+lists or additional handouts. As this study found that modules with 
+
+a strong reliance on assimilative activities did seem to have a 
+
+negative influence on learning performance, it suggests that such 
+
+interventions might make matters worse. 
+
+5. Conclusions and future work 
+A substantial limitation of this study is the relatively small linked 
+
+sample size. Although the OU learning design team mapped a 
+
+substantial amount of 87 modules, only 32 modules containing 
+
+LMS data and 40 modules containing learning performance data 
+
+could currently be linked due to module completion timescales. 
+
+As a result, more advanced regression or structural equation 
+
+modeling were not feasible to determine the direct and indirect 
+
+relations in our three datasets. In the near future, we would be able 
+
+to extend the sample when more data becomes available in order 
+
+-400600
+
+-2 1 4 7 10 13 16 19 22 25 28 31 34 37 40
+cluster 1 constructivist
+
+cluster 2 assessment driven
+
+cluster 3 balanced-variety
+
+318
+
+
+
+to better understand the complex (inter)relations of learning 
+
+design on learning processes and outcomes.  
+
+Combining this analysis with the learning outcomes data allows 
+
+sharing of ‘good practice’ based upon robust analysis. 
+
+Furthermore, a particularly useful feature would be to integrate 
+
+this with demographic, individual and socio-cultural data about 
+
+students, which may influence whether a learning design is 
+
+suitable for a range of learners. In terms of practical implications 
+
+for LAK, researchers, teachers and policy makers need to be 
+
+aware of how learning design choices made by teachers influence 
+
+subsequent learning processes and learning performance over 
+
+time. Following Arbaugh [17], there is an urgent need for 
+
+researchers and managers to combine research data and 
+
+institutional data and work together in order to unpack how 
+
+context, learner characteristics, modular and institutional learning 
+
+design activities impact the learning journeys of our students. 
+
+References 
+
+[1] Siemens, G., Dawson, S. and Lynch, G. Improving the quality 
+
+of productivity of the higher education sector: Policy and strategy 
+
+for systems-level deployment of learning analytics. Solarresearch, 
+
+2013. 
+
+[2] Tobarra, L., Robles-Gómez, A., Ros, S., Hernández, R. and 
+
+Caminero, A. C. Analyzing the students’ behavior and relevant 
+
+topics in virtual learning communities. Computers in Human 
+
+Behavior, 31, 0 (2// 2014), 659-669. 
+
+[3] Tempelaar, D. T., Rienties, B. and Giesbers, B. In search for 
+
+the most informative data for feedback generation: Learning 
+
+Analytics in a data-rich context. Computers in Human 
+
+Behavior2014). 
+
+[4] González-Torres, A., García-Peñalvo, F. J. and Therón, R. 
+
+Human–computer interaction in evolutionary visual software 
+
+analytics. Computers in Human Behavior, 29, 2 (3// 2013), 486-
+
+495. 
+
+[5] Verbert, K., Duval, E., Klerkx, J., Govaerts, S. and Santos, J. 
+
+L. Learning Analytics Dashboard Applications. American 
+
+Behavioral Scientist, 57, 10 (October 1, 2013 2013), 1500-1509. 
+
+[6] Conole, G. Designing for Learning in an Open World. 
+
+Springer, Dordrecht, 2012. 
+
+[7] Cross, S., Galley, R., Brasher, A. and Weller, M. Final Project 
+
+Report of the OULDI-JISC Project: Practice, Challenge and 
+
+Change in Curriculum Design Process, Communities, 
+
+Visualisation and Practice City, 2012. 
+
+[8] Michel, N., Cater Iii, J. J. and Varela, O. Active versus passive 
+
+teaching styles: An empirical study of student learning outcomes. 
+
+Human Resource Development Quarterly, 20, 4 (Winter2009 
+
+2009), 397-418. 
+
+[9] Simpson, G., Hoyles, C. and Noss, R. Exploring the 
+
+mathematics of motion through construction and collaboration. 
+
+Journal of Computer Assisted Learning, 22, 2 2006), 114-136. 
+
+[10] Noteborn, G., Bohle Carbonell, K., Dailey-Hebert, A. and 
+
+Gijselaers, W. The role of emotions and task significance in 
+
+Virtual Education. The Internet and Higher Education, 15, 3 
+
+2012), 176-183. 
+
+[11] Dreher, C., Reiners, T., Dreher, N. and Dreher, H. Virtual 
+
+Worlds as a Context Suited for Information Systems Education: 
+
+Discussion of Pedagogical Experience and Curriculum Design 
+
+with Reference to Second Life. Journal of Information Systems 
+
+Education, 20, 2 (Summer2009 2009), 211-224. 
+
+[12] Okuda, Y., Bryson, E. O., DeMaria Jr, S., Jacobson, L., Shen, 
+
+B., Levine, A. I. and Quinones, J. The Utility of Simulation in 
+
+Medical Education: What Is the Evidence? Mount Sinai Journal 
+
+of Medicine, 76, 4 2009), 330-343. 
+
+[13] Miller, T. Formative computer-based assessment in higher 
+
+education: the effectiveness of feedback in supporting student 
+
+learning. Assessment & Evaluation in Higher Education, 34, 2 
+
+2009), 181-192. 
+
+[14] Galley, R. and Toetenel, L. Learning design: supporting the 
+
+qualification & module design process. The Open University UK, 
+
+City, 2014. 
+
+[15] Richardson, J. T. E. Approaches to studying across the adult 
+
+life span: Evidence from distance education. Learning and 
+
+Individual Differences, 26, 0 (8// 2013), 74-80. 
+
+[16] Hair, J. F., Tatham, R. L., Anderson, R. E. and Black, W. 
+
+Multivariate data analysis. Pearson Prentice Hall Upper Saddle 
+
+River, NJ, 2006. 
+
+[17] Arbaugh, J. B. Is there an optimal design for on-line MBA 
+
+courses? Acad. Manag. Learn. Educ., 4, 2 (Jun 2005), 135-149. 
+
+[18] Vygotsky, L. S. Mind in society. Harvard University Press, 
+
+Cambridge, MA, 1978. 
+
+[19] Sweller, J., van Merriënboer, J. J. G. and Paas, F. G. W. C. 
+
+Cognitive Architecture and Instructional Design. Educational 
+
+Psychology Review, 10, 3 (1998/09/01 1998), 251-296. 
+
+[20] Bloom, B. S., Englehart, M. D., Furst, E. J., Hill, W. H. and 
+
+Krathwohl, D. R. Taxonomy of educational objectives: Handbook 
+
+I: Cognitive domain. David McKay, New York, 1956. 
+
+[21] Boud, D. and Falchikov, N. Aligning assessment with 
+
+long?term learning. Assessment & Evaluation in Higher 
+Education, 31, 4 (2006/08/01 2006), 399-413. 
+
+[22] Kyndt, E., Berghmans, I., Dochy, F. and Bulckens, L. ‘Time 
+
+is not enough.’ Workload in higher education: a student 
+
+perspective. Higher Education Research & Development, 33, 4 
+
+2014), 684-698. 
+
+[23] Rienties, B., Kaper, W., Struyven, K., Tempelaar, D. T., Van 
+
+Gastel, L., Vrancken, S., Jasinska, M. and Virgailaite-
+
+Meckauskaite, E. A review of the role of Information 
+
+Communication Technology and course design in transitional 
+
+education practices. Interactive Learning Environments, 20, 6 
+
+2012), 563-581. 
+
+[24] Rumble, G. ‘Open learning’,‘distance learning’, and the 
+
+misuse of language. Open learning, 4, 2 1989), 28-36. 
+
+[25] Eysink, T. H. S., de Jong, T., Berthold, K., Kolloffel, B., 
+
+Opfermann, M. and Wouters, P. Learner Performance in 
+
+Multimedia Learning Arrangements: An Analysis Across 
+
+Instructional Approaches. American Educational Research 
+
+Journal, 46, 4 (August 20, 2009 2009), 1107-1149. 
+
+[26] Kirschner, P. A., Sweller, J. and Clark, R. E. Why Minimal 
+
+Guidance During Instruction Does Not Work: An Analysis of the 
+
+Failure of Constructivist, Discovery, Problem-Based, 
+
+Experiential, and Inquiry-Based Teaching. Educational 
+
+Psychologist, 41, 2 (2006/06/01 2006), 75-86.
+
+ 
+
+319
+
+
+
+
+

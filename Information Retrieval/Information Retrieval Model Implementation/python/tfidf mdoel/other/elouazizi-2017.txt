@@ -1,0 +1,392 @@
+
+Automated Analysis of Aspects of Written Argumentation   
+Noureddine Elouazizi1, Gülnur Birol1, Eric Jandciu1, Gunilla Öberg2, 
+
+Ashley Welsh1, Andrea Han3, Alice Campbell1     
+
+Skylight/SCLT
+1
+, Faculty of Science
+
+1, 2 
+and CTLT
+
+3
+, University of British Columbia, Vancouver BC 
+
+noureddine.elouazizi@science.ubc.ca 
+
+ 
+
+ABSTRACT 
+In this paper, we report on a model that uses a mathematically and 
+
+cognitively augmented Latent Semantic Analysis method to 
+
+automatically assess aspects of written argumentation, produced 
+
+by students in a science communication course.   
+
+CCS Concepts 
+
+• Computing methodologies ? Natural language processing 
+
+Keywords 
+Latent Semantics Analysis, Automated Assessment 
+
+1. INTRODUCTION 
+Learning argumentation through writing requires students to use 
+
+complex cognitive processes, such as advancing claims, hedging, 
+
+asserting, paraphrasing and taking stances [1]. While instructors 
+
+make every effort to assess the major elements of scientific 
+
+argumentation in student essays using rubrics, the enormous 
+
+volume of material makes it impossible to code for every possible 
+
+element. Furthermore, there is a risk that this amount of feedback 
+
+would not be consumable by students. However, a detailed 
+
+argumentation analysis could yield useful information about 
+
+where students generally perform well and poorly. Instructors 
+
+could then use this information to design suitable activities 
+
+targeting the problem areas in argumentation. Cognizant of this 
+
+potential impact on student learning, we created an automated 
+
+argumentation analysis model and software. In this paper, we 
+
+report on the application of a latent semantics analysis (LSA) 
+
+model that automatically assesses argumentation in students’ 
+
+writing. 
+
+2. THEORY 
+2.1 Argumentation   
+Written language is the direct cognitive by-product that 
+
+externalizes how students build arguments supported by evidence. 
+
+In our context, we define argumentation as a complex cognitive 
+
+act produced by a writer, and evaluated by a reader using the 
+
+meaning conveyed by natural language. In short, it is a 
+
+combination of a logical product and a rhetorical process [2]. 
+
+Assuming that language is core to learning and that thought and 
+
+language are inseparable [4], examining students’ argumentation 
+
+offers opportunities for gaining insights into how students engage 
+
+in scientific reasoning.  
+
+2.2 Automatic assessment of argumentation  
+Regardless of the architectures, frameworks, interfaces and 
+
+functionalities, all computer-based systems that support some 
+
+form of argumentation draw on natural language processing 
+
+(NLP) methods [9]. The NLP field investigates methods for the 
+
+mathematical representation of language, allowing straightforward 
+
+analyses of compositionality, to enable machines to interpret 
+
+aspects of human language. The core assumptions are that the 
+
+elementary components of natural language within a text can be 
+
+identified and their meanings, relationships and dependencies 
+
+analyzed to uncover aspects of argumentation.  
+
+3. RELATED WORK 
+Previously developed models and systems focused on the use of 
+
+argumentation to teach students hypothetical reasoning and to 
+
+engage students in domain-specific problem solving [[6], [8], [5]]. 
+
+More recently, Shum et al [7] offered a model and system 
+
+integrating insights from linguistic parsing and learning analytics 
+
+to assess dimensions of reflective writing to deepen learners’ 
+
+understanding. Our model and system builds on the insights in the 
+
+studies referred to above and focuses on the analysis of written 
+
+essays to assess the quality of the argumentation. The design of 
+
+our model integrates insights from the fields of cognition and 
+
+computation of language, learning analytics, and education theory. 
+
+4. THE STUDY 
+4.1 Context 
+Students’ essays used for developing this model originate from a 
+
+first-year writing intensive science course, offered at The Faculty 
+
+of Science, University of British Columbia. The overarching 
+
+course goals are to define and discuss the elements of a scientific 
+
+approach, to teach students ways of communicating science 
+
+through writing and peer reviewing. 
+
+4.2 Data 
+Our text corpus is unannotated and it includes 1346 term papers, 
+
+2020 essays, totaling 15.147.000 word corpus. The essays and 
+
+term papers were collected over four academic terms (from 2014 
+
+to 2016), and from 673 Science students, who consented in 
+
+written form. Each text is an essay assignment that is produced by 
+
+the students based on writing prompts for the assignments essays 
+
+and based on no writing prompts for the text of the term papers.    
+
+4.3 Method (model)  
+Our model uses LSA to automatically assess aspects of 
+
+argumentation in written essays. LSA is an automatic statistical 
+
+(probabilistic) method for representing the meaning of words, 
+
+phrases and passages in text [3]. The power of the LSA model lies 
+
+in its mathematical ability to use vectors to map out semantic 
+
+spaces found in an essay. This contributes to the automatic 
+
+interpretation of an essay through the dependencies revealed by 
+
+the semantic maps. Since the NLP task in this model and system 
+
+Permission to make digital or hard copies of all or part of this work for 
+personal or classroom use is granted without fee provided that copies are 
+
+not made or distributed for profit or commercial advantage and that 
+
+copies bear this notice and the full citation on the first page. Copyrights 
+for third-part components of the work must be honored. For all other 
+
+uses, contact the owner/Author. Copyright is held by the owner/author-s.  
+
+LAK’17, March 13–17, 2017, Vancouver, BC, Canada. 
+ACM 978-1-4503-4870-6/17/03. 
+
+DOI: http://dx.doi.org/10.1145/3027385.3029484 
+
+mailto:noureddine.elouazizi@science.ubc.ca
+
+
+is a natural language understanding task at its core, we adapted 
+
+and added both mathematical and cognitive extensions to render 
+
+LSA more context-sensitive and more cognitively plausible. From 
+
+a mathematical perspective, we added the ability to use Euclidean 
+
+distances to measure the length of the vectors and Cosine to 
+
+measure the similarity of vectors. From a cognitive processing 
+
+perspective, we augmented LSA with the use of ngrams that 
+
+encode syntax-informed inferential paths, and form a targeted 
+
+semantic network of the concepts that convey aspects of 
+
+argumentation. As such, our model of LSA narrows the 
+
+probabilistic space and maps more dependencies across concepts. 
+
+This model removes dimensions that contain noise in assessing 
+
+written argumentation, and retains dimensions that discriminate 
+
+clearly between different aspects of written argumentation.  
+
+We combined the holistic method and the componential method 
+
+of LSA. The holistic assessment method contributes to a more 
+
+accurate measure of the overall quality of argumentation in an 
+
+essay. The componential assessment method assesses a specific 
+
+aspect of the argumentation in the essays (see: TABLE 1).  
+
+5. PRELEMINARY RESULTS 
+We handpicked the essays that were graded high by the instructors 
+
+and we labelled them as gold standard essays, and we tested 
+
+whether our LSA model would be able to identify the high graded 
+
+essays from the rest. The heat map (Figure1) indicates that the 
+
+augmented LSA model is able to discriminate, on its own, 
+
+between the essays that are gold standards and the essays that are 
+
+not. Dark blue colors at the bottom of the heat map are gold 
+
+standard essays.  
+
+We re-run the augmented LSA model and computed through the 
+
+combination of LSA-Cosine and LSA-Pearson to establish the 
+
+degree of similarities across the essays assessed in terms of the 
+
+quality of argumentation. We observed that the gold standard 
+
+essay 1 shares more similarities, in terms of its argumentation 
+
+characteristics, with other gold standard essays than with the non- 
+
+gold standard essays. The componential comparison of the 
+
+argumentation dimensions of, for example, <paraphrasing>-
+
+<hedging>, and <arguing>-<stancing>, and other argumentation 
+
+concepts all consistently discriminate the gold standard essays 
+
+from the rest of the essays. 
+
+6. CONCLUSIONS AND FUTURE WORK 
+This augmented LSA model has several advantages. It integrates 
+
+the human judgment as part of its assessment through using the 
+
+pre-graded essays to assess aspects of the argumentation in other 
+
+essays. It offers an approach that can be adapted (calibrated) to 
+
+analyze different aspects of argumentation in written text. We are 
+
+working on further augmentation and validation of this LSA 
+
+model. We hope to report on those results by the time of the 
+
+conference.  
+
+ 
+
+Table 1. Some of the argumentation concepts 
+
+ LEXICAL INDICATORS (SEMANTIC MATRICES) 
+
+HEDGING assume, believe, suppose, presume, …  
+
+STANCING I assert, I stand, I hypothesize,  … 
+
+ARGUING  observe, predict, ascribe, question, … 
+
+INDEXING its, it, their, these, this, those, …  
+
+L-CONNECTORS therefore, if, the, because, either, or, … 
+
+PARAPHRASING  indicated, proposed, suggested, ... 
+
+UNDERSTANDING classify, associate, categorize, express, …  
+
+APPLYING determine, examine, demonstrate, … 
+
+ELABORATING extend, add, clarify, always, … 
+
+ 
+Figure 1. Heat map comparing essays in a course section 
+
+7. ACKNOWLEDGMENTS 
+We gratefully acknowledge the financial support for this project 
+
+provided by UBC’s TLEF grant (project grant: 22G36907) and by 
+
+the Science Center for Learning and Teaching (Skylight) at the 
+
+UBC’s Faculty of Science. 
+
+8. REFERENCES 
+[1] Besnard, B. and A. Hunter. 2008. Elements of 
+
+Argumentation. The MIT Press. 
+
+[2] Bermejo-Luque, Lilian. 2011. Giving Reasons: A Linguistic-
+Pragmatic Approach to Argumentation Theory. 
+
+Argumentation Library, 20. Dordrecht: Springer. 
+
+[3] Landauer, T.K. 1998. Learning and representing verbal 
+meaning: the latent semantic analysis theory. Current 
+
+Directions in Psychological Science, 7, 161–164. 
+
+[4] Mayer, R. E. 1996. Learners as information processors: 
+Legacies and limitations of educational psychology’s second 
+
+metaphor. Educational Psychologist, 31, 151–161. 
+
+[5] Scheuer, O., Niebuhr, S.,  Dragon, T.,  McLaren B. M.,  &  
+Pinkwart, N. 2012. Adaptive support for graphical 
+
+argumentation - the LASAD approach.  IEEE Learning 
+
+Technology Newsletter, 14(1), 8-11.  
+
+[6] Shum, S.B., MacLean, J., Bellotti, A., V. M. E., & 
+Hammond, N. V. 1997. Graphical argumentation and design 
+
+cognition. Human-Computer Interaction, 12(3), 267–300.  
+
+[7] Shum, S.B., Sándor, Á., Goldsmith, R., Wang, X., Bass, R. 
+& Mcwilliams, M. 2016. Reflecting on reflective writing 
+
+analytics: Assessment challenges and iterative evaluation of 
+
+a prototype tool. In ACM International Conference 
+
+Proceeding Series, 213-222. 
+
+[8] Sionti, M., Ai, H., Rosé, C. P., Resnick, L. 2011. A 
+Framework for Analyzing Development of Argumentation 
+
+through Classroom Discussions. In Educational 
+
+Technologies for Teaching Argumentation Skills, Niels 
+
+Pinkwart & Bruce McClaren, Eds., Bentham Science. 
+
+[9] Stegmann, K., Weinberger, A., & Fischer, F. 2007. 
+Facilitating argumentative knowledge construction with 
+
+computer-supported collaboration scripts. International 
+
+Journal of Computer-Supported Collaborative Learning 
+
+(ijCSCL), 2(4), 421–447. 
+
+
+

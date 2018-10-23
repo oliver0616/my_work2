@@ -1,0 +1,49 @@
+\documentclass[tikz]{standalone}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{quotes,angles}
+\begin{document}
+
+\tdplotsetmaincoords{60}{120}
+
+\begin{tikzpicture}
+	%define coordinate
+	[scale=3,
+    tdplot_main_coords,
+    axis/.style={->,blue,thick},
+    back/.style={gray},
+    vector/.style={-stealth,red,very thick}]
+
+    %define
+    \coordinate (o) at (0,0,0);
+	\coordinate (x) at (3,0,0);
+	\coordinate (y) at (0,3,0);
+	\coordinate (z) at (0,0,3);
+    \coordinate (yz) at (0,3,3);
+   	\coordinate (xy) at (3,3,0);
+   	\coordinate (xz) at (3,0,3);
+
+	%background
+   	\filldraw[ draw=gray!20, fill=gray!20] (o) -- (y) -- (yz) -- (z) -- cycle;
+   	\filldraw[ draw=gray!20, fill=gray!20] (o) -- (y) -- (xy) -- (x) -- cycle;
+   	\filldraw[ draw=gray!20, fill=gray!20] (o) -- (x) -- (xz) -- (z) -- cycle;
+
+   	%axis
+	\draw[axis] (o) -- (x) node[anchor=north east]{$Analytic$};
+	\draw[axis] (o) -- (y) node[anchor=north west]{$data$};
+	\draw[axis] (o) -- (z) node[anchor=south]{$learning$};
+   	
+
+	%vector
+	\coordinate (d1) at (0,.7,2.5);
+	\coordinate (q1) at (0,2.5,1);
+	\coordinate (d2) at (0,2.8,0.5);
+
+	\draw[vector] (o) -- (d1) node[anchor = south] {d1};
+	\draw[vector] (o) -- (q1) node[anchor = south] {q1};
+	\draw[vector] (o) -- (d2) node[anchor = south] {d2(w1,w2,w3)};
+
+	%angle
+	\pic["$\theta$", draw=red, angle radius=20mm, angle eccentricity=1.3]{angle=d2--o--q1};
+
+\end{tikzpicture}
+\end{document}

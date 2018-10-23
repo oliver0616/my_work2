@@ -1,0 +1,1420 @@
+
+The Learning Analytics Readiness Instrument 
+Meghan Oster 
+
+University of Michigan 
+Ann Arbor, MI 48109 
+
+USA 
+omeghan@umich.edu 
+
+Steven Lonn 
+University of Michigan  
+Ann Arbor, MI 48109 
+
+USA 
+slonn@umich.edu  
+
+Matthew D. Pistilli 
+Indiana University–
+Purdue University 
+
+Indianapolis 
+Indianapolis, IN 46202 
+
+USA 
+mpistill@iupui.edu
+
+Michael G. Brown 
+University of Michigan 
+Ann Arbor, MI 48109 
+
+USA 
+mbrowng@umich.edu
+
+ABSTRACT 
+Little is known about the processes institutions use when 
+discerning their readiness to implement learning analytics. This 
+study aims to address this gap in the literature by using survey 
+data from the beta version of the Learning Analytics Readiness 
+Instrument (LARI) [1].  Twenty-four institutions were surveyed 
+and 560 respondents participated. Five distinct factors were 
+identified from a factor analysis of the results: Culture; Data 
+Management Expertise; Data Analysis Expertise; 
+Communication and Policy Application; and, Training.  Data 
+were analyzed using both the role of those completing the 
+survey and the Carnegie classification of the institutions as 
+lenses. Generally, information technology professionals and 
+institutions classified as Research Universities–Very High 
+research activity had significantly different scores on the 
+identified factors. Working within a framework of 
+organizational learning, this paper details the concept of 
+readiness as a reflective process, as well as how the 
+implementation and application of analytics should be done so 
+with ethical considerations in mind. Limitations of the study, as 
+well as next steps for research in this area, are also discussed. 
+
+Categories and Subject Descriptors 
+J.1 [Administrative Data Processing]: Education  
+
+General Terms 
+Measurement, Reliability, Experimentation, Standardization  
+
+Keywords 
+Learning Analytics, Readiness, Survey Design, Higher 
+Education, Reflection, Ethics  
+
+1. INTRODUCTION 
+The Learning Analytics Readiness Instrument (LARI) [1] was 
+created to address the space between the various inventories of 
+analytics tools available and the EDUCAUSE Maturity Index 
+[3], which measures the extent to which institutions have 
+
+implemented analytics systems. These inventories simply 
+informed institutions about what could be used while the 
+Maturity Index assumed that institutions had an analytics system 
+in place. These resources left an important gap: a diagnostic tool 
+that could inform administrators about the various components 
+required of analytics systems that should be in place and/or 
+considered to ensure as strong an implementation as possible. 
+Arnold, Lonn, and Pistilli [1] combined their experiences 
+working with various systems and institutions with their 
+individual research on the field and began to narrow a list of 
+requirements that would help ensure that learning analytics, 
+when used at an institution, could reach its potential and desired 
+effects. The original (alpha; [1]) analysis of the tool and its 
+outcomes indicated that the LARI had a promising future, but 
+required a deeper analysis at scale and additional specificity for 
+participating institutions. After completing the alpha analysis, 
+the team continued to refine the tool and developed a beta 
+version. This paper presents the results from the beta LARI and 
+sets the stage for how institutions can utilize the tool to 
+responsibly and successfully implement learning analytics.  
+
+1.1 Readiness as a Reflective Process 
+The process of adopting analytics should, ideally, begin with 
+self-reflection. As Arnold et al. [1] write, “it is imperative that 
+institutions considering [the implementation of] learning 
+analytics reflect upon their readiness to do so” (p. 263). They 
+continue, indicating that multiple facets of an institution should 
+be involved, creating a culture of awareness of and acceptance 
+for learning analytics, as well as having a “shared vision for 
+support of student success” (p. 264). Swenson [32], then, puts 
+this cultural importance into a broader process, examining “who 
+has the power to: 
+
+• make decisions about the learning analytics model and data; 
+
+• legitimize some student knowledge or data and not others; 
+
+• focus on potential intervention strategies and not others; 
+
+• give voice to certain students and not others; and, 
+
+• validate some student stories and not others” (p. 249). 
+Norris, Baer, and Offerman [23] go further, discussing the need 
+for taking information learned through analytics efforts and 
+putting it into action. Specifically, they note that implementing 
+“analytics is more about leading and navigating significant 
+changes in organizational culture and behavior than acquiring 
+technology solutions” (p. 1). Baepler and Murdoch [2] extend 
+this thinking, stating that the use of analytics is strategic in 
+nature, and “points to the need for early [collection of] student 
+data, prompt analysis, and immediate access by students, faculty, 
+and advisors who can make smart choices to influence learning” 
+(p. 1). In addition, Baepler and Murdoch emphasize the need for 
+the application of analytics to bring about change within the 
+
+Permission to make digital or hard copies of all or part of this work for 
+personal or classroom use is granted without fee provided that copies are 
+not made or distributed for profit or commercial advantage and that 
+copies bear this notice and the full citation on the first page. Copyrights 
+for components of this work owned by others than the author(s) must be 
+honored. Abstracting with credit is permitted. To copy otherwise, or 
+republish, to post on servers or to redistribute to lists, requires prior 
+specific permission and/or a fee. Request permissions from 
+Permissions@acm.org.  
+LAK '16, April 25 - 29, 2016, Edinburgh, United Kingdom  
+Copyright is held by the owner/author(s). Publication rights licensed to 
+ACM. ACM 978-1-4503-4190-5/16/04…$15.00  
+DOI: http://dx.doi.org/10.1145/2883851.2883925 
+ 
+
+
+
+classroom and for the students. Clow [7] argues, however, that 
+such change is difficult without closing the “feedback loop” in 
+which analytics interventions ultimately reach learners and their 
+instructors. Both of these components – the relatively rapid 
+collection, analysis, and dissemination of data and the use of 
+outcomes to change classroom environments and student (and, 
+potentially, faculty and staff) behavior – are reliant upon the 
+culture of an institution being one that is open to radical change 
+and a new form of influence. 
+
+According to Pistilli, Willis, and Campbell [24], “the 
+institutional application of analytics can result in a major shift 
+for colleges and universities with regard to the culture fostered 
+around undergraduate learning” (p. 88). They describe an 
+institutional environment where data is gathered from multiple 
+points, analyzed and provided to students as a form of feedback, 
+and where that feedback is also absorbed by instructors for 
+subsequent change on the instructors’ behalves. Once both 
+groups have had the opportunity to alter their behaviors, 
+members of the administration then have the ability to review 
+the various processes and changes and opt to implement them 
+further or continue to make tweaks to maximize the potential 
+positive change. Bonfliglio et al. [5], however, indicate that 
+moving an institution to one that is concerned about student 
+learning, rather than one focused on the instructor or the needs 
+of the university, requires a great deal of organizational 
+reflection and analysis. 
+
+1.2 Using Ethics as a Lens 
+Learning analytics as a field is relatively young, only having 
+been named by Goldstein and Katz in 2005 as “academic 
+analytics” [13] and later differentiated from similar terms [34]. 
+However, even in its infancy, it was apparent that an ethical 
+framework was necessary in order for the field to not simply 
+grow, but to do so in a way that allowed for that growth to be 
+accepted by the broader higher education community. Swenson 
+[32] discusses this eloquently, calling for ethical actions that 
+“[guide] learning analytics by the philosophy of use, the 
+motivation for use, and working towards a desire to ‘do better’ 
+by the institution, the instructor, and the discipline as a whole” 
+(p. 247). While written after the LARI was conceived, the 
+sentiments of examining the rationale and motivation behind 
+implementing analytics, along with improving an institution’s 
+chances of successfully applying analytics, are precisely what 
+these authors set out to do.  
+
+The disruption that accompanied the advent of learning analytics 
+brought with it a need for institutions to better understand what 
+they were trying to achieve and how those goals would be 
+achieved through the actions of many key areas of each 
+institution. The ethics associated with the application of 
+learning analytics need to be examined, but Swenson’s [32] 
+point is that unless a similar ethical tack is taken with regard to 
+an institution’s adoption of analytics, any processes may 
+become marginalized, if not forgotten altogether.  
+Beyond the practical components of implementing learning 
+analytics, the researchers in the current study focused on the 
+ethical implementation and use of analytics, informed by the 
+ethical frames proposed and discussed by Swenson [32], Willis, 
+et al. [37], and Slade and Prinsloo [31]. While it was imperative 
+that the application of analytics in an effort to improve student 
+success be done so ethically, the broad use of analytics – from 
+the rationale behind implementation to the actual 
+implementation itself – also should have an ethically-driven 
+
+approach. The focus is to teach people ethical considerations 
+associated with and driven by learning analytics [e.g., the ethical 
+considerations for stakeholders [15]), and subsequently re-
+inform the ethical application of analytics as the field matures. 
+Using the above ethical frames, it is apparent to these authors 
+that the concept of beneficence, or doing the greatest amount of 
+good for the greatest amount of people, is often behind both the 
+philosophy of analytics use and feedback provided to 
+institutions considering an investment in analytics. Having any 
+amount of beneficence in one’s approach to this field requires a 
+great deal of readiness, a concept often looked at through 
+militaristic terms of being prepared to handle nearly any 
+contingency that might occur in the field of battle. In higher 
+education, while the consequences are not as dire, the sentiment 
+remains: in order to do something well, one must first be ready 
+to do it.  
+Ultimately, what is an ethical lens for readiness with regard to 
+learning analytics? These authors describe readiness as a 
+necessary condition for institutions to be able to perform 
+educational functions consistent with their individual missions 
+and purposes, particularly towards student success. Furthermore, 
+it requires the appropriate management and application of 
+resources and personnel that results in the ability to effectively 
+educate students and enhance the higher education experience. 
+Finally, readiness needs to be considered as an open frame – one 
+that is transparent in nature and inclusionary in application. 
+Leaders at all levels of an institution need to be both consumers 
+and protectors of information learned and applied. Institutions 
+need to take care to treat student and faculty records and data 
+appropriately and ethically, and ensure that all are informed and 
+trained to the extent necessary to contribute to their educational 
+missions. The final "production" version of the LARI, based on 
+the results presented in this paper, will therefore provide 
+feedback to participating organizations that will not only reflect 
+the growth and stability considerations for each factor, but also 
+lenses appropriate for cultivating ethically attuned perspectives 
+with regard to learning analytics at each institution. 
+
+2. CONCEPTUAL FRAMEWORK 
+This work is largely informed by the literature on organizational 
+adaptation and organizational learning in postsecondary/higher 
+education institutions (HEIs). Within HEIs, structural units (i.e., 
+academic departments, information technology units) often are 
+loosely coupled in an open system arrangement [4] [29]. While 
+alignment facilitates individual and organizational autonomy as 
+well as experimentation without major consequence to the rest 
+of the organization in instances of failure [35], diffusion from 
+one part of the institution occurs unevenly, sporadically, and 
+unpredictably [6]. This can hamper or silo new and rapidly-
+changing areas of innovation, particularly in cross-disciplinary 
+areas like learning analytics. Furthermore, the open arrangement 
+of HEIs often produces various decentralized authority and 
+decision-making structures [16] that could affect the governance 
+and access of key data sources.  
+
+HEIs, particularly large, research-oriented organizations, 
+possess multiple institutional missions [19] that can create 
+ambiguity for individual actors [18]. This ambiguity can be 
+exacerbated when an HEI faces changes in its external 
+environment [6], ultimately resulting in organizational 
+transformation [19]. Therefore, staff and faculty may be unclear 
+about if and how learning analytics relates to the institutional 
+mission(s) for student success, particularly if the institution is 
+
+
+
+adopting learning analytics in reaction to their external 
+environment (e.g., peer institutions adopting analytics 
+solutions). HEIs respond to complexity in their environment by 
+producing new complex local structures for task management 
+[6]. An institution might develop multiple analytics initiatives 
+that, if incongruent with one another, can result in “contentious 
+misunderstandings, conflicts, and even power struggles over 
+values, beliefs, and implicit assumptions” [16] (p. 8). These 
+contentious misunderstandings either persist, allowing for local 
+translations of practice that are idiosyncratic and fractured, or 
+organizational actors work across (real and perceived) 
+organizational boundaries to learn coordination. During this 
+phase, through direct experience actors learn and develop new 
+routines to manage the transformed organization [20]. Balancing 
+external constraints and internal limitations is critical, 
+particularly in rapidly changing domains such as learning 
+analytics [15]. Institutions may be able to circumvent the 
+process of local translation and cross boundary coordination by 
+focusing on their readiness to adopt a technology or practice 
+before implementation. Gathering stakeholder perceptions, an 
+institutional repertoire of current practices, and an assessment of 
+analytics-related skills is critical in determining whether an 
+institution has the capacity to proceed with implementation, or if 
+new skills are required to accommodate changes [13] [26] [38]. 
+
+The authors frame the process of implementation as a series of 
+cycles of expansive organizational learning; one where 
+organizations and teams ascend from abstract and simple 
+explanatory relationships to a concrete system of multifaceted 
+objects and practices [12]. This model, in turn, is grounded in 
+the cultural-history theory of activity (i.e., activity theory) [9], 
+which delineates how actors, tools, goals, communities, rules, 
+and divisions of labor mutually constitute outcomes associated 
+with the central objects and practices. The expansive learning 
+model (Figure 1) consists of seven steps, or actions: 1) 
+Questioning, criticizing, or rejecting some aspects of the 
+accepted practice; 2) Analyzing the situation both historically 
+(origin & evolution) and empirically (inner systemic relations); 
+3) Modeling the new relationship in a public and shareable 
+medium; 4) Examining the new model by running, operating, 
+and experimenting with it; 5) Implementing the model in terms 
+of practical applications, enrichments, and conceptual 
+extensions; 6) Reflecting on and evaluating the new processes; 
+and, 7) Consolidating the outcomes of these actions into new 
+and stable practices. The LARI, as designed, attempts to capture 
+snapshots of institutional transition between each of these 
+activities as well as their development for capacity among each 
+crucial population of stakeholders. Given the dynamic nature of 
+learning analytics, expansive cycles of learning allow for the 
+inclusion and implementation of new techniques, tools, and 
+theories as they emerge. Within the activity system of expansive 
+organizational learning, multiple constituencies may be engaged 
+at different time points, levels of effort, and leadership. 
+
+3. METHODOLOGY  
+3.1 Survey Design 
+The LARI was originally designed based on a broad definition 
+of learning analytics utilizing four key principles: Institutions 
+should examine 1) rich, learning-related data sets, 2) as they are 
+exposed to various analytics techniques, 3) in an effort to 
+support teachers and/or learners, 4) as those populations move 
+toward intervention, action, and increased success [1]. This 
+approach, situating the survey instrument at the intersection of 
+institutional "big data" and student success, also acknowledged 
+that knowledge, understanding, and applicable technologies and 
+techniques for applying learning analytics would evolve over 
+time as the field matured and discourse about these issues 
+became more commonplace within higher education. The LARI 
+is therefore designed to facilitate an iterative and cyclical 
+organizational learning model to help move an institution along 
+its path of increasing learning analytics sophistication [30]. 
+
+The expansive learning model allows for iterative cycles and 
+"successive periods of local innovation and reorganization" [11] 
+(p. 323). Large cycles of expansion typically last several years, 
+particularly when many different units within an HEI are 
+involved. It is also unclear whether this model can support 
+sustained learning or is primarily useful for contexts in which 
+rapid change is occurring. For example, Engeström et al. [12] 
+suggest that technological investments, teams (and 
+organizations) likely will face decisions more nuanced than yes, 
+no, or delay, and furthermore, in each successive cycle, 
+previously rejected innovations are likely to reappear in 
+modified forms. Thus, as new faculty members, administrators, 
+IT professionals, and others within an institution engage in the 
+learning analytics conversation on campus, new, revised, and/or 
+old practices are all likely to be revisited as the field matures and 
+expands. The LARI is designed to facilitate these learning cycles 
+by taking input from across an institution and providing 
+actionable feedback, benchmarked against similar institutions 
+that have faced similar challenges and decision points. 
+
+3.2 Survey Distribution Procedure 
+Originally, the LARI comprised 139 questions [1]. From the 
+feedback received from participants of the alpha survey and an 
+exploratory factor analysis, the LARI instrument was reduced to 
+90 items with factor loadings unique to each of the five factors, 
+and 55.7% of the variance explained. The 90-item LARI 
+possessed a Chronbach’s alpha of 0.946, indicating a high level 
+of internal consistency. The factors identified in the alpha 
+version were: ability, data, culture & process, governance & 
+infrastructure, and overall readiness perception [1]. The 90-item 
+LARI (beta) was then distributed to a large group of 
+administrators, faculty, IT staff, students, and others engaged in 
+learning analytics at participating institutions to gather 
+additional feedback and further reduce the number of items 
+through an exploratory factor analysis. Because of the nature of 
+the survey, the authors sought out those associated with 
+institutions and/or familiar with successful implementations of 
+
+Figure 1: Expansive learning cycle (adapted from [11] p. 384) 
+
+
+
+learning analytics who were largely associated with a 
+consortium of research institutions in the American Midwest. 
+Individuals with other institutions also were targeted based on 
+their experience and knowledge.  
+
+The authors of the LARI beta survey used a convenience 
+sampling method to collect data for this version. The authors 
+solicited colleagues from a variety of institutions and asked for a 
+list of individuals at their respective institutions who were 
+involved in data initiatives. As a result of this method, the beta 
+survey respondents were faculty, staff, administrators, and 
+students who were knowledgeable of their individual 
+institution’s readiness to implement a complicated data initiative 
+focused on student success, broadly defined at each participating 
+institution. The authors then emailed the identified individuals 
+and asked them to participate in the survey. Follow-up emails 
+were used to increase the response rate. The survey was 
+administered from August 2014 through October 2014 via 
+Qualtrics, an online survey tool.  
+
+3.3 Survey Participants 
+In total, 560 individuals from 24 institutions responded to the 
+survey (See Table 1 for a breakout of respondents). Overall, 
+response rates within institutions ranged from 50% to 100%. 
+The majority of institutional response rates were above 80%. 
+The average number of participants per institution was 23, with 
+a range of 12-67 survey respondents from individual 
+institutions. Most institutions have a Carnegie classification of 
+Research University-Very High research activity (RUVH). In 
+order to create categories of individuals' roles (i.e., primary job 
+category) that were large enough for statistical analysis, similar 
+roles were collapsed together. The groups that were collapsed 
+were initially analyzed to determine if they were statistically 
+different on the variables of interest using t-tests. No significant 
+differences were found between the roles that were collapsed. Of 
+the 560 respondents, 29.1% (n = 163) identified as academic 
+deans or faculty members, 25.0% (n = 140) identified as 
+institutional leaders or administrators, and 19.5% (n = 109) 
+indicated they were information technology (IT) professionals. It 
+should be noted that five of the 24 institutions in the current 
+LARI administration participated in the alpha as well. Because 
+factor analysis measures “whether the same amount of variation 
+in the data can be represented equally … [or if there are] 
+
+ordered or patterned variations in the data,” we believe that prior 
+participation did not measurably influence these results [27] (p. 
+16). Further, in the alpha analysis, 24 responses from the five 
+institutions were included, whereas the current analysis included 
+133 respondents from the five previously surveyed institutions.  
+
+3.4 Factor Analysis Procedure 
+In order to further explore the domains that were established in 
+the alpha version of the survey and continue to reduce the 
+numbers of items included in the survey, an exploratory factor 
+analysis using principal axis factoring technique was completed 
+on the data obtained from the beta survey administration. Only 
+items on a five-point scale with response rates greater than 70% 
+were included in the factor analysis, initially removing 15 items 
+(NB: Some questions had multiple components, resulting in 
+more than 90 items included in the exploratory analysis).  
+
+Since the alpha administration of the LARI, many, if not all, 
+HEIs have invested in data collection efforts and mechanisms 
+that track various data points throughout students’ time in 
+higher education [8]. This was evident in the fact that all 
+institutions involved in the beta administration earned a high 
+score on the data readiness factor. Because the concept of data 
+collection being a necessary component for the success of any 
+initiative at an institution has become a ubiquitous prerequisite 
+of nearly any effort, whether or not those efforts involve the 
+utilization of learning analytics, the authors removed these six 
+items as they were no longer relevant to learning analytics 
+readiness. Five items not on a Likert scale also were removed. 
+All other questions were coded such that 1 indicated the lowest 
+end of the scale while 5 indicated the highest.  
+
+The first factor analysis of 65 items would have retained 35 
+factors had the traditional cut-off of an eigenvalue of 1.0 been 
+used, while the screeplot indicated only two factors. Since the 
+screeplot and traditional cut-off level offered substantially 
+different conclusions, factors were explored by forcing items 
+into two, three, four, five, etc., factors in order to determine a 
+best-fit solution. After thoroughly exploring the factor analyses 
+and their factor loading scores, five factors produced the most 
+sensible solution with similar questions grouping together.  
+
+Once the data were forced into five factors, each rotated loading 
+matrix, using Promax rotation, was examined for items that did 
+
+Table 1: Number of Participants by Role and Institution Type 
+
+Role 
+Institution Type 
+
+Associate Institutions 
+(n=4) 
+
+Master’s Institutions 
+(n=5) 
+
+Research University – 
+Very High (n=15) 
+
+Total  
+(N=24) 
+
+Academic Dean/Faculty 
+29  
+
+(34.5%) 
+38  
+
+(28.6%) 
+96  
+
+(28.0%) 
+163  
+
+(29.1%) 
+
+Faculty Development 
+1  
+
+(1.2%) 
+5  
+
+(3.8%) 
+13  
+
+(3.8%) 
+19  
+
+(3.4%) 
+Institutional 
+Administrator/Leader 
+
+20  
+(23.8%) 
+
+29  
+(21.8%) 
+
+91  
+(26.5%) 
+
+140  
+(25.0%) 
+
+Institutional Researcher 
+4  
+
+(4.8%) 
+5  
+
+(3.8%) 
+26  
+
+(7.6%) 
+35 
+
+(6.3%) 
+Information  
+Technology Professionals 
+
+9  
+(10.7%) 
+
+23  
+(17.3%) 
+
+77  
+(22.5%) 
+
+109  
+(19.5%) 
+
+Student  
+Affairs Professionals 
+
+3  
+(3.6%) 
+
+6  
+(4.5%) 
+
+18  
+(5.3%) 
+
+27  
+(4.8%) 
+
+Other 
+3  
+
+(3.6%) 
+6  
+
+(4.5%) 
+18  
+
+(5.3%) 
+27  
+
+(4.8%) 
+
+Missing 
+9  
+
+(10.7%) 
+14  
+
+(10.5%) 
+8  
+
+(2.3%) 
+31  
+
+(5.5%) 
+
+Total 84  (100.0%) 
+133  
+
+(100.0%) 
+343  
+
+(100.0%) 
+560  
+
+(100.0%) 
+Note: Percentages sum by columns. 
+
+
+
+not load or cross-loaded. Promax rotation was used because it 
+was believed that the individual factors were correlated [39]. If 
+all rotated loading values were below |0.30| for a particular item, 
+it was determined that the item did not load [33]. It was 
+removed from the analysis, and the factor analysis executed 
+again, continuing to force the analysis into five factors. Once all 
+non-loading items were removed, the rotated loading matrix was 
+examined for cross-loading items, defined as having two or 
+more values that loaded above |0.30| in multiple factors [33].  
+
+After cross-loading items were identified, they were removed 
+from the factor analysis and the factor analysis performed again. 
+This process (examining for non-loading and cross-loading 
+questions) was completed until a solution was found that was 
+free of non-loading and cross-loading items. Through this 
+process, five factors were retained from items loading onto a 
+single factor with a values greater than |0.30| and no cross-
+loading items. The five retained factors illustrate underlying 
+domains of 1) culture, 2) data management expertise, 3) data 
+analysis expertise, 4) communication and policy application, and 
+5) training. These are explained further in section 4.  
+
+Finally, as a sensitivity check of the overall factor analysis, a 
+conditional factor analysis using principal axis factoring and 
+Promax rotation on the items included in the final factor analysis 
+was completed to ensure that the overall factor analysis fit each 
+institutional type and role. While some questions loaded onto 
+different factors, in general, the items were similarly grouped 
+within each institutional type and role. This analysis suggests 
+that the overall factor structure (Section 4) is stable for the 
+overall sample, each institutional type, and each respondent role.  
+
+4. RESULTS 
+4.1 Factor Analysis and Description 
+The final factor analysis contained 46 items with an overall 
+Cronbach’s alpha of 0.956, indicating a high level of internal 
+consistency. The solution accounted for 87.4% of the variance. 
+Descriptive information for each factor is presented in Table 2. 
+The skewness indicates that all factors had a negatively skewed 
+distribution. Kurtosis indicates that the culture, communication 
+and policy application, and training factors have “heavy” tails 
+while the data management expertise and data analysis expertise 
+factors have approximately normal kurtosis. Additionally, the 
+Cronbach’s alpha statistics indicate each individual factor has 
+high internal consistency. All five factors utilize a five-point 
+Likert scale from Strongly Disagree (1) to Strongly Agree (5). 
+
+4.1.1 Culture  
+The first factor, “Culture” (Eigenvalue = 15.57), measures 
+respondents' perceptions regarding the extent to the different 
+types of data collected at the institution, and views and 
+perceptions within the institution regarding data and data use. 
+An example question includes, “My institution has a culture 
+that accepts the use of data to make decisions.”  
+
+4.1.2 Data Management Expertise  
+The second factor, “Data Management Expertise Factor” 
+(Eigenvalue = 3.71), measures respondents' perceptions 
+regarding the institution's investment in data collection and 
+management, as well as in professional staff who possess skills 
+and experience related to data management. An example 
+question includes, “My institution has the ability to store 
+increasingly large volumes of data.”  
+
+4.1.3 Data Analysis Expertise  
+The third factor, “Data Analysis Expertise” (Eigenvalue = 2.16), 
+measures respondents' perceptions regarding professional staff at 
+the institution who possess skills and experience in areas critical 
+for successfully implementing necessary analyses, such as, 
+"Institution has professionals with mathematical/statistical 
+experience in manipulating and transforming data and/or 
+variables in large, complex data sets.”  
+
+4.1.4 Communication and Policy Application  
+The fourth factor, “Communication and Policy Application” 
+(Eigenvalue = 1.66), measures respondents' perceptions 
+regarding the extent to which the institution is able to effectively 
+communicate to stakeholders about learning analytics and work 
+within current policies.  For example, "Institution has 
+professionals with business acumen in marketing/publicity.”  
+
+4.1.5 Training  
+The fifth factor, “Training” (Eigenvalue = 1.27), measures 
+respondents' perceptions regarding the extent to which the 
+institution had the resources to appropriately educate end-users 
+(of all levels) on learning analytics-powered reports and 
+applications. For example, "My institution has professionals 
+with customer-facing support experience in training diverse 
+constituents on the use of new systems."  
+
+4.2 Linear Regression Results 
+Ordinary least squares (OLS) regression was used to determine 
+the linear relationship between the independent variables 
+(institutional type and role) and the dependent variable (mean 
+score of each factor). All linear regressions models were 
+statistically significant. Table 3 provides these results.  
+
+4.2.1 Culture 
+For the culture factor, on average, academic deans and faculty 
+members along with institutional research (IR) professionals, 
+had significantly lower scores than IT professionals while 
+holding institutional type constant (p<0.01 each). Specifically, 
+IR researchers, on average, had culture scores a quarter of a 
+point (0.28) lower than IT professionals when holding 
+institutional type constant. Similarly, academic deans and 
+faculty members had, on average, culture scores that were also 
+
+Table 2: Descriptive Statistics for  
+Five Learning Analytics Readiness Factors 
+
+Factor  
+(count of items) Median Skewness Kurtosis ? 
+Culture  
+(n = 22) 
+
+3.27 -0.171 3.48 0.9169 
+
+Data 
+Management 
+Expertise  
+(n = 8) 
+
+3.75 -0.294 2.94 0.9017 
+
+Data Analysis 
+Expertise  
+(n = 6) 
+
+4.00 -0.369 2.85 0.9559 
+
+Communication 
+and Policy 
+Application  
+(n = 7) 
+
+4.00 -0.633 4.38 0.9180 
+
+Training 
+(n = 3) 
+
+3.67 -0.649 3.59 0.9140 
+
+ 
+
+
+
+approximately a quarter of a point lower (0.23) than IT 
+professionals, all else being equal. Regarding institutional type, 
+Associate institutions had, on average, a significantly lower 
+score by 0.25 on the culture factor than the RUVH institutions 
+(p<0.001). However, respondents from Master’s institutions had 
+significantly higher culture scores than those from RUVH 
+institutions by 0.27 (p<0.001).  
+
+4.2.2 Data Management Expertise 
+Similar to the culture factor, academic deans and faculty, on 
+average, reported a significantly lower data management 
+expertise factor score than IT professionals, such that the 
+average data management expertise score for academic deans 
+and faculty was 0.38 points lower than IT professionals 
+(p<0.001). Further, Associate (p<0.001) and Master’s 
+(p<0.001) institutions were significantly lower on the data 
+management expertise factor than RUVH institutions. 
+Specifically, respondents from Associate institutions were .0.83 
+points lower on data management expertise while respondents 
+from Master’s institutions indicated only 0.15 points lower than 
+RUVH institutions while holding the role variable constant.  
+
+4.2.3 Data Analysis Expertise 
+Again for the data analysis factor, on average, academic deans 
+and faculty members, reported a significantly lower data analysis 
+expertise score than IT professionals, such that their average 
+score was 0.22 points lower than IT professionals (p<0.05) 
+Also, Associate and Master’s institutions were significantly 
+lower, on average, on the data analysis expertise factor than 
+RUVH institutions (p<0.001 each). Specifically, respondents 
+from Associate institution gave scores that were almost a point 
+
+lower than RUVH institutions (0.85) and respondents from 
+Master’s institutions gave scores that were 0.43 points lower 
+than RUVH institutions, all else being equal.  
+
+4.2.4 Communication and Policy Application 
+For the communication and policy application factor, academic 
+deans and faculty members gave scores that were just over four-
+tenths of a point (0.42) lower, on average, than IT professionals 
+(p<0.001). Additionally, on average, respondents from 
+Associate (p<0.001) and Master’s institutions (p<0.05) reported 
+significantly lower scores on communication and policy 
+application than RUVH institutions, such that Associate 
+institution respondents provided scores that were slightly greater 
+than four-tenths of a point lower (0.43), and Master’s institution 
+respondents provided scores that were fifteen-hundredths of a 
+point lower than RUVH institutions.  
+
+4.2.5 Training 
+For the training factor, on average, all roles were significantly 
+lower than IT professionals (p<0.05 each). Specifically, 
+academic deans and faculty members provided scores that were 
+0.85 points lower, on average, compared to IT professionals on 
+the training factors. Faculty development respondents provided 
+responses that were 0.43 points lower than IT professionals on 
+training. Institutional administrators and leaders gave responses 
+that were over a half a point lower, on average, than IT 
+professionals on training (0.62). Institutional researchers 
+provided responses that were almost a full point lower on 
+training than IT professionals, on average (0.85). Student affairs 
+professionals, on average, gave respondents that were 0.73 
+points lower than IT professionals, on training. Respondents in 
+
+Table 3: Linear Regression Models of Each Factor Score Mean Regressed on Role and Carnegie Classification Variables 
+
+ Factors 
+ 
+
+Culture 
+Data 
+
+Management 
+Expertise 
+
+Data 
+Analysis 
+Expertise 
+
+Communication 
+and Policy 
+
+Application 
+Training 
+
+(n = 539) (n = 537) (n = 522) (n = 528) (n = 524) 
+
+Role (vs. IT professionals) 
+
+Academic deans & faculty -0.23** -0.38*** -0.22* -0.42*** -0.85*** 
+
+Faculty development -0.15 -0.15 -0.02 -0.02 -0.43* 
+
+Institutional admin/leaders -0.09 -0.15 -0.12 -0.17* -0.62*** 
+
+Institutional researchers -0.28** -0.16 0.1 0.18 -0.85*** 
+
+Student affairs professionals -0.14 -0.21 -0.08 -0.23 -0.73*** 
+
+Other -0.02 -0.2 -0.12 -0.19 -0.46* 
+
+Missing -0.19 -0.2 0.01 -0.32** -0.59*** 
+
+Carnegie Classification (vs. Research Universities – Very High) 
+
+Assoc/Pub-R-L, Bac/A&S, Bac/Diverse -0.25*** -0.83*** -0.85*** -0.43*** -0.12 
+
+Master's L, RU/H 0.27*** -0.15** -0.43*** -0.15* -0.07 
+
+      
+
+Intercept 3.37*** 4.05*** 4.19*** 4.33*** 4.10*** 
+
+F 8.98*** 21.06*** 14.96*** 10.60*** 11.03*** 
+
+R2 0.11 0.22 0.18 0.13 0.13 
+
+* = p<0.05, ** = p<0.01, *** = p<0.001.  
+
+
+
+the 'other' category provided responses that were almost half a 
+point lower than IT professionals (0.46). Finally, individuals 
+who did not identify their role provided training scores that were 
+0.59 points lower than IT professionals. However, neither 
+Associate institution nor Master’s institution respondents were 
+significantly different than RUVH institution participants. 
+
+5. DISCUSSION 
+Before an institution can implement learning analytics, staff 
+have to collectively understand their institution's readiness to do 
+so. Unfortunately, while a great deal of knowledge about 
+learning analytics is beginning to emerge, very little is known 
+about institutional readiness to implement. This gap served as 
+the impetus for the LARI’s development in 2014 [1]. After the 
+original survey was analyzed psychometrically and revised 
+appropriately, the LARI was administered in its beta form in an 
+effort to continue to validate the items, reduce the number of 
+items, and evaluate institutions’ perceived capacity to implement 
+learning analytics. This paper presented the analysis from the 
+beta administration of the LARI survey, and discusses the 
+subsequent factor analysis completed on data collected from on 
+a larger sample. Further, it allowed for a better understanding of 
+the association between the conceptual factors identified by the 
+factor analysis, individual’s roles in an institution, and Carnegie 
+classifications of the institutions at which they worked. As such, 
+this study extends prior work describing actors and dimensions 
+of learning analytics growth within an institution [7] [15] [30]. 
+The fact that learning analytics knowledge is emerging at a rapid 
+pace absent information about quality implementation and 
+scaling processes served as the basis to explore how different 
+institutions, as well as different individuals (and their primary 
+work responsibilities) within an institution, perceived their 
+individual and institutional capacity to effectively implement 
+learning analytics. As discussed above, all OLS regression 
+models were found to be significant. Of particular note, 
+academic deans and faculty members differed significantly from 
+IT professionals on all factors. Additionally, institutional 
+researchers had a significantly lower culture score than IT 
+professionals and institutional administrators/leaders, and the 
+missing category have significantly lower scores on the 
+communication and policy application factors. All roles had, on 
+average, scores on the training factor that were significantly 
+lower than IT professionals. Taken together, these findings 
+indicate that information technology professionals have a higher 
+probability of rating their institution’s readiness to implement 
+learning analytics higher than other roles within the institution. 
+This suggests that members of IT departments have a perception 
+of institutional readiness that is removed and potentially 
+discordant with other members of the HEI community, 
+particularly deans, faculty, and institutional researchers. Given 
+IT professionals' daily interaction with institutional data in a 
+variety of collection, maintenance, and reporting functions, this 
+discrepancy is not entirely surprising. Yet, bridging these 
+institutional perceptions is critical to ensuring a cohesive and 
+collaborative implementation.   
+
+With regard to differences by institutional Carnegie 
+classification, Associate institutions and Master’s institutions 
+had significantly lower scores on the data management 
+expertise, data analysis expertise, and communication and policy 
+application factors.  A lack of data management expertise and 
+analysis expertise at the Associate institution level is not 
+surprising; many institutions of this type lack the infrastructure 
+
+necessary to manage their own data systems [22], and few have 
+comprehensive institutional research (or equivalent) offices. 
+Interestingly, the Master’s institutions’ scores, on average, were 
+significantly higher on the culture factor than the RUVH 
+institutions. This finding could indicate that smaller institutions 
+or institutions that are more focused on teaching, as compared to 
+RUVH institutions, could have a perceived culture to implement 
+learning analytics that is different from RUVH institutions. 
+More research is necessary to fully explore these trends as well 
+as a focus on how institutions communicate internally (and, to a 
+lesser extent, externally) concerning policies and practices 
+related to the use of learning analytics data and related tools. 
+
+Overall, these findings indicate that information technology 
+administrators and individuals at institutions classified as 
+RUVH rate their individual institution’s capacity to implement 
+learning analytics higher than other roles and Carnegie 
+classifications.  These findings add to the understanding of how 
+learning analytics are implemented, because it now is evident 
+that researchers and practitioners need to understand that 
+institutional characteristics and faculty/staff roles are associated 
+differently with readiness. Ultimately, we can conclude that 
+individuals who plan to implement learning analytics must now 
+consider institutional and role characteristics across a variety of 
+domains before moving forward with their plans.   
+
+5.1 Research Implications 
+As stated throughout this section, understanding personnel and 
+institutional characteristics that are associated with the perceived 
+capacity to implement learning analytics is an important area of 
+research because little is actually known about the process of 
+learning analytics implementation, particularly the different 
+issues, policies, abilities, and supporting infrastructure across 
+different types of institutions. As the field continues to become 
+more prevalent in higher education (and education in general), 
+understanding the path to effective implementation will only 
+become more important. Scholars and practitioners should 
+continue to examine institutional characteristics that influence 
+readiness to implement learning analytics, particularly those 
+associated with smaller institutions, a population largely missing 
+from this study. Additionally, demographic characteristics of 
+those who participate in the survey should be examined more 
+closely. Adding control variables such as sex, race/ethnicity, 
+age, and length of time in current position would allow for a 
+more statistically controlled regression analysis. Researchers 
+should also evaluate the actual implementation of learning 
+analytics, and how that implementation manifests. In order to 
+compare an institution’s capacity to implement learning 
+analytics and their actual success in implementing learning 
+analytics, institutions would need to first administer the LARI 
+and then implement learning analytics, at which point the 
+implementation could be evaluated. This analysis would confirm 
+or disconfirm the actual usefulness of the LARI. 
+
+5.2 Practice Implications 
+Gauging an institution’s readiness to implement learning 
+analytics is an important step in the process of employing 
+learning analytics at an institution. Therefore, the validation of 
+the LARI through factor analysis is an important practical 
+implication. This tool is the first and only of its kind that can be 
+used by administrators within higher education to understand an 
+institution’s readiness status with regard to implementing 
+learning analytics specifically (there are existing and newly 
+
+
+
+developed survey and focus group instruments by EDUCAUSE 
+and others that evaluate the analytics landscape broadly and how 
+HEIs are building institutional analytics maturity). Additionally, 
+the identified factors help institutions pinpoint the specific areas 
+where efforts should be focused as they begin work on setting 
+learning analytics initiatives in motion locally. Further, as 
+institutions use the LARI, it is important to consider their 
+institutional characteristics (which are difficult to change). 
+Because Carnegie classification was consistently related to 
+factors of perceived institutional readiness to implement 
+learning analytics, practitioners who use this survey need to be 
+mindful of how their results may be influenced by institutional 
+factors that are likely impossible to change.  
+
+5.2.1 Implications for Institutional Learning 
+The LARI instrument, as designed, is best suited to facilitate an 
+institutional conversation regarding learning analytics and how 
+best to implement learning analytics to meet institutional goals. 
+However, while there may be broad-based agreement on those 
+goals, an institutional culture that "understands and values data-
+informed decision-making processes" is a necessary prerequisite 
+before learning analytics systems can be deployed and 
+corresponding intervention points identified [8] (p. 3). This 
+supposition is confirmed by the LARI beta analysis presented in 
+this paper where culture emerged as the primary, and strongest, 
+factor when evaluating institutional readiness. Yet, it is also 
+relevant to acknowledge that 22 items comprise this factor, 
+representing a wide variety of topics related to data collection 
+and utility. Alignment and agreement across data and 
+institutional culture requires several cycles of expansive 
+organizational learning [11] where multiple constituencies have 
+the opportunity to question, examine, and reflect on these issues.  
+
+Just as educational researchers have long known that reflective 
+practices can promote knowledge building for both individuals 
+and groups of learners [28] by identifying deficiencies in 
+cognition, improving understanding, and identifying the 
+characteristics of good performance in a domain [36], the LARI 
+is designed to facilitate similar reflective practices within HEIs 
+in continual iterative cycles. It is reasonable for an institution to 
+self-assess using the LARI multiple times before deploying 
+learning analytics systems at an enterprise scale, particularly if 
+there was widespread skepticism or disagreement about the 
+institutional culture in the first distribution of the instrument. 
+Conversations, symposia, and pilot projects across an institution 
+would likely facilitate organizational learning within this rapidly 
+changing and still emergent domain [12]. In fact, the process of 
+defining, testing, and refining the LARI instrument itself reflects 
+the processes of reflection and expansive learning.  
+
+As the field of learning analytics has matured, so has the LARI 
+evolved to better reflect the state of the field and available 
+technological options for data management and visualization, as 
+well as a more nuanced approach to data analysis. Among other 
+evolutions in the LARI, it should be reiterated that the data 
+factor that was the largest component in the alpha analysis [1] 
+has fallen out of the instrument completely.  
+
+5.2.2 Scaffolding Institutional Learning 
+Organizational learning can be ambiguous and confusing across 
+roles in a HEI, particularly in circumstances where changes in 
+the external environment have precipitated organizational 
+transformation [6] [18]. To that end, the LARI beta 
+administration also included factor-level feedback to institutions 
+designed to facilitate productive planning and monitoring of 
+
+institutional-level reflective practices [25]. In essence, the 
+feedback was an initial attempt at providing scaffolding based 
+on the experiences and successes of other institutions' processes 
+and implementations of learning analytics. For example, the 
+researchers suggested that institutions whose scores indicated a 
+low readiness level for the culture factor initiate an educational 
+initiative aimed at raising awareness of the power of analytics 
+and data-driven decision making while simultaneously inviting 
+stakeholders from across the institution to engage in setting 
+definitions, policies and practices.  
+
+It is important that institutional feedback provided from the 
+LARI not only be normed to the relative size and capacities of 
+institutional types (using Carnegie classifications) but also 
+leverages the ethical lens utilized in creating and analyzing the 
+LARI. It is critical that the messages delivered to participating 
+institutions prompt leadership within the HEI to surface 
+"philosophical assumptions, ideological perceptions, and 
+normative values underlying and/or guiding how people relate to 
+and exist with technology" [17] in general, and with data more 
+specifically. Furthermore, institutional scaffolds for learning 
+analytics readiness should facilitate the development of the 
+institutional interpretation of the "obligation of knowing" 
+espoused by Willis et al. [37] – each institution needs to 
+interpret how such obligations should manifest for particular 
+audiences (e.g., students, faculty, administrators) within the 
+cultural and political norms of the institution and the current 
+understanding of learning analytics. Such interpretations will 
+undoubtedly evolve over time as institutional learning about 
+learning analytics progresses.  
+
+In this beta phase of the LARI project, many participating 
+institutions noted that this feedback was helpful and spurred 
+their institution towards informed and productive conversations 
+and decisions with regard to learning analytics strategy and 
+institutional orientation. As the LARI nears a state of full 
+production and automated feedback, the investigators will not 
+only reframe the feedback to match the revised factors, but also 
+ensure that these scaffolds can be updated as the field evolves.  
+
+5.3 Limitations 
+While the results for this administration are encouraging and 
+useful, this study is not without its limitations.  The data used 
+for this study did not comprise a nationally representative 
+sample of institutions, and not all Carnegie classifications were 
+represented. Further, within institutions, a representative sample 
+of roles was not surveyed.  Also, because the sample had a large 
+number of RUVH institutions, it is likely more representative of 
+that type of institution than any other within the sample. 
+Individuals also self-selected to participate in the survey, 
+presenting a potential bias in the perceptions from survey 
+respondents, particularly within those institutions that had a 
+comparatively low number of respondents.  
+
+This is also survey data that gauged the perceived ability of the 
+institution to implement learning analytics as determined by 
+several different individuals, not the actual ability of the 
+institution to implement an analytics solution. Even though 
+perception is an important factor in an institution’s true ability 
+to implement a large, complex data project, it is not the only 
+factor that influences their ability to do so. Many unobserved 
+characteristics of the institutions that were not captured by the 
+survey exist, and these variables could have influenced the 
+regression models. These limitations indicate that these results 
+and implications should be used with caution.  
+
+
+
+5.4 Next Steps 
+The investigators believe that the LARI is now ready for 
+production deployment, and as such will have it hosted in a 
+custom web-based environment allowing multiple members of 
+an institution to respond to the reduced instrument much in the 
+same way the LARI was released in its alpha and beta forms. 
+Institutional results and corresponding factor- and item-level 
+feedback will be released to all survey respondents as discussed 
+in section 5.2.2. Institutional responses from this version of the 
+tool will be analyzed, and investigators will solicit periodic 
+input to improve feedback, particularly as new trends and 
+innovations emerge. Opportunities to investigate if and how 
+institutions use the feedback, how they ultimately implement 
+learning analytics, and if increased student success was realized 
+will be solicited as well.  
+
+6. CONCLUSION 
+Learning analytics – both as a field and as a suite of products – 
+are only going to become more prevalent as time moves 
+forward, and this study aimed to answer the extent to which 
+institutional roles and Carnegie classifications are associated 
+with different levels of perceived readiness to implement 
+learning analytics. On average, IT administrators and institutions 
+classified as RUVH had higher scores on each of the identified 
+factors. These findings suggest that different roles within 
+institutions and different institution types are associated 
+varyingly with perceived levels of readiness to implement 
+learning analytics. Thus, when administrators begin to consider 
+learning analytics, the perceived capacity to successfully execute 
+a large, complex data initiative could be influenced by the roles 
+of individuals involved and the institution’s characteristics.  
+
+Readiness is not an end point. Rather, these authors view 
+readiness as a measure of the participating institution to engage 
+or further engage in implementing, deploying, and 
+understanding learning analytics activities. Learning analytics 
+continues to be an emergent field with multiple disciplinary ties 
+to traditional areas of expertise (e.g., learning sciences, human-
+computer interaction, computer science) and other emergent 
+fields simultaneously operating in a state of rapid evolution 
+(e.g., data science). HEIs can ill afford to be complacent or 
+satisfied with early successes in learning analytics. To be 
+"ready" requires continued investment and commitment to foster 
+experimentation and innovation for all institutions seeking to 
+positively impact student success in the 21st century.  
+
+7. ACKNOWLEDGEMENTS  
+The authors would like to acknowledge several parties that 
+contributed to the creation of this paper. First, Kim Arnold at 
+the University of Wisconsin – Madison was greatly involved in 
+the administration of the beta LARI and research surrounding 
+this paper. Second, the Bill & Melinda Gates Foundation 
+generously provided funding for much of this research under a 
+grant awarded to Purdue University. Third, Jacqueline Bichsel 
+and her colleagues at EDUCAUSE Center for Applied Research 
+allowed us to base the LARI off of the Maturity Index. Fourth, 
+many ideas for this work came from a 2013 EDUCASE 
+Learning Initiative session whose participants contributed to the 
+thinking surrounding the concept of readiness, as well as from 
+feedback received from presentations on the LARI in various 
+venues. Finally, faculty, staff, and students in the LED Lab at 
+the University of Michigan provided input and insight into the 
+formation of the instrument and institutional feedback.  
+
+8. REFERENCES  
+[1] Arnold, K. E., Lonn, S., & Pistilli, M. D. (2014). An 
+
+exercise in institutional reflection: The Learning Analytics 
+Readiness Instrument (LARI). In A. Pardo & S. Teasley 
+(Eds.), Proceedings from the 4th International Conference 
+on Learning Analytics and Knowledge (pp. 163-167). New 
+York: ACM. DOI: 10.1145/2567574.2567621 
+
+[2] Baepler, P., & Murdoch, C. J. (2010) Academic analytics 
+and data mining in higher education. International Journal 
+for the Scholarship of Teaching and Learning, 4(2), art. 17. 
+Available: http://digitalcommons.georgiasouthern.edu/ij-
+sotl/vol4/iss2/17 
+
+[3] Bichsel, J. (2012). Analytics in higher education: Benefits, 
+barriers, progress, and recommendations (research report). 
+Louisville, CO: EDUCAUSE Center for Applied Research. 
+Available: 
+http://net.educause.edu/ir/library/pdf/ERS1207/ers1207.pdf  
+
+[4] Birnbaum, R (1988). How colleges work: The cybernetics 
+of academic organization and leadership. San Francisco: 
+Jossey-Bass. 
+
+[5] Bonfiglio, R., Hanson, G. S., Fried, J., Roberts, G., & 
+Skinner, J. (2006). Assessing internal environments. In R. 
+P. Keeling (Ed.), Learning reconsidered 2: Implementing a 
+campus-wide focus on the student experience (pp. 43–49). 
+Champaign, IL: Human Kinetics. Available: http://www. 
+myacpa.org/pub/documents/LearningReconsidered2.pdf 
+
+[6] Cameron, K. S. (1984). Organizational adaptation and 
+higher education. The Journal of Higher Education, 122-
+144. DOI: 10.2307/1981182 
+
+[7] Clow, D. (2012). The learning analytics cycle: Closing the 
+loop effectively. In S. B. Shum, D. Gaševi?, & R. Ferguson 
+(Eds.) Proceedings of the 2nd International Conference on 
+Learning Analytics and Knowledge (pp. 134-138). New 
+York: ACM. DOI: 10.1145/2330601.2330636 
+
+[8] ECAR-Analytics Working Group. The Predictive Learning 
+Analytics Revolution: Leveraging Learning Data for 
+Student Success. ECAR working group paper. Louisville, 
+CO: ECAR, October 7, 2015. Available: 
+http://net.educause.edu/ir/library/eli_so/ewg1510.pdf 
+
+[9] Engeström, Y. (1987). Learning by expanding: An activity-
+theoretical approach to developmental research. Helsinki: 
+Orienta-Konsultit. 
+
+[10] Engeström, Y., Engeström, R., & Kärkkäinen, M. (1995). 
+Polycontextuality and boundary crossing in expert 
+cognition: Learning and problem solving in complex work 
+activities. Learning and Instruction, 5(4), 319-336. 
+DOI: 10.1016/0959-4752(95)00021-6 
+
+[11] Engeström, Y., Kerosuo, H., & Kajamaa, A. (2007). 
+Beyond discontinuity: Expansive organizational learning 
+remembered. Management Learning, 38(3), 319-336. DOI: 
+10.1177/1350507607079032 
+
+[12] Engeström, Y., Miettinen, R., & Punamäki, R. L. (Eds.). 
+(1999). Perspectives on activity theory. New York, NY: 
+Cambridge University Press. 
+
+[13] Fisher, D., & Atkinson-Grosjean, J. (2002). Brokers on the 
+boundary: Academy-industry liaison in Canadian 
+universities. Higher Education, 44(3-4), 449-467. DOI: 
+10.1023/A:1019842322513 
+
+
+
+[14] Goldstein, P. J., & Katz, R. N (2005). Academic analytics: 
+The uses of management information and technology in 
+higher education. Littleton, CO: EDUCAUSE Center for 
+Applied Research. Available: http://www.educause.edu/ir/ 
+library/pdf/ers0508/rs/ers0508w.pdf 
+
+[15] Greller, W., & Drachsler, H. (2012). Translating learning 
+into numbers: A generic framework for learning analytics. 
+Educational Technology & Society, 15 (3), 42–57. 
+
+[16] Hubbard, L., Mehan, H., & Stein, M. K. (2006). Reform as 
+Learning: School reform, organizational culture, and 
+community politics in San Diego. New York: Routledge. 
+
+[17] Katz, S. B. & Rhodes, V. W. (2010). Beyond ethical 
+frames of technical Relations: Digital being in the 
+workplace world. In R. Spilka (Ed.), Digital Literacy for 
+Technical Communication (pp. 230-256). New York: 
+Routledge. 
+
+[18] Kezar, A. (2001). Understanding and facilitating 
+organizational change in the 21st century. ASHE-ERIC 
+higher education report, 28(4), 147. 
+
+[19] Kraatz, M. S. (1998). Learning by association? 
+Interorganizational networks and adaptation to 
+environmental change. Academy of Management Journal, 
+41(6), 621-643. DOI: 10.2307/256961 
+
+[20] Levitt, B., & March, J. G. (1988). Organizational learning. 
+Annual Review of Sociology, 319- 340.  
+
+[21] MacDonald, G. P. (2013). Theorizing university identity 
+development: Multiple perspectives and common goals. 
+Higher Education, 65(2), 153-166. DOI: 10.1007/s10734-
+012-9526-3 
+
+[22] Norris, D. M. & Baer, L. L. (2013) Building organizational 
+capacity for analytics. Louisville, CO: EDUCAUSE. 
+http://net.educause.edu/ir/library/pdf/PUB9012.pdf  
+
+[23] Norris, D., Baer, L., & Offerman, M. (2009). A national 
+agenda for action analytics. Available: 
+http://lindabaer.efoliomn.com/uploads/settinganationalagen
+daforactionanalytics101509.pdf  
+
+[24] Pistilli, M. D., Willis, III, J. E., & Campbell, J. P. (2014).  
+Analytics through an institutional lens: Definition, theory, 
+design, and impact. In J. A. Larusson & B. White (eds.), 
+Learning analytics: From research to practice (pp. 79-
+101). New York: Springer Science + Business Media. DOI: 
+10.1007/978-1-4614-3305-7_5 
+
+[25] Quintana, C., Reiser, B. J., Davis, E. A., Krajcik, J., Fretz, 
+E., Duncan, R. G., et al. (2004). A scaffolding design 
+framework for software to support science inquiry. The 
+Journal of the Learning Sciences, 13(3), 337-386. 
+doi:10.1207/s15327809jls1303_4 
+
+[26] Roth, W. M., & Tobin, K. (2002). Redesigning an "urban" 
+teacher education program: An activity theory perspective. 
+Mind, Culture, and Activity, 9(2), 108-131. DOI: 
+10.1207/S15327884MCA0902_03 
+
+[27] Rummel, R. J. (1970). Applied factor analysis. Evanston, 
+IL: Northwestern University Press. 
+
+[28] Scardamalia, M., & Bereiter, C. (1991). Higher levels of 
+agency for children in knowledge building: A challenge for 
+the design of new knowledge media. The Journal of the 
+Learning Sciences, 1(1), 37-68. DOI: 
+10.1207/s15327809jls0101_3  
+
+[29] Scott, W. R. & Davis, G. F. (2007). Organizations and 
+Organizing: Rational, natural, and open systems 
+perspectives. Upper Saddle River, NJ: Pearson. 
+
+[30] Siemens, G., Dawson, S., & Lynch, G. (2013). Improving 
+the quality and productivity of the higher education sector: 
+Policy and strategy for systems-level development of 
+learning analytics. Canberra, Australia: Office of Learning 
+and Teaching, Australian Government. Available: 
+http://solaresearch.org/Policy_Strategy_Analytics.pdf 
+
+[31] Slade, S., & Prinsloo, P. (2013). Learning analytics: 
+Ethical issues and dilemmas. American Behavioral 
+Scientist, 57, 1510-1529.  
+
+[32] Swenson, J. (2014). Establishing an ethical literacy for 
+learning analytics. In A. Pardo & S. Teasley (Eds.), 
+Proceedings from the 4th International Conference on 
+Learning Analytics and Knowledge (pp. 264-250). New 
+York: ACM. DOI: 10.1145/2567574.2567613 
+
+[33] Tabachnick, B. G., & Fidell, L. S. (2007). Using 
+multivariate statistics. (5th ed.). Boston, MA:  Pearson. 
+
+[34] van Barneveld, A., Arnold, K. E., & Campbell, J. P. (2012, 
+January). Analytics in higher education: Establishing a 
+common language. ELI paper 1: 2012. Available http:// 
+www.educause.edu/Resources/AnalyticsinHigherEducation
+Esta/245405 
+
+[35] Weick, K. E. (1976). Educational organizations as loosely 
+coupled systems. Administrative Science Quarterly, 21(1), 
+1-19. DOI: 10.2307/2391875 
+
+[36] White, B. Y., & Frederiksen, J. R. (1998). Inquiry, 
+modeling, and metacognition: Making science accessible to 
+all students. Cognition and Instruction, 16(1), 3-118. DOI: 
+10.1207/s1532690xci1601_2 
+
+[37] Willis, J. E., III, Campbell, J. P., & Pistilli, M. D. (2013, 
+May). Ethics, big data, and analytics: A model for 
+application. EDUCAUSE Review Online. Available: 
+http://www.educause.edu/ero/article/ethics-big-data-and-
+analytics-model-application 
+
+[38] Yeo, F. (1997). Teacher preparation and inner-city schools: 
+Sustaining educational failure. The Urban Review, 29(2), 
+127-143. DOI: 10.1023/A:1024686607759 
+
+[39] Yong, A.G., & Pearce, S. (2013). A beginner’s guide to 
+factor analysis: Focusing on exploratory factor analysis. 
+Tutorials in Quantitative Methods for Psychology, 9(2), 
+79-94.  
+
+
+

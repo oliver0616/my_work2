@@ -1,0 +1,656 @@
+
+English Language Learner Experiences of Formal and 
+Informal Learning Environments   
+
+Carrie Demmans Epp 
+
+Learning Research and Development Center (LRDC), University of Pittsburgh  
+
+3939 O'Hara Street, Pittsburgh, PA, United States of America 
+
+cdemmans@pitt.edu 
+
+ 
+
+ABSTRACT 
+Many people who do not know English have moved to English-
+speaking countries to learn English. Once there, they learn 
+English through formal and informal methods. While considerable 
+work has studied the experiences of English language learners in 
+different learning environments, we have yet to see analytics that 
+detail the experiences of this population within formal and 
+informal learning environments. This study used the experience 
+sampling methodology to capture the information that is needed to 
+detail the communication and affective experiences of advanced 
+English language learners. The collected data reveals differences 
+in how English language learners perceived their communication 
+success based on their learning context, with higher levels of 
+communicative success experienced in formal learning settings. 
+No such differences were found for learners’, highly negative, 
+affect. The data suggest a need for additional emotional support 
+within formal and informal learning environments as well as a 
+need for oral communication support within informal contexts.      
+
+Categories and Subject Descriptors 
+•Human-centered computing ? Human computer interaction 
+(HCI); HCI design and evaluation methods; Field studies; 
+•General Reference ? Cross-computing tools and techniques – 
+Measurement; 
+
+Keywords 
+Experience sampling methodology (ESM), communication, affect, 
+informal learning, formal learning, language learning, analytics 
+
+1. INTRODUCTION 
+English is recognized as a world language and that of 
+international business. This elevated status has contributed to the 
+development of an English-language learning marketplace and 
+increased educational tourism for the purpose of developing one’s 
+proficiency. These English language learners (ELL) and those 
+who have immigrated to English speaking countries are trying to 
+improve their knowledge but are falling behind [17].  
+
+The experiences of ELLs within classroom settings [7] and their 
+performance on high stakes or other assessments [17] have been 
+explored. Historically, these assessments have evaluated reading, 
+writing, and listening. More recently, these assessments have 
+included ELLs’ speaking ability [11]. However, these assessments 
+do not typically measure the learner’s ability to converse. As a 
+result, the literature cannot inform our understanding of ELLs’ 
+ability to communicate in the variety of situations that they 
+encounter [7]. Moreover, there has been little work exploring 
+ELLs’ experiences of their everyday lives or that details their 
+experiences across learning contexts (i.e., formal and informal). 
+This work, therefore, details ELLs’ ability to communicate and 
+their affective experience based on their learning context, which 
+has yet to be done in spite of recognition for the role that affect 
+and communication play in language learning [25,27]. This work 
+was performed with an understudied population [19]: advanced 
+ELLs who are living in an English language environment because 
+they participate in educational tourism that allows them to partake 
+in a variety of informal language-learning activities.  
+To detail how advanced ELLs’ communication and affective 
+experiences differ based on their learning context, a form of self-
+reporting called the experience sampling methodology (ESM) 
+[15,23] was used. ESM enabled the collection of detailed data 
+about learner experiences from a variety of formal and informal 
+learning contexts that included their courses and shopping centres.  
+This data allows ELLs’ communication and affective experiences 
+to be compared across formal and informal learning contexts. This 
+comparison shows that ELLs’ experienced similarly high negative 
+affect in both contexts, indicating that these ELLs need additional 
+emotional support in all learning environments. In contrast to 
+their consistently high negative affect, learner communicative 
+success differed significantly by context: ELLs achieved their 
+communication goals more when they were in formal learning 
+environments than when speaking with those they encountered in 
+their everyday lives. This difference may be due to a variety of 
+reasons, including higher levels of speaker cooperativeness or 
+familiarity with the type of language that is used in class. The 
+lower communication success rates that were reported in informal 
+learning environments indicate that ELLs need additional 
+communication support in everyday settings.  
+
+2. ANALYTICS IN LANGUAGE 
+LEARNING  
+Many of the approaches that aim to improve education or assess 
+learning are not typically evaluated across educational contexts 
+[1]. When interventions have been evaluated more broadly, their 
+evaluation has relied on simple metrics of learner actions that can 
+be easily logged through a learning system [8], or it has been 
+highly qualitative with little use of analytics. When more complex 
+analytics are used within tutoring environments, they have 
+
+ 
+
+Permission to make digital or hard copies of all or part of this work for 
+personal or classroom use is granted without fee provided that copies are 
+not made or distributed for profit or commercial advantage and that 
+copies bear this notice and the full citation on the first page. Copyrights 
+for components of this work owned by others than the author(s) must be 
+honored. Abstracting with credit is permitted. To copy otherwise, or 
+republish, to post on servers or to redistribute to lists, requires prior 
+specific permission and/or a fee. Request permissions from 
+Permissions@acm.org. 
+LAK '16, April 25 - 29, 2016, Edinburgh, United Kingdom  
+Copyright is held by the owner/author(s). Publication rights licensed 
+to ACM. 
+ACM 978-1-4503-4190-5/16/04…$15.00  
+DOI: http://dx.doi.org/10.1145/2883851.2883896 
+
+
+
+focused on learner mastery of language knowledge and skills [10]. 
+This focus may be the result of the ease with which these types of 
+analyses can be performed and the difficulty of capturing data in 
+more complex real world settings. Regardless of the reason behind 
+the lack of analytics work that studies learners’ experiences in 
+more complex settings [8], there is a need to begin applying an 
+analytics lens to these less instrumented learning environments so 
+that we can inform praxis in these complex, less controlled spaces. 
+The need for analytics in language learning is even more 
+pronounced, with explicit calls for additional work in this area 
+[4,21] since analytics from the areas of high-stakes and formal 
+testing or intelligent tutoring systems have yet to describe how 
+ELL experiences and outcomes, which includes their affective 
+states and communication with others, are related. 
+
+2.1 Communication 
+Current language-learning theories argue that the production (e.g., 
+writing or speaking) portion of communication serves three 
+purposes: it enables reflection about our language use and 
+knowledge, allows us to notice shortcomings in our knowledge, 
+and allows us to test our hypotheses about how the language 
+should be used [25]. This production of language can take place 
+during the learner’s everyday activities, during their language 
+courses, or when they are using technologies such as discussion 
+forums or online games. However, communication is rarely 
+assessed over the variety of contexts in which it can occur [7] and 
+few of the technology-enhanced environments that aim to scaffold 
+language learning support open-ended speech [3] unless the 
+technology has been repurposed to support interactions between 
+the learner and a peer or instructor (e.g., email or Skype). This 
+lack of instrumentation in authentic communication scenarios 
+means that the communication experiences of ELLs have been 
+inadequately explored. It also means that analytics have yet to be 
+performed on these rich learning opportunities, which limits our 
+ability to understand these environments, improve language 
+assessment, and improve the supports that we provide to learners. 
+
+2.2 Affect 
+A substantial body of work with respect to how learner affect 
+influences their actions and outcomes within the constrained 
+environment of intelligent tutoring systems has emerged [2,20]. 
+This work continues to grow and uses a variety of methods to 
+capture information about learner affect. These methods include 
+self-reporting [5,15], observer coding [2], sentiment analysis [30], 
+and the use of physiological sensors [16]. Almost none of this 
+work has been performed with language learners. It is more 
+common to see the development of models that predict learner 
+affect or its role on varied outcome measures within other learning 
+domains [2,30]. This lack of analytics around affect’s role within 
+language learning is inconsistent with the theoretical 
+argumentation for the importance of affect to language learning.  
+The common view of affect within language learning states that a 
+learner must be open to learning for learning to occur [18]. 
+Research into the role of various affective states within language 
+learning shows that learner anxiety hinders learning whereas self-
+confidence and motivation enable learning [12,27]. However, 
+these affective states have been operationalized in different ways. 
+This lack of agreement and systematic investigation into ELLs’ 
+affective states across contexts limits our understanding of the 
+role that affect plays within language learning. A far more 
+nuanced understanding of ELLs’ affective experiences is needed.  
+
+This study, therefore, aims to detail the communicative and 
+affective experiences of advanced ELLs across learning contexts. 
+
+3. METHODOLOGY 
+3.1 ESM: Communication and Affect 
+Experience sampling (ESM) is a self-report method [15]. It aims 
+to discover and represent people’s experiences through their eyes. 
+It has been used to evaluate ubiquitous technologies [6] by having 
+users complete regular reports that detail varied perceptual and 
+contextual information [15]. ESM is commonly used to collect 
+information about the participant’s affective state and social or 
+geographical context [15,23]. In keeping with this tradition, 
+information about participants’ social context (i.e., who they were 
+with and where they were), affective state, and perceived 
+communicative success were collected. This information was 
+gathered through an android application (see [13] for details).  
+
+Two established scales were used to measure participants’ 
+affective state. The first is the international short form of the 
+positive and negative affect schedule (I-PANAS-SF) [28] and the 
+second is the 5-point version of the self-assessment manikin 
+(SAM) [24]. These two measures were used to complement one 
+another because the SAM, which is a pictographic semantic-
+differential scale, had not been validated cross-culturally and the 
+I-PANAS-SF requires knowledge of the adjectives that describe 
+one’s affective state. The SAM asks users to select the picture that 
+best depicts how they feel. These pictures are mapped to a 5-point 
+rating scale, where 1 is highly negative and 5 is highly positive. 
+The I-PANAS-SF asks respondents to rate the extent to which 
+they feel a particular descriptor on a 5-point scale, where 1 is 
+Strongly Disagree and 5 is Strongly Agree. It was possible that 
+participating ELLs might not have sufficient knowledge of the 
+vocabulary used within the I-PANAS-SF, which is why the SAM 
+was also used. Following the I-PANAS-SF and SAM, participants 
+were asked to explain why they felt the way that they did. 
+
+Participants were asked about the number of communication 
+attempts that they had made in a single day and how successfully 
+they thought that they had communicated across all of those 
+events. Participants’ perceptions of their communicative success 
+were collected using a slider (0 = not at all successful, 100 = 
+completely successful). Participants were also asked to report on 
+specific communication events. The specific communication 
+events that participants reported on were their most recent 
+attempts at communicating using English when signaled. 
+Participants could not control when they were asked for this 
+information and they were asked to report on their most recent 
+attempt to communicate in English twice per day. In addition to 
+asking participants for their perceived communicative success 
+from their most recent attempt at communication, they were 
+asked, “What were you trying to communicate?”.  
+
+To ensure that participants were reporting on their experiences 
+from varied contexts, signal-contingent sampling was used. 
+Participants were asked to complete a self-report questionnaire 
+when signaled. To enable this sampling, participants’ waking 
+hours were subdivided into 6 segments. Participants were then 
+signaled at a random time within each segment. Once signaled, a 
+participant could complete the provided self-report form or post-
+pone reporting. If a participant postponed reporting he or she was 
+re-signaled 30 minutes later unless the sampling window had 
+expired. For example, the first signal for a participant who wakes 
+up at 7 am and goes to sleep at 11 pm would occur at some point 
+
+
+
+between 7 am and 9:40 am. Were that signal to be postponed at 
+9:30 am, the participant would not be allowed to provide that 
+information. If the participant were to postpone a 7:10 am signal, 
+s/he would have up to 5 additional opportunities to complete the 
+form. Information about participants’ affect was collected at 3 
+time points and information about their communicative success 
+was collected at 2 time points throughout the day. The sixth 
+sampling period collected participants’ reflection of their 
+experiences over the course of the day. This reflective data is 
+reported. However, it cannot inform our understanding of how 
+learner communication and affective experiences differ between 
+formal and informal learning contexts. Only the momentary 
+reports can help answer this question. The daily reflective reports 
+are, therefore, used to inform the interpretation of the differences 
+that were observed using participants’ momentary reports.  
+
+3.2 Other Data Collection 
+The perceived competence scale (PCS) [9] was modified to 
+measure ELLs’ sense of self-efficacy with respect to their ability 
+to learn English and their ability to communicate using English.  
+Semi-structured interviews were conducted to elicit information 
+about participants’ learning activities, the technologies they had 
+used, and their communication experiences. The interviews also 
+provided a venue to clarify the content of the reports that were 
+submitted as part of the experience sampling process.  
+
+3.3 Participants 
+Recently arrived international students were recruited through an 
+academic English training program in a major North American 
+city. Twelve ELLs consented to participate. However, P12 (a 23 
+year old speaker of Kazakh and Uygur) submitted too few self-
+reports so her data was excluded. The remaining 11 participants (5 
+- female, 6 - male) had an average age of 22.82 years (SD = 4.98). 
+P10 spoke Arabic, P9 spoke Kazakh, and the other 9 spoke 
+Portuguese as their mother tongue. Participants had been in an 
+English environment between 3 and 10 months, and 5 of them 
+(P1, P5, P6, P9, P10) lived in homes where more than one 
+language was spoken.  
+
+The participants whose data was used completed 73.18% of the 
+reports on average (SD = 11.24) and received 71.67 dollars on 
+average (SD = 14.26): this amount consisted of 20 dollars for 
+returning the data-collection device and 0.50 dollars per submitted 
+sample up to a maximum of 100 dollars.   
+
+3.4 Study Context 
+Data was collected from two contexts. The first was the 
+participants’ academic English courses (i.e., their formal learning 
+environment). These courses used a communicative approach to 
+language learning where students read papers and presented a 
+topic from their discipline to the class who then questioned the 
+presenter. The second context was the city in which participants 
+lived (i.e., their informal learning environment). This city 
+provided many opportunities for communication in English and 
+ensured continued exposure to English-language media.  
+Participants were signaled regardless of where they were or what 
+they were doing. They were instructed not to provide pictures 
+from private locations, such as the bedroom or bathroom, if they 
+were in these types of locations when they were signaled. 
+Participants reported data when they were at home, shopping, 
+interacting with friends, or using public transportation. 
+
+4. RESULTS 
+The results detailing participants’ affective and communication 
+experiences are based on the 218 daily reflective self-reports and 
+966 momentary self-reports that were collected through the ESM 
+application. The interview data indicate that signals were ignored 
+when participants were in the bathroom (P11), had dirty hands 
+(P9), were fighting with a significant other (P11), sleeping (P9), 
+or did not hear the signal (P1, P2, P3, P12). They also ignored the 
+signal when they felt that responding would break the flow of 
+their current activity (P1, P4, P5, P6, P7, P8). 
+
+4.1 Self-Efficacy  
+Participant responses to the communication (? = .922) and 
+learning (? = .916) versions of the PCS were highly reliable. They 
+were also highly correlated (r(22) = .90, p < .001), which 
+confirms the strong link between ELLs’ belief in their ability to 
+learn and their ability to communicate. Moreover, participant 
+responses indicated their confidence in their ability to learn 
+English (M = 6.17, SD = 0.91) and their ability to communicate 
+using English (M = 5.84, SD = 1.02). 
+
+4.2 Communication 
+The daily self-reports show that participants experienced days 
+when they did not communicate in English and days when they 
+communicated extensively using English. These high 
+communication days, while infrequent, were characterized by 
+ELLs’ participation in activities that depended on communication 
+with others. For example, giving presentations in class, going 
+shopping, or volunteering at local schools. However, it was far 
+more common for participants to only speak with  others in 
+English when absolutely necessary, with participants reporting a 
+median of 10 communication attempts per day (IQR = 12).  
+Similar to the amount of communication reported, participants 
+experienced complete communication success and failure. Their 
+communicative success was typically quite high (Mdn = 90.50%, 
+IQR = 19.00) and there was a weak relationship between the 
+number of times that ELLs tried to communicate and their ability 
+to communicate successfully (r(216) = .26, p < .001). There was 
+also a weak relationship between the number of times that they 
+tried to communicate and their daily I-PANAS-SF (r(216) = .22, p 
+= .001) scores (see section 4.3 Affect). 
+Of the 401 samples of momentary communicative success, 108 
+were taken from formal learning contexts and 293 from informal 
+contexts. Participants reported an average success rate of 86.98% 
+(SD = 15.27) when in class and 81.78% (SD = 20.30) when 
+outside of class. These reports indicate participants were 
+significantly more successful when conversing in formal learning 
+environments (t(252.51) = - 2.79, p = .006; F = 17.19, p < .001).  
+The interviews revealed that participants relied on the patience of 
+their conversational partners and that they employed a variety of 
+strategies (e.g., planning and reframing) to mitigate or prevent 
+miscommunication before using a technology to overcome 
+communication barriers. This decision was influenced by their 
+beliefs about the effectiveness of certain tools and by social 
+factors: participants did not want to appear rude by consulting 
+their mobile phone when in the middle of a conversation. As a 
+result, they would only use technological supports when they were 
+preparing for an interaction or their other strategies had failed.  
+P4, P5, P8, and P10 were frustrated by many people’s speaking 
+rate and rapid conversational pace. These speaker attributes made 
+it difficult for them to participate in conversation. P8 and P10 also 
+
+
+
+Table 1: The number of students who used each technology to 
+support their language-learning and communication activities. 
+
+Web Search Dictionary Translator Sub-titles Games Media 
+3 11 9 7 7 11 
+
+ 
+
+reported that this problem was more pronounced in service 
+industry settings where accents introduced additional barriers. 
+
+4.3 Affect 
+A total of 565 samples of participants’ momentary affective state 
+were collected: 95 came from formal learning environments and 
+470 came from informal learning environments. Participant 
+responses to the momentary version of the I-PANAS-SF (? = 
+.756) were sufficiently reliable and consistent with their responses 
+to the SAM (r(563) = .48, p < .001). The daily measures of the I-
+PANAS-SF showed a similar relationship with the SAM (r(216)  
+= .51, p < .001) and similar reliability (? = .759) to the momentary 
+version of this measure. Given these relationships and space 
+constraints, only the details of the I-PANAS-SF are reported.  
+
+Participant momentary affect, did not differ significantly (p = 
+.544) between informal (M = 35.86, SD = 5.72) and formal (M = 
+35.47, SD = 5.44) learning environments.  
+
+Participant responses to the negative subscale of the daily measure 
+indicate consistently high levels of negative affect (M = 22.02, SD 
+= 3.35): participants’ negative affect score was 1.75 times larger 
+than their positive affect score (M = 13.33, SD = 4.83). Ceiling 
+effects were also observed for the negative affect subscale of P5, 
+P6, P7, P9, and P11. These data indicate that participants were 
+continually challenged independent of their learning environment. 
+Participant negative affect did not seem to influence their sense of 
+self-efficacy or their willingness to engage in learning activities 
+that required oral English: both those with ceiling and those with 
+lower (P1, P4, P8) negative affect sought opportunities to 
+communicate using English.  
+
+4.4 ELL Support Tool Use 
+Participants aligned themselves with communicative approaches 
+to language learning where they used a variety of mobile 
+applications and services that included dictionaries, translators, 
+dedicated vocabulary support tools, or Google web and image 
+searches (see Table 1) to overcome gaps that they had noticed in 
+their knowledge. P1, P7, and P11 provided examples of their 
+noticing gaps in their knowledge as the result of trying to 
+communicate orally with others using English. Participants also 
+reported using these technologies to increase their exposure to 
+English by consuming different types of media. The employed 
+media included novels, textbooks, online news articles, music, 
+television, games, and movies. When engaging in online multi-
+player games, participants would listen to others speaking in 
+English and communicate in English through the text-based chat 
+system, but they reported that the fast-paced nature of the game 
+prevented them from participating in oral conversation. 
+
+5. DISCUSSION 
+The variability observed in participants’ daily I-PANAS-SF 
+positive and negative subscale scores was inconsistent with prior 
+work [29]. When the ceiling effects that were observed on the 
+negative subscale are considered in conjunction with the stability 
+of this measure, it is likely that the expected variability was not 
+observed because of the challenges that participating ELLs faced 
+
+on a daily basis. This suggests that their negative affect was so 
+high that potential changes were not measurable. These 
+experiences imply that ELLs need additional emotional support 
+outside of the classroom and that instructor encouragement will 
+not fully meet their affective needs.  
+The relationship between participant affect and the number of 
+communication attempts that they made empirically confirms 
+arguments for the inseparability of affect and language learning 
+[27]. Similar support for the relationship between learning and 
+communication comes from the strong relationship between the 
+communication and learning versions of the PCS: one cannot 
+communicate through a language without having learned that 
+language and communication supports language learning [26]. 
+Since only half of the participants sought informal learning 
+opportunities, the relationship between participants’ affective 
+states and the number of communication attempts they made 
+emphasizes the importance of finding ways to encourage ELLs to 
+pursue the learning opportunities that are present in their everyday 
+lives. These relationships further suggest that interventions which 
+encourage effort, bolster affect, or highlight learner successes may 
+help increase the likelihood that ELLs will pursue the learning 
+opportunities that are part of speaking with others, especially in 
+informal contexts. 
+The higher success levels that participants experienced when 
+communicating in formal learning contexts confirms that ELLs 
+struggle with the various forms of English that are used in 
+everyday life [14]. This difference also highlights the potential 
+relationship between ELLs’ communicative success and the extent 
+to which communication partners from each of these learning 
+contexts appear to cooperate, with instructors and peers being 
+more patient and more willing to take the time and energy to 
+negotiate a common understanding. Differences in the nature of 
+communication between these learning environments indicates a 
+need to support ELL communication, which is further illustrated 
+through some ELLs’ reliance on mobile translators or friends and 
+family when communicating with others [14]. Differences in 
+environmental factors, such as noise and distractions, may also 
+play a role in ensuring higher levels of communicative success 
+when students are in formal learning environments.  
+
+6. CONCLUSION 
+The communication and affective experiences of English language 
+learners who are in English-dominant environments could be 
+better understood. The experience sampling methodology was 
+combined with other measures and interviews to collect self-
+report data about ELL experiences. This effort is the first to 
+systematically collect data that details the experiences of these 
+learners within both formal and informal learning environments. 
+Future work could consider the general applicability of the study 
+methods to other domains. 
+The lack of difference in learners’ affective states between the two 
+learning contexts along with their high levels of negative affect 
+indicates that they need additional support. This support needs to 
+be provided both within the classroom and their everyday lives. 
+The differences in learners’ ability to communicate between these 
+two contexts indicates a need for the creation of strategies and 
+tools that can scaffold language learner communication within 
+informal learning environments that are characterized by noise, 
+unfamiliar language, and uncooperative communication partners. 
+Additional work exploring the nature of these environments and 
+
+
+
+that of ELLs’ communication failure will need to be performed in 
+order to develop these strategies and tools. 
+
+7. ACKNOWLEDGMENTS 
+The author held a Walter C. Sumner Fellowship.  
+
+8. REFERENCES 
+[1] Emmanuel G. Blanchard. 2014. Socio-Cultural Imbalances in 
+
+AIED Research: Investigations, Implications and 
+Opportunities. International Journal of Artificial Intelligence 
+in Education 25, 2: 204–228.  
+
+[2] Nigel Bosch, Sidney D’Mello, Ryan Baker, et al. 2015. 
+Automatic Detection of Learning-Centered Affective States in 
+the Wild. IUI 2015, ACM Press, 379–388. 
+
+[3] Jack Burston. 2014. The Reality of MALL: Still on the 
+Fringes. CALICO Journal 31, 1: 103–125.  
+
+[4] Jack Burston. 2014. MALL: the pedagogical challenges. 
+Computer Assisted Language Learning 27, 4: 344–357.  
+
+[5] Lee Anna Clark and David Watson. 1999. The PANAS-X: 
+Manual for the Positive and Negative Affect Schedule - 
+Expanded Form. Psychology Publications. Retrieved from 
+http://ir.uiowa.edu/psychology_pubs/11 
+
+[6] S. Consolvo and M. Walker. 2003. Using the Experience 
+Sampling Method to Evaluate Ubicomp Applications. IEEE 
+Pervasive Computing 2, 2: 24–31.  
+
+[7] Alister Cumming. 2004. Broadening, Deepening, and 
+Consolidating. Language Assessment Quarterly 1, 1: 5–18.  
+
+[8] Shane Dawson, Dragan Gaševi?, George Siemens, and Srecko 
+Joksimovic. 2014. Current State and Future Trends: A 
+Citation Network Analysis of the Learning Analytics Field. 
+Proceedings of the Fourth International Conference on 
+Learning Analytics And Knowledge, ACM, 231–240.  
+
+[9] Edward L Deci and Richard M Ryan. 2002. Handbook of 
+self-determination research. University of Rochester Press, 
+Rochester, NY. 
+
+[10] Carrie Demmans Epp and Gordon I. McCalla. 2011. 
+ProTutor: Historic Open Learner Models for Pronunciation 
+Tutoring. Artificial Intelligence in Education (AIED), 
+Springer, 441–443.  
+
+[11] Carrie Demmans Epp and Daniel Riccardi. 2013. The 
+Speaking Section of the Test of English for International 
+Communication (TOEIC). TESL Ontario Contact 39, 61–67. 
+
+[12] L. Quentin Dixon, Jing Zhao, Jee-Young Shin, et al. 2012. 
+What We Know About Second Language Acquisition: A 
+Synthesis From Four Perspectives. Review of Educational 
+Research 82, 1: 5–60.  
+
+[13] Clayton Epp and Carrie Demmans Epp. 2014. MyLog. 
+DevCache Consulting, Toronto, Canada. Retrieved from 
+http://www.cdemmansepp.com/research/mylog 
+
+[14] Daryl Gordon. 2004. “I’m Tired. You Clean and Cook.” 
+Shifting Gender Identities and Second Language 
+Socialization. TESOL Quarterly 38, 3: 437–457.  
+
+[15] Joel M. Hektner, Jennifer A. Schmidt, and Mihaly 
+Csikszentmihalyi. 2007. Experience sampling method: 
+measuring the quality of everyday life. Sage Publications, 
+Thousand Oaks, Calif. 
+
+[16] Alicia Heraz and Claude Frasson. 2011. Towards a Brain-
+Sensitive Intelligent Tutoring System: Detecting Emotions 
+
+from Brainwaves. Advances in Artificial Intelligence 2011: 1–
+13.  
+
+[17] M. J. Kieffer, N. K. Lesaux, M. Rivera, and D. J. Francis. 
+2009. Accommodations for English Language Learners 
+Taking Large-Scale Assessments: A Meta-Analysis on 
+Effectiveness and Validity. Review of Educational Research 
+79, 3: 1168–1201.  
+
+[18] Stephen D Krashen. 1982. Principles and practice in second 
+language acquisition. Pergamon, Oxford; New York. 
+
+[19] Agnes Kukulska-Hulme. 2013. Re-skilling Language 
+Learners for a Mobile World. The International Research 
+Foundation for English Language Education (TIRF), 
+Monterey, CA, USA. Retrieved from http://www.tirfonline. 
+org/english-in-the-workforce/mobile-assisted-language-
+learning/re-skilling-language-learners-for-a-mobile-world/ 
+
+[20] Blair Lehman, Sidney D’Mello, and Art Graesser. 2012. 
+Confusion and complex learning during interactions with 
+computer learning environments. The Internet and Higher 
+Education 15, 3: 184–194. 
+http://doi.org/10.1016/j.iheduc.2012.01.002 
+
+[21] Qing Ma. 2013. Computer Assisted Vocabulary Learning: 
+Framework and Tracking Users’ Data. CALICO Journal 0, 0: 
+230–243.  
+
+[22] Gloria Ramirez, Xi Chen, Esther Geva, and Heidi Kiefer. 
+2009. Morphological awareness in Spanish-speaking English 
+language learners: within and cross-language effects on word 
+reading. Reading and Writing 23, 3-4: 337–358.  
+
+[23] Ulrich Schimmack. 2003. Affect Measurement in Experience 
+Sampling Research. Journal of Happiness Studies 4, 1: 79–
+106.  
+
+[24] Hyeon-Jeong Suk. 2006. Color and Emotion - a study on the 
+affective judgment across media and in relation to visual 
+stimuli. Retrieved September 30, 2012 from http://irtel.uni-
+mannheim.de/pxlab/demos/index_SAM.html 
+
+[25] Merrill Swain. 1995. Three functions of output in second 
+language learning. In Principles and Practice in Applied 
+Linguistics, G. Cook and B. Seidlhofer (eds.). Oxford 
+University Press, Oxford, UK. 
+
+[26] Merrill Swain. 2006. Languaging, agency, and collaboration 
+in advanced second language proficiency Reading Reflection. 
+In Advanced Language Learning: The Contribution of 
+Halliday and Vygotsky, Heidi Byrnes (ed.). Continuum, New 
+York, NY, USA, 95–108. 
+
+[27] Merrill Swain. 2013. The inseparability of cognition and 
+emotion in second language learning. Language Teaching 46, 
+02: 195–207.  
+
+[28] E. R. Thompson. 2007. Development and Validation of an 
+Internationally Reliable Short-Form of the Positive and 
+Negative Affect Schedule (PANAS). Journal of Cross-
+Cultural Psychology 38, 2: 227–242.  
+
+[29] D. Watson, L. A. Clark, and A. Tellegen. 1988. Development 
+and validation of brief measures of positive and negative 
+affect: the PANAS scales. Journal of Personality and Social 
+Psychology 54, 6: 1063–1070. 
+
+[30] M Wen, D. Yang, and Penstein-Rosé, Carolyn. 2014. 
+Sentiment analysis in MOOC discussion forums: What does it 
+tell us? 130–137. 
+
+eth 
+
+
+

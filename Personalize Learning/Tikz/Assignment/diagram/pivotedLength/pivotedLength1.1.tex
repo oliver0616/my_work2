@@ -1,0 +1,35 @@
+\documentclass[tikz,border=5pt]{standalone}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{backgrounds}
+\usetikzlibrary{calc}
+
+\usepackage{mathtools}
+\newcommand*{\TickSize}{2pt}%
+
+\begin{document}
+\begin{tikzpicture}
+	[framed,background rectangle/.style={ultra thin, rounded corners=5pt, draw=gray}];
+
+	%Axis
+	\coordinate (x) at (15,0);
+	\coordinate (y) at (0,13);
+	\coordinate (o) at (0,0);
+	\draw[-{Latex[length=3mm,open]}] (o)--(x); %node[right]{\large $document$ $length$};
+	\draw (o) -- (x) node [midway, below, sloped, align=center] (textX) {\\ \\ \large $document$ $length$};
+	\draw[-{Latex[length=3mm,open]}] (o)--(y);
+	\draw (o) -- (y) node [midway, above, sloped, align=center] {\large $normalizer=1-b+b\dfrac{|d|}{avdl}$};
+
+	\node at (8,-0.3) {\large $avdl$};
+
+	%function
+	\draw[gray] (0,7) -- (15,7) node[right] {\large $b=0$};
+	\draw[blue] (0,1) -- (15,13) node[right] {\large $b=0.75$};
+	\draw[red] (0,4) -- (15,10) node[right] {\large $b=0.25$};
+
+	\draw[<->] (10,7) -- (10,8) node [midway, right, align=center] {penalty};
+	\draw[<->] (13,7) -- (13,11.4) node [midway, right, align=center] {penalty};
+	\draw[<->] (5,7) -- (5,6) node [midway, right, align=center] {penalty};
+	\draw[<->] (2,7) -- (2,2.6) node [midway, right, align=center] {penalty};
+
+\end{tikzpicture}
+\end{document}

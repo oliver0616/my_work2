@@ -1,0 +1,2349 @@
+
+Epistemology, Pedagogy, Assessment  
+and Learning Analytics 
+
+Simon Knight1, Simon Buckingham Shum1 and Karen Littleton2 
+1 
+Knowledge Media Institute 
+
+2 
+Centre for Research in Education & Educational Technology 
+
+The Open University, Milton Keynes, MK7 6AA, UK 
++44 1908 654672 
+
+simon.knight@open.ac.uk 
+ 
+
+ABSTRACT 
+There is a well-established literature examining the relationships 
+
+between epistemology (the nature of knowledge), pedagogy (the 
+
+nature of learning and teaching), and assessment. Learning 
+
+Analytics (LA) is a new assessment technology and should 
+
+engage with this literature since it has implications for when and 
+
+why different LA tools might be deployed. This paper discusses 
+
+these issues, relating them to an example construct, epistemic 
+
+beliefs – beliefs about the nature of knowledge – for which 
+
+analytics grounded in pragmatic, sociocultural theory might be 
+
+well placed to explore. This example is particularly interesting 
+
+given the role of epistemic beliefs in the everyday knowledge 
+
+judgements students make in their information processing. 
+
+Traditional psychological approaches to measuring epistemic 
+
+beliefs have parallels with high stakes testing regimes; this paper 
+
+outlines an alternative LA for epistemic beliefs which might be 
+
+readily applied to other areas of interest. Such sociocultural 
+
+approaches afford opportunity for engaging LA directly in high 
+
+quality pedagogy. 
+
+Categories and Subject Descriptors 
+
+K.3.1 [Computers and Education]: Computer Uses in Education 
+
+– collaborative learning. 
+
+General Terms 
+Measurement, Documentation, Design, Human Factors, Theory,  
+
+Keywords 
+Learning analytics; epistemology; pedagogy; educational 
+
+assessment; discourse analytics; social learning analytics 
+
+1. INTRODUCTION 
+“Assessment is one area where notions of truth, accuracy and 
+
+fairness have a very practical purchase in everyday life” [62]. It 
+
+sits at the heart of learning, but is hugely controversial. This is 
+
+directly relevant to Learning Analytics (LA), because – we argue 
+
+– LA implicitly or explicitly promote particular assessment 
+
+regimes.  
+
+Presently, many education systems are predicated on assessment 
+
+regimes seeking to accredit knowledge and skills gained by 
+
+students through formal assessments – often exam- based. 
+
+Proponents of such exams suggest they are the fairest way to 
+
+assess competence and learning under controlled, reliable, 
+
+conditions. Assessment, pedagogy and curriculum are 
+
+fundamentally related [26], but many regimes of what has come to 
+
+be termed ‘high stakes’ testing are criticised. For example, 
+
+standardised assessments, including the Programme for 
+
+International Student Assessment (PISA), American Standardised 
+
+Assessment Tests (SATs) and English National Curriculum 
+
+assessments (Sats), face myriad problems. Not least among these 
+
+is that the exams are criticised comprehensively (e.g. [12, 23, 29]) 
+
+for failing to represent adequately the types of problem people are 
+
+likely to face in their everyday lives (external validity), and that 
+
+they fail to represent an adequate conceptualisation of what it 
+
+means to know – of what knowledge is (internal validity). The 
+
+latter claim is that, while assessments clearly measure something, 
+
+a good grade does not necessarily reflect mastery [12]. These 
+
+fundamental issues are highlighted in a significant body of 
+
+research (e.g. [12, 23, 29]), and one of the objectives in writing 
+
+this paper is to clarify the implications of these issues for the 
+
+Learning Analytics community.  
+
+In this paper, Section 2 considers the relationship between 
+
+assessment systems and the sorts of epistemic challenges students 
+
+might encounter. Section 3 introduces the concept of epistemic 
+
+beliefs, and Section 4 goes on to discuss the relationships between 
+
+LA, epistemology, pedagogy and assessment. Section 4.2.1 then 
+
+introduces pragmatic, sociocultural approaches to LA, which we 
+
+suggest are well placed to probe or assess facets of learning which 
+
+other LA may not adequately address. To exemplify this 
+
+argument, we draw a parallel between the psychometric 
+
+measurement of epistemic beliefs and high stakes testing regimes 
+
+(Section 5). Our suggestion is that pragmatic, sociocultural 
+
+approaches offer alternative LA which are well placed for 
+
+exploring these areas of learning (Section 6). The final section 
+
+discusses the role for established LA in this pragmatic, 
+
+sociocultural LA. Throughout the paper, we particularly associate 
+
+our approach to LA with that of Assessment for Learning (AfL) 
+
+which uses continuous assessment with formative feedback to 
+
+facilitate learning, in contrast to a focus on summative 
+
+assessment, often through examinations. 
+
+2. WHY WORRY ABOUT 
+EPISTEMOLOGY? 
+
+A primary concern of this paper is the relationship between 
+
+epistemology, pedagogy and assessment. Epistemology is the 
+
+philosophical study of what knowledge is, and what it means for 
+
+someone to ‘know’ something. Central to the field of 
+
+epistemology are questions regarding the nature of truth, the 
+
+nature of justification, and types of knowledge, e.g. knowing how 
+
+(skills), or knowing that (facts). Whatever ‘knowledge’ is, “it is 
+
+uncontroversial, pre-philosophically, that education aims at the 
+
+ 
+
+Permission to make digital or hard copies of all or part of this work for 
+personal or classroom use is granted without fee provided that copies are 
+
+not made or distributed for profit or commercial advantage and that 
+
+copies bear this notice and the full citation on the first page. To copy 
+otherwise, or republish, to post on servers or to redistribute to lists, 
+
+requires prior specific permission and/or a fee. 
+
+LAK '13, April 08 - 12 2013, Leuven, Belgium 
+
+Copyright 2013 ACM 978-1-4503-1785-6/13/04…$15.00. 
+
+  
+
+75
+
+
+
+imparting of knowledge: students are educated in part so that they 
+
+may come to know things.” [54]. Thus, pedagogy may be seen in 
+
+part to be the study of how to impart this knowledge to students – 
+
+the science and development of approaches to teaching and 
+
+learning for knowledge. However, epistemology’s relationship to 
+
+the more familiar concepts of pedagogy and assessment is a topic 
+
+of educational debate [12, 15, 32, 62], and we will consider this in 
+
+relation to LA throughout this paper.  
+
+Harlen [26] depicted a triadic relationship between pedagogy, 
+
+assessment, and practice. Influenced by this, and Katz’s [31] 
+
+description of “competency, epistemology and pedagogy: 
+
+curriculum’s holy trinity” we depict the triad as in Figure 11.  
+
+ 
+
+ 
+
+Figure 1: The Epistemology–Assessment–Pedagogy triad 
+
+In this picture, epistemology could be seen as driving assessments 
+
+that are aimed at uncovering student knowledge, and driving 
+
+pedagogy to build high quality knowledge to that end. In this 
+
+view, assessment is targetted at the learning of high level 
+
+knowledge – it is assessment for learning. However, these 
+
+relationships are not fixed; neither pedagogies nor epistemologies 
+
+necessarily entail the other [13] (although they may implicate). 
+
+Furthermore, as we will explore in this paper, assessment is 
+
+always concerned with devising proxies for “knowledge”, around 
+
+which there are philosophical (epistemological) and 
+
+methodological issues. Some epistemological stances hold that it 
+
+is not possible to ‘map’ the knowledge that students hold onto 
+
+their responses in assessments in reliable and valid ways. This 
+
+issue is further confounded by the methodological limitations of 
+
+all assessment methods, and by extension LA. The situation is, 
+
+therefore, a complex one – which facet of the triad has primacy 
+
+over the others is not clear in either theory or practice, and may be 
+
+dynamic according to need and circumstance. However, 
+
+relationships between the three can certainly be identified, and 
+
+throughout this paper we draw out some of these with respect to 
+
+LA – which may be conceptualised as a component of assessment. 
+
+Furthermore, we suggest that, although the relationship may not 
+
+be a necessary one, assessment regimes do implicate particular 
+
+epistemological stances. 
+
+Consider the following example from Denmark to illustrate the 
+
+argument that implicitly or explicitly, epistemological 
+
+assumptions fundamentally shape pedagogy and assessment, and 
+
+hence, the kinds of LA that one deploys to achieve those ends. In 
+
+Denmark, a pilot project was conducted permitting the use of the 
+
+internet (but not communication sites) to support students in five 
+
+                                                                 
+
+1
+  We could also introduce the notion of ‘folk psychology’ as a mediating 
+
+factor between teacher’s views on knowledge, and pedagogy – for 
+example, if we hold that some (particular) children will never learn x, 
+
+we are unlikely to attempt to teach it (a pedagogical ‘move’) regardless 
+
+of our epistemological stance regarding the nature of ‘x’ [41]. Although, 
+in that paper [41] Olson and Bruner implicate epistemology in a number 
+
+of their points regarding ‘folk pedagogy’. 
+
+of the school leaver subject exams2. This made it possible to set 
+
+questions requiring the use of multimedia and individual internet 
+
+search. For example, a student might be asked to write about a 
+
+poet whom they have not studied (and rote learned about), based 
+
+on a poem by them and that of a contemporary, a short biography 
+
+and perhaps an image from the time. They may be given 
+
+unfamiliar resources, and permitted to source information for 
+
+themselves from the internet. Thus, while Danish students are 
+
+expected to evidence ‘knowledge-that’ – knowledge of facts – 
+
+they must also exhibit a higher level of ‘knowing-how’, for 
+
+example around information processing, synthesis, and 
+
+metacognitive abilities – which remain unassessed in countries 
+
+restricting access to external resources which might enhance the 
+
+student’s capability. While this is of course simply one other 
+
+(controlled) context, the example illustrates how even within a 
+
+system reliant on exams, those exams might be conducted on a 
+
+rather different epistemological grounding. Assessment regimes 
+
+such as the Danish example may be taken to reflect a holistic 
+
+epistemology in which how one comes to know is as important as 
+
+what one comes to know, and in which it makes little sense to 
+
+pick out individual tokens of knowledge in decontextualized ways 
+
+[9, 11, 13, 31]. 
+
+We can contrast such assessments with high stakes testing 
+
+regimes whose construct validity and external validity have been 
+
+questioned. For instance, Davis [10][12] argues that such 
+
+instruments neither assess those facets of learning they set out to 
+
+test, nor those facets of learning which would likely be utilized in 
+
+the everyday deployment of knowledge in any particular domain. 
+
+Davis has argued that high stakes testing is inadequate for 
+
+understanding learning, in so far as its construal of that learning is 
+
+necessarily restricted by a desire for highly reliable metrics of 
+
+success. As such, it must exclude the nuanced understanding of 
+
+student meaning-making, and the social context in which learning 
+
+occurs, and how knowledge is constituted and enacted. He argues 
+
+that this, as opposed to acquisition, is the appropriate way to talk 
+
+about knowledge. Davis draws on notions of situated cognition 
+
+[48] and sociocultural approaches [46] – particularly Säljö’s 
+
+“Literacy, Digital Literacy and Epistemic Practices: The Co-
+
+Evolution of Hybrid Minds and External Memory Systems” [47]. 
+
+Säljö highlights that:  
+
+From the learning and literacy points of view, such tools [memory 
+
+aides and knowledge management systems of various sorts] imply 
+
+that users’ knowledge and skills, as it were, are parasitic on the 
+
+collective insights that have emerged over a long time and which 
+
+have been entered into the instrument in a crystallized form: 
+
+algorithms, grammatical rules and concepts, etc. The user will 
+
+manipulate the artificial memory system in a number of ways in 
+
+order to see what comes out of the processing that goes on in the 
+
+machine [47] 
+
+However,  
+
+Engaging with external memory systems thus requires familiarity 
+
+with a varied set of epistemic practices that range from 
+
+deciphering letters on a page through familiarity with meaning-
+
+making in relation to discourses and genres of texts and other 
+
+media, to meta-knowledge about how such resources may be used. 
+
+[47].  
+
+                                                                 
+
+2
+  Steen Lassen (a Danish Education Minister) on the piloting of internet 
+
+access in exams: http://vimeo.com/8889340 subsequently adopted by 
+
+some Danish universities [8]. 
+
+76
+
+http://vimeo.com/8889340
+
+
+Säljö is making an epistemological claim, specifically, a 
+
+sociocultural, pragmatist claim: that there are important literacies 
+
+and practices to be mastered in learning; that those should 
+
+themselves be objects of assessment; and language and discourse 
+
+are critical filters on our grasp of the world. Such an epistemology 
+
+has implications for how we teach, what we assess, and which 
+
+analytics techniques might be deployed. ‘Success’ can no longer 
+
+be defined as a matter of regurgitating, unaided, the correct 
+
+information in a two hour exam. Such an epistemology also – we 
+
+argue – offers a perspective on why it is that, even in those 
+
+technologically advanced societies which assess knowledge in 
+
+less abstracted, socially embedded ways – such as Denmark – 
+
+information retrieval (IR) and processing via the internet and 
+
+search engines is a significant area of difficulty for students [59]; 
+
+namely, that although this provides some wider access to 
+
+information, this does not equate to knowledge. Student 
+
+engagement with information should consider both the kinds of 
+
+knowledge which we might call transferable competencies or 
+
+skills – including those higher order skills often known as 
+
+metacognitive abilities – and more propositional or fact based 
+
+knowledge. In this context, we might consider information 
+
+management, and IR not only as a means to an ends, but as a way 
+
+to encourage interaction with a complex network of information. 
+
+As argued by Tsai, as not only: 
+
+…a cognitive tool or a metacognitive tool; rather, it can be 
+
+perceived and used as an epistemological tool. When the Internet 
+
+is used as an epistemological tool for instruction, learners are 
+
+encouraged to evaluate the merits of information and knowledge 
+
+acquired from Internet-based environments, and to explore the 
+
+nature of learning and knowledge construction. [57]  
+
+In this conception, learners are encouraged to think about the 
+
+context, reliability, validity, certainty, and connectedness of 
+
+knowledge.  
+
+To summarise, this section has argued that a consideration of 
+
+epistemology is important to LA in two related senses: 
+
+? The ways that we assess, the sorts of tasks we set and the 
+kinds of learning we believe to take place (and aim for) are 
+
+bound up in our notions of epistemology. LA are not 
+
+objective or neutral: data does not “speak for itself” but has 
+
+been designed by a team who, implicitly or explicitly, 
+
+perpetuate the pedagogical and epistemological assumptions 
+
+that come with any assessment instrument.  
+? The Danish example shows concretely how epistemology 
+
+relates to assessment regimes. When knowledge is seen as 
+
+something that can only be evidenced in contextualised 
+
+activity, and when it is embedded in one’s physical and 
+
+digital environment, the role of the internet is redefined as a 
+
+metacognitive tool which cannot be excluded in assessment.  
+
+These epistemological considerations foreground the quality of a 
+
+student’s enquiry processes as important, not just whether they get 
+
+the right answer. Analytics that provide process traces become 
+
+particularly important, as we shall discuss in Section 6. 
+
+3. EPISTEMIC BELIEFS 
+One facet of students’ dynamic interaction with the world of 
+
+information relates to how they conceptualise the information they 
+
+require to answer any particular question – their epistemic beliefs 
+
+regarding the nature of the question, and how it may be answered. 
+
+The sorts of assessment, and pedagogy, which students are 
+
+exposed to will relate to the types of epistemic challenge they 
+
+encounter in their education – systems with a focus on ‘right 
+
+answerism’ and limited access to external epistemic resources 
+
+offer fewer opportunities for challenging knowledge claims [12, 
+
+31]. This paper thus talks about two related concepts: 
+
+1. Epistemology: Which we introduce above, and is related to 
+the philosophical analysis and conceptualisation of 
+
+curriculum content and assessment for knowledge 
+
+2. Epistemic Beliefs: Which we now introduce, and relates to 
+the intrapersonal, psychological conceptualisations that 
+
+individuals hold regarding knowledge  
+
+Indeed, a key component of AfL may be the disambiguation of the 
+
+epistemic requirements of questions – in terms of understanding 
+
+the question, its context, and the knowledge required to answer 
+
+the question [2].  
+
+Table 1 indicates four dimensions of epistemic beliefs, for which 
+
+there is general agreement across the various models of belief3. 
+
+These dimensions are useful to consider in relation to student 
+
+understanding of knowledge domains. For example, in the context 
+
+of search engine IR tasks, “epistemological beliefs are a lens for a 
+
+learner’s views on what is to be learnt” [4]. In such tasks, student 
+
+search activity may be analysed using the dimensions in Table 1 
+
+(e.g. [38]), providing a lens onto students’ understanding of their 
+
+own learning, task demands, and how to meet those demands. 
+
+Table 1: Dimensions of epistemic belief (adapted from [39]) 
+
+Dimension Description 
+
+Certainty of 
+
+knowledge 
+
+The degree to which knowledge is conceived 
+
+as stable or changing, ranging from absolute 
+
+to tentative and evolving knowledge 
+
+Simplicity of 
+
+knowledge 
+
+The degree to which knowledge is conceived 
+
+as compartmentalised or interrelated, ranging 
+
+from knowledge as made up of discrete and 
+
+simple facts to knowledge as complex and 
+comprising interrelated concepts 
+
+Source of 
+
+knowledge 
+
+The relationship between knower and known, 
+
+ranging from the belief that knowledge resides 
+
+outside the self and is transmitted, to the 
+belief that it is constructed by the self 
+
+Justification 
+
+for knowing 
+
+What makes a sufficient knowledge claim, 
+
+ranging from the belief in observation or 
+
+authority as sources, to the belief in the use of 
+rules of inquiry and evaluation of expertise 
+
+ 
+
+Epistemic beliefs are thus one example of the type of construct 
+
+which sociocultural LA may probe. However, they are also a 
+
+particularly good example given epistemic beliefs’ relationship to 
+
+our everyday dealings with the world of information, and their 
+
+relationship to pedagogy, assessment, and classroom practices 
+
+[28]. Section 5 will discuss epistemic beliefs in relation to their 
+
+measurement, but we shall first introduce some established 
+
+approaches to pedagogy. 
+
+4. OUR LEARNING ANALYTICS ARE 
+OUR PEDAGOGY 
+
+Buckingham Shum [6] has used the shorthand “our LA are our 
+
+pedagogy” – a relationship which we explore in this section. 
+
+                                                                 
+
+3
+ See e.g. [53] for a review of the multiple theoretical frameworks  
+
+77
+
+
+
+4.1 Pedagogy and LA? 
+The relationship between LA and pedagogy is important because 
+
+they are both bound up in epistemology – what knowledge is. This 
+
+section explicitly introduces the relationship between a number of 
+
+established pedagogic approaches and LA. These are not intended 
+
+as comprehensive reviews, but rather as brief overviews of how 
+
+the relationship between pedagogy and LA might be 
+
+conceptualised. The following section expands on some key ideas 
+
+here, before moving on to explicate the core topic of this paper – a 
+
+sociocultural learning analytic – and one proposed instantiation of 
+
+an LA based on this approach.  
+
+4.1.1 Transactional or instructionalist approach 
+Transactional approaches hold that learning entails the transfer of 
+
+knowledge from the knower (teacher) to the learner (student). 
+
+They are characterized by a perspective on assessment in which 
+
+success is ‘out there’, in the degree of correspondence between 
+
+the claims that learners make, and the facts that they have been 
+
+taught. 
+
+Analytics Implications: LA based on transactional approaches – 
+
+both in learning, and more broadly – will tend to focus on very 
+
+simple metrics such as test scores and hit counters, as opposed to 
+
+any deeper analysis of project outputs or processes. 
+
+4.1.2 Constructivist approach 
+Constructivist models hold that learning occurs in the guided 
+
+experimentation of the learner (student) on the world, typically in 
+
+classrooms in which such experimentation is age-targeted, and 
+
+guided by a teacher. Constructivist models are likely to hold a 
+
+notion of success which highlights construction, with learners 
+
+experimenting with their environment, and being capable of using 
+
+tools which are appropriate for their given age.  
+
+Analytics Implications: LA with a focus on constructivist 
+
+approaches of learning will focus on progress, particularly 
+
+through a set of materials, resources or tools selected and arranged 
+
+by the teacher. 
+
+4.1.3 Subjectivist or affect based approach 
+Subjectivist perspectives can be characterised as deemphasizing 
+
+learning qua academia, in pursuit of personal affect. While 
+
+individual affect is a concern for educationalists, it is rarely if ever 
+
+the overarching concern in the consideration of learning. 
+
+However, for example in IR, subjectivist approaches are more 
+
+interested in whether the user is ‘satisfied’ with the information 
+
+they have found, than whether the information is ‘good’. 
+
+Analytics Implications: In tandem with other approaches, LA 
+
+based on ‘subjectivist’ approaches are likely to provide motivation 
+
+assessments for understanding why someone is (or is not) 
+
+undertaking particular actions (see, e.g. [20]). Such analytics may 
+
+focus on explicit moves (feedback forms, affect-based semantic 
+
+markup such as blog tagging) alongside more implicit analysis 
+
+such as sentiment analysis of communication data. 
+
+4.1.4 Apprenticeship approach 
+Apprenticeship approaches are sometimes used in LA with an 
+
+interest in whether the learner has become part of a community of 
+
+activity. In this view, success is about ‘being part of’ a given 
+
+group; it is bound up in notions of communities of practice – that 
+
+‘to know x’ is to act towards x in some way that is defined by (or 
+
+reflected in) the behaviours of some community or other. 
+
+Analytics Implications: Analytics based on apprenticeship 
+
+approaches are likely to focus on classifying expert and novice 
+
+users, and the shift from novice to expert. Such analysis may 
+
+explore behavioural markers which mirror those made by 
+
+‘experts’, but may not explore the reasons or meanings implicated 
+
+in such moves. 
+
+4.1.5 Connectivist approach 
+Connectivism [55] claims to highlight a perspective on 
+
+epistemology which translates into a LA framework. Within this 
+
+view, learning is about understanding how to connect ideas 
+
+appropriately, and where to find such information. The suggestion 
+
+is that in the case of the connectivist knower “the act of knowing 
+
+is offloaded onto the network itself” [55]. Within this perspective 
+
+then, success is about building connections between ideas.  
+
+Analytics Implications: Connectivist approaches use network 
+
+analysis to explore the ‘connectedness’ of a learner’s knowledge –
+
+in terms of both concepts, and social connections. Analytics 
+
+would look at how networks’ size, quality and changes over time 
+
+can serve as proxies for effective learning.  
+
+4.1.6 Pragmatic, sociocultural approach 
+Pragmatic approaches (building on for example, Dewey [16]) hold 
+
+that learning occurs in the development of – and negotiation of – a 
+
+mutually shared perspective between learners. Such approaches 
+
+focus less on truth – where truth reflects facts about the world – 
+
+than how meaning is co-constructed, and used in context. 
+
+Pragmatists suggest that, as human knowers, our conception of 
+
+some given thing is bound up in our understanding of its practical 
+
+application – and that is all. When we attempt to understand truth 
+
+beyond such a conceptualisation of practical activity, we are likely 
+
+to fail. Thus, success is in use – the measure of success is how 
+
+useful the information is for the purposes it is employed; it is 
+
+socioculturally embedded and mediated, and may be in flux as 
+
+activities are defined and redefined. 
+
+Analytics Implications: Pragmatic approaches have traditionally 
+
+focused less on assessing the products of learning (except where 
+
+they are being used for something), and more on the process. 
+
+Analytics tools in sociocultural approaches encourage learners to 
+
+reflect on their own activity, in an attempt to understand how they 
+
+can develop their skills in information processing, in their own 
+
+particular contexts. Analytics within this approach might attend 
+
+particularly to quality of discourse for learning, for creating a 
+
+mutuality of perspectives [18] including in collaborative IR tasks 
+
+[22, 27, 35]. Our previous work is in this tradition, drawing on 
+
+sociocultural discourse analysis [40], argumentation theory [60, 
+
+61] and argumentation in sensemaking deliberation [45]. This 
+
+research foregrounds how students interact with information; 
+
+make sense of it in their context; and co-construct meaning in 
+
+shared contexts. These are on-going processes which highlight the 
+
+question of how LA fits into the context of AfL and pedagogy. 
+
+4.2 Epistemology and LA 
+The stance we take with regard to the relationship between 
+
+epistemology, assessment and LA relates to the issue of whether 
+
+we envisage analytics as a form of diagnosis on the one hand or a 
+
+kind of biofeedback on the other – is LA (and assessment) the end 
+
+point of, or a component of, pedagogy. In the former we seek to 
+
+accredit learning through defining behavioural proxies taken as 
+
+evidence of knowledge and competencies. LA may also be used to 
+
+support learners in their own self-regulated learning activities, 
+
+giving them feedback on changes they make and their impact on 
+
+learning outcomes, but without – generally – making strong 
+
+evaluative judgments regarding such changes. The former is thus 
+
+more closely aligned with assessment of learning – often 
+
+instantiated in high stakes summative assessment, while the latter 
+
+is closer to Assessment for Learning – in which assessment is a 
+
+continuous process through which formative feedback may be 
+
+78
+
+
+
+given to further develop the students learning (see e.g. [3, 23]). If 
+
+process-centric competencies are declared to be part of the 
+
+summative assessment criteria, then the two categories converge. 
+
+The relationships highlighted in 4.1.1-4.1.6 serve as general 
+
+pointers to the sorts of relationships we might see between 
+
+pedagogy and LA. There we also highlight views on learning, 
+
+alongside notions of how success may be defined within these 
+
+approaches; that is, when these systems might accredit knowledge 
+
+to the student. Fundamentally, this accreditation implicates 
+
+epistemological stances regarding when knowledge may be 
+
+claimed (or not). These are general claims, but illustrative of how 
+
+such notions relate to those of LA, in particular notions of: 
+
+? Mastering curriculum content: this is the dominant focus 
+of analytics approaches at present, seeking behavioural 
+
+markers using e-assessment technologies of varying 
+
+sophistication, in order to generate summaries at varying 
+
+granularities, for both individuals and cohorts. (Particularly 
+
+transactional and some constructivist approaches) 
+
+? Evidencing membership and processes: this approach to 
+LA looks for behavioural proxies which indicate a student is 
+
+part of a particular subgroup; positive feedback is given 
+
+towards moving students into ‘successful’ subgroups, but 
+
+little attention is paid to the qualities of those groups except 
+
+instrumentally. (Particularly affect-based, apprenticeship, 
+
+and possibly connectivist approaches) 
+
+? Success is use: this approach looks for students developing 
+personal and collective representations of curriculum 
+
+content, and engagement in sensemaking about not only this 
+
+material, but also their own analytics. Social Learning 
+
+Analytics [7, 21] in which students are encouraged and 
+
+supported to do so may work towards this end. (Particularly 
+
+pragmatist approaches). 
+
+These three broad conceptualisations of LA relate to the issue of 
+
+whether or not we are deemed to consume, discover, or create 
+
+(internally or/and externally) knowledge – is it ‘out there’ for us 
+
+to take, do we need to investigate to find it, or is it formed in our 
+
+developing understandings of the relationships between entities 
+
+and the new representations we create in such activities? This is 
+
+not a claim about the learning or pedagogy, but a related claim 
+
+about the status of knowledge, and its assessment, which we 
+
+discuss further in section 6.4 with reference to one particular 
+
+example.  
+
+4.2.1 Pragmatism and sociocultural approaches to 
+assessment  
+
+The nuance of claims surrounding epistemology and assessment is 
+
+important. In the introduction we referred to research arguing that 
+
+conventional exams are designed to maximise the reliability of 
+
+results, at the cost of straitjacketing what can be defined as 
+
+learning (poor internal or construct validity) and thus what 
+
+constitutes evidence of learning (poor external validity). 
+
+Moreover, if we are to argue that individual tokens of knowledge 
+
+cannot be identified (and ‘owned’), then we should accept that 
+
+“the content of a specific item of knowledge depends in part on 
+
+how it is related to other knowledge” [10]. Thus, sociocultural 
+
+setting, interaction, and the purposes for which any artefact or 
+
+knowledge – in the broadest sense – is being used, are all of 
+
+fundamental importance in understanding how people make 
+
+meaning, and learn. Contextual sensitivity is thus a key facet of 
+
+pragmatist approaches.  
+
+Pragmatic approaches, broadly, are likely to focus on the dynamic 
+
+nature of information needs, and the discourse and other artefacts 
+
+which mediate our relationship with information in the world. It is 
+
+not a postmodern approach, in the sense that postmodern 
+
+approaches take either a relativist approach (there is no fixed 
+
+truth) or a normative one (the dominant theme is correct at that 
+
+time) to knowledge, but rather one which focuses on use, and 
+
+meaning, over accreditation of facts to things in the world. 
+
+4.2.1.1 Pragmatic Analytics Revisited 
+As described in Section 4.1.6, pragmatic approaches have 
+
+traditionally focused less on assessing the products of learning, 
+
+and more on the process. LA in these approaches might encourage 
+
+learners to reflect on their own contextualised activity, in order to 
+
+instil an ethos and capacity to become reflective practitioners. The 
+
+key development with the emergence of digital LA is that 
+
+previously ephemeral processes are now persistent, not just for 
+
+researchers studying those processes, but for the learners and 
+
+educators co-constructing those processes. Moreover, the process 
+
+traces are now amenable to computational analysis which opens 
+
+new possibilities for assessment and feedback, both formative, 
+
+and possibly even summative (e.g. where the assessment regime 
+
+defines those process skills to be an important form of student 
+
+evidence). 
+
+Given the salience of context in this approach, it deserves further 
+
+explication. As with LA generally, context may be taken as very 
+
+mechanistic, for example the claim that a person in 
+
+place/course/role/ability band ‘x’ should see resource ‘y’, or other 
+
+approaches which would include time, topic, or social-group 
+
+resource discovery. No doubt some of these features will prove 
+
+useful, and indeed the use of semantic web technology in social 
+
+learning analytics [21] may be particularly interesting. However, 
+
+in addition to temporal, linguistic, aptitude, and geo-spatial 
+
+markers, we draw attention to the following: 
+
+1. We emphasise the discourse in which, and through which, 
+
+context is constituted [17, 44]. That is, we take the discourse 
+
+to have a multifaceted role in constituting, and helping 
+
+learners make sense of, the context.  
+
+2. Discourse is fundamentally associated with the sensemaking 
+
+which occurs in respect of any particular task being 
+
+undertaken; the use being targeted is fundamental to 
+
+context. Stark examples highlight this importance, for 
+
+example where we ask students to critique versus 
+
+summarise a paper we expect rather different outcomes. 
+
+Assessment regimes which make this explicit may facilitate 
+
+capture of context around ’doing x for purpose y’ LA 
+
+3. These assessment systems (2, above), and the broad range of 
+
+tools, technological and otherwise, which people utilise also 
+
+act as mediating artefacts impacting on how people perceive 
+
+their task, and its solution – mediating the context of use.  
+
+We have, therefore, expounded a view of LA which highlights the 
+
+importance of context. This relates to a salient point for epistemic 
+
+beliefs that: 
+
+A sophisticated epistemology entails context-sensitive 
+
+judgements. Thus they point out that it is not very 
+
+sophisticated to view the idea that the earth is round rather 
+
+than flat as ‘tentative’ whereas theories of dinosaur 
+
+extinction do require a more tentative stance [1].  
+
+Similarly, building spurious connections between ideas as a way 
+
+of indicating a complex view of knowledge (within the simplicity 
+
+dimension) is likely to be less sophisticated than those who 
+
+understand the need for moderation, and so on. Context is thus 
+
+79
+
+
+
+key to understanding epistemic beliefs, the analysis of which 
+
+seems highly suited to the biofeedback approach to formative 
+
+assessment analytics, introduced earlier.  
+
+The next section further expands this claim in the context of 
+
+psychological assessment of epistemic beliefs, firstly in 
+
+‘mainstream’ psychological approaches, and then that of the 
+
+discursive approach – which similarly holds context and discourse 
+
+to be fundamental to understanding thinking. Section 6 then 
+
+returns to LA, drawing out the relationship between analytics, and 
+
+the measurement of epistemic beliefs in our illustrative example 
+
+for sociocultural, pragmatic analytics. 
+
+5. MEASURING EPISTEMIC BELIEFS 
+The complexity of epistemic cognition suggests a particular 
+
+perspective on how we are to understand these beliefs. No 
+
+approach ‘mirrors’ reality with a true, immutable, incontrovertible 
+
+perspective on a learner’s epistemic cognition. This concern is a 
+
+dual one. Firstly, it is a methodological concern regarding our 
+
+access to the world, our ability to ’get at’ what is out there. 
+
+Secondly, it is a conceptual and psychological concern, regarding 
+
+the nature of epistemic cognition and whether it itself is stable – 
+
+developmentally, and across domains – or shaped in some way by 
+
+resources or beliefs. These two concerns are reflected in the 
+
+epistemic beliefs literature. Firstly, cognitive developmental 
+
+models [33, 34] suggest that individuals progress through a 
+
+sequence of increasingly sophisticated epistemic beliefs, while 
+
+multidimensional perspectives [28; 52] suggest that epistemic 
+
+beliefs can be separated into dimensions, within which levels of 
+
+sophistication can be identified [24]. However, both of these 
+
+assume a fixed uni-directional developmental trajectory, where 
+
+beliefs are seen as global across (and within) domains. The 
+
+resources view, in contrast, emphasizes the interaction of believer, 
+
+with resources, highlighting that at various points in any task a 
+
+cognizer may invoke differing resources [25]. 
+
+Secondly, methodologically the developmental models have 
+
+tended towards interviews and laboratory tasks, while 
+
+multidimensional models have emphasised paper and pencil self-
+
+report measures [14]. Both of these approaches reflect the fixed 
+
+perspective on beliefs from which theory they stem. Importantly, 
+
+although three major survey instruments have been developed and 
+
+deployed, – including in IR tasks [37, 52] – they are heavily 
+
+criticised for their psychometric properties [14]. Furthermore, 
+
+while some studies have used interview [1, 39], think-aloud 
+
+protocols [1, 19] or systematic observation [51] such methods 
+
+may be limited in their insights, particularly where self-report data 
+
+is to be used and interpreted by researchers. Importantly, they are 
+
+also not appropriate for the study of online, collaborative, or 
+
+geographically and temporally spread activities – in particular, 
+
+online IR, or information processing more broadly. These 
+
+approaches reflect the epistemology of current assessment 
+
+regimes, as indicated in Section 2, and seem to implicate the view 
+
+of ‘fixed’ psychological constructs – whether intelligence, or 
+
+epistemic beliefs, as further discussed throughout Section 3.  
+
+In contrast, while those adopting a resources view of epistemic 
+
+beliefs may also utilize such methods – in particular those 
+
+involving think aloud and interview data – they also accord well 
+
+with Österholm’s discursive stance, which suggests that we 
+
+should not see beliefs and communication as “two separate 
+
+‘objects’ that can affect each other, but as more integrated aspects 
+
+of cognition and/or behaviour” [42]. The resources view describes 
+
+“the activity, the discourse, as the site where epistemological 
+
+beliefs come to existence, through explicit or implicit references 
+
+to prior experiences (epistemological resources)” [43]. 
+
+Österholm’s argument is that the resources perspective can be 
+
+combined with Hammer and Elby’s [25] resources model. In this 
+
+model epistemic beliefs are not viewed as fixed, or developing 
+
+cognitive models ranging over one or more domains, but are 
+
+rather seen as dependent upon the resources available to the 
+
+cognizer at any time. This view of epistemic beliefs as “theory-in-
+
+action” – in which context, domain, culture, and task conditions 
+
+interact – accords well with the idea that context is fundamental to 
+
+understanding meaning. 
+
+5.1 Learning Analytics and Trace Data 
+While Österholm is primarily interested in spoken interactions, 
+
+LA may extend this interest into the exploration of users’ 
+
+interactions with artefacts. A tool for such analysis may come 
+
+through the use of trace data, which is more or less implicitly 
+
+created by the student. For example, Stadtler and Bromme [56] 
+
+analysed the ways participants found, extracted, and moved 
+
+information – which could be used to explore information about 
+
+their beliefs (e.g. visiting few websites indicates trust in those 
+
+sites visited [24]). Importantly in this study, users were either 
+
+given evaluation prompts regarding multiple documents in the 
+
+medical domain, or not, and those who received such prompts 
+
+subsequently recalled more facts and were better able to evaluate 
+
+sources. If systems of prompts promote laziness, we should be 
+
+concerned. Where, however, they improve outcomes, analytics 
+
+should explore the best ways to implement them effectively and 
+
+sustainably to support high quality pedagogy and AfL. 
+
+Furthermore, Greene et al. [24] point out that many behaviours 
+
+which would ordinarily be difficult to observe can be explicitly 
+
+elicited in the context of Computer Based Learning Environments 
+
+(CBLEs), for example: 
+
+…participants who report belief in objective truth and omniscient 
+
+authority may self-regulate quite differently than participants with 
+
+a desire to evaluate multiple forms of justification. Likewise, 
+
+participants who believe in the inherent subjectivity of all 
+
+knowledge may, on average, select more representations than 
+
+those who look for an objective truth. [24] 
+
+The claim is thus that epistemic beliefs will be brought to bear on 
+
+knowledge tasks in ways that can be meaningfully captured, in 
+
+particular using technology systems (e.g. the way people represent 
+
+knowledge in mind maps). Trace data thus offers direct access to 
+
+real-time behaviours in unobtrusive ways, and is thus high in 
+
+external validity, although it is of course within the context of the 
+
+system which is set up to capture such information. Furthermore, 
+
+while trace data is unobtrusive, it may give an incomplete picture. 
+
+In particular, people may have reasons for some behaviours which 
+
+cannot be probed using such data; these reasons may range from 
+
+epistemic (as discussed above, for example with regard to the ‘flat 
+
+earth’ issue), to practical (ICT failures), to pragmatic (the 
+
+demands of the task place a short time restriction on the activity), 
+
+and so on. Thus, it is important to remember that while analytics 
+
+regarding epistemic beliefs may be – at best – a dirty lens onto 
+
+those beliefs, when analytics are considered in action as a tool for 
+
+sensemaking, they may provide an insightful tool for learners to 
+
+dissect their own metacognitive and self-regulatory behaviours. 
+
+6. TRACE FOR EPISTEMIC BELIEFS  
+Trace data thus provides one means by which epistemic beliefs 
+
+could be examined. However, trace could refer to many things, 
+
+and as discussed in sections 4.1.1-4.1.5 the data collected may not 
+
+represent an appropriate teaching epistemology, nor capture 
+
+adequately student epistemologies (see section 2). The next 
+
+section will discuss some LA which may address this issue. 
+
+80
+
+
+
+6.1 LA – Tools for Trace? 
+Building on sections 4.1.1-4.1.5, we can identify a number of 
+
+analytic tools and their relationships to particular forms of data. 
+
+Some forms of analytics rely on a belief that particular methods 
+
+(self-report in particular) are: a) true reflections of reality, b) 
+
+whole reflections of reality (i.e. they cover all the relevant ground) 
+
+and c) probe ‘real’ constructs. However, while self-report 
+
+measures may be useful particularly as discussion prompts with 
+
+students, they are not necessarily the most useful approach for 
+
+many purposes. In both assessment and psychological testing, 
+
+they suffer from issues of validity (Sections 2 and 6.2). Thus, 
+
+other LA tools may prove more useful.  
+
+Much LA thus delves into network analysis, in relation to social-
+
+networks, or in relation to concept networks based upon semantic 
+
+relations identified more or less explicitly by the student. While 
+
+these approaches offer useful insights into the sensemaking 
+
+process, they too can fall into the trap of ‘accrediting’ group 
+
+memberships, over group activities (section 4.1.4) or map 
+
+networks, as opposed to map uses (section 4.1.5).  
+
+An interesting notion then, is attempting to delve further into the 
+
+sensemaking significance behind particular semantic moves in a 
+
+given environment. Thus, Greene et al. [24] (see 5.1) described 
+
+one method of trace analysis for epistemic beliefs built on 
+
+information moves. Other examples of such trace capture could 
+
+also be structured such as to gather student data in particular ways 
+
+– some of which may be quite naturalistic (capturing search 
+
+queries, or Facebook posts to explore ‘problems’ encountered, or 
+
+interactions made [36]), and others of which might push students 
+
+into information structuring activity in which they would not 
+
+otherwise engage, such as argument mapping. 
+
+6.2 Trace and Traceability 
+However, in encouraging such structuring by learners, and 
+
+claiming capture information about what they are doing, some 
+
+may argue that we are simply reifying the constructs we have set 
+
+out to explore. That is, if we are interested in epistemic beliefs, 
+
+and set up a system to push students to make epistemic beliefs 
+
+explicit, it does not matter whether those students have underlying 
+
+epistemic beliefs because the system forces them into making 
+
+some (it makes them reify). While for psychologists who wish to 
+
+uncover underlying beliefs this is problematic, we do not see this 
+
+as a concern for our project, because in our discursive, 
+
+sociocultural, pragmatic approach the interest is in beliefs as 
+
+“theory-in-action”. In this view, the claim is not that the 
+
+measurement of beliefs is not possible, but rather that when we 
+
+take measurements, the discursive context is fundamental to the 
+
+practices being observed, and the ways that the beliefs are 
+
+instantiated in action. Thus, LA provides a means to tackle the 
+
+static, decontextualized view of epistemic beliefs instantiated by 
+
+questionnaire methods, offering a more authentic perspective on 
+
+epistemic action than experimental contexts. 
+
+6.3 Discourse-centric Trace – A Path to 
+Epistemic Cognition 
+
+A number of tools can be conceptualised to probe trace gathered 
+
+around higher order thinking exercises, and some already exist. 
+
+One example – which will be used for illustrative purposes here – 
+
+is being developed at the Open University, based around the 
+
+Cohere argument mapping tool [5] and previous work on 
+
+sociocultural discourse-centric LA [36]. Cohere is a web 
+
+application for mapping ideas, concepts and arguments, which can 
+
+be annotated directly onto source websites. Users enter ideas – 
+
+nodes with meaningful classifications – and are then invited to 
+
+“make the connection” with meaningfully labelled edges, to create 
+
+a conceptual graph. Both ideas and connections may also be 
+
+tagged, to add a further level of semantic data. Cohere is designed 
+
+as a tool to enable users to build their own structures, but also to 
+
+share these, and integrate the nodes and connections of other 
+
+users, thus building up communities of enquiry around particular 
+
+disciplinary topics.  
+
+Cohere facilitates exploring the ways that users create nodes, and 
+
+the epistemic implications of such creation. At a basic level, this 
+
+could simply be an analysis of the number of idea and connection 
+
+types used. A more advanced analysis might compare individuals’ 
+
+Cohere use on the same task, and provide analytics based on such 
+
+comparison; these notions are discussed further below. However, 
+
+neither of these explores the semantic qualities of ideas and 
+
+connections. Using the broad epistemic ‘dimensions’ described 
+
+above (Table 1) some correspondences between those descriptors, 
+
+and possible trace can be identified as in Table 24 which also 
+
+gives ‘suggested guidance’, intended to be indicative of the sorts 
+
+of challenges which might be posed to students to extend their 
+
+epistemic cognition and probe their learning processes. 
+
+However, within the approach described above it should be 
+
+understood that while the trace data given here is theoretically tied 
+
+to the constructs, both the constructs and the trace should be seen 
+
+in their situated context – as components of a sociocultural 
+
+environment, interacting with the relevant agents (students, 
+
+teachers, designers, etc.), and the wider cultures and subcultures. 
+
+Thus, the possible trace markers and guidance are conceptually 
+
+related to the work discussed above but these should be dynamic 
+
+tools, and empirical work will be needed to explore the 
+
+relationship between feedback given, representations allowed, 
+
+student responses to feedback and the impact of this on learning. 
+
+6.4 Many Lenses on Epistemic Beliefs 
+Table 2 thus proposes one set of traces from which meaningful 
+
+data could be captured. This is not, however, to dismiss other 
+
+approaches discussed in Section 4.1. The epistemological 
+
+approach discussed throughout this work is instead intended to 
+
+indicate that what drives our Learning Analytics – and assessment 
+
+– is not what they are, but rather, what we do with them. Our 
+
+suggestion is that many of these approaches to LA – these dirty 
+
+lenses on the world – provide insights into different levels of 
+
+learning, and tools for meaning-making. For example, with this 
+
+richer than normal data model in place, it is very simple, 
+
+computationally, to feed back the number of ideas, and connection 
+
+types used, but this may provoke meaningful dialogue regarding 
+
+what these other types might be used for, or why they have not 
+
+thus far been used. Similarly, constructive discourse might occur 
+
+around the reasons why one student’s map is more connected (but 
+
+perhaps not appropriately so) than another’s.  
+
+  
+
+                                                                 
+
+4
+  Following previous work [36] the basic analytic statistic is constructed 
+
+as a percentage representation of the target type, over the total types 
+created by the user. For example, the number of ‘opinion’ nodes created, 
+
+as a percentage of the total number of nodes created by that user.  
+
+81
+
+
+
+Table 2: Trace & Guidance for Epistemic Beliefs 
+ Trace Guidance/Challenge  
+
+C
+er
+
+ta
+in
+
+ty
+ Presence of competing 
+
+claims (e.g. supports/ 
+
+challenges). 
+
+Presence of stability 
+
+markers – e.g. current 
+
+references, geographic 
+
+repetition. 
+
+Are there two sides to this 
+
+idea? Could you explore 
+
+XY contrasting example? 
+
+Is this idea consistent across 
+
+time/place? Have you 
+
+looked at XY map? 
+
+S
+im
+
+p
+li
+
+ci
+ty
+
+ Number of connections 
+
+between nodes. 
+
+Are any of these ideas 
+
+connected? Have you 
+
+considered how WX and 
+
+YZ might be connected? 
+
+S
+o
+
+u
+rc
+
+e Presence of ‘I think’ or 
+
+restatement of fact, few 
+
+additional nodes made 
+
+other than those created as 
+
+quotations. 
+
+What do you think of these 
+
+ideas? or How does the 
+
+evidence relate to your 
+
+view? 
+
+J
+u
+
+st
+if
+
+ic
+a
+
+ti
+o
+
+n
+ Judgments of relevance, 
+
+and supporting or 
+
+explanatory notes (‘this 
+
+evidences/ explains x’). 
+
+Ties to method ‘ideas’.  
+
+What evidence do we have 
+
+for this idea? Is it ‘good’ 
+
+evidence? Why/why not? 
+
+ 
+
+There is a strong relationship between analytics, assessment, 
+
+pedagogy, and epistemology (Figure 1), which sociocultural 
+
+analytics bridges well. Our approach should be seen as one of 
+
+‘many lenses’ for many contexts, used in combination with the 
+
+more conventional forms of LA currently dominating. In the last 
+
+section before concluding, we outline how the approaches 
+
+discussed in Section 4.1 relate to epistemic beliefs, and some 
+
+strengths and limitations of these approaches. 
+
+6.4.1 Lenses Onto the World 
+LA based on Transactional approaches. Approaches which 
+
+emphasise fixed, ‘correct’ knowledge, over how those facts are 
+
+used to display understanding, are likely to encourage lower 
+
+epistemic cognition, and implicate more ‘realist’ epistemologies 
+
+which see knowledge as a reflection of ‘things’ in the world.  
+
+LA based on Constructivist approaches. Similarly, there may 
+
+be an overemphasis on a limited range of knowledge in 
+
+constructivist approaches which emphasise development qua 
+
+progression, but without considering the sociocultural context in 
+
+which that progression occurs, nor the wide range of uses for 
+
+which it may be deployed. This may be particularly true in 
+
+constrained systems which guide students through pre-set tasks 
+
+and levels of attainment to meet, pre-specified software, and so 
+
+on, as compared to those exploring knowledge co-constructed in 
+
+iterative dialogic discourse [49, 50]. Understanding the ways that 
+
+students build knowledge claims – understanding connections, 
+
+justifications, change over time, and nuance – is fundamental to 
+
+understanding their epistemic beliefs. Knowing that a student is at 
+
+stage x of y in development may be less significant.  
+
+LA based on Apprenticeship approaches. In a similar vein, 
+
+apprenticeship approaches can offer useful insight into group 
+
+membership and the development of a student’s thinking. 
+
+However, the approach described in this paper suggests the best 
+
+way in which to think about such approaches is with respect to the 
+
+functional role that such community membership plays in a 
+
+student’s epistemic action, and their normative standards.  
+
+LA based on Subjectivist approaches. LA based on ‘affect’ 
+
+could be useful to analysis of epistemic beliefs, with their analysis 
+
+of ‘satisfaction’ with information, e.g. enquiry based learning 
+
+[20]; self-efficacy in IR [58]; satisfaction with search results [30]. 
+
+As such, affective analytics might be used to explore whether 
+
+learners are prematurely satisfied with findings that a peer or 
+
+educator deems to be inadequate, or if they have an appropriate 
+
+sense of disquiet or frustration with a flawed argument or 
+
+methodology. 
+
+7. CONCLUSIONS 
+This paper started with the premise that assessment, pedagogy and 
+
+epistemology are fundamentally entwined. Furthermore, we 
+
+suggested that a focus on high stakes assessment – which learning 
+
+analytics may well be used to perpetuate – is detrimental to the 
+
+wider enterprise of education, prioritising the reliability of tightly 
+
+defined assessments over continuing, formative assessment for 
+
+learning, and authentically situated learning which is harder to fit 
+
+into formal examination contexts. This is problematic in so far as 
+
+it limits the ways we can challenge students in assessments, and 
+
+fails to reflect their encounters with knowledge claims in the 
+
+world beyond the classroom walls.  
+
+We have highlighted that transactional approaches may emphasise 
+
+use of facts; constructivist the broad (and contextual) application 
+
+of skills; subjectivist the self-efficacy and motivators of students; 
+
+apprenticeship the dynamic practical based learning which may 
+
+occur through high level membership of communities of practice; 
+
+connectivism the ability of students to build up, link and curate 
+
+their knowledge ‘networks’. A sociocultural, pragmatic, approach 
+
+may offer an additional toolset, alongside a theoretical frame 
+
+through which to use other LA lenses. All are partial (in bias, and 
+
+hence in their coverage of all that might be measured), but may be 
+
+used in complementary ways.  
+
+Analytics from user traces provide a means to track and record 
+
+previously ephemeral process data, which could benefit 
+
+assessment for learning in significant new ways. Pragmatist 
+
+approaches, which emphasise use and meaning-making over the 
+
+accrediting of true statements may have an important role here. 
+
+The grasp of curriculum facts and methods remains critical but the 
+
+emphasis shifts to their effective, contextualised use, in argument 
+
+structures, in discussion, in problem-solving. A focus on the 
+
+sociocultural learning system draws attention to how analytics 
+
+take into account the centrality of discourse for sensemaking, and 
+
+in constituting “context”. 
+
+We have gone beyond “our learning analytics are our pedagogy” 
+
+[6], arguing that they embody epistemological assumptions, and 
+
+they perpetuate assessment regimes. Moreover, as with any tool, it 
+
+is not only the design of the tool, but the way in which it is 
+
+wielded in context, that defines its value.  
+
+8. ACKNOWLEDGEMENTS 
+We are grateful to Cindy Kerawalla and 3 anonymous reviewers 
+
+for helpful comments on an earlier version of this paper. 
+
+9. REFERENCES 
+[1] Barzilai, S. and Zohar, A. 2012. Epistemic Thinking in 
+
+Action: Evaluating and Integrating Online Sources. 
+
+Cognition and Instruction. 30, 1 (2012), 39–85. 
+
+[2] Black, P. and Wiliam, D. 2009. Developing the theory of 
+
+formative assessment. Educational Assessment, Evaluation 
+
+and Accountability. 21, 1 (2009), 5–31. 
+
+82
+
+
+
+[3] Black, P. and Wiliam, D. 2001. Inside the black box. 
+
+BERA. 
+
+[4] Bromme, R. et al. 2009. Epistemological beliefs are 
+
+standards for adaptive learning: a functional theory about 
+
+epistemological beliefs and metacognition. Metacognition 
+
+and Learning. 5, 1 (Dec. 2009), 7–26. 
+
+[5] Buckingham Shum, S. 2008. Cohere: Towards Web 2.0 
+
+argumentation. Proc. 2nd Int. Conf. Computational Models 
+
+of Argument (28-30 May 2008, Toulouse), IOS Press. 
+
+pp.97-108 . 
+
+[6] Buckingham Shum, S. 2012. Our Learning Analytics Are 
+
+Our Pedagogy. Keynote Address, Expanding Horizons 
+
+2012 (Macquarie University, Oct. 2012). 
+
+[7] Buckingham Shum, S. and Ferguson, R. 2012. Social 
+
+Learning Analytics. Educational Technology & Society. 
+
+15, 3 (2012), 3–26. 
+
+[8] Cunnane, S. 2011. The Danish gambit: online access, even 
+
+during exams. Times Higher Education. 
+
+[9] Davis, A. 1998. 3: Understanding and Holism. Journal of 
+
+Philosophy of Education. 32, 1 (1998), 41–55. 
+
+[10] Davis, A. 2006. High Stakes Testing and the Structure of 
+
+the Mind: A Reply to Randall Curren. Journal of 
+
+Philosophy of Education. 40, 1 (2006), 1–16. 
+
+[11] Davis, A. 2005. Learning and the Social Nature of Mental 
+
+Powers. Educational Philosophy and Theory. 37, 5 (Sep. 
+
+2005), 635–647. 
+
+[12] Davis, A. 1999. The Limits of Educational Assessment. 
+
+Wiley. 
+
+[13] Davis, A. and Williams, K. 2002. Epistemology and 
+
+curriculum. The Blackwell guide to the philosophy of 
+
+education. N. Blake et al., eds. Blackwell Reference 
+
+Online. 
+
+[14] DeBacker, T.K. et al. 2008. The Challenge of Measuring 
+
+Epistemic Beliefs: An Analysis of Three Self-Report 
+
+Instruments. The Journal of Experimental Education. 76, 3 
+
+(2008), 281–312. 
+
+[15] Dede, C. 2008. A Seismic Shift in Epistemology. 
+
+EDUCASE Review. 
+
+[16] Dewey, J. 1998. Experience and education. Kappa Delta 
+
+Pi. 
+
+[17] Edwards, A.D. and Furlong, V.J. 1978. The language of 
+
+teaching: Meaning in classroom interaction. Heinemann 
+
+London. 
+
+[18] Edwards, D. and Mercer, N. 1987. Common knowledge: 
+
+the development of understanding in the classroom. 
+
+Routledge. 
+
+[19] Ferguson, L.E. et al. 2012. Epistemic cognition when 
+
+students read multiple documents containing conflicting 
+
+scientific evidence: A think-aloud study. Learning and 
+
+Instruction. 22, 2 (Apr. 2012), 103–120. 
+
+[20] Ferguson, R. et al. 2011. EnquiryBlogger: Using widgets to 
+
+support awareness and reflection in a PLE setting. 1st 
+
+Workshop on Awareness and Reflection in PLEs, Personal 
+
+Learning Environments Conference (Southampton, , 2011). 
+
+[21] Ferguson, R. and Buckingham Shum, S. 2012. Social 
+
+Learning Analytics: Five Approaches. (Vancouver, BC, 
+
+2012). 
+
+[22] Foster, J. 2009. Understanding interaction in information 
+
+seeking and use as a discourse: a dialogic approach. 
+
+Journal of Documentation. 65, 1 (Jan. 2009), 83–105. 
+
+[23] Gardner, J. 2011. Assessment and learning. SAGE. 
+
+[24] Greene, J.A. et al. 2010. The Role of Epistemic Beliefs in 
+
+Students’ Self-Regulated Learning With Computer-Based 
+
+Learning Environments: Conceptual and Methodological 
+
+Issues. Educational Psychologist. 45, 4 (2010), 245–257. 
+
+[25] Hammer, D. and Elby, A. 2003. Tapping Epistemological 
+
+Resources for Learning Physics. Journal of the Learning 
+
+Sciences. 12, 1 (2003), 53–90. 
+
+[26] Harlen, W. 2007. Assessment of learning. SAGE. 
+
+[27] Hertzum, M. 2008. Collaborative information seeking: The 
+
+combined activity of information seeking and collaborative 
+
+grounding. Information Processing & Management. 44, 2 
+
+(Mar. 2008), 957–962. 
+
+[28] Hofer, B.K. 2001. Personal epistemology research: 
+
+Implications for learning and teaching. Educational 
+
+Psychology Review. 13, 4 (2001), 353–383. 
+
+[29] Hopmann, S.T. et al. eds. 2007. PISA According to PISA: 
+
+Does PISA Keep What It Promises? Wien Lit-Verlag. 
+
+[30] Huffman, S.B. and Hochster, M. 2007. How well does 
+
+result relevance predict session satisfaction? Proc. ACM 
+
+SIGIR Conference on Research and Development in 
+
+Information Retrieval (2007), 574. 
+
+[31] Katz, S. 2000. Competency, epistemology and pedagogy: 
+
+curriculum’’s holy trinity. Curriculum Journal. 11, 2 
+
+(2000), 133–144. 
+
+[32] Kelly, G.J. et al. 2008. What Counts as Knowledge in 
+
+Educational Settings: Disciplinary Knowledge, 
+
+Assessment, and Curriculum. Review of Research in 
+
+Education. 32, 1 (Feb. 2008), vii–x. 
+
+[33] King, P.M. and Kitchener, K.S. 2004. Reflective 
+
+Judgment: Theory and Research on the Development of 
+
+Epistemic Assumptions Through Adulthood. Educational 
+
+Psychologist. 39, 1 (Mar. 2004), 5–18. 
+
+[34] Kuhn, D. and Weinstock, M. 2002. What is 
+
+epistemological thinking and why does it matter?. Personal 
+
+epistemology: The psychology of beliefs about knowledge 
+
+and knowing. B.K. Hofer and R. Pintrich, eds. Lawrence 
+
+Erlbaum Associates. 121–144. 
+
+[35] Lazonder, A.W. 2005. Do two heads search better than 
+
+one? Effects of student collaboration on web search 
+
+behaviour and search outcomes. British Journal of 
+
+Educational Technology. 36, 3 (May. 2005), 465–475. 
+
+[36] De Liddo, A. et al. 2011. Discourse-centric learning 
+
+analytics. Proceedings of the 1st International Conference 
+
+on Learning Analytics and Knowledge (New York, NY, 
+
+USA, 2011), 23–33. 
+
+[37] Lin, C. and Tsai, C. 2008. Exploring the Structural 
+
+Relationships between High School Students’ Scientific 
+
+Epistemological Views and their Utilization of Information 
+
+Commitments toward Online Science Information. 
+
+International Journal of Science Education. 30, 15 (2008), 
+
+2001–2022. 
+
+[38] Mason, L. et al. 2011. Epistemic beliefs in action: 
+
+Spontaneous reflections about knowledge and knowing 
+
+during online information searching and their influence on 
+
+learning. Learning and Instruction. 21, 1 (Feb. 2011), 137–
+
+151. 
+
+[39] Mason, L. et al. 2009. Epistemic metacognition in context: 
+
+evaluating and learning online information. Metacognition 
+
+and Learning. 5, 1 (Jul. 2009), 67–90. 
+
+[40] Mercer, N. and Littleton, K. 2007. Dialogue and the 
+
+Development of Children’s Thinking: A Sociocultural 
+
+Approach. Routledge. 
+
+[41] Olson, D.R. and Bruner, J.S. 1996. Folk psychology and 
+
+folk pedagogy. The handbook of education and human 
+
+development. (1996), 9–27. 
+
+83
+
+
+
+[42] Österholm, M. 2010. Relationships Between 
+
+Epistemological Beliefs and Properties of Discourse: Some 
+
+Empirical Explorations. Madif 7, the 7th Swedish 
+
+Mathematics Education Research Seminar (Stockholm, 
+
+Sweden, 2010), 241–250. 
+
+[43] Österholm, M. 2009. Theories of epistemological beliefs 
+
+and communication: A unifying attempt. Proceedings of 
+
+the 33rd Conference of the International Group for the 
+
+Psychology of Mathematics Education (2009), 275–264. 
+
+[44] Potter, J. and Edwards, D. 2003. Sociolinguistics, 
+
+cognitivism and discursive psychology. IJES, International 
+
+Journal of English Studies. 3, 1 (2003), 93–110. 
+
+[45] Rittel, H. and Kunz, W. 1970. Issues as elements of 
+
+information systems. Working Paper No. 131. Institute of 
+
+Urban and Regional Development. 
+
+[46] Säljö, R. 1999. Learning as the use of tools: A 
+
+sociocultural perspective on the human-technology link. 
+
+Learning With Computers: Analysing Productive 
+
+Interaction. K. Littleton and P. Light, eds. Psychology 
+
+Press. 
+
+[47] Säljö, R. 2012. Literacy, Digital Literacy and Epistemic 
+
+Practices: The Co-Evolution of Hybrid Minds and External 
+
+Memory Systems. Nordic Journal of Digital Literacy. 01 
+
+(2012), 5–19. 
+
+[48] Salomon, G. 1996. Distributed Cognitions: Psychological 
+
+and Educational Considerations. Cambridge University 
+
+Press. 
+
+[49] Scardamalia, M. and Bereiter, C. 2003. Knowledge 
+
+Building. Encyclopedia of Education. Macmillan 
+
+Reference. 1370–1373. 
+
+[50] Scardamalia, M. and Bereiter, C. 2006. Knowledge 
+
+Building: Theory, Pedagogy, and Technology. Cambridge 
+
+Handbook of the Learning Sciences. K. Sawyer, ed. 
+
+Cambridge University Press. 97–118. 
+
+[51] Scherr, R.E. and Hammer, D. 2009. Student Behavior and 
+
+Epistemological Framing: Examples from Collaborative 
+
+Active-Learning Activities in Physics. Cognition and 
+
+Instruction. 27, 2 (2009), 147–174. 
+
+[52] Schommer, M. 1990. Effects of beliefs about the nature of 
+
+knowledge on comprehension. Journal of Educational 
+
+Psychology. 82, 3 (1990), 498–504. 
+
+[53] Schraw, G. 2013. Conceptual Integration and Measurement 
+
+of Epistemological and Ontological Beliefs in Educational 
+
+Research. ISRN Education. (2013). 
+
+[54] Siegel, H. 1998. KNOWLEDGE, TRUTH AND 
+
+EDUCATION. Education, knowledge, and truth: beyond 
+
+the postmodern impasse. D. Carr, ed. Routledge. 19–36. 
+
+[55] Siemens, G. 2006. Knowing Knowledge. Lulu.com. 
+
+[56] Stadtler, M. and Bromme, R. 2007. Dealing with multiple 
+
+documents on the WWW: The role of metacognition in the 
+
+formation of documents models. International Journal of 
+
+Computer-Supported Collaborative Learning. 2, 2 (2007), 
+
+191–210. 
+
+[57] Tsai, C. 2004. Beyond cognitive and metacognitive tools: 
+
+the use of the Internet as an “epistemological” tool for 
+
+instruction. British Journal of Educational Technology. 35, 
+
+5 (Sep. 2004), 525–536. 
+
+[58] Tsai, M.J. and Tsai, C.C. 2003. Information searching 
+
+strategies in web-based science learning: the role of 
+
+internet self-efficacy. Innovations in Education & 
+
+Teaching International. 40, 1 (2003), 43–50. 
+
+[59] Undervisningsministerie (Ministry of Education) and 
+
+Afdelingen for Gymnasiale Uddannelser (Department of 
+
+Secondary Education) 2010. Endelig rapport fra 
+
+følgegruppen for forsøget med digitale prøver med adgang 
+
+til internettet i udvalgte fag på stx og hhx (Final report of 
+
+the Monitoring Group experiment with digital samples 
+
+with access to Internet in selected subjects at stx and 
+
+HHX). Undervisningsministerie (Ministry of Education). 
+
+[60] Walton, D. et al. 2008. Argumentation schemes. 
+
+Cambridge University Press. 
+
+[61] Walton, D. 1995. Argumentation schemes for presumptive 
+
+reasoning. Lawrence Erlbaum. 
+
+[62] Williams, K. 1998. Assessment and the challenge of 
+
+scepticism. Education, knowledge, and truth: beyond the 
+
+postmodern impasse. D. Carr, ed. Routledge 
+
+ 
+
+ 
+
+84
+
+
+
+
+

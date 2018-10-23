@@ -1,0 +1,463 @@
+
+Dear Learner: Participatory Visualisation of Learning Data 
+for Sensemaking 
+
+Simon Knight 
+ 
+
+ 
+
+Theresa Anderson 
+Connected Intelligence Centre  
+
+University of Technology Sydney 
+
+{firstname.lastname@uts.edu.au} 
+
+Kelly Tall 
+ 
+
+ 
+
+ABSTRACT 
+We discuss the application of a hand-drawn self-visualization 
+
+approach to learner-data, to draw attention to the space of 
+
+representational possibilities, the power of representation 
+
+interactions, and the performativity of information representation.  
+
+CCS Concepts 
+• Human-centered computing~Visualization   • Applied 
+
+computing~Education  
+
+Keywords 
+Learning Analytics; Visualization; Sensemaking; Participatory 
+
+1. INTRODUCTION 
+
+1.1 The Quantified Self in Learning Analytics 
+Quantified self approaches are increasingly present in educational 
+
+contexts [5], raising the potential to increase reflective learning 
+
+[11]. As Eynon notes, various learning activities “e.g., time on 
+
+one task, number of words written per hour, emotional state, could 
+
+be tracked and connected to specific learning outcomes” [5]. In 
+
+this way the ‘Quantified Self’ trend for self-tracking devices to 
+
+monitor step-counts, heart-rate, calories and other quantifiable 
+
+activity measures, can be applied to learning. Learning Analytics, 
+then, has developed as a research area in part in response to 
+the greater availability of data to inform learning and a desire 
+amongst educators and students that this tracking be 
+applicable in personal – not only institutional – contexts [6]. 
+
+1.2 Human Data Interaction 
+As approaches such as learning analytics become increasingly 
+
+available, the need to explore human interactions with this 
+
+data/information grows. Thus, fields such as ‘Human Data 
+
+Interaction’ (building on work in human computer interaction – 
+
+HCI) have emerged to explore how to "support end-users in the 
+
+day-to-day management of their personal digital data..." seeing 
+
+data as having, "inherently social and relational character" [3]. 
+
+Conveying learning analytic information across stakeholder 
+
+audiences with their respective skills and needs (from individual 
+
+students up to institutional leaders) is a challenge, requiring 
+
+consideration of collaborative sensemaking [8]. In such 
+
+approaches, interactions with analytic devices would be seen as a 
+
+"distinctively socio-technical problematic, driven as much by a 
+
+range of social concerns with the emerging personal data 
+
+‘ecosystem’ as it is by technological concerns, to develop digital 
+
+technologies that support future practices of personal data 
+
+interaction within it" [3].  
+
+During their studies in the Master of Data Science and Innovation 
+
+(MDSI) program at the University of Technology Sydney (UTS), 
+
+our students explore this self-tracking phenomenon as part of a 
+
+core subject in which they are asked to track their activity over an 
+
+extended period. Students explore and analyze their own data, and 
+
+with randomized data from others, in a small group of 10 and at a 
+
+class/community level. The Assignment is intended to humanize 
+
+the exploration of big data by providing a real-life case for 
+
+exploring relationships in data, policy debates about data privacy 
+
+and insight into one’s own life.  Students thus report that the 
+
+experience is ‘confrontational’ in drawing their attention to the 
+
+social characteristics of data analysis. When introducing the 
+
+assignment we emphasize students can gather data about anything 
+
+and need not limit themselves to data measureable by an activity 
+
+tracker. Nonetheless, our experience has shown students do 
+
+generally stick with these measures because the sensors and tools 
+
+available make it so easy for them to do so in automated fashion. 
+
+Despite this, we are keen to encourage the students to be creative 
+
+in the data they collect and its analysis, and widen their gaze 
+
+about the possibilities of data practices, to support people in 
+
+understanding and investigating their data.  
+
+1.3 Algorithmic Accountability 
+In learning analytic contexts, the meaning inscribed in personal 
+
+data both shapes the ways that learning is understood and enacted 
+
+as objects of assessment, and is interpreted, reinterpreted, and 
+
+acted with as a dynamic part of that very context. Broad 
+
+discussion of this concern has noted that code ‘acts’ in education 
+
+[14], such that: 
+
+as algorithms are increasingly being designed to anticipate 
+
+users and make predictions about their future behaviours, users 
+
+are now reshaping their practices to suit the algorithms they 
+
+depend on. This constructs ‘calculated publics,’ the algorithmic 
+
+presentation of a public that shapes its sense of itself. [14] 
+
+Thus, the ways in which analytic devices become active agents in 
+
+learning – both inscribed with policy and practice commitments, 
+
+and enacted or enactive informative artefacts – has led to calls for 
+
+greater ‘algorithmic accountability’ [4], to ensure that the 
+
+pedagogic aims of analytic devices are transparent across a range 
+
+of stakeholders. Analytic devices, as objects that both shape and 
+
+are shaped by learning contexts require complex analyses to make 
+
+them legible to learners and educators. To do so, analysis should 
+
+be given of the theory and operationalization behind any given 
+
+learning-target, as well as the methods for collation and feedback. 
+
+Moreover, agents should understand data-feedback as both an 
+
+analytic ends, and a shaping component in the analytic device.  
+
+1.4 Playing With Data to Build Data Literacy 
+We have thus begun piloting a ‘personal-data-visualization’ 
+
+approach. Rather than personalizing where representations are 
+
+Permission to make digital or hard copies of part or all of this work for 
+personal or classroom use is granted without fee provided that copies are 
+
+not made or distributed for profit or commercial advantage and that 
+
+copies bear this notice and the full citation on the first page. Copyrights 
+for third-party components of this work must be honored. For all other 
+
+uses, contact the Owner/Author.  
+
+Copyright is held by the owner/author(s). 
+LAK '17, March 13-17, 2017, Vancouver, BC, Canada 
+
+ACM 978-1-4503-4870-6/17/03. 
+
+http://dx.doi.org/10.1145/3027385.3029443 
+
+
+
+designed for individuals – but there is an ‘us’ designing for you – 
+
+our approach takes a micro-level perspective on making sense of 
+
+ones-own data traces and processes of data visualization. As Ben 
+
+Williamson notes, analytics a representational tools that provide a 
+
+‘given’ reading of the learner’s activity, can be seen to present 
+
+‘visualized facts’ in a way that separates learners from their own 
+
+learning [15]; bringing students into this process marks a shift 
+
+away from passive consumption. 
+
+We have begun thinking about this concern in terms of how we 
+
+engage learners with increasing their analytics literacy through 
+
+playful interaction/performance. To orient our students’ 
+
+considerations of ‘big data’ to the personal, representational, and 
+
+qualified in a manner similar to that discussed in [2], we invited 
+
+students to engage in a visual data practice that mirrors the 
+
+‘analogue drawing project: dear data’ (www.dear-data.com), in 
+
+which two visual designers send hand-drawn personal-data 
+
+postcards to each other [see, 9]. Each week they both draw by 
+
+hand a representation of some pre-defined (and shared) data-
+
+theme for that week. Their process is to take a topic each week, 
+
+and then, in parallel, collect data about the topic (but not 
+
+necessarily the same types of data), only creating the visualization 
+
+at the end of the week (and again, these differ). So, inevitably, the 
+
+collection and visualization of the data itself has a performative 
+
+quality, impacting on the very behavior being ‘observed’.  
+
+With our students, we are informally prototyping an activity in 
+
+which they are asked, over a period of weeks, to collate data on a 
+
+theme, by whatever means they wish, and visually represent this 
+
+data for sharing. As this work develops, we intend to foreground 
+
+learning activities that could be targeted by them for data 
+
+collection and visualization. These early experiments with the 
+
+activity suggest that by encouraging students to articulate the data 
+
+collection and representation through hand-crafted artefacts, we 
+
+can draw attention to: 
+
+1. The space of possibilities in representation – highlighting the 
+variety of ways in which the same thematic data might be 
+
+collated, segmented, and visualized. 
+
+2. Representational interactions – by engaging with each other’s 
+representations, not only is the range of potential spaces 
+
+highlighted, but the necessity of human sensemaking, 
+
+explication or qualification, on a personal level. 
+
+3. The performativity of information representation – that 
+representations are created for a purpose, that they are situated 
+
+in that purposeful context, but that they also act on it to frame 
+
+discussions and actions (in this case, both through raising 
+
+awareness of the data one is collating about oneself, and 
+
+through the sharing of these personal-data artefacts).  
+
+2. PRODUCT(ION) AS PROCESS: POSTER 
+AS VISUAL PRACTICE 
+This poster builds on this data play to invite conference 
+
+participants to consider how learners and teachers can tap into the 
+
+creative capacity of visual ideation for individual and 
+
+collaborative learning about (their) learning data, exploring 
+
+tactile, visual modes of self-expression, sense-making and 
+
+communication. Casual, rough planning and design activities 
+
+intertwining text, image and drawing help explain ideas and make 
+
+sense out of complexity, social variance and uncertainty [1, 7]. 
+
+This (proposed) interactive and emergent poster invites 
+
+conference participants to dabble and doodle and think visually.  
+
+Exploratory approaches to visualisations of ideas, text, and data 
+
+are increasingly recognised for their role in knowledge production 
+
+and organisation, particularly with large sets of qualitative and 
+
+quantitative data [12]. Harnessing the power of “mapping 
+
+dialogues” in environments that bring together people, data and 
+
+technology, is a necessary literacy for 21st century work [10, 13]. 
+
+As our students grapple with complexity and seemingly 
+
+overwhelming sets of data, the enabling of collective sensemaking 
+
+becomes a necessary feature of their creative intelligence. 
+
+3. REFERENCES 
+[1] Anderson, T.K. 2013. The 4Ps of innovation culture: 
+
+conceptions of creatively engaging with information. 
+
+International Conference on Conceptions of Library and 
+
+Information Science (2013). 
+
+[2] Anderson, T.K. and Martinez-Moldonado, R. 2016. Building 
+
+a “Qualified Self” around Lifecycles of Experience and 
+
+Thinking. For Richer, for Poorer, in Sickness or in 
+
+Health...The Long-Term Management of Personal 
+
+Information, CHI 2016 Workshop on Personal Information 
+
+Management (PIM 2016) (San Jose, CA, 2016). 
+
+[3] Crabtree, A. and Mortier, R. 2015. Human data interaction: 
+
+Historical lessons from social studies and CSCW. ECSCW 
+
+2015: Proceedings of the 14th European Conference on 
+
+Computer Supported Cooperative Work, 19-23 September 
+
+2015, Oslo, Norway (2015), 3–21. 
+
+[4] Diakopoulos, N. 2014. Algorithmic Accountability. Digital 
+
+Journalism. 3, 3 (2014), 398–415. 
+
+[5] Eynon, R. 2015. The quantified self for learning: critical 
+
+questions for education. Learning, Media and Technology. 
+
+40, 4 (2015), 407–411. 
+
+[6] Ferguson, R. 2012. The State of Learning Analytics in 2012: 
+
+A Review and Future Challenges. Technical Report #kmi-
+
+12-01. The Open University, UK. 
+
+[7] François, A. 2013. SketchyTruth: somewhere in between the 
+
+good news and the bad news lies the truth (a concept for a 
+
+cartooning application on mobile devices). University of 
+
+Technology Sydney. 
+
+[8] Knight, S., Buckingham Shum, S. and Littleton, K. 2013. 
+
+Collaborative Sensemaking in Learning Analytics. CSCW 
+
+and Education Workshop (San Antonio, Texas, USA, 2013). 
+
+[9] Lupi, G. and Posavec, S. Forthcoming. Dear Data: The 
+
+Story of a Friendship in Fifty-Two Postcards. Penguin. 
+
+[10] Okada, A., Buckingham Shum, S. and Sherborne, T. 2008. 
+
+Knowledge cartography. Software Tools and Mapping 
+
+Techniques. (2008). 
+
+[11] Rivera-Pelayo, V., Zacharias, V., Müller, L. and Braun, S. 
+
+2012. Applying quantified self approaches to support 
+
+reflective learning. Proceedings of the 2nd International 
+
+Conference on Learning Analytics and Knowledge (2012), 
+
+111–114. 
+
+[12] Sadokierski, Z.A. and Sweetapple, K. 2015. Drawing Out: 
+
+How designers analyse written texts in visual ways. The 
+
+Routledge Companion to Design Research. P. Rodgers and J. 
+
+Yee, eds. Routledge. 
+
+[13] Selvin, A. and Buckingham Shum, S. 2014. Constructing 
+
+Knowledge Art: An Experiential Perspective on Crafting 
+
+Participatory Representations. Synthesis Lectures on Human-
+
+Centered Informatics. 7, 3 (2014), 1–119. 
+
+[14] Williamson, B. 2015. Coding/Learning: Software and Digital 
+
+Data in Education. Organizing Algorithms in Digital 
+
+Education. B. Williamson, ed. University of Stirling. 27–33. 
+
+[15] Williamson, B. 2015. Digital education governance: data 
+
+visualization, predictive analytics, and “real-time” policy 
+
+instruments. Journal of Education Policy. 0, 0 (Apr. 2015), 
+
+1–19. 
+
+ 
+
+http://www.dear-data.com/
+
+	1. INTRODUCTION
+	1.1 The Quantified Self in Learning Analytics
+	1.2 Human Data Interaction
+	1.3 Algorithmic Accountability
+	1.4 Playing With Data to Build Data Literacy
+
+	2. PRODUCT(ION) AS PROCESS: POSTER AS VISUAL PRACTICE
+	3. REFERENCES
+
+

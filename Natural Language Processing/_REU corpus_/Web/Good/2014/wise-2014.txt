@@ -1,0 +1,1120 @@
+
+Designing Pedagogical Interventions to Support Student 
+Use of Learning Analytics 
+
+Alyssa Friend Wise 
+Simon Fraser University 
+
+250 - 13450 102nd Avenue 
+Surrey, BC, V3T0A3 Canada 
+
+1-778-782-8046 
+alyssa_wise@sfu.ca 
+
+ 
+  
+ 
+ 
+ 
+ 
+
+ABSTRACT 
+This article addresses a relatively unexplored area in the emerging 
+field of learning analytics, the design of learning analytics 
+interventions. A learning analytics intervention is defined as the 
+surrounding frame of activity through which analytic tools, data, 
+and reports are taken up and used. It is a soft technology that 
+involves the orchestration of the human process of engaging with 
+the analytics as part of the larger teaching and learning activity. 
+This paper first makes the case for the overall importance of 
+intervention design, situating it within the larger landscape of the 
+learning analytics field, and then considers the specific issues of 
+intervention design for student use of learning analytics. Four 
+principles of pedagogical learning analytics intervention design 
+that can be used by teachers and course developers to support the 
+productive use of learning analytics by students are introduced: 
+Integration, Agency, Reference Frame and Dialogue.  In addition 
+three core processes in which to engage students are described: 
+Grounding, Goal-Setting and Reflection. These principles and 
+processes are united in a preliminary model of pedagogical 
+learning analytics intervention design for students, presented as a 
+starting point for further inquiry. 
+
+Categories and Subject Descriptors 
+K.3.1 Computer uses in education 
+
+General Terms 
+Measurement, Design, Human Factors.  
+
+Keywords 
+Learning analytics, Intervention design, Student participation 
+
+1. INTRODUCTION 
+This article addresses a relatively unexplored area in the emerging 
+field of learning analytics, the design of learning analytics 
+interventions. As technology integration research has long shown, 
+successful introduction of educational innovations is never simply 
+
+a matter of providing access to new tools, no matter how useful 
+[11, 16]. Without a plan for shifting patterns of teaching and 
+learning activity, new technologies often remain ancillary to the 
+teaching and learning process, either used tangentially to 
+marginally enhance existing practices or often simply collecting 
+dust on the virtual shelf [12]. If learning analytics are to truly 
+make an impact on teaching and learning and fulfill expectations 
+of revolutionizing education, we need to consider and design for 
+ways in which they will impact the larger activity patterns of 
+instructors and students.   
+
+A learning analytics intervention is defined as the surrounding 
+frame of activity through which analytic tools, data, and reports 
+are taken up and used. It is a soft technology in that it involves the 
+orchestration of human processes, and does not necessarily 
+require the creation of a material artifact (though one may be 
+created to support representation or implementation of the 
+process) [2, 22]. To date, most research and development in 
+learning analytics has focused on the fundamental issues of data 
+collection, management, processing and display, addressing the 
+two core challenges of how to determine meaningful traces of 
+learning and present them in a form that will be useful to decision 
+makers [15]. However, as we enter a stage in which analytic 
+systems are rapidly being rolled out for more general use, the 
+design of the intervention surrounding activity with the analytics 
+becomes a critical element for supporting the effective 
+implementation of these tools. Specifically, learning analytics 
+intervention design is concerned with addressing questions such 
+as: when in the teaching and learning process should analytics be 
+consulted (at what points, with what frequency); who should be 
+accessing particular kinds of analytics (teachers, students, 
+teachers and students together, instructional aides); why are they 
+being consulted (what questions are they answering, how will this 
+information be used); and most importantly, how the use of the 
+analytics articulates with the rest of the teaching and learning 
+practices taking place (what is the context for interpreting and 
+acting on the information the analytics provide). 
+
+In this paper, I first make the case for the overall importance of 
+intervention design and situate it within the larger landscape of 
+the learning analytics field. I then move to specifically consider 
+the issue of intervention design for student use of learning 
+analytics, explaining why attention to students as users of 
+analytics is valuable and why it is necessary to support students in 
+this activity. The latter part of the paper presents a set of 
+principles and processes that can be used by teachers and course 
+developers to design pedagogical interventions that support the 
+productive use of learning analytics by students. Finally, these 
+principles and processes are united in a preliminary model of 
+pedagogical learning analytics intervention design for students. 
+
+Permission to make digital or hard copies of all or part of this work for 
+personal or classroom use is granted without fee provided that copies are 
+not made or distributed for profit or commercial advantage and that 
+copies bear this notice and the full citation on the first page. Copyrights 
+for components of this work owned by others than the author(s) must be 
+honored. Abstracting with credit is permitted. To copy otherwise, or 
+republish, to post on servers or to redistribute to lists, requires prior 
+specific permission and/or a fee. Request from Permissions@acm.org. 
+
+LAK '14, March 24 - 28 2014, Indianapolis, IN, USA 
+Copyright is held by the author. Publication rights licensed to ACM. 
+ACM 978-1-4503-2664-3/14/03 $15.00. 
+http://dx.doi.org/10.1145/2567574.2567588 
+
+203
+
+
+
+2. LOCATING PEDAGOGICAL 
+INTERVENTION DESIGN IN THE 
+LANDSCAPE OF LEARNING ANALYTICS 
+The field of learning analytics is broadly concerned with how the 
+collection, analysis and application of data can be used to 
+improve processes and outcomes related to learning [21, 37]. 
+While much initial work has necessarily attended to developing 
+technical solutions to the challenges of data capture, processing 
+and display, there is general acknowledgement that “analytics 
+exist as part of a socio-technical system where human decision-
+making and consequent actions are as much a part of any 
+successful analytics solution as the technical components” [41, 
+p4]. As with all socio-technical systems, the various technical and 
+social components are fundamentally interrelated, and thus 
+success requires joint optimization of the whole [40]. In this vein, 
+my focus in this paper is not on the technical aspects of extracting 
+or presenting analytics (though clearly these are important 
+elements of any effective learning analytics solution), but the 
+elements framing how activity using such analytics is motivated 
+and mobilized for productive use. I thus introduce the notion of 
+learning analytics interventions as the organization of the human 
+processes through which analytic tools, data, and reports are taken 
+up as part of some larger educational activity. More specifically, 
+as explained below, pedagogical learning analytics interventions 
+are those interventions in which the educational activity expressly 
+includes instructional, studying or other components such that the 
+use of analytics has a direct and immediate impact on teaching 
+and learning processes. Finally, the concept of pedagogical 
+learning analytics intervention design then refers to systematic 
+efforts to incorporate the use of analytics as a productive part of 
+teaching and learning practices in a given educational context. 
+Additionally, pedagogical learning analytics interventions can 
+also be designed to be educative in nature [13] such that they help 
+teachers and students to develop general understandings about 
+ways that analytics can be helpful to their teaching and learning 
+practices. 
+
+2.1 Classes of Learning Analytics and the 
+Need for Pedagogical Intervention Design 
+Within the broad space of learning analytics, distinctions can be 
+made between different kinds of analytics based on the types of 
+data collected, characteristics users, and the kinds of decision 
+making conducted [17]. At a macro level, administrators can use 
+analytics as input for making programmatic decisions and to 
+identify at-risk students. Often referred to as academic analytics 
+[38], the data involved generally represents various high-level 
+outcomes such as completion or overall achievement levels [8] 
+and can be aggregated in various ways depending on purpose (i.e. 
+student, class, department, institution etc.). Academic analytics 
+involve relatively long time-cycles, using data from completed 
+activities (courses, programs, etc.) to inform decisions about 
+future ones. While the general notion of learning analytics 
+interventions applies here, it is related to questions of workflow 
+rather than direct teaching and learning processes per se; for 
+example at what points in the administrative and advising process 
+of an institution (or company) should analytics be consulted and 
+how can this be usefully systematized as part of normal business 
+practices. Such interventions are important for the use of analytics 
+to support the educational enterprise in a broad sense, but would 
+not be considered pedagogical in the sense described above. 
+
+In contrast, at a micro level learners and teachers using learning 
+analytics are more likely to be interested in process data that can 
+help them make better decisions about the learning event in which 
+they are currently engaged [10]. In this case, the relevant data 
+relates to tracking learning and an important element for 
+interpretation and action is having a model of learning for the 
+particular environment - i.e. a research-based framework for 
+understanding what productive activity in the learning context 
+looks like. In some cases the model may be specified such that 
+analytics data is processed and interpreted according to some 
+system of rules leading to automatic changes in the learning 
+system [e.g. 32]. In other cases, data may be processed into 
+categories according to a model, but then presented to 
+stakeholders to support decision making [e.g. 23]. In a third 
+situation, the data may be processed and presented in a manner 
+agnostic to any particular model of learning and it remains to the 
+user to make connections between the information provided and 
+valued aspects of the learning activity.  
+
+In both of the latter two situations, several locally contextualized 
+questions of interpretation and action arise, making the process of 
+using the information provided by the analytics to guide effective 
+decision-making decidedly non-trivial. First there is the question 
+of making sense of the information that is provided; this involves 
+basic issues of validity in terms of the appropriateness of 
+inferences that can be made from particular data given the context 
+in which it was generated and the ways in which it was processed. 
+This inherently requires a theoretical component that explains 
+what concept or construct the analytic represents and what its 
+relevance and relationship to other concepts and constructs is 
+hypothesized to be, since without such a mapping the measure 
+does not have any meaning beyond itself [31]. Thus at its heart, 
+interpreting analytics is a process of knowing how to ask useful 
+questions of the data and find relevant answers [6, 43]. Practically 
+this means that an analytics user must have an understanding of 
+the pedagogical context in which the data was generated, 
+knowledge of what particular analytics are meant to indicate, and 
+an appreciation of how these relate to the learning goals of the 
+situation [28]. During the interpretive process it is also important 
+to keep in mind what information is not provided by the analytics, 
+to avoid the danger of over-optimizing to that which can be 
+measured at the expense of valued, but unmeasured entities [10, 
+15]. 
+
+In addition to the conceptual task of making sense of the 
+information provided by analytics, a second major challenge for 
+analytics users is incorporating the process of interpreting and 
+acting on analytics productively into the flow of learning 
+activities. While this might initially be conceived of as a practical 
+challenge, in fact it ties in to many of the conceptual questions 
+described above in terms of over what time period is it valid to 
+make certain kinds of inferences and when it is appropriate to take 
+action on them. It also relates to the social dynamics of the 
+learning environment in terms of who has the authority (and the 
+responsibility) for particular kinds of decision-making at certain 
+points in time, as well as how the use of the analytics can be made 
+to articulate productively with (rather than fight against or exist in 
+isolation of) the rest of the teaching and learning practices taking 
+place. These kinds of questions, as well as the issues of 
+interpretive frame described above, can be addressed and 
+supported through pedagogical learning analytics intervention 
+design.  
+
+204
+
+
+
+2.1.1 Pedagogical Interventions for Teachers 
+Many of the core issues related to teacher use of learning 
+analytics were recently reviewed by Lockyer and colleagues [28]. 
+Their solution to the challenges of interpretation and activity flow 
+was to align learning analytics with the process of learning 
+design. This creates a unified cycle in which teachers document 
+their pedagogical intentions through learning design, which then 
+provides the conceptual frame for asking questions of and making 
+sense of the information provided by the analytics [14]. 
+Specifically, Lockyer and colleagues highlight the importance of 
+identifying ahead of time what activity patterns would be 
+expected for successful (or unsuccessful) student engagement in 
+the pedagogical design, and using tools such as checkpoint and 
+process analytics to look for these at particular points during the 
+learning activity [28]. This is important because the same pattern 
+of activity in a system may be considered more or less productive 
+depending on the activity design; for example a wheel and spoke 
+social network in a discussion forum may be appropriate for a Q 
+& A session with an instructional expert, but problematic if the 
+goal is to build community among a group of learners [5]. By 
+addressing the questions of interpretive frame and activity flow, 
+Lockyer and colleague’s model describes a pedagogical 
+intervention by which teachers can engage in systematic efforts to 
+use analytics as a productive part of their everyday teaching 
+practice [28]. Certainly other pedagogical interventions to support 
+teacher use of learning analytics are also possible; however, this is 
+currently one of the few models that has been described with any 
+degree of specificity. 
+
+2.1.2 Pedagogical Interventions for Students 
+In contrast to teacher use, intervention design for students has 
+received less attention; in many cases it seems to be assumed that 
+simply providing well designed analytics will be enough to induce 
+productive use. However there are several factors that work 
+against this. One particular concern is that students are often not 
+privy to their instructor’s pedagogical intentions, and thus 
+unaware of both the learning goals for an educational activity and 
+what productive patterns of engagement in it (as indicated by the 
+analytics) would look like. Another challenge for students is the 
+strong metacognitive skills needed to use analytics as a tool for 
+reflection and self-regulation [9]. While teachers may have had 
+preparation or experience in being a reflective practitioner [34] 
+students often struggle as self-regulated learners. 
+The challenges of comprehending pedagogical intent, recognizing 
+productive patterns of activity, and activating self-regulatory 
+skills suggest that on their own students are unlikely to know how 
+or why to engage with analytics; but they also present 
+opportunities for making students more active partners in 
+managing their own learning. Specifically, how students 
+participate in an educational activity can relate to their 
+understanding of the activity and its purpose [26]; thus sharing 
+pedagogical intent increases the potential for purposeful 
+alignment between student behavior and instructional purpose. In 
+addition, being proactively involved and engaged in directing 
+one’s own learning is thought to support better learning processes 
+and outcomes more generally [4, 48], thus helping students to 
+develop these as part of their use of analytics can have continued 
+benefits in other academic areas, especially with the rise of more 
+personalized modes of learning that place greater responsibility 
+on the individual learner. Finally giving students the opportunity 
+to be a part of directing their own course for learning can help the 
+
+analytics serve as an agent of empowerment rather than 
+enslavement.  
+In the context of these potential benefits, this paper specifically 
+address questions about intervention design for student use of 
+learning analytics and presents a set of pedagogical principles and 
+processes that can be used by teachers and course developers to 
+support the productive use of learning analytics by students. 
+While the traces, analytics, and particular learning analytics 
+intervention required in any given situation are specific to that 
+context, a pedagogical model for framing interpretive activity by 
+students can be described in terms of general principles and 
+processes that can be applied to a variety of learning contexts.  
+
+3. PRINCIPLES AND PROCESSES FOR 
+PEDAGOGICAL LEARNING ANALYTICS 
+INTERVENTION DESIGN 
+As defined above, the pedagogical design of learning analytics 
+interventions relates to the “soft” elements framing how activity 
+using analytics is mobilized for productive use. This is a new area 
+of inquiry; as such there is limited prior work directly addressing 
+the challenges and opportunities for learning analytics 
+interventions laid out above. Thus, the following principles and 
+processes were developed as an initial framework to provide a 
+starting point for design and research. This guidance was 
+generated through a dialectical process, drawing on theories from 
+education (specifically constructivism, meta-cognition, and self-
+regulated learning [e.g. 33, 36]), while considering the central 
+analytics intervention questions of interpretation and action, as 
+well as several more specific concerns such as transparency, 
+rigidity/flexibility, and the hegemony of that which is measured 
+[8, 10, 15]. This approach follows the tradition in the fields of 
+both education and human-computer interaction of generating 
+theoretically-motivated design models that can then be applied, 
+tested, and refined iteratively [3, 39]. The model of pedagogical 
+intervention design was also informed by our own process of 
+iterative development in the initial implementation of a learning 
+analytics application for online discussions [45]. Lessons learned 
+through this design process included the power of dialogue to 
+engage students and the lack of need for parity in how instructors 
+and students interacted with the analytics. Data collected from the 
+implementation is currently being analyzed, and will be used to 
+provide further insight into the principles and processes. 
+Validation of the model will happen over time as it is applied, 
+adjusted and further developed by ourselves and others in the 
+learning analytics community. 
+
+3.1 Principle 1: Integration  
+The principle of Integration is central to the basic notion of 
+pedagogical intervention design. That is, pedagogical intervention 
+design is about intentionally providing a surrounding frame for 
+the activity through which analytic tools, data, and reports are 
+taken up, while the principle of Integration states that this 
+surrounding frame should position the use of analytics as an 
+integral part of course activity tied to goals and expectations. This 
+principle specifically addresses the challenge of helping students 
+understand pedagogical intent and helps prevent against rigidity 
+of interpretation by providing a local context for making sense of 
+the data. It also supports the integration of analytics uses into 
+activity flow of the learning environment. Finally, it provides an 
+avenue for tailoring analytics use such that the same analytics 
+suite can be useful in different ways in different contexts. 
+
+205
+
+
+
+The basic idea of Integration is that the use of learning analytics 
+needs to be conceived of as an element of the learning design 
+itself, and that students need to understand these connections. 
+This means that in planning a learning event, the instructor or 
+learning designer must decide which metrics (of the ones 
+provided by whatever system is being used) will be focused on in 
+a particular situation based on the purpose of the educational 
+activity, and identify what productive and unproductive patterns 
+in these metrics are expected to look like. This planning stage 
+connects to the notion of aligning learning analytics with learning 
+design as part of the pedagogical intervention model for teachers 
+discussed above [28].  
+In addition to choosing metrics and predicting patterns, there are 
+two key additional elements of pedagogical learning analytics 
+intervention design needed specifically for students. The first 
+additional element is a plan for sharing the logic of connection 
+between the learning analytics and learning activity with the 
+students, so the thread between goals, actions and feedback is 
+clear. This is conceptualized as a process of Grounding and is 
+expanded on below in Section 3.1.1. 
+The second additional element is considering when and how it 
+makes sense for the students to work with the chosen analytics in 
+relation to the activity flow of the learning environment. In some 
+cases (for example with learners experienced in self-regulation), it 
+may be fine to provide students with context at the start of a 
+learning experience and leave them on their own to decide when 
+to integrate such use of the analytics into their individual learning 
+processes. However, in many cases it can be helpful (or even 
+necessary) to provide guidance to students about when the 
+analytics might usefully be consulted. This can be put into 
+practice through determining a schedule or timescale for 
+checkpoints that makes sense for the activity at hand. The issue of 
+temporal integration is discussed further under the processes of 
+Goal-Setting and Reflection in Sections 3.2.1 and 3.2.2.  
+
+3.1.1 Process 1: Grounding 
+There are three elements that students need to understand in order 
+to effectively use analytics as part of their larger participation in a 
+learning activity: (1) the purpose of the learning activity, (2) the 
+characteristics of what is considered productive engagement in 
+the activity, and (3) how the learning analytics provided serve as a 
+representation of this. These kinds of understanding can be 
+developed in multiple ways. For example, depending on the 
+parameters of the learning context (student maturity, class size, 
+blended or fully online format, time available etc.) the goals of an 
+educational activity might be simply presented and explained to 
+students, or could be jointly determined by the instructor and 
+students together. Similarly, the characteristics of productive 
+engagement in the activity could be brainstormed and then 
+finalized by the group, or simply supplied to students with a 
+rationale. Both of these activities (which aim towards a shared 
+understanding of purpose and process among teacher and 
+students) are actually useful for supporting learners in engaging in 
+desired ways in an activity even before the analytics are 
+introduced and can reasonably be enacted in a variety of ways in 
+both face-to-face and digital settings. In addition, there is a need 
+to tie the analytics available to the agreed-on qualities of 
+productive engagement; the depth to which the calculation details 
+of the different metrics are explained and considered will vary 
+depending on the level of students, time available and perceived 
+value. In each of the elements described here there is a trade-off 
+between efficiency of presentation and depth of student 
+
+engagement, but regardless the goal of the grounding process is to 
+develop a shared understanding about the qualities of productive 
+participation in the activity as a context for interpreting the 
+analytics. 
+There is one additional important point to be made here and that 
+is that connecting the analytics available to the qualities of 
+productive engagement is a useful exercise not only for students 
+to see what metrics serve as indicators of, but also to highlight 
+any qualities of productive engagement that may not be captured 
+by the metrics. One important concern in using learning analytics 
+is that the analytics alone will dictate how people engage in the 
+learning activity and thus we can “become what we measure,” 
+even though the metrics only capture some aspects of the overall 
+activity [10,15]. For this reason, it is important for students to be 
+aware of what the analytics they are using do not capture. It is 
+also helpful to use multiple diverse measures so no one analytic 
+becomes the sole focus of attention [46]. 
+To give a concrete example of what the principle of integration 
+and process of grounding might look like, take the analytics 
+system Uatu designed to visualize collaborative writing process in 
+Google Docs [30]. The system continuously collects and stores 
+edit and revision data about user contributions, changes in 
+document size, and time from Google Docs in order to support 
+formative assessment of collaboration between learners. The 
+visualizations generated from the data base contain the document 
+revisions as they occurred over time, presenting who made certain 
+revisions, when the revisions happened, the size of the 
+contribution, and the time spent. 
+Imagining a pedagogical intervention design for the use of this 
+tool as part of an online post-secondary history course, the 
+instructor might first introduce the purpose of collaborative 
+writing in this context to develop content knowledge and 
+understanding of the core issues surrounding the subject through 
+continued expansion on key themes over the course of the term. 
+She then could provide students with clear guidelines for what is 
+expected and will be evaluated; for example, the frequency and 
+size of the contributions, and the quality of the contributions. 
+Finally, the analytics can be introduced in this context, with the 
+instructor describing how the feedback visualizes the 
+collaborative construction of the document and how it relates to 
+the participation criteria. For example, the instructor might 
+encourage students to add to the document by identifying or 
+adding to a theme on a weekly basis as they move through the 
+semester and give a sense of how much elaboration (size) she 
+expects from each contribution. The Uatu system currently does 
+not provide metrics for quality, so this would need to be discussed 
+as an element important for the activity, although absent in the 
+metrics. In situations where the analytic tool used does provide 
+information about the content of contributions, this could also be 
+discussed. In this manner, the analytics are introduced as 
+information which has clear meaning in the context of this 
+particular collaborative writing activity. In an alternate context, 
+with other students, and another kind of writing activity, the same 
+analytics suite could be productively motivated with a different 
+intervention design. 
+
+3.2 Principle 2: Agency 
+Learning is an activity that needs students’ proactive engagement  
+in order to be successful [48] and one of the key attractions of 
+learning analytics is the possibility to support the learner in 
+actively taking charge of managing their own learning process 
+
+206
+
+
+
+[20]. The principle of Agency is thus targeted at promoting 
+learning analytics interventions that that support, rather than 
+detract from, students’ development and use of self-regulatory 
+skills. This also addresses concerns about analytics being yet 
+another master for students to serve, rather than a tool of 
+empowerment. In thinking about student agency, there are two 
+important elements to consider: first, agency in interpreting the 
+analytics (what does the information provided mean, how does it 
+relate to what is important to me in this situation); and second, 
+agency in in responding to the measure (what actions will I take 
+as a result of the information provided). These elements are each 
+addressed through the processes of Goal-Setting and Reflection. 
+
+3.2.1 Process 2: Goal-Setting  
+In self-regulation, learners guide their learning process by setting 
+goals and working actively to attain them [36]. Goals can 
+motivate learners to put in greater efforts for anticipated self-
+satisfaction and also incite self-monitoring of their achievement. 
+Self-set goals especially lead to higher self-efficacy which 
+influences the amount of effort learners make and their 
+commitment to fulfill the challenges [49]. However, learners need 
+guidance to make sure they set up proximal and specific goals 
+with a proper level of difficulty to enhance learning [35]. It may 
+seem that this discussion is superfluous since after developing a 
+shared understanding about the purpose of an educational activity 
+and the qualities of productive participation, students would all 
+have the same goal of maximizing each of these qualities. 
+However such an assumption is overly simplistic since students 
+always have the possibility to set their own goals for a learning 
+activity; some in line with the instructional goals for the activity, 
+others less so [9]. In addition, each student has a different starting 
+place and skill set that they bring to their learning, so even to 
+reach the same end-state they may each have different aspects of 
+the learning task that require more attention than others. This 
+suggests the need for multiple possible profiles of productive 
+activity and improvement, rather than a single goal and path 
+which all students must follow. 
+For these reasons, a key element of student agency in learning 
+analytics begins with individual goal setting to provide a 
+personalized context for sense-making of the analytics. By 
+making personalized goal-setting an explicit and structured part of 
+the learning activity, learners are asked to be purposeful in 
+thinking about the stated activity goals, evaluating their own 
+strengths and weaknesses, and setting specific and proximal 
+targets to work towards. Importantly, the process of goal-setting 
+should be tied to and follow from the introduction of the learning 
+activity purpose and characteristics indexed by the learning 
+analytics as described above in the Integration principle. In this 
+way, learning analytics can support the generation of specific and 
+proximal goals since they provide clear indices for target-setting. 
+The actual process of goal-setting does not have to take place 
+directly within the learning analytics system; however there are 
+several advantages to doing so, principally the opportunity to 
+support initial goal-setting and the ease of continual reference 
+when the analytics are being reviewed. These possibilities are 
+illustrated by nStudy, a web-based toolkit designed to support 
+learners in studying online content by annotating it (e.g. creating 
+tags, notes, and terms with definitions) and linking these 
+information objects together to build up concept maps and the like 
+[44]. While efforts to develop learning analytics for the system 
+are still in progress, nStudy already supports learners in setting 
+goals through a form that prompts them for a description and 
+
+provides tools for indicating importance, difficulty, target date, 
+current state of completion. An instructor using nStudy in their 
+teaching might structure explicit use of this goal-setting 
+functionality into certain points in the term, for example requiring 
+students to set goals at the start of each segment of the course. In 
+using such a tool possibilities also exist for sharing information 
+about the aggregated goals of the class as a whole. Whether this is 
+beneficial or detrimental for goal-setting and learning remains an 
+open research question. Goals notes in nStudy are also easily 
+retrieved, updated and linked to other objects in the system. Once 
+the analytics features of the system are made available, reports or 
+a dashboard could also be linked to the goals notes, facilitating 
+reflection on the analytic metrics in the context of specific 
+objectives and purposes. 
+
+3.2.2 Process 3: Reflection 
+Once set, goals drive how students interact with educational 
+materials and activities and the feedback the analytics provides 
+becomes an important moderator for students to monitor and 
+assess their progress towards their goals [27], as well as evaluate 
+when the goals themselves need to be updated or revised. This 
+collection of activities involves looking back at information about 
+the learning activities recently engaged in and, as such, is a form 
+of data-informed reflection. From a constructivist perspective, 
+reflection has long been thought of as an essential part of 
+constructing one’s understanding; in turn, as one’s understanding 
+develops, reflection can also be used more effectively to support 
+learning [29]. However, reflection has traditionally depended on 
+the learner’s own recollection of the activities they engaged in, 
+which research has shown is not particularly good [42]. Thus 
+learning analytics offer an important advantage in supporting the 
+process of reflection based on more accurate data. 
+However, as with goal setting, students need support in knowing 
+when and how to reflect on their analytics and take action based 
+on them. This is particularly important because online activities 
+that can happen at anyplace and anytime often happen nowhere 
+and never [24]; conversely attention to constantly available 
+analytics can draw away from engagement in the activity itself. 
+Thus to support productive reflective activity, explicit time, space 
+and guidance need to be provided for reflection on analytics.  
+Time can be strongly structured by making reflection a specific 
+course activity itself, or organized more softly through suggested 
+guidelines provided to students. It is important to provide 
+analytical feedback fast enough to impact practice [7] but also on 
+a scale for which the analytics make sense to examine in a 
+particular context. Especially for analytics that track larger scale 
+constructs, the time-frame over which the data is examined can 
+dramatically affect the results [47]. The frequency with which the 
+analytics are provided or accessed and with which reflective 
+activity is engaged in will vary depending on the context, but the 
+goal of setting up specific timing is to avoid overwhelming 
+students or making them overly reliant or fixated on the analytics 
+[8].  
+The notion of a dedicated space for reflection also supports the 
+actual enactment of the process as well as storing learners’ 
+reflective trajectory so they can look back at their learning 
+progress over time. With historical records learners are able to 
+notice their improvement (or lack thereof), monitor their goals 
+and obtain a larger picture of their engagement with the learning 
+activity. A variety of technologies can be used to create reflective 
+spaces; the most obvious choice is perhaps a blog format where 
+
+207
+
+
+
+learners can articulate, refine and reflect their thoughts, ideas and 
+opinions by writing in a journal [18]; however a wiki can also be 
+used effectively for this purposed [45]. Both blogs and wikis also 
+provide for the possibility of interactivity among learners or 
+between a learner and the instructor, and thus have the ability to 
+turn the reflective journal writing into a collective or dialogical 
+activity [1]. This topic will be addressed further under the 
+principle of Dialogue below. 
+Finally, learners need guidance in the process of how to reflect. 
+Much of this guidance can take the form of just-in-time reminders 
+to look back at their goals, consider their previous analytics, and 
+think about where they are making progress and where more 
+effort is needed. Reflective guidance can also be seeded through 
+specific reflection questions or a structured reflective process if 
+desired. Another possibility is to integrate support for reflection 
+into the analytics system or include analytics on the reflective 
+process itself. Such an approach has been followed with the 
+EnquiryBlogger system which supports reflective journaling by 
+encouraging students to tag their entries with a set of valued 
+learning dispositions (e.g. critical curiosity, strategic awareness) 
+and then provides them with visual analytics reflecting these 
+perceptions of their learning power [7]. 
+
+3.3 Principle 3: Reference Frame 
+In addition to the two central principles of Integration and 
+Agency, there are two other principles for intervention design to 
+support the productive use of analytics. The first is the principle 
+of Reference Frame. A reference frame is simply the comparison 
+point to which students orient when they examine their analytics. 
+Two reference frames have already been discussed in the course 
+of this paper. The first is the theoretical patterns of activity 
+described as productive by the course instructor, which serve as 
+an absolute reference point for comparison. The second is a 
+student’s own prior activity, which serves as a relative reference 
+point for comparison. Depending on the context of the analytics 
+use, an instructor may choose to emphasize one over the other. 
+A third reference frame that can be used is that of other students 
+in the course. Aggregated information about the performance of 
+others students is often provided in analytic systems and can be 
+powerful in showing a student where they stand in relation to 
+others in the class [19] but can also have several potential 
+negative consequences [46]. Thus how the reference frame of 
+other students is positioned in an important element of 
+pedagogical intervention design. Specifically the performance of 
+others students can be useful as a motivating factor for low-
+performing students who may not initially realize how their 
+efforts stack up against others; however this frame of reference 
+can also lead to competitive behavior or be stressful and 
+intimidating for some students. There is also a tendency for 
+aggregated class statistics such as course averages to become 
+targets for students, which may or may not be appropriate 
+depending on the activity profile of the class. For example, at the 
+beginning of a course when students are just figuring out the 
+system the analytic patterns displayed may not be ideal or 
+realistic targets to aim for. In addition, measures of the class’s 
+central tendency (particularly the average) may be overly 
+influenced by the activity, or inactivity, of certain students. For 
+example, recent work looking at student activity in massive open 
+online courses showed that a substantial portion (40-80%) of the 
+population who enrolled in the courses studied did so simply to 
+“sample” the course [25]; in this case measures of central 
+
+tendency would provide a false reference point at which to target 
+one’s activity.  
+Some of the issues described above can be addressed through 
+careful design and refinement of analytic tools; for example 
+processing data to provide aggregate measures for only similar 
+kinds of students or providing aggregate measures of variance as 
+well as central tendency. However, there is also an important role 
+for intervention design to play in terms of helping students to 
+prioritize the reference points of self, peers and activity goals as 
+well as understanding the value and limitations of the peer 
+reference points provided in a specific context. This information 
+can be provided up front as part of the initial goal-setting process, 
+during the course of the learning activity, or as needed through 
+individual dialogue as described below. For example, the Student 
+Activity Meter is a learning analytics system that provides learners 
+with line charts, bar graphs, and parallel coordinate visualizations 
+showing how they compare to their peers in terms of metrics such 
+as time spent working, intensity of work sessions, and number of 
+resources used [19]. This toolset inherently encourages use of the 
+peer reference frame in interpreting the data, though the line chart 
+also allow learners to see changes in their individual working 
+patterns over time.  
+To support productive comparative activity while guarding 
+against a detrimental competitive mentality, a pedagogical 
+intervention for this analytic tool could take several different 
+forms. In some courses external standards for expected activity 
+can be given. For example, if it is known that there is a minimum 
+number of resources that generally need to be consulted to be 
+successful on a project, this figure can be highlighted to students 
+from the start as an fixed guidepost by which to judge progress. 
+Similarly, if the instructor knows that students tend to be more 
+productive when they engage in a smaller number of intensive 
+work periods (rather than many brief ones), then they can be 
+encouraged to work towards a line chart pattern that includes 
+periods of steep rise, rather than one that is simply higher overall. 
+In cases where absolute indicators are harder to provide, a 
+pedagogical intervention might focus on the personal reference 
+frame, explicitly asking students to keep track of and set goals for 
+their individual progress, or their progress with respect to the 
+group. Another approach might focus on collective efforts, 
+encouraging the class to use the analytics as a group diagnostic to 
+help each other keep advancing together. An important aim in 
+each of these intervention designs is to help students avoid the 
+simplistic mentality of “more (than other students) is better.” 
+While knowing where one stands in relation to ones’ peers is 
+important and useful, in some cases more than others may still not 
+be enough (generally or for that particular student), while in other 
+cases everyone may already be well beyond the bar of what is 
+necessary, making additional exertion to improve a particular 
+metric wasted effort. If all students are always trying to surpass 
+all other, it may even create an unintentional ratcheting effect. 
+
+3.4 Principle 4: Dialogue  
+An important issue in implementing learning analytics relate to 
+questions of power and access to analytics [15]. The concerns 
+related to these issues can be addressed to some extent through 
+the principle of Dialogue; that is creating a space of negotiation 
+around the interpretation of the analytics in which data serves as a 
+reflective and dialogic tool between the instructor and students 
+rather than one in which the instructor collects data on the 
+students. This serves as a complement to the principle of Agency 
+in which students are empowered to set goals for and reflect on 
+
+208
+
+
+
+their own analytics and also provides support for students in 
+engaging in this process. 
+As mentioned above, many online journaling tools such as wikis 
+and blogs support interactivity between individuals, thus a 
+dedicated space set up for reflection can easily be made a shared 
+space between student and instructor, or even between groups of 
+students. For example, EnquiryBlogger discussed earlier as an 
+example of a purposefully created reflective space, provides 
+functionality for instructors (and other students) to access and 
+comment on the blog entries and to search for ones tagged with 
+specific learning dispositions [18]. 
+There are several advantages to making the reflection process 
+dialogic. First, a shared journal creates an audience for the writing 
+and gives the student the opportunity for their voice to be heard. 
+Specifically, students may be able to bring information to bear in 
+interpreting their analytics that the instructor would not be aware 
+of on their own (e.g. “I had a really difficult time with this part of 
+the assignment,” “I tried extra hard this week,” “I know I need to 
+share my ideas more, but I don’t always feel confident that I have 
+the right idea”). Second, it gives the instructor (or a designate) the 
+opportunity to examine students’ goal-setting and analytics 
+interpretations and respond as necessary to address any 
+confusions, repair questionable interpretations, or realign goals. 
+Finally, in some cases students may identify goals based on their 
+analytics but not know how to make progress on them, thus a 
+dialogic space gives them the opportunity to ask for help and the 
+instructor the chance to provide suggestions or strategies. In these 
+ways interactive journal writing actively facilitates the process of 
+reflection [1] as well as provide a checkpoint to make sure that 
+students are on productive paths in their self-regulation. In 
+addition, the analytics themselves provide a support for dialogue 
+by acting as a third “voice” in the conversation. This gives the 
+instructor a neutral object to which they can usefully refer in 
+conversation (e.g. “did you notice how your level of participation 
+compares to the rest of the class” rather than “you need to 
+participate more”). 
+The major challenge in enacting the principle of dialogue is the 
+issue of scale. In a small class it is possible for the instructor to 
+interact with all students on a relatively frequent basis, but as the 
+student to instructor ratio rises this become progressively more 
+difficult, and in the case of massive open online courses it is 
+simply not possible. Two possible alternatives for fostering 
+dialogue around analytics may be plausible, however. First, a 
+tiered system could be employed where teaching assistants or 
+student leaders serve as the primary dialogue partner, with 
+questions or concerns elevated to the instructor as needed. 
+Second, in some situations it may be viable for students to support 
+each other through partnership or triad models. The concern here 
+comes from a lack of experience on the part of the students and 
+the ability to effectively support each other, thus this approach 
+may work best with learners who are relatively proficient in using 
+analytics to the support their learning. 
+
+4. CONCLUSIONS  
+This paper has made the case for the importance of pedagogical 
+intervention design for student use of learning analytics and 
+situated it within the larger landscape of the field. Four principles 
+(Integration, Agency, Reference Frame and Dialogue) and three 
+processes (Grounding, Goal-Setting and Reflection) for the design 
+of pedagogical learning analytics interventions were introduced as 
+tools for helping to support the productive use of learning 
+
+analytics by students. As may be clear by now, the issues related 
+to each of these principles are not independent, and in fact are 
+quite tightly entwined. For example the process of reflection ties 
+back to goals, makes use of a reference frame and is shared with 
+the instructor as part of a dialogue, while integration to some 
+extent serves as a meta-organizing principle that encapsulates all 
+others. To represent these relationships, I present a preliminary 
+model integrating the elements of pedagogical learning analytics 
+intervention design for students in Figure 1. This model is offered 
+not as an end point, but as a starting place to stimulate attention to 
+learning analytics intervention design. Empirical work is needed 
+to apply, test, validate, refine and revise this model and develop 
+our understanding of other factors that can support the productive 
+use of learning analytics by students. As discussed above, in my 
+own research group we have already collected data from a 
+learning analytics intervention for online discussions developed in 
+consultation with the model. The data is currently being analyzed 
+to provide initial empirical validation and further inform our 
+understanding of the principles and processes involved. Further 
+application of the pedagogical intervention design model in other 
+kinds of educational contexts with different learning analytics 
+applications and populations of learners is needed to establish its 
+more general utility and identify the additional considerations 
+needed to usefully apply and adapt it across a variety of learning 
+analytic contexts.  
+To conclude, this paper has taken an initial step towards the 
+intentional and principled design of learning analytics 
+interventions for students. Such attention to pedagogical 
+intervention design is a critical complement to technical 
+developments in order for the field of learning analytics to truly 
+make an impact on the ways in which we teach and learn. 
+
+ 
+ 
+
+5. REFERENCES 
+[1] Andrusyszyn, M. A., & Davie, L. 1997. Facilitating 
+
+reflection through interactive journal writing in an online 
+graduate course: A qualitative study. The Journal of 
+Distance Education, 12(1/2), 103-126. 
+
+Figure 1. A preliminary model of pedagogical learning 
+analytics intervention design. 
+
+209
+
+
+
+[2] Arthur, W. B. 2009. The nature of technology: What it is and 
+how it evolves. Free Press, New York, NY. 
+
+[3] Barab, S., & Squire, B. 2004. Design-based research: Putting 
+a stake in the ground. Journal of the Learning Sciences, 
+13(1), 1–14.  
+
+[4] Boekaerts, M., Pintrich, P. R., & Zeidner, M. Eds. 2005. 
+Handbook of self regulation. Elsevier, London. 
+
+[5] Brooks, C., Greer, J. & Gutwin, C. In press. The data-
+assisted approach to building intelligent technology 
+enhanced learning environments.  To appear in J. Larusson 
+& B. White Eds. Learning analytics: From research to 
+practice. Springer, New York, NY. 
+
+[6] Buckingham Shum, S. 2012. Our learning analytics are our 
+pedagogy. Keynote address given at Expanding Horizons 
+2012. Macquire University, Australia. 
+
+[7] Buckingham Shum, S, & Deakin Crick, R. 2012. Learning 
+dispositions and transferable competencies: Pedagogy, 
+modelling and learning analytics. In Proceedings of the 2nd 
+International Conference on Learning Analytics and 
+Knowledge (Vancouver, Canada, 2012). ACM, New York, 
+NY, 92-101. 
+
+[8] Buckingham Shum, S.& Ferguson, R. 2012. Social learning 
+analytics. Educational Technology & Society, 15(3), 3-26. 
+
+[9] Butler, D. L., & Winne, P. H. 1995. Feedback and self-
+regulated learning: A theoretical synthesis. Review of 
+Educational Research, 65(3), 245-281. 
+
+[10] Clow, D. 2012. The learning analytics cycle: closing the loop 
+effectively. In Proceedings of the 2nd International 
+Conference on Learning Analytics & Knowledge, 
+(Vancouver, Canada, 2012). ACM, New York, NY, 134-138. 
+
+[11] Cuban, L. 1986. The classroom use of technology since 
+1920. Teachers College Press, New York, NY. 
+
+[12] Cuban, L., 2001. Oversold and underused: Computers in the 
+classroom. Harvard University Press, Cambridge, MA. 
+
+[13] Davis, E. A., & Krajcik, J. S. 2005. Designing educative 
+curriculum materials to promote teacher learning. 
+Educational Researcher, 34(3), 3-14. 
+
+[14] Dawson, S., Bakharia, A., Lockyer, L., & Heathcote, E. 
+2011. “Seeing” networks: Visualising and evaluating student 
+learning networks. Final Report 2011. Australian Learning 
+and Teaching Council, Canberra. 
+
+[15] Duval, E. & Verbert, K. 2012. Learning analytics. E-
+Learning and Education, 1(8).  
+
+[16] Ertmer, P. A. 1999. Addressing first-and second-order 
+barriers to change: Strategies for technology integration. 
+Educational Technology Research and Development, 47(4), 
+47-61. 
+
+[17] Ferguson, R. 2012. The state of learning analytics in 2012: A 
+review and future challenges. Technical Report KMI-12-01, 
+Knowledge Media Institute, The Open University 
+
+[18] Ferguson, R., Buckingham Shum, S., & Deakin Crick, R. 
+2011. EnquiryBlogger: Using widgets to support awareness 
+and reflection in a PLE Setting. In: 1st Workshop on 
+Awareness and Reflection in Personal Learning 
+Environments. In conjunction with the PLE Conference 
+2011, 11-13 July 2011, Southampton, UK. 
+
+[19] Govaerts, S., Verbert, K., Duval, E., & Pardo, A. 2012. The 
+student activity meter for awareness and self-reflection. In 
+CHI'12 Extended Abstracts on Human Factors in Computing 
+Systems. (Austin, TX, 2012) ACM, New York, NY, 869-884. 
+
+[20] Govaerts, S., Verbert, K., Klerkx, J., Duval, E., 2010. 
+Visualizing activities for self-reflection and awareness. In 
+Proceedings of 9th International Conference on Web-based 
+Learning, (Shanghai, China, 2010). 
+
+[21] Haythornthwaite, C., de Laat, M., & Dawson, S. 2013. 
+Introduction to the special issue on learning analytics. 
+American Behavioral Scientist, 57(10), 1371-1379. 
+
+[22] Hlupic, V., Pouloudi, A., and Rzevski, G. 2002. Towards an 
+integrated approach to knowledge management: ‘Hard’, 
+‘soft’ and ‘abstract’ issues. Knowledge and Process 
+Management, 9(2), 90-102. 
+
+[23] Jovanovi?,  J., Gaševic, D., Brooks, C., Devedžic, V., Hatala, 
+M., Eap, T., et al. 2008. LOCO-Analyst: Semantic web 
+technologies in learning content usage analysis. International 
+Journal of Continuing Engineering Education And Life Long 
+Learning 18(1), 54-76. 
+
+[24] Jun, J. 2005. Understanding e-dropout. International Journal 
+on E-Learning, 4(2), 229-240. 
+
+[25] Kizilcec, R. F., Piech, C., & Schneider, E. 2013. 
+Deconstructing disengagement: analyzing learner 
+subpopulations in massive open online courses. In 
+Proceedings of the Third International Conference on 
+Learning Analytics and Knowledge (Leuven, Belgium). 
+ACM, New York, NY, 170-179. 
+
+[26] Knowlton, D. S. 2005. A taxonomy of learning through 
+asynchronous discussion. Journal of Interactive Learning 
+Research, 16(2), 155-177. 
+
+[27] Locke, E. A., & Latham, G. P. 2006. New directions in goal-
+setting theory. Current Directions in Psychological 
+Science, 15(5), 265-268. 
+
+[28] Lockyer, L., Heathcote, E., & Dawson, S. 2013. Informing 
+pedagogical action: Aligning learning analytics with learning 
+design. American Behavioral Scientist, 57(10), 1439-1459. 
+
+[29] McAlpine, L., & Weston, C. 2000. Reflection: Issues related 
+to improving professors' teaching and students' learning. 
+Instructional Science, 28(5), 363-385. 
+
+[30] McNely, B. J., Gestwicki, P., Hill, J. H., Parli-Horne, P., & 
+Johnson, E. 2012. Learning analytics for collaborative 
+writing: a prototype and case study. In Proceedings of the 
+2nd International Conference on Learning Analytics and 
+Knowledge (Vancouver, Canada, 2012). ACM, New York, 
+NY, 222-225. 
+
+[31] Messick, S. 1989. Meaning and values in test validation: The 
+science and ethics of assessment. Educational Researcher, 
+18(2), 5-11. 
+
+[32] Roll, I., Aleven, V., & Koedinger, K. R. 2010. The invention 
+lab: Using a hybrid of model tracing and constraint- based 
+modeling to offer intelligent support in inquiry 
+environments. In Proceedings of the 10th International 
+Conference on Intelligent Tutoring Systems. (Berlin, 
+Germany, 2010). Springer, Berlin Heidelberg, 115-124. 
+
+210
+
+
+
+[33] Savery, J. & Duffy, T. 1996. Problem based learning: An 
+instructional model and its constructivist framework. In B. 
+Wilson Ed. Constructivist learning environments: Case 
+studies in instructional design.  Educational Technology 
+Publications, Englewood Cliffs, 135–148. 
+
+[34] Schön, D. A. 1983. The reflective practitioner: How 
+professionals think in action. Basic Books, New York, NY. 
+
+[35] Schunk, D. H. 1990. Goal setting and self-efficacy during 
+self-regulated learning. Educational Psychologist, 25(1), 71-
+86. 
+
+[36] Schunk, D. H., & Zimmerman, B. J. 2012. Self-regulation 
+and learning. In I. B. Weiner, W. M. Reynolds & G. E. 
+Miller Eds. Handbook of psychology, Vol. 7, Educational 
+psychology, 2nd ed. Wiley, Hoboken, NJ, 45-68. 
+
+[37] Siemens, G.,Gaševi?, D., Haythornthwaite, C., Dawson, S., 
+Buckingham Shum, S., Ferguson,R., et al. 2011. Open 
+Learning Analytics: An Integrated and Modularized 
+Platform (Concept Paper): SOLAR.  
+
+[38] Siemens, G., & Long, P. 2011. Penetrating the fog: Analytics 
+in learning and education. Educause Review, 46(5), 30-32. 
+
+[39] Stolterman, E. & Wiberg, M. 2010. Concept-driven 
+interaction design research. Human–Computer Interaction, 
+25(2), 95-118. 
+
+[40] Trist, E. 1981. The evolution of sociotechnical systems as a 
+conceptual framework and as an action research program. In 
+in A. Van de Ven & W. Joyce Eds., Perspectives on 
+organization design and behavior. Wiley, New York, 19-75. 
+
+[41] van Harmelen M. & Workman, D. 2012. Analytics for 
+learning and teaching. Technical report. CETIS Analytics 
+Series Vol 1. No. 3. 
+
+[42] Veenman, M. 2013. Metacognition and learning: conceptual 
+and methodological considerations revisited. What have we 
+learned during the last decade? Keynote address given at 
+EARLI 2013. Munich, Germany. 
+
+[43] Verbert, K., Duval, E., Klerkx, J., Govaerts, S. & Santos, 
+J.L. 2013. Learning analytics dashboard applications. 
+American Behavioral Scientist, 57(10), 1500-1509. 
+
+[44] Winne, P. H., & Hadwin, A. F. 2013. nStudy: Tracing and 
+supporting self-regulated learning in the internet. In R. 
+Azevedo and V. Aleven Eds. International handbook of 
+metacognition and learning technologies. Springer, New 
+York, 293-308. 
+
+[45] Wise, A. F., Zhao; Y. & Hausknecht, S. N. 2013. Learning 
+analytics for online discussions:  A pedagogical model for 
+intervention with embedded and extracted analytics. In 
+Proceedings of the Third International Conference on 
+Learning Analytics and Knowledge (Leuven, Belgium). 
+ACM, New York, NY, 48-56. 
+
+[46] Wise, A. F., Zhao, Y. & Hausknecht, S. (in press). Learning 
+analytics for online discussions: Embedded and extracted 
+approaches. Journal of Learning Analytics. 
+
+[47] Zeini, S., Göhnert T., Krempel L., & Hoppe H. U. 2012. The 
+impact of measurement time on subgroup detection in online 
+communities. In Proceedings of the 2012 IEEE/ACM 
+International Conference on Advances in Social Networks 
+Analysis and Mining. (Instanbul, Turkey). IEEE, New York, 
+NY, 389-394 
+
+[48] Zimmerman, B. J., & Schunk, D. H. Eds. 2013. Self-
+regulated learning and academic achievement: Theoretical 
+perspectives 2nd ed. Routledge, London. 
+
+[49] Zimmerman, B. J., Bandura, A., & Martinez-Pons, M. 1992. 
+Self-motivation for academic attainment: The role of self-
+efficacy beliefs and personal goal setting. American 
+Educational Research Journal, 29(3), 663-676. 
+
+6. ACKNOWLEDGMENTS 
+I would like to thank the Social Sciences and Humanities Council 
+of Canada for their generous support of this work. 
+
+ 
+ 
+
+211
+
+
+
+
+

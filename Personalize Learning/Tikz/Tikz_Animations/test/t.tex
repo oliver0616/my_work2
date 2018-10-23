@@ -1,0 +1,62 @@
+\documentclass[hyperref={pdfpagelabels=false}]{beamer}
+
+%\usepackage[utf8]{inputenc} % this is needed for german umlauts
+%\usepackage[ngerman]{babel} % this is needed for german umlauts
+%\usepackage[T1]{fontenc}    % this is needed for correct output of umlauts in pdf
+\usepackage{verbatim}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{quotes,angles}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{arrows,shapes}
+
+% see http://deic.uab.es/~iblanes/beamer_gallery/index_by_theme.html
+%\usetheme{Frankfurt}
+%\usefonttheme{professionalfonts}
+
+\begin{document}
+
+%\pgfdeclarelayer{background}
+%\pgfdeclarelayer{foreground}
+%\pgfsetlayers{background,main,foreground}
+
+\begin{frame}
+
+	\begin{figure}
+    \begin{tikzpicture}
+    %[scale=3,
+    %tdplot_main_coords,
+    %axis/.style={->,blue,thick},
+    %back/.style={gray},
+    %vector/.style={-stealth,red,very thick}]
+
+    %define
+    %\coordinate (o) at (0,0,0);
+	  %\coordinate (x) at (3,0,0);
+	  %\coordinate (y) at (0,3,0);
+  	%\coordinate (z) at (0,0,3);
+    %\coordinate (yz) at (0,3,3);
+   	%\coordinate (xy) at (3,3,0);
+   	%\coordinate (xz) at (3,0,3);
+
+   	%background
+   	%\filldraw[ draw=blue!20, fill=blue!20] (o) -- (y) -- (yz) -- (z) -- cycle;
+   	%\filldraw[ draw=blue!20, fill=blue!20] (o) -- (y) -- (xy) -- (x) -- cycle;
+   	%\filldraw[ draw=blue!20, fill=blue!20] (o) -- (x) -- (xz) -- (z) -- cycle;
+
+   	%axis
+	%\draw[axis,-{Latex[length=3mm]}] (o) -- (x) node[anchor=north east]{$Analytic$};
+	%\draw[axis,-{Latex[length=3mm]}] (o) -- (y) node[anchor=north west]{$data$};
+	%\draw[axis,-{Latex[length=3mm]}] (o) -- (z) node[anchor=south]{$learning$};
+
+        %\begin{pgfonlayer}{background}
+        	%\path<2->[draw,line width=5pt,-,red!50] (a.center) edge node {} (b.center);
+        	%\path<10->[draw,line width=5pt,-,red!50] (b.center) edge node {} (d.center);
+        	%\path<12->[draw,line width=5pt,-,red!50] (d.center) edge node {} (e.center);
+    	%\end{pgfonlayer}
+
+
+    \end{tikzpicture}
+	\end{figure}
+
+\end{frame}
+\end{document}

@@ -1,0 +1,808 @@
+
+Applying Analytics for a Learning Portal: 
+the Organic.Edunet Case Study
+
+Nikos Palavitsinis, Vassilios Protonotarios, Nikos Manouselis 
+Greek Research and Technology Network (GRNET),
+
+56 Messogeion Av., 115 27, Athens, Greece 
+palavitsinis@grnet.gr; vprot@aua.gr; nikosm@ieee.org 
+
+ABSTRACT
+Learning portals are education-oriented Web portals, which 
+provide access to a variety of educational material, usually 
+coming from various sources.  In order to explore how they can 
+support their users during an educational activity (e.g. preparation 
+of teaching a course), it would be interesting to study the behavior 
+of their visitors, focusing on the particular context in which 
+specific actions are taking place. For example, user activities may 
+be analyzed during specific learning events, when activities are 
+more focused. This paper discusses the case study of the 
+Organic.Edunet Web portal (www.organic-edunet.eu), a learning 
+portal for organic agriculture educators that provides access to 
+more than 10,500 learning resources from a federation of 11 
+institutional repositories. The portal mostly focuses on serving 
+school teachers and university tutors and has attracted until today 
+almost 42.200 unique visitors from more than 160 countries, out 
+of which about 2.600 have registered to the portal. An effort is 
+made to study the users’ behavior, focusing in tutors and 
+educators in both schools and universities, in relation to specific 
+training events in which we know that they have been involved. 
+Therefore, we analyze logs of user activities that took place on 
+specific dates and geographical locations, in order to potentially 
+identify notable changes in their normal visiting behavior. 
+
+Categories and Subject Descriptors
+K.3.1 [Computers and Education]: Computer Uses in Education
+
+General Terms
+Design, Theory. 
+
+Keywords
+Web portal, log analysis, learning repositories, agriculture   
+
+1. INTRODUCTION
+Initially the term web portal was used to refer to well-known 
+Internet search and navigation sites that provided a starting point 
+for users to explore and access information on the World Wide 
+
+Web [17]. The term “Internet portal” or “Web portal” began to be 
+used to describe mega-sites (such as Yahoo!, Excite, AOL, MSN, 
+Netscape Netcenter, and others) that many Web visitors used as a 
+‘starting point’ for their web surfing. Since that time, Web portal 
+have significantly expanded and matured, and a diverse range of 
+portal types have been developed and used in different contexts 
+[10]. Nowadays, Web portals are generally defined as gateways to 
+information and services from multiple sources [14]. One 
+important component is the organization, navigation, labeling and 
+indexing of their content in order to facilitate searching of 
+information and services, so that users can search, identify and 
+access the most appropriate resources for their needs.  
+
+ Learning portals, Web portals that offer learners or educators 
+with a large selection of learning resources, are essential to the 
+further integration of information technologies and learning [7]. 
+The purpose of a learning portal is not simply indexing and 
+delivery but to facilitate actual reuse and sharing [5]. Thus, the 
+expected usage of services and resources found in learning portals 
+could be considered as different compared to the usage of other 
+types of portals (such as entertainment, information or 
+commercial ones). In order to explore more about the way that 
+users of learning portals interact with the portal services and the 
+indexed content, it is often useful to engage analytics - usually by 
+studying the log files of the portal. Such a log analysis can take 
+place in a systematic, repeatable but also practical way, allowing 
+portal owners to explore the actual usage of their learning portal 
+and to identify potentially interesting patterns of use [9][11]. 
+
+ In this paper, we examine the case of a Web portal that supports 
+users in finding digital learning resources to support and enrich 
+their teaching activities. It is the case of the Organic.Edunet portal 
+(www.organic-edunet.eu) that aggregates resources on organic 
+agriculture and agro-ecology, allowing educators to find and 
+retrieve this content from a single point of access. We particularly 
+examine how the portal has been used before, during and after the 
+organization of training events for potential users (i.e. educators) 
+in several European countries. This analysis focuses both on the 
+general usage statistics of the portal, but it also looks at the user 
+level, trying to identify changes on the typical user profile of the 
+portal due to the training events that were organized. 
+Additionally, a comparison is attempted, looking at the same 
+statistics over an extended period of 7 months, when the portal 
+was supported by community events organized such as the Open 
+Days and the statistics for the next 7 months, when the project 
+was completed and the portal was functioning independent of 
+project related events. 
+
+Permission to make digital or hard copies of all or part of this work for 
+personal or classroom use is granted without fee provided that copies are 
+not made or distributed for profit or commercial advantage and that 
+copies bear this notice and the full citation on the first page. To copy 
+otherwise, or republish, to post on servers or to redistribute to lists, 
+requires prior specific permission and/or a fee. 
+LAK’11, February 27-March 1, 2011, Banff, AB, Canada. 
+Copyright 2011 ACM 978-1-4503-1057-4/11/02…$10.00. 
+
+140
+
+
+
+2. BACKGROUND
+The Organic.Edunet Web portal aims to facilitate access, usage 
+and exploitation of digital educational content related to Organic 
+Agriculture (OA) and Agroecology (AE). Organic.Edunet aims to 
+support stakeholders producing content about OA & AE in order 
+to publish it in an online federation of learning repositories and 
+describe it according to multilingual, standard-complying 
+metadata. The portal front-end features a multilingual user 
+interface translated into fourteen (14) languages, providing access 
+to almost 11.000 learning resources from a federation of eleven 
+(11) institutional repositories. The targeted audiences of 
+Organic.Edunet portal are mainly educators: school teachers 
+looking for resources to help them prepare their relevant teaching 
+activities (e.g. how to set up a school garden to support hands-on 
+environmental education); and academics (professors, teaching 
+staff or researchers) in agriculture and life science topics, looking 
+for resources to help them with their teaching, learning and 
+research activities (e.g. writing a case study report on a particular 
+crop or farm type). Potential users also include the stakeholders 
+producing content, such as agricultural libraries and academic 
+publishers. The portal has attracted, until the end of June 2011, 
+54.300 visits and 209.700 page views from 42.200 unique visitors 
+from approximately 170 countries, out of which more than 2.600 
+
+have registered to the portal. These numbers assure that the portal 
+has been used from a wide audience, thus allowing an analysis of 
+the users’ behavior to reach safe conclusions as far as the portal 
+usage is concerned.
+
+In order to introduce the potential users to the portal, a series of 
+Open Days have been organized in various countries, featuring 
+validation events where educators had the chance to work with the 
+Organic.Edunet portal. These events were organized based on 
+specific guidelines and also provided clear instructions to all the 
+participants (http://virtuelleschule.bmukk.gv.at/projekte-
+international/eu-projekte/organicedunet/open-days/). From its 
+launch, the Organic.Edunet Portal has been linked to a Google 
+Analytics (http://www.google.com/analytics) account in order to 
+track the visits and be able to document its usage. Another 
+envisaged use for this account was to try and evaluate the portal 
+through analyzing focused statistics having to do with a range of 
+parameters, like the day or time of visit, the geographic areas of 
+the visitors, but also the origins of their visits. The visitors’ log 
+files have been collected and analyzed using the Google Analytics 
+tool in order for observations to be made in relation to the way the 
+behavior of users was affected by the organization of such 
+training events. 
+
+Table 1. Overview of the Open Days organized in Schools & Universities 
+
+No Location Date Audience No of Participants 
+
+1 Tartu, Estonia 3-5/2/10 Academics / Researchers 12
+
+2 Thessaloniki, Greece 23/3/10 Academics / Researchers 10
+
+3 Vienna, Austria 23/3/10 School Teachers 15
+
+4 Vienna, Austria 6/5/10 School Teachers 16
+
+5 Budapest, Hungary 28/5/10 School Teachers 8
+
+6 Thessaloniki, Greece 25/5/10 Academics / Researchers 10
+
+7 Budapest, Hungary 31/5/10 Academics / Researchers 18
+
+8 Tallin, Estonia 17/8/10 School Teachers 10
+
+9 Harjumaa, Estonia 18-19/8/10 School Teachers 12
+
+10 Essen, Germany 30/8/10 Academics / Researchers 8
+
+11 Dresden, Germany 11/9/10 School Teachers 14
+
+12 Budapest, Hungary 14-15/9/10 Academics / Researchers 12
+
+13 Vienna, Austria 22/9/10 School Teachers 15
+
+   TOTAL 160
+
+3. METHODOLOGY
+A brief outlook on existing literature on evaluating learning 
+portals has showed that there are different ways in which a portal 
+can be evaluated. One option would be to provide users with 
+questionnaires or web-based evaluation tools and analyze the 
+feedback provided [12][16]. This evaluation has already been 
+carried out in Organic.Edunet with an online questionnaire 
+(http://www.ieru.org/organicsurvey/). A second option would be 
+to apply an analytics approach, by analyzing the log files of the 
+users in order to study their visiting behavior [2][3][6]. Hybrid 
+methods using both approaches can also been found in the 
+literature [13]. 
+
+3.1 Context of Study 
+The analysis carried out in the context of this paper, particularly 
+focuses on studying how the usage of the Organic.Edunet portal 
+was affected by the organization of the focused training events 
+(i.e. Open Days). Overall, thirteen (13) of the Open Days that 
+have been organized in five (5) different countries are examined. 
+These Open Days had 160 participants comprising mainly from 
+school teachers and academic staff. Brief information on these 
+Open Days is presented in Table 1: 
+
+141
+
+
+
+3.2 Steps Taken and Data Used
+
+In order to study the portal statistics before, during and after the 
+Open Days, some variables have been defined and some 
+assumptions were made. More specifically, when looking at the 
+data on Table 1, it’s apparent that the Open Days took place on 
+two distinct periods and not throughout the whole period of 
+reference. The first group of Open Days generally took place 
+during March & May 2010 (the fact that one Open Day took place 
+during early February it is not considered to affect results so 
+much) whereas the second group of Open Days took place on 
+August-September 2010. Our analysis focuses on the period 
+before the two groups of Open Days (Pre-OD), the actual Open 
+Days (OD) and finally on the period after the Open Days (Post-
+OD), more specifically: 
+
+a) The time before the first group of Open Days is 
+symbolized as “Pre-OD”, whereas the first period of 
+Open Days is symbolized in all graphs as “OD1”. This 
+time following the first group of Open Days is 
+symbolized as “Post-OD1”. Respectively, the second 
+Open Days’ period is called “OD2” and the period 
+following the second group of events took place is 
+symbolized as “Post-OD2”, 
+
+b) The portal-related variables selected to be examined 
+were: Visits for the portal, Page Views, Unique Visitors, 
+Traffic Sources and Most Popular Pages. These 
+statistics are calculated for all the periods defined in (a), 
+
+c) The user profile that is also examined in this study, is 
+comprised by a set of statistics that try to focus on the 
+user-level behavior that can possibly lead to new 
+insights on the use of a thematic portal with a focused 
+community around it. More specifically, the variables 
+measured here include: Average Time on Portal, 
+Average Time on Page, Pages Accessed per Visit, 
+Visitor Loyalty and Depth of Visit 
+
+Definitions
+Deep visitor: Deep visitor would be the visitor that in one visit 
+would open more pages than the average pages per visit of all the 
+visitors put together for the same period of time.
+
+Statistics for this metric were calculated using the “Depth of 
+Visit” available in Google Analytics, showing the percentage of 
+users that visited one page per visit, two pages per visit, three 
+pages, etc. up to the class of 51-100 pages.
+Bounces: Any visit during which the user views only one page and 
+then “exits” the portal, is considered as a bounce 
+Visitor Loyalty: Loyalty of each visitor shows the times per time 
+period (i.e. day, week, and month) that a user visits a website. 
+Data post-processing and analysis was carried out using Microsoft 
+Excel where exported CSV files from Google Analytics where 
+processed. The results are presented in the form of tables and 
+figures that focus on the variables that are examined. Column 
+charts were chosen to present focused quantitative data whereas 
+tables were mainly used to provide overviews of the data per 
+region.
+The main research question explored in this initial analysis is:  
+How do the usage statistics both on the portal level but also on 
+the individual user level, change, after a series of training events 
+on the portal is organized? E.g. do educators start using more the 
+Organic.Edunet Web portal? How is that reflected on the user-
+level statistics? 
+
+4. INITIAL RESULTS 
+
+4.1 Portal-level Statistics 
+In this section, we present the statistics related to the portal in 
+general, trying to identify the way in which they change, if so, 
+after the organization of an Open Day.  
+Table 4, shows the most famous pages of the portal measuring the 
+visits per day that each page attracted. As it was expected, most of 
+the visits to the portal originate from the homepage, so this is the 
+highest ranking page of all. Simple search (text-based search) is 
+also a very popular destination within the portal, but in this case, 
+the visitation rates fluctuate less than the ones for the homepage. 
+Despite that, comparing all the search functionalities offered, text-
+based search ranks on the top. Help on how someone can use 
+these functionalities is also visited pretty often, with high 
+numbers during the Open Day periods, also. Browsing through 
+the resources based on specific criteria (educational level, 
+language, difficulty, etc.) is also a widely used search method in 
+the portal which follows a steady but decreasing usage. Browsing 
+is followed by the Semantic Search which involves searching 
+through the terms of a domain specific ontology deployed as a 
+tree of terms and concepts.   
+
+Table 2. Overview of portal statistics before, during & after the Open Day periods defined 
+Visits per 
+
+day 
+Page Views 
+
+per day 
+Visitors
+per day Direct
+
+Search 
+Engines Refer.
+
+Bounces 
+per day 
+
+PRE-OD 14,5 121,6 6,9 65% 21% 14% 5,3
+
+OD1 33,4 194,1 19,7 50% 32% 18% 12,7
+
+POST-OD1 32,6 159,9 19,4 43.7% 25.7% 30.6% 14,9
+
+OD2 54,2 250,6 31,9 44.1% 26% 29.9% 23,1
+
+POST-OD2 46,9 182 36,9 24.8% 16.5% 58.7% 26,4
+
+142
+
+
+
+Semantic searching seemed to gain some ground before and 
+during the second Open Day period, but again it fell to the levels 
+of visitation before the Open Days. 
+
+Looking at Table 2, it would have been expected to get higher 
+values for the periods of the Open Days in all metrics, when 
+compared to the respective “Pre” and “Post” Open Day periods. 
+So, for example, from 32.6 visits per day before the second Open 
+Day period, we moved to a 54.2 visits per day during the Open 
+Day period, which dropped to a 44.9 after the Open Days ended. 
+It’s interesting to note that even though the numbers drop after the 
+Open Days, they do not decrease to the same extent, showing 
+some proof that the Open Day actually brought upon a change to 
+the portal usage. One exception to this rule is the case of Page 
+Views per day for the second period of Open Days. 
+
+Examining the sources of visit, one could argue that time given, 
+the users of the portal are using it more and more, and therefore it 
+could be safe to assume that they would also visit the portal 
+directly and not through search engines or other referencing 
+websites. This assumption is contradicted by findings, as direct 
+visits drop from a 65% before all Open Days, gradually to a 
+23.9% after their end. Visits generated by search engines do not 
+seem to follow and clear pattern (ranging from 18.5% to 32%) 
+whereas visits from referencing sites gradually increased from a 
+mere 14% to almost 60%! The explanation to this comes from a 
+factor outside the portal itself. The Organic.Edunet portal was 
+mostly referenced in websites of consortium members in the 
+beginning of the period examined but was also promoted through 
+a network of affiliated partners which was developed during the 
+course of the project, and mainly during the last quarter of 2010. 
+In total, 83 affiliated partners put links to Organic.Edunet on their 
+websites, which can explain the rise of visits coming from 
+referencing websites.
+
+The interpretation of bounces is also interesting. Overall, bounces 
+seem not to be affected by the Open Days organized, in the sense 
+that they do not fluctuate at all before and after the Open Days, 
+but they show a steady increase throughout this period. Bounces 
+are of course included in portal visits and relating these two 
+numbers it is clear that the visits that did not bounce off the 
+portal, went into great depth. For example, for “Post-OD2” 
+period, only 18.2 visits per day did not bounce off the portal, but 
+these visits generated 127 page views per day, which are almost 
+seven pages per visit on an average.
+
+To see if this effect lasted and to which extent, after the 
+completion of all Open Days, the period that followed was also 
+examined. As it is apparent in Table 3, most of the statistics 
+improved, along with a switch in the way that people find the 
+portal. More find it through search engines and less directly, 
+which makes sense, since during the Open Days people were 
+
+given the URL in advance. Bounces per day are alarmingly high 
+and it’s characteristic that they rise more than the respective visits 
+per day. Meaning that the portal attracts more visits but the 
+biggest part of them leaves the website after looking at one page. 
+
+Table 4, shows the most famous pages of the portal measuring the 
+visits per day that each page attracted. As it was expected, most of 
+the visits to the portal originate from the homepage, so this is the 
+highest ranking page of all. Simple search (text-based search) is 
+also a very popular destination within the portal, but in this case, 
+the visitation rates fluctuate less than the ones for the homepage. 
+Despite that, comparing all the search functionalities offered, text-
+based search ranks on the top. Help on how someone can use 
+these functionalities is also visited pretty often, with high 
+numbers during the Open Day periods, also. Browsing through 
+the resources based on specific criteria (educational level, 
+language, difficulty, etc.) is also a widely used search method in 
+the portal which follows a steady but decreasing usage. Browsing 
+is followed by the Semantic Search which involves searching 
+through the terms of a domain specific ontology deployed as a 
+tree of terms and concepts. Semantic searching seemed to gain 
+some ground before and during the second Open Day period, but 
+again it fell to the levels of visitation before the Open Days.   
+“Educational Scenarios” is a portal page that offers content 
+specifically designed for use in the classroom of either schools or 
+universities, through elaborated scenarios on various topics 
+related to Organic Agriculture and Agroecology. Overall, this 
+page shows that despite a promising start it represents the least 
+popular page, close to the tag-based search. Finally, tag-based 
+search remained largely unused throughout the period examined.  
+All these statistics, related to ways in which users search for 
+content can greatly influence the interface design of the portal. 
+
+Looking again at the page popularity for the two aforementioned 
+periods, it seems that text-based search is becoming more and 
+more used, whereas all the other pages’ visitation is declining up 
+to 53%. In addition, an interesting finding came through 
+examining the top-50 pages for the whole period (1/2/2010 – 
+30/6/2011). Amongst them, 11 specific resources (and not portal 
+pages per se) related to organic cultivation of vegetables were 
+found. More specifically, the resources accessed, contained 
+videos/documents, explaining the organic method to cultivate: 
+strawberries (1.704 visits), potatoes (1.373 visits), parsley (497 
+visits), dill (458 visits), gumbo (422 visits), spinach (357 visits), 
+chicory (307 visits), broccoli (303 visits), eggplant (295 visits), 
+peas (289 visits) and cauliflower (288 visits). All these pages 
+summed up to 6.293 visits, which if examined as one “group” of 
+similar pages, have 12.2 visits per day.  
+
+Table 3. Overview of portal statistics during the whole Open Day period, compared to the 8 month period following the Open Days
+Visits per 
+
+day 
+Page Views 
+
+per day 
+Visitors per 
+
+day Direct
+Search 
+Engines Refer.
+
+Bounces 
+per day 
+
+Open Days Period (1/2/2010-30/10/10) 68.4 380.3 42.5 44.3% 31.2% 24.5% 30.8
+
+After Open Days (1/11/10-30/6/11) 144.9 422.7 126.5 12% 78.1% 9.9% 89.1
+
+Difference +111% +11% +197% -73% +150% -60% +189% 
+
+143
+
+
+
+Table 4. Most popular pages (visits per day) before, during & after the Open Day periods defined 
+
+Visits per day Pre-OD OD1 Post-OD1 OD2 Post-OD2
+
+Homepage 102 138 118 136 81
+
+Text-based Search 51 61 49 73 59
+
+Educational Scenarios 15 5 7 5 6
+
+Browse 12 14 7 9 5
+
+Semantic Search 6 9 14 14 17
+
+Tag search 4 4 2 2 2
+
+Table 5. Most popular pages (same as Table 4) during the whole Open Day period, compared to the 8 month period following the Open 
+Days 
+
+Visits per day Open Days period After Open Days Difference 
+
+Homepage 117.2 83.5 -29% 
+
+Text-based Search 57.4 85.5 +49% 
+
+Educational Scenarios 10.2 6.3 -38% 
+
+Browse 9.8 4.9 -50% 
+
+Semantic Search 26.2 12.6 -52% 
+
+Tag search 3 1.4 -53% 
+
+4.2 User-level Statistics 
+In this section, we present the statistics related to the users in 
+specific, trying to identify the way in which their behavior 
+changes, if so, after the organization of an Open Day.  
+Looking at Table 6, it seems that the average time spent on the 
+Organic.Edunet portal by each user is dropping throughout the 
+period, starting from approximately six minutes, down to almost 
+three minutes. So, overall, more visitors came to the portal as it 
+was depicted in the portal level statistics, spending all and all, less 
+
+time on the portal as it is shown here. Someone may have 
+expected that this would also be reflected in the average time 
+spent on each page, this is not the case. Although this time is also 
+decreased, the decrease is both not that big and it also fluctuates 
+from 59 to 73 seconds. Pages viewed per visit are dropping 
+gradually, which was also reflected on the most popular pages. 
+Looking at the depth of visit, it seems that the depth in which the 
+visitors use the portal, is more or less steady.  
+
+Table 6. Overview of portal statistics before, during & after the Open Day periods defined 
+
+Average time on portal
+(sec)
+
+Average time on 
+page
+(sec)
+
+Pages per visit 
+(PpV)
+
+Depth of Visit  
+(%>=PpV)
+
+Loyalty 
+(%>=1 visit per 
+
+week)
+
+PRE-OD 467 73 8.39 26.85% 5.02%
+
+OD1 269 59 5.8 27.15% 14.97%
+
+POST-OD1 229 63 4.9 26.80% 14.63%
+
+OD2 229 68 4.62 27.03% 21.51%
+
+POST-OD2 188 61 3.42 26.13% 6.44%
+
+User loyalty was measured as the percentage of visitors that came 
+back to the portal one or more times during a week. This limit was 
+defined in the context of this study to measure the loyalty of the 
+users of educational portals, as no such information could be 
+retrieved in other studies. Starting from the pre-Open Day period, 
+only about 5% of the users would return to the portal more than 
+once a week. As expected, during the first period of Open Days, 
+this number of loyal visitors tripled to 15% which more or less 
+was sustained during the period that followed the first set of Open 
+Days. As expected, the second set of Open Days enhanced visitor 
+loyalty, with one fifth of the visitors coming back to the portal at 
+
+least once a week. As with most of the stats that were analyzed so 
+far, user loyalty seems to have been “helped” by the Open Days, 
+increasing during them and returning to a lower level after them, 
+which is marginally above the initial loyalty, that was measured 
+before any Open Day took place. 
+Examining differences in the aforementioned statistics on the long 
+run, most of them are declining significantly. Overall, average 
+time spent both on a portal level and on the page level, decline as 
+pages per visit and loyalty do. Only the depth of visit has risen, 
+but when looked at in comparison to pages per visit, it seems that 
+this increase is not significant as only 16.5% of visitors visit more 
+
+144
+
+
+
+than 3 pages, whereas before 13.3% visited more than 5.6 pages 
+per visit. 
+
+Table 7. Overview of portal statistics during the whole Open Day period, compared to the 8 month period following the Open Days
+
+Average
+time on 
+
+portal (sec)
+
+Average
+time on 
+
+page
+(sec)
+
+Pages per 
+visit
+
+(PpV)
+
+Depth of Visit  
+
+(%>=PpV)
+
+Loyalty 
+(%>=1 visit per 
+
+week)
+
+Open Days Period 
+(1/2/2010-30/10/10) 326 58 5.6 13.3% 5.8%
+
+After Open Days 
+(1/11/10-30/6/11) 115 40 2.9 16.5% 1.7%
+
+Difference -65% -31% -48% +24% -71% 
+
+5. CONCLUSION
+
+This paper presented an initial analysis of the log files of the 
+Organic.Edunet portal, a Web portal that supports educators in 
+finding digital learning resources to support and enrich their 
+teaching activities. It particularly examined how the portal has 
+been used before, during and after the organization of focused 
+training events for potential users in several European countries. 
+It tried to study any notable changes in both the portal statistics 
+overall and also study any changes in the behavior of the users, 
+before, during and after the training events, both on a small scale 
+(periods of approx. 70 days) but also on a larger scale, examining 
+two 7-month periods.
+The present paper reached the following conclusions:  
+
+- The portal statistics retained some of the dynamics that 
+were created during the Open Days, two months after 
+their completion. On the long term, visits were 
+increased but most of the statistics declined for the 
+period following the end of the project,
+
+- Bounces continued to rise throughout the period 
+showing no direct relation to the Open Days organized. 
+In general, looking at the greater period of almost 1 year 
+and a half, bounces seem to rise hand in hand with the 
+visits attracted to the portal, 
+
+- It seems that traditional search functionalities worked 
+better for the users that largely did not use tag-based 
+search. Semantic search and browsing per topic were 
+used, but still not as much as expected, 
+
+- The typical user before the Open Days would not return 
+to the portal more than once a week and would spend 
+more than six minutes in the portal in total in each visit. 
+This user would occasionally visit more pages than the 
+portal’s average, taking a “deep visit”. After the end of 
+the Open Days, almost 7 months after the last Open 
+Day, the same user rarely returns to the portal more than 
+once a week and spends significantly less time on it, 
+
+- Many project-related, outside of the portal scope, 
+parameters affected the statistics on the portal (i.e. 
+affiliation strategy of the project, press releases 
+circulated) by drawing visits from a wide scope of 
+people that will influence the usage of the portal 
+
+As far as the analysis of the Open Days in groups is concerned, 
+one can argue that the results must be compared before and after 
+each Open Day, but this was not chosen for two reasons. First of 
+all, a preliminary analysis showed that the results were more or 
+less as expected showing no research interest when analyzing 
+Open Days per country; i.e. traffic is heavier during Open Days, 
+with more visits or that time spent on the portal increases due to 
+the structured exercises given during the Open Days. The second 
+reason had to do with selecting a bigger sample of users by 
+grouping the Open Days together, from which safer conclusions 
+could be drawn, whereas the limited sample of 15 participants per 
+Open Day could not provide that. 
+
+Another issue has to do with the fact that there is no standard 
+threshold that can characterize a user as loyal or otherwise, 
+because this number is more or less affected by the nature of the 
+website examined, the services it offers, etc. In a recent survey by 
+Chitika Inc.1, related to Facebook and other popular websites, a 
+loyal visitor was the one that came back to the website four or 
+more times per week. In the case of an Educational Portal, this 
+number might be too high of an expectation, so for the purpose of 
+this study, it was decided to set forth our own threshold in 
+characterizing someone as “loyal”. 
+
+Future work should focus on delving deeper, trying to elaborate 
+the generic research question into a set of research hypotheses 
+that will be statistically explored. Through such an analysis, it can 
+be decided if a measurable and confident change in the users’ 
+behavior is observed. A more detailed analysis can also take place 
+focusing on data such as the sections of the portals that are used 
+more during and after the training events (i.e. do the users spend 
+more time on new features/services that fit their needs?). Finally, 
+we are interested to view results in the light of the interaction of 
+different audiences with the portal (e.g. academics/researchers, 
+
+                                                                 
+1 http://insights.chitika.com/2009/digg-facebook-loyal-readers/ 
+
+145
+
+
+
+teachers, public, other). This could also indicate if separate portal 
+interfaces are needed to better serve each community.   
+
+6. ACKNOWLEDGMENTS
+The work presented in this paper has been funded with support by 
+the European Commission, and more specifically the project 
+250525 “Virtual Open Access Agriculture & Aquaculture 
+Repository: Sharing Scientific and Scholarly Research related to 
+Agriculture, Food, and Environment” of the ICT Policy Support 
+Programme (ICT PSP), Theme 4 - Open access to scientific 
+information.
+
+7. REFERENCES
+[1] Belcher, M., Place, E. & Conole, G. (2000). “Quality 
+
+assurance in subject gateways: creating high quality portals 
+on the Internet”. Quality Assurance in Education, 8 (1), 38-
+47
+
+[2] Buckley, B.C., Gobert, J.D. and Horwitz P. (2006). Using 
+log files to track students' model-based inquiry. In 
+Proceedings of the 7th international conference on Learning 
+sciences (ICLS '06). International Society of the Learning 
+Sciences 57-63. 
+
+[3] Carr, L., Brody, T. and Swan, A. (2008) Repository 
+Statistics: What Do We Want to Know? In: Third 
+International Conference on Open Repositories 2008, 1-4 
+April 2008, Southampton, United Kingdom 
+
+[4] Dubé, L., Bourhis, A., & Jacob, R. (2003). “Towards a 
+typology of virtual communities of practice”, Retrieved on 
+November 2nd, 2010 from: 
+http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.98
+.2079&rep=rep1&type=pdf  
+
+[5] Duncan, C. (2002). Digital Repositories: the ‘back-office of 
+e-Learning or all e-Learning?’, in Proc. of ALT-C 2002,
+Sunderland, 9-11 September. 
+
+[6] Hasan, L., Morris, A. and Probets, S., (2009). Using Google 
+Analytics to Evaluate the Usability of E-Commerce Sites. 
+Human Centered Design. In Proceedings of the 1st
+International Conference, HCD 2009, Held as Part of HCI 
+International 2009, San Diego, CA, USA, July 19-24, 2009 
+
+[7] Holden, C. (2003). From Local Challenges to a Global 
+Community: Learning Repositories and the Global Learning 
+Repositories Summit. Version 1.0, Academic ADL Co-Lab, 
+November 11. 
+
+[8] Katz, R. N. (2002). Web Portals and Higher Education: 
+Technologies to Make IT Personal. San Francisco, CA: John 
+Wiley & Sons, Retrieved on November 1st, 2010 from: 
+http://www.iskme.org/knowledge-
+bank/copy_of_articles/information-and-knowledge-
+management/pub5006d.pdf
+
+[9] Piearrakos, D. Paliouras, G. Papatheodorou, C. and 
+Spyropoulos, C. (2003). Web Usage Mining as a Tool for 
+Personalisation: A Survey. User Modeling and User Adapted 
+Interaction. Vol. 13, 2003, p.p. 311-372. 
+
+[10] Portals Community Fundamentals (2001). Portal Definition 
+and Types of Portals. PortalsCommunity. Retrieved August 
+23, 2001, 
+http://www.portalscommunity.com/library/fundamentals.cfm
+.
+
+[11] Santos Machado, C. and Becker, K. Distance Education: a 
+Web Usage Mining Study for the Evaluation of Learning 
+Site, In Proc. of the 3rd IEEE Int. Conference on Advanced 
+Learning Technologies (ICALT’03), Athens, Greece. June 
+2003.
+
+[12] Silius, K. & Tervakari, A-M. (2003). “The usefulness of 
+web-based learning environments. The Evaluation Tool into 
+the Portal of Finnish Virtual University.” International
+Conference on Network Universities and e-learning. 8-9 
+May 2003. Valencia. Spain. 
+
+[13] Stacey, E., & Rice, M. (2002). Evaluating an online learning 
+environment. Australian Journal of Educational Technology,
+18(3), 323–340. 
+
+[14] Tatnall, A.(2005). Web portals – the New Gateways to 
+Internet Information and Services. Hershey, PA: Idea Group 
+Publishing.
+
+[15] Van Baalen, P., Bloemhof-Ruwaard, J. & Van Heck, E. 
+(2005). “Knowledge sharing in an emerging network of 
+practice: The role of a knowledge portal”. European
+Management Journal, 23(3), 300-314 
+
+[16] Van der Heijden, H. (2002). Factors influencing the usage of 
+websites: The case of a generic portal in The Netherlands. 
+Information Management 40(6) 541–549. 
+
+[17] Winkler, R. (2001). Portals – The All-In-One Web 
+Supersites: Features, Functions, Definition, Taxonomy. SAP 
+Design Guild, Edition 3. Retrieved August 23, 2001, 
+http://www.sapdesignguild.org/editions/edition3/overview_
+edition3.asp.
+
+146
+
+
+

@@ -1,0 +1,1099 @@
+
+Uncovering Reviewing and Reflecting Behaviors From 
+Paper-based Formal Assessment 
+
+I-Han Hsiao 
+School of Computing, Informatics & 
+
+Decision Systems Engineering, 
+Arizona State University, 
+
+Tempe, AZ, USA 
+Sharon.Hsiao@asu.edu 
+
+Po-Kai Huang 
+School of Computing, Informatics & 
+
+Decision Systems Engineering, 
+Arizona State University, 
+
+Tempe, AZ, USA 
+phuang24@asu.edu 
+
+Hannah Murphy 
+W.P. Carey School of Business, 
+
+Arizona State University, 
+Tempe, AZ, USA 
+
+hmurphy2@asu.edu 
+ 
+ 
+
+ABSTRACT 
+In this paper, we study students' learning effectiveness through 
+their use of a homegrown educational technology, Web 
+Programming Grading Assistant (WPGA), which facilitates 
+grading and feedback delivery of paper-based assessments. We 
+designed a classroom study and collected data from a lower-
+division blended-instruction computer science class. We tracked 
+and modeled students’ reviewing and reflecting behaviors from 
+WPGA. The results show that students demonstrated an effort and 
+desire to review assessments regardless of if they were graded for 
+academic performance or for attendance. Hardworking students 
+achieved higher exam scores on average and were found to review 
+their exams and the correct questions frequently. Additionally, 
+student cohorts exhibited similar initial reviewing patterns, but 
+different in-depth reviewing and reflecting strategies. Ultimately, 
+this work contributes to the aggregation of multidimensional 
+learning analytics across the physical and cybersphere. 
+
+CCS Concepts 
+• Education Computer-assisted instruction   • Interactive 
+learning environment • E-Learning • Learning management 
+system.  
+
+Keywords 
+Feedback; Reflection; Programming Learning; Computing 
+Education; Cross LAK; Orchestration Technology; Blended 
+Instruction Classes. 
+
+1. INTRODUCTION 
+We have begun to see more and more orchestration technologies 
+(i.e. smart classrooms etc.) that focus on integrating and modeling 
+physical learning activities while making use of advanced learning 
+analytics. Some examples include Clickers [1] and multi-touch 
+tabletops [2] etc. Even with all of these new technologies, most 
+data sources of students’ performance are collected from 
+computer-assisted formative assessments or retrieved from 
+learning management systems. Data integration is less focused on 
+bridging physical and cyber learning spaces. In the inaugural 
+International Workshop on Learning Analytics Across Physical 
+and Digital Spaces in conjunction with the 6th International 
+Conference of Learning Analytics and Knowledge [3], learning 
+
+analytics researchers and learning scientists gathered to discuss 
+blended learning scenarios and associated overarching concerns in 
+data integration and learning analytics coordination across space. 
+In this work, we further investigate the integration of learning 
+analytics between the physical and digital environment by 
+deploying a ubiquitous learning technology and then tracing 
+students’ learning activities across space.  
+
+In today’s blended instruction classrooms, paper-based exams are 
+still one of the most popular formal assessment methods. Paper 
+exams allow the teacher a reasonable high degree of flexibility in 
+making the exam and proctoring it (i.e. any text editing software 
+can support making paper-based exams; on the contrary, online 
+assessments may require instructors to learn new content 
+authoring tools, which are typically domain & application 
+dependent); additionally, paper-based exams minimize the 
+potential for academic dishonesty, which is high when exams are 
+online. Several issues surface as class sizes grow. For instance, 
+grading a large amount of paper exams is difficult.  There are 
+usually many inconsistencies in the grading (among and within 
+the graders) [4]; there are difficulties in providing feedback (hand 
+written feedback is time consuming; delivering graded paper 
+exams back to students can be challenging etc.).  Therefore, 
+graders end up providing only limited feedback on tests; as a 
+result, students may end up focusing mostly on their final scores, 
+among several other issues [5]. From the literature, we have 
+learned that feedback is one of the most effective methods to 
+enhance students’ learning [6]. There has been a range of studies 
+discussing the impact of feedback types and feedback timing on 
+learning. Even so, there are more important questions about the 
+ubiquitous learning environment that we should be asking: Do 
+students care about their returned exams at all? Do they focus 
+only on their final score or do they put in the effort to review their 
+returned test? When they do review, how does it associate with 
+their learning? When using traditional paper-based exams, we can 
+only hope that students spend time reviewing and self-regulating 
+their learning.  
+
+Our research team designs a new educational technology to 
+facilitate grading paper-based assessment items, providing 
+feedback and delivering graded results to students via an online 
+platform. We hypothesize that providing a digital channel, which 
+allows students to access their physical assessments, will promote 
+reviewing and reflecting, and in turn positively impact students’ 
+learning. Thus, in this work, we focus on investigating students’ 
+reviewing and reflecting behaviors. We aim to answer the 
+following research questions: How do reviewing-and-reflecting 
+behaviors reveal to practitioners how they should overcome 
+contextual constraints? How do researchers design better, more 
+
+Permission to make digital or hard copies of all or part of this work for 
+personal or classroom use is granted without fee provided that copies are 
+not made or distributed for profit or commercial advantage and that 
+copies bear this notice and the full citation on the first page. To copy 
+otherwise, or republish, to post on servers or to redistribute to lists, 
+requires prior specific permission and/or a fee. Request permissions 
+from Permissions@acm.org. 
+LAK’17, March 13–17, 2017, Vancouver, BC, Canada. 
+© 2017 ACM. ISBN 978-1-4503-4870-6/17/03$15.00. 
+DOI: http://dx.doi.org/10.1145/3027385.3027415 
+
+
+
+pedagogically sound learning analytics solutions for blended 
+instruction classes? 
+In the rest of the paper, we present the theoretical background that 
+supports our educational technology design and research 
+methodology. We then describe the research platform and 
+classroom study design. Finally, we present evaluation results and 
+discuss the educational implications.  
+
+2. THEORETICAL BACKGROUND  
+2.1 Feedback on Learning 
+There are an abundance of factors that affect educational 
+achievement and some are more influential than others. Hattie and 
+Timperley [6] explores in The Power of Feedback specifically the 
+effects of positive vs. negative feedback. Interestingly, positive 
+feedback is not always positive for students’ growth and 
+achievement. For instance, praise for task performance is mostly 
+ineffective and extrinsic rewards can even be negative in that they 
+“undermine people’s taking responsibility for motivating or 
+regulating themselves.” In fact, in recent educational data mining 
+literature, we also found that “critical” rather than “confirmatory” 
+feedback is the most beneficial for learning regardless of whether 
+feedback was chosen or assigned [7]. 
+
+In [6], researchers also discussed the effects of timing of 
+feedback, stressing the importance of promptness. Another study, 
+PeerStudio [8] also explores the timing of feedback and reaches a 
+similar conclusion: fast feedback is very important. The article 
+reports that there really is no significant difference between slow 
+feedback and no feedback at all. Additionally, studies also reveal 
+that the availability of immediate self-corrective feedback greatly 
+elevates performance on examinations [9]; feedback with 
+individual scores for components of an assignment are more 
+effective than feedback with a totally summed up score [8].  
+
+Ultimately, these studies suggest that immediate feedback that is 
+task-related that provides individual scores for components rather 
+than a totally summed up score (more specific) is the most 
+beneficial for increasing students’ academic achievement. 
+Additionally, in recent learning analytics literature, we found that 
+formative assessment data has higher predictive power and 
+aggregated data sources are key to getting timely and predictive 
+feedback [10]. Therefore, in this work, we aim to streamline 
+feedback delivery across space, capture students’ behavior of how 
+they attend to feedback, and understand how students’ behavior 
+impacts their learning. 
+
+2.2 Reflection on Learning 
+Metacognitive awareness and self-regulation are essential to 
+successful learning [11-13]. Thus, in addition to formally 
+assessing students’ knowledge, the assessments should also 
+encourage or allow students to reflect on their own learning and 
+reasoning processes. Successful learners monitor their own 
+memory, comprehension, and performance to evaluate their 
+progress, and then use this information to adapt their current 
+strategies and behavior e.g., [11, 12]. Learners who do not engage 
+in metacognitive monitoring and reflection may fail to detect 
+knowledge gaps (i.e., they do not know what they do not know) 
+and may overestimate how well they will perform on subsequent 
+assessments. Ertmer and Newby [14] posed an interesting 
+distinction between two types of reflection: reflection in action 
+and reflection on action. The former type of reflection occurs 
+during study and practice as students track their immediate 
+performance. The latter occurs at a higher level as students 
+
+evaluate their performance and strategies over time. In this work, 
+we focus on the latter type.  We observe how students reflect after 
+being assessed.   
+
+Metacognition and self-regulation are not easy, and many learners 
+need support to engage in these processes reliably e.g. [15], 
+particularly in large lectures where students may easily fall into 
+“passive” learning habits [16]. However, feedback and explicit 
+prompts can be effective in stimulating or jump-starting self-
+regulatory activities. In our proposed technology, students will 
+receive formative and summative feedback in electronic form 
+after quizzes and exams are graded. More importantly, students 
+will be prompted to react on the graded items. Specifically, 
+students will also be invited to express their thought processes on 
+the graded items. 
+
+2.3 Technology Support in Feedback 
+Generation and Delivery 
+Automated assessment is one of the most popular methods in 
+scaling feedback generation. It also guarantees a fast turnaround 
+time. Such techniques have already been widely deployed in many 
+assessment types and are especially pertinent in STEM subjects, 
+such as programming assessments, physics exercises, math 
+exercises etc. For instance, exemplar systems are WEB-CAT [17] 
+and ASSYST [18], among many. The common approach is to 
+apply pattern-matching techniques that verify students’ answers 
+by comparing them with the correct answers. Most of these 
+systems are web-based evaluation tools. Unfortunately, in our 
+domain of interest, programming learning, automatic 
+programming evaluation emphasizes only the concrete aspects of 
+an answer. It does not take into account the flavor of the answer 
+(i.e. whether the student seems to have been on the right track or 
+if their logic/reasoning was somewhat correct). As a result, 
+programming instructors frequently examine the program quality 
+and issue feedback personally. The assessment approach is 
+particularly applicable for paper-based evaluation, which leads to 
+our central research question: how to integrate feedback analytics 
+across space. A few relevant early innovations have attempted to 
+process paper exams and hand written code. One such example is 
+the tablet grading system [19]. It uses tabletop scanners to 
+digitalize the exam papers and provides a central grading interface 
+on the tablet to assist in mass programming grading. It reports a 
+few benefits of digitizing paper exams (i.e. some default feedback 
+can be kept on the digital pages; a student’s identity can be kept 
+anonymous, preventing potential grader bias that may have 
+occurred if the grader recognized a student’s name). 
+
+Other adjacent related works also attempt to address the issue of 
+scaling up feedback production by creating parameterized 
+exercises, peer production etc. WebAssign  and QuizJET [21] are 
+two example programs that utilize  parameterized exercises to 
+create a sizeable collection of questions to facilitate automatic 
+programming evaluation; PeerGrader [22] and PeerWise [23] are 
+examples that utilize student cohorts to leverage mass production. 
+Overall, the field of automatic programming evaluation is less 
+focused on grading paper-based programming problems. 
+Therefore, there is less support for personalization in this area. 
+Our goal is to study students’ learning effectiveness through the 
+use of a new feedback delivery tool that bridges the physical and 
+digital learning environment.   
+
+
+
+3. RESEARCH PLATFORM: WEB 
+PROGRAMMING GRADING ASSISTANT  
+We develop a web-based system to facilitate grading paper-based 
+exams online. We name it Web Programming Grading Assistant 
+(WPGA). WPGA connects paper-based assessments to the 
+cybersphere and ensures teachers the flexibility to continue using 
+paper exams without having to learn new content authoring tools. 
+WPGA has three key features:  
+
+(1) Documenting paper-based assessments; (2) Augmented 
+grading and feedback-giving; (3) Reflective feedback delivery. 
+
+3.1  Streamlining the Documentation Process 
+of Paper-based Assessments 
+We utilize quick response codes (QR-codes) to associate each 
+assessment hard copy with an individual learner. We then use an 
+automatic document feeder to scan the students’ written exams. 
+All the scanned documents will be imported to WPGA as images. 
+The streamlining documentation process not only digitizes 
+physical content, but also establishes learner and learning content 
+links. 
+
+3.2 Augmented Grading & Feedback-giving 
+Interfaces 
+From the instructor’s perspective, management functionalities are 
+implemented to leverage grading efficiency (interface omitted). 
+The documents are digitized and labeled with learners’ 
+information and learning content (question number, question text, 
+exam number etc.).  This makes it easy for the instructor to 
+partition an exam into sections, and thus assign graders to target 
+specific question sets. Multiple graders are able to grade distinct 
+sections of the same exam simultaneously. WPGA is designed to 
+enhance grading efficiency at the macro-level, by greatly reducing 
+the time required for communication and physical content 
+delivery between instructors and graders.  
+
+From the grader’s perspective, the sorting feature permits a grader 
+to easily grade the same question on different students’ exams all 
+at once (Figure 1). This resolves the challenge of having to flip 
+through hundreds of pages when grading stacks of paper exams. It 
+also increases grading coherence because each grader focuses on 
+grading a certain question [4].  
+
+Figure 2 shows the grading interface, where the grading scheme is 
+bundled with feedback into interactive buttons (upper right 
+corner). Each question is awarded full marks in the default setting, 
+with all feedback buttons being blue. Upon each click, the grades 
+can be automatically calculated based on instructor’s pre-
+configured grading schemes, and the feedback button will turn red 
+(partial understanding) or grey (missing this concept). 
+Additionally, free form feedback can be provided in the text area. 
+According to our previous studies [4, 24], graders prefer to type in 
+comments rather than physically write them on paper. They are 
+comfortable using the technology to grade. Most importantly, 
+graders are able to copy and paste previously used comments for 
+similar mistakes.  Having to reuse earlier comments is a common 
+scenario.  
+
+ 
+Figure 1. An exam sorted by questions. 
+
+3.3 Reflective Feedback Delivery: Student 
+Interfaces 
+We purposefully design a reflective feedback delivery interface to 
+allow students to receive not only the numeric values of their 
+assessment grades & graders’ feedback, but to also allow them to 
+reflect and monitor their performances, through note-taking, 
+bookmarking, and explicitly acknowledging their understanding. 
+We implement three forms of reflection prompts: (a) a star 
+bookmark to note the importance of or the need to reference a 
+question in the future; (b) a checked box to express “I know how 
+to solve it now”; and (c) a free form text area allowing the student 
+to type in elaborated notes. Such prompts to reflect or explain 
+[25] can encourage students to (a) reflect on the accuracy of their 
+responses, and (b) reflect on the reasoning processes that led to 
+their answer (i.e., reflection in action). We consider the collection 
+of bookmarks, checkboxes, and notes as an externalization of 
+what s/he knows, and thus s/he might become more 
+metacognitively aware of her/his own subject matter knowledge 
+[26]. 
+
+ 
+Figure 2. Grading interface: grading scheme is tied to 
+feedback buttons; free form commenting area; correct 
+
+solution details. 
+There are two levels on which to view the student's interface: 
+Exam level overview (Figure 3) & Question level detail view 
+(Figure 4). Exam level overview provides the summary of the 
+quiz or exam, which displays the grade summary and the 
+snapshots of each exam page. Graded items are color-coded to 
+facilitate navigation: green shows full marks, red indicates zero 
+marks, and yellow indicates partial credit. To select a page to 
+review, one can click on the snapshot and enter the Question level 
+detail view. In this level, one can see the scores awarded for the 
+question, the grading scheme, the grading feedback, and the 
+correct solution. In addition, one can take notes to reflect on the 
+particular problem-solving assessment item or also bookmark the 
+question for future reference. We log all the students’ behavior in 
+
+
+
+the feedback delivery interface.  These behaviors include when 
+they log on to check their exams and what they review. Finally, 
+we provide a checkbox that students can use to mark a question as 
+“understood” or “not understood” (Figure 4 – bottom right 
+corner). 
+
+ 
+Figure 3. Exam level overview: overall marks and the number 
+
+of correct/incorrect question will be shown. 
+
+4.  METHODOLOGY 
+In this section, we describe the methods we used to research 
+students’ behavior in investigating feedback analytics.  
+
+4.1 Study Design & Data Collection 
+To investigate the impact of feedback on students’ learning, we 
+use WPGA to capture students’ behavior. We ask: What do 
+students do after exam grades are published? Do students review 
+the exams at all? When they do attempt to review, do they spend a 
+good amount of time studying or do they perform only a shallow 
+review? What content are they reviewing? Do students only look 
+at the questions that they made mistakes on or do they conduct a 
+comprehensive review? We conduct a classroom study in an 
+
+undergraduate Object-Oriented Programming & Data Structure 
+course, offered by the Computer Science program at Arizona State 
+University. The course is taught in a traditional blended 
+instruction format, with face-to-face lectures, supported by online 
+assignment submissions and in-class paper-based quizzes and 
+exams. There are two instructors among three sessions who teach 
+the same course. All sessions are supported by WPGA, which 
+serves as the formal assessment delivery portal. To control the 
+potential variables that may or may not affect the effectiveness of 
+WPGA, this paper focuses on the sessions taught by the same 
+instructor, which consists of 232 students in total. One session 
+consists of a smaller amount of students than the other (39 & 193 
+respectively). Essentially, both sessions are identical in terms of 
+course material and course conduct. The only difference is that the 
+sessions are offered on different days and hours. The smaller class 
+
+has three class meeting times (Monday, Wednesday, Friday); the 
+larger one has two (Tuesday and Thursday)  
+
+WPGA was just officially launched at the beginning of this Fall 
+semester. Currently, there are 6 computing courses using WPGA, 
+including Introduction to Programming, Data Structure, and 
+Algorithms. There are 35 active graders, including 3 instructors 
+and 32 student graders. At the moment of writing, there are 32 
+quizzes and exams administered collectively from these 6 courses, 
+serving 1198 of student users. WPGA records 12 distinct 
+operations, including exam and question clicks, filter clicks, 
+bookmarks, notes, see the correct answer clicks etc.  
+
+Figure 4. Question level detail view: summative and formative feedback will be displayed; students’ reflection can be 
+submitted and logged via this interface. 
+
+
+
+4.2 Modeling Sequential Review Strategy 
+using Hidden Markov Model 
+The Hidden Markov Model (HMM) is a popular method for 
+modeling sequential data. Previous studies have already shown its 
+effectiveness in modeling user information search processes [27, 
+28] and student learning processes [29]. In this study, we employ 
+the HMM to model students’ hidden tactics in reviewing an exam, 
+and refer to the use of each activity (e.g. view question, keep 
+notes) as the generated tactics by the hidden states. The hidden 
+tactics can be explained as the strategy used during the review 
+period. 
+
+The model consists of a sequence of review and reflect activities 
+from T1 to TM, and each activity is one of those predefined 
+actions: TS = {E, C, I, F and R} (Table 1). HMM assumes that we 
+also have a sequence of hidden states, from H1 to HM, and each 
+activity is generated by a corresponding hidden state, but different 
+activities can be generated by the same hidden state with different 
+probabilities. A HMM model has several parameters: the number 
+of hidden states HS, the start probability of each state ?, the 
+transition probabilities among any two hidden states Aij and the 
+emission probability from each state to each action bij. By only 
+defining the HS and ?, a Baum-Welch algorithm [30] can be used 
+to learn the emission and transition probabilities. 
+In order to investigate further on the impact of reviewing 
+behaviors on students’ learning, we look into their actions on the 
+returned assessments via WPGA. We categorize all students’ 
+activities based on their interactions with WPGA’s interface; there 
+are two categories (review and reflect) of behavior, with a total of 
+five actions (review exams (E), review correct questions (C), 
+review incorrect questions (I), apply advanced filtering to review 
+content (F)), and finally, reflect on learning content (R) by 
+keeping notes, bookmarking, or marking the item as learned 
+(Table 1). Specifically, we hypothesize that repeated reviewing 
+actions should lead to learning. To verify our hypothesis, we first 
+conduct unsupervised clustering on mined students’ performances 
+and sequential patterns. Secondly, we apply the Hidden Markov 
+Model to uncover behavior transitional tactics. 
+
+Table 1. WPGA reviewing and reflection activities 
+
+Behavior Action Description 
+
+Review 
+
+Exam (E) Click on Exam tab to examine each 
+individual quiz/exam; Overall marks 
+are shown. 
+
+Correct 
+Question (C) 
+
+Click on a single question to examine 
+question & answer details; Question 
+marks, grader’s/instructor’s 
+feedback; Question is color coded in 
+green 
+
+Incorrect 
+Question (I) 
+
+Click on a single question to examine 
+question & answer details; Question 
+marks, grader’s/instructor’s 
+feedback, and reflection prompts are 
+shown; Question is color coded in 
+yellow or red 
+
+Filter (F) Click on any advanced filters to 
+select targeted set of questions, i.e. 
+show only bookmarked questions, 
+not yet reflected questions, show 
+both. 
+
+Reflect Reflect (R)  Keep notes on the question 
+reviewing interfaces; Bookmark the 
+question for future review; Tick a 
+checkbox to acknowledge one’s 
+understanding on a question.  
+
+5. EVALUATION 
+5.1 Descriptive Data Results  
+There are several observations based on the descriptive data, they 
+are reported in the following subsections.  
+
+5.1.1 Students review quizzes regardless of if they 
+count towards academic performances or not  
+We found that when quizzes are only counted as attendance 
+toward their academic performance (quiz 1-2 & 4-6), averagely, 
+34.9% of the students review them at least once (Table 2). 
+Although the review rate is lower than the rate for quizzes that do 
+count towards academic performance (quiz3: 47.6%, exam1: 
+80.9%), it demonstrates students’ effort to learn the subject.  Note 
+that previously, we were unable to track how little or how 
+frequently students reviewed past quizzes or exams once graded 
+and redistributed. Presumably, students would review the returned 
+assessment items. Now, we know for certain that quizzes are 
+reviewed by 34.9% of students on average regardless of if the quiz 
+accounts for academic performance or simply for attendance. 
+Other questions arise: Do these attendance quizzes help in 
+learning at all? How does focused reviewing behavior of formal 
+assessments impact learning? To answer these questions, we must 
+look more deeply at how students review and what content they 
+review (in section 5.2).  
+
+Table 2. Average WPGA view rate (%) per assessment item. 
+Quiz3 & Exam1 scores count towards the final course grade; 
+
+the other quizzes are purely for attendance. 
+
+Avg 
+View 
+(%) 
+
+quiz1 quiz2 quiz3 quiz4 quiz5 exam1 quiz6 
+
+57.5 36.6 47.6 36.9 24.7 80.9 18.8 
+
+5.1.2 Hardworking reviewers perform better than 
+sluggish reviewers.   
+Based on WPGA average view distribution, we notice that 
+students generally pay more attention when the assessments are 
+directly attributed to course performance, such as quiz3 and 
+exam1 (Table 2). It raises the question: Who is reviewing the 
+assessments and how do they perform? We do a binary split on 
+student cohorts into two groups based on whether they viewed the 
+graded exam1 or not. We hypothesize that the students that 
+viewed their graded exams are hardworking; they should have 
+higher exam marks, and vice versa. Therefore, we label the group 
+that viewed exam1 at least once as the Hardworking group; the 
+other group is labeled as the Sluggish group, because they failed 
+to view their graded assessments. We found that the Hardworking 
+group indeed achieved higher average exam scores (M=91.64, 
+SD=6.68), while the Sluggish group scored 83.54 on average, with 
+a large standard deviation, 16.46 (Table 3). The Hardworking 
+group shows more coherent performance (smaller standard 
+deviation) and the Sluggish group illustrates the opposite. 
+Additionally, we look into how often and for how long 
+hardworking students reviewed their exams on WPGA. We found 
+that hardworking students viewed exam1 9.26 times on average 
+(SD=7.76).   Each visit was approximately 373.74 (SD=150.20) 
+
+
+
+seconds (about 6.2±2.5 minutes; we consider a student’s first 
+action to the last action on WPGA, thus, it eliminates those 
+students who log on but do nothing). The amount of effort 
+demonstrates the behavior of hardworking students. The next 
+question is: What do hardworking students do specifically when 
+reviewing on WPGA that contributes to their learning? We will 
+discuss students’ reviewing behavior shortly in Section 5.2. 
+
+Table 3. WPGA users’ performances 
+ Hardworking Sluggish 
+
+M±SD 91.64±6.68 83.54±16.46 
+
+5.2 Behavior versus performance clusters  
+5.2.1 General behavioral patterns based on WPGA 
+usage 
+Based on all the labeled students’ behavioral actions, there is a 
+range of 1 to 73 actions on one exam for a total of 188 out of 232 
+students (Note that these 188 students were previously labeled as 
+the Hardworking group, who used WPGA to review the exam at 
+least once). We first sort the exam scores by median, splitting 
+them into Top-half (M=96.28, SD=2.59, the third bar) and Bottom-
+half (M=83.43, SD=7.45, the fourth bar) (Figure 5). We find that 
+Top-half falls into the letter grade ‘A’ range; Bottom-half belongs 
+to the letter grade ‘B’ range (we consequently refer to both halves 
+as A students and B students). There is a significant difference in 
+grades between the two groups (p<.01).  
+
+ 
+Figure 5. The blue bars represent students who use WPGA 
+
+and indicate what their assessment outcomes are. The orange 
+bar represents the lazy students and shows that they never 
+
+access WPGA nor view their exams. 
+We then look into their corresponding reviewing and reflecting 
+behaviors. Figure 6 shows the behavior frequency distribution for 
+both performance groups. We found that no matter which 
+performance group a student is in, they attend to their exam and 
+correct questions frequently (3 times on an exam per person and 
+6.5 times on correct questions). In fact, B students review correct 
+questions at least 1 more time on average per person than A 
+students do. It again demonstrates the amount of effort that 
+hardworking students invest in reviewing. The frequencies of 
+filtering questions, reflecting on questions, and reviewing 
+incorrect questions are lower than the frequencies of reviewing 
+the correct questions and reviewing the overall exam score. 
+Therefore, we plot the data using a different scale (Figure 6 - 
+right) in order to visualize the contrasts between different 
+performance groups. We found that B students review incorrect 
+questions significantly more than A students. This is not 
+surprising, as B students made more mistakes on their exams, and 
+
+therefore have more incorrect questions that they are able to 
+review. We also found that B students applied significantly more 
+advanced filters when reviewing than A students did.  However, 
+they only reflected on their learning as frequently as A students. 
+Such results indicate that B students might demand more support 
+while reviewing; additionally, these students may not be reflecting 
+enough on what they learned during their review. 
+
+  
+Figure 6. Average behavior frequency (y-axis) for A & B 
+
+students. 
+
+5.2.2 Overall sequential behavioral patterns  
+In order to understand the reviewers’ effectiveness, we investigate 
+their strategies by clustering all students’ reviewing sequences. 
+We performed k-means clustering analysis. According to elbow 
+criterion [31], we found 6 distinct sequential pattern clusters 
+(Figure 7), where the x-axis represents the length of the sequence, 
+and each bar indicates each sequential pattern observation. Cluster 
+1 shows that 28.19% of the students conducted minimum review 
+activities. That means either there was nothing worth reviewing or 
+they did merely a shallow review, only looking at their overall 
+exam score or the incorrect questions. Cluster 2~3 show low to 
+medium review activities from a majority of the students (31.38% 
+and 29.25% respectively).  This cohort managed to conduct a 
+more comprehensive review by mixing up diverse reviewing 
+events, such as examining correct and incorrect questions, 
+reflecting on their learning, and applying filters to perform a 
+concentrated review. Finally, Cluster 4~6 conducted long review 
+sequences with various review activities and multiple reflection 
+episodes; however, this accounts for only 11.7% of the students. 
+Cluster statistics and attributes are summarized in Table 4. The 
+clusters reveal overall sequential behavioral patterns: reflection 
+generally happened in higher reviewing activities clusters. The 
+results suggest that there might be a positive correlation between 
+reviewing and reflecting, which is affirmation for practices that 
+encourage students to review their assessments more frequently. 
+
+Table 4. Summary of sequential pattern clusters 
+
+Cluster Attributes 
+
+1 Minimum review activities, no reflection activities (n=52) 
+
+2 Low to medium review activities, low reflection activities (n=59) 
+
+3 Low review activities, low reflection activities (n=55) 
+
+4 Medium review activities, low review incorrect questions and filters, high reflection activities (n=16) 
+
+5 Medium to high review activities, high reflection activities (n=3) 
+6 High review activities, low reflection activities (n=3) 
+
+0.00 
+
+5.00 
+
+10.00 
+
+15.00 
+
+20.00 
+
+Exam CorrectQ 
+
+0.00 
+
+1.00 
+
+2.00 
+
+3.00 
+
+A 
+B 
+
+
+
+5.3 Mapping the Reviewing Sequences to 
+Hidden Markov Model  
+To dig deeper into the learning effectiveness of reviewing and 
+reflecting behaviors, we use A & B student groups of sequential 
+actions data to construct statistical models to uncover the 
+probability of internal action transitional structures. The first step 
+in using the Hidden Markov Model (HMM) is to determine the 
+number of hidden states. A complex model with a large number of 
+states will increase the sequence likelihood because there are 
+more parameters that can be used to describe the model more 
+precisely. However, there is a high risk of over-fitting. A simple 
+model is less likely to over-fit the given dataset, but it may not be 
+able to uncover the natural features of the dataset. How to 
+determine the number of hidden states is still an open issue.  It is a 
+model selection problem in parameter learning of the HMM. In 
+our model selection, we use Akaike Information Criterion (AIC) 
+[30] to determine the optimal number of states. Based on the 
+model’s best performance by AIC, we choose HS=4 and HS=5 for 
+A and B student groups accordingly (Figure 8). 
+
+ 
+Figure 8. Choosing number of hidden states using AIC 
+
+Based on the state transitions for both performance groups’ 
+actions, we found the following interesting results:  
+
+5.3.1 Both A & B students perform on overview first, 
+detail on demand. 
+The hidden states are considered to be students’ reviewing 
+strategies. For instance, HS1 from both A & B students refers to 
+the reflection state, where students perform reflection activities.  
+This usually involves reviewing either incorrect questions or 
+correct questions. Another example, illustrated by the B students’ 
+HS4, reveals that students tend to focus on incorrect questions 
+when reviewing their exams. According to the prior probabilities 
+(start probabilities), the highest probabilities for both A & B 
+students are HS4 & HS3 (0.88 and 0.78 respectively) (Table 5). It 
+means the review sessions are likely to happen from these states. 
+Both states begin with reviewing the Exam, which are 0.95 & 1 
+with no other first order transitions (Table 6). The emission 
+probability of each hidden state to review/reflect states is shown 
+in Table 7 & 8, in which the probabilities under 0.05 were 
+removed for better presentation of the results. Such results 
+illustrate that most students attend to summative feedback first, by 
+examining their overall exam marks. 
+
+ 
+
+Table 5.  The prior probability of each hidden state (?) 
+Student group HS1 HS2 HS3 HS4 HS5 
+
+A 0.01 0.05 0.045 0.88 - 
+B 0.03 0.08 0.78 0.02 0.08 
+
+ 
+
+Figure 7. WPGA usage in sequential behavioral pattern clusters: reflection 
+generally happened in higher reviewing activity clusters. 
+
+
+
+Table 6. The hidden states of reviewing and reflecting 
+behavioral actions (bij) 
+
+Hidden States E C I F R 
+
+A-students 
+
+HS1 0 0 0.520 0 0.443 
+HS2 0 0.999 0 0 0 
+HS3 0 1 0 0 0 
+HS4 0.950 0 0 0 0 
+
+B-students 
+
+HS1 0 0.486 0 0 0.514 
+
+HS2 0 1 0 0 0 
+
+HS3 1 0 0 0 0 
+
+HS4 0.301 0 0.650 0 0 
+
+HS5 0 0 0 1 0 
+
+ 
+Table 7. A students transition probability among the hidden 
+
+states (Aij) 
+
+A HS1 HS2 HS3 HS4 
+
+HS1 0.694 0.158 - 0.147 
+
+HS2 - 0.416 0.554 - 
+
+HS3 - 0.654 - 0.323 
+
+HS4 - 0.147 0.286 0.550 
+
+ 
+Table 8. B students transition probability among the hidden 
+
+states (Aij) 
+B HS1 HS2 HS3 HS4 HS5 
+
+HS1 0.721 0.068 0.151 - 0.060 
+
+HS2 - 0.850 0.129 - - 
+
+HS3 - 0.503 0.446 - - 
+
+HS4 - 0.070 - 0.930 - 
+
+HS5 - - 0.253 - 0.723 
+
+5.3.2 A students review & reflect strategically: they 
+strive to get the wrong right. 
+Recall the B students HS4 (previously discussed in 5.3.1) in 
+which students reviewed exams and targeted incorrect questions.  
+From this information, we found that there are no internal 
+transitions from HS4 ! HS1 or HS1! HS4. It suggests that B 
+students did examine their mistakes, but never disclosed their 
+thoughts after reviewing them. On the contrary, A students 
+typically made fewer mistakes (higher grades imply fewer errors), 
+but did reflect after reviewing (HS2!HS1 and HS4!HS1). From 
+figure 9 orange shades & Figure 10 grey color shades are the 
+identified reviewing incorrect questions states (red bars indicating 
+reviewing incorrect questions), where A students managed to 
+reflect on the incorrect questions (actions I & R coexist in Figure 
+9 orange color shades state), but B students failed to do so (when 
+incorrect questions were reviewed, there were no corresponding 
+reflection activities; Figure 10 grey color shades state).  
+
+5.3.3 B students review persistently, but fail to 
+engage in deeper reflection. 
+We now examine the B students’ transition probability results 
+(Table 8).  Each diagonal cell is the highest in each row (except 
+
+HS3), which suggests a very interesting phenomenon in the 
+reviewing process: the same types of actions tend to be applied 
+closely with each other. This indicates a clear consistency among 
+reviewing episodes. One of the biggest benefits of applying such a 
+review strategy is that the ‘coherent reviewing procedure’ may 
+help reviewers reduce the cognitive load caused by switching 
+between different types of actions. For instance, a student may 
+keep on browsing graded items during review. However, in order 
+to raise students’ metacognition, we argue that students should 
+switch between reviewing and reflecting. They should not 
+unmindfully review without deeper reasoning or thinking.  
+
+Moreover, based on Figure 10, orange-color shades is the 
+identified reflection state for B students. It shows that B students 
+tended to make remarks on the correct questions. Such findings 
+suggest that B students may still consider the correct questions 
+challenging, and therefore, spend time reviewing them. Based on 
+reflection activities (keeping notes, bookmarking, and 
+acknowledging how to solve a problem), we also find that B 
+students mainly just keep bookmarks instead of engaging in 
+deeper reflection of assessment items. These discoveries are 
+important learning analytics for teachers to be able to remind 
+students to engage in deeper reflection. Meanwhile, they open up 
+opportunities to build intelligent models in the system to alert 
+such behaviors when a predictive sequential behavioral model 
+detects them. 
+
+6. CONCLUSIONS & DISCUSSIONS 
+6.1 Summary & Discussions 
+The goal of this project was to study students' learning 
+effectiveness through their use of Web Programming Grading 
+Assistant (WPGA), a homegrown innovative educational 
+technology that facilitates grading and feedback delivery of paper-
+based assessments. We designed a classroom study and collected 
+data from a lower-division blended-instruction computer science 
+class. We tracked and modeled students’ reviewing and reflecting 
+behaviors from WPGA. From the data gathered in the study, we 
+were able to mine students' behavior in response to feedback 
+received through WPGA. We reached many interesting 
+conclusions. 
+
+First, our students demonstrated an effort and desire to review 
+assessments regardless of if they were graded for academic 
+performance or for attendance. Second, hardworking students 
+achieved higher exam scores on average and were found to review 
+their exams and the correct questions frequently on WPGA. Third, 
+we found that the majority of students engaged in minimum and 
+low to medium review activities, while only a small percentage of 
+students conducted long review sequences and various 
+review/reflection activities. Lastly, A students and B students all 
+exhibited similar initial reviewing patterns, but different in-depth 
+reviewing and reflecting strategies. All students initially paid 
+attention to their exam scores. After reviewing their overall exam 
+scores, A students reflected on past mistakes, while B students 
+tended to repeat the same reviewing procedure and focus on 
+reviewing correct questions, and ultimately failed to engage in 
+deeper reflection.   
+
+“Classroom orchestration” is a field in transition, which defines 
+how a teacher manages multilayered activities in real time and in 
+a multi-constraints context [32]. The challenge of managing a 
+large size blended instruction class is evident. WPGA is designed 
+to support bridging the gap between the physical and cyber sphere 
+by aggregating multidimensional learning analytics. It prevents 
+
+
+
+teachers from being fearful that students may not be putting in 
+enough effort. It reinforces the feedback loop by amplifying 
+review-and-reflect opportunities. In conclusion, WPGA 
+successfully captures reviewing and reflecting learning behaviors. 
+The results indicate that students with higher performance 
+outcomes tend to engage in similar learning strategies, as do 
+students with lower performance outcomes.  Using the learning 
+analytics empowers instructors to better advise students as to how 
+they should improve their learning processes. Consequently, 
+students will ultimately be more effective and successful in their 
+studies.   
+6.2 Limitations and Future Work 
+Despite active usage in WPGA and many promising results found, 
+due to the late deployment of WPGA, only 5 weeks worth of 
+behavior data were captured at the point of writing. Programming 
+learning is inherently cumulative in nature. We need to conduct 
+more exhaustive analyses, such as human computer interaction 
+
+aspects of WPGA impacts on reflection quality. Additionally, one 
+of the foremost objectives of this project is to integrate multiple 
+sources of learning analytics across space. In this paper, we 
+focused on examining reviewing and reflecting behaviors via 
+seamless connection between physical and cyber spaces. In the 
+future, we need to consolidate the understanding of cross-spaces 
+by integrating more comprehensive assessment analytics, such as 
+assignments. Finally, we need to conduct more robust model 
+validations to be able to further predict students’ academic 
+performances. 
+
+7. REFERENCES 
+[1] Trees, A.R. and M.H. Jackson, (2007) The learning 
+
+environment in clicker classrooms: student processes of 
+learning and involvement in large university level courses 
+using student response systems. Learning, Media and 
+Technology. 32(1): p. 21-40. 
+
+Figure 9. A students review and reflect transition probability diagram 
+
+Figure 10. B students review and reflect transition probability diagram 
+
+
+
+[2] Martinez-Maldonado, R., Dimitriadis, Y., Martinez-Monés, 
+A., Kay, J., & Yacef, K., (2013) Capturing and analyzing 
+verbal and physical collaborative learning interactions at an 
+enriched interactive tabletop. International Journal of 
+Computer-Supported Collaborative Learning, 8(4): p. 455-
+485. 
+
+[3] R. Martinez-Maldonado, D. Suthers, N. R. Aljohani, D. 
+Hernandez-Leo, K. Kitto, A. Pardo, S. Charleer, and H. 
+Ogata. (2016) Cross-LAK: learning analytics across physical 
+and digital spaces. in Proceedings of the Sixth International 
+Conference on Learning Analytics & Knowledge.  
+
+[4] Hsiao, I. H. (2016). Mobile Grading Paper-Based 
+Programming Exams: Automatic Semantic Partial Credit 
+Assignment Approach. In European Conference on 
+Technology Enhanced Learning (pp. 110-123). Springer 
+International Publishing. 
+
+[5] Ambrose, S. A., Bridges, M. W., DiPietro, M., Lovett, M. C., 
+& Norman, M. K., (2010) How learning works: Seven 
+research-based principles for smart teaching. John Wiley & 
+Sons. 
+
+[6] Hattie, J. and H. Timperley, (2007) The power of feedback. 
+Review of educational research. 77(1): p. 81-112. 
+
+[7] Cutumisu, M. and D.L. Schwartz. (2016) Choosing versus 
+Receiving Feedback: The Impact of Feedback Valence on 
+Learning in an Assessment Game. in The 9th International 
+Conference on Educational Data Mining. (pp. 341-346).  
+
+[8] Kulkarni, C. E., Bernstein, M. S., & Klemmer, S. R. (2015). 
+PeerStudio: rapid peer feedback emphasizes revision and 
+improves performance. In Proceedings of the Second (2015) 
+ACM Conference on Learning@ Scale (pp. 75-84). ACM. 
+
+[9] Dihoff, R. E., Brosvic, G. M., Epstein, M. L., & Cook, M. J., 
+(2004) Provision of feedback during preparation for 
+academic testing: Learning is enhanced by immediate but not 
+delayed feedback. The Psychological Record. 54(2): p. 207. 
+
+[10] Tempelaar, D.T., B. Rienties, and B. Giesbers, (2015) In 
+search for the most informative data for feedback generation: 
+Learning Analytics in a data-rich context. Computers in 
+Human Behavior. 47: p. 157-167. 
+
+[11] Butler, D.L. and P.H. Winne, (1995) Feedback and self-
+regulated learning: A theoretical synthesis. Review of 
+educational research. 65(3): p. 245-281. 
+
+[12] Bjork, R.A., J. Dunlosky, and N. Kornell, (2013) Self-
+regulated learning: Beliefs, techniques, and illusions. Annual 
+review of psychology. 64: p. 417-444. 
+
+[13] Zimmerman, B.J. and D.H. Schunk, (2012) Self-regulated 
+learning and academic achievement: Theory, research, and 
+practice. Springer Science & Business Media. 
+
+[14] Ertmer, P.A. and T.J. Newby, (1996) The expert learner: 
+Strategic, self-regulated, and reflective. Instructional science. 
+24(1): p. 1-24. 
+
+[15] de Bruin, A.B. & T. van Gog, (2012) Improving self-
+monitoring and self-regulation: From cognitive psychology 
+to the classroom. Learning and Instruction. 22(4): p. 245-
+252. 
+
+[16] Freeman, S., Eddy, S. L., McDonough, M., Smith, M. K., 
+Okoroafor, N., Jordt, H., & Wenderoth, M. P., (2014) Active 
+learning increases student performance in science, 
+
+engineering, and mathematics. Proceedings of the National 
+Academy of Sciences. 111(23): p. 8410-8415. 
+
+[17] Edwards, S. H., & Perez-Quinones, M. A. (2008). Web-
+CAT: automatically grading programming assignments. In 
+ACM SIGCSE Bulletin (Vol. 40, No. 3, pp. 328-328). ACM. 
+
+[18] Jackson, D., & Usher, M. (1997). Grading student programs 
+using ASSYST. In ACM SIGCSE Bulletin (Vol. 29, No. 1, 
+pp. 335-339). ACM. 
+
+[19] Bloomfield, A., & Groves, J. F. (2008). A tablet-based paper 
+exam grading system. In ACM SIGCSE Bulletin (Vol. 40, 
+No. 3, pp. 83-87). ACM. 
+
+[20] Titus, A.P., L.W. Martin, and R.J. Beichner, (1998) Web-
+based testing in physics education: Methods and 
+opportunities. Computers in Physics. 12(2): p. 117-123. 
+
+[21] Hsiao, I.-H., S. Sosnovsky, and P. Brusilovsky, (2010) 
+Guiding students to the right questions: adaptive navigation 
+support in an E-Learning system for Java programming. 
+Journal of Computer Assisted Learning. 26(4): p. 270-283. 
+
+[22] Gehringer, E. F. (2001). Electronic peer review and peer 
+grading in computer-science courses. ACM SIGCSE Bulletin, 
+33(1), 139-143. 
+
+[23] Denny, P., Luxton-Reilly, A., & Hamer, J. (2008, June). 
+Student use of the PeerWise system. In ACM SIGCSE 
+Bulletin (Vol. 40, No. 3, pp. 73-77). ACM. 
+
+[24]  Hsiao, I.-H., S.K.P. Govindarajan, and Y.-L. Lin. (2016) 
+Semantic Visual Analytics for Today’s Programming 
+Classrooms. in The 6th international Learning Analytics & 
+Knowledge Conference. Edinburgh, UK: ACM. 
+
+[25] Chi, M.T., (2000) Self-explaining expository texts: The dual 
+processes of generating inferences and repairing mental 
+models. Advances in instructional psychology. 5: p. 161-238. 
+
+[26] Roscoe, R.D. and M.T. Chi, (2007) Understanding tutor 
+learning: Knowledge-building and knowledge-telling in peer 
+tutors’ explanations and questions. Review of Educational 
+Research. 77(4): p. 534-574. 
+
+[27] Han, S., Z. Yue, and D. He. (2013) Automatic detection of 
+search tactic in individual information seeking: A hidden 
+Markov model approach. in iConference. arXiv preprint 
+arXiv:1304.1924. 
+
+[28] Lu, Y. and I.-H. Hsiao. (2016) Seeking Programming-related 
+Information from Large Scaled Discussion Forums, Help or 
+Harm? The 9th International Conference on Educational 
+Data Mining, EDM. NCSU. p.442-447. 
+
+[29] Piech, C., Sahami, M., Koller, D., Cooper, S., & Blikstein, 
+P., (2012) Modeling how students learn to program, in 
+Proceedings of the 43rd ACM technical symposium on 
+Computer Science Education, ACM: Raleigh, North 
+Carolina, USA. p. 153-160. 
+
+[30] Baum, L. E., Petrie, T., Soules, G., & Weiss, N., (1970) A 
+maximization technique occurring in the statistical analysis 
+of probabilistic functions of Markov chains. The annals of 
+mathematical statistics. 41(1): p. 164-171. 
+
+[31] Ketchen, D.J. and C.L. Shook, (1996) The application of 
+cluster analysis in strategic management research: an 
+analysis and critique. Strategic management journal. 17(6): p. 
+441-458. 
+
+[32] Dillenbourg, P., (2013) Design for classroom orchestration. 
+Computers & Education. 69: p. 485-492. 
+
+
+

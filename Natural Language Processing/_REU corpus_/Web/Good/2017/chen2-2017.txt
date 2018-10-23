@@ -1,0 +1,247 @@
+
+Buying Time: Enabling Learners to become Earners with a
+Real-World Paid Task Recommender System
+
+Guanliang Chen?
+Delft University of Technology
+
+Delft, the Netherlands
+guanliang.chen@tudelft.nl
+
+Dan Davis†
+Delft University of Technology
+
+Delft, the Netherlands
+d.j.davis@tudelft.nl
+
+Markus Krause
+UC Berkeley ICSI
+
+Berkeley, California USA
+markus@icsi.berkeley.edu
+
+Claudia Hauff
+Delft University of Technology
+
+Delft, the Netherlands
+c.hauff@tudelft.nl
+
+Geert-Jan Houben
+Delft University of Technology
+
+Delft, the Netherlands
+g.j.p.m.houben@tudelft.nl
+
+ABSTRACT
+Massive Open Online Courses (MOOCs) aim to educate the
+world, especially learners from developing countries. While
+MOOCs are certainly available to the masses, they are not
+yet fully accessible. Although all course content is just clicks
+away, deeply engaging with a MOOC requires a substan-
+tial time commitment, which frequently becomes a barrier
+to success. To mitigate the time required to learn from a
+MOOC, we here introduce a design that enables learners
+to earn money by applying what they learn in the course
+to real-world marketplace tasks. We present a Paid Task
+Recommender System (Rec-$ys), which automatically rec-
+ommends course-relevant tasks to learners as drawn from
+online freelance platforms. Rec-$ys has been deployed into
+a data analysis MOOC and is currently under evaluation.
+
+CCS Concepts
+•Applied computing ? Learning management sys-
+tems;
+
+Keywords
+Learning Analytics, Learning Design, MOOCs
+
+1. INTRODUCTION
+To alleviate the challenge of learners devoting time to en-
+
+gage with MOOCs, we have developed a system that try to
+enable learners to earn money while taking MOOCs, thus
+“buying time.” But how can we enable hundreds of thou-
+sands of learners to earn money all at once? To achieve this,
+
+?The author’s research is supported by the Extension School
+of the Delft University of Technology.
+†The author’s research is supported by the Leiden-Delft-
+Erasmus Centre for Education and Learning.
+
+Permission to make digital or hard copies of part or all of this work for personal or
+classroom use is granted without fee provided that copies are not made or distributed
+for profit or commercial advantage and that copies bear this notice and the full citation
+on the first page. Copyrights for third-party components of this work must be honored.
+For all other uses, contact the owner/author(s).
+
+LAK ’17 March 13-17, 2017, Vancouver, BC, Canada
+c© 2017 Copyright held by the owner/author(s).
+
+ACM ISBN 978-1-4503-4870-6/17/03.
+
+DOI: http://dx.doi.org/10.1145/3027385.3029469
+
+we propose that online freelance platforms like UpWork1 can
+be included to formulate the solution. If we can automat-
+ically provide learners with recommendations of freelance
+paid tasks which are relevant to the course content, learn-
+ers can compete for solving these tasks as a means to earn
+money and thus better justify persisting through the course.
+As a foundation, our previous study [1] demonstrated that
+learners can solve these real-world paid tasks in high qual-
+ity. In this poster, we advance the research by implementing
+a Paid Task Recommender System (Rec-$ys), which auto-
+matically collects course-related tasks from UpWork and rec-
+ommends them to learners. The system has been deployed
+into the EX101x Data Analysis: Take It to theMAX(), which
+is currently running on the edX platform. The course aims
+to teach introductory data analysis skills using spreadsheet.
+
+We realize that whether learners will be selected to com-
+plete a task depends on not only their knowledge but also
+their experience. In other words, these learners will probably
+not be selected or earn money. But even so, we are still in-
+terested what effects these financial incentives of real-world
+tasks would have on learners and what potential strategies
+could be adopted to turn learners into earners. We hypothe-
+size that, by realizing the financial benefits to be gained from
+the external freelance platform, learners will exhibit higher
+engagement and completion rates in the course. By deploy-
+ing Rec-$ys in an experimental setup, we will investigate
+the following questions:
+
+• What are the effects of (continuously) presenting real-
+world paid tasks relevant to the course?
+
+• Can learners benefit from real-world paid tasks, e.g.,
+earning money or fostering their interests on the MOOC
+subject?
+
+• How does the payoff of the task affect learner engage-
+ment? For example, are easy tasks with low pay-
+ment more attractive than difficult tasks with high
+payment?
+
+2. SYSTEM ARCHITECTURE
+To make Rec-$ys easily reusable in a variety of MOOCs
+
+as well as online freelance platforms, we adopt a modular
+
+1https://www.upwork.com/
+
+http://dx.doi.org/10.1145/3027385.3029469
+
+
+Figure 1: Rec-$ys architecture. The yellow overlay
+indicates which modules have been constructed or
+are being constructed.
+
+structure in the development process, as depicted in Figure
+1. We briefly describe the structure layer by layer:
+
+MOOC: The MOOC layer serves as the playground for
+learners to interact with course components as well as
+Rec-$ys. The course is hosted by edX, which allows us
+to deploy the system as an iFrame component. By doing
+this, learners can interact with Rec-$ys in the same way
+they interact with other course material. Based on the
+available course material (e.g., lecture video transcripts,
+course description), the module Content extractor identi-
+fies two types of keywords: 1) general keywords describ-
+ing the MOOC subject and 2) content keywords specifying
+the detailed course content. For the data analysis MOOC,
+these keywords are identified by first extracting the top-
+k most frequent terms from the lecture video transcripts
+and then filtering out irrelevant ones by hand. A more
+automatic and advanced extraction method should be in-
+cluded so as to process courses with different subjects.
+
+Data layer: This layer is responsible for: 1) keeping track
+of learners’ activities and 2) collecting paid tasks from on-
+line freelance platforms. To be specific, the MOOC data
+collector collects all of the data generated during learners’
+interaction with the course material (e.g., watching lecture
+videos, answering quiz questions) and Rec-$ys (e.g., re-
+questing more tasks, clicking task links and jumping to
+freelance platforms, submitting feedback about the rec-
+ommended task). On the other hand, the module Free-
+lance task collector takes the general keywords generated
+by the module Content extractor as input and search for
+course-relevant tasks from freelance platforms like Up-
+Work, Witmart, Guru, etc. Currently, we only collect
+tasks from UpWork. As some retrieved tasks are not rel-
+evant to the course (e.g., those with high budget and re-
+quire much more advanced skills/knowledge to solve), the
+
+module Task filtering filters out tasks which meet the fol-
+lowing criteria: 1) no longer available; 2) without a fixed
+payment (i.e., hourly job) or the payment exceeds $250.
+After that, the Data processing module translates the col-
+lected data into a queryable format and stores them in
+database. In addition, as there are likely multiple stu-
+dents (plus the freelancers in freelance platforms) compet-
+ing for solving the same task, the module Task availability
+tracker regularly checks the status of tasks and updates
+them in the database so that the system will only recom-
+mend learners with tasks that are still available.
+
+Analysis layer: This layer aims to analyzing the relevance
+of tasks for learners based on their interaction with Rec-
+$ys. In the long run, we expect that such relevance (so as
+the recommendations) can be computed in a individually-
+personalized manner. However, as we currently have lit-
+tle knowledge about what learner features should be con-
+sidered when calculating this relevance, the module Task
+relevance estimation only uses the content keywords gen-
+erated by the module Content extractor as input and cal-
+culate the relevance score as these keywords’ occurrence
+in the task title, description and required skills stated by
+the task publisher.
+
+Intervention layer: To avoid a learner keeps receiving the
+same task or tens of thousands of learners compete for
+the same task, this layer dedicates to diversifying tasks
+recommended to different learners. At present, we use a
+randomization method to achieve. For a learner, we first
+retrieve the top-k most relevant tasks from the database;
+then, two out of these tasks are randomly selected as the
+returned recommendations.
+
+3. ONGOING WORK
+Rec-$ys has been deployed in a MOOC which runs from
+
+November 22, 2016 to May 23, 2018 in a self-paced mode.
+This enables us to continuously collect tasks from UpWork
+and recommend them to learners while observing how learn-
+ers interact with these tasks over an extended period of time.
+In the next stage, we plan to: 1) analyze learner activity
+data in answering our research questions; 2) improve the
+measurement of task relevance for the course; 3) explore ad-
+ditional strategies to diversify recommendation results; and
+4) explore methods about how our learners should be men-
+tored so that they are likely to win task bidding in freelance
+platforms [2].
+
+4. REFERENCES
+[1] G. Chen, D. Davis, M. Krause, E. Aivaloglou, C. Hauff,
+
+and G. J. Houben. Can learners be earners?
+investigating a design to enable mooc learners to apply
+their skills and earn money in an online market place.
+IEEE Transactions on Learning Technologies, pages
+1–12, 2016.
+
+[2] R. Suzuki, N. Salehi, M. S. Lam, J. C. Marroquin, and
+M. S. Bernstein. Atelier: Repurposing expert
+crowdsourcing tasks as micro-internships. In
+Proceedings of the 2016 CHI Conference on Human
+Factors in Computing Systems, CHI ’16, pages
+2645–2656, New York, NY, USA, 2016. ACM.
+
+
+	Introduction
+	System Architecture
+	Ongoing Work
+	References
+
+

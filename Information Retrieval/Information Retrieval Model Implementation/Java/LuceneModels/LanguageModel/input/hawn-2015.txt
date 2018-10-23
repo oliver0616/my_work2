@@ -1,0 +1,251 @@
+
+The Bridge Report: Bringing Learning Analytics  
+to Low-Income, Urban Schools  
+
+Aaron Hawn 
+Opportunity Charter School 
+
+240 W. 113th Street 
+New York, NY 10026 
+
+aaronhawn@opportunitycharter.org 
+
+ABSTRACT 
+Widespread adoption of learning analytics for risk prediction 
+faces different challenges at low-income secondary schools than 
+at post-secondary institutions, where such methods have been 
+more widely adopted. To leverage the benefits of learning 
+analytics for under-resourced communities, educators must 
+overcome the barriers to adoption faced by local schools: internet 
+access, data integration, data interpretation, and local alignment. 
+We present the case study of an enhanced reporting tool for 
+parents and teachers, the Bridge Report, locally designed to meet 
+the needs of a low-income secondary school in New York City. 
+Parent and Teacher focus groups suggest that addressing local 
+obstacles to learning analytics can create conditions for 
+enthusiastic adoption by parents and teachers.  
+
+Categories and Subject Descriptors 
+H.1.2 [User/Machine Systems]: Human factors, Human 
+information processing; K.3.1 [Computers and Education]: 
+Computer Uses in Education – Computer-assisted instruction 
+
+General Terms 
+Design, Human Factors 
+
+Keywords 
+Instructor Support, Predictive Analytics, Learning Analytics, Risk 
+Prediction 
+
+1. INTRODUCTION & CHALLENGES 
+As learning analytics interventions expand from higher education 
+to K-12 contexts, established post-secondary methods will not 
+simply trickle down to local schools. Predictive analytics and 
+reporting methods that work for undergraduates and university 
+administrations must adapt to low-income elementary and 
+secondary contexts to ensure widespread adoption. With low-
+income students making up almost half of the nation’s public 
+school population, closing the learning analytics cycle [3] with 
+effective interventions for these students offers large opportunities 
+for positive academic impact. We study methods to enhance K-12 
+learning analytics adoption by collaboratively designing solutions 
+to the challenges faced by one New York City charter school, 
+serving high-need secondary school students: 70% African-
+American, 30% Hispanic, and 70% qualifying for free/reduced 
+lunch. The case study school faces challenges to learning analytics 
+adoption similar to those faced by low-income schools across the 
+
+United States: lack of internet access [7], data fragmentation [2], 
+limited data interpretation skills [5], and the neglect of local 
+context. 
+
+2. THE BRIDGE REPORT 
+In an effort to overcome these obstacles to learning analytics 
+adoption, the school created a new reporting intervention, the 
+Bridge Report, to serve as a “bridge” to effective academic 
+intervention and to communication with families.  
+
+Initial report drafts were used as the basis for feedback in 
+interviews with school administrators, learning specialists, social 
+workers, and teachers. After each round of feedback, the report’s 
+design was edited in an iterative process guided by the school’s 
+Director of Analytics, who served as data guide or “wrangler” for 
+the larger instructional process [4]. Extensive feedback was used 
+to establish intervention thresholds for attendance, GPA, 
+discipline, and other measures. Figure 1 provides an example of 
+one student’s data presented in the Teacher View. 
+
+The current design and data elements of the Bridge report are 
+created in response to the particular challenges of low-income 
+secondary schools. In order to overcome families’ lack of internet 
+access, for example, the Bridge Report is distributed on a 
+quarterly basis in hard copy, as a supplement to the traditional 
+report card. To overcome a lack of data integration for both 
+teachers and families, developers combine data from several 
+online systems and data silos within the SIS. Figure 1 illustrates 
+the integration of several important indicators from distinct data 
+sources: quarterly GPA, absences, tardiness, discipline incidents, 
+state testing scores, Grade Level Equivalents in reading and math, 
+and Lexile scores. Combined in one report, these data provide 
+more holistic and efficient grounds for academic decision-making.  
+
+To address obstacles to local school alignment, the color of most 
+Bridge Report elements (red, yellow, or green) is determined by a 
+set of school-defined thresholds for intervention. Use of 
+
+Permission to make digital or hard copies of part or all of this work for 
+personal or classroom use is granted without fee provided that copies are 
+not made or distributed for profit or commercial advantage and that 
+copies bear this notice and the full citation on the first page. Copyrights 
+for third-party components of this work must be honored. For all other 
+uses, contact the Owner/Author.  
+Copyright is held by the owner/author(s). 
+LAK '15, Mar 16-20, 2015, Poughkeepsie, NY, USA 
+ACM 978-1-4503-3417-4/15/03. 
+http://dx.doi.org/10.1145/2723576.2723652 
+
+410
+
+
+
+red/yellow/green follows Course Signals’ successful traffic light 
+motif, which was found informative for students [1]. Color 
+thresholds represent both local and state criteria and provide 
+essential context for stakeholders involved in academic decisions. 
+
+The most controversial feature included in the report, for both 
+teachers and parents, is a predictive risk indicator for Level 1 
+performance on New York State ELA and Mathematics Tests. 
+Level 1 is the lowest of four proficiency levels, and indicates 
+student performance well-below proficiency. Interviews with 
+school staff indicated concern that negative predictions might de-
+motivate students. These concerns about student motivation stand 
+in contrast to survey feedback received on Purdue’s Course 
+Signals intervention system, where 74% of students reported that 
+Course Signals improved their motivation [1]. College students, 
+however, differ significantly from middle school students, and 
+further study is needed to gauge the impact of predictive reporting 
+directed toward this younger population. 
+Models used to generate the “Risk of Level 1 Performance” have 
+relied on linear regression, within a standard cross-validation 
+paradigm and have included features such as Computer Adaptive 
+Testing Pre-test scores, Days Present/Tardy, IEP Status, Grade 
+Level, and Office Discipline Referral Count. The most recent 
+models have achieved a cross-validated correlation to end-of-year 
+state test scores of r=0.748 for ELA and r=0.669 for Math.  
+
+3. FEEDBACK 
+A small number of parent interviews were conducted individually 
+during parent/teacher conferences (n=6). Parents were given a 
+copy of the Bridge Report for their own child, and interviewers 
+recorded their verbal response to survey questions about the 
+report. Focus group sessions with most of the school’s middle 
+school teachers (n=22) were conducted as well. Grade-level sets 
+of reports were distributed to teachers and, after an introductory 
+session, teachers gave feedback through an anonymous survey. 
+
+3.1 Parent Feedback 
+Overall, the small number of parents interviewed responded very 
+positively to the report, especially to the inclusion of red, yellow, 
+green color cues and to the variety of information presented. Over 
+80% of parents “Agreed” or “Strongly Agreed” with the following 
+statements: (1) This report will help me make decisions about my 
+child’s education, (2) This report will help me have effective 
+conversations with teachers and administrators, and (3) This 
+report matches my own understanding of my child in school. 
+
+In agreement with many teacher comments, parents indicated a 
+high-level of engagement with risk predictions about their child’s 
+state test performance. 100% agreed or strongly agreed that (1) 
+the student risk predictions seemed accurate, that (2) as parents, 
+they took the predictions seriously, and that (3) these risks would 
+impact their academic decisions.  
+
+Parents were also asked to use the report to “talk about” their 
+child’s strengths and weaknesses in school. The interviewer then 
+judged the accuracy of the parent’s understanding in relation to 
+the information contained in the report. Overall, 69% of parent 
+interpretation was “Very Accurate” or “Mainly Accurate,” 
+without any previous instruction in interpreting the reports. 
+
+3.2 Teacher Feedback 
+Overall, teachers were enthusiastic about the Bridge Report. 
+Comments included: “This is great! I can’t wait to use this and the 
+ease of understanding is very helpful.” “We have all the 
+information for each of our students in one place.” Teachers were 
+
+able to suggest many possible uses for the Bridge Reports: parent 
+and student conferences, lesson planning, and determining 
+academic interventions. 
+
+Teacher positive comments about utility and ease of use suggest 
+that the project goals of data integration, ease of interpretation, 
+and local alignment may have been achieved. More than 80% of 
+teachers agreed or strongly agreed that (1) These reports will be 
+useful to me and (2) These reports will help me make more 
+effective academic decisions. Only 18% of teachers indicated 
+some concern that the reports might bias their behavior towards 
+students. When asked, “How could these reports be more useful?” 
+teachers often responded with comments about increased local 
+alignment, requesting more specific information on students’ 
+current participation and performance in intervention services.  
+
+When asked about including risk predictions on reports, teachers 
+were positive about parents and fellow teachers receiving 
+predictions but conflicted about students receiving the same 
+predictions. For example, one teacher wrote: “Predictions are 
+definitely beneficial for both the teachers and the parents, as it 
+gives both the time to plan interventions accordingly.” Responses 
+to including predictions for students, however, were mainly 
+negative: “I don’t think it would be necessary to have it on the 
+copy for students. I feel like that would cause a lot of anxiety for 
+our students, who already have high enough anxiety about the 
+state tests.” Or, “Students can change anytime, so I do not think I 
+would include predictions. That is just making an assumption 
+based on current performance and students need a chance to 
+redeem themselves.”  
+
+4. FUTURE WORK 
+Continuing work during the 2014-15 school year will explore the 
+motivational impact of student-facing reporting in an attempt to 
+position the Bridge Report as one piece of a comprehensive and 
+impactful learning analytics intervention [cf.6]. 
+
+5. REFERENCES 
+[1] Arnold, K E. and Pistilli, M. D. 2012. Course Signals at 
+
+Purdue: Using Learning Analytics to Increase Student 
+Success. In Proceedings of the 2nd International Conference 
+on Learning Analytics and Knowledge. 267-270. 
+
+[2] Benjamin, H. 2014. Tearing Down the Walls Between 
+Software Silos. Education Week. 34.6 (Oct. 2014) s6-s7.  
+
+[3] Clow, D. 2012. The Learning Analytics Cycle: Closing the 
+Loop Effectively. In Proceedings of the 2nd International 
+Conference on Learning Analytics and Knowledge. 134-138. 
+
+[4] Clow, D. 2014. Data Wranglers: Human interpreters to help 
+close the feedback loop. In Proceedings of the 4th 
+International Conference on Learning Analytics and 
+Knowledge. 49-53. 
+
+[5] Goodman, D. P. and Hambleton, R. K. 2004. Student Test 
+Score Reports and Interpretive Guides: Review of Current 
+Practices and Suggestions for Future Research. Applied 
+Measurement in Education 17.2 (2004): 145-220. 
+
+[6] Wise, A. F. 2014. Designing Pedagogical Interventions to 
+Support Student Use of Learning Analytics. In Proceedings 
+of the 4th International Conference on Learning Analytics 
+and Knowledge. 203-211. 
+
+[7] Zickuhr, R and Smith, A. 2013. Home Broadband 2013. Pew 
+Research Center. Washington, D.C.
+
+411
+
+
+
+
+

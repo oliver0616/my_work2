@@ -1,0 +1,731 @@
+
+Analysing Reflective Text for Learning Analytics:
+An Approach Using Anomaly Recontextualisation
+
+Andrew Gibson & Kirsty Kitto
+Queensland University of Technology
+2 George Street, Brisbane, Australia
+
+[andrew.gibson,kirsty.kitto]@qut.edu.au
+
+ABSTRACT
+Reflective writing is an important learning task to help foster
+reflective practice, but even when assessed it is rarely anal-
+ysed or critically reviewed due to its subjective and affective
+nature. We propose a process for capturing subjective and
+affective analytics based on the identification and recontex-
+tualisation of anomalous features within reflective text. We
+evaluate 2 human supervised trials of the process, and so
+demonstrate the potential for an automated Anomaly Re-
+contextualisation process for Learning Analytics.
+
+Categories and Subject Descriptors
+K.3.1 [Computer Uses in Education]: Computer-assisted
+instruction; J.1 [Administrative Data Processing]: Ed-
+ucation; H.1.2 [User/Machine Systems]: Human factors
+
+Keywords
+Reflective Text, Learning Analytics, Affective Computing
+
+1. INTRODUCTION
+Reflective writing is used by educators to help students
+
+develop the metacognitive capability required for effective
+reflective practice, an important dimension of continual im-
+provement in many professions [6, 5, 13]. However, despite
+it’s educational value, reflective writing presents challenges.
+Firstly, it is difficult to assess [13], and can require a lot
+of reading time on the part of the educator. Secondly, the
+inherent lack of structure in reflective writing, its personal
+style, and variability in quality [6], makes it difficult to treat
+in the same way as other more structured written tasks, and
+thus an unlikely candidate for computational analysis.
+
+Despite these challenges, the fact that when we read text
+we easily recognise features such as sarcasm, humour and
+emotional tone, suggests that features are there, and could
+possibly be discovered computationally. Although external
+factors like body language and eye contact can help with
+interpretation of spoken language, they are by no means
+
+Permission to make digital or hard copies of all or part of this work for
+personal or classroom use is granted without fee provided that copies are not
+made or distributed for profit or commercial advantage and that copies bear
+this notice and the full citation on the first page. Copyrights for components
+of this work owned by others than ACM must be honored. Abstracting with
+credit is permitted. To copy otherwise, or republish, to post on servers or to
+redistribute to lists, requires prior specific permission and/or a fee.
+LAK ’15 March 16 - 20, 2015, Poughkeepsie, NY, USA
+Copyright is held by the author(s). Publication rights licensed to ACM.
+ACM 978-1-4503-3417-4/15/03 ...$15.00.
+http://dx.doi.org/10.1145/2723576.2723635
+
+always necessary as human readers have an ability to in-
+tuitively determine subtexts, and to postulate on their un-
+stated meanings. In reviews of others’ writing we can easily
+understand phrases like “thinly veiled contempt”, “dripping
+with sarcasm” and “unbridled enthusiasm”, which remind us
+of the ease with which we perceive the affective dimensions of
+an author’s perspective from their writing. When consider-
+ing reflective writing we also make interpretations about the
+way an author feels about a topic, their degree of openness
+and honesty, the extent to which the author is expressing
+affective ideas like conflict, fear or uncertainty, or even the
+degree to which an author acknowledges a community or
+focuses on themselves.
+
+Although computational tools for natural language pro-
+cessing (NLP), such as linguistic analysis [7] and topic mod-
+elling [1], have proven very effective for information retrieval,
+they have typically been less capable with the more subjec-
+tive text characteristics such as emotion and affect. Sen-
+timent analysis [12] techniques can be used to identify af-
+fect, however they tend to perform best with polarised data
+that is more uniform in sentiment. We would prefer more
+complete representations of these subjective features when
+analysing reflective text for learning analytics.
+
+It is not easy to see how the standard computational ap-
+proaches can be extended to more nuanced writing. The
+personal nature of reflective writing can involve the use of
+complex linguistic devices such as irony, which are particu-
+larly challenging for computational analysis. The statement
+“I’m spending my weekend marking assignments. I love it
+- can’t imagine doing anything else” is identified reasonably
+easily by a human reader as negative. This is because the
+human approach to anomalous information is to learn [15].
+We tend to expand the repertoire of contexts which we draw
+upon to make sense of what we read. For example, when we
+contextualise a person’s words as humour, we don’t label
+them a liar for expressing obviously false statements.
+
+Intriguingly, there is one exception to this typical hu-
+man approach for accommodating anomalous data within
+different contexts. Sometimes we judge the data itself to
+be inaccurate, in which case the tendency is to dismiss the
+anomaly and keep the existing context [4]. This judgement
+of accuracy is much closer to what we have come to expect
+from computational processes, which can influence our use
+of them. Thus, while an anomaly in the computer world is
+usually a violation of specific rules or conditions, an anomaly
+in the human world is something out of context. This is the
+intuition that we seek to formalise.
+
+275
+
+
+
+2. ANOMALY RECONTEXTUALISATION
+Our approach, which we call Anomaly Recontextualisation
+
+(AR), is based on accommodating rather than eliminating
+anomalous data. It is fundamentally a 2 step process. Step
+1 requires the identification of an anomaly within a given
+context. Step 2 involves recontextualising the anomaly such
+that it is no longer anomalous within its new context.
+
+To illustrate our approach, consider the following metaphor
+about a bird called Tux:
+
+Context: Birds have a feature of flight which is associated
+with a feature wings.
+
+Data 1: Tux has feature wings, and belongs to context bird.
+
+Data 2: Tux doesn’t fly - lacks feature flight
+
+Anomaly: Tux doesn’t fly even though Tux has wings, is
+a bird, and birds fly.
+
+New data: Tux has additional feature swims
+
+New context: Penguins have a feature swims and a fea-
+ture wings, but lack feature flight.
+
+Recontextualisation: Tux is a penguin!
+
+Note that in the Tux illustration, we don’t modify the orig-
+inal context. The birds context with feature flight still con-
+tains a general truth for birds. By recontextualising anoma-
+lies, we retain a general truth which allows us to recognise
+that birds fly, but to also adopt exceptions for those that
+do not fit precisely into the feature set of our original con-
+textualised definition. The alternative to AR is a semantic
+reconstruction that relaxes the feature set to elemintate the
+anomaly. In our Tux example this would mean modifying
+the birds fly general truth, to become some birds fly.
+
+The problem with this kind of a semantic reconstruction
+approach is that it weakens the utility of our original concept
+(in its original context), and we lose the powerful construct
+that results from maintaining exceptions to general truths.
+This can be seen in a comparison between the computation-
+ally easy binary approach to resolving anomalies, and an
+approach that considers them in terms of their likelihood,
+or the probability that a certain feature would be present
+within a given context. For our metaphor, this would look
+like:
+
+P (F (flight)|C(bird)) ? 1 (or “very high”), (1)
+
+where F denotes a feature, and C a context within a proba-
+bility P . Equation (1) expresses our intuitive understanding
+that the likelihood of something flying is very high if it is a
+bird. By contrast, a binary approach would assign a proba-
+bility equal to 1, and the context would need to be modified
+for the feature to hold in all cases. That is:
+
+P (F (flight)|C(bird)) = 1 (2)
+
+becomes:
+
+P (F (flight)|C(flying bird)) = 1. (3)
+
+This highlights the issue with reconstructing the semantics.
+While it resolves the anomaly, it actually results in changing
+the meaning of the context such that it doesn’t provide us
+with any useful information. We have reached the status of
+a tautology: flying birds fly. A better approach would be to
+generate an additional context:
+
+P (F (swims),¬F (flight)|C(penguin)) ? 1. (4)
+
+This allows Tux to be both a bird and a penguin, without
+altering our original understanding of birds. In fact we can
+even be certain that Tux is still a bird since:
+
+P (C(bird)|C(penguin)) = 1. (5)
+
+In order to explore the potential for a computational im-
+plementation of AR, we expanded on the 2 fundamental
+steps of the process . However, we did not assume that
+the AR process would be implemented in a single piece of
+software, nor that it would be free of any human supervision.
+Essentially, our objective was to outline the necessary steps
+that, given an anomaly in one context, allow a new context
+to be created in which that anomaly is resolved, without
+modifying the original context. This expanded AR process
+is as follows:
+
+1. Identify a context based on a feature set (e.g. feath-
+ers, wings, flight, for context birds). A complementary
+context (e.g. not birds) can be identified from the ab-
+sense of the features.
+
+2. Classify data based on a key feature (e.g. wings) to
+determine each elements’ membership of the context;
+the complementary context; or undetermined.
+
+3. Identify anomalies through the classification using a
+feature strongly related to the first (e.g. flight). Anoma-
+lies are missing this feature but possess the first.
+
+4. Classify the data based on a non key feature feature
+that is significant to the set of anomalies (e.g. swims).
+
+5. Recontextualise successfully classified anomalies with
+a new context based on the associated features (e.g.
+wings, swims, no flight).
+
+6. Repeat 4 and 5 until either (i) all anomalies are recon-
+texualised, or (ii) a set limit is reached.
+
+The final output of the AR process is a number of con-
+texts which provide high level information about our data,
+along with the ability for that data to be understood in
+varying ways. For example, if we started the above example
+with a context that had features of doesn’t fly and swims
+then we would could include whales, athletes and penguins.
+However, their membership in other contexts (e.g. ocean
+mammals, humans, birds) would allow us to not only differ-
+entiate between them, but also to understand their interre-
+lationships.
+
+3. APPLICATION
+We applied the AR process to the analysis of reflective
+
+texts written by first year Bachelor of IT students during a
+group project that spanned about 3 weeks. The cohort was
+offered access to GoingOK 1, a web application developed by
+one of us (Andrew Gibson) for recording personal reflections.
+At the conclusion of the project, students could download
+their reflections and submit them for assessment together
+with their project deliverables. GoingOK de-identifies the
+user’s reflective data so that it can be used for research pur-
+poses2. 82 students signed up to use GoingOK. Of these
+students, 24 recorded at least 1 reflection with reflective text
+during the period. Recorded reflections were of varying qual-
+ity, and so echoed many of the qualities that make reflective
+text difficult to work with computationally.
+1www.goingok.com
+2QUT Ethics Approval No.: 1400000151
+
+276
+
+
+
+GoingOK also records a reflection point with the text, a
+numeric value between 0 and 100 displayed to the user as
+a sliding scale between ‘distressed’ and ‘soaring’ with ‘going
+ok’ in the middle. Some students didn’t record any text
+reflections, and for the reflections that they did record they
+left the slider at the middle 50 position of going ok. These
+reflections (n = 58) were excluded from the data.
+
+As our primary objective was to analyse the reflective text,
+we wanted to minimise the number of reflections that were
+recorded without text. However, excluding all non-text re-
+flections would not have provided a realistic sample of the
+data, so we selected all reflections for users where at least
+one of their reflections included 2 or more words. Thus, we
+still captured some zero word reflections, but the majority
+of the reflections included a text of at least 2 words. The
+resultant dataset included 57 records from 24 students.
+
+We extracted a large range of features from the data set
+that could be used in our computational analysis. For each
+individual reflection we extracted features related to: reflec-
+tion point, date, word length, word and sentence counts,
+parts of speech, word frequencies, and topics. We also ex-
+tracted features for the group as a whole: Statistical anal-
+ysis of reflection point, day of week, word lengths, word
+and sentence counts. We also collected frequency distribu-
+tions of words, counts, ratios, and various parts of speech.
+Other features were collected by building topic models over
+the full collection. Using both individual and group fea-
+tures, we calculated a range of comparative measures such
+as the deviation from group mean for individual features,
+or the Kullback-Leibler (KL) divergence [9] for measuring
+the similarity or difference between distributions. Term Fre-
+quency / Inverse Document Frequency (TF-IDF) [14] also
+provided a measure of the extent to which words were unique
+to inidvidual reflections, or more generally used across the
+collection. For topic modelling, we used Latent Dirichlet
+Allocation (LDA) [2], which we used to identify the topical
+relationships between reflections and groups.
+
+Although not part of the reflective text itself, the (nu-
+meric) reflection point was included in our analysis as it
+provided a quantitative measure indicating the users self-
+perceived general state of well-being at the time of writing
+their reflections. This proved a useful point of reference
+external to the text itself, a user annotation of their own
+text. Additionally, we calculated the descriptive statistics
+on the reflection points of the whole group, which provided a
+group norm against which individual reflection points could
+be compared.
+
+The majority of the features used in analysis were gener-
+ated from the reflective text. These included word count,
+sentence count, words per sentence, verb ratio, and noun
+ratio. As with the reflection point, we calculated descriptive
+statistics across the group from individual reflective text fea-
+tures. Some features (including parts of speech, pronouns,
+words, word length, and punctuation) were recorded as a
+frequency distribution for each reflection, and the same for
+the group as a whole.
+
+We included 2 types of semantic feature distributions. A
+TF-IDF analysis provided a measure of uniqueness in the
+content of reflections. An LDA topic analysis provided an
+indication of similarity between reflections, as well as a sense
+of which topics were most significant over the group.
+
+With only a relatively small data set to work with, we
+chose to trial the AR process with different aspects of the
+
+same data. We hypothesised that an individual record in
+the dataset would belong to a context if it contained some
+characteristic of a selected feature, or to the complementary
+context if it had the absence or opposite characteristic of the
+same selected feature. We trialled the process by looking at
+2 aspects that were subjective in nature, relevant to LA, and
+pedagogically useful. These were: Progress satisfaction, and
+self/others focus.
+
+Where possible we utilised computational tools to imple-
+ment the various steps of the AR process (notably Factorie
+[10] for POS tagging and LDA, and Scala [11] for other anal-
+ysis). However, due to time constraints, human supervision
+was involved and this is outlined below.
+
+3.1 Trial 1: Progress satisfaction
+The first aspect we analysed was progress satisfaction with
+
+the reflection point as the initial key feature. We expected
+that a positive polarity of the reflection point would indicate
+satisfaction with progress, and that a negative polarity of the
+reflection point would indicate a dissatisfaction.
+
+A classifying function evaluated each reflection point in
+terms of its deviation from the mean reflection point for the
+group as a whole. This value was recorded in the results
+as a ratio to the standard deviation. The function classified
+all reflections of 0 or more deviation as positive, and vice
+versa. This yielded 29 reflections classified as positive, and
+36 negative.
+
+We took a supervised approach to the identification of
+anomalies, and reviewed the negatively classified results first
+by reading the text and assessing it for general negative sen-
+timent related to progress. This could be implemented com-
+putationally with sentiment analysis softare. We identified
+16 anomalies in the negative results, which we further clas-
+sified into 3 groups: one with 3 reflections which had insuf-
+ficient text for a judgement, and the second had 11 reflec-
+tions that were generally positive but held reflection points
+very close to the mean. The third group had 2 reflections
+that appeared to be significant anomalies. Because of the
+large number of anomalies with points close to the mean, we
+determined that the classifier function should work from a
+lower threshold, a slight negative deviation from the mean.
+We calculated that a ?0.2865 deviation would catch all of
+these anomalies. Significantly, we noted that this new point
+would not erroneously classify negative reflections as posi-
+tive. We re-ran the analysis with a split set at 30% of the
+standard deviation less than the mean. This resulted in an
+effective split point for the data set at 45.65. The re-run of
+the analysis resulted in 23 negative reflections and 42 pos-
+itive reflections. This process of finding the optimum split
+point could be implemented computationally using a simple
+error minimisation algorithm.
+
+The positive results were almost universally reflective of
+progress satisfaction related remarks in the text. Of the 42
+reflections classified as positive, we identified 5 anomalies.
+Four of these were spurious: A duplicate record, one with
+no text, and 2 that contained irrelevent text (e.g. “lazy hol-
+idays. . . ”), leaving only one genuine anomaly. This text was
+a more complex mix of negative tone, indications of progress
+being made, but dissatisfaction with a group member’s con-
+tribution. Despite the negative undertones, it had reflection
+point of 76. A portion of the text read: So we had the group
+meeting today. [name] didn’t make it and it’s been nearly
+a month since we’ve all even seen him...To be honest, this
+
+277
+
+
+
+group meeting was pretty pointless. . . . . [user: hesnav]
+Of the 23 negative reflections, we identified 4 anomalies.
+
+Two with no text, one a sarcastic expression: “new place to
+share everything...great!” (reflection point of 33), and the
+other was not significantly positive, but did indicate satis-
+faction with progress despite having a reflection point of 27.
+The text read: I’m happy with the app functions I created in
+the last assignment, but I presented in a very average fash-
+ion. I would have liked to learn more about presenting in
+[unit] so that I could have expressed that knowledge through
+my presentation. [user: cuzguz]
+
+The initial analysis of the data resulted in 2 contexts
+which could be labeled: satisfied with progress and dissatis-
+fied with progress. Of the 2 identified significant anomalies,
+both could be recontextualised with a label such as mixed
+feelings about progress. The other anomalies could be recon-
+textualised as no relevant information. The final results for
+this trial are summarised in Table 1.
+
+Table 1: Results for satisfaction with progress
+Final Context Feature/s Qty
+Satisfied with
+progress
+
+Positive reflection point
+deviation
+
+37
+
+Dissatisfied with
+progress
+
+Negative reflection point
+deviation
+
+19
+
+Mixed feelings
+about progress
+
+Sentiment, reflection
+point deviation
+
+2
+
+No relevant infor-
+mation
+
+Reflection point devia-
+tion, empty or off-topic
+
+7
+
+3.2 Trial 2: Self-others balance
+The second trial analysed for a focus on self or oth-
+
+ers, the balance between students focusing on themselves
+or including others in their reflection, with the hypothesis
+that students who focused solely on themselves would be
+less likely to perform well as a part of a team. Influenced by
+Campbell and Pennebaker’s work on Pronouns [3], we used
+pronoun distributions as the key feature for initial classifica-
+tion. We assumed that a focus on self would result in the use
+of less third person plural pronouns and more first person
+singular pronouns, and that a focus on others would reflect
+in greater use of third person plural and less of first person
+singular pronouns.
+
+Of the total of 65 reflections, 21 of them had no pronoun
+distribution due to no pronouns being detected in the text.
+For expediency, we removed these from the data set prior to
+applying the classifying function, as it did not structurally
+alter the trial. However, in future these could be analysed
+for inferred pronoun useage. Reflections written in a text
+message style, may infer a personal pronoun without actu-
+ally stating it. e.g. “Just finished assignment” as opposed to
+“I’ve just finished my assignment”.
+
+Our initial classification function compared the reflections
+to the pronoun distribution for the whole group. We used
+KL divergence to assess the difference between individual
+reflection pronoun distributions and that of the group dis-
+tribution. We assumed the group distribution would be an
+appropriate balance between self and others. This proved
+correct as the individual reflection with the lowest KL di-
+vergence (k = 0.0804) contained a good mix of self and oth-
+ers:. . . I feel like i need to start making it a habit. Otherwise
+I’m going to end up doing it all on one day . . . Anyway as
+
+Table 2: Results for self/others balance
+Final Context Feature/s Qty
+Self others bal-
+anced
+
+KL divergence of pro-
+noun distribution
+
+9
+
+Self focused first person singular pro-
+noun - high value
+
+25
+
+Others focused first person singular pro-
+noun - low value
+
+8
+
+Non focused text content 1
+No relevant infor-
+mation
+
+no distribution 21
+
+far as the group meeting went we discussed how our obser-
+vations went and we came to an agreement . . .
+
+With supervision deciding the break point, the reflections
+were separated at a KL divergence of 0.3. As with the first
+trial, error minimisation algorithms would allow us to com-
+plete this computationally. The selected split point resulted
+in 12 balanced reflections, and 32 reflections that were biased
+to either self or to others.
+
+Of the 12 balanced reflections, we identified 3 anomalies.
+As our primary objective was to obtain analytics about the
+learner, we decided to resolve these anomalies by taking an
+student focused approach, looking for the extent of balance
+in the student’s other reflections. If other balanced reflec-
+tions were found, we aggregated the results and re-calculated
+the KL divergence. If not, we added the reflection to the
+unbalanced context. Only 1 reflection was by someone who
+had written another balanced reflection, so we recalculated
+the KL divergence for the aggregate and confirmed that was
+just over the split point (k = 3.1161). We classified the 3
+remaining reflections as unbalanced requiring further resolu-
+tion. The final number of balanced reflections was 9. Despite
+the manual work in this stage of the process, much if not all
+of it could be implemented computationally through an it-
+erative process of expanding the net of analysed reflections
+based on the writer.
+
+Initially the unbalanced reflections numbered 32, but the
+3 balanced anomalies that were reclassified as unbalanced
+resulted in a total of 35. We treated them all as anomalies
+as we wanted to know more about their bias. To do this,
+we applied another classifying function to classify them as
+self focused or others focused. To determine self focus, we
+utilised a feature based on the first person singular value of
+the distribution. Given that the imbalance in the 3 anoma-
+lies separated from the balanced context was primarily re-
+lated to the first person singular value, we determined that
+the split point for this function should be the minimum value
+of these 3 reflections. This would position them into the self
+focused group by default. Running this function resulted in
+25 reflections classified as self focus, 9 as others focus, and
+1 duplicate.
+
+Of the 25 self focused reflections, no further anomalies
+were detected so these were recontextualised as self focused.
+A reflection typical of this context is: I just finished a pre-
+sentation, so I feel great! [user: cobkev] Of the 9 others
+focused reflections, 1 reflection had no self or others focus
+and was manually recontextualised as non focus, leaving 8
+that were recontextualised as others focused. A reflection
+typical of this context included text like: . . . We are run-
+ning behind on creating a roleplay . . . Also we haven’t heard
+from two group members in around two weeks, which is re-
+
+278
+
+
+
+ally hindering us in terms of how much we can do. [user:
+rutkod].
+
+The final contexts after all recontextualisation had con-
+cluded are summarised in Table 2.
+
+3.3 Findings
+Our 2 trials demonstrated that the AR process has some
+
+benefits over analysis techniques which take a more binary
+classification approach with subjective data. The informa-
+tion found through the AR process could be useful to Learn-
+ing analytics due to it’s affective nature and learner focus.
+Rather than software that indicates that a student is gen-
+erally positive or negative, we have shown the potential for
+finding students with mixed feelings about their progress, or
+students that may not be working well in a group. And this
+has been done with the same sparse data source which was
+written with neither of the analysis objectives known.
+
+Throughout our documentation of the trials we identified
+where human supervision was utilised and made suggestions
+for the way that these steps could be automated. However, a
+fully automated implementation of AR would be a challeng-
+ing endeavour. One of the most significant challenges would
+be to develop a suite of good context-feature models that
+can be implemented using the AR process. Such a system is
+likely to require the use of machine learning techniques that
+learn which models to apply in which circumstances based
+on historical data that has been evaluated by a human ex-
+pert. We anticipate that it is likely that human intervention
+is always likely to be required to some extent in both a data-
+wrangling and sensemaking [8] capacity.
+
+An automated AR process would also require better data
+cleaning prior to initial classification. Although duplicated
+records and records without text did not significantly impact
+this study, these types of issues could have been a prob-
+lem with a larger data set, and would need to be mitigated
+against for an automated approach. Other pre-processing
+like the pronoun inferrence mentioned above would also need
+to be implemented.
+
+During our application of AR, we also noted that changes
+to a learner’s reflections over time is likely to be useful.
+Unfortunately, the temporal dimension of this study was
+very limited (around 3 weeks) and only a few students com-
+pleted a series of reflections. However , an automated system
+analysing data over semesters, or even years, would benefit
+from models which included temporal features.
+
+Unsurprisingly, the learner is central to the AR process
+and we see a great deal of promise in including user mod-
+elling in future work. In particular, there are opportunities
+to explore the interactions between users in a group sce-
+nario, which could make a significant contribution to LA in
+the area of group learning.
+
+4. CONCLUSION
+The subjective and affective features of reflective text can
+
+provide insights on students and their progress that are
+unique to this type of writing. Our proposal of the AR
+process as a way of extracting these features from reflec-
+tive texts showed potential when applied in the context of
+our study. We believe that Anomaly Recontextualisation
+holds promise for the enrichment of Learning Analytics and
+is worthy of future development.
+
+5. REFERENCES
+[1] D. M. Blei. Probabilistic topic models.
+
+Communications of the ACM, 55(4):77–84, Apr. 2012.
+
+[2] D. M. Blei, A. Y. Ng, and M. I. Jordan. Latent
+dirichlet allocation. The Journal of Machine Learning
+Research, 3:993–1022, Mar. 2003.
+
+[3] R. S. Campbell and J. W. Pennebaker. The secret life
+of pronouns: flexibility in writing style and physical
+health. Psychological science, 14(1):60–65, Jan. 2003.
+
+[4] C. A. Chinn and W. F. Brewer. The role of anomalous
+data in knowledge acquisition: A theoretical
+framework and implications for science instruction.
+Review of Educational Research, 63(1):1–49, Jan. 1993.
+
+[5] K. D. Chirema. The use of reflective journals in the
+promotion of reflection and learning in
+post-registration nursing students. Nurse Education
+Today, 27(3):192–202, Apr. 2007.
+
+[6] J. E. Dyment and T. S. O’Connell. Assessing the
+quality of reflection in student journals: a review of
+the research. Teaching in Higher Education,
+16(1):81–97, Feb. 2011.
+
+[7] S. Joksimovic, D. Gas?evic?, V. Kovanovic, O. Adesope,
+and M. Hatala. Psychological characteristics in
+cognitive presence of communities of inquiry: A
+linguistic analysis of online discussions. The Internet
+and Higher Education, 22:1–10, 2014.
+
+[8] G. Klein, B. Moon, and R. R. Hoffman. Making sense
+of sensemaking 1: Alternative persepectives. Ieee
+Intelligent Systems, 21(4):70–73, 2006.
+
+[9] S. Kullback and R. A. Leibler. On information and
+sufficiency. Annals of Mathematical Statistics,
+22(1):79–86, 1951.
+
+[10] A. McCallum, K. Schultz, and S. Singh. FACTORIE:
+Probabilistic programming via imperatively defined
+factor graphs. In Neural Information Processing
+Systems (NIPS),1249–1257, 2009.
+
+[11] M. Odersky and al. An Overview of the Scala
+Programming Language. Technical Report
+IC/2004/64, EPFL, Lausanne, Switzerland, 2004.
+
+[12] B. Pang and L. Lee. Opinion mining and sentiment
+analysis. Foundations and Trends in Information
+Retrieval, 2(1-2):1–135, 2008.
+
+[13] C. Reidsema and P. Mort. Assessing reflective writing:
+Analysis of reflective writing in an engineering design
+course. Journal of Academic Language and
+Learning,3(2):A117–A129, 2009.
+
+[14] T. Roelleke and J. Wang. TF-IDF uncovered: a study
+of theories and probabilities. In SIGIR ’08:
+Proceedings of the 31st annual international ACM
+SIGIR conference on Research and development in
+information retrieval, July, 353–442, 2008.
+
+[15] S. B. Trickett, J. G. Trafton, and C. D. Schunn.
+That’s odd! How scientists respond to anomalous
+data. In Proceedings of the 22nd Annual Conference of
+the Cognitive Science Society, pages 1054–1059, 2001.
+
+279
+
+
+
+
+

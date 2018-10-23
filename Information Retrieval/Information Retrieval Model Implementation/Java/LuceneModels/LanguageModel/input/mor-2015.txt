@@ -1,0 +1,269 @@
+
+Predicting Post-training Readiness to Work with 
+Computers: The Predominance of Log-based Variables
+
+Dalit Mor 
+Tel Aviv University 
+
+P.O. Box 39040 
+Tel Aviv 6997801, Israel 
+
+dalitmor@mail.tau.ac.il 
+
+Hagar Laks 
+Tel Aviv University 
+
+P.O. Box 39040 
+Tel Aviv 6997801, Israel 
+
+ehrenfeldh@mail.tau.ac.il 
+
+Arnon Hershkovitz 
+Tel Aviv University 
+
+P.O. Box 39040 
+Tel Aviv 6997801, Israel 
+
+arnonhe@tauex.tau.ac.il 
+ 
+
+ABSTRACT 
+In today's job market, computer skills are part of the 
+prerequisites for many jobs. In this paper, we report on a study 
+of readiness to work with computers (the dependent variable) 
+among unemployed women (N=54) after participating in a 
+unique training focused on computer skills and empowerment. 
+Associations were explored between this variable and 17 
+variables from four categories: log-based, computer literacy and 
+experience, job-seeking motivation and practice, and training 
+satisfaction. Only two variables were associated with the 
+dependent variable: Knowledge post-test duration and 
+satisfaction with content. Building a prediction model of the 
+dependent variable, another feature was highlighted: Total 
+number of actions in the course website along the course. Our 
+analyses highlight the predominance of the log-based variables 
+over the variables from the other categories, and we thoroughly 
+discuss this finding. 
+
+Categories and Subject Descriptors 
+K.3.2 [Computers and Education]: Computer and Information 
+Science Education – literacy. K.4.2 [Computers and Society]: 
+Social Issues – employment.  
+
+General Terms 
+Human Factors. 
+
+Keywords 
+Work readiness, working with computers, decision tree. 
+
+1. INTRODUCTION 
+Information and communication technology (ICT) is part of 
+everyday life in the 21st century, and the rapid development of 
+ICT requires a completely new set of skills related to 
+technological literacy. As new technology is constantly being 
+developed, fluency with information technology and computer 
+self-efficacy are gaining more importance regarding the profiles 
+of employees in today's job market. 
+ 
+
+Permission to make digital or hard copies of part or all of this work for personal or 
+classroom use is granted without fee provided that copies are not made or distributed 
+for profit or commercial advantage and that copies bear this notice and the full citation 
+on the first page. Copyrights for third-party components of this work must be honored. 
+For all other uses, contact the Owner/Author. 
+ 
+Copyright is held by the owner/author(s). 
+LAK '15, Mar 16-20, 2015, Poughkeepsie, NY, USA. 
+ACM 978-1-4503-3417-4/15/03. 
+http://dx.doi.org/10.1145/2723576.2723656 
+
+Computer self-efficacy is defined as “an individual’s perceptions 
+of his or her ability to use computers in the accomplishment of a 
+task rather than reflecting simple component skills” [1]. 
+Computer self-efficacy was found to be positively related to 
+computer usage, previous experience, and – directly related to 
+our study - computer training and computer self-efficacy (or 
+similar constructs) were found (e.g., [3,4]). There is no wonder, 
+therefore, that unemployed older workers express a desire to 
+receive additional training on technology, preferable in a hands-
+on fashion [2]. 
+Therefore, training programs for employees often suggest both 
+computer-related content and modules which aim on improving 
+the participants' self-efficacy concerning working in today's job 
+market; such a program is at the heart of the current study. 
+While many previous studies have examined the efficiency of 
+such programs in improving measures related to computer self-
+efficacy, the novelty of the current study is in examining the 
+relationships between of log-based (training-related) variables 
+and a variable similar to computer self-efficacy. 
+Though very simple, these log-based measures outperform other 
+variables—including such variables that were found in previous 
+studies as good indicators to computer self-efficacy—in 
+predicting the dependent variable, which measures perceptions 
+of unemployed women's readiness to work with computers. 
+
+2. METHODOLOGY 
+2.1 Research Field 
+Data analyzed for this study was drawn from Appleseeds 
+Academy's "Technological Empowerment for Unemployed 
+Women" course (TEUW). During this course, unemployed 
+women are taught basic computer applications and best job-
+seeking practices. In addition, the participants take part in an 
+empowerment workshop, in order to enhance their chances of 
+finding a job. A typical course includes 16 meetings (4.5-hour 
+long each) taken within one month. The course is accompanied 
+by a Moodle website, holding all of the materials used during 
+the meetings and extra materials for self-learning.  
+
+2.2 Participants, Data, Research Variables 
+Overall, we collected data of 54 participants, all women of ages 
+25-65, who took the TEUW course during February-March 
+2014. Participants were drawn from groups located in different 
+areas of Israel, including both big cities and small towns. Data 
+were collected via knowledge pre/post-tests, pre/post surveys of 
+computer use and attitudes towards computers, and log files. 
+
+The dependent variable is Post-training Employment 
+Readiness High/Low. It is binary (1/0 for high/low readiness), 
+
+400
+
+
+
+based on a median split of the average of five employment-
+efficacy items in the post-survey; each of which was scored on a 
+5-point Likert scale (e.g., "I feel confident to present my skills 
+and strengths", "I feel confident to go to job interviews"). 
+
+The 17 independent variables are divided into four categories: 
+
+2.2.1 Log-based Variables 
+For each participant, Total Number of Actions and Knowledge 
+Pre/Post-Test Length (time-difference between entrance to the 
+test and hitting the "Finish" button [seconds]) were computed. 
+
+2.2.2 Computer Literacy, Experience 
+Knowledge Pre/Post-Test Score (percentage of correct answers 
+from the pre/post knowledge test) and Computer Pre/Post-Use 
+(average of pre/post survey items referring to computer 
+applications use, originally rated on a 5-point Likert scale). 
+
+2.2.3 Job-seeking Motivation and Practice 
+Based on relevant items (originally scored on a 5-point Likert 
+scale) from the pre/post survey, we computed: Pre-training 
+Employment Readiness (based on the pre survey, calculated 
+similarly to the dependent variable, without a median split), 
+Motivation towards the Training (1 item), Pre/Post Job-seeking 
+Activeness (6 items), and Pre/Post Beliefs in Finding Suitable 
+Job (1 item). 
+
+2.2.4 Training Satisfaction 
+These variables are based on the post survey (originally scored 
+on a 5-point Likert scale): Satisfaction with Content (5 items), 
+Satisfaction with Instructor (7 items), Satisfaction with 
+Empowerment Workshop (9 items), Satisfaction with Final 
+Project (3 items). 
+
+3. SUMMARY OF RESULTS 
+3.1 Pre/Post-Training Employment Readiness 
+As a first step, we explored some statistics of the Pre/Post-
+training Employment Readiness variables (see Table 1). Overall, 
+the mean Post (M=4.45, SD=0.61) is meaningfully and 
+statistically significantly higher than the mean c:\temp\Pre 
+(M=3.66, SD=0.88), with t(53)=5.33, at p<0.001 (a paired-
+sample t-test was used). Overall, it seems that the course had 
+dramatically increased the level of participants' readiness to 
+work with computers, and that the Post-training Employment 
+Readiness might even demonstrate a ceiling effect. 
+
+3.2 Direct Relationship between the 
+Dependent and the Independent Variables 
+While exploring direct relationships between the dependent 
+variable and the independent variables – using independent-
+sample t-tests – we have found only two significant 
+relationships. These relationships were found to log-based and 
+satisfaction-related variables: 
+
+? Participants with high Post-training Employment 
+Readiness values took the knowledge post-test (Knowledge 
+Post-Test Length) much quicker than those with low 
+values (~23 minutes, compared with ~37 minutes); 
+
+? Participants with high Post-training Employment 
+Readiness values were satisfied with the course content 
+
+(Satisfaction with Content) more than those with low 
+values (4.59 on a 5-point Likert scale, compared with 
+4.23). 
+
+3.3 Predicting the Dependent Variable 
+We developed a decision tree model, using RapidMiner Studio, 
+to predict the dependent variable, using a manual forward 
+feature selection. Of the single-feature models, only one 
+performed better than chance. The final model has a LOOCV 
+kappa of 0.524. The tree size is 16, its height is 7, and it has 9 
+leaves (Figure 1, confusion matrix in Table 1). Overall, three 
+variables entered the best decision tree in the following order: 
+Knowledge Post-Test Length, Satisfaction with Content, Total 
+Number of Actions. 
+
+Post Test Length > 2911: L {L=7, H=0} 
+Post Test Length ? 2911 
+| Satisfaction with Content > 3.7 
+| | Num. of Actions > 14 
+| | | Num. of Actions > 19 
+| | | | Post Test Length > 1008 
+| | | | | Post Test Length > 1299 
+| | | | | | Post Test Length > 1596 
+| | | | | | | Num. of Actions > 61: H {L=1, H=7} 
+| | | | | | | Num. of Actions ? 61: L {L=2, H=1} 
+| | | | | | Post Test Length ? 1596: H {L=0, H=8} 
+| | | | | Post Test Length ? 1299: L {L=7, H=1} 
+| | | | Post Test Length ? 1008: H {L=0, H=6} 
+| | | Num. of Actions ? 19: L {L=2, H=0} 
+| | Num. of Actions ? 14: H {L=0, H=8} 
+| Satisfaction with Content ? 3.7: L {L=4, H=0} 
+ 
+
+Figure 1. Best decision tree prediction model for Post-
+training Employment Readiness (L=Low, H=High). 
+
+ 
+
+Table 1. Confusion matrix for the prediction model 
+
+ Actual 
+Precision Low High 
+
+Prediction Low 13 2 86.7% 
+High 10 29 74.4% 
+Recall 56.5% 93.5%  
+
+ 
+
+4. REFERENCES 
+[1] Compeau, D.R. & Higgins, C.A. 1995. Computer self-
+
+efficacy: development of a measure and initial test. MIS 
+Quarterly, 19(2), 189-211. 
+
+[2] Lee, C.C., Czarja, S.J., & Sharit, J. 2008. Training older 
+workers for technology-based employment. Educational 
+Gerontology, 35(1), 15-31. 
+
+[3] Salanova, M., Grau, R.M., Cifre, E., & Llorens, S. (2000). 
+Computer training, frequency of usage and burnout: the 
+moderating role of computer self-efficacy. 2000. Computers 
+in Human Behavior, 16(6), 575-590. 
+
+[4] Torkzadeh, R, Pflughoeft, K., & Hall, L. 1999. Computer 
+self-efficacy, training effectiveness and user attitudes: An 
+empirical study. Behaviour & Information Technology, 
+18(4), 299-309.
+
+401
+
+
+
+
+

@@ -1,0 +1,511 @@
+
+Predicting failure: A case study in co-blogging
+
+Bjorn Levi Gunnarsson
+Brandeis University
+
+Computer Science Department
+Waltham, MA 02454 USA
+
+bjornlevi@cs.brandeis.edu
+
+Richard Alterman
+Brandeis University
+
+Computer Science Department
+Waltam, MA 02454 USA
+
+alterman@cs.brandeis.edu
+
+ABSTRACT
+Monitoring student progress in homework is important but
+difficult to do. The work in this paper presents a method
+for monitoring student progress based on their participation.
+By tracking participation we can successfully create a model
+that predicts, with very high accuracy, if a student is going
+to score a low grade on her current assignment before it is
+completed, thus enabling selective interventions.
+
+Keywords
+Co-blogging, Participation, Predicting failure, Learning an-
+alytics
+
+Categories and Subject Descriptors
+J.1 [Administrative Data Processing]: Education; K.3.1
+[Computer Uses in Education]: Collaborative learning,
+Learner modeling, Predictive applications of data
+
+1. INTRODUCTION
+Monitoring student progress on homework is important.
+
+It is however time consuming and not always accessible – by
+definition homework is done at home, away from most mon-
+itoring methods. As early as possible, the instructor wants
+to detect those students who are not doing their homework,
+identify why, and hopefully help the student resolve the issue
+preventing her from successfully completing it.
+
+One indicator that a student is doing well is her participa-
+tion in class. However, even if a student participates in class,
+she may be too busy or lack the motivation to apply herself
+to the homework. In-class exercises enable the teacher to
+do some observation of each student’s progress, but as class-
+size increases, finding struggling students becomes difficult
+– they get lost in the crowd. The ideal situation would be to
+somehow automatically monitor student progress on home-
+work and give timely feedback to the instructor or student
+about possible problems.
+
+Permission to make digital or hard copies of all or part of this work for
+personal or classroom use is granted without fee provided that copies are
+not made or distributed for profit or commercial advantage and that copies
+bear this notice and the full citation on the first page. To copy otherwise, to
+republish, to post on servers or to redistribute to lists, requires prior specific
+permission and/or a fee.
+LAK ’12, 29 April – 2 May 2012, Vancouver, BC, Canada.
+Copyright 2012 ACM ACM 978-1-4503-1111-3/12/04 ...$10.00.
+
+In a regular classroom, it is difficult to imagine how one
+could automatically monitor student progress. For students
+engaged in online learning activities, several options open
+up. For example, the work of Campell et al [3] develops data
+mining techniques, that look for students that are strug-
+gling or at-risk of failing, which trigger alerts of potential
+problems to instructors. This approach to predicting failure
+enables teachers to quickly sort out students who are hav-
+ing problems. While this kind of automatic assistance for
+early identification of struggling students is helpful it still
+falls short of what would be ideal; rather than waiting until
+the grades come in, the system should monitor and report
+progress while the students work on the assignment.
+
+The work presented in this paper develops a model of stu-
+dent progress based on student participation in the an online
+collaborative learning activity. Participation and collabora-
+tion can be keys to online learning [8, 10] and tracking it
+could thus be a predictor of success or failure. Participa-
+tion can be directly tracked from an activity log of an online
+learning system. However, For some learning activities, a
+student can do a lot of work offline that is not visible to an
+online activity logger. What kind of activity is a good mea-
+sure of participation and a good predictor of performance?
+In other words, what kinds of participation can I observe
+and are they important and predictive?
+
+This short paper will present a method for monitoring
+student effort while working on a homework assignment by
+tracking participation. A multiple regression model is pre-
+sented. It combines the current level of participation for an
+assignment and prior grades to predict if each student is on
+a path to succeed or fail with her current assignment. We
+describe student co-blogging as a source of data – during
+a semester-length course, students did their homework in a
+blogosphere.
+
+2. BACKGROUND
+Information technology (IT) is widely used in the class-
+
+room; in some communities students expect the classroom to
+include IT [16]. A range of technical inclusions can have im-
+pact, from the simple introduction of internet resources into
+the classroom to more advanced technology – like computer-
+supported intentional learning communities [12] – that ex-
+pand the learning context while enhancing lessons [11]. The
+most relevant content is available in the course material,
+but these other resources and modalities of learning have
+additional value. Availability does not necessarily translate
+into effective use. For example, searching the Internet for
+additional content requires skill [15].
+
+263
+
+
+
+The successful integration of an online learning environ-
+ment into the flow of a course depends on more than just
+technical skill. The payoff for students spending time on-
+line has to significantly exceed the costs of getting them on-
+line. Once the students are online, it is important to mon-
+itor their performance so that students who are not suc-
+ceeding can be identified. This problem exists offline too,
+but for an online learning activity alternate automatic or
+semi-automatic methods could be implemented to track stu-
+dent performance. Early detection of failure is an important
+problem for which a learning analytic approach may prove
+to be useful [1, 3].
+
+Participation is a metric that can be used to gauge stu-
+dent progress. It is an important factor in collaborative on-
+line learning environments [6]; lack of participation is a risk
+factor for failure [7]; promoting participation is an effective
+method for improving student outcomes [11].
+
+Learning environments that enable students to collabo-
+rate depend on grounding, mutual understanding and back-
+ground [2, 5]. In order to track user participation in an
+online learning environment we need reliable participation
+data. The collaborative environment is that platform be-
+cause its content is not available offline. Our study uses
+one type of collaborative learning environment [4], student
+co-blogging.
+
+3. CASE STUDY
+
+3.1 The co-blogging activity
+The data we present was collected from a course on Hu-
+
+man Computer Interaction (HCI). There were about 50 stu-
+dents in the class: a mix of undergraduates and Masters
+students. In a student co-blogging community, each stu-
+dent had her own blog. During the semester, each student
+regularly posted to her blog. Students also browsed in the
+course blogosphere, read peer contributions and commented
+on them.
+
+Homework assignments were weekly blog posts about var-
+ious methods used in HCI. Students, for example, did needs
+analysis, generated data gathering plans, or did expert re-
+views. The assignment was the same for all the students,
+but each student applied the methods to a different website,
+software, or device of her choice and posted about it in the
+course blogosphere.
+
+Students were encouraged to read freely in the blogosphere
+throughout the semester. While working on an assignment,
+students were allowed to review the posted work of other
+students and revise their own posts up until the deadline.
+In this manner, the co-blogging environment is a platform
+for peer tutoring, peer assessment, and cooperative learning
+[14]. This has some similarity to peers getting together and
+discussing homework but then separately writing their own
+solution.
+
+After the submission deadline, the TA assigned to each
+student two posts to critique; the critiques were then due a
+few days later. Students were also encouraged to do addi-
+tional commenting and respond to comments on their own
+posts. The critique part of the process is more about self-
+assessment [13]; a survey of the class suggested that students
+found writing critiques more useful than getting them.
+
+There was incentive to create high quality posts in the
+blogosphere. Earlier posts could be used as a reference for
+later assignments. Learning how to apply the methods from
+
+previous assignments saved time when doing a later assign-
+ment. By only having low quality earlier posts to go back
+to, much of the work would have to be done again. The
+student gains less by not adequately learning the material
+when they are first exposed to it, and later activities benefit
+less from blogosphere content because the quality is, as a
+result, not as good.
+
+3.2 The technology
+The co-blogging system was developed by the primary au-
+
+thor of this paper. Users can preview a post by hovering
+over its title and open a post to view its contents and any
+comments it has accrued – these are all different kinds of
+participation.
+
+Students could filter blog posts by users (view all posts by
+the selected user), assignment tags (each homework assign-
+ment had a different tag associated with it) or view only the
+posts that were top-rated by the instructors. An author was
+notified if his post received comments. Most of the time stu-
+dents would browse the most recently updated posts. This
+meant that both good and bad posts were regularly read and
+were likely to receive comments regardless of their quality.
+
+3.3 Grading
+Posts and critiques were graded by several TA’s on the
+
+scale of 0-3 for posts and 0-2 for critiques, where 0 means
+the assignment was not completed, 1 indicates not good , 2
+is good, and 3 is exemplary work. The scale for critiques
+was 0 for not completed, 1 for not constructive, and 2 for a
+constructive and good critique.
+
+4. PREDICTING FAILURE
+We regard reading content generated by a peer to be a
+
+form of peer learning and as such it has tremendous ed-
+ucational value. There were many ways in which having
+access to the progress of other students could prove valu-
+able. By reading in the blogosphere, a student could get
+help in interpreting the homework requirements, she could
+get started on a difficult part of the assignment, she could
+look at formatting and presentation, or she could verify or
+check her answer. For these reasons, it was assumed that
+reading in the blogosphere was the most significant form of
+participation. It is also worth noting that a student cannot
+be offline and leverage peer content effectively. Doing so
+would require the student to save and maintain a synchro-
+nized version of the online content. The effort of opening a
+post and saving it would be logged as participation anyway.
+An automatic version of this process would still be more
+effort than simply accessing the content in the blogosphere
+itself. For these reasons reading in the blogosphere is a re-
+liable measure. Writing is not as good a predictor because,
+for example, some students draft their work outside of the
+blogosphere.
+
+In what follows, grades are paired with participation. The
+relationship between average participation and average grades
+is explored for all assignments and each assignment. A mul-
+tiple regression model that combines participation with av-
+erage previous grades is presented.
+
+The application of the model shows a significant positive
+relationship between participation and grades: the more a
+student participates (reads) the more likely it is that she
+will receive a high grade on the homework assignment. This
+relationship holds for all the assignments together, and any
+
+264
+
+
+
+individual assignment. Thus the relationship is positive, sig-
+nificant and consistent.
+
+4.1 The Relevant Student Participation
+We tracked student activity while the students were writ-
+
+ing their posts to predict success before their homework was
+turned in for grading. We used the simplest form of par-
+ticipation where we counted the number of times each user
+read a post created by another user. Regardless of the time
+spent reading that post (time until next link click happens)
+or how many times a particular post was read. Clicking
+a link to open a post written by a peer is just counted as
+one read in terms of participation in the blogosphere. User
+participation at any time is the total number of reads.
+
+Reading enables a student to make use of content gener-
+ated by his peers. The user can discard the content as useless
+or accept it as helpful to whatever purpose the user had in
+mind when clicking the link. Posts can be previewed which
+means that users might have some idea about the content of
+the blog post before actually clicking the link. This preview
+is not counted as participation for the purpose of our model.
+
+4.2 Pairing participation with grades
+The relationship of interest is between participation and
+
+grades. We hypothesize that students who learn from the
+contributions of other students, as measured by their par-
+ticipation, produce higher quality solutions, as measured by
+their grade. Using this data, we then want to predict, before
+they are graded, if they are going to succeed or fail.
+
+The data we explore is from the first six homework as-
+signments for the class. It is generated by scanning the co-
+blogging activity log which stores the user name associated
+to each action, the URL requested, and the date of request.
+The log is counted for reads by each user, in each homework
+assignment, for every post that has a matching homework
+tag, and was written by another user. This gives each user
+a participation number for every homework assignment that
+is paired with the grade of that same assignment. The dis-
+tribution of the participation numbers was skewed towards
+several very high activity users so the log transform of the
+number was taken to remove the outlier effect. The result-
+ing participation distribution was close to being normally
+distributed (mean=1.5, standard deviation=0.36).
+
+5. CREATING A MODEL
+Participation is the number of times each student reads
+
+a post that was written by another student. Average grade
+is the combined grade of post and comments for all assign-
+ments; the maximum grade for any assignment was 5, com-
+bined 3 for a post and 2 for a critique.
+
+Average participation was highly positively related with
+average grade (r=0.7, p=0.00000003). Participation for in-
+dividual assignments was also significantly related with the
+grade for each assignment (lowest r=0.41 with p=0.0038)
+(see Figure 1).
+
+6. APPLYING THE MODEL
+We use existing data to create a multiple linear regres-
+
+sion model to predict failure for the homework the student
+is currently working on. We use linear models composed
+of current participation data and previous grades to calcu-
+late the expected grade. The hypothesis is that previous
+
+Figure 1: Individual assignment model.
+
+grades and the participation in the current homework can
+predict the grade received for that assignment. For example,
+if the student is working on homework number 3, the aver-
+age grades of the previous two assignments and the student’s
+participation for homework number 3 are used as predictors
+in the multiple linear regression models (see Figure 2).
+
+We create one model for each homework. The models use
+current participation and the average of previous grades.
+Prior grades do not have a big impact in the first couple of
+regression models but by the third prediction model previous
+grades start to have predictive value. Participation remains
+an important part of the models throughout. It is important
+to note that no alarms about grades were sent to students.
+
+If a notification would have been sent to students with a
+predicted grade of less than 3 out of 5, which is close to a
+failing grade of <2.5, then the intervention would have had
+the following effects:
+
+• Average alarm rate: 26% – Percentage of students
+that are predicted to score less than 3 out of 5. These
+are the number of students that would receive a noti-
+fication of possible homework failure.
+
+• False alarms: 10% – Students that would have been
+notified but even without the intervention, did not fail.
+
+• Average miss rate: 6% – Students that the model
+did not predict failing and without the intervention
+actually scored a low grade.
+
+• Unexplained miss rate: 0.83% – Out of 240 grade
+predictions only two students scored a low grade and
+would not have been notified.
+
+The explained misses were students that only submitted a
+partial assignment (usually forgot to give critiques). There
+are different kinds of alarms that can go off for students
+nearing deadline without having a submission so we can only
+consider them to be possible misses by our model.
+
+265
+
+
+
+Figure 2: Grade and Participation model coefficients
+and p-value.
+
+7. CONCLUDING REMARKS
+Participating in a collaborative learning environment en-
+
+ables the exploration of peer created content. A student
+posts drafts in the blogosphere, reads drafts of the same
+homework by other students and has the option of leaving
+comments and marking those she especially likes. By explor-
+ing how peers approach the assignment, format the answer
+or solve a particular problem, she is contributing to a com-
+mon resource – a non-rivalrous resource [9] – that is usable
+later in the semester to solve different problems with the
+same method.
+
+We have explored learning and preventing failure and found
+a promising method for notifying students before they get
+a bad grade. The study presented in this paper explored
+student participation in an online collaborative discourse co-
+blogging community while they worked on creating content
+that they could later use as a resource for doing their term
+project. By tracking participation and relating it to earlier
+grades, we successfully created a model that predicted, with
+very high accuracy, if a student was going to score a low
+grade on the assignment she was currently working on.
+
+Further research could explore the use of peer assessment
+as a replacement for teacher grades in the model. The ap-
+proach to failure prediction developed in this work may also
+prove useful for reducing the size of the grading task for
+large classes. For a large class, weekly grading can be much
+too labor intensive. Spot checking and rotating through the
+class can provide some feedback, but the addition of a fail-
+ure prediction mechanism that works for each assignment
+as it is being done, could help the instructors to be more
+selective about which students to grade more closely. The
+approach to failure detection we have presented can poten-
+tially be reversed, in which case, the instructor would have
+an early detection mechanism for identifying students who
+are doing well on the current assignment. After verification,
+the instructor could choose to notify the rest of the class
+
+of these examples of good work, so as to steer the weaker
+students in the right direction.
+
+8. REFERENCES
+[1] P. Baepler and C. Murdoch. Academic analytics and
+
+data mining in higher education. 2010.
+
+[2] M. Baker, T. Hansen, R. Joiner, and D. Traum. The
+role of grounding in collaborative learning tasks.
+Collaborative learning: Cognitive and computational
+approaches, pages 31–63, 1999.
+
+[3] J. Campbell, P. DeBlois, and D. Oblinger. Academic
+analytics: A new tool for a new era. Educause Review,
+page 11, 2007.
+
+[4] P. Dillenbourg. What do you mean by collaborative
+learning. Collaborative learning: Cognitive and
+computational approaches, pages 1–16, 1999.
+
+[5] P. Dillenbourg and D. Traum. Sharing solutions:
+persistence and grounding in multi-modal
+collaborative problem solving. The Journal of the
+Learning Sciences, 15(1):121–151, 2006.
+
+[6] M. Driscoll. How people learn (and what technology
+might have to do with it). eric digest. Syracuse, NY:
+ERIC Clearinghouse on Information and
+Technology.(ERIC Document Reproduction Service
+No. ED 470032), 2002.
+
+[7] J. Finn. School engagement and students at risk.
+Washington, DC: National Center for Education
+Statistics, 1993.
+
+[8] S. Hrastinski. A theory of online learning as online
+participation. Computers & Education, 52(1):78–82,
+2009.
+
+[9] L. Lessig. The future of ideas: The fate of the
+commons in a connected world. Random House Inc,
+2001.
+
+[10] J. Mason and P. Lefrere. Trust, collaboration,
+e-learning and organisational transformation.
+International Journal of Training and Development,
+7(4):259–270, 2003.
+
+[11] K. Ruthven, S. Hennessy, and R. Deaney.
+Incorporating internet resources into classroom
+practice: pedagogical perspectives and strategies of
+secondary-school subject teachers. Computers &
+Education, 44(1):1–34, 2005.
+
+[12] M. Scardamalia and C. Bereiter. Computer support
+for knowledge-building communities. Journal of the
+learning sciences, pages 265–283, 1993.
+
+[13] K. Topping. Peer assessment between students in
+colleges and universities. Review of Educational
+Research, 68(3):249, 1998.
+
+[14] K. Topping. Trends in peer learning. Educational
+Psychology, 25(6):631–645, 2005.
+
+[15] C. Torrey, E. Churchill, and D. McDonald. Learning
+how: the search for craft knowledge on the internet. In
+Proceedings of the 27th international conference on
+Human factors in computing systems, pages
+1371–1380. ACM, 2009.
+
+[16] M. Wilson. Teaching, learning, and millennial
+students. New Directions for Student Services,
+2004(106):59–71, 2004.
+
+266
+
+
+
+
+

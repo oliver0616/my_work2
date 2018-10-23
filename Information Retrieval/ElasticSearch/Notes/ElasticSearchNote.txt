@@ -1,0 +1,69 @@
+1. Start kibana and elasticsearch by using terminal
+2. "kibana/bin/kibana.bat" and "elasticsearch/bin/elasticsearch"
+3. On the kibana terminalfind the line said "server running at http://......" copy the link and post it in the browser.
+
+Kibana dev tools code
+1. GET: allow you to check either a specific item or general types in the index ex. GET bank
+2. DELETE: Delete the indices you dont want ex. DELETE bank
+3. POST _bulk: using bulk import the large amount of data in
+ex.(could be use in this form) 
+{ "index" : { "_index" : "test", "_type" : "my-tests", "_id" : "1" } }
+{ "author" : "apple","amount" : "3"}
+{ "index" : { "_index" : "test", "_type" : "my-tests", "_id" : "2" } }
+{ "author" : "banana","amount" : "4"}
+{ "index" : { "_index" : "test", "_type" : "my-tests", "_id" : "3" } }
+{ "author" : "orange","amount" : "5"}
+4. can also use terminal to import data and create type without specific types or index(check the tutorial)
+5. query search codes
+
+GET test/my-tests/_search
+{
+  "query": {
+    "match": {
+      "author": "orange"
+    }
+  }  
+}
+
+_search: allow user search the index with types and list out all the items in this types
+query: use the query code
+match: match with the condition user is looking for
+
+GET test/my-tests/_search
+{
+  "query": {
+    "bool": {
+      "must": [
+        { "match": {
+          "author": "orange"
+        } },
+        {"match": {
+          "amount": "5"
+        }
+          
+        }
+      ]
+    }
+  }
+}
+
+bool: allow user to search muitple condition to match the information user looks for
+must: the search must match with the condition user gave
+must_not: the search must not match with the condition user gave, which mean the opposite of what users ask for
+
+GET bank/account/_search
+{
+  "query": {
+    "bool": {
+      "should": [
+        { "match": {"state": "CA"} },
+        { "match": {"lastname": {"query":"Smith", "boost": 3}}}
+      ]
+    }
+  }
+}
+should: telling the program that it should match with the following condiction
+boost: saying that matching lastname smith is 3 times more important than matching state with CA
+
+GET /twitter/_doc/1/_termvectors
+_termvector: show statics information of the query see documentation for more

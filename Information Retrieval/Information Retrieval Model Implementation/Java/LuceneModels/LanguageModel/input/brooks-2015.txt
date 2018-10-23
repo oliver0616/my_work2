@@ -1,0 +1,1403 @@
+
+A Time Series Interaction Analysis Method for Building
+Predictive Models of Learners using Log Data
+
+Christopher Brooks
+School of Information
+University of Michigan
+Ann Arbor, MI, USA
+
+brooksch@umich.edu
+
+Craig Thompson
+Dept. of Computer Science
+University of Saskatchewan
+
+Saskatoon, SK, Canada
+craig.thompson@usask.ca
+
+Stephanie Teasley
+School of Information
+University of Michigan
+Ann Arbor, MI, USA
+
+steasley@umich.edu
+
+ABSTRACT
+As courses become bigger, move online, and are deployed to
+the general public at low cost (e.g. through Massive Open
+Online Courses, MOOCs), new methods of predicting stu-
+dent achievement are needed to support the learning process.
+This paper presents a novel method for converting educa-
+tional log data into features suitable for building predictive
+models of student success. Unlike cognitive modelling or
+content analysis approaches, these models are built from in-
+teractions between learners and resources, an approach that
+requires no input from instructional or domain experts and
+can be applied across courses or learning environments.
+
+Categories and Subject Descriptors
+K.3 [Computing Milieux]: Computers and Education;
+I.2.1 [Computing Methodologies]: Artificial Intelligence—
+Applications and Expert Systems
+
+1. INTRODUCTION
+Predictive models in education generally require intimate
+
+knowledge of the domain being taught, the learning objec-
+tives, and the pedagogical circumstances under which the
+instruction takes place. While there is work that focuses on
+removing some of these constraints and focusing instead on
+specific tools or pedagogies (e.g. analysis of discussion forum
+communication), this limits techniques to only those courses
+which use particular technologies or pedagogical approaches.
+
+In this paper we present a more general method of build-
+ing predictive models for educational data based on student
+interactions with the learning environment. Unlike existing
+work in the area (e.g. [3], [14]), we aim to build models
+solely from coarse grained observations of interactions over
+time between a student and course resources. Our goal is to
+not only build an accurate predictive model for a particular
+course, but to do so in a fashion that scales across many dif-
+ferent courses and learning environments. We aim to enable
+“one click modeling” of a large variety of educational data
+systems without the need to burden instructors, pedagogical
+
+Permission to make digital or hard copies of all or part of this work for
+personal or classroom use is granted without fee provided that copies are
+not made or distributed for profit or commercial advantage and that copies
+bear this notice and the full citation on the first page. To copy otherwise, to
+republish, to post on servers or to redistribute to lists, requires prior specific
+permission and/or a fee.
+LAK ’15 March 16 - 20, 2015, Poughkeepsie, NY, USA
+ACM 978-1-4503-3417-4/15/03 ...$15.00.
+http://dx.doi.org/10.1145/2723576.2723581.
+
+experts, or learning technologists. These models can then be
+used by these individuals to gain insight into activities that
+have happened in a course, build early-warning systems for
+student success, or characterize how courses relate to one
+another. Of course, we do not claim that experts should
+be removed entirely from the modelling process, rather we
+aim to augment their activities by making it easier to create
+data-driven models.
+
+A strong motivation for this approach comes from the
+growing list of educational software systems that collect“click-
+stream” data about learners. For instance, the BlackBoard
+and Sakai learning management systems both collect data
+on the interactions learners have with various tools and
+content, the Opencast lecture capture system collects fine-
+grained data on access to lecture video and configuration of
+the playback environment, and the Coursera massive open
+online course platform collects web logs of how users have
+navigated through the course website. All of these systems
+do this educational data logging in addition to maintaining
+traditional operations data based on the features available
+to learners.
+
+To narrow the focus of this paper, we specifically apply a
+technique we refer to as time series interaction analysis to
+predict student achievement in summative evaluations from
+Massive Open Online Courses (MOOCs). A number of ap-
+proaches have been used to predict student achievement and
+the general consensus is that previous student evaluations
+(either summative or formative) are the best predictor of
+future success in higher education. For instance, using data
+from a four year traditional public school, Jayaprakash et
+al. [14] provide a description of a logistic regression model
+in which partial grades for a course followed by cumulative
+grade point average are the strongest predictors of a stu-
+dents final grade. Barber and Sharkey [3] provide a simi-
+lar analysis of data collected from a four year private online
+university, demonstrating that while the importance of prior
+academic achievement decreases as formative assessment is
+collected, both measures are more important than the data
+collected about student behaviors in the learning environ-
+ments used. With the increased availability and quality of
+institution-wide student demographic and assessment data
+through university data warehouses, it is not surprising that
+summary measures of student activity in online courseware
+have been most explored when building predictive models.
+
+Massive open online courses are different from courses of-
+fered in traditional higher education settings in many ways.
+In this work we focus on one particular difference between
+MOOCs and traditional course delivery that impacts the
+
+126
+
+
+
+ability of institutions to build predictive models of student
+achievement – namely, institutions that offer MOOCs tend
+to have very little prior information about learners and the
+learners’ previous academic achievements. For instance, stu-
+dents engaging in Coursera offerings at the University of
+Michigan are not obligated to report demographic informa-
+tion, residency information, previous history with the con-
+tent they are studying, or their goals for enrolling in the
+MOOC. In these cases, interaction behavior with the learn-
+ing platform is the only source of data that is available from
+which to form a predictive model until course examinations
+have been completed.
+
+This paper proceeds as follows: In section 2 we provide
+a discussion of our approach to modeling educational log
+data, including details of a method of generating features
+suitable for data mining based on the popular n-grams tech-
+nique used in the field of text analysis. We detail the kind
+of data available from the Coursera MOOC platform, and
+the datasets which we have used to validate our approach.
+In section 3 we describe how our approach can be used to
+support three different course modeling activities: (1) un-
+derstanding a single cohort of learners, (2) generalizing a
+model across different sessions of a course, and (3) demon-
+strating the effectiveness of the model for predicting success
+over the course. In this last question we consider specifically
+how time series interaction analysis models change in form
+and accuracy throughout a course, an important consider-
+ation when building automated early warning systems. We
+conclude with a discussion about the generalizability of the
+approach and avenues for further exploration.
+
+2. APPROACH
+In the field Technology Enhanced Learning (TEL), much
+
+attention has been paid to understanding how people learn
+from a cognitive perspective. For instance, Anderson’s ACT-
+R theory of skill knowledge [2], which is used as a basis for
+many intelligent tutoring systems (see [7]), suggests that
+cognitive skills can be described as production rules: small
+operations of data manipulation organized around atomic
+goals. Firing of correct rules is done repeatedly with the
+facts available to a learner, leading them to demonstrate a
+particular higher level cognitive skill. Inability to fire correct
+rules in such a way that a skill is demonstrated indicates
+a lack of having the correct rules, and suggests a need for
+educational intervention (learning) or that the rule matching
+mechanism needs improvement.
+
+Ohlsson’s theory of learning based on performance errors
+provides an alternative to the ACT-R theory, where he ar-
+gues that it is through making mistakes and correcting them
+that we demonstrate learning [17]. Providing a correct an-
+swer does not signify the learner understands; instead, the
+learner may just not yet have made a mistake and may have
+inadvertently answered correctly. It is the times the learner
+demonstrates mistakes that indicate learning is happening.
+This approach is core to the constraint-based modeling fam-
+ily of intelligent tutoring systems such as [16].
+
+Learner interactions with content and problems are not
+the only focus of learning theories, as learning through com-
+munication with other individuals has been explored broadly
+under the theory of social constructivism [11]. While the ma-
+jority of work related to TEL in this area has been on peer-
+to-peer learning through chat or discussion forums, some
+have also applied intelligent systems in the form of peer
+
+matching [6] or tutors based on dialogue systems [12].
+In this work we aim to enable the modeling of learners
+
+based on data gathered from learning systems that log the
+interactions learners have with resources. This is a data-
+driven approach to modelling learners versus a theoretical
+approach, and it is meant to be complementary to the ap-
+proaches described above. This approach has particular
+benefits for scaling the creation of learner models, as no
+interaction is required from human experts (instructors, in-
+structional designers, or tutors) in order to generate the
+models. The end results may then either be used in an
+automated fashion as part of an early-warning system, or
+may be used by pedagogical experts as a reflection on how
+learner–environment interactions relate to student success.
+
+2.1 General Model for Educational Log Data
+We view the learning system as being made up of five
+
+pieces: students, resources, interactions, events, and out-
+comes. The first of these, students, is a set of individuals
+who interact with the learning environment. These individ-
+uals have characteristics that are known when they first be-
+gin interacting with the environment and, for simplification
+of modelling purposes, these characteristics do not change.
+For example, demographic variables (e.g. age, gender, eth-
+nicity) as well as prior knowledge (e.g. previous grades or
+other measures of evaluation) can be associated with an in-
+dividual, and may be a direct influence on their outcomes.
+In the results described in the next session we omit student
+characteristics from our modeling, but we note here that
+they may be useful (and readily accessible) when creating
+predictive models.
+
+Students interact with a learning system through resources.
+These resources may be web content, discussion forums, lec-
+ture video, or even intelligent tutoring systems. Resources
+may be described through different levels of generalization.
+For instance, the coarse grain “lecture” resource may be
+made up of individual“lectures”, each of which may be made
+up of “segments”. An important distinction between this
+view of resources and others is that we intentionally conflate
+pedagogy, technology, and content into a single item, and do
+not attempt to disambiguate resources by defining them to
+be about concepts, methods, or delivery mechanisms.
+
+An interaction denotes a singular circumstance in which
+a student uses a resource, and represents a temporal rela-
+tionship between the student and resource. For instance, an
+interaction may be viewing a lecture, submitting a quiz, or
+reading a discussion forum post. It is expected that indi-
+vidual interactions will be processed through aggregation,
+summation, scaling, or other mathematical functions in or-
+der to describe different levels of granularity that may be
+useful in the modelling process. This processing is to be
+applied in an automated manner, and not require a priori
+hypotheses based on the content, concepts, or individuals
+involved.
+
+Each interaction exists between two events. Events are
+demarcations of the beginning and end of time-frames of in-
+terest. Conceptually, events can be hierarchically arranged,
+and a given set of data might have a start and end time
+which encompass other events such as assignment deadlines,
+examinations, or course beginning and endings. In the in-
+vestigation section to follow we will focus only on a single
+set of events that note the beginning and end of a course,
+but one can readily imagine how it may be useful to predict
+
+127
+
+
+
+outcomes for other pairs of events (e.g. the beginning of
+the course and the first major exam, or the beginning of the
+course and the first assignment deadline).
+
+Educational outcomes can be measured in various ways in-
+cluding through taxonomies of skill acquisition (e.g. through
+Bloom’s taxonomy [4] or the like), grades (which may be
+content-based or a comparison between students in a co-
+hort), or student satisfaction (which may be measured
+through self-reports or through proxy variables such as re-
+tention in a program). In our characterization of educational
+data modelling we make no attempt to link specific interac-
+tions to outcomes in a theoretical manner. Instead, we argue
+that consistent and repeatable correlations found through
+the data mining process will either support or not support
+linkages between interaction patterns and educational the-
+ory. Thus, evidence for learning theory is an output of the
+modelling process which can be reflected upon by practition-
+ers, but theory is not necessarily an input to the process.
+The only constraint we put on the educational outcome is
+that it be well-defined and measurable so that it can be used
+as a predictor variable in the data mining process.
+
+2.2 Creating Time Series Features from Log
+Data
+
+In data mining classification tasks, a feature is a key/value
+pair associated with an instance in the dataset which de-
+scribes it in some fashion. Features may be nominal, or-
+dinal, or real values, and may be discrete or continuous.
+In our approach to modeling interactions of learners within
+MOOC platforms we generate a base set of binary features
+(true or false) based on the timeframe in which a resource
+was accessed by the learner.
+
+2.2.1 Timeframes
+We represent timeframes as relative offsets from the start
+
+of the course. This allows for comparison across models
+where courses are treated as being similar to one another
+as one might do with consecutive offerings of a course. We
+chose 4 different granularities of timeframes: accesses within
+a calendar day, a three calendar day period, a calendar week,
+and a calendar month. Thus, in a course that is offered over
+60 days there will be sixty one-day features, twenty three-
+day features, roughly nine week features (depending when
+the course started), and up to three month features. In addi-
+tion to these binary features, we generate seven summative
+features which hold counts of the number of calendar days
+of the week a learner has accessed a given resource.
+
+2.2.2 Resources
+Students have a variety of resources available for learning
+
+in MOOCs and, with the introduction of third party tools
+through Learning Tool Interoperability (LTI) standards, the
+list of these resources can be very broad. Further, one can
+conceptualize resources as being hierarchically arranged – a
+particular web page of content might belong to a collection
+of pages which belong to a section in a course, or a particular
+question on a quiz might be composed within in a section of
+a particular exam.
+
+We decomposed the Coursera clickstream datafile into a
+relational database.1 These tools parse access URLs and dis-
+tinguish resources by the paths and parameters that have
+been used to access them. As we were interested in look-
+ing at a longitudinal dataset collected over several years, we
+
+restricted our investigation of interactions to three coarse
+grained resources: lecture videos, discussion forum threads,
+and quiz attempts. The choice to make this representation
+at a coarse level (e.g. viewing any lecture video is consid-
+ered an interaction with the lecture videos resource, instead
+of making separate resources for each lecture video that ex-
+ists) was somewhat arbitrary, and we leave discussion of the
+potential affect this has on classification accuracy to our
+conclusions.
+
+2.2.3 Applying n-grams to Time Series Features
+The co-occurrence of features based on the time series
+
+data may represent patterns that correlate with outcomes of
+interest. For instance, if all students who watch lectures on
+the sixth, seventh, and eighth day of the course end up with
+a passing grade in the course, while those who do not watch
+lectures these days fail to get a passing grade, then this pat-
+tern of behavior is valuable (and would be captured by our
+existing transformations). If, however, a pattern of inter-
+action such as watching consecutive lectures on any three
+days was correlative with an outcome of interest, this pat-
+tern would be missed by the features described thus far.
+
+To capture these more general patterns of interaction, we
+apply the n-gram technique from text mining to interac-
+tions. An n-gram is a sequence of n words, and n-gram
+features are often used as counts of particular n-grams. For
+instance, if the words “quick brown fox” occurs twice in a
+given document, the n-gram (in this case a 3-gram) feature
+quick brown fox would have a value of two. In our data we
+are dealing with accesses to resources such as lecture videos,
+so an n-gram with the pattern (false, true, false), the label
+of week, and count of 2 would indicate that a student had
+two occurrences of the pattern of not watching lectures in
+one week, watching in the next week, and then not watching
+again in the third week.
+
+We generate the set of n-grams ranging from 2-grams to 5-
+grams covering all permutations of (false, true) from (false,
+false) to (true, true, true, true, true). We repeat this pro-
+cess for all of the features described in section 2.2.1: single
+days, 3-day lengths, weeks, and months.
+
+2.3 Massive Open Online Course (MOOC)
+Example
+
+The University of Michigan has offered a number of
+MOOCs through the Coursera platform since 2012. As an
+example, one of these MOOCs was 104 days long and used
+video lectures (which we coded as lectureview), discussion fo-
+rums (coded as forumthread), and quizzes (coded as quizat-
+tempt) throughout. Using the method described in 2.2.1,
+we coded single day accesses (1d), three day accesses (3d),
+one week accesses (1w) and one month accesses (1m) over
+the 104 day period, resulting in 480 boolean features in the
+format shown in Figure 1.
+
+We added 21 more features which were summative in na-
+ture describing accesses to resources over days of the week
+(starting with Sunday coded as a 0) in the format shown in
+Figure 2.
+
+Finally, we added 717 more features representing the 2-,
+3-, 4-, and 5-gram patterns described in section 2.2.3. Each
+of these features are in the format as shown in Figure 3. The
+final datafile for this course was made up of a total of 1221
+
+1The tools for this process are open source and available at
+https://bitbucket.org/umuselab/mooc-scripts
+
+128
+
+
+
+0_1D_FORUMTHREAD...103_1D_FORUMTHREAD
+0_3D_FORUMTHREAD...35_3D_FORUMTHREAD
+0_1W_FORUMTHREAD...14_1W_FORUMTHREAD
+0_1M_FORUMTHREAD...4_1M_FORUMTHREAD
+
+Figure 1: List of features representing student
+interactions with discussion forums. Separate
+features exist for single day, three day, one
+week, and one month accesses.
+
+0_DOTW_FORUMTHREAD...6_DOTW_FORUMTHREAD
+0_DOTW_LECTUREVIEW...6_DOTW_LECTUREVIEW
+0_DOTW_QUIZATTEMPT...6_DOTW_QUIZATTEMPT
+
+Figure 2: Days of the week counts as features
+for the three resources.
+
+total features for each instance (each student enrolled in the
+course) in the dataset.
+
+[0, 0]_1D_FORUMTHREAD...[1, 1, 1, 1, 1]_1D_FORUMTHREAD
+[0, 0]_3D_FORUMTHREAD...[1, 1, 1, 1, 1]_3D_FORUMTHREAD
+[0, 0]_1W_FORUMTHREAD...[1, 1, 1, 1, 1]_1W_FORUMTHREAD
+[0, 0]_1M_FORUMTHREAD...[1, 1, 1, 1, 1]_1M_FORUMTHREAD
+
+Figure 3: Temporal pattern features as n-grams
+for interactions with resources.
+
+3. EXPERIMENT
+We investigated whether our approach of time series in-
+
+teraction analysis would be suitable for answering three pre-
+dictive modeling questions about MOOCs:
+
+R1 Can we create an accurate post-hoc explanatory model
+that describes the patters of interaction that lead to
+learners achieving a passing grade (defined as a Cours-
+era “normal” grade) for a given session of a course?
+
+R2 What is the post-hoc model generalizability and can it
+be used to accurately describe new sessions of a course?
+
+R3 How does model accuracy and explanation change over
+time if the model is created while a course is ongoing?
+
+The first of these questions is a reflective activity, aimed
+at providing a summary to course designers or instructors
+as to how interactions have affected achievement. These in-
+structional experts can then modify the pedagogy, resources,
+help methods, or structure of the course to target particular
+groups of learners. If the accuracy of the model is low, it still
+may be useful in describing how certain kinds of interaction
+patterns relate to achievement.
+
+The second of these questions is longitudinal in nature,
+aimed at generalizing the model across sessions and char-
+acterize how predictive it might be of a new offering. Such
+models are powerful but generally require historical data
+and an understanding of how the structure, content, and
+pedagogy of course resources has changed over subsequent
+offerings. In the case of Michigan MOOCs we have made
+the assumption that these resources have undergone mini-
+mal change which may not be true in other situations.
+
+The last of these questions is most relevant when building
+early-warning systems for student success. Being able to
+identify early on in a course which students will pass and
+
+which will fail allows for targeted delivery of help resources
+or other interventions to those who need it the most. There
+may be explanatory power in early models as well if accuracy
+is high, as it allows instructional experts to see patterns of
+interaction that may be associated with success but not most
+predictive once the course has finished. These explanations
+might help tutors or instructors identify particular problems
+with course design or student misconceptions.
+
+To address these questions, we formed predictive mod-
+els with J48 decision trees using the Weka toolkit [13] for
+4 different Michigan MOOCs offered on the Coursera plat-
+form. We chose these four MOOCs based on how long they
+had been running and whether the curriculum, platform,
+and data formats behind the course were largely unchanged.
+These MOOCs covered a variety of domains and anticipated
+skill levels of learners. Each MOOC had its own criteria for
+determining what a passing grade for the course was and,
+similar to the results of others [18], the total number of learn-
+ers achieving a passing grade are only a small portion of the
+total number of learners who have enrolled in the course.
+Summary statistics for each of the MOOC datasets we used
+are given in Table 1.
+
+3.1 Technical Parameters and Nomenclature
+Educational data, especially data from MOOCs, is often
+
+highly unbalanced. As shown in Table 1, the fraction of stu-
+dents who pass the course is between 1.46% and 11.79%. As
+there is a tendency for machine learning algorithms to bias
+towards the majority class, and training based on balanced
+data has been shown to improve accuracy in real-world ed-
+ucational data mining activities [8], [14], we report the ma-
+jority of our measures using balanced random data where
+balancing is done through subsampling of the majority class.
+The exception to this is for research question R3 described
+in Section 3.4 as this question is particularly aimed at gen-
+erating models for a course in situ, where the proportion of
+students who pass is not already known.
+
+Our experiment does not address what the optimal data
+mining technique or parameters are for each of the three re-
+search questions described. Decision trees were chosen for
+their ease of use and clear interpretability for to instruc-
+tional designers [5], and as our contribution is primarily one
+of feature engineering we anticipate various other kinds of
+machine learning techniques (e.g. Bayesian models, support
+vector machines) will work with similar, or better, results.
+We do not make any claims here as to whether J48 is the
+ideal method of learning that should be used in this domain.
+Unless otherwise stated, all data processing was done using
+the Weka toolkit version 3.7.10 with the J48 classifier, an
+implementation of C4.5. The classifier was parameterized
+with a confidence level of 0.25 and a minimum leaf node size
+of 50.
+
+In our results related to all three research questions we re-
+port the number of correct classifications, the number of in-
+correct classifications, and Fleiss’ ? (kappa) [9] as a measure
+of agreement between observed data and predicted data.
+? is chance corrected, and ranges from -1 to 1 where 0 is
+an indication of chance agreement and 1 indicates complete
+agreement. A challenge in educational data mining is the
+determining how strong a measure of ? is needed – differ-
+ent authors provide widely different views on the issue (see
+[15], [10], [1] as cited in [19]), though there is some agree-
+ment that values above 0.41 are fair or better, and values
+
+129
+
+
+
+Course and Offering Number of Students
+with Grades
+
+Number of
+Students Passing
+
+Passing Criteria
+Total Number
+of Interactions
+in Course
+
+Literature-1 14, 628 668 ? 60 2, 696, 875
+Literature-2 17, 385 384 ? 60 1, 670, 370
+Internet-1 34, 120 2, 909 ? 80 4, 331, 072
+Internet-2 19, 990 2, 671 ? 80 3, 910, 375
+Internet-3 23, 790 1, 395 ? 80 2, 713, 321
+Philosophy-1 38, 344 2, 331 ? 75 8, 719, 079
+Philosophy-2 48, 521 2, 559 ? 75 9, 840, 823
+Philosophy-3 17, 385 1, 946 ? 75 9, 255, 691
+Networks-1 62, 826 1, 409 ? 78 7, 379, 887
+Networks-2 35, 274 1, 379 ? 78 4, 764, 195
+Networks-3 58, 006 930 ? 78 4, 509, 613
+
+Table 1: Course statistics for each MOOC analyzed. Note that the criteria for passing a course can be a
+complex calculation and that it is not uncommon for MOOCs to allow for greater than 100 points to be
+achieved.
+
+[0, 0, 0, 0]_1W_FORUMTHREAD <= 4: pass (590.0/19.0)
+[0, 0, 0, 0]_1W_FORUMTHREAD > 4
+| [0, 0, 0, 0, 1]_1D_LECTUREVIEW <= 2: fail (647.0/21.0)
+| [0, 0, 0, 0, 1]_1D_LECTUREVIEW > 2: pass (99.0/23.0)
+
+Figure 4: Example of end of course decision tree for
+Literature-1
+
+above 0.81 are strong. Actual determination of the value of
+? is highly contextual and is determined by the end use of
+the data – a value of kappa = 0.4 might represent a strong
+agreement if the cost and risk of intervention is low, while a
+more conservative kappa = 0.8 might be required for higher
+risk or high cost interventions. We address the challenge of
+interpreting measures like ? in the future work section of the
+paper.
+
+3.2 Accurate Post-hoc Explanatory models
+(R1)
+
+Research question R1 addresses the issue of whether ac-
+curate post-hoc explanatory models can be created for a
+course. This leads to two related analyses (a) are the models
+created explanatory in nature and (b) what is the accuracy
+of the models?
+
+3.2.1 Post-hoc Model Explanatory Power
+To address the first of these issues, we rely on the decision
+
+tree generated by the J48 implementation of C4.5. The tree
+lists a set of rules where leaf nodes classify learners based
+on the features used in training. Each leaf node has a mis-
+classification rate given in parenthesis after the leaf node,
+where the first number is the total number of instances rep-
+resented by the leaf and the second is the number of those
+instances that are misclassified. Figure 4 gives an example
+of the decision tree for one course, Literature-1. In it there
+are only three different paths to classification:
+
+• If the learner has less than or equal to four one week
+[0, 0, 0, 0] counts they will pass the course (misclassi-
+fication rate of 3%). This path suggests that reading
+discussion forums is valuable in passing this course. An
+instructional expert might find this description help-
+
+ful and (with a belief that the activity is causal), may
+try and pull in students who go long periods without
+reading discussion forums.
+
+• If the learner has not followed the first rule, but has
+more than two [0, 0, 0, 0, 1] one day lecture views
+then they will pass the course (misclassification rate of
+3%). This suggests that watching behavior of lectures,
+spaced broadly (five days apart), at least a couple of
+times is valuable if reading of discussion forums over
+time is not being done. While the relatively high mis-
+classification rate suggests care should be paid to over-
+relying on this path, an instructional expert (with the
+belief that the activity is causal) may do a midterm
+evaluation of how students are using lecture content,
+and send out email invitations to students who have
+disengaged.
+
+• The last path suggests that students who do not fit
+the other two descriptions are likely to fail the course
+(misclassification rate of 23%)
+
+A second end-of-course decision tree, for Networks-1, is
+given in Figure 5. This tree is even more limited and has
+only two paths, one that suggests that if learners attempt
+and assessment in at least two consecutive months after the
+first (e.g. that they have a pattern of one month quiz at-
+tempts of [0, 1, 1] or higher) they will pass the course. This
+kind of pattern, which relies on interactions with assessment
+mechanisms, is prevalent throughout the rest of the MOOC
+courses we considered. It is important to note that a quiz at-
+tempt does not capture the grade a student achieved on the
+quiz, nor reveal conceptual errors a student may have made
+about particular questions. Instead, this model only looks
+at interaction activity, and misclassification rates are low.
+This tree may demonstrate the low assessment demands of
+learners in MOOCs (e.g. that quizzes are easy enough that
+just attempting a quiz will result in passing the course), or
+the highly specialized backgrounds of learners in MOOCs
+(e.g. that learners aiming to get certificates in the course
+already have strong backgrounds in the subject).
+
+While a more thorough understanding of the explanatory
+power of these models would require user studies, it seems
+reasonable to suggest that the end of course models have
+
+130
+
+
+
+[0, 1, 1]_1M_QUIZATTEMPT <= 0: fail (1389.0/3.0)
+[0, 1, 1]_1M_QUIZATTEMPT > 0: pass (1431.0/24.0)
+
+Figure 5: Example of end of course decision tree for
+Networks-1
+
+minimal explanatory benefits to instructional experts. The
+models presented here instead act as summaries of learner
+activity which are broadly predictive. The J48 decision tree
+does not capture all intermediate models of activity, and
+prunes out features which may be somewhat (even signifi-
+cantly) predictive but not as predictive as the summary fea-
+tures discussed here. The post-hoc models created through
+the time series interaction analysis lack strong explanatory
+powers.
+
+3.2.2 Post-hoc Model Accuracy
+The second part of research question one (R1) investigates
+
+the accuracy of the post-hoc time series interaction models.
+If the models are inaccurate then further research on im-
+proving the explanatory power of the model is questionable.
+However, if the models are accurate predictions of student
+results then they may be applicable in automated situations.
+The results here are positive: model accuracy as measured
+by the ? statistic are extremely high, above 0.9 in all cases,
+with a misclassification rate below 5% in all cases (Table 2).
+This, along with the low number of paths to leaf nodes in the
+decision trees, suggests that the time series interaction anal-
+ysis method captures features which are highly correlated
+with learner achievement, in this case defined as receiving a
+passing grade in the MOOC course.
+
+Course ? correctly incorrectly
+classified (%) classified (%)
+
+Literature-1 0.90 1,273 (95.28) 63 (4.72)
+Internet-1 0.96 5,306 (98.48) 82 (1.52)
+Philosophy-1 0.92 1,660 (96.40) 62 (3.60)
+Networks-1 0.98 2,793 (99.04) 27 (0.06)
+
+Table 2: Accuracy of models for each of the courses
+considered. A ? of 1 indicates a perfectly accurate
+model, while a ? of 0 represents a model as good as
+chance.
+
+The post-hoc models created through the time series in-
+teraction analysis are highly accurate. However, this does
+not speak to whether the models are generalizable or not as
+this experiment did not use cross-validated or testing on a
+hold out set. The next section (R2) will consider this issue
+directly.
+
+3.3 Post-hoc Model Generalizability (R2)
+A post-hoc analysis for a single session describes the fea-
+
+tures that most highly correlate with success within that
+session. An important issue with predictive models is how
+both accuracy and explainability change after several ses-
+sions of a course have run. We trained daily models from
+the combined (balanced) data of the first two offerings of
+each course, and tested these models on a full dataset (un-
+balanced) from the third offering of the course.2 It is im-
+portant to note that each session of the course was made up
+of different learners accessing resources in a different por-
+tion of the calendar year, and that that we did not combine
+all three datasets and hold out a random percentage. In-
+
+stead, our interest was in observing the sensitivity this kind
+of model might have to courses being run over a different
+time period. Further, only minimal investigation was made
+to ensure that each course continued to use quizzes, lecture
+video, and discussion forums in a way similar to previous
+offerings, and pedagogical approach or instructional tech-
+nique was not constrained in any way. Table 3 provides the
+results of this analysis, showing a drop in accuracy but still
+relatively high values of ? ? 0.50.
+
+Course ? correctly incorrectly
+classified (%) classified (%)
+
+Internet 0.63 22,556 (94.37) 1,346 (5.63)
+Philosophy 0.50 53,389 (93.68) 3,603 (6.32)
+Networks 0.73 57,466 (98.99) 640 (1.10)
+
+Table 3: Accuracy of models when trained on the
+first two sessions of a course and applied to the third
+session. Overall ? values drop significantly, yet re-
+main well above the 0.4 threshold for fair-moderate
+quality.
+
+While the accuracy of the models dropped, the size of
+the decision trees increased significantly (see Figure 6), and
+an understanding as to whether this size leads to a higher
+level of explainability or not is not clear without further
+user studies. For instance, the bolded section of the tree
+suggests that even with a lack of two week quiz attempts
+([0, 0]_ 1W_QUIZATTEMPT > 8) and not watching lectures
+each month ([1, 1, 1]_1M_LECTUREVIEW) it is possible to
+pass the course and that may depend on whether a stu-
+dent has watched lecture in the 18th three day period
+(18_3D_LECTUREVIEW = True: pass (55.0/26.0)). While
+this could be erroneous (the misclassification rate is quite
+high, at 47%) it is also possible that this period represents
+a pivotal point in the course that only the instructional ex-
+perts associated with the course would recognize.
+
+In summary, models trained on the first two sessions of
+a course are generalizable to a third session with moderate
+accuracy, and the explanatory power of models may change
+but making this determination requires further study.
+
+3.4 Model Accuracy and Explanation Change
+Over Time (R3)
+
+Summative models such as those presented the previous
+sections may be useful for understanding a particular cohort
+of learners as they display patterns of interaction with re-
+sources that correlate with success in a given course. A cen-
+tral topic in the emerging field of learning analytics however,
+is how practical predictive systems can be formed based on
+educational data. These systems not only need to be able
+to consider unseen data as described in the previous section,
+but also need to work with it in situ while a course has only
+been partially completed.
+
+To investigate this issue we trained daily models from the
+combined (balanced) data of the first two offerings of each
+course, and tested these models on full dataset (unbalanced)
+from the third offering of the course. In our approach we
+make the assumption that the resources, assessment crite-
+ria, and instructional tempo (e.g. length of course, deadlines
+
+2As there were only two offerings of the Literature course
+we excluded it from this analysis.
+
+131
+
+
+
+[0, 0]_1W_QUIZATTEMPT <= 8
+| [1, 0, 0]_1M_LECTUREVIEW <= 0
+| | 2_1M_LECTUREVIEW = False
+| | | [1, 1, 0]_1M_QUIZATTEMPT <= 0
+| | | | 18_3D_LECTUREVIEW = False
+| | | | | [1, 1]_1W_QUIZATTEMPT <= 0
+| | | | | | [1, 1, 0]_3D_QUIZATTEMPT <= 0
+| | | | | | | 4_3D_QUIZATTEMPT = False
+| | | | | | | | 3_3D_QUIZATTEMPT = False: fail (56.0/20.0)
+| | | | | | | | 3_3D_QUIZATTEMPT = True: pass (55.0/23.0)
+| | | | | | | 4_3D_QUIZATTEMPT = True: pass (70.0/21.0)
+| | | | | | [1, 1, 0]_3D_QUIZATTEMPT > 0: pass (51.0/13.0)
+| | | | | [1, 1]_1W_QUIZATTEMPT > 0: pass (502.0/65.0)
+| | | | 18_3D_LECTUREVIEW = True: pass (221.0/14.0)
+| | | [1, 1, 0]_1M_QUIZATTEMPT > 0
+| | | | [1, 0, 0, 0, 0]_1W_QUIZATTEMPT <= 0: pass (99.0/10.0)
+| | | | [1, 0, 0, 0, 0]_1W_QUIZATTEMPT > 0: fail (55.0/3.0)
+| | 2_1M_LECTUREVIEW = True: pass (3775.0/90.0)
+| [1, 0, 0]_1M_LECTUREVIEW > 0
+| | [1, 0, 0, 0]_1W_QUIZATTEMPT <= 0: pass (101.0/5.0)
+| | [1, 0, 0, 0]_1W_QUIZATTEMPT > 0
+| | | [0, 1, 1]_1D_FORUMTHREAD <= 0
+| | | | [0, 1, 0, 0, 0]_3D_QUIZATTEMPT <= 0: pass (57.0/21.0)
+| | | | [0, 1, 0, 0, 0]_3D_QUIZATTEMPT > 0
+| | | | | [0, 0, 0]_1D_LECTUREVIEW <= 70: fail (164.0/37.0)
+| | | | | [0, 0, 0]_1D_LECTUREVIEW > 70
+| | | | | | [0, 0, 0, 0, 0]_3D_QUIZATTEMPT <= 17: pass (86.0/34.0)
+| | | | | | [0, 0, 0, 0, 0]_3D_QUIZATTEMPT > 17: fail (53.0/19.0)
+| | | [0, 1, 1]_1D_FORUMTHREAD > 0: pass (56.0/16.0)
+[0, 0]_1W_QUIZATTEMPT > 8
+| [1, 1, 1]_1M_LECTUREVIEW <= 0
+| | 18_3D_LECTUREVIEW = False: fail (4736.0/122.0)
+| | 18_3D_LECTUREVIEW = True: pass (55.0/26.0)
+| [1, 1, 1]_1M_LECTUREVIEW > 0: pass (276.0/33.0)
+
+Figure 6: The decision tree generated for the end of the Internet course when trained on two datasets.
+
+for assignments, etc.) go largely unchanged between course
+offerings at the particular grain size we are investigating. In
+our experiment we look not at the specific details of each
+resource (e.g. the particular lecture video or segment of a
+video a learner may have watched), but only at the coarse
+grained activity of learners. Thus we expect that our ap-
+proach will be valuable even if fine grained changes are made
+to resources (e.g. videos are modified with new content) as
+long as the macro patterns of interaction are unchanged.
+
+Figure 7 shows the change in ? over time for the three
+courses we investigated. The dashed blue upper line in each
+subfigure represents the ? when evaluating the model against
+the training data (the first two offerings of the course), while
+the solid red lower line represents the ? of the test data (the
+third offering of the course). With respect to the training
+data, all three courses show similar trends of a rapidly in-
+creasing ? that starts between 0.25 and 0.3 and reaches a
+more stable value between 0.8 and 0.9 roughly three weeks
+(21 days) into the course. To have positive ? values after
+one day of course delivery is encouraging, and that the val-
+ues continue to rise quickly suggests that this approach may
+be beneficial for automated early warning systems.
+
+The first two subfigures of Figure 7 show a rise in the value
+of the testing ? as well, coming to a value over 0.4 (Philos-
+ophy) and 0.5 (Internet) within the first three weeks of the
+course, climbing to values above of 0.5 and 0.6 respectively
+by the end of the period. Such values are much larger than
+chance agreement (? = 0) and fit well within the fair or bet-
+ter category suggested in the literature. The third subfigure,
+
+corresponding to the Networks course, showing the rate of
+change in the testing ? over time, appears more linear in its
+growth. The first session of this course was one week longer
+than the second and third sessions – while we did no analy-
+sis of the differences between sessions, it is interesting to see
+that the predictive model still retains power (albeit, it takes
+until day 24 to achieve a ? ? 0.4) despite being trained on
+more heterogeneous data.
+
+To better understand the effect the change in accuracy
+has over time, we graphed the change in confusion matrices
+values for each of the courses (Figure 8).3 Each matrix is
+made up of four values: the number of students who were
+predicted to pass and did (true positives), the number of
+students who were predicted to fail and did (true negatives),
+the number of students who were predicted would pass and
+did not (false positives) and the number of students who
+were predicted to fail and passed (false negatives). The val-
+ues are reported in actual terms from the unbalanced third
+dataset. For instance, if an early-warning system for the In-
+ternet course was configured with these predictive models,
+it would have identified 20,730 students as likely to fail, in-
+correctly classifying 46 of these who end up pass the course
+while at the same time missing 1,915 students who will end
+up failing the course. The instructional expert (or systems
+administrators or designers) must weigh the cost of the in-
+tervention (e.g. fiscal cost to the institution) as well as the
+detriment of delivering the intervention to the 46 students
+(e.g. annoying or discouraging on-track students). This sec-
+ond issue is one that is concerning, and it is positive to see
+
+132
+
+
+
+0
+
+0.1
+
+0.2
+
+0.3
+
+0.4
+
+0.5
+
+0.6
+
+0.7
+
+0.8
+
+0.9
+
+1
+
+Kappa Over Time for Internet MOOC
+
+Training Data
+Testing Data
+
+Days
+
+K
+ap
+
+pa
+
+0
+
+0.1
+
+0.2
+
+0.3
+
+0.4
+
+0.5
+
+0.6
+
+0.7
+
+0.8
+
+0.9
+
+1
+
+Kappa Over Time for Philosophy MOOC
+
+Training Data
+Testing Data
+
+Days
+
+K
+ap
+
+pa
+
+0
+
+0.1
+
+0.2
+
+0.3
+
+0.4
+
+0.5
+
+0.6
+
+0.7
+
+0.8
+
+0.9
+
+1
+
+Kappa Over Time for Networks MOOC
+
+Training Data
+Testing Data
+
+Days
+
+K
+ap
+
+pa
+
+Figure 7: Kappa ? Over Time
+
+0
+
+500
+
+1000
+
+1500
+
+2000
+
+2500
+
+3000
+
+Confusion Matrix Over Time for Internet MOOC
+
+False Positives
+
+False Negatives
+
+True Positives
+
+Days
+
+N
+um
+
+be
+r o
+
+f S
+tu
+
+de
+nt
+
+s 
+(to
+
+ta
+l =
+
+ 2
+3,
+
+90
+2)
+
+0
+
+2000
+
+4000
+
+6000
+
+8000
+
+10000
+
+12000
+
+Confusion Matrix Over Time for Philosophy MOOC
+
+False Positives
+
+False Negatives
+
+True Positives
+
+Days
+
+N
+um
+
+be
+r o
+
+f S
+tu
+
+de
+nt
+
+s 
+(to
+
+ta
+l =
+
+ 5
+6,
+
+99
+2)
+
+0
+
+1000
+
+2000
+
+3000
+
+4000
+
+5000
+
+6000
+
+7000
+
+8000
+
+9000
+
+Confusion Matrix Over Time for Networks MOOC
+
+False Positives
+
+False Negatives
+
+True Positives
+
+Day
+
+N
+um
+
+be
+r o
+
+f S
+tu
+
+de
+nt
+
+s 
+(to
+
+ta
+l =
+
+ 5
+8,
+
+00
+6)
+
+Figure 8: Classification Rates Over Time. True
+negatives omitted for readability (the vast ma-
+jority of MOOC users do not achieve academic
+success).
+
+133
+
+
+
+that in our models the false negatives (incorrectly predicting
+students will fail) drop off rapidly in all situations (by the
+21 day mark).
+
+Applying time series interaction analysis models to new
+MOOC unbalanced datasets based on similar balanced his-
+torical data is moderately accurate by the third week of the
+course (? ? 0.4) with false negatives and true positives
+reaching stable low and high levels respectively.
+
+4. CONCLUSIONS AND FUTURE WORK
+
+4.1 Conclusions
+While much work has been done in leveraging cognitive
+
+modelling for predictive models, data-driven predictive mod-
+elling of achievement that scales across contexts (courses of-
+ferings, instructors, and institutions) is in its infancy. The
+technique we have described here is based on automatically
+generating machine learning features from learner interac-
+tions with educational resources over time. Specifically, fea-
+tures are created as n-grams over different time periods from
+log files created by the technology enhanced learning envi-
+ronment (in this case, Coursera). This technique can be
+scaled widely and applied to educational datasets without
+burdening a domain or instructional expert in the process
+of model generation.
+
+Using this approach we have shown that:
+
+R1 Models are highly accurate (? ? 0.9) when used post-
+hoc but lack strong explanatory power.
+
+R2 Models trained on the first two sessions of a course are
+generalizable to a third session with moderate accuracy
+(? ? 0.5), and the explanatory power of models may
+change.
+
+R3 Models are moderately accurate when applied to new
+real-world data by the third week of the course (? ?
+0.4) with false negatives and true positives reaching
+stable low and high levels respectively. We have fur-
+ther characterized what this accuracy looks like at
+a day-by-day level, an important consideration when
+building predictive modelling solutions and an impor-
+tant issue for future research.
+
+4.2 Future Work
+Having demonstrated the success of this approach to fea-
+
+ture generation, an important next step will be to analyze
+the predictive nature of each of the features generated. In
+this work, we performed no feature selection prior to model
+generation. It may be the case that the predictive power
+of the models is increased by selecting only those features
+that strongly correlate with the predicted value (course out-
+come). Furthermore, the decision trees generated provide
+little insight into the relative predictive power of each of the
+features. Inspecting the trees, we can discern which features
+are used in making predictions, however, we cannot deter-
+mine exactly how much more informative these features are
+than the features not used by the decision trees. Finally, to
+
+3Due to the massive level of true negatives, students who we
+predict will fail and do, we have omitted these values from
+the graphs. To determine the value at any given time take
+the total sample size given on the y-axis label and subtract
+from it the graphed values of False Positives, False Nega-
+tives, and True Positives.
+
+increase model interpretability, preference should be given
+to shorter n-grams, as the concise nature of these features
+leads to easier explanation.
+
+In order to make predictions about student outcomes in a
+particular course, the approach used in this paper assumes
+that prior course offerings are similar to the present offer-
+ing. Thus, patterns of activity that lead to success in prior
+offerings will again lead to success in the current offering. It
+may be the case that some offerings of a course are taught
+in one particular style, whereas other offerings are taught
+in a different style (for instance, if there are two differ-
+ent instructors a single instructor who is testing alternate
+teaching methodologies). In our results of section 3.4, we
+pooled all data from prior course offerings to build a single
+predictive model to apply to the final course offering. In-
+stead, it might be more prudent to build multiple models,
+one for each course offering and pool their predictions in a
+voting model. Alternately, we could analyze the resource
+usage of the current course and the prior courses to find
+the most similar prior offering, in an attempt to apply the
+single most relevant model. This final approach may also
+generalize across course domains, allowing us to make pre-
+dictions about student in new courses, rather than relying
+on historical offerings of the same course for training.
+
+In the MOOC context, we have an abundance of data;
+the enrollment numbers are significant, and the online-only
+nature of the course allows for tracking many of the student-
+content interactions. Does this hold true for traditional
+higher education blended courses? Will our approach work
+for courses with as few as 30 students? How well will the
+approach generalize when there is significant offline content,
+such as face to face lectures, or assigned readings from text-
+books, where student interaction cannot be tracked? Fur-
+ther analysis is required to determine the scope and mag-
+nitude of data that is needed in order to build a model of
+student success in these situations.
+
+While we have proposed that our technique may be inte-
+grated into an early warning system for students at risk of
+course failure, determining an appropriate level of predictive
+accuracy remains an open problem. There is the potential
+for some degree of harm caused by erroneous predictions:
+successful students who are advised that they are at risk
+of failure may face unwarranted anxiety, or consider with-
+drawing from a course unnecessarily. Conversely, students
+at risk of failure who are advised that they are on a path
+to success may be falsely reassured and perhaps blindsided
+by their eventual failure. A further analysis of these costs,
+as well as the benefits of correct predictions, is required to
+fully evaluate the merit of our predictive models as well as
+the predictive models used by early warning systems.
+
+5. REFERENCES
+[1] D. G. Altman. Practical statistics for medical research.
+
+CRC Press, 1990.
+
+[2] J. Anderson. Rules of the mind. 1993.
+
+[3] R. Barber and M. Sharkey. Course correction: using
+analytics to predict course success. In Proceedings of
+the 2nd International Conference on Learning
+Analytics and Knowledge, pages 259–262. ACM, 2012.
+
+[4] B. S. Bloom, M. Engelhart, E. J. Furst, W. H. Hill,
+and D. R. Krathwohl. Taxonomy of educational
+objectives: Handbook i: Cognitive domain. New York:
+David McKay, 19:56, 1956.
+
+134
+
+
+
+[5] C. A. Brooks and J. E. Greer. Explaining predictive
+models to learning specialists using personas. In 4th
+International Conference on Learning Analytics and
+Knowledge 2012 (LAK’14), pages 26–30, 2014.
+
+[6] S. Bull, J. Greer, G. McCalla, L. Kettel, and J. Bowes.
+User modelling in i-help: What, why, when and how.
+In User Modeling 2001, pages 117–126. Springer, 2001.
+
+[7] Carnegie Learning. The Cognitive Tutor: Applying
+Cognitive Science to Education. Technical report,
+Carnegie Learning, Inc., Pittsburgh, PA, USA, 1998.
+
+[8] N. V. Chawla. C4.5 and imbalanced data sets:
+investigating the effect of sampling method,
+probabilistic estimate, and decision tree structure. In
+Proceedings of the ICML, volume 3, 2003.
+
+[9] J. L. Fleiss. Measuring nominal scale agreement
+among many raters. Psychological Bulletin,
+76(5):378–382, 1971.
+
+[10] J. L. Fleiss, B. Levin, and M. C. Paik. Statistical
+methods for rates and proportions. John Wiley &
+Sons, 2013.
+
+[11] K. J. Gergen. The social constructionist movement in
+modern psychology. American psychologist, 40(3):266,
+1985.
+
+[12] A. C. Graesser, P. Chipman, B. C. Haynes, and
+A. Olney. Autotutor: An intelligent tutoring system
+with mixed-initiative dialogue. Education, IEEE
+Transactions on, 48(4):612–618, 2005.
+
+[13] M. Hall, E. Frank, G. Holmes, B. Pfahringer,
+P. Reutemann, and I. H. Witten. The weka data
+mining software: an update. ACM SIGKDD
+explorations newsletter, 11(1):10–18, 2009.
+
+[14] S. M. Jayaprakash, E. W. Moody, E. J. Laur??a, J. R.
+Regan, and J. D. Baron. Early alert of academically
+at-risk students: An open source analytics initiative.
+Journal of Learning Analytics, 1(1):6–47, 2014.
+
+[15] J. R. Landis, G. G. Koch, et al. The measurement of
+observer agreement for categorical data. biometrics,
+33(1):159–174, 1977.
+
+[16] B. Martin. Constraint-based modelling: Representing
+student knowledge. New Zealand Journal of
+Computing, 7(2):30–38, 1999.
+
+[17] S. Ohlsson. Learning from performance errors.
+Psychological Review, 103(2):241–262, 1996.
+
+[18] L. Perna, A. Ruby, R. Boruch, N. Wang, J. Scull,
+C. Evans, and S. Ahmad. The life cycle of a million
+mooc users. In Presentation at the MOOC Research
+Initiative Conference, 2013.
+
+[19] Q. Xie. Agree or disagree? a demonstration of an
+alternative statistic to cohen’s kappa for measuring
+the extent and reliability of agreement between
+observers. 2013.
+
+135
+
+
+
+
+

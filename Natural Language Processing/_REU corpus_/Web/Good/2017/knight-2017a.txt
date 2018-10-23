@@ -1,0 +1,447 @@
+
+Writing Analytics Literacy – Bridging from Research to 
+Practice 
+
+ 
+Simon Knight  
+
+University of Technology Sydney  
+Connected Intelligence Centre  
+
+Sydney, Australia  
+
+Simon.knight@uts.edu.au 
+
+ 
+
+Danielle McNamara 
+Arizona State University 
+
+PO Box 872111 
+Tempe, AZ 85287 
+
+dsmcnamara@asu.edu 
+
+ 
+Laura Allen 
+
+Arizona State University  
+PO Box 872111 
+
+Tempe, AZ 85287 
+
+LauraKAllen@asu.edu 
+
+ 
+
+ 
+
+Andrew Gibson 
+
+University of Technology Sydney  
+Connected Intelligence Centre  
+
+Sydney, Australia 
+
+Andrew.Gibson@uts.edu.au 
+
+ 
+
+Simon Buckingham Shum 
+University of Technology Sydney  
+Connected Intelligence Centre  
+
+Sydney, Australia  
+
+Simon.BuckinghamShum@ 
+
+uts.edu.au 
+
+ 
+
+ABSTRACT 
+There is untapped potential in achieving the full impact of 
+
+learning analytics through the integration of tools into practical 
+
+pedagogic contexts. To meet this potential, more work must be 
+
+conducted to support educators in developing learning analytics 
+
+literacy. The proposed workshop addresses this need by building 
+
+capacity in the learning analytics community and developing an 
+
+approach to resourcing for building ‘writing analytics literacy’. 
+
+CCS Concepts 
+• Computing methodologies~Natural language 
+
+processing   • Applied computing~Education   • Applied 
+
+computing~Computer-assisted instruction   • Applied 
+
+computing~Interactive learning environments   • Human-centered 
+
+computing   • Social and professional topics~Computing literacy  
+
+Keywords 
+Learning analytics, writing analytics, analytics for action, 
+
+practitioner knowledge, learning analytics literacy, 
+
+automated writing evaluation 
+
+1. INTRODUCTION 
+The ability to communicate via writing is a key to literacy, central 
+
+to participation in society, and thus central to all educational 
+
+contexts [6, 7]. There is a long standing interest in the 
+
+development and use of natural language processing (NLP) tools 
+
+to analyze this writing [e.g., 5, 8], with tools emerging from the 
+
+research and commercial spaces to support formative assessments 
+
+of student writing. 
+
+Writing Analytics is a developing sub-domain of learning 
+
+analytics with a specific focus on supporting writing practices. 
+
+Research in this field has the potential to improve formative 
+
+feedback in writing exercises and to provide insights to both 
+
+educators and students (see previous workshop [1]). Despite this 
+
+strong potential, adoption of writing analytics tools has not been 
+
+widespread.  
+
+1.1 Writing Analytics Literacy 
+There is untapped potential in supporting educators to make 
+
+effective use of such tools. However, ‘writing analytics literacy’ 
+
+in this sense must go beyond simply knowing how to use tools or 
+
+access results through simple user interfaces, and beyond tools 
+
+that simply output numeric information absent actionable 
+
+feedback. Rather, there is a need to engage educators with 
+
+resources that support them in designing meaningful tasks, 
+
+selecting appropriate tools to support those tasks, and interpreting 
+
+the data arising from them. To do this, educators must consider 
+
+the desired outcomes of assigned tasks (e.g., demonstrate 
+
+knowledge of key topics, use correct citation, use creative 
+
+language), and understand the potential – and pitfalls – of NLP to 
+
+address those needs. We thus see writing analytics literacy as 
+
+positioning analytics and writing-assessment literacies 
+
+synergistically. Through building such literacies, we aim to: 
+
+1. Develop a synergistic model of writing analytics literacy 
+and writing assessment literacy 
+
+2. Engage practitioners in thinking about (and researching) 
+how writing assignments in their teaching might provide 
+
+meaningful data for learning insights  
+
+3. Develop student’s writing analytics literacy (and, by 
+extension, their writing) through interaction with 
+
+appropriate tools  
+
+Developing these literacies will require a multi-faceted approach, 
+
+including continued development of research technologies, and 
+
+innovation around new approaches to writing instruction. For 
+
+these endeavors to have impact, practitioners must integrate them 
+
+into pedagogic contexts in which they guide action [2].  
+
+Learners have a number of challenges in interpreting analytics for 
+
+action [12]: They must connect the analytics to the processes and 
+
+overall goals of the learning task (contextual issues); they must 
+
+evaluate the quality of the analytic, understanding how it is 
+
+Permission to make digital or hard copies of part or all of this work for 
+
+personal or classroom use is granted without fee provided that copies are 
+
+not made or distributed for profit or commercial advantage and that 
+copies bear this notice and the full citation on the first page. Copyrights 
+
+for third-party components of this work must be honored. For all other 
+
+uses, contact the Owner/Author.  
+Copyright is held by the owner/author(s). 
+
+LAK '17, March 13-17, 2017, Vancouver, BC, Canada 
+
+ACM 978-1-4503-4870-6/17/03. 
+
+http://dx.doi.org/10.1145/3027385.3029425 
+
+http://dx.doi.org/10.1145/3027385.3029425
+
+
+developed and how it can inform their learning (trust issues); they 
+
+must select to which information to attend  – present, and absent 
+
+from the analytic – and where to devote time (priority issues); and 
+
+they must decide how – as an individual – to respond to analytics 
+
+and what they represent (individual issues) [12]. 
+
+Learners must make decisions based on these interpretations. 
+
+Thus, analytics must [12]: present possible options, empowering 
+
+learners to decide; provide actionable information for students to 
+
+do something with the information; afford autonomy to students, 
+
+such that analytics help them identify their own learning patterns, 
+
+rather than relying on the analytic for this information [12].  
+
+Wise et al. propose the ‘align design framework’, in which 
+
+educators integrate analytics as “an integral element in the 
+
+learning process tied to their goals, expectations, and planned 
+
+learning process” [12], with students given agency to “engage 
+
+with analytics as a tool to inform their actions, as opposed to 
+
+analytics being something with which students must comply” 
+
+[12]. These principles frame the activity, with context added 
+
+through a reference frame that provides an action-oriented 
+
+comparator for the interpretation of the analytic, with a principle 
+
+of dialogue/audience describing discussion around students’ 
+
+learning goals and processes. For these design-implementations to 
+
+be achieved, there is a need to support educators in connecting 
+
+analytic design, pedagogy, and theory [4, 13].  
+
+1.2 Learning Analytics Carpentry (LAC) 
+Other increasingly data-driven fields have grappled with 
+
+developing both researcher and practitioner knowledge. Data 
+
+Carpentry workshops (http://www.datacarpentry.org/), developed 
+
+based on Software Carpentry bootcamps [11] (http://software-
+
+carpentry.org/) are short workshops designed to teach “basic 
+
+concepts, skills, and tools for working with data so researchers 
+
+can get more done in less time and with less pain” [9]. They are 
+
+designed to give novices the starting toolkit to begin working 
+
+programmatically with data in their own research. Data carpentry 
+
+sessions focus on example data sets targeted at particular domains 
+
+of relevance to the learners, with no prior-knowledge assumed. 
+
+For example, from an R Hackathon in population genetics, a 
+
+community website has been developed of vignettes [3], with 
+
+proposals for ‘a collaborative training infrastructure for 
+
+bioinformatics’ including openly-co-developed resources and a 
+
+carpentry-based teaching model that blends formal and informal 
+
+elements with ongoing peer support [10].  
+
+We propose to adopt a ‘learning analytics carpentry’ model, to (1) 
+
+develop capability among LAK researchers in the analysis of 
+
+writing data; (2) connect this knowledge to practitioner contexts; 
+
+(3) begin to build resources for writing analytics carpentry based 
+
+learning  
+
+Existing work in this area (e.g., the 2014 EdX ‘Data, Analytics 
+
+and Learning’, the 2016 LASI ‘topic modeling’ workshop, etc.) 
+
+has focused on building researcher confidence in particular 
+
+techniques, with a primary focus on the analytic rather than 
+
+integration. The proposed workshop aims to develop resources 
+
+that will both build capacity in learning analytic techniques, and 
+
+the targeting of those analytics at particular pedagogic contexts. 
+
+2. WORKSHOP OBJECTIVES 
+Workshop attendees will contribute one or more of the following: 
+
+1. A tool that has been developed, along with resources 
+describing particular pedagogic contexts in which it might 
+
+be integrated 
+
+2. Documentation of a specific learning context in which 
+writing analytics could be applied 
+
+3. Data that could be analyzed with the provided tools, (in 
+addition, completing an in-workshop pedagogically 
+
+meaningful activity to produce ‘live’ data). 
+
+The workshop will be targeted at: 
+
+1. Providing a tutorial regarding key tools for writing analytics 
+research and practice, highlighting existing tools, resources, 
+
+and practices 
+
+2. Building a resource bank of sample datasets from which 
+learning vignettes might be developed 
+
+3. Creating a ‘wish list’ of resources to support practitioners in 
+their learning analytics literacy around writing, including 
+
+developing a framework describing the kinds of pedagogic 
+
+contexts in which particular tools might be integrated. 
+
+The workshop thus proposes to provide both hands-on tutorial 
+
+elements, and resource-creation. 
+
+3. REFERENCES 
+[1] Buckingham Shum, S. et al. 2016. Critical Perspectives on 
+
+Writing Analytics. (Edinburgh, UK, 2016). 
+
+[2] Clow, D. 2012. The learning analytics cycle: closing the 
+
+loop effectively. Proceedings of the 2nd International 
+
+Conference on Learning Analytics and Knowledge (2012), 
+
+134–138. 
+
+[3] Kamvar, Z.N. et al. 2016. Developing educational 
+
+resources for population genetics in r: an open and 
+
+collaborative approach. Molecular Ecology Resources. 
+
+(Jul. 2016). 
+
+[4] Knight, S. et al. 2014. Epistemology, assessment, 
+
+pedagogy: where learning meets analytics in the middle 
+
+space. Journal of Learning Analytics. 1, 2 (2014). 
+
+[5] McNamara, D.S. et al. 2014. Automated evaluation of text 
+
+and discourse with Coh-Metrix. Cambridge University 
+
+Press. 
+
+[6] National Commission On Writing 2003. Report of the 
+
+National Commission on Writing in America’s Schools and 
+
+Colleges: The Neglected “R,” The Need for a Writing 
+
+Revolution. College Board. 
+
+[7] OECD 2013. PISA 2015: Draft reading literacy 
+
+framework. OECD Publishing. 
+
+[8] Shermis, M.D. and Burstein, J. 2013. Handbook of 
+
+Automated Essay Evaluation: Current Applications and 
+
+New Directions. Routledge. 
+
+[9] Teal, T.K. et al. 2015. Data carpentry: workshops to 
+
+increase data literacy for researchers. International Journal 
+
+of Digital Curation. 10, 1 (2015), 135–143. 
+
+[10] Williams, J.J. and Teal, T.K. 2016. A vision for 
+
+collaborative training infrastructure for bioinformatics. 
+
+Annals of the New York Academy of Sciences. (Sep. 2016), 
+
+n/a–n/a. 
+
+[11] Wilson, G. 2006. Software carpentry. Computing in 
+
+Science & Engineering. 8, (2006), 66. 
+
+[12] Wise, A.F. et al. 2016. Developing Learning Analytics 
+
+Design Knowledge in the “Middle Space”: The Student 
+
+Tuning Model and Align Design Framework for Learning 
+
+Analytics Use. Online Learning. 20, 2 (Jan. 2016). 
+
+[13] Wise, A.F. and Shaffer, D.W. 2015. Why Theory Matters 
+
+More than Ever in the Age of Big Data. Journal of 
+
+Learning Analytics. 2, 2 (2015), 5–13.
+
+http://www.datacarpentry.org/
+http://software-carpentry.org/)
+http://software-carpentry.org/)
+
+	1. INTRODUCTION
+	1.1 Writing Analytics Literacy
+	1.2 Learning Analytics Carpentry (LAC)
+
+	2. WORKSHOP OBJECTIVES
+	3. REFERENCES
+
+
+
+

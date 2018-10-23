@@ -1,0 +1,283 @@
+
+2nd Int’l Workshop on Open Badges in Education  
+(OBIE 2015): From Learning Evidence to Learning Analytics 
+
+Daniel Hickey 
+Center for Research on Learning and 
+
+Technology, Indiana University 
+504 Eigenmann Hall,  
+
+Bloomington, IN 47406, USA 
+dthickey@indiana.edu  
+
+ 
+James E. Willis  
+
+Center for Research on Learning and 
+Technology, Indiana University 
+
+504 Eigenmann Hall,  
+Bloomington, IN 47406, USA 
+
+jaedwill@indiana.edu 
+
+Jelena Jovanovic 
+Department of Software Engineering, 
+
+University of Belgrade 
+Jove Ilica 154,  
+
+11000 Belgrade, Serbia 
+jeljov@gmail.com  
+
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+
+Steve Lonn 
+University of Michigan 
+
+1401B Duderstadt Center,  
+2281 Bonisteel, Ann Arbor,  
+
+MI 48109-2094, USA 
+slonn@umich.edu 
+
+ 
+ 
+ 
+ 
+ 
+
+ABSTRACT 
+Open digital badges are Web-enabled tokens of learning and 
+accomplishment. Unlike traditional grades, certificates, and 
+transcripts, badges include specific claims about learning 
+accomplishments and detailed evidence in support of those 
+claims. Considering the richness of data associated with Open 
+Badges, it is reasonable to expect a very powerful predictive 
+element at the intersection of Open Badges and Learning 
+Analytics. This could have substantial implications for 
+recommending and exposing students to a variety of curricular 
+and co-curricular pathways utilizing data sources far more 
+nuanced than grades and achievement tests. Therefore, this 
+workshop was aimed at: i) examining the potentials of Open 
+Badges (including the associated data and resources) to provide 
+new and potentially unprecedented data for analysis; ii) examining 
+the kinds of Learning Analytics methods and techniques that 
+could be suitable for gaining valuable insights from and/or 
+making predictions based on the evidence (data and resources) 
+associated with badges, and iii) connecting Open Badges 
+communities, aiming to allow for the exchange of experiences and 
+learning from different cultures and communities.   
+
+Categories and Subject Descriptors 
+K.3.1 [Computers and Education]: Computer Uses in Education. 
+
+General Terms 
+Measurement, Design, Human Factors. 
+
+Keywords 
+Open Badges, Online Learning, Education, Learning Analytics. 
+
+1. MOTIVATION 
+Open digital badges are Web-enabled tokens of learning and 
+accomplishment. Unlike traditional grades, certificates, and 
+transcripts, badges include specific claims about learning 
+accomplishments and detailed evidence in support of those 
+claims. A systematic examination of the adoption of Open Badges 
+in numerous educational settings by Indiana University’s Design 
+Principles Documentation Project (http://dpdproject.info/) 
+revealed that the introduction of badges prompted useful 
+deliberations about (a) the learning to be recognized, (b) the 
+claims to be made about that learning, and (c) the assessment 
+needed to support those claims. Such deliberations tend to 
+enhance the validity of the evidence associated with a badge, thus 
+properly supporting the claims stated in the badge. Therefore, the 
+evidence contained in badges offers unprecedented opportunity 
+for analyzing learning. Furthermore, the thinking and negotiations 
+that go into deciding what claims and evidence to include in 
+digital badges often result in highly credible and valuable 
+information about the accomplished learning. 
+
+Considering the richness of data associated with Open Badges - 
+(meta)data stored in badges themselves, primarily requirements, 
+achievement evidence and timestamps, as well as data about 
+learning pathways followed by students (i.e., learning traces) - it 
+is reasonable to expect a very powerful predictive element at the 
+intersection of Open Badges and Learning Analytics. The data 
+associated with badges might offer highly valuable input not only 
+to predict what may be a good fit for the next learning activity, but 
+perhaps even what a learner is capable of in a certain timeframe. 
+This fertile ground could have substantial implications for 
+recommending and exposing students to a variety of curricular 
+and co-curricular pathways utilizing data sources far more 
+nuanced than grades and achievement tests. 
+
+Open Badges are rapidly gaining traction among educational 
+practitioners, education-oriented companies and non-profit 
+organizations. They have already been adopted by over 2000 
+organizations1, including well-known learning management 
+platforms such as Moodle, Blackboard and Canvas. The 
+                                                                    
+1 http://goo.gl/qH5BZW 
+
+Permission to make digital or hard copies of part or all of this work for 
+personal or classroom use is granted without fee provided that copies are 
+not made or distributed for profit or commercial advantage and that 
+copies bear this notice and the full citation on the first page. Copyrights 
+for third-party components of this work must be honored. For all other 
+uses, contact the Owner/Author.  
+Copyright is held by the owner/author(s). 
+LAK '15, Mar 16-20, 2015, Poughkeepsie, NY, USA 
+ACM 978-1-4503-3417-4/15/03. 
+http://dx.doi.org/10.1145/2723576.2723639  
+
+392
+
+
+
+organizers are currently involved in efforts to track badges 
+functionality across these platforms, and introduce this 
+functionality into other platforms including Open edX and Google 
+Coursebuilder. The newly formed Badge Alliance 
+(http://www.badgealliance.org/) already includes 700 members 
+and a dozen working groups, and the Clinton Global Initiative 
+estimates that over 4M badges have been issued to date2. This 
+indicates the relevancy and potential that the concept and 
+technology of Open Badges could unlock for education domain in 
+general, and, for the above stated reasons, for Learning Analytics 
+field, in particular. 
+
+2. OBJECTIVES 
+The objectives of the workshop were threefold: 
+
+• Examine the potentials of Open Badges (including the 
+associated data and resources) to provide new and potentially 
+unprecedented data for analysis. 
+
+• Examine the kinds of Learning Analytics methods and 
+techniques that could be suitable for gaining valuable 
+insights from and/or make predictions based on the evidence 
+(data and resources) associated with badges.  
+
+• Build a ‘bridge’ across Open Badges communities, aiming to 
+allow for the exchange of experiences and learning from 
+different cultures and communities. 
+
+3. TOPICS 
+The workshop welcomed submissions on some of the topics from 
+the following (though not restrictive) list: 
+
+• Challenges and opportunities related to the use of Learning 
+Analytic methods and techniques in the domain of Open 
+Badges.  
+
+• Different kinds of feedback for teachers and/or students that 
+could be generated based on the data and resources 
+associated with badges. 
+
+• Analysis and visualization of learners’ badge-earning 
+pathways as means of i) assisting badge issuers in improving 
+their instructional design, and ii) scaffolding learners’ 
+reflection over the learning process. 
+
+• How different kinds of badges – e.g., participatory badges vs. 
+assessment-based badges – impact learners’ engagement in 
+disciplinary discourse? 
+
+• Intersection of Open Badges and the Open Analytics 
+initiative and other recent efforts to open and share analytics 
+data – how open access and visibility affect the functionality 
+of badges as a motivator of behaviour? 
+
+• Combined use of Open Badges Specification3 with other 
+education-oriented specifications and vocabularies (e.g., 
+TinCan, LRMI), to allow for a greater insight into to 
+evidence associated with badges. 
+
+• Using semantic technologies to i) analyze evidence contained 
+in digital badges, ii) allow for a comparison and alignment of 
+badges issued by different organizations, and iii) interpret the 
+meaning of a collection of heterogeneous badges – what do 
+they say about a learner and his/her competencies? 
+
+• Examining learning ‘pathways’ that emerge in large scale 
+badging efforts like the seven-city Cities of Learning4 in 
+2014. 
+
+                                                                    
+2 http://10mbetterfutures.org/ 
+3 https://github.com/openbadges/openbadges-specification  
+4 http://goo.gl/YNKsU8  
+
+4. AUDIENCE 
+Open Badges connect educational providers and practitioners, 
+entrepreneurs, and researchers in discourses on teaching, learning, 
+assessment, digital credentials, and digital education in general. 
+While preserving its general focus on opportunities and challenges 
+associated with Open Badges, this 2nd installment of the OBIE 
+workshop was primarily intended for those interested in the 
+intersection of Open Badges and Learning Analytics. This 
+intersection includes gathering, integration, and analysis of data 
+and resources associated with Open Badges, with the ultimate aim 
+of providing teachers, learners and other stakeholders in the ever-
+increasing Open Badges ecosystem with informative and relevant 
+feedback, and predictive functions. Participants in the workshop 
+were exposed to presentations and discussions on the position and 
+role of digital badges in instructional design, on compelling data 
+and analytics challenges and opportunities that the Open Badges 
+infrastructures open for the Learning Analytics field, and on 
+different types and designs of badge systems and their potential to 
+impact the future of education. 
+
+5. PREVIOUS EDITION OF THE 
+WORKSHOP 
+This is the second edition of Open Badges in Education (OBIE) 
+workshop. The first edition (Open Badges in Education: Novel 
+Motivational, Scaffolding and Recognition Mechanism for Web-
+based Learning5) was held together with the 13th International 
+Conference on Web-based Learning (ICWL2014) in Tallinn, 
+Estonia, in August 2014. Even though the workshop was expected 
+to be a small event, it attracted over 30 people interested in badges 
+and related educational approaches and practices. During the 
+workshop, the participants engaged in lively discussions on many 
+important topics related to Open Badges, and to keep the 
+discussion live and to evolve a community around the concept and 
+technology of Open Badges, we set up OBIE Google Group6 as a 
+communication channel for the workshop participants and 
+contributors, as well as all researchers, educators, Open Badges 
+enthusiasts, and everyone interested in, willing to learn about, 
+and/or work/experiment with badges in educational settings. It 
+was this group that initially proposed and supported organization 
+of the 2nd OBIE workshop at LAK’15. 
+
+6. ACKNOWLEDGMENTS 
+Significant parts of the effort in organizing this meeting were 
+supported by grants from the MacArthur Foundation’s Digital 
+Media and Learning Initiative. It was also partially supported by 
+the GRASS project (ref. num.: 543029-LLP-1-2013-1-RS-KA3-
+KA3MP) funded by the European Commission.  Our thanks to the 
+LAK’15 Chairs and Program Committee for hosting this event. 
+Last but not the least important, we thank the members of the 
+workshop Program Committee, as well as all the members of the 
+Open Badges community who supported this event.  
+
+ 
+
+                                                                    
+5 https://sites.google.com/site/obie2014ws/  
+6 http://goo.gl/biLPd6  
+
+393
+
+
+
+
+

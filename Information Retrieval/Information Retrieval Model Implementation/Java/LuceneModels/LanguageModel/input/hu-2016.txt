@@ -1,0 +1,326 @@
+
+Automating Assessment of Collaborative Writing Quality 
+In Multiple Stages: The Case of Wiki 
+
+Xiao Hu1, Tzi-Dong Jeremy Ng1, Lu Tian1, Chi-Un Lei2 
+1 Faculty of Education, The University of Hong Kong, Pokfulam, Hong Kong 
+
+2 Technology-Enriched Learning Initiative, The University of Hong Kong, Pokfulam, Hong Kong 
+{xiaoxhu, jeremyng, u3522789, culei}@hku.hk
+
+  
+ABSTRACT 
+This study attempts to investigate to what extent indicators of 
+academic writing and cognitive thinking can help measure the 
+writing quality of group collaborative writings on Wikis. 
+Particularly, comparisons were made on Wiki content in different 
+stages of the projects. Preliminary results from a multiple linear 
+regression analysis reveal that linguistic indicators such as 
+engagement markers and self-mention were significant predictors 
+in earlier stages to the projects, whereas verbs indicating cognitive 
+thinking in the evaluation level were significant in later project 
+stages. 
+
+CCS Concepts 
+• Human-centered computing?Wikis   • Social and 
+professional topics?Student assessment   • Computing 
+methodologies?Natural language processing   • Applied 
+computing?Collaborative learning 
+
+Keywords 
+Wiki,  automated assessment, metadiscourse. 
+
+1. INTRODUCTION 
+Wiki is a platform where users or visitors can create new pages, 
+modify existing ones, and re-structure the hierarchy of pages, 
+serving as a collaborative authoring environment for 
+complementing and enhancing online collaboration. The 
+simplicity and flexibility of Wikis make it a predominant tool 
+employed by instructors in this age of collaborative learning. 
+
+However, the use of Wikis might raise the complexity of the 
+learning environment for the instructors, since they have to 
+monitor quantity and quality of the shared written work. 
+Automated evaluation of writing quality can hence be 
+experimentally applied to scoring Wikis in terms of their contents. 
+In view of the under-studied topic of automating the assessment of 
+writing quality on collaborative Wikis, this study attempts to 
+explore to what extent common linguistic features of academic 
+writing and cognitive thinking can be used to predict the quality 
+of students’ online collaborative writing. In addition, as one of the 
+major advantages of Wiki is to be able to record all historical 
+versions of the pages, it provides an ideal case to study the 
+evolution of student collaborative writing. Therefore, in this study 
+we examine Wiki pages at different stages of the collaborative 
+
+writing projects. Specifically, this study aims to answer: to what 
+extent can linguistic indicators of academic writing and cognitive 
+thinking help measure the quality of collaborative writing in 
+different stages? 
+
+2. LEARNING ANALYTICS IN ASSESSING 
+COLLABORATIVE WRITING 
+Various existing studies have been conducted to design analytical 
+tools to help teachers observe and monitor the progress and 
+contributions of students on their group assignments, but most of 
+them focused on the quantitative aspects such as revision counts 
+and words added. The concern remains as to whether the quality 
+of collaborative writing on Wiki is automatically assessable. 
+Previous studies applied Natural Language Processing (NLP) 
+techniques to automatically assessing free-text answers in 
+examinations. Dowell et al. [3] analyzed the use of discourse 
+features to predict group performance during collaborative 
+learning interactions. However, they explored the content of group 
+chats rather than the writing itself. In another LA-infused study, 
+Kim et al. [6] analyzed the topic of each collaborative Wiki page, 
+but did not assess the quality of writing. Another pertinent study 
+[2] probed numerous quality indicators and looked into how 
+capable these indicators were to assess the quality of Wikipedia 
+articles. Coming close to the conceptual framework of the present 
+study, their study paves the way for our study to evaluate to what 
+extent textual features (i.e., quality indicators) of collaborative 
+writing can help accurately and comprehensively assess Wikis 
+created by university students for knowledge co-construction, 
+instead of the Wikipedia articles created by the public. 
+
+3. METHODOLOGY 
+Wikis in three undergraduate courses at the University of Hong 
+Kong were selected for the present study, namely two under the 
+Bachelor of Science in Information Management programme 
+(BSIM3004  Information Retrieval; BSIM4018 Data Warehousing 
+and Data Mining) and another being a common core course 
+(CCST9003 Everyday Computing and the Internet) that all 
+undergraduate students could enroll in. Although the courses had 
+different group collaborative tasks (e.g., compiling an annotated 
+bibliography, writing a report on an innovative computing 
+technology), we combined the Wikis in these courses together on 
+the premise that all tasks involved collaborative academic writing. 
+It is our intention to explore indicators that can be applied to 
+various disciplines and tasks. Seventy-eight group Wikis were 
+obtained from these courses, as well as their final marks given by 
+the instructors. 
+
+To investigate student collaborative writings in different stages of 
+group projects, for each Wiki we collected its snapshots at the first 
+quarter of the project, second quarter and third quarter, in addition 
+to its latest content. The project period was established as starting 
+from the time of the first editing among Wikis of one course, and 
+ending at the time of the last editing. This segmentation was 
+
+Permission to make digital or hard copies of part or all of this work 
+for personal or classroom use is granted without fee provided that 
+copies are not made or distributed for profit or commercial 
+advantage and that copies bear this notice and the full citation on the 
+first page. Copyrights for third-party components of this work must 
+be honored. For all other uses, contact the Owner/Author. 
+Copyright is held by the owner/author(s). 
+LAK '16, April 25-29, 2016, Edinburgh, United Kingdom 
+ACM 978-1-4503-4190-5/16/04. 
+http://dx.doi.org/10.1145/2883851.2883963 
+
+
+
+intended to examine the changes in measures along the project 
+process. We first extracted the pages from the Wikis, then HTML 
+tags and redundant blanks were eliminated before a set of 
+measures of quality indicators were calculated. In the meantime, 
+the performance scores of the student groups given by the 
+instructors were taken as the scores of human evaluation. The 
+measurement output was then for further statistical analysis. 
+
+3.1 Quality indicators 
+By identifying and selecting linguistic features from multiple 
+sources, this study attempts to explore the potential of these 
+indicators in building a model for predicting human scores of 
+Wiki writing quality. 
+
+Metadiscourse features: Metadiscourse refers to the linguistic and 
+rhetorical manifestations in the text. Social constructionist 
+researchers have been using metadiscourse as an orientation to 
+analyzing discourse, while Wikis are regarded as an online 
+environment that embodies social-constructivist principles 
+through co-construction of knowledge [7]. In our view, this 
+denotes that metadiscourse features serve as important markers in 
+not only general academic text-styles but also in collaborative 
+writing (i.e., Wiki). Specifically, these features include attitude 
+markers, boosters, code glosses, endophoric markers, engagement 
+markers, evidentials, frame markers (goal-announcing, 
+sequencing, stage-labelling and topic-shifting) hedges, qualifiers, 
+person markers (self-mentioning) and transition markers [5]. Our 
+study treats these 14 linguistic features as the potential quality 
+indicators of academic writing in the Wiki context. 
+
+Bloom’s Taxonomy: Bloom's Taxonomy is a well-defined and 
+broadly accepted tool for categorizing types of thinking into six 
+different levels: knowledge, comprehension, application, analysis, 
+synthesis, and evaluation, where this Taxonomy has been widely 
+used in educational settings to measure students’ ability [4]. In 
+relation to Wikis, an objective of this collaborative writing 
+practice is to prompt students’ critical thinking. Knowledge 
+building using Wikis has also been shown to have connections 
+with students’ cognitive processes [1]. The present study therefore 
+treats the above six features as the possible quality indicators of 
+cognitive thinking embodied in Wiki writing. 
+
+3.2 Statistical Analysis 
+For each of the datasets, a multiple linear regression analysis was 
+conducted using the quality indicators as the independent 
+variables and the scores as the dependent variable, in an attempt to 
+build a model to predict scores of human evaluation. 
+
+4. RESULTS AND DISCUSSION 
+Table 1 below shows the quarter-based results of the linear 
+regression analysis. Results from the first quarter are not shown 
+due to the absence of significant values. “Evaluation” (in the 
+Bloom’s Taxonomy) was statistically highly significant (p < 0.01) 
+in both the third quarter and in the full-data context, meaning that 
+this feature possessed the explanatory power for the dependent 
+variable of human score. “Evaluation” words (e.g. compare, 
+describe, justify, etc.) would likely lead to a higher score, making 
+this feature a relatively significant predictor of the scores of Wikis. 
+Other moderately statistically significant (0.01 < p < 0.05) 
+features included “Engagement markers” and “Self-mention” 
+which were prominent in the second and third quarter, 
+corresponding to the earlier stage of students’ progress on the 
+Wikis. It is noteworthy that “Self-mention” had a negative 
+regression coefficient, meaning that this indicator contributed to 
+the scores negatively.  
+
+Table 1: Quarter-based regression analysis for selected indices 
+predicting Wiki scores 
+
+Note: * indicates significance at p < 0.10; ** at p < 0.05; *** at p < 0.01. 
+
+5. CONCLUSION 
+This study aimed to explore the potential of indicators of 
+academic writing and cognitive thinking in measuring the quality 
+of Wiki collaborative writing in different stages of group projects. 
+Results demonstrated that a few textual features, especially 
+towards the final stage of the Wiki project, appeared to have the 
+predictive power on the human scores. Future work is needed to 
+explore other quality indicators and their generalizability across 
+courses of different disciplines. 
+
+6. ACKNOWLEDGEMENTS 
+The work was partially supported by a Teaching Development 
+Grant from the University of Hong Kong. 
+
+REFERENCES 
+[1] Cress, U. and Kimmerle, J. 2008. A systemic and cognitive 
+
+view on collaborative knowledge building with wikis. 
+International Journal of CSCL. 3, 2, 105-122. DOI: 
+http://dx.doi.org/10.1007/s11412-007-9035-z 
+
+[2] Dalip, D. H., Gonçalves, M. A., Cristo, M., and Calado, P. 
+2009. Automatic quality assessment of content created 
+collaboratively by web communities: a case study of 
+wikipedia. In Proceedings of the 9th JCDL. ACM, 295-304. 
+DOI:http://dx.doi.org/10.1145/1555400.1555449 
+
+[3] Dowell, N. M., Cade, W. L., Tausczik, Y., Pennebaker, J., 
+and Graesser, A. C. 2014. What works: Creating adaptive 
+and intelligent systems for collaborative learning support. 
+In ITS (Jan 2014). Springer International Publishing. 124-
+133. DOI: http://dx.doi.org/10.1007/978-3-319-07221-0_15  
+
+[4] Forehand, M. 2010. Bloom’s taxonomy. Emerging 
+perspectives on learning, teaching, and technology. 41-47. 
+
+[5] Hyland, K. 2005. Metadiscourse. John Wiley & Sons, Inc.. 
+DOI:http://dx.doi.org/10.1002/9781118611463.wbielsi003 
+
+[6] Kim, J., Shaw, E., Xu, H., and Adarsh, G. V. 2012. Assisting 
+instructional assessment of undergraduate collaborative Wiki 
+and SVN activities. In Proceedings of the 5th EDM, 10-16. 
+
+[7] Su, F., and Beaumont, C. 2010. Evaluating the use of a wiki 
+for collaborative learning. Innovations in Education and 
+Teaching International. 47, 4, 417-431. DOI= 
+http://dx.doi.org/10.1080/14703297.2010.518428
+
+ 2nd quarter 3rd quarter  Latest version 
+
+Features Coefficients (Std. Error) 
+Coefficients 
+(Std. Error) 
+
+Coefficients 
+(Std. Error) 
+
+Application -0.273 (15.616) 
+-0.244* 
+(11.707) 
+
+-0.140 
+(11.834) 
+
+Comprehension 0.042 (39.824) 
+0.173 
+
+(25.428) 
+0.191* 
+
+(30.580) 
+Engagement 
+
+Markers 
+0.469* 
+
+(13.113) 
+0.326** 
+(11.476) 
+
+0.205 
+(12.219) 
+
+Evaluation -0.265 (36.903) 
+0.367*** 
+(31.282) 
+
+0.565*** 
+(42.207) 
+
+Qualifiers 0.723** (23.020) 
+0.056 
+
+(17.523) 
+-0.100 
+
+(20.662) 
+
+Self-mention -0.441** (43.778) 
+-0.319** 
+(41.057) 
+
+-0.257 
+(42.540) 
+
+Topic-shift -0.587* (17.500) 
+-0.158 
+
+(14.292) 
+-0.154 
+
+(13.714) 
+Transition 
+Markers 
+
+0.498** 
+(16.643) 
+
+0.040 
+(15.332) 
+
+0.085 
+(15.832) 
+
+R2 0.561 0.507 0.525 
+
+http://dx.doi.org/10.1007/s11412-007-9035-z
+http://dx.doi.org/10.1145/1555400.1555449
+http://dx.doi.org/10.1007/978-3-319-07221-0_15
+http://dx.doi.org/10.1002/9781118611463.wbielsi003
+http://dx.doi.org/10.1080/14703297.2010.518428
+
+

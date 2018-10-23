@@ -1,0 +1,407 @@
+
+\documentclass[11pt]{article}
+% \usepackage[lucidasmallscale,nofontinfo]{lucimatx}
+\usepackage{pifont}
+\usepackage{booktabs}
+\usepackage[margin=1.0in]{geometry}
+
+\usepackage{xcolor}
+\definecolor{webgreen}{rgb}{0,.5,0}
+\definecolor{webbrown}{rgb}{.6,0,0}
+\usepackage[colorlinks=true,linkcolor=webgreen,filecolor=webbrown,citecolor=webgreen]{hyperref}
+
+
+\usepackage{pgf,tikz,xcolor} % for tikz graphs and colors
+\usetikzlibrary{decorations.text} % decorations.text for the text along path feature
+
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+% \usepackage[annotation=true,sorting=ydnt,backend=bibtex]{biblatex}
+\usepackage[sorting=none,backend=bibtex]{biblatex}
+\addbibresource{nlp.bib}
+
+
+\renewbibmacro*{finentry}{%
+  \setunit{\addperiod\addnbspace\textendash\space}%
+  \printfield{annotation}%
+  \finentry}
+
+
+\defbibheading{bibliography}{%
+  \section*{Annotated Bibliography}}
+
+\renewenvironment*{thebibliography}
+  {\list{}{%
+     \setlength{\leftmargin}{1.5em}%
+     \setlength{\itemindent}{-\leftmargin}%
+     \setlength{\itemsep}{0.5\baselineskip}%
+     \setlength{\parsep}{0pt}}}
+  {\endlist}
+%
+
+\title{Word Sense Disambiguation: An Annotated Bibliography}
+\author{Ugwunna, Ugochi Benedicta \\ CS-452/552: NLP}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\thispagestyle{empty}
+
+\newpage
+
+\section{Introduction}
+
+Word sense disambiguation (WSD) is the task of determining the meaning of an ambiguous word in its context. It is an important problem in natural language processing (NLP) because effective WSD can improve systems for tasks such as information retrieval, machine translation, and summarization: Given a word and its possible senses, as defined by a dictionary, classify an occurrence of the word in context into one or more of its sense classes. The features of the context (such as neighbouring words) provide the evidence for classification.
+The human brain is surprisingly good at word-sense disambiguation. The fact that natural language is formed in a way that requires so much of it is a reflection of that neurologic reality. In other words, human language developed in a way that reflects (and also has helped to shape) the innate ability provided by the brain's neural networks.
+A famous example is to determine the sense of pen in the following passage:
+
+Little John was looking for his toy box. Finally he found it. The box was in the pen. John was very happy.
+
+WordNet lists five senses for the word pen:
+
+	pen — a writing implement with a point from which ink flows.
+	pen — an enclosure for confining livestock.
+	playpen, pen — a portable enclosure in which babies may be left to play.
+	penitentiary, pen — a correctional institution for those convicted of major crimes.
+	pen — female swan.
+	
+	
+Research has progressed steadily to the point where WSD systems achieve consistent levels of accuracy on a variety of word types and ambiguities. A rich variety of techniques have been researched, from dictionary-based methods that use the knowledge encoded in lexical resources, to supervised machine learning methods in which a classifier is trained for each distinct word on a corpus of manually sense-annotated examples, to completely unsupervised methods that cluster occurrences of words, thereby inducing word senses. Among these, supervised learning approaches have been the most successful algorithms to date.
+
+
+
+\section{History}
+
+WSD was first formulated as a distinct computational task during the early days of machine translation in the 1940s, making it one of the oldest problems in computational linguistics. Warren Weaver, in his famous 1949 memorandum on translation, first introduced the problem in a computational context. Early researchers understood well the significance and difficulty of WSD. In fact, Bar-Hillel (1960) used the above example to argue that WSD could not be solved by "electronic computer" because of the need in general to model all world knowledge.
+
+In the 1970s, WSD was a subtask of semantic interpretation systems developed within the field of artificial intelligence, but since WSD systems were largely rule-based and hand-coded they were prone to a knowledge acquisition bottleneck.
+
+By the 1980s large-scale lexical resources, such as the Oxford Advanced Learner's Dictionary of Current English (OALD), became available: hand-coding was replaced with knowledge automatically extracted from these resources, but disambiguation was still knowledge-based or dictionary-based.
+
+In the 1990s, the statistical revolution swept through computational linguistics, and WSD became a paradigm problem on which to apply supervised machine learning techniques.
+
+The 2000s saw supervised techniques reach a plateau in accuracy, and so attention has shifted to coarser-grained senses, domain adaptation, semi-supervised and unsupervised corpus-based systems, combinations of different methods, and the return of knowledge-based systems via graph-based methods. Still, supervised systems continue to perform best.
+
+
+
+\section{Applications}
+
+Machine translation is the original and most obvious application for WSD but WSD has actually been considered in almost every application of language technology, including information retrieval, lexicography, knowledge mining/acquisition and semantic interpretation, and is becoming increasingly important in new research areas such as bioinformatics and the Semantic Web.
+
+\refsection
+\nocite{Agirre04smoothingand,Fujii98corpus-basedword,Navigli:2009:WSD:1459352.1459355}
+\printbibliography
+\endrefsection
+
+
+
+\subsection{The utility of WSD}
+
+There is no doubt that the applications mentioned above require and use word sense disambiguation in one form or another; however, WSD as a separate module has not yet been shown to make a absolute difference in any application. There are a few recent results that show small positive effects in, for example, machine translation, but WSD has also been shown to impaired performance, as is the case in well-known experiments in information retrieval.
+
+There are several possible reasons for this:
+
+ First, the domain of an application often constrict the number of senses a word can have (e.g., one would not expect to see the 'river side' sense of bank in a financial application), and so lexicons can and have been constructed accordingly. 
+ Second, WSD might not be accurate enough to show an effect and moreover the sense inventory used is unlikely to match the specific sense distinctions required by the application. 
+ Third, treating WSD as a separate component or module may be misguided, as it might have to be more tightly integrated as an implicit process (i.e., as mutual disambiguation).
+
+\refsection
+\nocite{Agirre04smoothingand,Fujii98corpus-basedword,Navigli:2009:WSD:1459352.1459355}
+\printbibliography
+\endrefsection
+
+
+\subsection{Machine translation}
+
+WSD is required for lexical choice in MT for words that have different translations for different senses. For example, in an English-French financial news translator, the English noun change could translate to either changement ('transformation') or monnaie ('pocket money'). However, most translation systems do not use a separate WSD module. The lexicon is often pre-disambiguated for a given domain, or hand-crafted rules are devised, or WSD is folded into a statistical translation model, where words are translated within phrases which thereby provide context.
+
+\refsection
+\nocite{Agirre04smoothingand,Fujii98corpus-basedword,Vickrey2005,}
+\printbibliography
+\endrefsection
+
+
+\subsection{Information retrieval}
+
+Ambiguity has to be resolved in some queries. For instance, given the query "depression" should the system return documents about illness, weather systems, or economics? Current IR systems (such as Web search engines), like MT, do not use a WSD module; they rely on the user typing enough context in the query to only retrieve documents relevant to the intended sense (e.g., "tropical depression"). In a process called mutual disambiguation, reminiscent of the Lesk method (below), all the ambiguous words are disambiguated by virtue of the intended senses co-occurring in the same document.
+
+\refsection
+\nocite{Fujii98corpus-basedword,Liu:2005:WSD:1099554.1099696,Zouaghi:2012:CIR:2400491.2400493}
+\printbibliography
+\endrefsection
+
+
+
+\subsection{Information extraction and knowledge acquisition}
+
+In information extraction and text mining, WSD is required for the accurate analysis of text in many applications. For instance, an intelligence gathering system might need to flag up references to, say, illegal drugs, rather than medical drugs. Bioinformatics research requires the relationships between genes and gene products to be catalogued from the vast scientific literature; however, genes and their proteins often have the same name. More generally, the Semantic Web requires automatic annotation of documents according to a reference ontology. WSD is only beginning to be applied in these areas.
+
+\refsection
+\nocite{Fujii98corpus-basedword,reyes2009word}
+\printbibliography
+\endrefsection
+
+
+
+\section{Approaches and methods to WSD}
+
+There are four conventional approaches and methods to WSD:
+
+Dictionary and knowledge-based methods: These rely primarily on dictionaries, thesauri, and lexical knowledge bases without using any corpus evidence.
+
+Supervised methods: These make use of sense-annotated corpora to train from.
+
+Semi-supervised or minimally-supervised methods: These make use of a secondary source of knowledge such as a small annotated corpus as seed data in a bootstrapping process, or a word-aligned bilingual corpus.
+
+Unsupervised methods: These avoid (almost) completely external information and work directly from raw unannotated corpora. These methods are also known under the name of word sense discrimination.
+
+
+
+
+\subsection{Dictionary- and knowledge-based methods}
+
+The Lesk method (Lesk 1986) is the seminal dictionary-based method. It is based on the hypothesis that words used together in text are related to each other and that the relation can be observed in the definitions of the words and their senses. Two (or more) words are disambiguated by finding the pair of dictionary senses with the greatest word overlap in their dictionary definitions. For example, when disambiguating the words in pine cone, the definitions of the appropriate senses both include the words evergreen and tree (at least in one dictionary).
+
+An alternative to the use of the definitions is to consider general word-sense relatedness and to compute the semantic similarity of each pair of word senses based on a given lexical knowledge-base such as WordNet. Graph-based methods reminiscent of spreading-activation research of the early days of AI research have been applied with some success.
+
+The use of selectional preferences (or selectional restrictions) are also useful. For example, knowing that one typically cooks food, one can disambiguate the word bass in I am cooking bass (i.e., it's not a musical instrument).
+
+\refsection
+\nocite{Chali:2007:UWS:1621474.1621580,Liu:2005:WSD:1099554.1099696,Prithviraj04softword,Zouaghi:2012:CIR:2400491.2400493}
+\printbibliography
+\endrefsection
+
+
+
+
+\subsection{Supervised methods}
+
+Supervised methods are based on the assumption that the context can provide enough evidence on its own to disambiguate words (hence, world knowledge and reasoning are deemed unnecessary). Probably every machine learning algorithm going has been applied to WSD, including associated techniques such as feature selection, parameter optimization, and ensemble learning. Support vector machines and memory-based learning have been shown to be the most successful approaches, to date, probably because they can cope with the high-dimensionality of the feature space. However, these supervised methods are subject to a new knowledge acquisition bottleneck since they rely on substantial amounts of manually sense-tagged corpora for training, which are laborious and expensive to create.
+
+
+\refsection
+\nocite{Schumacher:2007:FMS:2394705.2394742,Wang:2014:SWS:2562348.2562704}
+\printbibliography
+\endrefsection
+
+
+
+\subsection{Semi-supervised methods}
+
+The bootstrapping approach starts from a small amount of seed data for each word: either manually-tagged training examples or a small number of sure fire decision rules (e.g., play in the context of bass almost always indicates the musical instrument). The seeds are used to train an initial classifier, using any supervised method. This classifier is then used on the untagged portion of the corpus to extract a larger training set, in which only the most confident classifications are included. The process repeats, each new classifier being trained on a successively larger training corpus, until the whole corpus is consumed, or until a given maximum number of iterations is reached.
+
+ Other semi-supervised techniques use large quantities of untagged corpora to provide co-occurrence information that supplements the tagged corpora. These techniques have the potential to help in the adaptation of supervised models to different domains.
+
+Also, an ambiguous word in one language is often translated into different words in a second language depending on the sense of the word. Word-aligned bilingual corpora have been used to infer cross-lingual sense distinctions, a kind of semi-supervised system.
+
+
+\refsection
+\nocite{Faralli:2012:NMF:2390948.2391109,Le:2006:IPS:2081346.2081404,Le:2008:SLI:1367140.1367220,Sanchez-de-Madariaga:2009:BYA:1460927.1461015}
+\printbibliography
+\endrefsection
+
+
+
+\subsection{Unsupervised methods}
+
+Unsupervised learning is the greatest challenge for WSD researchers. The underlying assumption is that similar senses occur in similar contexts, and thus senses can be induced from text by clustering word occurrences using some measure of similarity of context. Then, new occurrences of the word can be classified into the closest induced clusters/senses. Performance has been lower than other methods, above, but comparisons are difficult since senses induced must be mapped to a known dictionary of word senses. Alternatively, if a mapping to a set of dictionary senses is not desired, cluster-based evaluations (including measures of entropy and purity) can be performed. It is hoped that unsupervised learning will overcome the knowledge acquisition bottleneck because they are not dependent on manual effort.
+
+\refsection
+\nocite{Chen:2009:FUW:1620754.1620759,Seo2004253,Yarowsky:1995:UWS:981658.981684,Zouaghi:2012:CIR:2400491.2400493}
+\printbibliography
+\endrefsection
+
+
+
+\section{Evaluation}
+
+The evaluation of WSD systems requires a test corpus hand-annotated with the target or correct senses, and assumes that such a corpus can be constructed. Two main performance measures are used:
+
+	Precision: the fraction of system assignments made that are correct
+	Recall: the fraction of total word instances correctly assigned by a system
+If a system makes an assignment for every word, then precision and recall are the same, and can be called accuracy. This model has been extended to take into account systems that return a set of senses with weights for each occurrence.
+
+There are two kinds of test corpora:
+
+	Lexical sample: the occurrences of a small sample of target words need to be disambiguated, and
+	All-words: all the words in a piece of running text need to be disambiguated.
+
+	The latter is deemed a more realistic form of evaluation, but the corpus is more expensive to produce because human annotators have to read the definitions for each word in the sequence every time they need to make a tagging judgement, rather than once for a block of instances for the same target word. In order to define common evaluation datasets and procedures, public evaluation campaigns have been organized. Senseval has been run three times: Senseval-1 (1998), Senseval-2 (2001), Senseval-3 (2004), and its successor, SemEval (2007), once.
+
+	
+\refsection
+\nocite{Lee:2002:EEK:1118693.1118699,NLE:138359,Yarowsky:1995:UWS:981658.981684}
+\printbibliography
+\endrefsection
+
+
+
+\section{Difficulties in WSD}
+
+Word Sense Disambiguation has the following difficulties/challenges:
+
+	Differences between dictionaries
+	Part-of-speech tagging
+	Inter-judge variance
+	Common sense
+
+
+\subsection{Differences between dictionaries}
+
+One problem with word sense disambiguation is deciding what the senses are. In cases like the word bass above, at least some senses are obviously different. In other cases, however, the different senses can be closely related (one meaning being a metaphorical or metonymic extension of another), and in such cases division of words into senses becomes much more difficult. Different dictionaries and thesauruses will provide different divisions of words into senses. One solution some researchers have used is to choose a particular dictionary, and just use its set of senses. Generally, however, research results using broad distinctions in senses have been much better than those using narrow ones. However, given the lack of a full-fledged coarse-grained sense inventory, most researchers continue to work on fine-grained WSD.
+
+Most research in the field of WSD is performed by using WordNet as a reference sense inventory for English. WordNet is a computational lexicon that encodes concepts as synonym sets (e.g. the concept of car is encoded as { car, auto, auto mobile, machine, motorcar }). Other resources used for disambiguation purposes include Roget's Thesaurus and Wikipedia. More recently, BabelNet, a multilingual encyclopedic dictionary, has been used for multilingual WSD.
+
+\refsection
+\nocite{Chali:2007:UWS:1621474.1621580,Tonelli:2009:WFI:1699510.1699547}
+\printbibliography
+\endrefsection
+
+
+
+
+\subsection{Part-of-speech tagging}
+
+In any real test, part-of-speech tagging and sense tagging are very closely related with each potentially making constraints to the other. And the question whether these tasks should be kept together or decoupled is still not unanimously resolved, but recently scientists incline to test these things separately (e.g. in the Senseval/SemEval competitions parts of speech are provided as input for the text to disambiguate).
+
+It is instructive to compare the word sense disambiguation problem with the problem of part-of-speech tagging. Both involve disambiguating or tagging with words, be it with senses or parts of speech. However, algorithms used for one do not tend to work well for the other, mainly because the part of speech of a word is primarily determined by the immediately adjacent one to three words, whereas the sense of a word may be determined by words further away. The success rate for part-of-speech tagging algorithms is at present much higher than that for WSD, state-of-the art being around 95% accuracy or better, as compared to less than 75% accuracy in word sense disambiguation with supervised learning. These figures are typical for English, and may be very different from those for other languages.
+
+\refsection
+\nocite{Lee:2002:EEK:1118693.1118699,Liu:2005:WSD:1099554.1099696}
+\printbibliography
+\endrefsection
+
+
+
+
+\subsection{Inter-judge variance}
+
+Another problem is inter-judge variance. WSD systems are normally tested by having their results on a task compared against those of a human. However, while it is relatively easy to assign parts of speech to text, training people to tag senses is far more difficult. While users can memorize all of the possible parts of speech a word can take, it is often impossible for individuals to memorize all of the senses a word can take. Moreover, humans do not agree on the task at hand – give a list of senses and sentences, and humans will not always agree on which word belongs in which sense.
+
+Thus, a computer cannot be expected to give better performance on such a task than a human (indeed, since the human serves as the standard, the computer being better than the human is incoherent), so the human performance serves as an upper bound. Human performance, however, is much better on coarse-grained than fine-grained distinctions, so this again is why research on coarse-grained distinctions has been put to test in recent WSD evaluation exercises.
+
+\refsection
+\nocite{Liu:2000:WSD:974456.974463,Seemakurty:2010:WSD:1837885.1837905}
+\printbibliography
+\endrefsection
+
+
+
+
+\subsection{Common sense}
+
+Some AI researchers like Douglas Lenat argue that one cannot parse meanings from words without some form of common sense ontology. For example, comparing these two sentences:
+
+	"Jill and Mary are mothers." – (each is independently a mother).
+	"Jill and Mary are sisters." – (they are sisters of each other).
+
+To properly identify senses of words one must know common sense facts.[12] Moreover, sometimes the common sense is needed to disambiguate such words like pronouns in case of having anaphoras or cataphoras in the text.
+
+\refsection
+\nocite{Brown:1991:WDU:981344.981378,McCarthy:2004:FPW:1218955.1218991,singh2002open}
+\printbibliography
+\endrefsection
+
+
+
+
+\section{Peer Feedback and Revision} \label{sec:peer}
+
+Remember that the goal of peer feedback is not only to point out shortcomings in the paper, but more importantly to suggest ways to improving the quality of the paper (writing style, flow, grammar, technical accuracy). 
+
+\noindent Name of the person who provided feedback: William Kelly
+
+Following are the specific suggestions made by the peer:
+
+\begin{enumerate}
+
+   \item Each source needs to have a summary. Several of your sources have no abstract associated with them.
+
+   \item Each source needs an assessment on the worth of the source and needs a list of where it could be used within a paper written for WSD. Several of your sources still list -Coming Soon.
+
+   \item Self assessment needs to be performed.
+   \item The reader may beneifit from looking at applications that sucessfully use word sense disambiguation if there are any.
+
+\end{enumerate}
+
+In the following, discuss how the peer's suggestions for improvement are incorporated into the document.
+
+\begin{enumerate}
+
+   \item Self assessment was carried out.
+
+   \item Each source was summarized. 
+
+   \item Explain how peer's suggestion $n$ is addressed
+
+\end{enumerate}
+
+
+\section{Instructor Feedback and Revision} \label{sec:instructor}
+
+This section should list feedback provided by the instructor and discuss how you have incorporated the feedback in improving the paper.
+
+
+Following are the specific suggestions made by the instructor:
+
+\begin{enumerate}
+
+   \item Solicited for instructed review.
+
+   \item suggestion 2 description
+
+   \item suggestion $n$ description
+
+\end{enumerate}
+
+In the following, discuss how the instructor's suggestions for improvement are incorporated into the document.
+
+\begin{enumerate}
+
+   \item Explain how instructor's suggestion 1 is addressed
+
+   \item Explain how instructor's suggestion 2 is addressed
+
+   \item Explain how instructor's suggestion $n$ is addressed
+
+\end{enumerate}
+
+
+\section{Self-assessment} \label{sec:assessment}
+
+This assignment will receive zero points if the required \LaTeX{}\ template is not used. 
+
+\begin{center}
+\begin{tabular}{p{3in}rr}
+\toprule
+
+\textbf{Rubric line item} & \multicolumn{1}{c}{\textbf{Max possible points}} & \multicolumn{1}{c}{\textbf{Earned points}} \\ 
+\midrule
+
+Read the paper titled ``Scaffolding Beginning Research Students Using Open Source Tools'' and used its ideas in completing this assignment. & 10 & 6 \\ \midrule
+
+Consulted ACM Digital Library, IEEE Computer Society Digital Library, SiteSeerX, {\sc Mendeley}, Google Scholar, Ultimate Research Assistant, and other online sources for identifying and collecting bibliography sources.  & 10 & 10 \\ \midrule
+
+Several facets of the assigned topic has been identified and the annotated bibliography is organized according to these facets. & 20 & 14 \\ \midrule
+
+For each bibliography source, included are: summary in the form of abstract, assessment, and reflection.  & 30 & 20 \\ \midrule
+
+\LaTeX{}\ and \BibTeX{}\ files follow standard conventions and are easy to read and maintain.  & 5 & 3 \\ \midrule
+
+Peer feedback is solicited and incorporated. & 5 & 5 \\ \midrule
+
+Instructor feedback is solicited and incorporated. & 5 & 3 \\ \midrule
+
+Writing is of professional quality and is free from grammatical and syntactic errors  & 10 & 10 \\ \midrule
+
+Self-assessment is performed. & 5 & 5 \\ \midrule
+
+& & \\
+
+\textbf{Total points} & 100 & 76 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+
+\end{document}

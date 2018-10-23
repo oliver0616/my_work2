@@ -1,0 +1,629 @@
+
+Don’t Call it a Comeback: Academic recovery and 
+the timing of educational technology adoption
+
+ 
+Michael Geoffrey Brown 
+
+mbrowng@umich.edu 
+University of Michigan 
+School of Education 
+
+610 E. University Ave. 
+Ann Arbor, MI 48104 
+
+ R. Matthew DeMonbrun 
+mdemonbr@umich.edu 
+University of Michigan 
+School of Education 
+
+610 E. University Ave. 
+Ann Arbor, MI 48104 
+
+ Stephanie D. Teasley 
+steasley@umich.edu 
+University of Michigan 
+School of Information 
+
+105 S. State St.  
+Ann Arbor, MI 48109-1284
+
+ 
+ABSTRACT 
+Recent research using learning analytics data to explore student 
+performance over the course of a term suggests that a substantial 
+percentage of students who are classified as academically 
+struggling manage to recover. In this study, we report the result of 
+a hazard analysis based on students’ behavioral engagement with 
+different digital instructional technologies over the course of a 
+semester. We observe substantially different adoption and use 
+behavior between students who did and did not experience 
+academic difficulty in the course. Students who experienced 
+moderate academic difficulty benefited the most from using tools 
+that helped them plan their study behaviors. Students who 
+experienced more severe academic difficulty benefited from tools 
+that helped them prepare for exams. We observed that students 
+adopted most tools and system features before they experienced 
+academic difficulty, and students who adopted early were more 
+likely to recover.  
+
+CCS Concepts 
+• Information systems? Data Analytics • Applied 
+computing? Learning Management systems. Applied 
+computing? Computer-assisted instruction.  
+Keywords 
+Educational Technology; Technology Adoption; Early Warning 
+Systems; Undergraduate Education  
+
+Permission to make digital or hard copies of all or part of this 
+work for personal or classroom use is granted without fee 
+provided that copies are not made or distributed for profit or 
+commercial advantage and that copies bear this notice and the full 
+citation on the first page. Copyrights for components of this work 
+owned by others than the author(s) must be honored. Abstracting 
+with credit is permitted. To copy otherwise, or republish, to post 
+on servers or to redistribute to lists, requires prior specific 
+permission and/or a fee. Request permissions 
+from Permissions@acm.org. 
+
+LAK '17, March 13 - 17, 2017, Vancouver, BC, Canada 
+Copyright is held by the owner/author(s). Publication rights 
+licensed to ACM. 
+ACM 978-1-4503-4870-6/17/03?$15.00  
+DOI: http://dx.doi.org/10.1145/3027385.3027393 
+
+ 
+
+1. INTRODUCTION 
+Recent research using learning analytics data to explore student 
+performance over the course of a term suggests that a substantial 
+percentage of students who are classified as academically 
+struggling manage to recover [1]. Yet, very little is known about 
+the process of academic recovery because traditional educational 
+research tends to focus on end of semester metrics like final 
+course grade to make determinations about academic success or 
+failure [2]. Analytical models that use final grade as an outcome 
+measure focus on characterizing students who failed at the end of 
+the term, potentially obscuring the strategies and practices 
+successful students engaged in that may promote academic 
+recovery during the term. Exploring the material practice of 
+technology use in the context of academic recovery could allow us 
+to identify strategies and practices of great relevance for at-risk 
+students.  
+A major affordance of big data is the potential for examining how 
+individual behavior changes over time on a scale previously 
+unavailable to educational researchers [3]. We can, with greater 
+precision, examine what students are doing on a week to week 
+basis within digital course technologies. Trace data of behavioral 
+engagement with LMS content and with other digital instructional 
+tools has the potential to illustrate the material strategies that 
+students employ during a course. 
+
+2. TECHNOLOGY USE & ACADEMIC 
+RECOVERY 
+As there is so little existing research on factors that predict 
+academic recovery within a term, we begin an investigation of 
+related factors with the material interactions between students and 
+technologies that 1) form the basis of learning analytics data and 
+2) are direct evidence of the forms of behavioral engagement that 
+may be associated with academic improvement.  
+
+The material strategies that students develop can have a 
+significant impact on their academic performance at the end of a 
+course. For example, Junco and Clem [4] observed in a study of 
+textbook analytics that when different approaches to using the 
+textbook were disaggregated, very few behaviors within the 
+online textbook system that students engaged in were significantly 
+related to academic performance. Time spent reading was the 
+strongest predictor of academic performance at the end of the 
+term, while other tasks like highlighting or note taking were not 
+significant [4].  
+
+Waddington et al., [5] examining course LMS resource use also 
+observed only a few material practices that were significantly 
+
+
+
+related to academic performance. Exam preparation resources 
+were the only tools that significantly predicted improved 
+performance at the end of the term. Students who increased their 
+use of the exam prep tool during the course were predicted to have 
+significantly better end of semester outcomes than students who 
+stuck with their current resource use strategies [5].  
+
+While there is an increasing body of evidence for the relationship 
+between digital instructional technology use by students and 
+academic performance outcomes, there is little research that 
+examines how the timing of student technology use might 
+influence academic recovery. In fact, most of the research on 
+undergraduate student adoption of learning technology takes a 
+snapshot approach, where use is turned into a binary indicator [6].   
+
+In this study, we investigate when during an academic term 
+students begin using a technology on a regular basis (adoption), 
+the timing of that adoption, and the relationship between adoption 
+timing, frequency of use, and academic recovery. 
+
+Using an existing Early Warning System, called "Student 
+Explorer" (see below) that classified students into three risk 
+categories, we investigated the following research questions: 
+
+3. RESEARCH QUESTIONS 
+1. Does learning technology adoption precede, coincide with, or 
+
+lag students’ experience of academic difficulty in the course? 
+2. What factors significantly increase students’ odds of 
+
+improving from an EXPLORE classification (moderate 
+academic difficulty) or an ENGAGE classification (severe 
+academic difficulty)? 
+
+4. METHODOLOGY 
+4.1 Sample 
+Students were enrolled in one of four sections of an introductory 
+statistics course at a large, residential research intensive American 
+university. This course, called here “Stats 101” is a pre-requisite 
+for a number of academic majors at the institution, such as 
+economics, organizational studies, and political science. The 
+course has been designed to allow students to recover 
+academically if they stumble early in the term by allowing those 
+students who completed all homework assignments to exclude one 
+exam grade from the calculation of their final grade.  
+
+There were 2,169 students enrolled in Stats 101 in the term 
+studied here. The course involved lectures twice a week and a 
+weekly lab section.  All four of the instructors used the same 
+instructional resources, including assessments and assignments. 
+The class enrollment was split across the undergraduate student 
+body: first year (n=292), second year (n=1026), third year 
+(n=620), and fourth year (n=231) students. The class was evenly 
+split by gender (51% women).  
+
+4.2 Data 
+We draw data from a variety of sources to construct our analytical 
+model. First, performance data is drawn from an Early Warning 
+System called Student Explorer. Classifications are based on 
+students’ average academic performance relative to the rest of the 
+class and their use of the Learning Management System. Students 
+are classified (in order of performance from highest to lowest) as 
+ENCOURAGE, EXPLORE, or ENGAGE. Students who have 
+been classified as ENCOURAGE are performing well in the 
+course. Students who are classified as EXPLORE are under-
+performing relative to the mean class performance. Students 
+classified as ENGAGE are experiencing academic difficulty. 
+
+When students have recovered, their academic classification has 
+improved at least one level (ENGAGE to EXPLORE or 
+EXPLORE to ENCOURAGE) in the weekly period following a 
+classification of ENGAGE or EXPLORE [7].  Students do not 
+receive these classifications; they are only provided to academic 
+advisors. It is possible for all students to be classified as 
+ENGAGED.  
+
+4.2.1 Variables  
+We also draw log data from trace records of students’ use of 
+different instructional technologies utilized in Stats 101. First, 
+students are provided access to a digital coaching application 
+called ECoach [8]. The ECoach system provides students a variety 
+of resources: 
+
+Weekly Help and Advice Messages: ECoach system provides 
+students with helpful tips and advice about how to prepare for 
+upcoming assessments. Measured as a binary indicator whether 
+student viewed that week’s message at least once.  
+Exam Playbook: A tool providing resources and strategies for 
+preparing for and reflecting on exams. Exam Preparation tool asks 
+students to identify what resources they will use to prepare for 
+exam. Exam Reflection tool provides students the opportunity to 
+review and reflect upon how they prepared for an exam. Measured 
+as the percentage of each activity that the student completed 
+before (playbook) and after an exam (reflection).  
+
+Get Things Done: A weekly checklist developed by one of the 
+instructors that provides suggestions for tasks that will help 
+students prepare for class. Binary indicator that a student viewed 
+and checked off at least one task in a given week.   
+
+Grade Calculator: An interactive tool that students can use to 
+estimate their grade based on current and future performance. In 
+the model, Grade Calculator is a binary indicator for whether or 
+not the student used the Grade Calculator in a given week.  
+
+As part of the course, students are also provided two online 
+systems for reviewing academic problems.  
+
+Name That Scenario: An online review system that allows 
+students to review a potential problem and identify the type of 
+inference the problem calls for. Variable indicates that students 
+completed at least one problem during one of the periods when a 
+Name That Scenario problem set was open.  
+Finally, students’ use of a practice problem mobile application 
+called Problem Roulette, which is also incorporated into our 
+model [9]. We examine how often students access the application. 
+Only sessions where students attempt and complete at least one 
+practice problem are included. 
+
+A student is considered to have adopted a tool if they either 
+engaged with the tool in at least two distinct sessions for tools 
+intended to be used multiple times, or –for tools that had multiple 
+features and were intended for use during a set period (like Name 
+that Scenario or the Exam Playbook) –students used at least 10% 
+of the features during a session. Students who used the Get Things 
+Done checklist or viewed the Help and Advice messages in two 
+different weeks would be considered adopters. Students who 
+completed at least 10% of the Exam Playbook would be 
+considered adopters of that tool.   
+We also account for the number of course credits in which a 
+student is concurrently enrolled; their race and gender (as women 
+and underrepresented students traditionally experience a grade 
+penalty in this course [10]); and the students’ score on a 
+standardized math placement exam taken before enrollment.  
+
+
+
+4.3 Hazard Analysis  
+Our analyses draw from event history techniques to determine the 
+probability that a student may exit an EXPLORE or ENGAGE 
+alert status given the independent variables listed above in section 
+4.2. Student Explorer alert categories are stored in the system on a 
+weekly basis which requires a discrete-time hazard model, as our 
+data is composed of discretely-measured time periods.  
+
+Discrete-time hazard models employ binary responses (yti), where 
+the outcome represents whether the event occurred (1=yes; 0=no) 
+during sequential time periods (t) for each individual (i). In doing 
+so, we create a weekly observation for whether an individual 
+student exited a classification (ENGAGE or EXPLORE). The 
+probability (pti) is estimated for each individual (i) to experience 
+the event during each time interval (t), given that no event has 
+occurred prior to the start of t:  
+
+pti = Pr(yti = 1|yt?1,i = 0) 
+pti is called the discrete-time hazard function because it represents 
+the probability of the individual exiting an ENGAGE or 
+EXPLORE classification during a specific weekly interval.  
+
+After determining the probabilities for each individual’s time 
+hazard, the data is fit to a binary response model (i.e., logistic 
+regression model): 
+
+log  (pti / 1 – pti) = ?Dti + ?xti 
+In this model, pti represents the probability of the event during the 
+time interval t, Dti is a vector of functions representing the total 
+cumulative hazard during the duration by interval t with 
+coefficients (?), and xti is a vector of covariates with coefficients 
+(?). Each individual receives a baseline hazard function 
+(represented by Dti), while the covariates can either increase or 
+decrease the hazard function for each individual.  
+
+The results of the logistic regression model are provided in terms 
+of odds ratios for ease of discussion.   
+
+Two hazard models were estimated for our analysis: exiting an 
+EXPLORE status and exiting an ENGAGE status. The odds that a 
+student’s academic performance improved over time given their 
+use of each individual tool are reported. If students had multiple 
+entry and exits in and out of an alert status, those changes in 
+classification were included in the model as unique events. 
+However, less than 2% of the students in the sample entered an 
+EXPLORE or ENGAGE classification more than once.  
+
+5. RESULTS 
+Our initial analyses focused on students’ instructional technology 
+use across the semester. To understand the relationship between 
+use and academic performance, we divided students into two 
+groups based on their Student Explorer classifications. Students 
+who were only classified by the Student Explorer system as 
+ENCOURAGE throughout the semester- meaning they never 
+performed below the class average—were classified into one 
+group (n=1637). Students who were classified by the Student 
+Explorer system as EXPLORE or ENGAGE at least once during 
+the semester were the comparison group. Students who struggled 
+had generally lower levels of instructional technology adoption. 
+
+The more interactive a tool, the greater the likelihood that all 
+students would adopt that tool (e.g. Get Things, Done, Problem 
+Roulette, Name that Scenario). In contrast, tools that were 
+relatively static and had few affordances, like the Weekly Help 
+and Advice Messages, had broad adoption among ENCOURAGE 
+
+students and were generally ignored by EXPLORE/ENGAGE 
+students. For example, ENCOURAGE students had higher 
+average adoption of Get Things Done (difference in 
+proportion=31.2%, p,0.001) and reading Weekly Messages 
+(28.2%, p<0.001). There was no substantial difference in the 
+proportion of students who adopted Problem Roulette between the 
+two groups (2.3%). 
+
+5.1 Tool Use 
+Between groups, substantial variation in adoption was also clear 
+over the semester. Student use of the Get Things Done checklist 
+was highly variable week to week, but overall students who were 
+classified as EXPLORE/ENGAGE used the tool less frequently 
+and after week eight use the tool very rarely when compared to 
+ENCOURAGE students (see figure 1). 
+
+ 
+
+Figure 1. Week to Week use of Get Things Done 
+
+Similarly, a higher percentage of students who were classified as 
+ENCOURAGE read weekly help messages when compared to 
+students classified as EXPLORE/ENGAGE. Overall there was a 
+wide variation in week to week message reading, but students 
+who struggled were simply less likely to view help messages.   
+
+Problem Roulette use also varied substantially, with spikes around 
+exam times, although use was uniformly higher for all students. 
+The increase in use over the semester by EXPLORE/ENGAGE 
+students closely paralleled the use by ENCOURAGE students. 
+
+ 
+Figure 2. Week to Week use of Problem Roulette 
+
+The trend was slightly different when we looked at exam 
+preparation resources in comparison to weekly resources. Use 
+increased substantially among ENGAGE students between exams 
+1 and 2 for the exam preparation tool (by about 25%). 
+
+
+
+However, use decreased among EXPLORE/ENGAGE students 
+(by about 2%) between the two exams. Exam reflection use 
+increased by 46% between exam 1 and 2 for students classified as 
+ENCOURAGE/ENGAGE. Students who did poorly on the second 
+exam may have been looking for insight into what they could do 
+differently before the final exam.  
+
+ 
+Figure 3. Difference in proportion of Exam Prep and Exam 
+
+Reflection Tool Use by Student Explorer Classification 
+
+5.2 Adoption and Academic Difficulty 
+Despite the variation in use between the ENCOURAGE and 
+EXPLORE/ENGAGE groups, students’ adoption of most digital 
+instructional technologies overwhelmingly preceded any 
+academic difficulty they encountered. For example, students that 
+adopted the Get Things Done (GTD) checklist began using the 
+tool early in the term and used it throughout; 437 students out of 
+the 440 who used it regularly were classified as ENCOURAGE 
+when they adopted the tool. A very small number of students 
+(n=3/440) adopted the tool after they had entered an EXPLORE or 
+ENGAGE classification. This trend also held for the adoption of 
+the Exam Prep and Reflection tools. Only the Problem Roulette 
+tool seemed to result in some variation in adoption, with about 
+20% of students adopting the tool after entering an EXPLORE or 
+ENGAGE alert status.  
+
+In general, adoption preceded academic difficulty. On average, 
+students who experienced academic challenge used the digital 
+tools available to them in substantially different ways over the 
+duration of the semester from students who performed well 
+throughout the course. We now turn our attention to what kind of 
+instructional technology use is significantly related to increasing a 
+student’s odds of academic improvement from an EXPLORE or 
+ENGAGE classification over time.  
+
+5.3 Recovery Across the Semester  
+Although we might presume that students make changes to their 
+resource strategies once they encounter academic difficulty, this 
+did not seem to be the case in our data. Instead, the students who 
+were the most likely to recover from an EXPLORE or ENGAGE 
+classification were students who had already adopted digital 
+instructional tools early in the course.   
+
+Students who experienced moderate academic difficulty—who 
+were classified as EXPLORE at some point during the semester—
+benefitted the most from using the Get Things Done tool (OR= 
+6.87). Get Things Done provides students with a checklist of 
+weekly tasks to complete to prepare for lecture. Students who use 
+Get Things Done throughout the semester were six times more 
+likely to improve their academic performance than students who 
+
+did not. Students who used the Exam Prep tool also had slightly 
+improved odds of exiting the EXPLORE status (OR=1.001, 
+p<0.05).  
+
+Table 1. Factors Predicting Odds of Recovery from an at Risk 
+Classification 
+
+ Improve from 
+EXPLORE  
+
+Improve from 
+ENGAGE  
+
+Current Credits 1.03 (0.04) 0.9961  (0.0025) 
+Math Placement 0.75 (0.156)* 0.095  (0.001)*** 
+Men (Wome n ref) 1.082 (0.23) 1.321  (0.011)* 
+Underrepresented 0.999 (0.001) 0.0846  (0.019) 
+Name that Scenario 1.001 (0.0004) 1.000  (0.001) 
+Problem Roulette 1.034 (0.026) 1.130  (0.003)*** 
+Exam Prep 1.001 (0.09)* 1.231  (0.011)* 
+Exam Reflection 1.03  (0.054) 1.019  (0.001)* 
+Get Things Done 6.87 (1.061)* 1.054  (0.003) 
+Grade Calculator 1.213 (0.121) 1.174 (0.007) 
+Weekly Messages 1.340 (0.011) 1.205  (0.014) 
+
+Signif. codes: ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 
+
+This is in contrast to students who were classified as ENGAGE 
+who appeared to benefit the most from tools that reviewed class 
+content. Using the exam preparation (OR=1.231) and exam 
+reflection tools (OR=1.019) increased students’ odds of improving 
+their academic performance. Students who reviewed example 
+problems through the Problem Roulette application also had 
+significantly higher odds of improving from engage (OR=1.130, 
+p<0.001) 
+
+6. DISCUSSION 
+Our analyses suggest that students who adopt and incorporate 
+instructional tool use into their study behaviors have greater odds 
+of academic recovery than students who do not use these tools. 
+Our results also suggest that students adopt these tools early in the 
+semester, well before they experience academic difficulty. 
+Adoption of instructional technologies may provide students with 
+resources to draw upon that promote recovery. What resources 
+prove beneficial for academic recovery appear related to the 
+amount of academic difficulty that students experience during the 
+semester.   
+
+Students experiencing moderate academic difficulty (EXPLORE 
+status) may be experiencing problems of self-regulation- of 
+dedicating the time and energy need to be successful in the course. 
+The Get Things Done tool supports self-regulation by helping 
+students organize and reflect on how they approach the course. 
+Students who entered an EXPLORE alert status and were using 
+Get Things Done were far more likely to improve throughout the 
+semester than students who were not using the checklist.  
+
+In contrast, students experiencing significant academic difficulty 
+(ENGAGE status) appear to benefit the most from course 
+resources that help them prepare for assessments. Resources like 
+Problem Roulette, the Exam Preparation, and Exam Reflection 
+tools allow students to review content in preparation for higher 
+risk course assessments like exams.  
+
+Problem Roulette users, in particular, were more likely than any 
+other group to adopt the tool after they had entered an alert status. 
+While we observed few events that made students change their 
+
+
+
+behaviors substantially, it did appear that students who were 
+experiencing academic difficulty were much more willing to 
+accommodate a technology like Problem Roulette than features of 
+the ECoach system. 
+
+Only the Exam Preparation tool cut across both models as a 
+significant factor that predicted improved odds of exiting a 
+classification. The Exam Prep tool also cuts across the two 
+strategies inherent in the Get Things Done and Problem Roulette 
+tools. It provides students the opportunity to think about their plan 
+for preparing for the exam, and it directs them to resources that 
+can help them review content.  
+
+In general, instructors and tool developers who want to develop 
+effective interventions should pay close attention to students’ 
+resource use behaviors early in the semester, as they appear 
+relatively fixed, and yet are predictive of a student’s tendency to 
+academically recover. While some students will certainly be 
+academically successful without adopting the array of tools 
+available to them, students who do experience academic difficulty 
+might benefit significantly from instructors encouraging the use of 
+digital instructional technologies early in the semester.  
+
+Instructors and instructional designers may want to consider 
+flagging the failure to adopt early in the course as a way to 
+identify students for potential intervention. Students who fail to 
+adopt early on are unlikely to do so once they need the resources. 
+Behavioral nudges that encourage the adoption of ECoach-like 
+systems will improve the odds that students recover.  
+
+Adoption decisions happen relatively early in the course and 
+appear sticky. Students may be making these decisions in reaction 
+to the perceived difficulty of the course, or in response to the 
+instructors signaling that these resources are important to use. 
+Instructors may therefore aim to address their importance early 
+and often. 
+
+The findings of our study also suggest improvements to Early 
+Warning System design. We believe that the models underlying 
+Early Warning Systems should be designed to factor in timing and 
+counts of individual tool use, not simply the aggregate hits on the 
+course LMS. Use (or failure to use) might decrease students’ 
+probability of recovery over time, which should influence EWS 
+classifications. 
+
+Our study also illustrates the value of considering material 
+practices in relationship to academic performance. When scholars 
+treat technology use and adoption as a uniform behavior, as 
+opposed to a system of practices afforded by a tool’s design, they 
+potentially gloss over what aspects of use support student learning 
+and achievement [11]. When scholars treat material practices as a 
+set of concurrent interactions between students and technologies, 
+powerful insights can be drawn from big data analytics.  
+
+7. FUTURE DIRECTIONS  
+Our results point to some important next steps for studying 
+academic recovery in residential undergraduate education. First, 
+affective beliefs about the course and the course technology 
+should be explored to understand how those factors inform 
+adoption and use decisions. Second, researchers might consider 
+the role of students’ individual motivation and expectations for 
+success in tool use and adoption.  Finally, these analyses could be 
+repeated in other contexts to determine how the arrangement of 
+
+instructional technology in different disciplinary contexts might 
+influence academic recovery.  
+
+8. ACKNOWLEDGMENTS 
+Our thanks to the students and instructors involved in Stats 101.  
+Support for this research was provided by the Learning, 
+Education, and Design Lab, the Digital Innovation Greenhouse 
+and the Office of Academic Innovation at the University of 
+Michigan. We would like to acknowledge the support and 
+feedback we received from Dr. Patricia Chen, Holly Derry, Dr. 
+Brenda Gunderson, Ben Hayward, and Dr. Timothy Mckay. 
+
+9. REFERENCES 
+ [1] Brown, M. G., DeMonbrun, R. M., Lonn, S., Aguilar, S. J., & 
+
+Teasley, S. D. 2016. What and when: the role of course type 
+and timing in students' academic performance. Proceedings 
+of the Sixth International Conference on Learning Analytics 
+& Knowledge (pp. 459-468). ACM. 
+
+[2] Zimmerman, B. J. 2008. Investigating self-regulation and 
+motivation: Historical background, methodological 
+developments, and future prospects. American Educational 
+Research Journal, 45(1), 166-183. 
+
+[3] Papamitsiou, Z. K., Terzis, V., & Economides, A. A. 2014. 
+Temporal learning analytics for computer based testing. 
+Proceedings of the Fourth International Conference on 
+Learning Analytics And Knowledge. ACM. 
+
+[4] Junco, R., & Clem, C. 2015. Predicting course outcomes with 
+digital textbook usage data. The Internet and Higher 
+Education, 27, 54-63. 
+
+[5] Waddington, R.J., Nam, S.J., Lonn, S., & Teasley, S.D. in 
+press. Practice (Exams) Make Perfect: Incorporating course 
+resource use into an early warning system. Journal of 
+Learning Analytics.  
+
+[5] Halverson, L. R., Graham, C. R., Spring, K. J., Drysdale, J. S., 
+& Henrie, C. R. 2014. A thematic analysis of the most highly 
+cited scholarship in the first decade of blended learning 
+research. The Internet and Higher Education, 20, 20-34. 
+
+[7] Krumm, A. E., Waddington, R. J., Teasley, S. D., & Lonn, S. 
+2014. A Learning Management System-Based Early 
+Warning System for Academic Advising in Undergraduate 
+Engineering. Learning Analytics. From Research to Practice, 
+pp. 103--119.  
+
+[8] Huberth, M., Chen, P., Tritz, J., & McKay, T. A. 2015. 
+Computer-Tailored Student Support in Introductory Physics. 
+PloS one, 10(9), e0137001. 
+
+[9] Evrard, A. E., Mills, M., Winn, D., Jones, K., Tritz, J., & 
+McKay, T. A. 2015. Problem roulette: Studying introductory 
+physics in the cloud. American Journal of Physics, 83(1), 76-
+84. 
+
+[10] Koester, B. P., Grom, G., & McKay, T. A. 2016. Patterns of 
+Gendered Performance Difference in Introductory STEM 
+Courses. arXiv preprint arXiv:1608.07565. 
+
+[11] Brown, M.G. 2016. Blended instructional practice: A review 
+of the empirical literature on instructor’s adoption and use of 
+online tools in face to face teaching.  The Internet and 
+Higher Education, 31(1)
+
+ 
+
+
+

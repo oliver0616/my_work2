@@ -1,0 +1,1491 @@
+
+OpenCourseWare Observatory – Does the Quality of
+OpenCourseWare Live up to its Promise?
+
+Sahar Vahdati
+University of Bonn
+
+vahdati@uni-bonn.de
+
+Christoph Lange
+University of Bonn
+
+math.semantic.web@gmail.com
+
+Sören Auer
+University of Bonn
+
+auer@cs.uni-bonn.de
+
+ABSTRACT
+A vast amount of OpenCourseWare (OCW) is meanwhile being
+published online to make educational content accessible to larger
+audiences. The awareness of such courses among users and the
+popularity of systems providing such courses are increasing. How-
+ever, from a subjective experience, OCW is frequently cursory, out-
+dated or non-reusable. In order to obtain a better understanding of
+the quality of OCW, we assess the quality in terms of fitness for
+use. Based on three OCW use case scenarios, we define a range
+of dimensions according to which the quality of courses can be
+measured. From the definition of each dimension a comprehensive
+list of quality metrics is derived. In order to obtain a representative
+overview of the quality of OCW, we performed a quality assess-
+ment on a set of 100 randomly selected courses obtained from 20
+different OCW repositories. Based on this assessment we identify
+crucial areas in which OCW needs to improve in order to deliver
+up to its promises.
+
+Categories and Subject Descriptors
+K.3 [Computers and Education]: Computer Uses in Education—
+Collaborative learning, Distance learning
+
+Keywords
+OpenCourseWare, Quality Metrics, Quality Assessment, Educational
+Content
+
+1. INTRODUCTION
+During the last decade the community of educators has been
+
+widely interested in improving the training model of education sys-
+tems, towards high quality education in any place at any time.
+An important result of the collaborative work of educators and re-
+searchers in this direction is the OpenCourseWare (OCW) concept.
+The idea arose from the success of open source software by expand-
+ing the concept of openness to a larger context (Vla?doiu 2011).
+
+A vast amount of OCW is meanwhile being published online
+to make educational content more accessible. The awareness of
+such courses among users and the popularity of systems provid-
+Permission to make digital or hard copies of all or part of this work for
+personal or classroom use is granted without fee provided that copies are not
+made or distributed for profit or commercial advantage and that copies bear
+this notice and the full citation on the first page. Copyrights for components
+of this work owned by others than ACM must be honored. Abstracting with
+credit is permitted. To copy otherwise, or republish, to post on servers or to
+redistribute to lists, requires prior specific permission and/or a fee. Request
+permissions from Permissions@acm.org.
+LAK ’15, March 16 - 20, 2015, Poughkeepsie, NY, USA
+Copyright 2015 ACM 978-1-4503-3417-4/15/03...$15.00
+http://dx.doi.org/10.1145/2723576.2723605
+
+ing such courses are increasing. However, from a subjective expe-
+rience, OCW is frequently cursory, outdated or non-reusable. Many
+of the courses contain only a syllabus, are only available in one lan-
+guage or in formats, which are difficult to reuse.
+
+More than 250 institutions worldwide are openly publishing courses
+today. Some OCW initiatives by renowned universities are MIT
+OpenCourseWare, Stanford Engineering Everywhere, Carnegie Mel-
+lon Open Learning Initiative, Harvard University Extension School,
+Open Learning Initiative, Initiative, Open Yale Courses, Rice Uni-
+versity’s OpenStax, OpenLearn, and Webcast.Berkeley. Further OCW
+repositories have been made available by organizations such as
+OpenCourseWare Consortium, Open Education Resources Com-
+mons, and The Saylor Foundation’s Free Education Initiative.
+
+The Open Education Consortium1 as the central community of
+institutions and organizations working on open education lists 26,611
+courses from 80 providers. Many of the repositories mentioned
+above are members of the Open Education consortium. MIT Open-
+CourseWare as one of the popular OCW repositories reports that
+they have made 2,150 courses available so far. Since its launch, 137
+million people have been visiting MIT OpenCourseWare annually.
+
+The basic idea of OCW was to provide open access to edu-
+cational material for educators, students, and individual learners
+around the world (MIT OpenCourseWare 2006). Instantly updated
+educational material should be freely available for everyone, or
+at least with lower costs, from anywhere at any time (UNESCO
+2002). Thus, OCW could form a big step towards achieving the
+right to education for everyone irrespective of race, gender, nation-
+ality, disability, religion or political preference, which is mandated
+by the Universal Declaration of Human Rights (United Nations
+1948). OCW pioneers had the expectations that OCW would . . .
+
+• help universities to attract prospective students from all around
+the world (MITNews 2001),
+
+• quickly disseminate of new educational content possible in
+a wide range of fields without waiting for academic publish-
+ers (MITNews 2001),
+
+• make quality material available in a variety of styles, lan-
+guages and from a variety of viewpoints (Caswell et al. 2002).
+
+The OCW pioneers promised to achieve these goals by con-
+stantly widening access to high quality digital educational mate-
+rials. To assess and improve the quality of OCW, a “gold standard”
+for reusable educational material first has to be established. How-
+ever, this task is not trivial, and one of the important challenges is
+a lack of representative and objective quality criteria. It is proved,
+for example, by a large annual US national kindergarten to high
+school (K–12) survey 2. The results of 2011 showed that 41% of
+
+1http://www.oeconsortium.org/
+2http://www.tomorrow.org/speakup/
+
+73
+
+http://www.oeconsortium.org/
+http://www.tomorrow.org/speakup/
+
+
+principals find it difficult to evaluate the quality of digital content.
+At the same time above 50% of teachers responded that the most
+important factors in evaluating content were “being referred by a
+colleague”, “free”, and “created by educators”, none of which is
+necessarily a hallmark of quality (Porcello et al. 2013).
+
+We address this issue by establishing a set of quality metrics for
+OCW. Quality is defined as excellence, value, conformance to spec-
+ifications, or meeting consumer expectations (Kahn et al. 2002).
+More specifically, it is defined as fitness for use (Juran 1974; Knight
+et al. 2005). “Fitness for use” means the extent to which the totality
+of features and characteristics of OCW leads to a successful ful-
+fillment of its users’ needs. Our observatory will support or refute
+a preconceived subjective experience about the quality of OCW in
+terms of fitness for use by watching characteristics of courses.
+
+In order to obtain a representative overview of the current state
+of OCW quality, we apply the quality metrics to observe the quality
+of a set of 100 randomly selected courses obtained from 20 differ-
+ent OCW repositories. Based on this observation we identify cru-
+cial areas where OCW needs to improve in order to deliver up to
+its promises. We introduce the methodology of this observatory in
+Section 2. Section 3 provides a concise definition of each dimen-
+sion and of its quality metrics. Section 4 illustrates the results of
+our observatory. Section 5 discusses related work, and Section 6
+concludes.
+
+2. METHODOLOGY
+We use a systematic observation as a structured, qualitative data
+
+collection and evaluation method. Observation can be used to un-
+derstand an ongoing process or situation (Data Collection Meth-
+ods for Program Evaluation: Observation 2008), provide reliable,
+quantifiable data, or to collect direct information (Patton 2005).
+Other sources on the Web also report that observation is to doc-
+ument detailed characteristics of objects and apply a benchmark
+over a set of collected data.
+
+Depending on the type of metric the observation is done as time
+or event sampling. For example availability of course material from
+a server is studied in time intervals (see Section 3.6), whereas mul-
+tilinguality is captured once (see Section 3.2). We first define three
+use case scenarios covering different OCW stakeholders. Based on
+these scenarios, we introduce quality dimensions, including multi-
+linguality, availability, discoverability.
+
+For each dimension, we define quality metrics and justify their
+relevance. For example, sustainability of a course is measured by
+the number of available revisions, their regularity over time, and
+their temporal distribution (see Section 3.5).
+
+To find courses, one can start with an initial set of widely known
+repositories (e.g. MIT OpenCourseWare), and further repositories
+from the list of members of the Open Education Consortium3. Fur-
+ther courses can be retrieved using OCW-specific search engines:
+1. There are authoritative listings of such search engines: one by
+the Higher Education Academy/JISC Open Educational Resources
+programme4 and one by the Open Knowledge Foundation5. 2. From
+those search engines mentioned in both of these listings, we used
+those that were still available, and covered actual OCW repositories
+(rather than, e.g., Wikipedia), and covered multiple ones of them.
+3. From these search engines, we obtained a list of courses.
+
+Each of these ways allows for selecting a random sample of
+courses, which should be cleaned up to obtain a trustable and ma-
+
+3http://www.oeconsortium.org/members/
+4https://openeducationalresources.pbworks.com/w/
+page/27045418/Finding%20OERs
+5http://booktype.okfn.org/open-education-handbook/
+
+ture collection. For example, courses with broken links or empty
+learning material should be disregarded.
+
+At this point, the assessment process can be applied to each
+course by observing its characteristics w.r.t. the defined metrics.
+The data resulting from this assessment should be recorded sys-
+tematically to enable subsequent analysis.
+
+Name URL
+Connexions http://cnx.org
+Curriki http://www.curriki.org/
+JISC Digital Media http://www.jiscdigitalmedia.ac.uk
+Jorum http://www.jorum.ac.uk/
+Mellon OLI http://oli.cmu.edu/
+MERLOT http://www.merlot.org/
+MIT OpenCourseWare http://ocw.mit.edu/index.htm
+OCWFinder http://www.ocwfinder.org/
+OER Commons http://www.oercommons.org/
+OER Dynamic Search Engine http://edtechpost.wikispaces.com
+OpenCourseware Consortium http://www.ocwconsortium.org/
+OpenHPI https://open.hpi.de/
+Temoa http://www.temoa.info/
+The UNESCO OER Toolkit http://oerwiki.iiep.unesco.org
+TuDelft OpenCourseWare http://ocw.tudelft.nl/
+UCIRVINE http://ocw.uci.edu/
+University Learning http://www.google.com/coop
+Utah State OpenCourseWare http://ocw.usu.edu/
+webcast.berkeley http://webcast.berkeley.edu/
+Xpert http://xpert.nottingham.ac.uk/
+
+Table 1: List of the OCW repositories (alphabetically sorted).
+
+3. QUALITY METRICS
+After analyzing OCW usage scenarios and doing a literature re-
+
+view, we identified a core set of 10 quality dimensions. Dimen-
+sions are selected in a way that can be applied to assess the qual-
+ity of OCW. We group the identified dimensions according to the
+classification idea introduced by Zaveri et al. (2014) as: Accessi-
+bility dimensions [Availability, Discoverability], Intrinsic dimen-
+sions [Multilinguality level, Community involvement], Reuse di-
+mensions[Legal Reusability, Re-purposing format], Learnability di-
+mensions [Learnability by examples and illustrations, Learnabil-
+ity by self-assessment], Temporal dimensions [Sustainability, Re-
+cency].
+
+In the remainder of this section, we define each dimension in the
+context of OCW, and list metrics for measuring quality in this di-
+mension. We derive 37 quality metrics, including objective (O) and
+subjective (S) ones. Our focus is on objective metrics, since they are
+better measurable and more reliable. Table 2 provides a summary of
+dimensions, metrics and their definitions. While almost all individ-
+ual metrics have a numeric or Boolean value, we leave the interpre-
+tation, and possibly weighting, of these values to those who carry
+out a concrete assessment. Additionally, a “pros and cons” section
+justifies the relevance of considering each dimension: it discusses
+the benefits of improving OCW quality w.r.t. this dimension but
+also points out possible challenges, obstacles and pitfalls in doing
+so.
+
+3.1 Legal Reusability
+A large number of OCW users wants to build upon, enhance and
+
+(re)use the content of courses to reduce the effort of recreating ma-
+terial. They need to be assured of the possibilities of legally reusing
+course content. Therefore, each OCW should legally allow (re)use
+and adaptation of the content under an open license (Friesen 2013).
+Several types of open licenses have been created, such as the Cre-
+ative Commons licenses or the Open Publication License (Atkins
+et al. 2007). Each license specifies certain conditions, which can
+be combined with different sub-license attributes and types. These
+
+74
+
+http://www.oeconsortium.org/members/
+https://openeducationalresources.pbworks.com/w/page/27045418/Finding%20OERs
+https://openeducationalresources.pbworks.com/w/page/27045418/Finding%20OERs
+http://booktype.okfn.org/open-education-handbook/
+http://cnx.org
+http://www.curriki.org/
+http://www.jiscdigitalmedia.ac.uk
+http://www.jorum.ac.uk/
+http://oli.cmu.edu/
+http://www.merlot.org/
+http://ocw.mit.edu/index.htm
+http://www.ocwfinder.org/
+http://www.oercommons.org/
+http://edtechpost.wikispaces.com
+http://www.ocwconsortium.org/
+https://open.hpi.de/
+http://www.temoa.info/
+http://oerwiki.iiep.unesco.org
+http://ocw.tudelft.nl/
+http://ocw.uci.edu/
+http://www.google.com/coop
+http://ocw.usu.edu/
+http://webcast.berkeley.edu/
+http://xpert.nottingham.ac.uk/
+
+
+certain conditions bring legal restrictions to protect the rights of
+each parties: original creator, sharing system and users.
+
+According to the Creative Commons licenses6, we classify the
+conditions of reuse as follows: Attribution (BY) requires derivative
+works to give credit to the original creator and provide a link to the
+license. Share-alike (SA) requires derivative works to be distributed
+under a license identical to the original license. Non-commercial
+(NC) restricts (re)use of content to non-commercial purposes. No
+Derivative Works (ND) forbids derivative works from being pub-
+lished.
+
+Definition 1. Legal reusability is the extent to which the terms and
+conditions specified by the creator grant the permission to legally
+(re)use content.
+
+Measuring: We measure legal reusability of a course by looking
+at its license. When the course itself does not specify a license,
+we check whether the overall repository does so. M1.1, a Boolean
+metric, is true if a license exists at all. M1.2 indicates whether a
+human-readable description of a course’s license is accessible from
+the web page of a course, be it that the page summarizes the li-
+cense or links to the full definition of the license. For each con-
+dition of reuse (BY, SA, NC, ND) we define three-valued metrics
+(false, true, unspecified), etc. M1.3BY , M1.3SA, etc. specify the type
+of course license using these values. We consider two separate met-
+rics to measure the extent to which the license is machine-readable.
+M1.4 measures whether a machine-readable indication of license
+exists, and M1.5 indicates whether the description of the license
+itself is machine-readable.
+Pros:
+
+• License concisely summarizes the terms of reuse.
+• Permissive licenses grant more legal reuse possibilities.
+• Clear licensing conditions facilitate the content reuse (with-
+
+out cumbersome inquiries or negotiations).
+Cons:
+
+• Adding certain conditions to licenses can limit reuse.
+• Terms of a license might be difficult to understand or require
+
+interpretation and adaptation in certain legislations.
+• In practice, it is difficult to track whether material is being
+
+reused in accordance with its license.
+
+3.2 Multilinguality Level
+The mission of OCW is to provide education for anyone at any
+
+time in any place. However, the access to produced content is often
+limited by language barriers. 83 different languages are spoken by
+more than 10 million native speakers each. Out of an estimated 2
+billion Internet users, some 27% percent speak English. As speak-
+ers of other languages get online, the share of English speakers is
+decreasing. Thus, the need of providing OCW translation in lan-
+guages other than English is apparent.
+
+In the context of education, the author’s priority in turning a
+course into a multilingual one is to provide high quality while keep-
+ing the effort for translation low. The following technologies help
+with this: (1) machine translation, (2) synchronization, (3) inter-
+nationalization and localization. Machine translation can support
+manual translation, but the quality of output is still far below hu-
+man translation (Spence et al. 2013). An initial machine translation
+can help to reduce the effort by about a half but humans have to
+review and revise the output in order to reach a good translation
+quality. After a course has been translated, it is important to keep
+improvements to the original version synchronized with improve-
+ments to the translated version. Localization is the adaptation of
+
+6http://creativecommons.org
+
+the translated versions to cultural differences. Examples are units
+of measurements (e.g., inch vs. centimeter), religious and regional
+differences.
+
+Definition 2. Multilinguality means availability of material in mul-
+tiple languages.
+
+Measuring: We consider a course multilingual whose content is
+available in more than one language. Every course is associated
+with at least one language. The chronological first language in which
+the course was designed is recorded as the original language. M2.1
+is defined as the original language. M2.2 is a Boolean metric telling
+whether a course is available in different languages. M2.3 records
+the number of further languages. M2.4 specifies the state of the
+translations, which can be:
+
+• automatic-translation when a course is machine-translated
+and not reviewed by human experts.
+
+• synchronized when the verbatim translation of the original
+language is edited to be synchronized with the new language.
+
+• expert-revised when the translation was reviewed by a do-
+main expert but not yet by native speaker.
+
+• localized when a translated version of a course is checked by
+native speakers and localized.
+
+Pros:
+• Multilinguality reaches a wider audience and ensures wider
+
+usage of the material.
+• Multilinguality reduces the effort of material creating.
+• Localization addresses cultural differences.
+
+Cons:
+• Translation can be time-consuming and expensive.
+• Translation must be performed or carefully checked by do-
+
+main experts.
+• Scientific or technical content needs to be adapted to the re-
+
+spective cultural context.
+
+3.3 Format Re-purposeability
+The content of a course can be reused by different groups of
+
+users for several purposes. While an educator might want to reuse
+the content of a course in his/her lecture, a student might reuse
+the same content for self learning. The format and its granularity
+can also influence the accessibility of the content. For example,
+audio and video formats can only be edited in a very limited way,
+in contrast to ePUB or HTML.
+
+Courses have been made available in different formats, such as
+interactive documents, audio, and video. Interactive documents are
+web-based objects with lightweight interactive elements, e.g., for
+navigation or question answering; they can be implemented using
+HTML5/JavaScript or Flash. Text can come in different formats
+such as HTML, ePUB, XML, PDF and plain text. Representation
+of mathematical formulas is possible in LATEX or ePUB editors. But
+even then it is problematic to copy and paste them for later reuse.
+Copy-paste from PDF or even certain text files can cause errors
+while copying special characters. Simulations are a different format
+that are usually available for certain technical software. Depending
+on the format re-purposing can be impossible or subject to restric-
+tions (such as loss of presentation quality or of formatting during
+copy-paste).
+
+The choice of formats not only influences re-purposing but also
+viewing. Some users might not be able to read the content because
+of certain technical requirements such as the need to install a certain
+software (e.g., Flash). Therefore, accessibility and re-usability of
+the format are key requirements.
+
+Definition 3. The term “re-purposing” is used when the usage pur-
+pose of the content changes depending on the target audience. A re-
+
+75
+
+http://creativecommons.org
+
+
+Dimension Metric Type
+
+M1. Legal reusability
+
+M1.1 Existence of license for a course O
+M1.2 Existence of human-readable description of license O
+M1.3 Type of legal (re)usability O
+M1.4 Existence of machine-readable of license O
+M1.5 Existence of machine-readable description O
+
+M2. Multilinguality level
+
+M2.1 Identification of the original language O
+M2.2 Existence in other languages O
+M2.3 Number of further language in which a course is available O
+M2.4 The state of translation: automatic, synchronized, expert-revised, localized O
+
+M3. Format re-purposeability
+M3.1 Format of the course material O
+M3.2 Possibility for reuse O
+M3.3 Type of function for reusability O
+
+M4. Recency M4.1 Average recency of individual modules and content units OM4.2 Recency of the overall course O
+
+M5. Sustainability
+M5.1 Number of available revisions O
+M5.2 Regularity of a course versions over the lifetime of the course O
+M5.3 Average recency of revisions O
+
+M6. Availability
+
+M6.1 Server’s availability O
+M6.2 Presence of the material O
+M6.3 Availability of the content for download O
+M6.4 Portability of a course on different devices with different operating systems O
+M6.5 Availability of the format and structure of the content on different devices O
+
+M7. Learning by
+self-assessment
+
+M7.1 Existence of self-assessment material O
+M7.2 Mean number of self-assessment objects in a course O
+M7.3 Coverage of self-assessment material over the course O
+M7.Sol.1 Existence of solutions for self-assessment material O
+M7.Sol.2 Mean number of self-assessment solution objects in a course O
+
+M8. Learning by examples
+and illustrations
+
+M8.1 Number of examples over the total number of course units O
+M8.2 Number of illustrations over the total number of course units O
+M8.3 Attractiveness level of a course S/O
+
+M9. Community involvement
+
+M9.1 Type of course creation: single author or collaboration work O
+M9.2 Number of contributors for the courses O
+M9.3 Number of learners or educators O
+M9.4 Number of comments written by users O
+M9.5 Number of times that the course material is being downloaded by users O
+
+M10. Discoverability M10.1 Average rank of a targeted course retrieved in the search result O
+
+Table 2: Overview of OCW quality dimensions and their metrics.
+
+purposeable format gives direct access to the course content with
+no or minimal loss of information.
+
+Measuring: M3.1 represents the format of the course material.
+M3.2 is a Boolean value indicating whether the content is reusable
+(for example Video is not, PowerPoint and HTML is). M3.3 indi-
+cates how course content can be reused. Values of the metric are
+the possible functions for reuse e.g., copy/paste function or by di-
+rect editing.
+Pros:
+
+• Re-purposable format enables technical openness.
+Cons:
+
+• Sufficiently re-purposable formats are rarely available.
+• Format reusability restrictions can conflict licenses.
+
+3.4 Recency
+Learners are interested in courses reflecting the state of the art.
+
+Therefore it is important to study temporal aspects of OCW. A
+course that was good in the past may not be a good course now
+or in the future. If we consider OCW to be the digital reflections
+of courses taught in reality at a certain time, their age and content
+freshness becomes a relevant quality indicator.
+
+Frequent updates can keep the users of a course satisfied with
+its freshness. This can influence the popularity of a course as well
+as ranking in time sensitive retrieval via search engines (Dong et
+al. 2010). Apart from constant facts and proved theories, scientific
+content carried by OCW could require updates over time. There-
+fore, recency of OCW depends on the awareness of its instructors
+of the changes of the concepts over time. Not only modifications of
+the content should be considered, but the means of representation
+can also be improved over time, thus influencing the attractiveness
+
+of a course.
+
+Definition 4. Recency is the extent to which the content and the
+material of a course is updated.
+
+Measuring: Unit is the granularity in which each leaf of course
+content has been made available, e.g., page, slide, or interactive
+document. OCW recency can be measured on two levels: the av-
+erage recency of individual content units of the course, and the re-
+cency of the overall course. M4.1 depicts the average recency of a
+course w.r.t. updates over individual parts of a course. M4.11 mea-
+sure the recency of course modules and M4.12 considers recency
+of content units. M4.2 shows the recency of the overall course. Re-
+cency is defined as the difference between the date of measurement
+tobs and the date when a course was last updated tlastUpd (cf. (Baeza-
+Yates et al. 2004)). It is not a very precise measure, since sometimes
+only minor updates have happened. In our evaluation we measure
+with a granularity in years because in our 100 sample courses (cf.
+section 4) we observed that most courses are taught and updated
+once a year.
+Pros:
+
+• Recency is a requirement for covering the state-of-the-art.
+• Recency is an indicator for sustainability and popularity.
+
+Cons:
+• Recency is difficult to measure on a content unit basis – re-
+
+quires some form of revision control.
+• Typically recency of OCW does not have disadvantages for
+
+users. Except if old versions of the course material were not
+archived (cf. section 3.5), then by updating a course and, e.g.,
+deleting a section, one would lose old information.
+
+3.5 Sustainability
+
+76
+
+
+
+An important challenge for projects aiming at free education is
+their economic sustainability over time. In (Dholakia et al. 2006),
+sustainability is introduced as the long-term viability and stabil-
+ity of an open education program. Downes categorize the sustain-
+ability of Open Educational Resources (OERs) from three point of
+views: funding models, technical models and content models. He
+considers the sustainability of open educational resources to meet
+provider’s objectives such as scale, quality, production cost, mar-
+gins and return on investment.
+
+These definitions consider the sustainability of OER projects both
+from a commercial and a technical point of view. In this article,
+we focus on the sustainability of OCW from a content perspec-
+tive. In most cases, a course is not taught once but rather multiple
+times over several semesters or years. Although instructors aim at
+a consistent style and content in their courses, small refreshments
+are always necessary. These changes can be either infrastructural
+editions in the whole content or slight updates in sentences, para-
+graphs. By each edition, a new variant of a course is created, which
+could be managed using a version control system.
+
+Sustainability of OCW projects and systems depends on many
+external factors, such as funding, objectives of stakeholders, aware-
+ness of users, advertising, etc. We do not include these aspects of
+sustainability in this survey because they do not apply to courses.
+
+Definition 5. Sustainability of OCW shows their quality from the
+aspect of being stable over time. The quality of being stable is de-
+fined by the amount of previous versions and their regularity over
+time.
+
+Measuring: A long and continuous revision history shows that the
+content of a course has been well maintained in the past. This in-
+dicates that it may also continue to be well maintained in future.
+Some OCW repositories offer a revision history of the courses. Us-
+ing this information, we measure sustainability of a course by M5.1
+the number of available revisions.7 While a high number of revi-
+sions indicates that the authors of a course have devoted a lot of
+attention to it, it is not reliable to measure the sustainability of a
+course only by counting the number of revisions. Therefore, two
+attributes are considered while measuring sustainability of learning
+objects: M5.2 indicating the regularity of a course’s versions over
+the lifetime of the course and M5.3 measuring the average recency
+of all revisions.
+
+We define revisions of the courses to be regular if any two suc-
+cessive revisions have the same time difference. This notion of reg-
+ularity is valid only for courses with more than two revisions.
+
+Apart from regularity, the recency of versions is also important
+(see Section 3.4). The recency of versions is calculated as the vari-
+ance of their distribution over the lifetime of a course. A high vari-
+ance indicates that the versions of a course tend to be updated fre-
+quently, while a low variance indicates that the versions have been
+updated a long time ago.
+Pros:
+
+• A course with a continuous history of old versions enables
+users to understand how concepts, their definitions, and their
+explanation have evolved.
+
+• Giving users access to previous versions gives them the pos-
+sibility to study the evolution of the content from the begin-
+ning until the most recent update.
+
+Cons:
+• Limiting access to a single version, i.e. the most recent one,
+
+7We refer to the change that transformed version n?1 to version n
+as a revision. A revision occurs at a precisely defined point in time.
+
+prevents users from understanding the evolution of the con-
+tent of the courses.
+
+• It is a difficult task for users to realize the exact changes of
+the content in each unit without version control facilities
+
+• Assisting users with version control features depends on the
+technical capabilities of an OCW repository engine.
+
+• Regularity and recency of versions directly depends on the
+contribution of authors.
+
+3.6 Availability
+A generalized definition for availability is given by (Katukoori
+
+1995) as the ratio of times that a resource is capable of being used
+over the aggregation of uptimes and downtimes. In the context of
+the Web, Bizer defines availability as the extent to which informa-
+tion is “available in an easy and quick way” (Bizer 2007). There
+are various ways of making OCW available, i.e. ready for use to
+its users. These include: making the course available as a website,
+making a specific part (i.e. unit) of the course available (and share-
+able) via a URL, making the course available in a content repository
+(e.g. a video/course archive), offering a whole course for down-
+load in various formats (e.g. PDF, presentation), offering individual
+learning objects for download.
+
+These different ways are not mutually exclusive. For example,
+a course can be made available as a website as well as an archive
+for download through some content repository. The possibility to
+download a course makes it available for students who do not have
+permanent access to the Internet.
+
+Different formats in which course material is offered can be dis-
+tinguished by their portability, size and accessibility. A format is
+portable if (free) software for viewing it without losses is avail-
+able for all major operating systems. Different formats may result
+in different download sizes, which matters when a user’s internet
+bandwidth is low.
+
+Finally, different formats have different degrees of accessibility
+not just for people with disabilities, but also for users of devices
+with small screens low screen resolutions (smartphones). We define
+accessibility as the extent to which the format of a course makes it
+available to a broad range of users.
+
+In most formats, there are ways to increase the level of accessi-
+bility. For example, closed captions in video lectures display tran-
+sitive text information that can be activated by the viewer. Another
+important aspect is whether the users are able to download the
+courses instantly, or whether they have to create an account and log
+in. Adding such a registration barrier can conflict with the meaning
+of ‘open’.
+
+Definition 6. Availability of OCW is the extent to which its learn-
+ing objects are available in an easy and quick way.
+
+Measuring: We define five measures of availability concerning dif-
+ferent aspects of OCW usage. M6.1 measures the server’s avail-
+ability, M6.2 indicates the presence of the material, M6.3 measures
+factors concerning the availability of the content for download and
+M6.4 characterizes the portability of a course on different devices
+with different operating systems and M6.5 indicates attributes re-
+lated to the format and structure of the content.
+
+M6.1 is calculated as the ratio between the number of times the
+server was available over the number of checking times.
+
+M6.2 indicates whether all parts of an OCW are available (not
+necessarily for download; see M6.3 below). It is a Boolean mea-
+sure, which is false in case of incompletely available course mate-
+rial or its absence, and true otherwise. During our study we faced
+cases when only the metadata of a course was available, whereas in
+other cases some course parts were missing; in both cases M6.2
+
+77
+
+
+
+would take the value false. For video lectures, M6.21 indicates
+whether the course content is facilitated by closed caption process.
+
+M6.3 measures factors concerning the availability of the content
+for download. When a course is available for download, users can
+either download the whole course material at once or every part
+or chapter has to be downloaded as an individual file. We consider
+both possibilities to be important for availability and therefore de-
+fine two Boolean sub-metrics, where M6.31 indicates the down-
+loadability of the whole course at once, and M6.32 indicates the
+downloadability of all of its parts.
+
+M6.4 comprises three independent Boolean sub-metrics to mea-
+sure the portability of a course. M6.41 measures whether the mate-
+rial is available in a format for which viewer applications are avail-
+able for all major operating systems8 (Example: videos that require
+Flash, which is not available on Android). M6.42 indicates whether
+the material is available in a format that can be viewed without
+losses on all major operating systems. (Example: There is soft-
+ware for all major operating systems that can view PowerPoint, but
+only Microsoft PowerPoint, which, e.g., is not available for Linux,
+can view PowerPoint documents without losses). M6.43 indicates
+whether the material is available in a format for which free viewer
+applications are available for all major operating systems. (Exam-
+ple: Microsoft PowerPoint is available for Windows and Mac OS,
+but it is not free.)
+
+M6.5 is a Boolean metric to measure the availability of the con-
+tent structure. M6.51 depicts whether the content is easily available
+in smaller granularity, for example in that the all-in-one archive
+contains a table of contents, or by having multiple archived files for
+download, e.g. one per chapter.
+Pros:
+
+• Availability is a necessary condition for openness.
+• Having a course available in smaller granularities gives the
+
+advantage of easy access to the desired content.
+• Availability of learning objects in downloadable formats en-
+
+sures that users will always be able to access material.
+Cons:
+
+• Availability is influenced by several independent precondi-
+tions; for example: a course with a smartphone-friendly on-
+line document format is effectively not available while the
+web server is down.
+
+• For a student it is a laborious task to download a complete
+course if the material is only available as multiple separate
+archives.
+
+3.7 Learnability by Self-assessment
+Learning can only be effective if the learner is aware of the
+
+progress made so far, and of the amount of remaining knowledge
+that needs to be covered (Boud 1995). Self-assessment is an old
+technique which is mostly used in order to foster reflection on one’s
+own learning processes and results (Dunning et al. 2004). Using
+OCW, there is no human instructor to tell the learner what to do
+or how to proceed. Therefore, self-assessment plays an important
+role in helping the learner to reach an optimal level of knowledge.
+Learning material for self-assessment can be categorized in three
+different classes: (1) exercise sheets for training, (2) exam sheets
+that help with exam preparation, and (3) quizzes or multiple choice
+questions, helping to measure learning progress.
+
+Definition 7. Self-assessment material enable learners to assess
+and improve their knowledge. As a quality attribute, we define the
+8As major operating systems we consider Windows, Mac OS and
+Linux (as their combined market share on PCs is 93.7), as well
+as iOS and Android (as their combined market share on mobile
+devices is 94.4).
+
+extent to which a course supports its audiences (users) in under-
+standing the contained content by offering self-assessment mate-
+rial.
+
+Measuring: In this work, different parts or chapters of a course
+where instructors partition the whole course is called “module”.
+Number of modules for a course is denoted as Nm. We count self-
+assessment objects as the number of individual objects e.g., one
+exam sheet with 10 exercises counts as “10” rather than “1”. First,
+with M7.1 as a Boolean metric, we check whether any kind of self-
+assessment material exists for a course at all. Then, for a course
+module i = 1, . . . ,Nm we denote the number of self-assessment ob-
+jects for this module as sai; thus, the overall number of self-assessment
+objects in a course is Nsa := ?Ni=1 sai.
+
+M7.2, abbreviated as µsa in this section, is the mean number of
+self-assessment objects in a course, i.e. the number of self-assessment
+objects divided by the number of course modules (M7.2 = µsa :=
+Nsa
+Nm ).
+
+Furthermore we are interested in the statistical distribution of
+self-assessment objects over course modules. We consider modules
+rather than units for self-assessment because of high possibility
+of their distribution over modules. Note that the relation of self-
+assessment objects to course modules may not always be easy to
+determine: in some courses, self-assessment objects are attached to
+modules; however, if a course only has one overall self-assessment
+block at the end, which applies to all modules, determining this re-
+lation will require linguistic or semantic analysis of the self-assess-
+ment objects and the content of the course modules. We leave the
+decision of whether to determine the distribution of self-assessment
+objects over course modules, or to leave the respective metrics un-
+defined, to the “user” of these metrics definitions (vs., e.g., the “end
+user” = the student using OCW material for learning).
+
+M7.3 is defined as the ratio of course modules with at least one
+self-assessment object to the overall number of modules. This def-
+inition is inspired by code coverage in software testing.
+
+For any self-assessment object a solution or answer may or may
+not be included. Therefore, for each metric M7.x defined above, we
+define another metric M7.Sol.x, which only takes into account ob-
+jects having solutions. For example, M7.Sol.1 is true if there exists
+self-assessment material with solutions. Coverage is not measured
+for solutions as it can be determined by self-assessment objects.
+Pros:
+
+• Self-assessment material are useful for checking one’s un-
+derstanding of the key messages and points about a subject.
+
+• Self-assessment is necessary for effective learning.
+• Having exam sheets available for users or recommending ex-
+
+tra reading material can reduce the need for further searches.
+• Having self-assessment material attached to a course gives it
+
+a wider range of users.
+Cons:
+
+• It is very difficult to find a pool of self-assessment material.
+• The difficulty of self-assessment exercises should match the
+
+difficulty of the corresponding learning object; otherwise the
+results can be unreliable.
+
+• Self-assessments can be effective when the learners under-
+stand the solutions.
+
+• A certain level of knowledge is required to train the self-
+assessment exercises.
+
+3.8 Learnability by Examples and Illustrations
+Instructors commonly place different adjunct items in the course
+
+content to facilitate learners understanding from the underlying sub-
+jects (Hayes et al. 1983). They often choose illustrative items rather
+than pure text descriptions that can be easily seen, remembered
+
+78
+
+
+
+and imagined. Illustrations refer to any kind of graphical represen-
+tations such as graphs, pictures, videos. Reviewing studies about
+“reading-to-learn” concludes that at least well-selected and well-
+instructed items can reliably improve learning (Carney et al. 2002).
+In some cases using pictures might not increase learning rather
+makes the course material attractive. Apart from pictorial items,
+examples as single and specific instances are frequently used to re-
+veal complex concepts.
+
+Definition 8. The degree to which the content of an OCW is well-
+illustrated by examples and illustrations shows its level of learn-
+ability.
+
+Measuring: We consider the use of examples as well as illustra-
+tions within a course content that are used to convey complex ideas
+and messages. M8.1 is calculated as the ratio between the number
+of examples over the total number of course units. Examples are
+counted as the instances titled by the term “example”. Similarly,
+M8.2 specifies the ratio between the number of illustrations and the
+total number of course units. Any kind of instances than pure text
+such as pictures, charts, graphs, diagrams, and tables are counted as
+illustrations. Summation of these two measures specifies the level
+of course learnability by examples and illustrations. As mentioned
+before, the number of illustrations effects the attractiveness level of
+a course. M8.3 measures the level of course attractiveness based on
+two sub-metrics. M8.31 is the ratio between number of illustrations
+over the total number of course units. M8.32 is a subjective factor
+to determine the level of attractiveness.
+Pros:
+
+• Concepts with additional illustrations and examples improve
+performance of learning.
+
+• Illustrations increase motivation and creativity of learners.
+• Examples and illustrations increase attractiveness level of a
+
+course.
+• They reinforce the text’s coherence and give supports for
+
+readers in text-processing.
+Cons:
+
+• Illustrations are sometimes exact representation of what is
+described in the text or the other way around.
+
+• Attractiveness is a subjective criterion.
+
+3.9 Community Involvement
+Many content projects are based on collaborative work of indi-
+
+viduals who put their time, effort and skills to creating a product
+that is available to all (Oreg et al. 2008). Usually a course has one
+primary author as the instructor of the course who does the ma-
+jor work and few others of doing minor contribution. Two kind of
+collaboration is possible creating OCW: collaboration in the back-
+ground and online collaboration. This means whether the revisions
+of the content are created by community in the background and
+uploaded by one of the authors. Second, the system can make it
+possible to have a collaborative environment and work on one unit
+with many users. Two groups of people can collaborate to create
+learning objects: members of a group, volunteers. Creating learn-
+ing objects is achievable even without collaborative work.
+
+Definition 9. Collaboration on creating OCW is an interpersonal
+process through which members of same or different disciplines
+contribute to a common learning object.
+
+Measuring: M9.1 measures whether the OCW is created in a col-
+laboration process or it has one author. M9.2 measures the number
+of contributors for the courses created or edited by several peo-
+ple. M9.3 shows the number of learners or educators who used the
+course and M9.4 depicts the number of comments written by users.
+
+M9.5 describes the number of times that the course material is be-
+ing downloaded by users. In many cases we end up with situations
+that less information were available for these.
+Pros:
+
+• Collaboration can increase the freshness level of a course.
+• An OCW created from a collaboration work can be com-
+
+pleted from several aspects that other courses with only one
+author.
+
+• A collaborative work can save a lot of time for authors and
+let them be more creative in the content.
+
+Cons:
+• Without an intellectual control the main objectives of the
+
+course may be lost.
+• Editions are not always productive.
+• Revision control is an essential need for a synchronized col-
+
+laboration work.
+
+3.10 Discoverability
+Although a large amount of courses is being published as OCW
+
+by universities and organizations, finding relevant educational con-
+tent on the Web is still an issue (Dichev et al. 2011). Selection of
+certain results by users depends on the results shown by the search
+engine. Regardless of being high or low quality OCW, their rank
+can be influenced by several factors which parts of them are far
+from the scope of this paper. In this paper, we consider how easy
+relevant OCW are discoverable for users in the retrieved results of
+their browsing.
+
+Discoverability refers to user’s ability to find key information,
+applications or services at the time when they have a need for it (Vla?-
+doiu 2013). It is the task of repository administrators to optimize
+their content’s discoverability. They need to add certain factors be-
+hind the scenes of the website to improve content discoverability of
+their website by search engines. The attempt of discovering courses
+among the search results has been done assuming that users are un-
+aware of existence of the exact course. The title of each course is
+normalized and used as the search keyword. Due to diversity of
+retrieved results only by titles, the search keyword is enriched by
+adding terms “course” and “open”.
+
+Definition 10. Discoverability of OCW is the extent to which it is
+promptly possible for users to find relevant courses ones to their
+search at the time of need.
+
+Measuring: Two factors can directly influence the search results
+while searching the web: the search engine and the search key-
+words. Users searching for courses have at least basic knowledge
+about them including a list of search keywords. Combination of
+each keywords differently feed the search engine discovering courses.
+Different metadata of courses such as title, topic, author, etc are
+used as search keywords. Furthermore, adding phrases like “course”
+or “open” can influence the result retrieved from search engines.
+In our assessment, we use Google (with 1,100,000,000 estimated
+unique monthly visitors) and being the top as the test search en-
+gine measuring discoverability of courses.9 During last four years,
+over 87 percent of worldwide internet users searched the web with
+Google search engine.10 First we used Google’s advanced search
+to narrow down the number of retrieved results to 100.
+
+M10.1 measures the average rank of a targeted course retrieved
+in the search result. By taking samples from the collection we can
+see how discoverable are the courses among first 100 results shown
+
+9http://www.marketingcharts.com/
+10http://www.statista.com/statistics/216573/
+worldwide-market-share-of-search-engines/
+
+79
+
+http://www.marketingcharts.com/
+http://www.statista.com/statistics/216573/worldwide-market-share-of-search-engines/
+http://www.statista.com/statistics/216573/worldwide-market-share-of-search-engines/
+
+
+by the Google search engine. The results are influenced by using
+“AND”, “OR” between different phrases.
+Pros:
+
+• Discoverability increases users’ awareness of the existence
+of relevant repositories and courses.
+
+• When a good course is easily discoverable, it saves a lot of
+time for learners.
+
+Cons:
+• Making OCW easily discoverable on the Web is a challeng-
+
+ing task for repository administrators.
+• A good course which is not easily discoverable, indirectly
+
+restricts users freedom of access and usage of its content.
+• Key factors influencing discoverability of OCW are out of
+
+author’s authority.
+
+4. ASSESSMENT AND RESULTS
+The main objective of this paper is to assess the quality of OCW.
+
+We assess the quality of individual courses, not of repositories. The
+study is based on 100 courses randomly selected from the 20 repos-
+itories shown in Table 1. The repositories were chosen by including
+a mix of renowned OCW initiatives such as MIT OpenCourseWare
+or OER Commons and less prominent initiatives. Now we discuss
+the outcome of the quality assessment of these courses according
+to the metrics defined in the previous section. The results of the as-
+sessment for each dimension is summarized first and possible rec-
+ommendations are given thereafter.11
+
+Legal Reusability: All the courses in our sample collection are li-
+censed. Overall 28 out of the 100 courses have an open license.
+Creative Commons (CC) is a “family” of licenses, out of which
+CC-BY-NC-SA (50 out of 100) is the most popular one. However,
+because of the restriction to non-commercial reuse, CC-BY-NC-
+SA not an open license according to the Open Definition. Overall
+57 courses are licensed as non-commercial where as 3 courses out
+of 100 granted as non-derivative. For most of the courses with a
+CC license, a human readable version of the license has been made
+available. License information in a machine readable format is pro-
+vided for a small number of courses(20).
+
+Almost all repositories use standard licenses with the exception
+of the OpenHPI repository. In OpenHPI courses are licensed by a
+set of rules that the repository maintainers call “Code of Honor”,
+unless particular course authors override these with their own li-
+cense.
+Multilinguality Level: Of the four metrics defined to measure the
+level of multilinguality, it was not possible to measure the state of
+translation, since the required information was not provided by the
+repository. While English is the original language of the majority of
+the courses, two of them have been translated to other languages.
+Out of 12 courses originally offered in other languages than En-
+glish, four have been translated to English. None of the repositories
+in our assessment offers real-time machine translation functional-
+ity. As Table 3 indicates, English dominates the OCW realm by sev-
+eral orders of magnitude, while courses in other languages would
+be in high demand considering the number of internet uses.
+Format re-purposeability: Overall 68 courses are offered in re-
+purposeable formats. However, the problematic part is the way of
+their re-usability. A large number of courses (52) are available in
+PDF and it is only possible to re-use content using copy-paste func-
+tions in a cumbersome way. Figure 1 shows the number of courses
+w.r.t. the formats in which they are available. The red bar shows
+the number of courses available in the corresponding format and
+
+11The full raw data and some visualizations are available at http:
+//bit.ly/1vhaWJT.
+
+Language Number of Courses Internet Users
+English 88 536 million
+Chinese 1 444 million
+Spanish 4 153 million
+Japanese 1 99 million
+Portuguese 1 82 million
+German 1 75 million
+Others 4 <1 million
+
+Table 3: Number of courses and Internet users by language.
+
+additionally in PDF.
+
+Figure 1: Course formats
+
+Recency: A description of updates per module was only available
+for two courses. In most of the cases the OCW repository software
+doesn’t support it, and for most of supported ones the course au-
+thors didn’t provide sufficient metadata. Therefore, we consider the
+recency of the overall course by calculating the difference between
+the observation date (2014) and last update of the course. Out of
+100 courses, 10 have been updated in 2014. Overall, only 32 out of
+100 courses have been updated in 2014 or in the two previous years.
+More than half of the courses were last updated three years ago or
+earlier. 11 courses did not provide specific information about their
+last update. These were mainly interactive documents with course
+contents.
+Sustainability: Information about the revision history is only avail-
+able for 14 courses in our sample set. Four of these, however, were
+revised only within a single year. Figure 2 shows the sustainability
+of the remaining 10 courses w.r.t. average recency and regularity of
+revisions over the lifetime of each course. The regularity of courses
+is depicted as line charts where the X axis represents the revisions
+and the Y axis shows the recency of the revisions. Course number 1
+from Webcast.Berkeley with seven revisions is the most sustainable
+course in our data set. It has the highest of number of revisions, the
+highest recency variance and the highest average regularity.
+
+Figure 2: Sustainability of courses
+
+Course 3 and course 10 with five revisions and average regular-
+ity of 1 are also sustainable over time. Course 10 with less aver-
+
+80
+
+http://bit.ly/1vhaWJT
+http://bit.ly/1vhaWJT
+
+
+age recency of revisions is more sustainable than course 3. We can
+not determine the regularity of courses number 4 and 5 since they
+do not satisfy the prerequisite of having more than two revisions.
+Overall only four out of the ten course for which a revision history
+was available were sustainable according to our definition.
+Availability: Availability of servers has been checked in three time
+intervals. In the second round of checking, 5 courses could not
+be accessed because of server problems. This number decreased
+to 2 in the third round. Some repositories restrict access to the
+course material by requiring an account. For example, the Curriki
+repository limits the access to a maximum of three courses without
+an account. Eight courses are available in PowerPoint format. Al-
+
+Figure 3: Availability of courses
+
+though there are open viewers like LibreOffice for operating sys-
+tems where PowerPoint is not available (such as Linux), the for-
+matting of these courses looks broken in parts. Overall 18 courses
+out of 37 in video format have closed captions. Half of the courses
+provide the content in a structured format to download. 10 courses
+out of 22 which are downloadable all-in-one contain a table of con-
+tents. Only four courses are offered for download all-in-one and
+per chapter. The content of 40 courses which are downloadable per
+chapter is archived in multiple files.
+Learning by Self-assessment: Self-assessment material is avail-
+able separately for 40 courses. 15 courses include self-assessments
+directly inside the content. Out of 55 courses with self-assessment
+25 of them have solutions.
+
+Figure 4: Self-assessment objects: X axis: Individual courses, Y axis: Mean
+number of self-assessment objects and coverage in each course
+
+Learning by Examples and Illustrations: 65 courses have at least
+one example and one illustration. One quarter of the courses (i.e.
+25) have more than 50 examples. 52 courses have been subjectively
+determined as low attractive ones. Whereas, 60 courses are objec-
+tively of low attractiveness (based on the ratio of illustrations avail-
+able for content units). 10 courses have been categorized as highly
+attractive by both criteria.
+Community Involvement: The content of 61 courses has been cre-
+ated by a single author. Only 16 courses are the result of collabo-
+rative work. The number of contributors are as follows: 6 courses
+with 2 contributors, 3 courses with 3 contributors, 3 courses with
+4 contributors, 2 courses with 5 contributors, 1 course with 6 and
+1 course with 7 contributors. For the rest of the courses informa-
+tion about their creation was not available. The number of course
+reviewers has been made available for 7 courses. Account creation
+was needed for more than half of the courses to comment on the
+
+course. The number of course downloads as well as the number of
+comments could not be found in most of the cases.
+Discoverability: For more than 60 courses, the course rank has
+been dramatically improved using the term “course” in the search
+keyword. Our experiment indicates that discoverability of OCW re-
+mains low for users apart from considering good quality and clear
+licenses. The number of courses w.r.t. their rank retrieved from
+our searched are: 14 courses with rank 1, 7 courses with rank 2,
+4 courses with rank 3, 4 courses with rank 3, 7 courses with rank
+between 3 and 100, 68 courses with rank above 100.
+
+5. RELATED WORK
+A thorough search of the literature indicates that work related
+
+to OCW quality assessment is still rather scarce. Most of the pre-
+vious works consider repositories and their impact on education
+rather than quality of courses. In (Vla?doiu 2014), a set of quality
+assurance criteria is introduced considering four aspects of OCW:
+1. content, 2. instructional design, 3. technology and 4. courseware
+evaluation. About half of the dimensions that we consider in this
+work (such as availability, multilinguality) are also introduced in
+Vla?doiu’s work. However, some of them are not considered in this
+work because either they are subjective (e.g., self-containedness) or
+difficult to measure (e.g., relevance of the content for self-learning)
+or out of the scope of assessing course quality (e.g., interoperability
+of the interface). Another class of related works assesses the use-
+fulness and impact of OCW from a users’s perspective, which also
+highly depends on quality of courses (Chang et al. 2014; Olufunke
+et al. 2014). In (Moise et al. 2014), a machine learning approach
+has been devised to support automatic OCW quality assessments. A
+problem here, however, is the availability of suitable training data,
+which could be provided by expert sample assessments obtained
+using the methodology presented in this paper.
+
+6. CONCLUSION
+In this article, we presented a comprehensive list of quality cri-
+
+teria for OpenCourseWare. We assessed a sample of 100 courses
+according to these criteria. We observed that:
+
+• only 28 of the courses are indeed open,
+• only 12 are available in a language other than English,
+• only 16 are available in a format facilitating reuse and re-
+
+purposeability,
+• only one third of the OCWs was updated in the last three
+
+years, and
+• less than half of the courses comprise self-assessment ques-
+
+tions.
+From our perspective, this is not a satisfactory situation. We think
+the quality of OCW has to improve significantly in order to live
+up to its promises. A possible solution for improving the quality
+is leveraging the collaboration and effort sharing on the Web. Plat-
+forms such as SlideWiki12 or Wikiversity13, for example, support
+the collaborative creation and translation of OCWs by communities
+of authors.
+
+Regarding future work, we plan to further mature the quality
+metrics and to automate the quality assessment whenever possible.
+Also collaborating with OCW repository maintainers on establish-
+ing and representing quality indicators for users appears to be an
+interesting development avenue. In this regard, integrating quality
+assessment results into existing learning object representation stan-
+dards using a standardized ontology is a further interesting aspect.
+
+12http://slidewiki.org
+13http://www.wikiversity.org
+
+81
+
+http://slidewiki.org
+http://www.wikiversity.org
+
+
+References
+Atkins, D. E., J. S. Brown, and A. L. Hammond (2007). A Review
+
+of the open Educational Resources (OER) Movement: Achieve-
+ments, Challenges, and New Opportunities. Tech. rep., pp. 1–84.
+
+Baeza-Yates, R., C. Castillo, and F. Saint-Jean (2004). Web Dynam-
+ics, Structure, and Page Quality. Adapting to Change in Content,
+Size, Topology and Use. Ed. by M. Levene and A. Poulovassilis.
+Springer, pp. 93–109.
+
+Bizer, C. (2007). “Quality-Driven Information Filtering in the Con-
+text of Web-Based Information Systems”. PhD thesis. FU Berlin.
+URL: http://www.diss.fu- berlin.de/diss/receive/
+FUDISS_thesis_000000002736.
+
+Boud, D. (1995). Enhancing Learning Through Self-assessment.
+RoutledgeFalmer.
+
+Carney, R. N. and J. R. Levin (2002). “Pictorial Illustrations Still
+Improve Students Learning From Text”. In: Educational Psy-
+chology Review 14.1, pp. 5–26.
+
+Caswell, T., S. Henson, M. Jensen, and D. Wiley (2002). “Open
+content and open educational resources: Enabling universal ed-
+ucation”. In: The International Review of Research in Open and
+Distance Learning 9.1.
+
+Chang, C.-Y. and H.-Y. Hong (2014). “Identifying the Strengths
+and Concerns of OpenCourseware Design: An Exploratory Study”.
+In: International Journal of Online Pedagogy and Course Design
+(IJOPCD) 4.1, pp. 16–26.
+
+Data Collection Methods for Program Evaluation: Observation (2008).
+Evaluation Briefs 16. Center for Diseases Control and Preven-
+tion. URL: http://www.cdc.gov/healthyyouth/evaluation/
+pdf/brief16.pdf.
+
+Dholakia, U. M., W. J. King, and R. Baraniuk (2006). “What makes
+an open education program sustainable? The case of Connex-
+ions”. In: Open Education Conference (OEC), pp. 1–24.
+
+Dichev, C., B. Bhattarai, C. Clonch, and D. Dicheva (2011). “To-
+wards Better Discoverability and Use of Open Content”. In: 3rd
+Int. Conf. on Software, Services and Semantic Technologies S3T.
+Ed. by D. Dicheva, Z. Markov, and E. Stefanova. Advances in
+Intelligent and Soft Computing 101. Springer.
+
+Dong, A., Y. Chang, Z. Zheng, G. Mishne, J. Bai, R. Zhang, K.
+Buchner, C. Liao, and F. Diaz (2010). “Towards recency ranking
+in web search”. In: The third ACM international conference on
+Web search and data mining, pp. 11–20.
+
+Downes, S. (2007). “Models for sustainable open educational re-
+sources”. In: NRC, pp. 1–18.
+
+Dunning, D., C. Heath, and J.-M. Suls (2004). “Flawed Self-Assess-
+ment Implications for Health, Education, and the Workplace”.
+In: Psychological Science 5.3, pp. 69–107.
+
+Friesen, N. (2013). “Open Educational Resources: Innovation, Re-
+search and Practice”. In: ed. by R. McGreal, W. Kinuthia, and
+S. Marshall. Commonwealth of Learning, Athabasca University.
+Chap. Realising the open in Open Educational Resources: Practi-
+cal concerns and solutions. URL: https://oerknowledgecloud.
+org/sites/oerknowledgecloud.org/files/pub_PS_OER-
+IRP_web.pdf#page=105.
+
+Hayes, D. A. and J. E. Headence (1983). “Transfer of Learning
+from Illustration-Dependent Text”. In: Educational Research 76.4,
+pp. 245–248.
+
+Juran, J. M. (1974). Juran’s Quality Control Handbook. 4th. McGraw-
+Hill (Tx). URL: http://www.amazon.com/exec/obidos/
+redirect?tag=citeulike07-20\&path=ASIN/0070331766.
+
+Kahn, B. K., D. M. Strong, and R. Y. Wang (2002). “Informa-
+tion Quality Benchmarks: Product and Service Performance”.
+In: Commun. ACM 45.4, pp. 184–192. URL: http://doi.acm.
+org/10.1145/505248.506007.
+
+Katukoori, V. (1995). “Standardizing Availability Definition”. MA
+thesis. University of New Orleans.
+
+Knight, S.-A. and J. M. Burn (2005). “Developing a framework
+for assessing information quality on the World Wide Web”. In:
+Informing Science: International Journal of an Emerging Trans-
+discipline 8.5, pp. 159–172.
+
+MIT OpenCourseWare (2006). 2005 Program Evaluation Findings
+Report. Tech. rep. URL: http://ocw.mit.edu/ans7870/
+global/05_Prog_Eval_Report_Final.pdf.
+
+MITNews (2001). MIT to make nearly all course materials avail-
+able free on the World Wide Web. URL: http://newsoffice.
+mit.edu/2001/ocw (visited on 2014-09-10).
+
+Moise, G., M. Vla?doiu, and Z. Constantinescu (2014). “MASECO:
+A Multi-agent System for Evaluation and Classification of OERs
+and OCW Based on Quality Criteria”. In: E-Learning Paradigms
+and Applications. Ed. by M. Ivanovic? and L. C. Jain. Studies in
+Computational Intelligence 528. Springer, pp. 185–277.
+
+Olufunke, A. C. and O. A. Adegun (2014). “Utilization of Open
+Educational Resourses (OER) and Quality Assurance in Univer-
+sities in Nigeria”. In: European Scientific Journal 10.7.
+
+Oreg, S. and O. Nov (2008). “Exploring motivations for contribut-
+ing to open source initiatives: The roles of contribution context
+and personal values”. In: Computers in Human Behavior 24.5,
+pp. 2055–2073.
+
+Patton, M. Q. (2005). Qualitative research. Wiley Online Library.
+Porcello, D. and S. Hsi (2013). “Crowdsourcing and Curating On-
+
+line Education Resources”. In: Science 341.6143, pp. 240–241.
+Spence, G., J. Heer, and C. Manning (2013). “The efficacy of hu-
+
+man post-editing for language translation”. In: SIGCHI Confer-
+ence on Human Factors in Computing Systems. New York, NY,
+USA: ACM, pp. 439–448.
+
+UNESCO (2002). UNESCO Promotes New Initiative for Free Edu-
+cational Resources on the Internet. URL: http://www.unesco.
+org/education/news_en/080702_free_edu_ress.shtml
+(visited on 2014-06-17).
+
+United Nations (1948). Universal Declaration of Human Rights-
+Right To Education, Article 26. URL: http://www.un.org/
+cyberschoolbus/humanrights/declaration/26.asp.
+
+Vla?doiu, M. (2011). “State-of-the-Art in Open Courseware Initia-
+tives Worldwide”. In: Informatics in Education, pp. 271–294.
+
+– (2013). “Toward Increased Discoverability of Open Educational
+Resources and Open Courseware”. In: International Journal of
+Computer Trends and Technology 4.8.
+
+– (2014). “Towards a Quality Model for Open Courseware and
+Open Educational Resources”. In: New Horizons in Web Based
+Learning. ICWL 2011 International Workshops, KMEL, ELSM,
+and SPeL, Hong Kong, December 8–10, 2011, ICWL 2012 In-
+ternational Workshops, KMEL, SciLearn, and CCSTED, Sinaia,
+Romania, September 2–4, 2012. Revised Selected Papers. Ed. by
+D. K. W. Chiu, M. Wang, E. Popescu, Q. Li, and R. Lau. Lecture
+Notes in Computer Science 7697. Springer Berlin Heidelberg,
+pp. 213–220.
+
+Zaveri, A., A. Rula, A. Maurino, R. Pietrobon, J. Lehmann, and
+S. Auer (2014). “Quality Assessment Methodologies for Linked
+Open Data”. In: Semantic Web Journal. URL: http : // www .
+semantic-web-journal.net/content/quality-assessment-
+linked-data-survey. Forthcoming.
+
+82
+
+http://www.diss.fu-berlin.de/diss/receive/FUDISS_thesis_000000002736
+http://www.diss.fu-berlin.de/diss/receive/FUDISS_thesis_000000002736
+http://www.cdc.gov/healthyyouth/evaluation/pdf/brief16.pdf
+http://www.cdc.gov/healthyyouth/evaluation/pdf/brief16.pdf
+https://oerknowledgecloud.org/sites/oerknowledgecloud.org/files/pub_PS_OER-IRP_web.pdf#page=105
+https://oerknowledgecloud.org/sites/oerknowledgecloud.org/files/pub_PS_OER-IRP_web.pdf#page=105
+https://oerknowledgecloud.org/sites/oerknowledgecloud.org/files/pub_PS_OER-IRP_web.pdf#page=105
+http://www.amazon.com/exec/obidos/redirect?tag=citeulike07-20\&path=ASIN/0070331766
+http://www.amazon.com/exec/obidos/redirect?tag=citeulike07-20\&path=ASIN/0070331766
+http://doi.acm.org/10.1145/505248.506007
+http://doi.acm.org/10.1145/505248.506007
+http://ocw.mit.edu/ans7870/global/05_Prog_Eval_Report_Final.pdf
+http://ocw.mit.edu/ans7870/global/05_Prog_Eval_Report_Final.pdf
+http://newsoffice.mit.edu/2001/ocw
+http://newsoffice.mit.edu/2001/ocw
+http://www.unesco.org/education/news_en/080702_free_edu_ress.shtml
+http://www.unesco.org/education/news_en/080702_free_edu_ress.shtml
+http://www.un.org/cyberschoolbus/humanrights/declaration/26.asp
+http://www.un.org/cyberschoolbus/humanrights/declaration/26.asp
+http://www.semantic-web-journal.net/content/quality-assessment-linked-data-survey
+http://www.semantic-web-journal.net/content/quality-assessment-linked-data-survey
+http://www.semantic-web-journal.net/content/quality-assessment-linked-data-survey
+
+
+
+
